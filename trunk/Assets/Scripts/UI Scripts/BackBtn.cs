@@ -6,6 +6,6 @@ public class BackBtn : MonoBehaviour {
 
 	void OnMouseDown() 
 	{        
-		Application.LoadLevel("Menu");
+		Application.LoadLevel(1);
 	}
 }

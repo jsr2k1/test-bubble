@@ -165,11 +165,7 @@ public class Striker : MonoBehaviour
 			
 			InGameScriptRefrences.strikerManager.GenerateStriker ();
 		}
-		
-		if(bombBall == true)
-		{
-			
-		}
+
 	}
 	
 	//Skip current shooting object
@@ -211,7 +207,7 @@ public class Striker : MonoBehaviour
 	//Function to throw raycast to see wich balls are sorrounding the bomb ball
 	private void DetectAndExplode ()
 	{
-		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.5f);
+		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f);
 		int i = 0;
 		while (i < hitColliders.Length) {
 			if(hitColliders[i].tag == "Playing Object" )
