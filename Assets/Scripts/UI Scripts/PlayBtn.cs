@@ -33,6 +33,6 @@ public class PlayBtn : MonoBehaviour {
 		if (d < 10f)
 			//Button action
 
-		Application.LoadLevel("World Menu");
+		Application.LoadLevel(2);
 	}
 }
