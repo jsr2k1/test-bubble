@@ -12,7 +12,7 @@ public class BackButton : MonoBehaviour {
 	void OnMouseDown () 
     {        
         SoundFxManager.instance.buttonClickSound.Play();
-        Application.LoadLevel("World Menu");
+        Application.LoadLevel(2);
 	
 	}
 }

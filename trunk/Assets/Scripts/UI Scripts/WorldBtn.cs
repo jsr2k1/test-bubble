@@ -76,7 +76,7 @@ public class WorldBtn : MonoBehaviour {
 				LevelManager.NumberOfBalls = numberBalls;
 				LevelManager.rowAddingInterval = 30;
 				LevelManager.levelNo = levelNo;
-				Application.LoadLevel ("Game Scene");
+				Application.LoadLevel (3);
 			}
 		}
 	}

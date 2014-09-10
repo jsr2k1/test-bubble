@@ -111,6 +111,7 @@ public class LevelManager : MonoBehaviour
 		internal void pauseCtrl ()
 		{
 				Debug.Log (gameState);
+
 				if (gameState == GameState.Pause) {
 						gameState = GameState.Start;
 				} else {
@@ -123,6 +124,11 @@ public class LevelManager : MonoBehaviour
 		{
 			currentBalls--;
 			ballsManager.setBallsLeft(currentBalls);
+
+			if (currentBalls == -1) 
+			{
+					GameIsOver();
+			}
 			
 		}
 }

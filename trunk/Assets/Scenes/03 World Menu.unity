@@ -1622,7 +1622,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1025216488}
   m_LocalRotation: {x: 0, y: 0, z: -1, w: -4.37113883e-08}
-  m_LocalPosition: {x: -.197841212, y: .461187303, z: -1.59750366}
+  m_LocalPosition: {x: -.193307519, y: .461187303, z: -1.59750366}
   m_LocalScale: {x: .0471415035, y: .00355727086, z: 1}
   m_Children:
   - {fileID: 656651416}
@@ -1674,7 +1674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 1345134681}
-  numberBalls: 21
+  numberBalls: 5
   levelNo: 0
   arcadeMode: 0
   ActualWorld: 1
