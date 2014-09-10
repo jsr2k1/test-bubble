@@ -30,7 +30,7 @@ public class StrikerManager : MonoBehaviour
 
 		IEnumerator StartLoader ()
 		{    
-				yield return new WaitForSeconds (1);
+				yield return new WaitForSeconds (2);
 				isSwap = false;
 				thresoldLineTransform = GameObject.Find ("Thresold Line").transform;
 				striker = GameObject.Find ("Striker");

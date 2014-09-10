@@ -14,7 +14,6 @@ public class LevelManager : MonoBehaviour
 {
 		//Balls manager Script
 		public NumberBallsManager ballsManager;
-
 		GameObject striker;
 		public static LevelManager instance;
 		public static GameState gameState = GameState.Start;
@@ -25,11 +24,8 @@ public class LevelManager : MonoBehaviour
 		public static int totalNoOfRows = 50;
 		public static int minimumNumberOfRows = 6;
 		public static float rowAddingInterval = 10f;
-
 		public static int NumberOfBalls = 0;
-	
 		private int currentBalls = 0;
-
 		internal int totalNumberOfRowsLeft = 0;
 		TextMesh scoreText;
 
@@ -54,7 +50,7 @@ public class LevelManager : MonoBehaviour
 						currentBalls = NumberOfBalls;
 			
 						//setting the balls of the level
-						ballsManager.setBallsLeft(NumberOfBalls);
+						ballsManager.setBallsLeft (NumberOfBalls);
 				}
 
         
@@ -89,7 +85,7 @@ public class LevelManager : MonoBehaviour
 
 		void LoadLevelAgain ()
 		{
-				Application.LoadLevel ("World Menu");
+				Application.LoadLevel (2);
 		}
 
 		internal void AddToScore (int points)
@@ -120,15 +116,20 @@ public class LevelManager : MonoBehaviour
 
 		}
 
-		public void BallLaunched()
+		public void BallLaunched ()
 		{
-			currentBalls--;
-			ballsManager.setBallsLeft(currentBalls);
+				currentBalls--;
+				ballsManager.setBallsLeft (currentBalls);
 
-			if (currentBalls == -1) 
-			{
-					GameIsOver();
-			}
+				if (currentBalls == 0) {
+						StartCoroutine ("Finishing");
+				}
 			
+		}
+
+		IEnumerator Finishing ()
+		{
+				yield return new WaitForSeconds (1);
+				GameIsOver ();
 		}
 }
