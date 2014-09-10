@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: ea4e4852ee892a5429dce5fc0d0d2db5
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: blue_sphere
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

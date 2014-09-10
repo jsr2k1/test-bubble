@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: d1a9e925feb57914aacb7e0e9a8e362b
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: parrot_sphere
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

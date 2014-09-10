@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: abd53f072129c3e489199af14c149fc7
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: Level Button
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
