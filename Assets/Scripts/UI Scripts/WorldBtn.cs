@@ -65,7 +65,7 @@ public class WorldBtn : MonoBehaviour {
 				LevelManager.rowAddingInterval = 9 - val;
 				
 				LevelManager.levelNo = levelNo;
-				Application.LoadLevel ("Game Scene");
+				Application.LoadLevel (3);
 
 			} else {
 				
