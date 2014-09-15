@@ -39,7 +39,7 @@ public class LevelManager : MonoBehaviour
 
 		void Start ()
 		{
-				Camera.main.aspect = .666f;
+				//Camera.main.aspect = .666f;
 				gameState = GameState.Start;
 				rowAddingInterval = Mathf.Max (1, rowAddingInterval);
 				minimumNumberOfRows = Mathf.Max (1, minimumNumberOfRows);
