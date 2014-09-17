@@ -1,10 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
-public class DestroyOnStart : MonoBehaviour
+public class DontDestroy : MonoBehaviour
 {
 	void Awake()
-    {
+	{
 		DontDestroyOnLoad(gameObject);
 	}
 }

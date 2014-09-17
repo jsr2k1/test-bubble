@@ -4,6 +4,7 @@ using System.Collections;
 public class SoundFxManager : MonoBehaviour 
 {
     public static SoundFxManager instance;
+
     public AudioSource buttonClickSound;
     public AudioSource shootingSound;
 
@@ -17,8 +18,21 @@ public class SoundFxManager : MonoBehaviour
 
     public AudioSource burstSound;
 
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     void Awake()
     {
         instance = this;
     }
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public void Play(AudioSource audiosource)
+	{
+		audiosource.Play();
+	}
 }
+
+
+
+
