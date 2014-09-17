@@ -1,24 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShopButton : MonoBehaviour {
-
-	private float time = 1000f;
+public class ShopButton : MonoBehaviour
+{
+	//private float time = 1000f;
 	public bool appear = false;
 	
 	public GameObject parent;
 	
-	float VolumeMusic;
+	//float VolumeMusic;
 	//public AudioSource MusicSource;
 	
-	void start() {
-		VolumeMusic = PlayerPrefs.GetFloat ("VolumeMusic");
+	void start()
+	{
+		//VolumeMusic = PlayerPrefs.GetFloat ("VolumeMusic");
 		//MusicSource.volume = VolumeMusic; 
 	}
 	
 	// Use this for initialization
-	void OnMouseUp () {
-		
+	void OnMouseUp()
+	{
 		//iTween.MoveBy(gameObject, iTween.Hash("x", 2, "easeType", "easeInOutExpo", "loopType", "pingPong", "delay", .1));
 		if (appear) {
 			iTween.MoveTo (parent, iTween.Hash("x", -13));
