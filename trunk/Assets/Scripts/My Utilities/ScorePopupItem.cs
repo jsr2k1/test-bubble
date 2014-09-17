@@ -29,7 +29,7 @@ public class ScorePopupItem : MonoBehaviour
 
     void ZoomIn()
     {
-        SoundFxManager.instance.burstSound.Play();
+		SoundFxManager.instance.Play(SoundFxManager.instance.burstSound);
         iTween.MoveBy(gameObject, new Vector3(0, .5f, 0), .5f);
         Invoke("ZoomOut", .5f);
     }

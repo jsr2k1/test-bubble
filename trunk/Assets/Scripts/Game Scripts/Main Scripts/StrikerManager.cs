@@ -14,9 +14,9 @@ public class StrikerManager : MonoBehaviour
 		GameObject nextStrikerObject;
 		Transform thresoldLineTransform;
 		private int currentStrikerBallID;
-		private int nextStrikerBallID;
+		//private int nextStrikerBallID;
 		private bool isSwap = false;
-		public GameState gameState;
+		//public GameState gameState;
 
 		void Start ()
 		{
@@ -25,7 +25,7 @@ public class StrikerManager : MonoBehaviour
 
 		void Update ()
 		{
-				GameState gameState;
+				//GameState gameState;
 		}
 
 		IEnumerator StartLoader ()
@@ -73,7 +73,7 @@ public class StrikerManager : MonoBehaviour
 		internal void SaveBallsID ()
 		{
 				currentStrikerBallID = int.Parse (currentStrikerObject.name.Substring (0, 1)) - 1;
-				nextStrikerBallID = int.Parse (nextStrikerObject.name.Substring (0, 1)) - 1;
+				//nextStrikerBallID = int.Parse (nextStrikerObject.name.Substring (0, 1)) - 1;
 		}
 
 		internal void GenerateSwapStriker ()
@@ -158,7 +158,7 @@ public class StrikerManager : MonoBehaviour
 				
 				if (LevelManager.instance.running ()) {
 
-						SoundFxManager.instance.shootingSound.Play ();
+						SoundFxManager.instance.Play(SoundFxManager.instance.shootingSound);
 
 						Vector3 dir = (touchedPosition - currentStrikerPosition.position).normalized;
 						strikerScript.Shoot (dir);        

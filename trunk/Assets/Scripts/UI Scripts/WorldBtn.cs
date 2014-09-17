@@ -1,33 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WorldBtn : MonoBehaviour {
-
+public class WorldBtn : MonoBehaviour
+{
 	private Vector3 offset; 
-	private float _lockedYPosition;
+	//private float _lockedYPosition;
 	private Vector3 screenPoint;
 
 	public GameObject parent;
 
 	private float initialParentY;
 
-	bool drag = false;
+	//bool drag = false;
 
 	public int numberBalls;
 	public int levelNo;
 	public bool arcadeMode;
 	public int ActualWorld;
 	
-	void Start ()
+	void Start()
 	{
 		transform.FindChild ("Text").GetComponent<TextMesh> ().text = name;
 		levelNo = int.Parse (name);
-		drag = false;
+		//drag = false;
 	}
 	
-	void OnMouseDown() {
+	void OnMouseDown()
+	{
 		//screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position); // I removed this line to prevent centring 
-		_lockedYPosition = screenPoint.y;
+		//_lockedYPosition = screenPoint.y;
 		offset = parent.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
 		initialParentY = parent.transform.position.y;
 	}
@@ -40,7 +41,7 @@ public class WorldBtn : MonoBehaviour {
 			if (curPosition.y > 63){
 				curPosition.y = 63;
 			}
-			drag=true;
+			//drag=true;
 
 			parent.transform.position = curPosition;
 			//Debug.Log (transform.position);

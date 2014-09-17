@@ -29,7 +29,10 @@ public class SoundFxManager : MonoBehaviour
 
 	public void Play(AudioSource audiosource)
 	{
-		audiosource.Play();
+		int i = PlayerPrefs.GetInt("Sounds");
+		if(i>0){
+			audiosource.Play();
+		}
 	}
 }
 

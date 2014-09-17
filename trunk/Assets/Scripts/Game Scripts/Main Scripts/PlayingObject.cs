@@ -184,7 +184,7 @@ public class PlayingObject : MonoBehaviour
 
 				RefreshAdjacentObjectList ();
 
-				SoundFxManager.instance.collisionSound.Play ();
+				SoundFxManager.instance.Play(SoundFxManager.instance.collisionSound);
 				Invoke ("Trace", .02f);
 
 				Invoke ("CheckForObjectFall", .2f);

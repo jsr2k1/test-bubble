@@ -65,7 +65,7 @@ public class LevelManager : MonoBehaviour
 		{
 				gameState = GameState.GameFinish;
 				SoundFxManager.instance.themeMusic.volume *= .4f;
-				SoundFxManager.instance.levelClearSound.Play ();
+				SoundFxManager.instance.Play(SoundFxManager.instance.levelClearSound);
 				Invoke ("LoadLevelAgain", 2f); 
 		}
 
@@ -80,12 +80,12 @@ public class LevelManager : MonoBehaviour
 
 		void PlayLevelFailSound ()
 		{
-				SoundFxManager.instance.levelFailSound.Play ();
+			SoundFxManager.instance.Play(SoundFxManager.instance.levelFailSound);
 		}
 
 		void LoadLevelAgain ()
 		{
-				Application.LoadLevel (2);
+			Application.LoadLevel (2);
 		}
 
 		internal void AddToScore (int points)
