@@ -30,6 +30,7 @@ public class PlayingObjectGeneration : MonoBehaviour
 		void Start ()
 		{   
 				numberOfObjectsInARow = 9;
+				limit = GameObject.Find ("StickyBalls").transform;
 				//Checking for the GameType to put the correct number of rows per level
 				/*if(PlayerPrefs.GetString("GameType").Equals("Normal"))
 		{
@@ -158,7 +159,6 @@ public class PlayingObjectGeneration : MonoBehaviour
 				currentYPos = numberOfRowsGenerated * rowGap;
 				iTween.MoveTo (gameObject, new Vector3 (0, objectGenerationheight - currentYPos, 0), fallDownTime);
 
-
 				rowCounter++;
 				if (rowCounter >= LevelManager.minimumNumberOfRows) {
 						currentRowAddingInterval = LevelManager.rowAddingInterval;
@@ -193,7 +193,6 @@ public class PlayingObjectGeneration : MonoBehaviour
 		{
 				GameObject[] objects = GameObject.FindGameObjectsWithTag ("Playing Object");
        
-
 				for (int i = 0; i < objects.Length; i++) {
 						if (objects [i].transform.position.y < thresoldLineTransform.position.y) {
 								LevelManager.instance.GameIsOver ();
@@ -206,5 +205,4 @@ public class PlayingObjectGeneration : MonoBehaviour
 		{
 				limit.Translate (Vector3.down * 0.6f);
 		}
-	
 }

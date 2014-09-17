@@ -704,7 +704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 1345134681}
   numberBalls: 0
-  levelNo: 0
+  levelNo: 9999
   arcadeMode: 1
   ActualWorld: 1
 --- !u!1 &538186779

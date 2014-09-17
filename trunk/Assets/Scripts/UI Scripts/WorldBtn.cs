@@ -48,7 +48,7 @@ public class WorldBtn : MonoBehaviour {
 
 	void OnMouseUp() {
 
-		print(Mathf.Abs(initialParentY - parent.transform.position.y));
+		//print(Mathf.Abs(initialParentY - parent.transform.position.y));
 		if (Mathf.Abs(initialParentY - parent.transform.position.y) < 0.5f) {
 
 			//If its arcade mode we load the normal system as the template comes else we load from the txt files

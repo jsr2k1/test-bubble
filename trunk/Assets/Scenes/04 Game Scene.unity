@@ -1882,6 +1882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b220bbca9be2b46a24e8a4ab80d3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bombTexture: {fileID: 2800000, guid: d1a9e925feb57914aacb7e0e9a8e362b, type: 3}
 --- !u!114 &580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4684,6 +4685,10 @@ Prefab:
       propertyPath: m_OcclusionCulling
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
+      propertyPath: bombTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: d1a9e925feb57914aacb7e0e9a8e362b, type: 3}
     m_RemovedComponents:
     - {fileID: 2300006, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
     - {fileID: 3300004, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
