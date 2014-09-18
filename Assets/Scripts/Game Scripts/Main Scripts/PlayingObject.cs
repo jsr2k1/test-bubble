@@ -162,9 +162,7 @@ public class PlayingObject : MonoBehaviour
 
 		internal void ObjectCollidedWithOtherObject (GameObject collidedObject)
 		{
-				/*-----------------------------------------------------------------------------------------------------
-		BOLA MULTICOLOR
-		-----------------------------------------------------------------------------------------------------*/
+
 				if (multiBall) {
 						PlayingObjectManager.currentObjectName = collidedObject.name;
 						gameObject.name = collidedObject.name; 
@@ -180,8 +178,7 @@ public class PlayingObject : MonoBehaviour
 						LevelManager.instance.GameIsOver ();
 						return;
 				}
-
-
+		
 				RefreshAdjacentObjectList ();
 
 				SoundFxManager.instance.Play(SoundFxManager.instance.collisionSound);

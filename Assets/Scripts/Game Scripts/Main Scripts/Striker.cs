@@ -42,7 +42,6 @@ public class Striker : MonoBehaviour
 		private void FreeStriker (GameObject collidedObject)
 		{           
 				rigidbody.isKinematic = true;        
-
 				currentStrikerObject.GetComponent<SphereCollider> ().enabled = true;
 				currentStrikerObject.transform.parent = InGameScriptRefrences.playingObjectGeneration.gameObject.transform;
 				currentStrikerObject.tag = "Playing Object";
@@ -118,7 +117,7 @@ public class Striker : MonoBehaviour
 								deep = 0;
 						}
 				}
-		
+				/* Parece que no se usa
 				//Its top so the balls get stuck here
 				if (other.gameObject.tag == "TopLimit" && isBusy) {
 						ScoreManager.instance.DisplayScorePopup (-50, other.gameObject.transform);
@@ -126,6 +125,7 @@ public class Striker : MonoBehaviour
 						InGameScriptRefrences.playingObjectManager.FallDisconnectedObjects ();
 						FreeStriker (other.gameObject);
 				}
+				*/
 		}
 	
 		//Collision with trigger to detect the top limit sticky balls
@@ -147,8 +147,10 @@ public class Striker : MonoBehaviour
 								currentStrikerObject.transform.position = other.transform.position;
 								currentStrikerObject.GetComponent<SphereCollider> ().enabled = true;
 								currentStrikerObject.transform.parent = InGameScriptRefrences.playingObjectGeneration.gameObject.transform;
-								currentStrikerObject.GetComponent<PlayingObject> ().RefreshAdjacentObjectList ();
 								currentStrikerObject.tag = "Playing Object";
+
+								currentStrikerObject.GetComponent<PlayingObject> ().RefreshAdjacentObjectList ();
+
 			
 								isBusy = false;
 			
