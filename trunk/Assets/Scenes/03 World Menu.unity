@@ -1109,7 +1109,7 @@ TextMesh:
     type: 2}
   m_PrefabInternal: {fileID: 1867714784}
   m_GameObject: {fileID: 550041223}
-  m_Text: bomb ball
+  m_Text: Bomb Ball
   m_OffsetZ: 0
   m_CharacterSize: .100000001
   m_LineSpacing: 1
@@ -1932,7 +1932,7 @@ TextMesh:
     type: 2}
   m_PrefabInternal: {fileID: 1867714784}
   m_GameObject: {fileID: 942741215}
-  m_Text: 'coins: 0'
+  m_Text: 'Coins: 0'
   m_OffsetZ: 0
   m_CharacterSize: .100000001
   m_LineSpacing: 1
@@ -2380,7 +2380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 1345134681}
-  numberBalls: 15
+  numberBalls: 50
   levelNo: 0
   arcadeMode: 0
   ActualWorld: 1
@@ -2651,15 +2651,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 20327922441df4949a3951a9db1f8e69, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 4.8551383
+      value: 4.93230009
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 20327922441df4949a3951a9db1f8e69, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 9.11836815
+      value: 9.11839962
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 20327922441df4949a3951a9db1f8e69, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 7.23085308
+      value: 7.23089981
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 20327922441df4949a3951a9db1f8e69, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2820,7 +2820,7 @@ TextMesh:
     type: 2}
   m_PrefabInternal: {fileID: 1867714784}
   m_GameObject: {fileID: 1147751873}
-  m_Text: fire ball
+  m_Text: Fire Ball
   m_OffsetZ: 0
   m_CharacterSize: .100000001
   m_LineSpacing: 1
@@ -2981,7 +2981,7 @@ TextMesh:
     type: 2}
   m_PrefabInternal: {fileID: 1867714784}
   m_GameObject: {fileID: 1163366703}
-  m_Text: multicolor Ball
+  m_Text: Multicolor Ball
   m_OffsetZ: 0
   m_CharacterSize: .100000001
   m_LineSpacing: 1
@@ -3152,7 +3152,7 @@ Transform:
   m_PrefabInternal: {fileID: 1109208446}
   m_GameObject: {fileID: 1198994856}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -4.37113883e-08}
-  m_LocalPosition: {x: 4.8551383, y: 9.11836815, z: 7.23085308}
+  m_LocalPosition: {x: 4.93230009, y: 9.11839962, z: 7.23089981}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3869,15 +3869,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 20327922441df4949a3951a9db1f8e69, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.94810343
+      value: -4.94810009
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 20327922441df4949a3951a9db1f8e69, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -9.10194492
+      value: -9.17910004
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 20327922441df4949a3951a9db1f8e69, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 7.23085308
+      value: 7.23089981
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 20327922441df4949a3951a9db1f8e69, type: 2}
       propertyPath: m_LocalRotation.x
@@ -4626,7 +4626,7 @@ Transform:
   m_PrefabInternal: {fileID: 1453420759}
   m_GameObject: {fileID: 1802085874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.94810343, y: -9.10194492, z: 7.23085308}
+  m_LocalPosition: {x: -4.94810009, y: -9.17910004, z: 7.23089981}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 877197301}
@@ -4678,6 +4678,22 @@ Prefab:
       propertyPath: Script
       value: 
       objectReference: {fileID: 1198994860}
+    - target: {fileID: 10200008, guid: e756b8860b95c8849b07cc8267f8b1ee, type: 2}
+      propertyPath: m_Text
+      value: Multicolor Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 10200006, guid: e756b8860b95c8849b07cc8267f8b1ee, type: 2}
+      propertyPath: m_Text
+      value: Fire Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 10200000, guid: e756b8860b95c8849b07cc8267f8b1ee, type: 2}
+      propertyPath: m_Text
+      value: Bomb Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 10200002, guid: e756b8860b95c8849b07cc8267f8b1ee, type: 2}
+      propertyPath: m_Text
+      value: 'Coins: 0'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e756b8860b95c8849b07cc8267f8b1ee, type: 2}
   m_RootGameObject: {fileID: 1774869321}
