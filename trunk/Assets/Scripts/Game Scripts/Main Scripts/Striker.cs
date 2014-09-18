@@ -133,6 +133,8 @@ public class Striker : MonoBehaviour
 		{
 				if (bombBall == false && fireBall == false) {
 						//Its top so the balls get stuck here
+					
+
 						if (other.gameObject.tag == "TopLimit" && isBusy) {
 								//ScoreManager.instance.DisplayScorePopup(-50 , other.gameObject.transform);
 								//Destroy(currentStrikerObject);
