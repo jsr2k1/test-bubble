@@ -577,8 +577,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 150}
+  m_AnchoredPosition: {x: 0, y: 91.1200027}
+  m_SizeDelta: {x: 700, y: 320}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &402549656
 MonoBehaviour:
@@ -685,6 +685,7 @@ GameObject:
   - 224: {fileID: 459459912}
   - 223: {fileID: 459459914}
   - 114: {fileID: 459459913}
+  - 114: {fileID: 459459915}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -748,6 +749,19 @@ Canvas:
   m_ReceivesEvents: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &459459915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 459459911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -990768443, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: {x: 600, y: 800}
+  m_MatchWidthOrHeight: 0
 --- !u!1001 &489682094
 Prefab:
   m_ObjectHideFlags: 0
@@ -879,6 +893,22 @@ Prefab:
     - target: {fileID: 11400008, guid: cd1abb9d350e03c4d9105197d19a318f, type: 2}
       propertyPath: m_Colors.m_NormalColor.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400018, guid: cd1abb9d350e03c4d9105197d19a318f, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400018, guid: cd1abb9d350e03c4d9105197d19a318f, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400018, guid: cd1abb9d350e03c4d9105197d19a318f, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400018, guid: cd1abb9d350e03c4d9105197d19a318f, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 49
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd1abb9d350e03c4d9105197d19a318f, type: 2}
@@ -1692,7 +1722,7 @@ MonoBehaviour:
   m_Color: {r: .195999995, g: .195999995, b: .195999995, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 22
+    m_FontSize: 65
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -2183,8 +2213,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 28.6935043, y: 22.7479744}
-  m_SizeDelta: {x: 90, y: 90}
+  m_AnchoredPosition: {x: 47, y: 49}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1747573029
 MonoBehaviour:
@@ -2548,7 +2578,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: -91.0077209}
-  m_SizeDelta: {x: 300, y: 150}
+  m_SizeDelta: {x: 700, y: 320}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1904409056
 MonoBehaviour:
@@ -2836,7 +2866,7 @@ MonoBehaviour:
   m_Color: {r: .195999995, g: .195999995, b: .195999995, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 22
+    m_FontSize: 65
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
