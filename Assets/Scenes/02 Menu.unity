@@ -2633,7 +2633,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1904409056}
-        m_MethodName: LoadArcadeModeMode
+        m_MethodName: LoadArcadeMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

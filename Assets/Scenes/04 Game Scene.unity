@@ -1937,9 +1937,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: f0431533b69d9ea498fab49e2cbda751, type: 2}
   - {fileID: 100000, guid: 43d5267bee96a7347a0ca76c432db8ad, type: 2}
   - {fileID: 100000, guid: 119e04bf6a13b7b4fa20ef4365d1077c, type: 2}
-  - {fileID: 100000, guid: 119e04bf6a13b7b4fa20ef4365d1077c, type: 2}
-  - {fileID: 100000, guid: 119e04bf6a13b7b4fa20ef4365d1077c, type: 2}
-  limit: {fileID: 0}
+  - {fileID: 100000, guid: a4a9b7a2a79740c4398c6a1b3fa2e9f5, type: 2}
 --- !u!114 &598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2818,6 +2816,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 13500002, guid: ff1bf89d82741254d8b1313ce1953efc, type: 2}
       propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100022, guid: ff1bf89d82741254d8b1313ce1953efc, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4186,7 +4188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &740446827
 Transform:
   m_ObjectHideFlags: 0
@@ -5441,7 +5443,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400010, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
       propertyPath: playingObjectsPrefabs.Array.size
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 11400006, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
       propertyPath: specialStrikerPrefabs.Array.size
@@ -5506,11 +5508,11 @@ Prefab:
     - target: {fileID: 11400010, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
       propertyPath: playingObjectsPrefabs.Array.data[6]
       value: 
-      objectReference: {fileID: 100000, guid: 119e04bf6a13b7b4fa20ef4365d1077c, type: 2}
+      objectReference: {fileID: 100000, guid: a4a9b7a2a79740c4398c6a1b3fa2e9f5, type: 2}
     - target: {fileID: 11400010, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
       propertyPath: playingObjectsPrefabs.Array.data[7]
       value: 
-      objectReference: {fileID: 100000, guid: 119e04bf6a13b7b4fa20ef4365d1077c, type: 2}
+      objectReference: {fileID: 100000, guid: a4a9b7a2a79740c4398c6a1b3fa2e9f5, type: 2}
     - target: {fileID: 2300016, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
       propertyPath: m_Enabled
       value: 0
