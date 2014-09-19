@@ -119,7 +119,6 @@ public class PlayingObject : MonoBehaviour
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	//Trace All the Playing objects connected to this Playing Object and match for the fall/burst.
 	void Trace()
 	{
@@ -135,7 +134,7 @@ public class PlayingObject : MonoBehaviour
 			{
 				if(adjacentPlayingObjects[i])
 				{
-					if(adjacentPlayingObjects[i].name == PlayingObjectManager.currentObjectName){
+					if(adjacentPlayingObjects[i].name!="777(Clone)" && adjacentPlayingObjects[i].name == PlayingObjectManager.currentObjectName){
 						adjacentPlayingObjects[i].Trace();
 					}else{
 						adjacentPlayingObjects[i].isTraced = true;

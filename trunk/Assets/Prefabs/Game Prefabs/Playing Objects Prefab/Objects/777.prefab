@@ -13,7 +13,7 @@ GameObject:
   - 135: {fileID: 13500000}
   - 114: {fileID: 11400004}
   m_Layer: 10
-  m_Name: 555
+  m_Name: 777
   m_TagString: Playing Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.5705004, y: 1.72597682, z: 3.04999995}
+  m_LocalPosition: {x: 10.732851, y: 1.72597682, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -82,7 +82,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 863638e629112214da07da23194ee91c, type: 2}
+  - {fileID: 2100000, guid: 3c264d35c5afb05458c824e4ec260249, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff5ede13920f5046a9c20e618d6d4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burstParticle: {fileID: 100000, guid: 66af499d961be83438604d0dde43c59c, type: 2}
+  burstParticle: {fileID: 100000, guid: 7385f993dce64d84293976c6d0c595be, type: 2}
   adjacentPlayingObjects: []
   layerMask:
     serializedVersion: 2

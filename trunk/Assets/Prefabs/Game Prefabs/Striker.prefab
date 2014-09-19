@@ -38,6 +38,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!1002 &400001
 EditorExtensionImpl:
   serializedVersion: 6
@@ -88,6 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b220bbca9be2b46a24e8a4ab80d3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentStrikerObject: {fileID: 0}
+  bombTexture: {fileID: 0}
 --- !u!1002 &11400001
 EditorExtensionImpl:
   serializedVersion: 6
@@ -101,7 +104,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: .200000003
+  m_Radius: .300000012
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1002 &13500001
 EditorExtensionImpl:

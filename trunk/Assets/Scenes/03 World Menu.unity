@@ -1019,7 +1019,7 @@ MonoBehaviour:
   parent: {fileID: 1345134681}
   numberBalls: 0
   levelNo: 9999
-  arcadeMode: 1
+  arcadeMode: 0
   ActualWorld: 1
 --- !u!1 &538186779
 GameObject:

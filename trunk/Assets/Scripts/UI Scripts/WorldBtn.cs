@@ -53,7 +53,7 @@ public class WorldBtn : MonoBehaviour
 		if (Mathf.Abs(initialParentY - parent.transform.position.y) < 0.5f) {
 
 			//If its arcade mode we load the normal system as the template comes else we load from the txt files
-			if (arcadeMode == true) {
+			/*if (arcadeMode == true) {
 				PlayerPrefs.SetString ("GameType", "Arcade");
 				
 				int val = levelNo % 4;
@@ -68,17 +68,17 @@ public class WorldBtn : MonoBehaviour
 				LevelManager.levelNo = levelNo;
 				Application.LoadLevel (3);
 
-			} else {
+			} else {*/
 				
 				PlayerPrefs.SetString ("GameType", "Normal");
 				LevelManager.patternType = PatternType.TextLevel;
 				LevelParser.instance.LoadTextLevel (levelNo, ActualWorld);
 
 				LevelManager.NumberOfBalls = numberBalls;
-				LevelManager.rowAddingInterval = 30;
+				LevelManager.rowAddingInterval = 1;
 				LevelManager.levelNo = levelNo;
 				Application.LoadLevel (3);
-			}
+			//}
 		}
 	}
 
