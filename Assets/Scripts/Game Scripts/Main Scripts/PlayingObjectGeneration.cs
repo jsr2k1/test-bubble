@@ -98,8 +98,8 @@ public class PlayingObjectGeneration : MonoBehaviour
 
 		if(LevelManager.instance.totalNumberOfRowsLeft == 0) {
 				currentRowAddingInterval = LevelManager.rowAddingInterval;
-				iTween.MoveBy(gameObject, new Vector3(0, -rowGap, 0), fallDownTime);
-				Invoke("InitiateRowAdd", currentRowAddingInterval);
+				//iTween.MoveBy(gameObject, new Vector3(0, -rowGap, 0), fallDownTime);
+				//Invoke("InitiateRowAdd", currentRowAddingInterval);
 				Invoke("CheckForGameOver", fallDownTime);
 				return;
 		}
@@ -135,7 +135,7 @@ public class PlayingObjectGeneration : MonoBehaviour
 
 		for(int i = 0; i < numberOfObjectsInARow; i++) {
 				//int index = Random.Range(0, objectCount);
-				int index = Random.Range(0, 5);
+				int index = Random.Range(0, 6); //Queremos un random de 0-5 pq tenemos 6 bolitas
 
 				if(PlayerPrefs.GetString("GameType").Equals("Normal")) {
 
