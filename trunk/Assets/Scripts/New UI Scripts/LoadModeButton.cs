@@ -14,7 +14,7 @@ public class LoadModeButton : MonoBehaviour
 	{
 		int levelNo = 1;
 
-		PlayerPrefs.SetString ("GameType", "Arcade");
+		PlayerPrefs.SetString("GameType", "Arcade");
 		
 		int val = levelNo % 4;
 		

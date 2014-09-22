@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.IO; 
+using System.IO;
+using System; 
 
 public class LevelParser : MonoBehaviour {
 
@@ -96,7 +97,6 @@ public class LevelParser : MonoBehaviour {
 			//Reading first line (Every col) and parsing the spaces and empty places into filedata[n][x] again
 			for(int x=0; x < line.Length; x++)
 			{
-
 				//if we had a string on it saving it again on filedata
 				if(!line[x].Equals(" ") && !line[x].Equals(""))
 				{
@@ -239,6 +239,7 @@ public class LevelParser : MonoBehaviour {
 
 		StreamReader sr = File.OpenText(LevelPath); 
 		filedata = sr.ReadToEnd().Split('\n').Select(s=>s.Split('\t').ToList()).ToList();
+		
 		sr.Close();
 	}
 
@@ -253,11 +254,15 @@ public class LevelParser : MonoBehaviour {
 		//print (row+"|"+col);
 		//print (level[row][col]);
 		//Checking the unpair rows that only have 7 objects
-		if(!level[row][col].Equals("-"))
-		{
+
+		/*if(!level[row][col].Equals("-")){
 			color = int.Parse(level[row][col]);
 		}
-		
+		*/
+		int res;
+		if(int.TryParse(level[row][col], out res)){
+			color = int.Parse(level[row][col]);
+		}
 		return color;
 	}
 
@@ -268,7 +273,7 @@ public class LevelParser : MonoBehaviour {
 
 		while(found!= true)
 		{
-			ball = Random.Range(0,5);
+			ball = UnityEngine.Random.Range(0,5);
 			for(int x = 0; x<colorArray.Count; x++)
 			{
 				if(colorArray[x] == ball)
