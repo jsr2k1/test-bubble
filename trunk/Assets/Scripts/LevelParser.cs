@@ -76,7 +76,6 @@ public class LevelParser : MonoBehaviour {
 			ReadFile(level2);
 		}
 
-
 		//Temporary y to fill the level ListArray
 		int tempy = 0;
 		//Every row
@@ -238,7 +237,17 @@ public class LevelParser : MonoBehaviour {
 		}
 
 		StreamReader sr = File.OpenText(LevelPath); 
-		filedata = sr.ReadToEnd().Split('\n').Select(s=>s.Split('\t').ToList()).ToList();
+
+		//filedata = sr.ReadToEnd().Split('\n').Select(s=>s.Split('\t').ToList()).ToList();
+
+		filedata = new List<List<string>>();
+		string line;
+		while ((line = sr.ReadLine()) != null)
+		{
+			List<string> list = new List<string>();
+			list = line.Split('\t').ToList();
+			filedata.Add(list);
+		}
 		
 		sr.Close();
 	}
