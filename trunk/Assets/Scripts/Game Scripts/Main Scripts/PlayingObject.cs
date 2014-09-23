@@ -187,9 +187,11 @@ public class PlayingObject : MonoBehaviour
 		AdjustPosition(collidedObject.transform.localPosition);
 		GetComponent<SphereCollider>().radius /= .8f;
 
-		if(transform.position.y < thresoldLineTransform.position.y){
-			LevelManager.instance.GameIsOver();
-			return;
+		if(PlayerPrefs.GetString("GameType") == "Arcade"){
+			if(transform.position.y < thresoldLineTransform.position.y){
+				LevelManager.instance.GameIsOver();
+				return;
+			}
 		}
 		RefreshAdjacentObjectList();
 		SoundFxManager.instance.Play(SoundFxManager.instance.collisionSound);

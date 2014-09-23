@@ -196,19 +196,21 @@ public class PlayingObjectGeneration : MonoBehaviour
 	}    
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//If any of the objects touches threshold line. The game is over.
+	//Arcade Mode --> If any of the objects touches threshold line. The game is over.
 	private void CheckForGameOver()
 	{
-		GameObject[] objects = GameObject.FindGameObjectsWithTag("Playing Object");
+		if(PlayerPrefs.GetString("GameType") == "Arcade"){
+			GameObject[] objects = GameObject.FindGameObjectsWithTag("Playing Object");
 
-		for(int i = 0; i < objects.Length; i++)
-		{
-			//En el modo Arcade, comprobar si alguna bola cruza el umbral inferior
-			if(objects[i].transform.position.y < thresoldLineTransform.position.y + thresholdOffsetGameOver)
+			for(int i = 0; i < objects.Length; i++)
 			{
-				LevelManager.instance.GameIsOver();
-				iTween.MoveBy(gameObject, new Vector3(0, rowGap, 0), fallDownTime);
-				break;
+				//En el modo Arcade, comprobar si alguna bola cruza el umbral inferior
+				if(objects[i].transform.position.y < thresoldLineTransform.position.y + thresholdOffsetGameOver)
+				{
+					LevelManager.instance.GameIsOver();
+					iTween.MoveBy(gameObject, new Vector3(0, rowGap, 0), fallDownTime);
+					break;
+				}
 			}
 		}
 	}
