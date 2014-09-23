@@ -21,6 +21,7 @@ public class PlayingObjectGeneration : MonoBehaviour
 	private int rowAddCount = 0;
 	//public Transform limit; --las stickyballs de momento no se usan
 
+	float thresholdOffsetGameOver = 0.4f;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -54,7 +55,7 @@ public class PlayingObjectGeneration : MonoBehaviour
 
 	int rowCounter = 0;
 	int numberOfRowsGenerated = 0;
-	float fallDownTime;
+	public float fallDownTime;
 	float currentRowAddingInterval;
 
 	void FalsenIsStarting()
@@ -202,10 +203,10 @@ public class PlayingObjectGeneration : MonoBehaviour
 
 		for(int i = 0; i < objects.Length; i++)
 		{
-			if(objects[i].transform.position.y < thresoldLineTransform.position.y)
+			//En el modo Arcade, comprobar si alguna bola cruza el umbral inferior
+			if(objects[i].transform.position.y < thresoldLineTransform.position.y + thresholdOffsetGameOver)
 			{
-				//Cuando una bola atraviesa el umbral inferior no se termina el juego sino que las bolas suben
-				//LevelManager.instance.GameIsOver();
+				LevelManager.instance.GameIsOver();
 				iTween.MoveBy(gameObject, new Vector3(0, rowGap, 0), fallDownTime);
 				break;
 			}
