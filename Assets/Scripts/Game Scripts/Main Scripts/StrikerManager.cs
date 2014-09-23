@@ -12,11 +12,12 @@ public class StrikerManager : MonoBehaviour
 	Transform nextStrikerPosition;
 	GameObject currentStrikerObject;
 	GameObject nextStrikerObject;
-	Transform thresoldLineTransform;
+	public Transform thresoldLineTransform;
 	private int currentStrikerBallID;
 	//private int nextStrikerBallID;
 	private bool isSwap = false;
 	//public GameState gameState;
+	internal bool isFirstObject = true;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -58,9 +59,6 @@ public class StrikerManager : MonoBehaviour
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	internal bool isFirstObject = true;
-
 	//Generates shooting object
 	internal void GenerateStriker()
 	{        
@@ -70,8 +68,8 @@ public class StrikerManager : MonoBehaviour
 
 		currentStrikerObject.transform.parent = striker.transform;
 		if(isFirstObject) {
-				currentStrikerObject.transform.localPosition = Vector3.zero;
-				isFirstObject = false;
+			currentStrikerObject.transform.localPosition = Vector3.zero;
+			isFirstObject = false;
 		}
 		strikerScript.currentStrikerObject = currentStrikerObject;
 		GenerateNextStriker();  
