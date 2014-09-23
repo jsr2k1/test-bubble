@@ -113,7 +113,7 @@ public class PlayingObjectManager : MonoBehaviour
 						allPlayingObjectScripts[i].Reset();
 				}
 
-				if(allPlayingObjectScripts.Length == 0 && LevelManager.instance.totalNumberOfRowsLeft == 0)
+				if(allPlayingObjectScripts.Length == 9 && LevelManager.instance.totalNumberOfRowsLeft == 0)
 						LevelManager.instance.GameIsFinished();
 		}
 

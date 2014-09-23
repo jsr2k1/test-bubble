@@ -253,7 +253,7 @@ public class PlayingObject : MonoBehaviour
 	{
 			if (Striker.instance.currentStrikerObject != null) {
 					if (Striker.instance.currentStrikerObject.transform.childCount > 0) {
-							Striker.instance.currentStrikerObject.transform.GetChild (0).renderer.material.mainTexture = Striker.instance.bombTexture;
+							Striker.instance.currentStrikerObject.transform.GetChild (0).renderer.material.mainTexture = Striker.instance.multiballTexture;
 					}
 			}
 			multiBall = true;
