@@ -715,7 +715,7 @@ Transform:
   m_PrefabInternal: {fileID: 1276152068}
   m_GameObject: {fileID: 144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.85244322, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 6, y: .100000001, z: 3}
   m_Children: []
   m_Father: {fileID: 316}
@@ -811,7 +811,7 @@ Transform:
   m_PrefabInternal: {fileID: 1276152068}
   m_GameObject: {fileID: 153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.68000007, z: 0}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 10, y: .100000001, z: 3}
   m_Children: []
   m_Father: {fileID: 225}
@@ -1955,7 +1955,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topRowObjects: []
-  thresholdOffsetWorldMode: 1.5
 --- !u!1 &39439985
 GameObject:
   m_ObjectHideFlags: 0
@@ -5566,7 +5565,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400040, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.68000007
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6500012, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
       propertyPath: m_IsTrigger
@@ -5816,6 +5815,10 @@ Prefab:
       propertyPath: multiballTexture
       value: 
       objectReference: {fileID: 2800000, guid: 05013a037865aab46b7a976c1f7b9464, type: 3}
+    - target: {fileID: 400024, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2300006, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
     - {fileID: 3300004, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
