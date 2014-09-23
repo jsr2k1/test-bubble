@@ -126,7 +126,7 @@ public class PlayingObjectManager : MonoBehaviour
 			if(objects[i].transform.position.y < bottomMostObject.transform.position.y){
 				bottomMostObject = objects[i];
 			}
-			if(objects[i].transform.position.y > bottomMostObject.transform.position.y){
+			if(objects[i].transform.position.y > topMostObject.transform.position.y){
 				topMostObject = objects[i];
 			}
 		}
@@ -147,7 +147,7 @@ public class PlayingObjectManager : MonoBehaviour
 		for(int i = 0; i < allPlayingObjectScripts.Length; i++) {
 			allPlayingObjectScripts[i].Reset();
 		}
-		if(allPlayingObjectScripts.Length == 0 && LevelManager.instance.totalNumberOfRowsLeft == 0){
+		if(allPlayingObjectScripts.Length == 9 && LevelManager.instance.totalNumberOfRowsLeft == 0){
 			LevelManager.instance.GameIsFinished();
 		}
 	}
@@ -210,16 +210,20 @@ public class PlayingObjectManager : MonoBehaviour
 	public void CheckMovePlayingObjects()
 	{
 		float distBottom, distTop;
-		float yBottom;
 
 		distBottom = Mathf.Abs(bottomMostObject.transform.position.y - (BottomBoundaryObj.transform.position.y + thresholdOffsetWorldMode));
 		distTop = Mathf.Abs(topMostObject.transform.position.y - TopBoundaryObj.transform.position.y);
 
 		if(topMostObject.transform.position.y > TopBoundaryObj.transform.position.y)
 		{
+			float currentY = InGameScriptRefrences.playingObjectGeneration.gameObject.transform.position.y;
+
+			//El limite superior nos marca la distancia que podemos bajar todas las bolas
+			if(distTop < distBottom){
+				iTween.MoveTo(InGameScriptRefrences.playingObjectGeneration.gameObject, new Vector3(0, currentY-distTop, 0), InGameScriptRefrences.playingObjectGeneration.fallDownTime);
+			}
 			//Las bolas estan demasiado altas -> las bajamos
-			if(distBottom > 0.5f){
-				float currentY = InGameScriptRefrences.playingObjectGeneration.gameObject.transform.position.y;
+			else if(distBottom > 0.5f){
 				iTween.MoveTo(InGameScriptRefrences.playingObjectGeneration.gameObject, new Vector3(0, currentY-distBottom, 0), InGameScriptRefrences.playingObjectGeneration.fallDownTime);
 			}
 		}
