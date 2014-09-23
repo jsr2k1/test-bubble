@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Splash : MonoBehaviour {
 
-	public float timer = 2f;
+	public float timer;
 
 	void Start () {
 

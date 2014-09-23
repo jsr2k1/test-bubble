@@ -1883,7 +1883,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentStrikerObject: {fileID: 0}
-  bombTexture: {fileID: 2800000, guid: d1a9e925feb57914aacb7e0e9a8e362b, type: 3}
+  bombTexture: {fileID: 2800000, guid: 570e62eab339b8542ad5f0f0d9f981b6, type: 3}
+  fireTexture: {fileID: 2800000, guid: 3ab6866b81d5520449bf3113d1367d56, type: 3}
+  multiballTexture: {fileID: 2800000, guid: 05013a037865aab46b7a976c1f7b9464, type: 3}
 --- !u!114 &580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3022,7 +3024,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 311097136}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 4.37113883e-08}
-  m_LocalPosition: {x: -2.76780009, y: -4.61259985, z: -12.9230003}
+  m_LocalPosition: {x: -2.25519991, y: -4.61259985, z: -12.9230003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1831912572}
@@ -3469,7 +3471,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 408182345}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.813530028, y: -5.17999983, z: 4.17649984}
+  m_LocalPosition: {x: -.496179998, y: -5.17999983, z: 4.17649984}
   m_LocalScale: {x: .800000012, y: .800000012, z: .100000001}
   m_Children: []
   m_Father: {fileID: 316}
@@ -5755,7 +5757,7 @@ Prefab:
     - target: {fileID: 11400002, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
       propertyPath: bombTexture
       value: 
-      objectReference: {fileID: 2800000, guid: d1a9e925feb57914aacb7e0e9a8e362b, type: 3}
+      objectReference: {fileID: 2800000, guid: 570e62eab339b8542ad5f0f0d9f981b6, type: 3}
     - target: {fileID: 8200010, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -5768,6 +5770,14 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
+      propertyPath: fireTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 3ab6866b81d5520449bf3113d1367d56, type: 3}
+    - target: {fileID: 11400002, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
+      propertyPath: multiballTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 05013a037865aab46b7a976c1f7b9464, type: 3}
     m_RemovedComponents:
     - {fileID: 2300006, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
     - {fileID: 3300004, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
@@ -5801,7 +5811,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1289717996}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.36800003, y: -5.17999983, z: 4.17649984}
+  m_LocalPosition: {x: -1.85539997, y: -5.17999983, z: 4.17649984}
   m_LocalScale: {x: .75, y: .75, z: .100000001}
   m_Children: []
   m_Father: {fileID: 316}
@@ -7492,7 +7502,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1796144967}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -4.37113883e-08}
-  m_LocalPosition: {x: -1.21850002, y: -4.61259985, z: -12.9230003}
+  m_LocalPosition: {x: -.901149988, y: -4.61259985, z: -12.9230003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1831912572}
