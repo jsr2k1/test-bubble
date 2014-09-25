@@ -67,7 +67,7 @@ public class StrikerManager : MonoBehaviour
 		currentStrikerObject = nextStrikerObject;
 
 		currentStrikerObject.transform.parent = striker.transform;
-		if(isFirstObject) {
+		if(isFirstObject){
 			currentStrikerObject.transform.localPosition = Vector3.zero;
 			isFirstObject = false;
 		}
@@ -93,14 +93,12 @@ public class StrikerManager : MonoBehaviour
 		isSwap = true;
 
 		striker.transform.position = currentStrikerPosition.position;
-
 		currentStrikerObject = nextStrikerObject;
-	
-	
 		currentStrikerObject.transform.parent = striker.transform;
-		if(isFirstObject) {
-				currentStrikerObject.transform.localPosition = Vector3.zero;
-				isFirstObject = false;
+
+		if(isFirstObject){
+			currentStrikerObject.transform.localPosition = Vector3.zero;
+			isFirstObject = false;
 		}
 		strikerScript.currentStrikerObject = currentStrikerObject;
 		GenerateNextStriker();   
@@ -114,38 +112,37 @@ public class StrikerManager : MonoBehaviour
 	{ 
 		ArrayList remainingObjects = InGameScriptRefrences.playingObjectManager.GetRemainingObjectsNames();
 		
-		if(remainingObjects != null) {
+		if(remainingObjects != null){
 			int index = Random.Range(0, remainingObjects.Count);
-			if(PlayerPrefs.GetString("GameType").Equals("Normal")) {
-					//To infinite strike object uncment next 
-					//index = LevelParser.instance.GetRandomBall();
-					if(isSwap == false) {
-							index = LevelParser.instance.GetRandomBall();
-					} else {
-							index = currentStrikerBallID;
-					}
-			}
 
-			if(PlayerPrefs.GetString("GameType").Equals("Normal")) {
-					nextStrikerObject = (GameObject)Instantiate(InGameScriptRefrences.playingObjectGeneration.playingObjectsPrefabs [index], nextStrikerPosition.position, Quaternion.identity);
-			} else {
-					nextStrikerObject = (GameObject)Instantiate((GameObject)remainingObjects [index], nextStrikerPosition.position, Quaternion.identity);
-			}
-
-		} else {
-
+			/*if(PlayerPrefs.GetString("GameType").Equals("Normal")){
+				//To infinite strike object uncment next 
+				//index = LevelParser.instance.GetRandomBall();
+				if(isSwap == false){
+					index = LevelParser.instance.GetRandomBall();
+				} else{
+					index = currentStrikerBallID;
+				}
+			}*/
+			//if(PlayerPrefs.GetString("GameType").Equals("Normal")){
+				//nextStrikerObject = (GameObject)Instantiate(InGameScriptRefrences.playingObjectGeneration.playingObjectsPrefabs[index], nextStrikerPosition.position, Quaternion.identity);
+			//}else{
+				nextStrikerObject = (GameObject)Instantiate((GameObject)remainingObjects[index], nextStrikerPosition.position, Quaternion.identity);
+			//}
+		}
+		else{
 			//int objectCount = InGameScriptRefrences.playingObjectGeneration.GetObjectCount();
 			//int index = Random.Range(0, objectCount);
 			int index = Random.Range(0, 5);
-			if(PlayerPrefs.GetString("GameType").Equals("Normal")) {
-					//index = LevelParser.instance.GetRandomBall();
-					if(isSwap == false) {
-							index = LevelParser.instance.GetRandomBall();
-					} else {
-							index = currentStrikerBallID;
-					}
+			if(PlayerPrefs.GetString("GameType").Equals("Normal")){
+				//index = LevelParser.instance.GetRandomBall();
+				if(isSwap == false){
+						index = LevelParser.instance.GetRandomBall();
+				} else{
+						index = currentStrikerBallID;
+				}
 			}
-			nextStrikerObject = (GameObject)Instantiate(InGameScriptRefrences.playingObjectGeneration.playingObjectsPrefabs [index], nextStrikerPosition.position, Quaternion.identity);
+			nextStrikerObject = (GameObject)Instantiate(InGameScriptRefrences.playingObjectGeneration.playingObjectsPrefabs[index], nextStrikerPosition.position, Quaternion.identity);
 		}
 
 		nextStrikerObject.tag = "Striker";
@@ -156,8 +153,8 @@ public class StrikerManager : MonoBehaviour
 		//Switching down the swap flag
 		isSwap = false;
 
-		if(!isFirstObject) {
-				SaveBallsID();
+		if(!isFirstObject){
+			SaveBallsID();
 		}
 	}
 

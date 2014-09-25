@@ -195,8 +195,13 @@ public class PlayingObject : MonoBehaviour
 		}
 		RefreshAdjacentObjectList();
 		SoundFxManager.instance.Play(SoundFxManager.instance.collisionSound);
-		Invoke("Trace", .02f);
-		Invoke("CheckForObjectFall", .2f);
+
+		//vamos a probar de llamar a las funciones directamente para arreglar el problema
+		//de que aparezcan bolas de colores que no ya estan en la escena
+		//Invoke("Trace", .02f);
+		//Invoke("CheckForObjectFall", .2f);
+		Trace();
+		CheckForObjectFall();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

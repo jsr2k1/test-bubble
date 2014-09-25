@@ -282,7 +282,7 @@ public class LevelParser : MonoBehaviour {
 
 		while(found!= true)
 		{
-			ball = UnityEngine.Random.Range(0,5);
+			ball = UnityEngine.Random.Range(0,6);
 			for(int x = 0; x<colorArray.Count; x++)
 			{
 				if(colorArray[x] == ball)
