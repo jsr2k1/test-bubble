@@ -5,7 +5,8 @@ public class PlayingObjectGeneration : MonoBehaviour
 {
 	public static PlayingObjectGeneration instance;
 	internal int numberOfObjectsInARow = 9;
-	public float objectGap; // gap between two playing objects
+	public float objectGap; // gap between two playing objects in X axis
+	public float objectGapY; // gap between two playing objects in Y axis
 	public GameObject[] playingObjectsPrefabs; //6 different Playing objects prefabs
 
 	internal float rowGap;
@@ -45,7 +46,7 @@ public class PlayingObjectGeneration : MonoBehaviour
 		rowStartingPos = startingXPos;
 		isBusy = false;
 		thresoldLineTransform = GameObject.Find("Thresold Line").transform;
-		rowGap = objectGap;
+		rowGap = objectGapY;
 
 		Invoke("InitiateRowAdd", .1f);
 		Invoke("FalsenIsStarting", 2f);
@@ -113,7 +114,6 @@ public class PlayingObjectGeneration : MonoBehaviour
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	//Adds new row at top of the screen and move the objects down by rowgap
 	IEnumerator AddRow()
 	{        
