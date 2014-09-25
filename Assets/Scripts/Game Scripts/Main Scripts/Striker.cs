@@ -19,7 +19,6 @@ public class Striker : MonoBehaviour
 	public Texture bombTexture;
 	public Texture fireTexture;
 	public Texture multiballTexture;
-	float WorldModeOffsetUp = 0.6f;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -109,7 +108,6 @@ public class Striker : MonoBehaviour
 					FreeStriker(other.gameObject);
 				}
 			} else {
-				CheckUpObjects();
 				FreeStriker(other.gameObject);
 			}
 		}
@@ -213,22 +211,7 @@ public class Striker : MonoBehaviour
 						InGameScriptRefrences.strikerManager.GenerateStriker();
 				}
 		}
-}*/
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Comprobar si las bolas estan demasiado abajo en el modo Mundos y si es el caso subirlas un poco
-	void CheckUpObjects()
-	{
-		//En el modo Mundo, comprobar si hay que subir las bolas
-		if(PlayerPrefs.GetString("GameType").Equals("Normal"))
-		{
-			if(transform.position.y < InGameScriptRefrences.strikerManager.thresoldLineTransform.position.y + InGameScriptRefrences.playingObjectManager.thresholdOffsetWorldMode)
-			{
-				float currentY = InGameScriptRefrences.playingObjectGeneration.gameObject.transform.position.y;
-				iTween.MoveTo(InGameScriptRefrences.playingObjectGeneration.gameObject, new Vector3(0, currentY+WorldModeOffsetUp, 0), InGameScriptRefrences.playingObjectGeneration.fallDownTime);
-			}
-		}
-	}
+	}*/
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -271,11 +254,10 @@ public class Striker : MonoBehaviour
 	internal void setBombBall()
 	{
 		if(currentStrikerObject != null) {
-				if(currentStrikerObject.transform.childCount > 0) {
-						currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture = bombTexture;
-				}
+			if(currentStrikerObject.transform.childCount > 0) {
+				currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture = bombTexture;
+			}
 		}
-	
 		bombBall = true;
 	}
 
