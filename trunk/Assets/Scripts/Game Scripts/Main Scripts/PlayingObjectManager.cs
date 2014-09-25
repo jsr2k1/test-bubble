@@ -111,6 +111,7 @@ public class PlayingObjectManager : MonoBehaviour
 	internal void UpdatePlayingObjectsList()
 	{
 		GameObject[] objects = GameObject.FindGameObjectsWithTag("Playing Object");
+
 		allPlayingObjectScripts = new PlayingObject[objects.Length];
 
 		bottomMostObject = null;
@@ -173,9 +174,10 @@ public class PlayingObjectManager : MonoBehaviour
 		if(allPlayingObjectScripts == null){
 			return null;
 		}
+		/* No lo entiendo?
 		if(allPlayingObjectScripts.Length > 7){
 			return null;
-		}
+		}*/
 		ArrayList currentAvailableObjectsName = new ArrayList();
 		currentAvailableObjects = new ArrayList();
 
@@ -184,7 +186,7 @@ public class PlayingObjectManager : MonoBehaviour
 		for(int i = 0; i < objects.Length; i++)
 		{
 			string tempName = objects[i].name;
-			if(!currentAvailableObjectsName.Contains(tempName)){
+			if(!currentAvailableObjectsName.Contains(tempName) && objects[i].name!="777(Clone)"){
 				currentAvailableObjectsName.Add(tempName);
 				GetObjectReference(tempName);
 			}
