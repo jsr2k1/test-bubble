@@ -6,7 +6,8 @@ public class PlayingObjectManager : MonoBehaviour
 	internal static int burstCounter = 0;
 	public static string currentObjectName = "";
 	public PlayingObject[]topRowObjects;
-	public float thresholdOffsetWorldMode = 1.5f;
+
+	float thresholdOffsetWorldMode = 2.0f;
 
 	PlayingObject[] allPlayingObjectScripts;
 	ArrayList playingObjectList;
@@ -132,7 +133,9 @@ public class PlayingObjectManager : MonoBehaviour
 		}
 		InGameScriptRefrences.playingObjectGeneration.CheckForMinRowCount(bottomMostObject);
 
-		CheckMovePlayingObjects();
+		if(PlayerPrefs.GetString("GameType") == "Normal"){
+			CheckMovePlayingObjects();
+		}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -214,7 +217,13 @@ public class PlayingObjectManager : MonoBehaviour
 		distBottom = Mathf.Abs(bottomMostObject.transform.position.y - (BottomBoundaryObj.transform.position.y + thresholdOffsetWorldMode));
 		distTop = Mathf.Abs(topMostObject.transform.position.y - TopBoundaryObj.transform.position.y);
 
-		if(topMostObject.transform.position.y > TopBoundaryObj.transform.position.y)
+		//Las bolas estan demasiado abajo -> las subimos
+		if(bottomMostObject.transform.position.y < BottomBoundaryObj.transform.position.y + InGameScriptRefrences.playingObjectManager.thresholdOffsetWorldMode)
+		{
+			float currentY = InGameScriptRefrences.playingObjectGeneration.gameObject.transform.position.y;
+			iTween.MoveTo(InGameScriptRefrences.playingObjectGeneration.gameObject, new Vector3(0, currentY+distBottom, 0), InGameScriptRefrences.playingObjectGeneration.fallDownTime);
+		}
+		else if(topMostObject.transform.position.y > TopBoundaryObj.transform.position.y)
 		{
 			float currentY = InGameScriptRefrences.playingObjectGeneration.gameObject.transform.position.y;
 
@@ -223,7 +232,7 @@ public class PlayingObjectManager : MonoBehaviour
 				iTween.MoveTo(InGameScriptRefrences.playingObjectGeneration.gameObject, new Vector3(0, currentY-distTop, 0), InGameScriptRefrences.playingObjectGeneration.fallDownTime);
 			}
 			//Las bolas estan demasiado altas -> las bajamos
-			else if(distBottom > 0.5f){
+			else if(distBottom > 0.05f){
 				iTween.MoveTo(InGameScriptRefrences.playingObjectGeneration.gameObject, new Vector3(0, currentY-distBottom, 0), InGameScriptRefrences.playingObjectGeneration.fallDownTime);
 			}
 		}

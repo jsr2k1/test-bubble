@@ -1933,6 +1933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectGap: .589999974
+  objectGapY: .514999986
   playingObjectsPrefabs:
   - {fileID: 100000, guid: 69127dd2f86338b458a8e0037dec2470, type: 2}
   - {fileID: 100000, guid: 4a6e367919dd55742bbf35fa04320239, type: 2}
@@ -5818,6 +5819,14 @@ Prefab:
     - target: {fileID: 400024, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
       propertyPath: m_LocalPosition.y
       value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
+      propertyPath: objectGap
+      value: .589999974
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
+      propertyPath: objectGapY
+      value: .514999986
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2300006, guid: 4b88f00db10e9504aaa4bb79a40d26cd, type: 2}
