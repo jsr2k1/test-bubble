@@ -18,6 +18,7 @@ public class StrikerManager : MonoBehaviour
 	private bool isSwap = false;
 	//public GameState gameState;
 	internal bool isFirstObject = true;
+	ArrayList remainingObjects;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -72,7 +73,8 @@ public class StrikerManager : MonoBehaviour
 			isFirstObject = false;
 		}
 		strikerScript.currentStrikerObject = currentStrikerObject;
-		GenerateNextStriker();  
+		GenerateNextStriker();
+		CheckCurrentStrikerColor();
 		
 		//Save the balls instantiated at the begining of the level
 		SaveBallsID();
@@ -110,7 +112,7 @@ public class StrikerManager : MonoBehaviour
 	//Generates Next Shooting Object
 	void GenerateNextStriker()
 	{ 
-		ArrayList remainingObjects = InGameScriptRefrences.playingObjectManager.GetRemainingObjectsNames();
+		remainingObjects = InGameScriptRefrences.playingObjectManager.GetRemainingObjects();
 		
 		if(remainingObjects != null){
 			int index = Random.Range(0, remainingObjects.Count);
@@ -155,6 +157,25 @@ public class StrikerManager : MonoBehaviour
 
 		if(!isFirstObject){
 			SaveBallsID();
+		}
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Verificar que el striker actual todavia es de un color existente en la escena
+	//Sino entonces cambiar el color por otro
+	void CheckCurrentStrikerColor()
+	{
+		ArrayList listNames =  InGameScriptRefrences.playingObjectManager.GetRemainingObjectsNames();
+
+		if(listNames!=null && listNames.Count>0){
+			if(!listNames.Contains(currentStrikerObject.name)){
+				Destroy(currentStrikerObject);
+				currentStrikerObject = (GameObject)Instantiate((GameObject)remainingObjects[0], currentStrikerObject.transform.position, Quaternion.identity);
+				currentStrikerObject.tag = "Striker";
+				currentStrikerObject.GetComponent<SphereCollider>().enabled = false;
+				currentStrikerObject.transform.parent = striker.transform;
+				strikerScript.currentStrikerObject = currentStrikerObject;
+			}
 		}
 	}
 
