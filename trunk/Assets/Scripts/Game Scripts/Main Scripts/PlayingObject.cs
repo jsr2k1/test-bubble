@@ -110,7 +110,7 @@ public class PlayingObject : MonoBehaviour
 
 		if(fall) {
 			if(burst == false) {
-				ScoreManager.instance.DisplayScorePopup(10, transform);
+				ScoreManagerGame.instance.DisplayScorePopup(10, transform);
 				rigidbody.useGravity = true;
 				rigidbody.isKinematic = false;
 				rigidbody.AddForce(new Vector3(0, Random.Range(1.5f, 2.5f), 0), ForceMode.VelocityChange);
@@ -120,7 +120,7 @@ public class PlayingObject : MonoBehaviour
 				Destroy(gameObject);
 			}
 		} else {
-			ScoreManager.instance.DisplayScorePopup(10, transform);
+			ScoreManagerGame.instance.DisplayScorePopup(10, transform);
 
 			Instantiate(burstParticle, transform.position, Quaternion.identity);
 			Destroy(gameObject);
