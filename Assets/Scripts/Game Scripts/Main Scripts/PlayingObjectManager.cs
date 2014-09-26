@@ -12,6 +12,7 @@ public class PlayingObjectManager : MonoBehaviour
 	PlayingObject[] allPlayingObjectScripts;
 	ArrayList playingObjectList;
 	ArrayList currentAvailableObjects = new ArrayList();
+	ArrayList currentAvailableObjectsNames = new ArrayList();
 
 	GameObject bottomMostObject, topMostObject;
 	GameObject BottomBoundaryObj, TopBoundaryObj;
@@ -169,7 +170,7 @@ public class PlayingObjectManager : MonoBehaviour
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	internal ArrayList GetRemainingObjectsNames()
+	internal ArrayList GetRemainingObjects()
 	{
 		if(allPlayingObjectScripts == null){
 			return null;
@@ -178,7 +179,7 @@ public class PlayingObjectManager : MonoBehaviour
 		if(allPlayingObjectScripts.Length > 7){
 			return null;
 		}*/
-		ArrayList currentAvailableObjectsName = new ArrayList();
+		currentAvailableObjectsNames = new ArrayList();
 		currentAvailableObjects = new ArrayList();
 
 		GameObject[] objects = GameObject.FindGameObjectsWithTag("Playing Object");
@@ -186,8 +187,8 @@ public class PlayingObjectManager : MonoBehaviour
 		for(int i = 0; i < objects.Length; i++)
 		{
 			string tempName = objects[i].name;
-			if(!currentAvailableObjectsName.Contains(tempName) && objects[i].name!="777(Clone)"){
-				currentAvailableObjectsName.Add(tempName);
+			if(!currentAvailableObjectsNames.Contains(tempName) && objects[i].name!="777(Clone)"){
+				currentAvailableObjectsNames.Add(tempName);
 				GetObjectReference(tempName);
 			}
 		}
@@ -195,6 +196,13 @@ public class PlayingObjectManager : MonoBehaviour
 			return null;
 		}
 		return currentAvailableObjects;
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public ArrayList GetRemainingObjectsNames()
+	{
+		return currentAvailableObjectsNames;
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
