@@ -134,7 +134,7 @@ public class Striker : MonoBehaviour
 		/* Parece que no se usa
 		//Its top so the balls get stuck here
 		if(other.gameObject.tag == "TopLimit" && isBusy) {
-				ScoreManager.instance.DisplayScorePopup(-50, other.gameObject.transform);
+				ScoreManagerGame.instance.DisplayScorePopup(-50, other.gameObject.transform);
 				InGameScriptRefrences.playingObjectManager.ResetAllObjects();
 				InGameScriptRefrences.playingObjectManager.FallDisconnectedObjects();
 				FreeStriker(other.gameObject);
@@ -144,7 +144,7 @@ public class Striker : MonoBehaviour
 		if(bombBall == false && fireBall == false) {
 			//Its top so the balls get stuck here
 			if(other.gameObject.tag == "TopLimit" && isBusy) {
-				//ScoreManager.instance.DisplayScorePopup(-50 , other.gameObject.transform);
+				//ScoreManagerGame.instance.DisplayScorePopup(-50 , other.gameObject.transform);
 				//Destroy(currentStrikerObject);
 
 				//lo que mete la bola en el toprowobjects array
@@ -188,7 +188,7 @@ public class Striker : MonoBehaviour
 		if(bombBall == false && fireBall == false) {
 				//Its top so the balls get stuck here
 				if(other.gameObject.tag == "TopLimit" && isBusy) {
-						//ScoreManager.instance.DisplayScorePopup(-50 , other.gameObject.transform);
+						//ScoreManagerGame.instance.DisplayScorePopup(-50 , other.gameObject.transform);
 						//Destroy(currentStrikerObject);
 	
 						//lo que mete la bola en el toprowobjects array
