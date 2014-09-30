@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 //Striker holds the current shooting object
 public class Striker : MonoBehaviour
@@ -22,6 +23,7 @@ public class Striker : MonoBehaviour
 	public Texture multiballTexture;
 	Texture oldTexture;
 	string sCurrentSpecialBall="";
+	public List<string> multiBallList;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

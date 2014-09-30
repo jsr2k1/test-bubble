@@ -71,14 +71,14 @@ public class PlayingObjectGeneration : MonoBehaviour
 	{
 		int numberOfRowsPresent = 0;
 
-		if(bottomMostObject == null) {
-				numberOfRowsPresent = 0;
+		if(bottomMostObject == null){
+			numberOfRowsPresent = 0;
 		} else
-				numberOfRowsPresent = Mathf.RoundToInt((objectGenerationheight - bottomMostObject.transform.position.y) / rowGap);
+			numberOfRowsPresent = Mathf.RoundToInt((objectGenerationheight - bottomMostObject.transform.position.y) / rowGap);
 
 		rowCounter = numberOfRowsPresent;
 
-		if(rowCounter < Mathf.Min(6, LevelManager.minimumNumberOfRows) && LevelManager.instance.totalNumberOfRowsLeft > 0) {
+		if(rowCounter < Mathf.Min(6, LevelManager.minimumNumberOfRows) && LevelManager.instance.totalNumberOfRowsLeft > 0){
 				CancelInvoke("InitiateRowAdd");
 				InitiateRowAdd();
 		}
@@ -91,14 +91,14 @@ public class PlayingObjectGeneration : MonoBehaviour
 		rowAddCount++;
 
 		//Moving down the limiter 
-		if(PlayerPrefs.GetString("GameType").Equals("Normal") && rowAddCount > 14) {
+		if(PlayerPrefs.GetString("GameType").Equals("Normal") && rowAddCount > 14){
 				Invoke("MoveLimiter", .12f);
 		}
 
 		if(LevelManager.gameState == GameState.GameFinish || LevelManager.gameState == GameState.GameOver)
 				return;
 
-		if(LevelManager.instance.totalNumberOfRowsLeft == 0) {
+		if(LevelManager.instance.totalNumberOfRowsLeft == 0){
 				currentRowAddingInterval = LevelManager.rowAddingInterval;
 				//iTween.MoveBy(gameObject, new Vector3(0, -rowGap, 0), fallDownTime);
 				//Invoke("InitiateRowAdd", currentRowAddingInterval);
@@ -106,9 +106,9 @@ public class PlayingObjectGeneration : MonoBehaviour
 				return;
 		}
 
-		if(isBusy) {
+		if(isBusy){
 				Invoke("InitiateRowAdd", .1f);
-		} else {
+		} else{
 				StartCoroutine(AddRow());
 		}
 	}
@@ -134,22 +134,21 @@ public class PlayingObjectGeneration : MonoBehaviour
 
 		GameObject tempObject;
 
-		for(int i = 0; i < numberOfObjectsInARow; i++) {
+		for(int i = 0; i < numberOfObjectsInARow; i++){
 				//int index = Random.Range(0, objectCount);
 				int index = Random.Range(0, 6); //Queremos un random de 0-5 pq tenemos 6 bolitas
 
-				if(PlayerPrefs.GetString("GameType").Equals("Normal")) {
-
-						//Checking the unpair rows that only contains 8 objects
-						if(rowCounter % 2 == 1 || rowCounter % 2 == 0 && i <= 7) {
-								//print(rowCounter + "|" + i);
-								index = LevelParser.instance.GetBallColor(rowCounter, i);
-						}
+				if(PlayerPrefs.GetString("GameType").Equals("Normal")){
+					//Checking the unpair rows that only contains 8 objects
+					if(rowCounter % 2 == 1 || rowCounter % 2 == 0 && i <= 7){
+						//print(rowCounter + "|" + i);
+						index = LevelParser.instance.GetBallColor(rowCounter, i);
+					}
 				}
 
 				Vector3 pos = new Vector3(x, currentYPos, 0);
 
-				if(ObjectFormationPattern.instance.ShouldAddObject(i, rowCounter)) {
+				if(ObjectFormationPattern.instance.ShouldAddObject(i, rowCounter)){
 						tempObject = (GameObject)Instantiate(playingObjectsPrefabs[index], Vector3.zero, Quaternion.identity);
 						tempObject.transform.parent = transform;
 						tempObject.transform.localPosition = pos;
@@ -171,10 +170,10 @@ public class PlayingObjectGeneration : MonoBehaviour
 		iTween.MoveTo(gameObject, new Vector3(0, objectGenerationheight - currentYPos, 0), fallDownTime);
 
 		rowCounter++;
-		if(rowCounter >= LevelManager.minimumNumberOfRows) {
+		if(rowCounter >= LevelManager.minimumNumberOfRows){
 				currentRowAddingInterval = LevelManager.rowAddingInterval;
 				fallDownTime = .5f;
-		} else {
+		} else{
 				currentRowAddingInterval = 0f;
 
 				if(isStarting)
