@@ -12,7 +12,7 @@ public class SkipButton : MonoBehaviour
 	
 	void OnMouseDown () 
     {
-        Striker.instance.Skip();
+        Striker.instance.Swap();
 	
 	}
 }

@@ -47,9 +47,12 @@ public class StrikerManager : MonoBehaviour
 		currentStrikerPosition = GameObject.Find("Current Striker Position").transform;
 		nextStrikerPosition = GameObject.Find("Next Striker Position").transform;
 
-		Invoke("UpdateThresoldPosition", .2f);
-		Invoke("GenerateStriker", .2f);
+		//Invoke("UpdateThresoldPosition", .2f);
+		//Invoke("GenerateStriker", .2f);
+		InGameScriptRefrences.playingObjectManager.ResetAllObjects();
 		GenerateNextStriker();
+		UpdateThresoldPosition();
+		GenerateStriker();
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -112,44 +115,33 @@ public class StrikerManager : MonoBehaviour
 	//Generates Next Shooting Object
 	void GenerateNextStriker()
 	{ 
-		remainingObjects = InGameScriptRefrences.playingObjectManager.GetRemainingObjects();
-		
-		if(remainingObjects != null){
-			int index = Random.Range(0, remainingObjects.Count);
+		int index;
 
-			/*if(PlayerPrefs.GetString("GameType").Equals("Normal")){
-				//To infinite strike object uncment next 
-				//index = LevelParser.instance.GetRandomBall();
-				if(isSwap == false){
-					index = LevelParser.instance.GetRandomBall();
-				} else{
-					index = currentStrikerBallID;
-				}
-			}*/
-			//if(PlayerPrefs.GetString("GameType").Equals("Normal")){
-				//nextStrikerObject = (GameObject)Instantiate(InGameScriptRefrences.playingObjectGeneration.playingObjectsPrefabs[index], nextStrikerPosition.position, Quaternion.identity);
-			//}else{
-				nextStrikerObject = (GameObject)Instantiate((GameObject)remainingObjects[index], nextStrikerPosition.position, Quaternion.identity);
-			//}
-		}
-		else{
-			//int objectCount = InGameScriptRefrences.playingObjectGeneration.GetObjectCount();
-			//int index = Random.Range(0, objectCount);
-			int index = Random.Range(0, 5);
-			if(PlayerPrefs.GetString("GameType").Equals("Normal")){
-				//index = LevelParser.instance.GetRandomBall();
-				if(isSwap == false){
-						index = LevelParser.instance.GetRandomBall();
-				} else{
-						index = currentStrikerBallID;
+		//WORLD MODE
+		if(PlayerPrefs.GetString("GameType").Equals("Normal"))
+		{
+			if(isSwap){
+				index = currentStrikerBallID;
+				nextStrikerObject = (GameObject)Instantiate(InGameScriptRefrences.playingObjectGeneration.playingObjectsPrefabs[index], nextStrikerPosition.position, Quaternion.identity);
+			}
+			else{
+				remainingObjects = InGameScriptRefrences.playingObjectManager.GetRemainingObjects();
+				if(remainingObjects!=null){
+					index = Random.Range(0, remainingObjects.Count);
+					nextStrikerObject = (GameObject)Instantiate((GameObject)remainingObjects[index], nextStrikerPosition.position, Quaternion.identity);
+				}else{
+					nextStrikerObject = (GameObject)Instantiate(InGameScriptRefrences.playingObjectGeneration.playingObjectsPrefabs[0], nextStrikerPosition.position, Quaternion.identity);
 				}
 			}
+		}
+		//ARCADE MODE
+		else{
+			index = Random.Range(0, 5);
 			nextStrikerObject = (GameObject)Instantiate(InGameScriptRefrences.playingObjectGeneration.playingObjectsPrefabs[index], nextStrikerPosition.position, Quaternion.identity);
 		}
 
 		nextStrikerObject.tag = "Striker";
 		nextStrikerObject.GetComponent<SphereCollider>().enabled = false;
-		//nextStrikerObject.GetComponent<SphereCollider>().radius *= .8f;
 		iTween.PunchScale(nextStrikerObject, new Vector3(.2f, .2f, .2f), 1f);
 
 		//Switching down the swap flag
