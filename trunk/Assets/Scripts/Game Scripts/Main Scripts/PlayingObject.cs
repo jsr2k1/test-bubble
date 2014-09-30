@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayingObject : MonoBehaviour
 {
-	static bool multiBall = false;
 	public GameObject burstParticle;
 	static int numberOfAdjacentObjects = 6;
 
@@ -177,9 +176,10 @@ public class PlayingObject : MonoBehaviour
 
 	internal void ObjectCollidedWithOtherObject(GameObject collidedObject)
 	{
-		if(multiBall){
+		if(Striker.instance.multiBall){
 			PlayingObjectManager.currentObjectName = collidedObject.name;
-			gameObject.name = collidedObject.name; 
+			gameObject.name = collidedObject.name;
+			Striker.instance.multiBall=false;
 		}else{
 			PlayingObjectManager.currentObjectName = gameObject.name;
 		}
@@ -266,25 +266,6 @@ public class PlayingObject : MonoBehaviour
 		rigidbody.useGravity = true;
 		rigidbody.isKinematic = false;
 		rigidbody.AddForce(new Vector3(0, Random.Range(2f, 3f), 0), ForceMode.VelocityChange);
-	}
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	public static void setmultiBall()
-	{
-			if (Striker.instance.currentStrikerObject != null) {
-					if (Striker.instance.currentStrikerObject.transform.childCount > 0) {
-							Striker.instance.currentStrikerObject.transform.GetChild (0).renderer.material.mainTexture = Striker.instance.multiballTexture;
-			}
-		}
-		multiBall = true;
-	}
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	static bool getmultiBall()
-	{
-		return multiBall;
 	}
 }
 

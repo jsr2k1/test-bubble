@@ -12,6 +12,7 @@ public class Striker : MonoBehaviour
 	//Power-ups
 	bool fireBall = false;
 	bool bombBall = false;
+	public bool multiBall = false;
 	int deep = 0;
 	Transform sliderTransform;
 	internal bool isBusy = false;
@@ -19,6 +20,8 @@ public class Striker : MonoBehaviour
 	public Texture bombTexture;
 	public Texture fireTexture;
 	public Texture multiballTexture;
+	Texture oldTexture;
+	string sCurrentSpecialBall="";
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -42,8 +45,14 @@ public class Striker : MonoBehaviour
 		rigidbody.isKinematic = false;
 		currentMovingDirection = dir;
 		isBusy = true;
+
 		//Telling the NumberOfBallsManager on the game scene that one ball has left and its being shooted
 		LevelManager.instance.BallLaunched();
+
+		if(sCurrentSpecialBall!=""){
+			int quantity = PlayerPrefs.GetInt(sCurrentSpecialBall) - 1;
+			PlayerPrefs.SetInt(sCurrentSpecialBall, quantity);
+		}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,7 +66,7 @@ public class Striker : MonoBehaviour
 		currentStrikerObject.tag = "Playing Object";
 		currentStrikerObject.GetComponent<PlayingObject>().ObjectCollidedWithOtherObject(collidedObject);
 
-		if(bombBall) {
+		if(bombBall){
 			DetectAndExplode();
 			//Destroy(currentStrikerObject);
 			bombBall = false;
@@ -85,10 +94,10 @@ public class Striker : MonoBehaviour
 	void OnCollisionEnter(Collision other)
 	{
 		//When the Striker hits board playing object
-		if(other.gameObject.tag == "Playing Object" && isBusy) {
-			if(fireBall) {
-				if(deep < 8) {
-					if(other.gameObject.name != "777(Clone)") {
+		if(other.gameObject.tag == "Playing Object" && isBusy){
+			if(fireBall){
+				if(deep < 8){
+					if(other.gameObject.name != "777(Clone)"){
 						Destroy(other.gameObject.gameObject);
 						deep = deep + 1;
 					}else{
@@ -99,7 +108,7 @@ public class Striker : MonoBehaviour
 						InGameScriptRefrences.playingObjectManager.FallDisconnectedObjects();
 						FreeStriker(other.gameObject);
 					}
-				} else {
+				} else{
 					Destroy(currentStrikerObject);
 					fireBall = false;
 					deep = 0;
@@ -107,70 +116,52 @@ public class Striker : MonoBehaviour
 					InGameScriptRefrences.playingObjectManager.FallDisconnectedObjects();
 					FreeStriker(other.gameObject);
 				}
-			} else {
+			} else{
 				FreeStriker(other.gameObject);
 			}
 		}
 
 		//Rebound the striker on collision with left/right boundary
-		if(other.gameObject.name == "Left" || other.gameObject.name == "Right") {
+		if(other.gameObject.name == "Left" || other.gameObject.name == "Right"){
 			SoundFxManager.instance.Play(SoundFxManager.instance.wallCollisionSound);
 			currentMovingDirection = Vector3.Reflect(currentMovingDirection, other.contacts [0].normal).normalized;
 		}
 
 		//Destroy current shooting object hold by striker and generate new striker object.
-		if((other.gameObject.name == "Top" || other.gameObject.name == "Top Down") && isBusy) {
+		if((other.gameObject.name == "Top" || other.gameObject.name == "Top Down") && isBusy){
 			rigidbody.isKinematic = true;
 			Destroy(currentStrikerObject);
 			isBusy = false;
 			InGameScriptRefrences.strikerManager.GenerateStriker();
 			InGameScriptRefrences.playingObjectManager.ResetAllObjects();
 			InGameScriptRefrences.playingObjectManager.FallDisconnectedObjects();
-			if(fireBall) {
-					fireBall = false;
-					deep = 0;
+			if(fireBall){
+				fireBall = false;
+				deep = 0;
 			}
 		}
-		/* Parece que no se usa
-		//Its top so the balls get stuck here
-		if(other.gameObject.tag == "TopLimit" && isBusy) {
-				ScoreManagerGame.instance.DisplayScorePopup(-50, other.gameObject.transform);
-				InGameScriptRefrences.playingObjectManager.ResetAllObjects();
-				InGameScriptRefrences.playingObjectManager.FallDisconnectedObjects();
-				FreeStriker(other.gameObject);
-		}
-*/
 
-		if(bombBall == false && fireBall == false) {
+		if(bombBall == false && fireBall == false){
 			//Its top so the balls get stuck here
-			if(other.gameObject.tag == "TopLimit" && isBusy) {
-				//ScoreManagerGame.instance.DisplayScorePopup(-50 , other.gameObject.transform);
-				//Destroy(currentStrikerObject);
-
-				//lo que mete la bola en el toprowobjects array
+			if(other.gameObject.tag == "TopLimit" && isBusy)
+			{
+				//lo que mete la bola en el top_row_objects array
 				InGameScriptRefrences.playingObjectManager.topRowObjects [int.Parse(other.gameObject.name)] = currentStrikerObject.GetComponent<PlayingObject>();
 
-				//assigning the other object collider property to false
+				//Assigning the other object collider property to false
 				other.gameObject.GetComponent<LaserOcclusor>().ToggleCollider(false);
 
 				rigidbody.isKinematic = true;        
-				//currentStrikerObject.transform.position = other.transform.position;
 
 				//Para comprobar si hay colision con el techo y con otra bola a la vez
 				Vector3 dir = other.transform.position - currentStrikerObject.transform.position;
 				dir = Vector3.Normalize(dir);
 				float dist = Vector3.Distance(other.transform.position, currentStrikerObject.transform.position);
-				currentStrikerObject.transform.Translate(dir * dist);
-				//Collider[] hitColliders = Physics.OverlapSphere(currentStrikerObject.transform.position,(currentStrikerObject.collider as SphereCollider).radius);
-				/*if(hitColliders.Length>1){
-				OnCollisionEnter();
-				return;
-				}*/
 
+				currentStrikerObject.transform.Translate(dir * dist);
 				currentStrikerObject.GetComponent<SphereCollider>().enabled = true;
 				currentStrikerObject.transform.parent = InGameScriptRefrences.playingObjectGeneration.gameObject.transform;
 				currentStrikerObject.tag = "Playing Object";
-
 				currentStrikerObject.GetComponent<PlayingObject>().RefreshAdjacentObjectList();
 
 				isBusy = false;
@@ -181,46 +172,15 @@ public class Striker : MonoBehaviour
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/*
-	//Collision with trigger to detect the top limit sticky balls
-	void OnTriggerEnter(Collider other)
-	{
-		if(bombBall == false && fireBall == false) {
-				//Its top so the balls get stuck here
-				if(other.gameObject.tag == "TopLimit" && isBusy) {
-						//ScoreManagerGame.instance.DisplayScorePopup(-50 , other.gameObject.transform);
-						//Destroy(currentStrikerObject);
-	
-						//lo que mete la bola en el toprowobjects array
-						InGameScriptRefrences.playingObjectManager.topRowObjects [int.Parse(other.gameObject.name)] = currentStrikerObject.GetComponent<PlayingObject>();
-	
-						//assigning the other object collider property to false
-						other.gameObject.GetComponent<LaserOcclusor>().ToggleCollider(false);
-	
-						rigidbody.isKinematic = true;        
-						currentStrikerObject.transform.position = other.transform.position;
-						currentStrikerObject.GetComponent<SphereCollider>().enabled = true;
-						currentStrikerObject.transform.parent = InGameScriptRefrences.playingObjectGeneration.gameObject.transform;
-						currentStrikerObject.tag = "Playing Object";
-
-						currentStrikerObject.GetComponent<PlayingObject>().RefreshAdjacentObjectList();
-
-	
-						isBusy = false;
-	
-						InGameScriptRefrences.strikerManager.GenerateStriker();
-				}
-		}
-	}*/
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	//Skip current shooting object
-	internal void Skip()
+	internal void Swap()
 	{
-		if(isBusy)
+		if(isBusy){
 			return;
-
+		}
+		if(fireBall || bombBall || multiBall){
+			return;
+		}
 		rigidbody.isKinematic = true;
 		Destroy(currentStrikerObject);
 		isBusy = false;
@@ -229,43 +189,105 @@ public class Striker : MonoBehaviour
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	//FireBall
-	internal void setFireBall()
+	//FIREBALL
+	internal void SetFireBall()
 	{
-		if(currentStrikerObject != null) {
-			if(currentStrikerObject.transform.childCount > 0) {
-				currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture = fireTexture;
+		if(currentStrikerObject != null){
+			if(currentStrikerObject.transform.childCount > 0){
+				//Desactivar booster
+				if(fireBall){
+					currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture = oldTexture;
+					fireBall = false;
+					sCurrentSpecialBall = "";
+				}
+				//Activar booster
+				else{
+					if(!bombBall && !multiBall){
+						oldTexture = currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture;
+					}
+					currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture = fireTexture;
+					fireBall = true;
+					bombBall = false;
+					multiBall = false;
+					sCurrentSpecialBall = "Fire Ball";
+				}
 			}
 		}
-		fireBall = true;
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	internal bool getFireBall()
+	internal bool GetFireBall()
 	{
 		return fireBall;
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	//Bomb Ball
-	internal void setBombBall()
+	//BOMBBALL
+	internal void SetBombBall()
 	{
-		if(currentStrikerObject != null) {
-			if(currentStrikerObject.transform.childCount > 0) {
-				currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture = bombTexture;
+		if(currentStrikerObject != null){
+			if(currentStrikerObject.transform.childCount > 0){
+				//Desactivar booster
+				if(bombBall){
+					currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture = oldTexture;
+					bombBall = false;
+					sCurrentSpecialBall = "";
+				}
+				//Activar booster
+				else{
+					if(!fireBall && !multiBall){
+						oldTexture = currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture;
+					}
+					currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture = bombTexture;
+					bombBall = true;
+					fireBall = false;
+					multiBall = false;
+					sCurrentSpecialBall = "Bomb Ball";
+				}
 			}
 		}
-		bombBall = true;
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	internal bool getBombBall()
+	internal bool GetBombBall()
 	{
 		return bombBall;
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//MULTIBALL
+	public void SetMultiBall()
+	{
+		if(currentStrikerObject != null){
+			if(currentStrikerObject.transform.childCount > 0){
+				//Desactivar booster
+				if(multiBall){
+					currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture = oldTexture;
+					multiBall = false;
+					sCurrentSpecialBall = "";
+				}
+				//Activar booster
+				else{
+					if(!bombBall && !fireBall){
+						oldTexture = currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture;
+					}
+					currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture = multiballTexture;
+					multiBall = true;
+					fireBall = false;
+					bombBall = false;
+					sCurrentSpecialBall = "Multicolor Ball";
+				}
+			}
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	internal bool GetMultiBall()
+	{
+		return multiBall;
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -276,8 +298,8 @@ public class Striker : MonoBehaviour
 		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f);
 		int i = 0;
 		while(i < hitColliders.Length){
-			if(hitColliders [i].tag == "Playing Object") {
-				if(hitColliders [i].name != "777(Clone)") {
+			if(hitColliders [i].tag == "Playing Object"){
+				if(hitColliders [i].name != "777(Clone)"){
 					Destroy(hitColliders [i].gameObject);
 				}
 			}

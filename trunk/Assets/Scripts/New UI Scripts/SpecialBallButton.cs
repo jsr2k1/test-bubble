@@ -1,19 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class IGbtnSpecialBall : MonoBehaviour
+public class SpecialBallButton : MonoBehaviour
 {
 	public GameObject parent;
-	private int quantity;
 	public string BallString;
-
-	void OnMouseDown()
+	
+	public void OnButtonClick()
 	{
+		//Comprobamos si quedan boosters disponibles
 		if(PlayerPrefs.GetInt(BallString) > 0)
 		{
-			quantity = PlayerPrefs.GetInt(BallString) - 1;
-			PlayerPrefs.SetInt(BallString, quantity);
-
 			if(BallString == "Fire Ball"){
 				Striker.instance.SetFireBall();
 			}
@@ -23,11 +20,10 @@ public class IGbtnSpecialBall : MonoBehaviour
 			else if(BallString == "Multicolor Ball"){
 				Striker.instance.SetMultiBall();	
 			}
-		}else{
+		}
+		else{
 			LevelManager.instance.pauseCtrl();
 			iTween.MoveTo(parent, iTween.Hash("x", 0));
 		}
 	}
 }
-
-
