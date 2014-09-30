@@ -7,6 +7,7 @@ public class InputScript : MonoBehaviour
 	public Transform launcher;
 	private float x, y, zRotation;
 	private Vector3 reflection;
+	public Transform thresoldLineTransform;
 
 	//Line Renderer
 	public LineRenderer line;
@@ -15,13 +16,14 @@ public class InputScript : MonoBehaviour
 
 	void Update()
 	{
-		if(Input.GetButton("Fire1")){
-			if(LevelManager.gameState == GameState.Start){
+		if(LevelManager.gameState == GameState.Start){
+			Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			if(Input.GetButton("Fire1")){
 				//Launcher aim to the mouse/touch point
 				x = Input.mousePosition.x - camera.WorldToScreenPoint(launcher.position).x;
 				y = Input.mousePosition.y - camera.WorldToScreenPoint(launcher.position).y;
 				//Dont draw the line or do actions when the click its under the launcher point
-				if(y>0){
+				if(pos.y > thresoldLineTransform.position.y){
 					//Te rotation for aim
 					zRotation = Mathf.Rad2Deg * Mathf.Atan2(x, y);
 					//Rotating the spaceship
@@ -30,15 +32,10 @@ public class InputScript : MonoBehaviour
 					DrawLine();
 				}
 			}
-		}
-
-		if(Input.GetButtonUp("Fire1")){
-			if(LevelManager.gameState == GameState.Start){
+			if(Input.GetButtonUp("Fire1")){
 				//Dont draw the line or do actions when the click its under the launcher point
-				if(y>0){
+				if(pos.y > thresoldLineTransform.position.y){
 					line.enabled = false;
-					//Vector2 pos = Camera.mainCamera.ScreenToWorldPoint(Input.mousePosition);
-					Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 					Vector2 FinalPos = new Vector2(-pos.x, pos.y);
 					InGameScriptRefrences.strikerManager.Shoot(FinalPos);
 				}
