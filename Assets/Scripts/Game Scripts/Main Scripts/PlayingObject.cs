@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayingObject : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class PlayingObject : MonoBehaviour
 	static int numberOfAdjacentObjects = 6;
 
 	//Angles of neighbour objects(this will be used while detecting neighbour objects through raycast
-	public static float[]adjacentObjectAngles = { 0, 60, 120, 180, 240, 300 };
+	public static float[]adjacentObjectAngles ={ 0, 60, 120, 180, 240, 300 };
 	public PlayingObject[] adjacentPlayingObjects; // List of Adjacent playing objects
 
 	internal bool isTraced = false;
@@ -44,14 +45,14 @@ public class PlayingObject : MonoBehaviour
 
 		for(int i = 0; i < numberOfAdjacentObjects; i++)
 		{
-			PlayingObject temp = GetObjectInTheDirection(adjacentObjectAngles [i]);
-			adjacentPlayingObjects [i] = temp;
+			PlayingObject temp = GetObjectInTheDirection(adjacentObjectAngles[i]);
+			adjacentPlayingObjects[i] = temp;
 
 			if(temp != null){
 				if(i < 3){
-					temp.adjacentPlayingObjects [i + 3] = this;
+					temp.adjacentPlayingObjects[i + 3] = this;
 				}else{
-					temp.adjacentPlayingObjects [i - 3] = this;
+					temp.adjacentPlayingObjects[i - 3] = this;
 				}
 			}
 		}
@@ -68,8 +69,8 @@ public class PlayingObject : MonoBehaviour
 
 		Vector3 dir = new Vector3(Mathf.Cos(radAngle), Mathf.Sin(radAngle), 0);
 
-		if(Physics.Raycast(transform.position, dir, out hit, maxDistance, layerMask)) {
-			if(hit.collider.gameObject.tag == "Playing Object") {
+		if(Physics.Raycast(transform.position, dir, out hit, maxDistance, layerMask)){
+			if(hit.collider.gameObject.tag == "Playing Object"){
 					return hit.collider.gameObject.GetComponent<PlayingObject>();
 			}
 			//print(hit.collider.gameObject.name); // coz of striker
@@ -82,12 +83,12 @@ public class PlayingObject : MonoBehaviour
 	//Reassign Neighbours of Adjacent Playing Objects
 	void RefreshNeighbourAdjacentList()
 	{
-		for(int i = 0; i < numberOfAdjacentObjects; i++) {
-			if(adjacentPlayingObjects [i]) {
-				if(i < 3) {
-					adjacentPlayingObjects [i].adjacentPlayingObjects [i + 3] = null;
-				} else {
-					adjacentPlayingObjects [i].adjacentPlayingObjects [i - 3] = null;
+		for(int i = 0; i < numberOfAdjacentObjects; i++){
+			if(adjacentPlayingObjects[i]){
+				if(i < 3){
+					adjacentPlayingObjects[i].adjacentPlayingObjects[i + 3] = null;
+				} else{
+					adjacentPlayingObjects[i].adjacentPlayingObjects[i - 3] = null;
 				}
 			}
 		}     
@@ -107,18 +108,18 @@ public class PlayingObject : MonoBehaviour
 		RefreshNeighbourAdjacentList();
 		gameObject.tag = "Untagged";
 
-		if(fall) {
-			if(burst == false) {
+		if(fall){
+			if(burst == false){
 				ScoreManagerGame.instance.DisplayScorePopup(10, transform);
 				rigidbody.useGravity = true;
 				rigidbody.isKinematic = false;
 				rigidbody.AddForce(new Vector3(0, Random.Range(1.5f, 2.5f), 0), ForceMode.VelocityChange);
 				GetComponent<RotationScript>().enabled = true;
 				Destroy(gameObject, 3f);
-			} else {                
+			} else{                
 				Destroy(gameObject);
 			}
-		} else {
+		} else{
 			ScoreManagerGame.instance.DisplayScorePopup(10, transform);
 
 			Instantiate(burstParticle, transform.position, Quaternion.identity);
@@ -128,7 +129,7 @@ public class PlayingObject : MonoBehaviour
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Trace All the Playing objects connected to this Playing Object and match for the fall/burst.
-	void Trace()
+	void Trace(int iDeep)
 	{
 		if(!isTraced)
 		{
@@ -138,17 +139,31 @@ public class PlayingObject : MonoBehaviour
 			PlayingObjectManager.burstCounter++;
 			iTween.PunchScale(gameObject, new Vector3(.2f, .2f, .2f), 1f);
 
-			for(int i = 0; i < numberOfAdjacentObjects; i++)
+			if(Striker.instance.multiBall && iDeep==0){
+				InitializeListMultiBall();
+			}
+			for(int i=0; i<numberOfAdjacentObjects; i++)
 			{
-				if(adjacentPlayingObjects[i])
+				if(adjacentPlayingObjects[i]!=null && adjacentPlayingObjects[i].name!="777(Clone)")
 				{
-					if(adjacentPlayingObjects[i].name!="777(Clone)" && adjacentPlayingObjects[i].name == PlayingObjectManager.currentObjectName){
-						adjacentPlayingObjects[i].Trace();
+					if((Striker.instance.multiBall && Striker.instance.multiBallList.Contains(adjacentPlayingObjects[i].name)) || (!Striker.instance.multiBall && adjacentPlayingObjects[i].name==PlayingObjectManager.currentObjectName)){
+						adjacentPlayingObjects[i].Trace(iDeep+1);
 					}else{
 						adjacentPlayingObjects[i].isTraced = true;
 						iTween.PunchScale(adjacentPlayingObjects[i].gameObject, new Vector3(.2f, .2f, .2f), 1f);
 					}
 				}
+			}
+		}
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	void InitializeListMultiBall()
+	{
+		for(int i=0; i<numberOfAdjacentObjects; i++){
+			if(adjacentPlayingObjects[i]!=null){
+				Striker.instance.multiBallList.Add(adjacentPlayingObjects[i].name);
 			}
 		}
 	}
@@ -165,9 +180,9 @@ public class PlayingObject : MonoBehaviour
 
 		isConnected = true;
 
-		for(int i = 0; i < numberOfAdjacentObjects; i++) {
-			if(adjacentPlayingObjects [i]) {
-				adjacentPlayingObjects [i].TraceForConnection();
+		for(int i = 0; i < numberOfAdjacentObjects; i++){
+			if(adjacentPlayingObjects[i]){
+				adjacentPlayingObjects[i].TraceForConnection();
 			}
 		}
 	}
@@ -179,11 +194,9 @@ public class PlayingObject : MonoBehaviour
 		if(Striker.instance.multiBall){
 			PlayingObjectManager.currentObjectName = collidedObject.name;
 			gameObject.name = collidedObject.name;
-			Striker.instance.multiBall=false;
 		}else{
 			PlayingObjectManager.currentObjectName = gameObject.name;
 		}
-
 		AdjustPosition(collidedObject.transform.localPosition);
 		GetComponent<SphereCollider>().radius /= .8f;
 
@@ -195,13 +208,13 @@ public class PlayingObject : MonoBehaviour
 		}
 		RefreshAdjacentObjectList();
 		SoundFxManager.instance.Play(SoundFxManager.instance.collisionSound);
-
-		//vamos a probar de llamar a las funciones directamente para arreglar el problema
-		//de que aparezcan bolas de colores que no ya estan en la escena
-		//Invoke("Trace", .02f);
-		//Invoke("CheckForObjectFall", .2f);
-		Trace();
+		Striker.instance.multiBallList = new List<string>();
+		Trace(0);
 		CheckForObjectFall();
+
+		if(Striker.instance.multiBall){
+			Striker.instance.multiBall=false;
+		}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -212,29 +225,29 @@ public class PlayingObject : MonoBehaviour
 		float x = 0;
 		float y = 0;
 
-		if(transform.localPosition.x < collidedObjectPos.x) { //right touched
-			if(transform.localPosition.y > collidedObjectPos.y) { //upper part
+		if(transform.localPosition.x < collidedObjectPos.x){ //right touched
+			if(transform.localPosition.y > collidedObjectPos.y){ //upper part
 				x = collidedObjectPos.x - InGameScriptRefrences.playingObjectGeneration.objectGap;
 				y = collidedObjectPos.y;
-			} else { //lower part
+			} else{ //lower part
 				x = collidedObjectPos.x - InGameScriptRefrences.playingObjectGeneration.objectGap * .5f;
 				y = collidedObjectPos.y - InGameScriptRefrences.playingObjectGeneration.rowGap;
 				/*Commented because it generates a bug when a ball collide on the right wall and then collide 
 				 * with another ball next to the wall
-				 * if(x < -(InGameScriptRefrences.playingObjectGeneration.startingXPos + .2f)) {
+				 * if(x < -(InGameScriptRefrences.playingObjectGeneration.startingXPos + .2f)){
 						x = collidedObjectPos.x + InGameScriptRefrences.playingObjectGeneration.objectGap * .5f;
 				}*/
 			}
-		} else { //left touched
-			if(transform.localPosition.y > collidedObjectPos.y) { //upper part
+		} else{ //left touched
+			if(transform.localPosition.y > collidedObjectPos.y){ //upper part
 				x = collidedObjectPos.x + InGameScriptRefrences.playingObjectGeneration.objectGap;
 				y = collidedObjectPos.y;
-			} else { //lower part
+			} else{ //lower part
 				x = collidedObjectPos.x + InGameScriptRefrences.playingObjectGeneration.objectGap * .5f;
 				y = collidedObjectPos.y - InGameScriptRefrences.playingObjectGeneration.rowGap;
 				/*Commented because it generates a bug when a ball collide on the left wall and then collide with 
 				 * another wall next to the wall
-				 * if(x > InGameScriptRefrences.playingObjectGeneration.startingXPos) {
+				 * if(x > InGameScriptRefrences.playingObjectGeneration.startingXPos){
 						x = collidedObjectPos.x - InGameScriptRefrences.playingObjectGeneration.objectGap * .5f;
 				}*/
 			}
