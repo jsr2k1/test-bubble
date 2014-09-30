@@ -2360,17 +2360,15 @@ RectTransform:
 --- !u!114 &615186921
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400022, guid: 9b22842916b925c43b2b0e9a479729c4,
-    type: 2}
-  m_PrefabInternal: {fileID: 1282390349}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 615186919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ef676d42479dbc4baa3cf3cf9d1c34a, type: 3}
+  m_Script: {fileID: 11500000, guid: c4214d3023bbb8e43967ac1db75f63e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoinsText: {fileID: 685577228}
-  coins: 800
+  coinstext: {fileID: 685577228}
 --- !u!114 &615186922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2412,15 +2410,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 615186921}
-        m_MethodName: PurchaseCoins
-        m_Mode: 1
+        m_MethodName: PurchaseSomething
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: medium
           m_BoolArgument: 0
         m_Enabled: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2845,17 +2843,15 @@ RectTransform:
 --- !u!114 &691065911
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400032, guid: 9b22842916b925c43b2b0e9a479729c4,
-    type: 2}
-  m_PrefabInternal: {fileID: 1282390349}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 691065909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ef676d42479dbc4baa3cf3cf9d1c34a, type: 3}
+  m_Script: {fileID: 11500000, guid: c4214d3023bbb8e43967ac1db75f63e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoinsText: {fileID: 685577228}
-  coins: 400
+  coinstext: {fileID: 685577228}
 --- !u!114 &691065912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2897,15 +2893,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 691065911}
-        m_MethodName: PurchaseCoins
-        m_Mode: 1
+        m_MethodName: PurchaseSomething
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: small
           m_BoolArgument: 0
         m_Enabled: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2979,17 +2975,15 @@ RectTransform:
 --- !u!114 &725675297
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400038, guid: 9b22842916b925c43b2b0e9a479729c4,
-    type: 2}
-  m_PrefabInternal: {fileID: 1282390349}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 725675295}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ef676d42479dbc4baa3cf3cf9d1c34a, type: 3}
+  m_Script: {fileID: 11500000, guid: c4214d3023bbb8e43967ac1db75f63e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoinsText: {fileID: 685577228}
-  coins: 5000
+  coinstext: {fileID: 685577228}
 --- !u!114 &725675298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3031,15 +3025,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 725675297}
-        m_MethodName: PurchaseCoins
-        m_Mode: 1
+        m_MethodName: PurchaseSomething
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: extrabig
           m_BoolArgument: 0
         m_Enabled: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -6206,17 +6200,15 @@ RectTransform:
 --- !u!114 &1257012872
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400066, guid: 9b22842916b925c43b2b0e9a479729c4,
-    type: 2}
-  m_PrefabInternal: {fileID: 1282390349}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1257012870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ef676d42479dbc4baa3cf3cf9d1c34a, type: 3}
+  m_Script: {fileID: 11500000, guid: c4214d3023bbb8e43967ac1db75f63e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoinsText: {fileID: 685577228}
-  coins: 2000
+  coinstext: {fileID: 685577228}
 --- !u!114 &1257012873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6258,15 +6250,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1257012872}
-        m_MethodName: PurchaseCoins
-        m_Mode: 1
+        m_MethodName: PurchaseSomething
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: big
           m_BoolArgument: 0
         m_Enabled: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -6480,10 +6472,78 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400078, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: test
+      value: extrasmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400034, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 691065911}
+    - target: {fileID: 11400034, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PurchaseSomething
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400034, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400034, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: small
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400024, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 615186921}
+    - target: {fileID: 11400024, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PurchaseSomething
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400024, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400024, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: medium
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400068, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1257012872}
+    - target: {fileID: 11400068, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PurchaseSomething
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400068, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400068, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: big
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400040, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 725675297}
+    - target: {fileID: 11400040, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PurchaseSomething
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400040, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400040, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: extrabig
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400076, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+    - {fileID: 11400032, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+    - {fileID: 11400022, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+    - {fileID: 11400066, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
+    - {fileID: 11400038, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9b22842916b925c43b2b0e9a479729c4, type: 2}
   m_RootGameObject: {fileID: 1253047171}
   m_IsPrefabParent: 0
@@ -8115,7 +8175,7 @@ MonoBehaviour:
             Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: test
+          m_StringArgument: extrasmall
           m_BoolArgument: 0
         m_Enabled: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
