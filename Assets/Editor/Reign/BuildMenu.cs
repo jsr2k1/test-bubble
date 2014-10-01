@@ -103,7 +103,7 @@ namespace Reign.EditorTools
 				case BuildTarget.Android: return BuildTargetGroup.Android;
 				#if !UNITY_4_5
 				//case BuildTarget.Wii: return BuildTargetGroup.Wii;
-				case BuildTarget.BB10: return BuildTargetGroup.BB10;
+				case BuildTarget.BlackBerry: return BuildTargetGroup.BlackBerry;
 				#else
 				case BuildTarget.BlackBerry: return BuildTargetGroup.BlackBerry;
 				#endif
@@ -158,7 +158,7 @@ namespace Reign.EditorTools
 			if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.iPhone) SetPlatformIOS();
 			if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android) SetPlatformAndroid();
 			#if !UNITY_4_5
-			if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.BB10) SetPlatformBB10();
+			if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.BlackBerry) SetPlatformBB10();
 			#else
 			if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.BlackBerry) SetPlatformBB10();
 			#endif

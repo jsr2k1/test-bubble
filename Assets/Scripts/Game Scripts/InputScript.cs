@@ -5,6 +5,8 @@ public class InputScript : MonoBehaviour
 {
 	//Launcher Sprite
 	public Transform launcher;
+	public Transform lineTarget;
+	public Transform lineTargetCollision;
 	private float x, y, zRotation;
 	private Vector3 reflection;
 	public Transform thresoldLineTransform;
@@ -16,23 +18,37 @@ public class InputScript : MonoBehaviour
 
 	void Update()
 	{
-		if(LevelManager.gameState == GameState.Start){
+		CheckColor();
+
+		if(LevelManager.gameState == GameState.Start)
+		{
 			Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			if(Input.GetButton("Fire1")){
+
+			if(Input.GetButton("Fire1"))
+			{
+				CheckCollision();
+
 				//Launcher aim to the mouse/touch point
 				x = Input.mousePosition.x - camera.WorldToScreenPoint(launcher.position).x;
 				y = Input.mousePosition.y - camera.WorldToScreenPoint(launcher.position).y;
 				//Dont draw the line or do actions when the click its under the launcher point
-				if(pos.y > thresoldLineTransform.position.y){
+				if(pos.y > thresoldLineTransform.position.y)
+				{
+					lineTarget.gameObject.SetActive(true);
+
 					//Te rotation for aim
 					zRotation = Mathf.Rad2Deg * Mathf.Atan2(x, y);
 					//Rotating the spaceship
 					launcher.eulerAngles = new Vector3(0, 0, zRotation);
-					//LineRenderer to draw the trace
-					DrawLine();
+					Vector3 target = new Vector3(-x, y, 0);
+					Vector3 dir = target - lineTarget.position;
+					lineTarget.forward = dir.normalized;
 				}
 			}
-			if(Input.GetButtonUp("Fire1")){
+			if(Input.GetButtonUp("Fire1"))
+			{
+				lineTarget.gameObject.SetActive(false);
+				lineTargetCollision.gameObject.SetActive(false);
 				//Dont draw the line or do actions when the click its under the launcher point
 				if(pos.y > thresoldLineTransform.position.y){
 					line.enabled = false;
@@ -45,6 +61,44 @@ public class InputScript : MonoBehaviour
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	void CheckColor()
+	{
+		if(Striker.instance==null || Striker.instance.currentStrikerObject==null || Striker.instance.currentStrikerObject.transform.childCount == 0)
+			return;
+
+		string sLineColor = lineTarget.renderer.material.mainTexture.name;
+		string sBallColor = Striker.instance.currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture.name;
+
+		if(sLineColor!=sBallColor){
+			lineTarget.renderer.material.mainTexture = Striker.instance.currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture;
+			lineTargetCollision.renderer.material.mainTexture = Striker.instance.currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture;
+		}
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Comprobar si la linea de objetivo colisiona con las parederes y en ese caso activar el segundo 
+	//sistema de particulas para mostar el rebote
+	void CheckCollision()
+	{
+		RaycastHit hit;
+		Ray ray = new Ray(lineTarget.position, lineTarget.forward);
+		
+		if(Physics.Raycast(ray, out hit))
+		{
+			if(hit.collider.tag == "boundary")
+			{
+				lineTargetCollision.gameObject.SetActive(true);
+				lineTargetCollision.position = hit.point;
+				reflection = Vector3.Reflect(ray.direction, hit.normal);
+				lineTargetCollision.forward = reflection.normalized;
+			}
+		}else{
+			lineTargetCollision.gameObject.SetActive(false);
+		}
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/*
 	void DrawLine()
 	{
 		line.enabled = true;
@@ -71,14 +125,5 @@ public class InputScript : MonoBehaviour
 			line.SetPosition(1, ray.GetPoint(10));
 			line.SetPosition(2, ray.GetPoint(0));
 		}
-	}
-
-		//Shoot the playing object in the touched direction
-		/*Deprecated used instead the input get button fire1 to use it in more platforms
-    void OnMouseDown()
-   {
-        Vector2 pos = Camera.mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        InGameScriptRefrences.strikerManager.Shoot(pos);
-    }*/
-
+	}*/
 }
