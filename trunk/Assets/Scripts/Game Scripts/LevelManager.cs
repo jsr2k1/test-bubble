@@ -48,11 +48,10 @@ public class LevelManager : MonoBehaviour
 		rowAddingInterval = Mathf.Max(1, rowAddingInterval);
 		minimumNumberOfRows = Mathf.Max(1, minimumNumberOfRows);
 		totalNumberOfRowsLeft = Mathf.Max(minimumNumberOfRows, totalNumberOfRowsLeft);
-		if(PlayerPrefs.GetString("GameType").Equals("Normal")) {
+
+		if(PlayerPrefs.GetString("GameType").Equals("Normal")){
 			totalNumberOfRowsLeft = minimumNumberOfRows;
-
 			currentBalls = NumberOfBalls;
-
 			//setting the balls of the level
 			ballsManager.setBallsLeft(NumberOfBalls);
 		}
@@ -114,10 +113,10 @@ public class LevelManager : MonoBehaviour
 
 	internal bool running()
 	{
-		if(gameState == GameState.GameFinish || gameState == GameState.GameOver) {
-				return false;
-		} else {
-				return true;
+		if(gameState == GameState.GameFinish || gameState == GameState.GameOver){
+			return false;
+		} else{
+			return true;
 		}
 	}
 	
@@ -127,10 +126,10 @@ public class LevelManager : MonoBehaviour
 	{
 		Debug.Log(gameState);
 
-		if(gameState == GameState.Pause) {
-				gameState = GameState.Start;
-		} else {
-				gameState = GameState.Pause;
+		if(gameState == GameState.Pause){
+			gameState = GameState.Start;
+		}else{
+			gameState = GameState.Pause;
 		}
 	}
 	
@@ -141,8 +140,8 @@ public class LevelManager : MonoBehaviour
 		currentBalls--;
 		ballsManager.setBallsLeft(currentBalls);
 
-		if(currentBalls == 0) {
-				StartCoroutine("Finishing");
+		if(currentBalls == 0){
+			StartCoroutine("Finishing");
 		}
 	}
 	
