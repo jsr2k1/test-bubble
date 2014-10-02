@@ -13,6 +13,17 @@ public class InputScript : MonoBehaviour
 
 	//Line Renderer
 	public LineRenderer line;
+	
+	ParticleSystem particles;
+	ParticleSystem particlesCollision;
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void Awake()
+	{
+		particles = lineTarget.GetComponent<ParticleSystem>();
+		particlesCollision = lineTargetCollision.GetComponent<ParticleSystem>();
+	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -23,7 +34,7 @@ public class InputScript : MonoBehaviour
 		if(LevelManager.gameState == GameState.Start)
 		{
 			Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
+			//Se mantiene pulsada la pantalla
 			if(Input.GetButton("Fire1"))
 			{
 				CheckCollision();
@@ -34,7 +45,8 @@ public class InputScript : MonoBehaviour
 				//Dont draw the line or do actions when the click its under the launcher point
 				if(pos.y > thresoldLineTransform.position.y)
 				{
-					lineTarget.gameObject.SetActive(true);
+					//lineTarget.gameObject.SetActive(true);
+					particles.renderer.enabled = true;
 
 					//Te rotation for aim
 					zRotation = Mathf.Rad2Deg * Mathf.Atan2(x, y);
@@ -44,11 +56,16 @@ public class InputScript : MonoBehaviour
 					Vector3 dir = target - lineTarget.position;
 					lineTarget.forward = dir.normalized;
 				}
+			}else{
+				//lineTarget.gameObject.SetActive(false);
+				particles.renderer.enabled = false;
+				//lineTargetCollision.gameObject.SetActive(false);
+				particlesCollision.renderer.enabled = false;
 			}
+
+			//Se acaba de levantar la pulsacion de la pantalla
 			if(Input.GetButtonUp("Fire1"))
 			{
-				lineTarget.gameObject.SetActive(false);
-				lineTargetCollision.gameObject.SetActive(false);
 				//Dont draw the line or do actions when the click its under the launcher point
 				if(pos.y > thresoldLineTransform.position.y){
 					line.enabled = false;
@@ -83,17 +100,17 @@ public class InputScript : MonoBehaviour
 		RaycastHit hit;
 		Ray ray = new Ray(lineTarget.position, lineTarget.forward);
 		
-		if(Physics.Raycast(ray, out hit))
+		if(Physics.Raycast(ray, out hit) && hit.collider.tag == "boundary")
 		{
-			if(hit.collider.tag == "boundary")
-			{
-				lineTargetCollision.gameObject.SetActive(true);
-				lineTargetCollision.position = hit.point;
-				reflection = Vector3.Reflect(ray.direction, hit.normal);
-				lineTargetCollision.forward = reflection.normalized;
-			}
-		}else{
-			lineTargetCollision.gameObject.SetActive(false);
+			//lineTargetCollision.gameObject.SetActive(true);
+			particlesCollision.renderer.enabled = true;
+			lineTargetCollision.position = hit.point;
+			reflection = Vector3.Reflect(ray.direction, hit.normal);
+			lineTargetCollision.forward = reflection.normalized;
+		}
+		else{
+			//lineTargetCollision.gameObject.SetActive(false);
+			particlesCollision.renderer.enabled = false;
 		}
 	}
 
