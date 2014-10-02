@@ -16,7 +16,7 @@ public class IAPManager : MonoBehaviour
 	private string item2 = "xxxxxxxxxxx2";
 	private string item3 = "xxxxxxxxxxx3";
 	#else
-		private string item1 = "extrasmall";
+		private string item1 = "test";
 		private string item2 = "small";
 		private string item3 = "medium";
 		private string item4 = "big";
@@ -39,7 +39,7 @@ public class IAPManager : MonoBehaviour
 				var desc = new InAppPurchaseDesc ();
 		
 				// Global
-				desc.Testing = true;
+				desc.Testing = false;
 		
 				// Editor
 				desc.Editor_InAppIDs = inAppIDs;
@@ -161,7 +161,7 @@ public class IAPManager : MonoBehaviour
 				if (appIndex != -1)
 						restoreInAppStatusText [appIndex] = "Restore Status: " + inAppID + ": " + succeeded + " Index: " + appIndex;
 				if (succeeded) {
-						if (inAppID == "extrasmall") {
+						if (inAppID == "test") {
 								int coins = PlayerPrefs.GetInt ("Coins");
 								coins = coins + 100;
 								PlayerPrefs.SetInt ("Coins", coins);	
