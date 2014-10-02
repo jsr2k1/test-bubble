@@ -14,7 +14,8 @@ public class SettingsBackground : MonoBehaviour
 	public void ShowSettings()
 	{
 		anim.SetTrigger("ShowSettings");
-		LevelManager.instance.pauseCtrl();
+		if(LevelManager.instance!=null)
+			LevelManager.instance.pauseCtrl();
 	}
 
 	public void HideSettings()
@@ -32,7 +33,8 @@ public class SettingsBackground : MonoBehaviour
 	void Update()
 	{
 		if(bExitPause){
-			LevelManager.instance.pauseCtrl();
+			if(LevelManager.instance!=null)
+				LevelManager.instance.pauseCtrl();
 			bExitPause=false;
 		}
 	}
