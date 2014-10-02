@@ -71,7 +71,7 @@ public class PlayingObject : MonoBehaviour
 
 		if(Physics.Raycast(transform.position, dir, out hit, maxDistance, layerMask)){
 			if(hit.collider.gameObject.tag == "Playing Object"){
-					return hit.collider.gameObject.GetComponent<PlayingObject>();
+				return hit.collider.gameObject.GetComponent<PlayingObject>();
 			}
 			//print(hit.collider.gameObject.name); // coz of striker
 		}
@@ -101,6 +101,9 @@ public class PlayingObject : MonoBehaviour
 		if(isDestroyed)
 			return;
 
+		if(gameObject.name=="777(Clone)")
+			return;
+
 		isDestroyed = true;
 
 		Destroy(GetComponent<SphereCollider>());
@@ -121,7 +124,6 @@ public class PlayingObject : MonoBehaviour
 			}
 		} else{
 			ScoreManagerGame.instance.DisplayScorePopup(10, transform);
-
 			Instantiate(burstParticle, transform.position, Quaternion.identity);
 			Destroy(gameObject);
 		}

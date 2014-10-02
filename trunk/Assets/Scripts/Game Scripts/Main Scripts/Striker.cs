@@ -22,7 +22,7 @@ public class Striker : MonoBehaviour
 	public Texture fireTexture;
 	public Texture multiballTexture;
 	Texture oldTexture;
-	string sCurrentSpecialBall="";
+	public string sCurrentSpecialBall="";
 	public List<string> multiBallList;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -118,7 +118,13 @@ public class Striker : MonoBehaviour
 					InGameScriptRefrences.playingObjectManager.FallDisconnectedObjects();
 					FreeStriker(other.gameObject);
 				}
-			} else{
+			}
+			else if(multiBall && other.gameObject.name == "777(Clone)"){
+				Destroy(currentStrikerObject);
+				//multiBall=false;
+				FreeStriker(other.gameObject);
+			}
+			else{
 				FreeStriker(other.gameObject);
 			}
 		}

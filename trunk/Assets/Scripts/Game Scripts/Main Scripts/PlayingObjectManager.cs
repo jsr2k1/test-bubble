@@ -51,7 +51,7 @@ public class PlayingObjectManager : MonoBehaviour
 
 	internal void CheckForObjectsFall()
 	{
-		if(PlayingObjectManager.burstCounter < 3){
+		if(PlayingObjectManager.burstCounter < 3 && !Striker.instance.multiBall){
 			ResetAllObjects();
 			return;
 		}
