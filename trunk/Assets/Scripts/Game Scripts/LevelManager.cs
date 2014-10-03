@@ -58,7 +58,7 @@ public class LevelManager : MonoBehaviour
 
 		score = 0;
 		scoreText = GameObject.Find("Score Text").GetComponent<TextMesh>();
-		GameObject.Find("Level Text").GetComponent<TextMesh>().text = levelNo.ToString();
+		//GameObject.Find("Level Text").GetComponent<TextMesh>().text = levelNo.ToString();
 		scoreText.text = score.ToString();
 	}
 	

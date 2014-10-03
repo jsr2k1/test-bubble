@@ -105,7 +105,7 @@ public class ObjectFormationPattern : MonoBehaviour
 
 	bool TextLevelLoad()
 	{
-		if(y%2==0 && x>7)
+		if(y%2==0 && x>8)
 		{
 			//On the unpairs files there are only 7 balls instead of 8 balls
 			return false;

@@ -35,7 +35,7 @@ public class PlayingObjectGeneration : MonoBehaviour
 
 	void Start()
 	{   
-		numberOfObjectsInARow = 9;
+		numberOfObjectsInARow = 10;
 		//limit = GameObject.Find("StickyBalls").transform;
 		//Checking for the GameType to put the correct number of rows per level
 		/*if(PlayerPrefs.GetString("GameType").Equals("Normal"))
@@ -122,9 +122,9 @@ public class PlayingObjectGeneration : MonoBehaviour
 
 		float x;
 		if(rowStartingPos == startingXPos)
-				rowStartingPos = startingXPos - objectGap * .5f;
+			rowStartingPos = startingXPos - objectGap * .5f;
 		else
-				rowStartingPos = startingXPos;
+			rowStartingPos = startingXPos;
 
 		x = rowStartingPos;
 
@@ -135,32 +135,29 @@ public class PlayingObjectGeneration : MonoBehaviour
 		GameObject tempObject;
 
 		for(int i = 0; i < numberOfObjectsInARow; i++){
-				//int index = Random.Range(0, objectCount);
-				int index = Random.Range(0, 6); //Queremos un random de 0-5 pq tenemos 6 bolitas
+			//int index = Random.Range(0, objectCount);
+			int index = Random.Range(0, 6); //Queremos un random de 0-5 pq tenemos 6 bolitas
 
-				if(PlayerPrefs.GetString("GameType").Equals("Normal")){
-					//Checking the unpair rows that only contains 8 objects
-					if(rowCounter % 2 == 1 || rowCounter % 2 == 0 && i <= 7){
-						//print(rowCounter + "|" + i);
-						index = LevelParser.instance.GetBallColor(rowCounter, i);
-					}
+			if(PlayerPrefs.GetString("GameType").Equals("Normal")){
+				//Checking the unpair rows that only contains 8 objects
+				if(rowCounter % 2 == 1 || rowCounter % 2 == 0 && i <= 7){
+					//print(rowCounter + "|" + i);
+					index = LevelParser.instance.GetBallColor(rowCounter, i);
 				}
+			}
+			Vector3 pos = new Vector3(x, currentYPos, 0);
 
-				Vector3 pos = new Vector3(x, currentYPos, 0);
+			if(ObjectFormationPattern.instance.ShouldAddObject(i, rowCounter)){
+				tempObject = (GameObject)Instantiate(playingObjectsPrefabs[index], Vector3.zero, Quaternion.identity);
+				tempObject.transform.parent = transform;
+				tempObject.transform.localPosition = pos;
+				tempObject.GetComponent<PlayingObject>().RefreshAdjacentObjectList();
+				InGameScriptRefrences.playingObjectManager.topRowObjects [i] = tempObject.GetComponent<PlayingObject>();
+			}
+			x -= objectGap;
 
-				if(ObjectFormationPattern.instance.ShouldAddObject(i, rowCounter)){
-						tempObject = (GameObject)Instantiate(playingObjectsPrefabs[index], Vector3.zero, Quaternion.identity);
-						tempObject.transform.parent = transform;
-						tempObject.transform.localPosition = pos;
-						tempObject.GetComponent<PlayingObject>().RefreshAdjacentObjectList();
-						InGameScriptRefrences.playingObjectManager.topRowObjects [i] = tempObject.GetComponent<PlayingObject>();
-				}
-
-				x -= objectGap;
-
-
-				if(i % 4 == 0)
-						yield return new WaitForSeconds(.02f);
+			if(i % 4 == 0)
+				yield return new WaitForSeconds(.02f);
 		}
 
 		isBusy = false;

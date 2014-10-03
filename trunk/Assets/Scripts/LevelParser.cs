@@ -6,8 +6,8 @@ using System.Text;
 using System.IO;
 using System; 
 
-public class LevelParser : MonoBehaviour {
-
+public class LevelParser : MonoBehaviour
+{
 	public static LevelParser instance;
 
 	//FilesContaining the levels
@@ -34,21 +34,15 @@ public class LevelParser : MonoBehaviour {
 	bool isColor5 = false;
 	bool isColor6 = false;
 	bool isColor7 = false;
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			
 	void Awake()
 	{
 		instance = this;
 	}
 
-	// Use this for initialization
-	void Start () {
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void LoadTextLevel(int levelNumber , int worldToLoad)
 	{
@@ -58,13 +52,13 @@ public class LevelParser : MonoBehaviour {
 		/*
 		 * calc to get the line of the level we want to load
 		 * The levels have 10 lines so with this calc que can get the first line of the level
-		 * (n-1)*numero_linea+n , this returns the first line and this final line + 10 its the last line of the level.
+		 *(n-1)*numero_linea+n , this returns the first line and this final line + 10 its the last line of the level.
 		 * */
 		int lineLevel = 0;
 
 		if(levelNumber > 1)
 		{
-			lineLevel = ((levelNumber-1)*14+levelNumber)-1;
+			lineLevel =((levelNumber-1)*14+levelNumber)-1;
 		}
 		 
 		if(worldToLoad == 1)
@@ -79,7 +73,7 @@ public class LevelParser : MonoBehaviour {
 		//Temporary y to fill the level ListArray
 		int tempy = 0;
 		//Every row
-		for(int y=lineLevel; y < (lineLevel+14); y++)
+		for(int y=lineLevel; y <(lineLevel+14); y++)
 		{
 			bool isRowWithBall = false;
 
@@ -88,12 +82,12 @@ public class LevelParser : MonoBehaviour {
 			//Spliting the filedata row by spaces
 			line  = filedata[y][0].Split(' ');
 
-			//print (filedata[y][0]);
-			//print ("line lenght :"+line.Length);
+			//print(filedata[y][0]);
+			//print("line lenght :"+line.Length);
 
 			//Temprow to introduce on the final level multidimensional listArray
 			List<string> tempRow = new List<string>();
-			//Reading first line (Every col) and parsing the spaces and empty places into filedata[n][x] again
+			//Reading first line(Every col) and parsing the spaces and empty places into filedata[n][x] again
 			for(int x=0; x < line.Length; x++)
 			{
 				//if we had a string on it saving it again on filedata
@@ -210,25 +204,26 @@ public class LevelParser : MonoBehaviour {
 		{
 			for(int col=0; col < level[row].Count; col++)
 			{
-				//print (level[row][col]);
-				print ("Row:"+row+"|Col:"+col);
+				//print(level[row][col]);
+				print("Row:"+row+"|Col:"+col);
 			}
 		}*/
 	}
 
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void ReadFile(string filename)
 	{
 		string LevelPath = System.IO.Path.Combine(Application.streamingAssetsPath, filename+".txt");
 
-		if (Application.platform == RuntimePlatform.Android)
+		if(Application.platform == RuntimePlatform.Android)
 		{
 			// Android
 			string oriPath = System.IO.Path.Combine(Application.streamingAssetsPath, filename+".txt");
 			
 			// Android only use WWW to read file
 			WWW reader = new WWW(oriPath);
-			while ( ! reader.isDone) {}
+			while( ! reader.isDone){}
 			
 			string realPath = Application.persistentDataPath + "/" + filename+".txt";
 			System.IO.File.WriteAllBytes(realPath, reader.bytes);
@@ -242,7 +237,7 @@ public class LevelParser : MonoBehaviour {
 
 		filedata = new List<List<string>>();
 		string line;
-		while ((line = sr.ReadLine()) != null)
+		while((line = sr.ReadLine()) != null)
 		{
 			List<string> list = new List<string>();
 			list = line.Split('\t').ToList();
@@ -252,16 +247,20 @@ public class LevelParser : MonoBehaviour {
 		sr.Close();
 	}
 
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	public List<List<string>> GetLevelArray()
 	{
 		return level;
 	}
 
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	public int GetBallColor(int row , int col)
 	{
 		int color = 0;
-		//print (row+"|"+col);
-		//print (level[row][col]);
+		//print(row+"|"+col);
+		//print(level[row][col]);
 		//Checking the unpair rows that only have 7 objects
 
 		/*if(!level[row][col].Equals("-")){
@@ -274,6 +273,8 @@ public class LevelParser : MonoBehaviour {
 		}
 		return color;
 	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public int GetRandomBall()
 	{
