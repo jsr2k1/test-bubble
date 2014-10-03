@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 1254ec119b5c5b04488c14a8b4e19c6f
+guid: a21b233ecd208864692853bab87023b9
 TextureImporter:
   fileIDToRecycleName:
-    21300000: mapa2mundos
+    21300000: Coins
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -23,7 +23,7 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -3
-  maxTextureSize: 4096
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
     aniso: 1
