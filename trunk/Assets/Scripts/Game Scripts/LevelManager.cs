@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public enum GameState
@@ -30,6 +31,7 @@ public class LevelManager : MonoBehaviour
 	private int currentBalls = 0;
 	internal int totalNumberOfRowsLeft = 0;
 	TextMesh scoreText;
+	public Image winPop;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -69,7 +71,8 @@ public class LevelManager : MonoBehaviour
 		gameState = GameState.GameFinish;
 		SoundFxManager.instance.themeMusic.volume *= .4f;
 		SoundFxManager.instance.Play(SoundFxManager.instance.levelClearSound);
-		Invoke("LoadLevelAgain", 2f); 
+		winPop.GetComponent<PopUpMgr>().ShowPopUp();
+		//Invoke("LoadLevelAgain", 2f); 
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
