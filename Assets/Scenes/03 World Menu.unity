@@ -8509,7 +8509,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 902129910}
-        m_MethodName: ShowSettings
+        m_MethodName: ShowPopUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9782,7 +9782,7 @@ Prefab:
       objectReference: {fileID: 902129910}
     - target: {fileID: 11400018, guid: b355caa85febe0b49976078d576eda4f, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: HideSettings
+      value: HidePopUp
       objectReference: {fileID: 0}
     - target: {fileID: 11400018, guid: b355caa85febe0b49976078d576eda4f, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -10544,7 +10544,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 902129910}
-        m_MethodName: HideSettings
+        m_MethodName: HidePopUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
