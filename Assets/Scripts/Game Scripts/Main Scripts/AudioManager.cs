@@ -17,12 +17,12 @@ public class AudioManager : MonoBehaviour
 		//Music
 		int i = PlayerPrefs.GetInt("Music");
 		if(i > 0){
-			if(!audioManagerMusic.audio.isPlaying){
+			if(audioManagerMusic && !audioManagerMusic.audio.isPlaying){
 				audioManagerMusic.audio.Play();
 			}
 			musicToggle.isOn = true;
 		}else{
-			if(audioManagerMusic.audio.isPlaying){
+			if(audioManagerMusic && audioManagerMusic.audio.isPlaying){
 				audioManagerMusic.audio.Stop();
 			}
 			musicToggle.isOn = false;

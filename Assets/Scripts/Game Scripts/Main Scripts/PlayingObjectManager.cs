@@ -222,6 +222,9 @@ public class PlayingObjectManager : MonoBehaviour
 	//Comprobar si hay que subir o bajar todas las bolas de golpe en funcion de la distancias con los limites
 	public void CheckMovePlayingObjects()
 	{
+		if(bottomMostObject==null || topMostObject==null)
+			return;
+
 		float distBottom, distTop;
 
 		distBottom = Mathf.Abs(bottomMostObject.transform.position.y - (BottomBoundaryObj.transform.position.y + thresholdOffsetWorldMode));
