@@ -23,6 +23,9 @@ public class InputScript : MonoBehaviour
 	{
 		particles = lineTarget.GetComponent<ParticleSystem>();
 		particlesCollision = lineTargetCollision.GetComponent<ParticleSystem>();
+
+		particles.renderer.sortingLayerName = "MiddleLayer";
+		particlesCollision.renderer.sortingLayerName = "MiddleLayer";
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -69,7 +72,7 @@ public class InputScript : MonoBehaviour
 				//Dont draw the line or do actions when the click its under the launcher point
 				if(pos.y > thresoldLineTransform.position.y){
 					line.enabled = false;
-					Vector2 FinalPos = new Vector2(-pos.x, pos.y);
+					Vector2 FinalPos = new Vector2(pos.x, pos.y);
 					InGameScriptRefrences.strikerManager.Shoot(FinalPos);
 				}
 			}
@@ -84,11 +87,15 @@ public class InputScript : MonoBehaviour
 			return;
 
 		string sLineColor = lineTarget.renderer.material.mainTexture.name;
-		string sBallColor = Striker.instance.currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture.name;
+		SpriteRenderer sp = Striker.instance.currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
+		string sBallColor = sp.sprite.texture.name;
+		//string sBallColor = Striker.instance.currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture.name;
 
 		if(sLineColor!=sBallColor){
-			lineTarget.renderer.material.mainTexture = Striker.instance.currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture;
-			lineTargetCollision.renderer.material.mainTexture = Striker.instance.currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture;
+			//lineTarget.renderer.material.mainTexture = 	      Striker.instance.currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture;
+			//lineTargetCollision.renderer.material.mainTexture = Striker.instance.currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture;
+			lineTarget.renderer.material.mainTexture = sp.sprite.texture;
+			lineTargetCollision.renderer.material.mainTexture = sp.sprite.texture;
 		}
 	}
 

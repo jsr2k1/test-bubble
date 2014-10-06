@@ -139,8 +139,8 @@ public class PlayingObjectGeneration : MonoBehaviour
 			int index = Random.Range(0, 6); //Queremos un random de 0-5 pq tenemos 6 bolitas
 
 			if(PlayerPrefs.GetString("GameType").Equals("Normal")){
-				//Checking the unpair rows that only contains 8 objects
-				if(rowCounter % 2 == 1 || rowCounter % 2 == 0 && i <= 7){
+				//Checking the unpair rows that only contains 8 object
+				if(rowCounter % 2 == 1 || rowCounter % 2 == 0 && i <= 8){
 					//print(rowCounter + "|" + i);
 					index = LevelParser.instance.GetBallColor(rowCounter, i);
 				}

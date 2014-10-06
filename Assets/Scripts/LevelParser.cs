@@ -24,8 +24,8 @@ public class LevelParser : MonoBehaviour
 	public List<List<string>> level = new List<List<string>>();
 
 	//Colors array and checkers
-	public List<int> colorArray = new List<int>();
-
+	//public List<int> colorArray = new List<int>();
+	/*
 	bool isColor0 = false;
 	bool isColor1 = false;
 	bool isColor2 = false;
@@ -34,7 +34,7 @@ public class LevelParser : MonoBehaviour
 	bool isColor5 = false;
 	bool isColor6 = false;
 	bool isColor7 = false;
-
+	*/
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			
 	void Awake()
@@ -60,7 +60,6 @@ public class LevelParser : MonoBehaviour
 		{
 			lineLevel =((levelNumber-1)*14+levelNumber)-1;
 		}
-		 
 		if(worldToLoad == 1)
 		{
 			ReadFile(level1);
@@ -96,7 +95,7 @@ public class LevelParser : MonoBehaviour
 					//Saving the filedata parsed line with only numbers and -
 					//level[tempy].Add(line[x].ToString());
 					tempRow.Add(line[x].ToString());
-
+					/*
 					//Checking and adding the color of the balls on the level to the color array
 					if(line[x].Equals("0"))
 					{
@@ -129,7 +128,7 @@ public class LevelParser : MonoBehaviour
 					else if(line[x].Equals("7"))
 					{
 						isColor7 = true;
-					}
+					}*/
 				}
 
 				//Setting the number of rows with balls
@@ -153,7 +152,7 @@ public class LevelParser : MonoBehaviour
 
 		//Reverse to array cos the PlayingObjectGeneration scripts fills the level with balls from the bottom to the top
 		level.Reverse();
-
+		/*
 		//Filling the colorArray
 		if(isColor0 == true)
 		{
@@ -194,7 +193,7 @@ public class LevelParser : MonoBehaviour
 		{
 			colorArray.Add(7);
 		}
-
+		*/
 		//Sending to levelmanager how many rows with balls there are on this level
 		//LevelManager.minimumNumberOfRows = numberRowsWithBalls;
 		LevelManager.minimumNumberOfRows = 14;
@@ -275,7 +274,7 @@ public class LevelParser : MonoBehaviour
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	/* no se usa?
 	public int GetRandomBall()
 	{
 		bool found = false;
@@ -295,6 +294,6 @@ public class LevelParser : MonoBehaviour
 		}
 
 		return ball;
-	}
+	}*/
 
 }
