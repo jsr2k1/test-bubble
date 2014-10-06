@@ -187,7 +187,7 @@ public class StrikerManager : MonoBehaviour
 			SoundFxManager.instance.Play(SoundFxManager.instance.shootingSound);
 
 			Vector3 dir = (touchedPosition - currentStrikerPosition.position).normalized;
-			strikerScript.Shoot(dir);        
+			strikerScript.Shoot(new Vector3(-dir.x, dir.y, 0.0f));
 
 			iTween.MoveTo(nextStrikerObject.gameObject, currentStrikerPosition.position, .4f);
 		}

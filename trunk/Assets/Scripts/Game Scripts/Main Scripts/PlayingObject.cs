@@ -125,6 +125,7 @@ public class PlayingObject : MonoBehaviour
 		} else{
 			ScoreManagerGame.instance.DisplayScorePopup(10, transform);
 			Instantiate(burstParticle, transform.position, Quaternion.identity);
+			burstParticle.renderer.sortingLayerName = "MiddleLayer";
 			Destroy(gameObject);
 		}
 	}

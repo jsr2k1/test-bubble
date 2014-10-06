@@ -18,12 +18,14 @@ public class Striker : MonoBehaviour
 	Transform sliderTransform;
 	internal bool isBusy = false;
 	public GameObject currentStrikerObject = null;
-	public Texture bombTexture;
-	public Texture fireTexture;
-	public Texture multiballTexture;
 	Texture oldTexture;
+	Sprite oldSprite;
 	public string sCurrentSpecialBall="";
 	public List<string> multiBallList;
+
+	public Sprite spriteMultiBall;
+	public Sprite spriteBombBall;
+	public Sprite spriteFireBall;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -54,6 +56,7 @@ public class Striker : MonoBehaviour
 		if(sCurrentSpecialBall!=""){
 			int quantity = PlayerPrefs.GetInt(sCurrentSpecialBall) - 1;
 			PlayerPrefs.SetInt(sCurrentSpecialBall, quantity);
+			sCurrentSpecialBall="";
 		}
 	}
 
@@ -87,7 +90,7 @@ public class Striker : MonoBehaviour
 	{
 		if(isBusy == false)
 			return;
-		speed += 5 * Time.deltaTime;
+		//speed += 5 * Time.deltaTime;
 		myTransform.Translate(currentMovingDirection * speed * Time.deltaTime);
 	}
 
@@ -132,7 +135,7 @@ public class Striker : MonoBehaviour
 		//Rebound the striker on collision with left/right boundary
 		if(other.gameObject.name == "Left" || other.gameObject.name == "Right"){
 			SoundFxManager.instance.Play(SoundFxManager.instance.wallCollisionSound);
-			currentMovingDirection = Vector3.Reflect(currentMovingDirection, other.contacts [0].normal).normalized;
+			currentMovingDirection = Vector3.Reflect(currentMovingDirection, other.contacts[0].normal).normalized;
 		}
 
 		//Destroy current shooting object hold by striker and generate new striker object.
@@ -154,7 +157,7 @@ public class Striker : MonoBehaviour
 			if(other.gameObject.tag == "TopLimit" && isBusy)
 			{
 				//lo que mete la bola en el top_row_objects array
-				InGameScriptRefrences.playingObjectManager.topRowObjects [int.Parse(other.gameObject.name)] = currentStrikerObject.GetComponent<PlayingObject>();
+				InGameScriptRefrences.playingObjectManager.topRowObjects[int.Parse(other.gameObject.name)] = currentStrikerObject.GetComponent<PlayingObject>();
 
 				//Assigning the other object collider property to false
 				other.gameObject.GetComponent<LaserOcclusor>().ToggleCollider(false);
@@ -204,16 +207,16 @@ public class Striker : MonoBehaviour
 			if(currentStrikerObject.transform.childCount > 0){
 				//Desactivar booster
 				if(fireBall){
-					currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture = oldTexture;
+					currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = oldSprite;
 					fireBall = false;
 					sCurrentSpecialBall = "";
 				}
 				//Activar booster
 				else{
 					if(!bombBall && !multiBall){
-						oldTexture = currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture;
+						oldSprite = currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
 					}
-					currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture = fireTexture;
+					currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = spriteFireBall;
 					fireBall = true;
 					bombBall = false;
 					multiBall = false;
@@ -238,16 +241,16 @@ public class Striker : MonoBehaviour
 			if(currentStrikerObject.transform.childCount > 0){
 				//Desactivar booster
 				if(bombBall){
-					currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture = oldTexture;
+					currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = oldSprite;
 					bombBall = false;
 					sCurrentSpecialBall = "";
 				}
 				//Activar booster
 				else{
 					if(!fireBall && !multiBall){
-						oldTexture = currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture;
+						oldSprite = currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
 					}
-					currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture = bombTexture;
+					currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = spriteBombBall;
 					bombBall = true;
 					fireBall = false;
 					multiBall = false;
@@ -272,16 +275,17 @@ public class Striker : MonoBehaviour
 			if(currentStrikerObject.transform.childCount > 0){
 				//Desactivar booster
 				if(multiBall){
-					currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture = oldTexture;
+					currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = oldSprite;
+
 					multiBall = false;
 					sCurrentSpecialBall = "";
 				}
 				//Activar booster
 				else{
 					if(!bombBall && !fireBall){
-						oldTexture = currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture;
+						oldSprite = currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
 					}
-					currentStrikerObject.transform.GetChild(0).renderer.material.mainTexture = multiballTexture;
+					currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = spriteMultiBall;
 					multiBall = true;
 					fireBall = false;
 					bombBall = false;
@@ -306,9 +310,9 @@ public class Striker : MonoBehaviour
 		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f);
 		int i = 0;
 		while(i < hitColliders.Length){
-			if(hitColliders [i].tag == "Playing Object"){
-				if(hitColliders [i].name != "777(Clone)"){
-					Destroy(hitColliders [i].gameObject);
+			if(hitColliders[i].tag == "Playing Object"){
+				if(hitColliders[i].name != "777(Clone)"){
+					Destroy(hitColliders[i].gameObject);
 				}
 			}
 			i++;

@@ -13,5 +13,6 @@ public class WorldButtonNumber : MonoBehaviour
 		currentText.transform.position = transform.position;
 		currentText.transform.parent = transform;
 		currentText.name = "label_"+gameObject.name;
+		currentText.transform.localScale = new Vector3(0.2f, 0.2f, 1.0f);
 	}
 }
