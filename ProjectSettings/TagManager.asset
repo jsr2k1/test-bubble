@@ -11,6 +11,7 @@ TagManager:
   - Led
   - boundary
   - TopLimit
+  - multiball
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   User Layer 8: GUI
   User Layer 9: Dont Render
   User Layer 10: Playing Object
-  User Layer 11: 
+  User Layer 11: Boundaries
   User Layer 12: 
   User Layer 13: 
   User Layer 14: 
@@ -48,4 +49,16 @@ TagManager:
   - name: Default
     userID: 0
     uniqueID: 0
+    locked: 0
+  - name: BackLayer
+    userID: 1
+    uniqueID: 3795000547
+    locked: 0
+  - name: MiddleLayer
+    userID: 2
+    uniqueID: 3441760637
+    locked: 0
+  - name: FrontLayer
+    userID: 3
+    uniqueID: 3963034399
     locked: 0
