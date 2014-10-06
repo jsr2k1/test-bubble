@@ -8,7 +8,8 @@ public class CoinsStart : MonoBehaviour {
 	
 	void Start () {
 		//PlayerPrefs.SetInt ("Coins", 0);
-		coins.text = "Coins: " + PlayerPrefs.GetInt ("Coins").ToString();
+		coins.text = PlayerPrefs.GetInt ("Coins").ToString();
 	}
+	
 
 }
