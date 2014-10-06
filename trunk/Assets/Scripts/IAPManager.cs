@@ -16,7 +16,7 @@ public class IAPManager : MonoBehaviour
 	private string item2 = "xxxxxxxxxxx2";
 	private string item3 = "xxxxxxxxxxx3";
 	#else
-		private string item1 = "test";
+		private string item1 = "extrasmall";
 		private string item2 = "small";
 		private string item3 = "medium";
 		private string item4 = "big";
@@ -161,38 +161,40 @@ public class IAPManager : MonoBehaviour
 				if (appIndex != -1)
 						restoreInAppStatusText [appIndex] = "Restore Status: " + inAppID + ": " + succeeded + " Index: " + appIndex;
 				if (succeeded) {
-						if (inAppID == "test") {
+						if (inAppID == "extrasmall") {
 								int coins = PlayerPrefs.GetInt ("Coins");
 								coins = coins + 100;
 								PlayerPrefs.SetInt ("Coins", coins);	
-								coinstext.text = "Coins: " + PlayerPrefs.GetInt ("Coins");
+								coinstext.text = PlayerPrefs.GetInt ("Coins").ToString ();
 						}
 						if (inAppID == "small") {
 								int coins = PlayerPrefs.GetInt ("Coins");
 								coins = coins + 400;
 								PlayerPrefs.SetInt ("Coins", coins);	
-								coinstext.text = "Coins: " + PlayerPrefs.GetInt ("Coins");
+								coinstext.text = PlayerPrefs.GetInt ("Coins").ToString ();
 						}
+						
 						if (inAppID == "medium") {
 								int coins = PlayerPrefs.GetInt ("Coins");
 								coins = coins + 800;
 								PlayerPrefs.SetInt ("Coins", coins);	
-								coinstext.text = "Coins: " + PlayerPrefs.GetInt ("Coins");
+								coinstext.text = PlayerPrefs.GetInt ("Coins").ToString ();
 						}
+						
 						if (inAppID == "big") {
 								int coins = PlayerPrefs.GetInt ("Coins");
 								coins = coins + 2000;
 								PlayerPrefs.SetInt ("Coins", coins);	
-								coinstext.text = "Coins: " + PlayerPrefs.GetInt ("Coins");
+								coinstext.text = PlayerPrefs.GetInt ("Coins").ToString ();
 						}
+						
 						if (inAppID == "extrabig") {
 								int coins = PlayerPrefs.GetInt ("Coins");
 								coins = coins + 5000;
 								PlayerPrefs.SetInt ("Coins", coins);	
-								coinstext.text = "Coins: " + PlayerPrefs.GetInt ("Coins");
+								coinstext.text = PlayerPrefs.GetInt ("Coins").ToString ();
 						}
 				}
-
 		}
 	
 		void restoreAppsCallback (string inAppID, bool succeeded)

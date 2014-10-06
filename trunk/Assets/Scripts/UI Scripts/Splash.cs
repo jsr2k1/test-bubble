@@ -33,6 +33,11 @@ public class Splash : MonoBehaviour {
 		if (!PlayerPrefs.HasKey ("World")){
 			PlayerPrefs.SetInt ("World", 1);
 		}
+		if (!PlayerPrefs.HasKey ("Lifes")){
+			PlayerPrefs.SetInt ("Lifes", 5);
+		}
+
+		PlayerPrefs.SetInt ("Coins", 0);
 	}
 
 	IEnumerator DisplayScene(){

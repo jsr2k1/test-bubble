@@ -24,7 +24,7 @@ public class PurchaseSpecialBall : MonoBehaviour {
 			PlayerPrefs.SetInt ("Coins", coins);
 			
 			NumberBallText.text = PlayerPrefs.GetInt (BallString).ToString ();
-			CoinsText.text = "Coins: " + PlayerPrefs.GetInt ("Coins").ToString ();
+			CoinsText.text = PlayerPrefs.GetInt ("Coins").ToString ();
 
 		}
 	
