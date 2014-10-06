@@ -5593,7 +5593,6 @@ MonoBehaviour:
   level4: levels4
   level5: levels5
   level6: facebook_levels
-  colorArray: 
 --- !u!4 &872093238
 Transform:
   m_ObjectHideFlags: 0
