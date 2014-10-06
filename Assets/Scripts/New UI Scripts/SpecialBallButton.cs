@@ -3,7 +3,6 @@ using System.Collections;
 
 public class SpecialBallButton : MonoBehaviour
 {
-		public GameObject ShopPopup;
 		public string BallString;
 	
 		public void OnButtonClick ()
@@ -17,16 +16,8 @@ public class SpecialBallButton : MonoBehaviour
 						} else if (BallString == "Multicolor Ball") {
 								Striker.instance.SetMultiBall ();	
 						}
-				} else {
-						//LevelManager.instance.pauseCtrl();
-						//iTween.MoveTo(parent, iTween.Hash("x", 0));
-						shopAppears ();
 				}
 		}
 
-		void shopAppears ()
-		{
-				ShopPopup.SetActive (true);
-		}
-			
+
 }

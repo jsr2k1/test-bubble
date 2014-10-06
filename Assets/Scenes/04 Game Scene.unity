@@ -2007,7 +2007,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86c286a3835938489bb8b3d0126cfa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShopPopup: {fileID: 0}
   BallString: Bomb Ball
 --- !u!114 &11401920
 MonoBehaviour:
@@ -2395,7 +2394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86c286a3835938489bb8b3d0126cfa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShopPopup: {fileID: 0}
   BallString: Fire Ball
 --- !u!114 &142509080
 MonoBehaviour:
@@ -7482,7 +7480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86c286a3835938489bb8b3d0126cfa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShopPopup: {fileID: 0}
   BallString: Multicolor Ball
 --- !u!114 &847949474
 MonoBehaviour:
