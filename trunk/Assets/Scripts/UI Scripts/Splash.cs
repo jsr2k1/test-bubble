@@ -7,6 +7,8 @@ public class Splash : MonoBehaviour {
 
 	void Start () {
 
+		PlayerPrefs.DeleteAll ();
+
 		StartCoroutine ("DisplayScene");
 
 		if (PlayerPrefs.HasKey("Music")==false) {
@@ -15,14 +17,14 @@ public class Splash : MonoBehaviour {
 		if (PlayerPrefs.HasKey("Sound")==false) {
 			PlayerPrefs.SetFloat("Sound", 1f);
 		}
-		if (PlayerPrefs.HasKey("Multicolor ball")==false) {
-			PlayerPrefs.SetInt("Multicolor ball", 3);
+		if (PlayerPrefs.HasKey("Multicolor Ball")==false) {
+			PlayerPrefs.SetInt("Multicolor Ball", 5);
 		}
-		if (PlayerPrefs.HasKey("Fire ball")==false) {
-			PlayerPrefs.SetInt("Fire ball", 3);
+		if (PlayerPrefs.HasKey("Fire Ball")==false) {
+			PlayerPrefs.SetInt("Fire Ball", 5);
 		}
-		if (PlayerPrefs.HasKey("Bomb ball")==false) {
-			PlayerPrefs.SetInt("Bomb ball", 3);
+		if (PlayerPrefs.HasKey("Bomb Ball")==false) {
+			PlayerPrefs.SetInt("Bomb Ball", 5);
 		}
 		if (PlayerPrefs.HasKey("Coins")==false) {
 			PlayerPrefs.SetInt("Coins", 500);
@@ -37,7 +39,6 @@ public class Splash : MonoBehaviour {
 			PlayerPrefs.SetInt ("Lifes", 5);
 		}
 
-		PlayerPrefs.SetInt ("Coins", 0);
 	}
 
 	IEnumerator DisplayScene(){
