@@ -60,6 +60,9 @@ public class AudioManager : MonoBehaviour
 
 	public void SetMusic(bool b)
 	{
+		if(audioManagerMusic==null)
+			return;
+
 		if(b){
 			PlayerPrefs.SetInt("Music", 1);
 			audioManagerMusic.audio.Play();

@@ -8,17 +8,19 @@ public class ScoreManagerGame : MonoBehaviour
     int bonusPoint;
     int numberOfItemPoppedInARow = 0;
 
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	void Start () 
     {
         instance = this;
-	
 	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     internal void DisplayScorePopup(int score,Transform go)
     { 
-
         GameObject scoreItem = (GameObject)Instantiate(scoreItemPrefab, go.position + new Vector3(0, 0, 1), Quaternion.identity);
-        scoreItem.transform.eulerAngles = new Vector3(0, 180, 0);
+        //scoreItem.transform.eulerAngles = new Vector3(0, 180, 0);
 
         bonusPoint = score * numberOfItemPoppedInARow;
         int points = score + bonusPoint;
@@ -30,6 +32,8 @@ public class ScoreManagerGame : MonoBehaviour
         CancelInvoke("ResetNumberOfItemPopped");
         Invoke("ResetNumberOfItemPopped",.5f);
     }
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private void ResetNumberOfItemPopped()
     {
