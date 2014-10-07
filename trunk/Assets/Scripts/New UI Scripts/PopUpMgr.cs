@@ -1,45 +1,69 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PopUpMgr : MonoBehaviour
 {
 	Animator anim;
 	bool bExitPause=false;
+	bool bShow=false;
+	public Image imgBlack;
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Awake()
 	{
 		anim = GetComponent<Animator>();
 	}
 
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	public void ShowPopUp()
 	{
-		anim.SetTrigger("ShowSettings");
-		if(LevelManager.instance!=null)
-			LevelManager.instance.pauseCtrl();
+		if(!bShow){
+			anim.SetTrigger("ShowSettings");
+			bShow=true;
+			imgBlack.gameObject.SetActive(true);
+			if(LevelManager.instance!=null){
+				LevelManager.instance.pauseCtrl();
+			}
+		}
 	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void HidePopUp()
 	{
-		anim.SetTrigger("HideSettings");
-		bExitPause=true;
+		if(bShow){
+			anim.SetTrigger("HideSettings");
+			imgBlack.gameObject.SetActive(false);
+			bShow=false;
+			bExitPause=true;
+		}
 	}
 
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/*
 	public void FixPosition(float y)
 	{
-		Debug.Log("FixPosition: "+y);
 		transform.position = new Vector3(transform.position.x, y, transform.position.z);
 	}
+	*/
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void GoToWorlds()
 	{
 		Application.LoadLevel(2);
 	}
 
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	void Update()
 	{
 		if(bExitPause){
-			if(LevelManager.instance!=null)
+			if(LevelManager.instance!=null){
 				LevelManager.instance.pauseCtrl();
+			}
 			bExitPause=false;
 		}
 	}
