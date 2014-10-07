@@ -52,10 +52,10 @@ public class InputScript : MonoBehaviour
 					particles.renderer.enabled = true;
 
 					//Te rotation for aim
-					zRotation = Mathf.Rad2Deg * Mathf.Atan2(x, y);
+					zRotation = Mathf.Rad2Deg * Mathf.Atan2(-x, y);
 					//Rotating the spaceship
 					launcher.eulerAngles = new Vector3(0, 0, zRotation);
-					Vector3 target = new Vector3(-x, y, 0);
+					Vector3 target = new Vector3(x, y, 0);
 					Vector3 dir = target - lineTarget.position;
 					lineTarget.forward = dir.normalized;
 				}
