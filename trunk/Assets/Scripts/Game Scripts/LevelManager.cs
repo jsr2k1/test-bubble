@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
 	public static int NumberOfBalls = 0;
 	private int currentBalls = 0;
 	internal int totalNumberOfRowsLeft = 0;
-	TextMesh scoreText;
+	Text scoreTextLabel;
 	public Image winPop;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,11 +57,7 @@ public class LevelManager : MonoBehaviour
 			//setting the balls of the level
 			ballsManager.setBallsLeft(NumberOfBalls);
 		}
-
-		score = 0;
-		scoreText = GameObject.Find("Score Text").GetComponent<TextMesh>();
-		//GameObject.Find("Level Text").GetComponent<TextMesh>().text = levelNo.ToString();
-		scoreText.text = score.ToString();
+		scoreTextLabel = GameObject.Find("ScoreTextLabel").GetComponent<Text>();
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -109,7 +105,7 @@ public class LevelManager : MonoBehaviour
 	internal void AddToScore(int points)
 	{
 		score += points;
-		scoreText.text = score.ToString();
+		scoreTextLabel.text = score.ToString("000000");
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

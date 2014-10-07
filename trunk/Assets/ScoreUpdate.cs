@@ -5,9 +5,15 @@ using UnityEngine.UI;
 public class ScoreUpdate : MonoBehaviour {
 
 	public Text finalscore;
+	Text score;
 
-	// Update is called once per frame
-	void Update () {
-		finalscore.text = GameObject.Find("Score Text").GetComponent<TextMesh>().text;
+	void Awake()
+	{
+		score = GetComponent<Text>();
+	}
+
+	void Update()
+	{
+		score.text = int.Parse(finalscore.text).ToString();
 	}
 }
