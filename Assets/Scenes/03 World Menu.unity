@@ -4718,7 +4718,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: numberBalls
-      value: 200
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
@@ -11823,7 +11823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 200
+  numberBalls: 20
   ActualWorld: 1
 --- !u!114 &1769579541
 MonoBehaviour:
@@ -14329,8 +14329,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 15.7900085, y: -37.5400696}
-  m_SizeDelta: {x: -224.820007, y: 46}
+  m_AnchoredPosition: {x: 15.7900248, y: -37.5400543}
+  m_SizeDelta: {x: -214.600006, y: 45.0999985}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &2038943004
 MonoBehaviour:
