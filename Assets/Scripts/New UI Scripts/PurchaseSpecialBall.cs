@@ -17,16 +17,18 @@ public class PurchaseSpecialBall : MonoBehaviour {
 
 		if (PlayerPrefs.GetInt ("Coins") >= price) {
 			
-			quantity = PlayerPrefs.GetInt (BallString) + 1;
-			coins = PlayerPrefs.GetInt ("Coins") - price;
+						quantity = PlayerPrefs.GetInt (BallString) + 1;
+						coins = PlayerPrefs.GetInt ("Coins") - price;
 
-			PlayerPrefs.SetInt (BallString, quantity);
-			PlayerPrefs.SetInt ("Coins", coins);
+						PlayerPrefs.SetInt (BallString, quantity);
+						PlayerPrefs.SetInt ("Coins", coins);
 			
-			NumberBallText.text = PlayerPrefs.GetInt (BallString).ToString ();
-			CoinsText.text = PlayerPrefs.GetInt ("Coins").ToString ();
+						NumberBallText.text = PlayerPrefs.GetInt (BallString).ToString ();
+						CoinsText.text = PlayerPrefs.GetInt ("Coins").ToString ();
 
-		}
+				} else {
+					
+				}
 	
 	}
 
