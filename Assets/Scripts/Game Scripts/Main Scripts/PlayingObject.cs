@@ -19,6 +19,17 @@ public class PlayingObject : MonoBehaviour
 	static Transform thresoldLineTransform; //The lower bottom point
 	public LayerMask layerMask;
 
+	Transform leftCollider;
+	Transform rightCollider;
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	void Awake()
+	{
+		leftCollider = GameObject.Find("Left").transform;
+		rightCollider = GameObject.Find("Right").transform;
+	}
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Start()
@@ -200,7 +211,7 @@ public class PlayingObject : MonoBehaviour
 		}else{
 			PlayingObjectManager.currentObjectName = gameObject.name;
 		}
-		AdjustPosition(collidedObject.transform.localPosition);
+		AdjustPosition(collidedObject.transform.position);
 		GetComponent<SphereCollider>().radius /= .8f;
 
 		if(PlayerPrefs.GetString("GameType") == "Arcade"){
@@ -221,44 +232,52 @@ public class PlayingObject : MonoBehaviour
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	//Align Current Playing Object properly.
 	void AdjustPosition(Vector3 collidedObjectPos)
 	{   
 		float x = 0;
 		float y = 0;
 
-		if(transform.localPosition.x < collidedObjectPos.x){ //right touched
-			if(transform.localPosition.y > collidedObjectPos.y){ //upper part
+		//LEFT
+		if(transform.position.x < collidedObjectPos.x)
+		{ 
+			//LEFT-UPPER
+			if(transform.position.y > collidedObjectPos.y){ 
 				x = collidedObjectPos.x - InGameScriptRefrences.playingObjectGeneration.objectGap;
 				y = collidedObjectPos.y;
-			} else{ //lower part
+			}
+			//LEFT-LOWER
+			else{
 				x = collidedObjectPos.x - InGameScriptRefrences.playingObjectGeneration.objectGap * .5f;
 				y = collidedObjectPos.y - InGameScriptRefrences.playingObjectGeneration.rowGap;
-				/*Commented because it generates a bug when a ball collide on the right wall and then collide 
-				 * with another ball next to the wall
-				 * if(x < -(InGameScriptRefrences.playingObjectGeneration.startingXPos + .2f)){
-						x = collidedObjectPos.x + InGameScriptRefrences.playingObjectGeneration.objectGap * .5f;
-				}*/
-			}
-		} else{ //left touched
-			if(transform.localPosition.y > collidedObjectPos.y){ //upper part
-				x = collidedObjectPos.x + InGameScriptRefrences.playingObjectGeneration.objectGap;
-				y = collidedObjectPos.y;
-			} else{ //lower part
-				x = collidedObjectPos.x + InGameScriptRefrences.playingObjectGeneration.objectGap * .5f;
-				y = collidedObjectPos.y - InGameScriptRefrences.playingObjectGeneration.rowGap;
-				/*Commented because it generates a bug when a ball collide on the left wall and then collide with 
-				 * another wall next to the wall
-				 * if(x > InGameScriptRefrences.playingObjectGeneration.startingXPos){
-						x = collidedObjectPos.x - InGameScriptRefrences.playingObjectGeneration.objectGap * .5f;
-				}*/
+				//Comprobar que la bola no se quede enganchada fuera de la pantalla por la izquierda
+				float leftDist = Mathf.Abs(x-leftCollider.position.x);
+				Debug.Log(leftDist);
+				if(leftDist<0.48f){
+					x = collidedObjectPos.x + InGameScriptRefrences.playingObjectGeneration.objectGap * .5f;
+				}
 			}
 		}
-
-		Vector3 newPos = new Vector3(x, y, 0);
-
-		transform.localPosition = newPos;
+		//RIGHT
+		else{
+			//RIGHT-UPPER
+			if(transform.position.y > collidedObjectPos.y){
+				x = collidedObjectPos.x + InGameScriptRefrences.playingObjectGeneration.objectGap;
+				y = collidedObjectPos.y;
+			}
+			//RIGHT-LOWER
+			else{ 
+				x = collidedObjectPos.x + InGameScriptRefrences.playingObjectGeneration.objectGap * .5f;
+				y = collidedObjectPos.y - InGameScriptRefrences.playingObjectGeneration.rowGap;
+				//Comprobar que la bola no se quede enganchada fuera de la pantalla por la derecha
+				float rightDist = Mathf.Abs(x-rightCollider.position.x);
+				Debug.Log(rightDist);
+				if(rightDist<0.48f){
+					x = collidedObjectPos.x - InGameScriptRefrences.playingObjectGeneration.objectGap * .5f;
+				}
+			}
+		}
+		transform.position = new Vector3(x, y, 0);
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
