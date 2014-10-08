@@ -76,6 +76,9 @@ public class AudioManager : MonoBehaviour
 
 	public void SetSounds(bool b)
 	{
+		if(audioManagerMusic==null)
+			return;
+
 		if(b){
 			PlayerPrefs.SetInt("Sounds", 1);
 		}else{
