@@ -7,7 +7,6 @@ public class PopUpMgr : MonoBehaviour
 	Animator anim;
 	bool bExitPause=false;
 	bool bShow=false;
-	public Image imgBlack;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -23,7 +22,6 @@ public class PopUpMgr : MonoBehaviour
 		if(!bShow){
 			anim.SetTrigger("ShowSettings");
 			bShow=true;
-			imgBlack.gameObject.SetActive(true);
 			if(LevelManager.instance!=null){
 				LevelManager.instance.pauseCtrl();
 			}
@@ -36,7 +34,6 @@ public class PopUpMgr : MonoBehaviour
 	{
 		if(bShow){
 			anim.SetTrigger("HideSettings");
-			imgBlack.gameObject.SetActive(false);
 			bShow=false;
 			bExitPause=true;
 		}
