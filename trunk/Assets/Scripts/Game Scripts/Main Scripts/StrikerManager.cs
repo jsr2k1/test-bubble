@@ -19,6 +19,7 @@ public class StrikerManager : MonoBehaviour
 	//public GameState gameState;
 	internal bool isFirstObject = true;
 	ArrayList remainingObjects;
+	public InputScript inputScript;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -78,6 +79,7 @@ public class StrikerManager : MonoBehaviour
 		strikerScript.currentStrikerObject = currentStrikerObject;
 		GenerateNextStriker();
 		CheckCurrentStrikerColor();
+		inputScript.CheckColor();
 		
 		//Save the balls instantiated at the begining of the level
 		SaveBallsID();
