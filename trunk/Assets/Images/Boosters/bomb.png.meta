@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 0635677faa17ca948ac330e6194e857a
+guid: 09644848fce224b42936900e2c969299
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Booster_fire_brown
+    21300000: bomb
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -40,7 +40,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
-  textureType: 5
+  textureType: 8
   buildTargetSettings: []
   spriteSheet:
     sprites: []
