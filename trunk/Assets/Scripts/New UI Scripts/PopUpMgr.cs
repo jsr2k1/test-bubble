@@ -7,6 +7,7 @@ public class PopUpMgr : MonoBehaviour
 	Animator anim;
 	bool bExitPause=false;
 	bool bShow=false;
+	public Image ImgBlack;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -20,7 +21,8 @@ public class PopUpMgr : MonoBehaviour
 	public void ShowPopUp()
 	{
 		if(!bShow){
-			anim.SetTrigger("ShowSettings");
+			anim.SetTrigger("ShowPopUp");
+			ImgBlack.GetComponent<Animator>().SetTrigger("ShowPopUp");
 			bShow=true;
 			if(LevelManager.instance!=null){
 				LevelManager.instance.pauseCtrl();
@@ -33,19 +35,13 @@ public class PopUpMgr : MonoBehaviour
 	public void HidePopUp()
 	{
 		if(bShow){
-			anim.SetTrigger("HideSettings");
+			anim.SetTrigger("HidePopUp");
+			ImgBlack.GetComponent<Animator>().SetTrigger("HidePopUp");
 			bShow=false;
 			bExitPause=true;
 		}
 	}
 
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/*
-	public void FixPosition(float y)
-	{
-		transform.position = new Vector3(transform.position.x, y, transform.position.z);
-	}
-	*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void GoToWorlds()

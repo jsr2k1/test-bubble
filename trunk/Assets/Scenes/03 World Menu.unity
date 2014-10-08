@@ -1473,13 +1473,14 @@ GameObject:
   - 224: {fileID: 281124140}
   - 222: {fileID: 281124142}
   - 114: {fileID: 281124141}
+  - 95: {fileID: 281124143}
   m_Layer: 0
   m_Name: ImageBlack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &281124140
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1488,7 +1489,7 @@ RectTransform:
   m_GameObject: {fileID: 281124139}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1629411127}
   m_RootOrder: 4
@@ -1524,6 +1525,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 281124139}
+--- !u!95 &281124143
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 281124139}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8426a766de951b642a98d0491ef29766, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &288755016
 GameObject:
   m_ObjectHideFlags: 0
@@ -5849,8 +5865,10 @@ GameObject:
   - 224: {fileID: 902129909}
   - 222: {fileID: 902129913}
   - 114: {fileID: 902129912}
+  - 95: {fileID: 902129911}
+  - 114: {fileID: 902129910}
   m_Layer: 5
-  m_Name: Popup Settings
+  m_Name: SettingsPopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5878,6 +5896,33 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 1000}
   m_SizeDelta: {x: 900, y: 1130}
   m_Pivot: {x: .5, y: .5}
+--- !u!114 &902129910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 902129908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53cd5877c14ace441a5d0bc3276e472b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImgBlack: {fileID: 281124141}
+--- !u!95 &902129911
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 902129908}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6ebfe2d029ed51740b34c67abf9237c1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &902129912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9885,7 +9930,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1629411131}
+      - m_Target: {fileID: 902129910}
         m_MethodName: ShowPopUp
         m_Mode: 1
         m_Arguments:
@@ -11276,8 +11321,6 @@ GameObject:
   - 223: {fileID: 1629411129}
   - 114: {fileID: 1629411128}
   - 114: {fileID: 1629411130}
-  - 95: {fileID: 1629411132}
-  - 114: {fileID: 1629411131}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -11357,32 +11400,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Resolution: {x: 675, y: 900}
   m_MatchWidthOrHeight: 0
---- !u!114 &1629411131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1629411126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53cd5877c14ace441a5d0bc3276e472b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &1629411132
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1629411126}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6ebfe2d029ed51740b34c67abf9237c1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &1671420173
 Prefab:
   m_ObjectHideFlags: 0
@@ -11477,7 +11494,7 @@ Prefab:
     - target: {fileID: 11400018, guid: b355caa85febe0b49976078d576eda4f, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1629411131}
+      objectReference: {fileID: 902129910}
     - target: {fileID: 11400018, guid: b355caa85febe0b49976078d576eda4f, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: HidePopUp
@@ -11509,6 +11526,10 @@ Prefab:
     - target: {fileID: 22400012, guid: b355caa85febe0b49976078d576eda4f, type: 2}
       propertyPath: m_AnchoredPosition.y
       value: 184
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: b355caa85febe0b49976078d576eda4f, type: 2}
+      propertyPath: m_Name
+      value: SettingsPopUp
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400012, guid: b355caa85febe0b49976078d576eda4f, type: 2}
@@ -12177,7 +12198,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1629411131}
+      - m_Target: {fileID: 902129910}
         m_MethodName: HidePopUp
         m_Mode: 1
         m_Arguments:
@@ -14859,7 +14880,7 @@ GameObject:
   - 95: {fileID: 2135650043}
   - 114: {fileID: 2135650044}
   m_Layer: 0
-  m_Name: PopUpBuy
+  m_Name: ShopPopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14930,7 +14951,7 @@ Animator:
   m_GameObject: {fileID: 2135650039}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 62b4289bcbcaafb438a2fee17671e80c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6ebfe2d029ed51740b34c67abf9237c1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -14947,3 +14968,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cd5877c14ace441a5d0bc3276e472b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ImgBlack: {fileID: 281124141}
