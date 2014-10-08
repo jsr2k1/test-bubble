@@ -145,7 +145,7 @@ public class InputScript : MonoBehaviour
 		RaycastHit hit;
 		Ray ray = new Ray(launcher.transform.position, launcher.transform.up);
 		
-		if(Physics.Raycast(ray, out hit)){
+		if(Physics.Raycast(ray, out hit, layermask)){
 			maxDist = Vector3.Distance(launcher.transform.position, hit.point);
 		}else{
 			maxDist=0;
