@@ -26,7 +26,7 @@ public class NumberBallsManager : MonoBehaviour
 
 	public void setBallsLeft(int ballsLeft)
 	{
-		if(ballsLeft == -1){
+		if(ballsLeft < 0){
 			ballsText.text = "0";
 		}else{ 
 			ballsText.text = ballsLeft.ToString();

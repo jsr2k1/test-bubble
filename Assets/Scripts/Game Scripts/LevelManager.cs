@@ -32,6 +32,10 @@ public class LevelManager : MonoBehaviour
 	internal int totalNumberOfRowsLeft = 0;
 	Text scoreTextLabel;
 	public Image winPop;
+	public Image loosePop;
+
+	public static int ReferenceScore;
+	public Image stars;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -78,8 +82,9 @@ public class LevelManager : MonoBehaviour
 		gameState = GameState.GameOver;
 		InGameScriptRefrences.playingObjectManager.FallAllPlayingObjects();
 		SoundFxManager.instance.themeMusic.volume *= .4f;
+		loosePop.GetComponent<PopUpMgr>().ShowPopUp();
 		Invoke("PlayLevelFailSound", .2f);
-		Invoke("LoadLevelAgain", 3f);
+		//Invoke("LoadLevelAgain", 3f);
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -106,6 +111,11 @@ public class LevelManager : MonoBehaviour
 	{
 		score += points;
 		scoreTextLabel.text = score.ToString("000000");
+		Debug.Log (ReferenceScore);
+		Debug.Log (score);
+		if (score > ReferenceScore) {
+			stars.GetComponent<Image>().enabled = true;
+		}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
