@@ -252,7 +252,6 @@ public class PlayingObject : MonoBehaviour
 				y = collidedObjectPos.y - InGameScriptRefrences.playingObjectGeneration.rowGap;
 				//Comprobar que la bola no se quede enganchada fuera de la pantalla por la izquierda
 				float leftDist = Mathf.Abs(x-leftCollider.position.x);
-				Debug.Log(leftDist);
 				if(leftDist<0.48f){
 					x = collidedObjectPos.x + InGameScriptRefrences.playingObjectGeneration.objectGap * .5f;
 				}
@@ -271,7 +270,6 @@ public class PlayingObject : MonoBehaviour
 				y = collidedObjectPos.y - InGameScriptRefrences.playingObjectGeneration.rowGap;
 				//Comprobar que la bola no se quede enganchada fuera de la pantalla por la derecha
 				float rightDist = Mathf.Abs(x-rightCollider.position.x);
-				Debug.Log(rightDist);
 				if(rightDist<0.48f){
 					x = collidedObjectPos.x - InGameScriptRefrences.playingObjectGeneration.objectGap * .5f;
 				}

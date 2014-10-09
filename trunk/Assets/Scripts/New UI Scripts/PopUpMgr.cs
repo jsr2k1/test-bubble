@@ -25,20 +25,22 @@ public class PopUpMgr : MonoBehaviour
 			ImgBlack.GetComponent<Animator>().SetTrigger("ShowPopUp");
 			bShow=true;
 			if(LevelManager.instance!=null){
-				LevelManager.instance.pauseCtrl();
+				LevelManager.instance.pauseCtrlForced(GameState.Pause);
 			}
 		}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public void HidePopUp()
+	public void HidePopUp(bool bChangeState=true)
 	{
 		if(bShow){
 			anim.SetTrigger("HidePopUp");
 			ImgBlack.GetComponent<Animator>().SetTrigger("HidePopUp");
 			bShow=false;
-			bExitPause=true;
+			if(bChangeState){
+				bExitPause=true;
+			}
 		}
 	}
 
@@ -53,9 +55,10 @@ public class PopUpMgr : MonoBehaviour
 
 	void Update()
 	{
+		//Nos esperamos un frame antes de poner el juego en playmode para que no de problemas con el Update del InputScript
 		if(bExitPause){
 			if(LevelManager.instance!=null){
-				LevelManager.instance.pauseCtrl();
+				LevelManager.instance.pauseCtrlForced(GameState.Start);
 			}
 			bExitPause=false;
 		}
