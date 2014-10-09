@@ -5,6 +5,7 @@ public class WorldButton : MonoBehaviour {
 
 	public int numberBalls;
 	public int ActualWorld;
+	public int refScore;
 
 	public void ButtonPressed()
 	{
@@ -13,6 +14,7 @@ public class WorldButton : MonoBehaviour {
 		LevelParser.instance.LoadTextLevel(int.Parse(name), ActualWorld);
 		
 		LevelManager.NumberOfBalls = numberBalls;
+		LevelManager.ReferenceScore = refScore;
 		LevelManager.rowAddingInterval = 1;
 		LevelManager.levelNo = int.Parse(name);
 		Application.LoadLevel(3);

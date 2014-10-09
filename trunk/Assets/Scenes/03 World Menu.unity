@@ -1587,6 +1587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &255053426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1793,6 +1794,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &288755018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2652,6 +2654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &390089419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3010,6 +3013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &417028909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3238,6 +3242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &445548386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3640,6 +3645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &559597264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5091,6 +5097,10 @@ Prefab:
       propertyPath: numberBalls
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: refScore
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1769579535}
@@ -5280,6 +5290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &768572007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5755,6 +5766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &843548013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6601,6 +6613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &925507854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7007,6 +7020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &976492922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8350,6 +8364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &1138782992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8569,6 +8584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &1149014470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9717,6 +9733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &1306815263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10875,6 +10892,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &1509037303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11652,6 +11670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &1628641244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12373,6 +12392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 100
 --- !u!114 &1769579541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12898,6 +12918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &1836516575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13306,6 +13327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &1866394748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14546,6 +14568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &2008707665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14774,6 +14797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 20
   ActualWorld: 1
+  refScore: 0
 --- !u!114 &2020869907
 MonoBehaviour:
   m_ObjectHideFlags: 0
