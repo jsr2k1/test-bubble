@@ -68,6 +68,9 @@ public class InputScript : MonoBehaviour
 					launcher.eulerAngles = new Vector3(0, 0, zRotation);
 					UpdateParticlesPosition(x,y);
 				}
+			}else{
+				//Nos aseguramos de ocultar las particulas ya que a veces se quedan en pantalla
+				SetParticles(false);
 			}
 			//Se acaba de levantar la pulsacion de la pantalla
 			if(Input.GetButtonUp("Fire1"))
@@ -83,7 +86,9 @@ public class InputScript : MonoBehaviour
 			//Se ha pulsado en la pantalla
 			if(Input.GetButtonDown("Fire1"))
 			{
-				SetParticles(true);
+				if(pos.y > thresoldLineTransform.position.y){
+					SetParticles(true);
+				}
 			}
 		}
 	}
