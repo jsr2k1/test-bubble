@@ -9,11 +9,13 @@ public class Splash : MonoBehaviour
 	{
 		StartCoroutine("DisplayScene");
 
+		PlayerPrefs.DeleteAll();
+
 		if(PlayerPrefs.HasKey("Music")==false){
 			PlayerPrefs.SetInt("Music", 1);
 		}
 		if(PlayerPrefs.HasKey("Sounds")==false){
-			PlayerPrefs.SetFloat("Sounds", 1f);
+			PlayerPrefs.SetInt("Sounds", 1);
 		}
 		if(PlayerPrefs.HasKey("Multicolor Ball")==false){
 			PlayerPrefs.SetInt("Multicolor Ball", 3);

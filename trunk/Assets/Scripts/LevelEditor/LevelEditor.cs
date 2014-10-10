@@ -10,7 +10,7 @@ public class LevelEditor : MonoBehaviour
 	public Sprite spriteEmpty;
 
 	public Sprite[] ballColors;
-	public int numColors;
+	public Text textNumColor;
 
 	int[,] currentLevel;
 	int numRows=13;
@@ -35,10 +35,14 @@ public class LevelEditor : MonoBehaviour
 		foreach(Text textComponent in textComponents){
 			if(textComponent.transform.tag!="LevelEditorComp"){
 				textComponent.enabled=false;
+				int i,j;
+				ParseButton(textComponent.text, out i, out j);
+				currentLevel[i,j] = 0;
 			}
 		}
 
 		imageComponents = gameObject.GetComponentsInChildren<Image>();
+
 		foreach(Image imageComponent in imageComponents){
 			if(imageComponent.transform.tag!="LevelEditorComp"){
 				imageComponent.sprite = spriteEmpty;
@@ -51,7 +55,17 @@ public class LevelEditor : MonoBehaviour
 
 	public void LevelButtonPressed()
 	{
-		Debug.Log("Caller: " + eventSystem.currentSelectedObject.name);
+		//Do some checks
+		int res;
+		if(!int.TryParse(textNumColor.text, out res)){
+			Debug.Log("El numero de colores es incorrecto");
+			return;
+		}
+		int numColor = int.Parse(textNumColor.text);
+		if(numColor<1 || numColor>6){
+			Debug.Log("El numero tiene que ser entre 1 y 6");
+			return;
+		}
 
 		Image imageComponent = eventSystem.currentSelectedObject.GetComponent<Image>();
 		Text textComponent = eventSystem.currentSelectedObject.transform.GetChild(0).GetComponent<Text>();
@@ -60,7 +74,7 @@ public class LevelEditor : MonoBehaviour
 		ParseButton(textComponent.text, out i, out j);
 
 		if(currentLevel[i,j] == 0){
-			int index = Random.Range(0,numColors);
+			int index = Random.Range(0,numColor);
 			imageComponent.sprite = ballColors[index];
 			imageComponent.color = new Color(1,1,1,1f);
 			currentLevel[i,j] = 1;
