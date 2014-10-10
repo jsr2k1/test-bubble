@@ -11,9 +11,23 @@ public class WorldButton : MonoBehaviour
 	public Image star1;
 	public Image star2;
 	public Image star3;
+	Button button;
 
 	void Awake ()
 	{
+
+		button = GetComponent<Button> ();
+
+		if (PlayerPrefs.HasKey ("STARS_" + (int.Parse (gameObject.name) - 1))) {
+			button.interactable = true;
+		} else {
+			button.interactable = false;
+		}
+
+		if (gameObject.name == "1") {
+			button.interactable = true;
+		}
+
 		Text currentText = Instantiate (numTextPrefab) as Text;
 		currentText.text = gameObject.name;
 		currentText.transform.position = transform.position;
