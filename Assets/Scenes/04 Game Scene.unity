@@ -2225,7 +2225,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400044, guid: 967baa7105da8334ba1f6966db4c9b9f, type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 22400044, guid: 967baa7105da8334ba1f6966db4c9b9f, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -3038,7 +3038,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400008, guid: b355caa85febe0b49976078d576eda4f, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 22400008, guid: b355caa85febe0b49976078d576eda4f, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -6679,6 +6679,7 @@ MonoBehaviour:
   star1: {fileID: 2029583640}
   star2: {fileID: 1443885055}
   star3: {fileID: 1560669545}
+  slider: {fileID: 0}
 --- !u!1 &844835526
 GameObject:
   m_ObjectHideFlags: 0
@@ -9613,7 +9614,7 @@ RectTransform:
   m_RootOrder: 10
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -168.600006, y: 421}
+  m_AnchoredPosition: {x: -158.630005, y: 421.070007}
   m_SizeDelta: {x: 123, y: 38}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1458713524
