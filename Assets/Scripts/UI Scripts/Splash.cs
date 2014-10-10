@@ -9,7 +9,7 @@ public class Splash : MonoBehaviour
 	{
 		StartCoroutine("DisplayScene");
 
-		PlayerPrefs.DeleteAll();
+		//PlayerPrefs.DeleteAll();
 
 		if(PlayerPrefs.HasKey("Music")==false){
 			PlayerPrefs.SetInt("Music", 1);
