@@ -6676,7 +6676,9 @@ MonoBehaviour:
   ballsManager: {fileID: 1437516066}
   winPop: {fileID: 415351817}
   loosePop: {fileID: 507480261}
-  stars: {fileID: 1560669545}
+  star1: {fileID: 2029583640}
+  star2: {fileID: 1443885055}
+  star3: {fileID: 1560669545}
 --- !u!1 &844835526
 GameObject:
   m_ObjectHideFlags: 0
@@ -9474,7 +9476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1443885054
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9498,7 +9500,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1443885053}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -12577,7 +12579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2029583639
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12601,7 +12603,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2029583638}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
