@@ -7,6 +7,9 @@ public class Splash : MonoBehaviour
 
 	void Start()
 	{
+
+		PlayerPrefs.DeleteAll ();
+
 		StartCoroutine("DisplayScene");
 
 		//PlayerPrefs.DeleteAll();
