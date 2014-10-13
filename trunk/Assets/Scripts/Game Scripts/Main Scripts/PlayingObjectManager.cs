@@ -150,7 +150,8 @@ public class PlayingObjectManager : MonoBehaviour
 		UpdatePlayingObjectsList();
 
 		for(int i = 0; i < allPlayingObjectScripts.Length; i++) {
-			allPlayingObjectScripts[i].Reset();
+			if(allPlayingObjectScripts[i]!=null)
+				allPlayingObjectScripts[i].Reset();
 		}
 		if(allPlayingObjectScripts.Length == 10 && LevelManager.instance.totalNumberOfRowsLeft == 0){
 			LevelManager.instance.GameIsFinished();
