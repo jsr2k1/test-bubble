@@ -30,7 +30,7 @@ public class LevelEditor : MonoBehaviour
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	// Al iniciar el Editor y antes de cargar un nivel, ponemos todos los botones de las bolas vacios.
 	public void ClearButtons()
 	{
 		Text[] textComponents;
@@ -45,7 +45,6 @@ public class LevelEditor : MonoBehaviour
 				currentLevel[i,j] = -1;
 			}
 		}
-
 		imageComponents = gameObject.GetComponentsInChildren<Image>();
 		foreach(Image imageComponent in imageComponents){
 			if(imageComponent.transform.tag!="LevelEditorComp"){
@@ -56,7 +55,7 @@ public class LevelEditor : MonoBehaviour
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	// Si se pulsa un boton vacio, entonces ponemos una bola random. Si el boton esta lleno, se vacia.
 	public void LevelButtonPressed()
 	{
 		int numColor = ParseColor(textNumColor.text);
@@ -82,7 +81,7 @@ public class LevelEditor : MonoBehaviour
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Obtener el numero de fila y columna del boton a partir de su nombre
+	// Obtener el numero de fila y columna del boton a partir de su nombre.
 	void ParseButton(string text, out int i, out int j)
 	{
 		string[] numbers = text.Split('_');
@@ -134,6 +133,50 @@ public class LevelEditor : MonoBehaviour
 		ClearArray();
 		FillArray();
 		DrawBalls();
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Devuelve un string con la linea de bolas
+	string GetLine(int index)
+	{
+		string sRes="";
+		int numCols = index%2==0 ? 10 : 9;
+
+		if(numCols==9){
+			sRes+="   ";
+		}
+		for(int i=0;i<numCols;i++)
+		{
+			if(currentLevel[index-1,i]>-1){
+				sRes+=currentLevel[index-1,i];
+			}else{
+				sRes+="-";
+			}
+			if(i<numCols-1){
+				sRes+="   ";
+			}
+		}
+		return sRes;
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Leemos todo el archivo de texto en un array, sustituimos el nivel y volvemos a escribir todo el archivo.
+	public void SaveLevel()
+	{
+		string LevelPath = System.IO.Path.Combine(Application.streamingAssetsPath, "levels.txt");
+		string[] lines = File.ReadAllLines(LevelPath);
+
+		int numLevel = ParseLevel(textNumLevel.text);
+		if(numLevel<1){
+			return;
+		}
+		int iFirstLine = 15*(numLevel-1);
+		lines[iFirstLine] = "6   6   6   6   6   6   6   6   6   6";
+
+		for(int i=1;i<=numRows;i++){
+			lines[iFirstLine+i] = GetLine(i);
+		}
+		File.WriteAllLines(LevelPath, lines);
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -198,13 +241,6 @@ public class LevelEditor : MonoBehaviour
 				}
 			}
 		}
-	}
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	public void SaveLevel()
-	{
-		
 	}
 }
 
