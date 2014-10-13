@@ -212,7 +212,9 @@ public class PlayingObject : MonoBehaviour
 			PlayingObjectManager.currentObjectName = gameObject.name;
 		}
 		AdjustPosition(collidedObject.transform.position);
-		GetComponent<SphereCollider>().radius /= .8f;
+
+		//No entiendo pq hay que hacer esto?
+		//GetComponent<SphereCollider>().radius /= .8f;
 
 		if(PlayerPrefs.GetString("GameType") == "Arcade"){
 			if(transform.position.y < thresoldLineTransform.position.y){
