@@ -400,7 +400,7 @@ GameObject:
   - 33: {fileID: 454}
   - 65: {fileID: 490}
   - 23: {fileID: 396}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -574,10 +574,10 @@ MonoBehaviour:
   particlePrefab2: {fileID: 100000, guid: 95c202fcda79f304c8f3c255d47252d5, type: 2}
   spacing: .5
   initialOffset: .5
-  nParticles: 6
+  nParticles: 12
   layermask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 6144
 --- !u!4 &188
 Transform:
   m_ObjectHideFlags: 0
