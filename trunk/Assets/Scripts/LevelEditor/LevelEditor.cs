@@ -15,6 +15,7 @@ public class LevelEditor : MonoBehaviour
 
 	public Sprite[] ballColors;
 	public Text textNumColor;
+	public Text textNumLevel;
 
 	int[,] currentLevel;
 	int numRows=13;
@@ -41,7 +42,7 @@ public class LevelEditor : MonoBehaviour
 				textComponent.enabled=false;
 				int i,j;
 				ParseButton(textComponent.text, out i, out j);
-				currentLevel[i,j] = 0;
+				currentLevel[i,j] = -1;
 			}
 		}
 
@@ -58,33 +59,25 @@ public class LevelEditor : MonoBehaviour
 
 	public void LevelButtonPressed()
 	{
-		//Do some checks
-		int res;
-		if(!int.TryParse(textNumColor.text, out res)){
-			Debug.Log("El numero de colores es incorrecto");
+		int numColor = ParseColor(textNumColor.text);
+		if(numColor<1){
 			return;
 		}
-		int numColor = int.Parse(textNumColor.text);
-		if(numColor<1 || numColor>6){
-			Debug.Log("El numero tiene que ser entre 1 y 6");
-			return;
-		}
-
 		Image imageComponent = eventSystem.currentSelectedObject.GetComponent<Image>();
 		Text textComponent = eventSystem.currentSelectedObject.transform.GetChild(0).GetComponent<Text>();
 
 		int i,j;
 		ParseButton(textComponent.text, out i, out j);
 
-		if(currentLevel[i,j] == 0){
+		if(currentLevel[i,j] < 0){
 			int index = UnityEngine.Random.Range(0,numColor);
 			imageComponent.sprite = ballColors[index];
 			imageComponent.color = new Color(1,1,1,1f);
-			currentLevel[i,j] = 1;
+			currentLevel[i,j] = index;
 		}else{
 			imageComponent.sprite = spriteEmpty;
 			imageComponent.color = new Color(1,1,1,0.2f);
-			currentLevel[i,j] = 0;
+			currentLevel[i,j] = -1;
 		}
 	}
 
@@ -96,11 +89,48 @@ public class LevelEditor : MonoBehaviour
 		i = int.Parse(numbers[0]) - 1;
 		j = int.Parse(numbers[1]) - 1;
 	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	int ParseLevel(string sLevel)
+	{
+		//Do some checks
+		int res;
+		if(!int.TryParse(sLevel, out res)){
+			Debug.Log("El numero del nivel es incorrecto");
+			return -1;
+		}
+		int numLevel = int.Parse(sLevel);
+		if(numLevel<1 || numLevel>20){
+			Debug.Log("El numero tiene que ser entre 1 y 20");
+			return -1;
+		}
+		return numLevel;
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	int ParseColor(string sColor)
+	{
+		//Do some checks
+		int res;
+		if(!int.TryParse(sColor, out res)){
+			Debug.Log("El numero de colores es incorrecto");
+			return -1;
+		}
+		int numColor = int.Parse(textNumColor.text);
+		if(numColor<1 || numColor>6){
+			Debug.Log("El numero tiene que ser entre 1 y 6");
+			return -1;
+		}
+		return numColor;
+	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public void LoadLevel()
 	{
+		ClearButtons();
 		ClearArray();
 		FillArray();
 		DrawBalls();
@@ -126,20 +156,27 @@ public class LevelEditor : MonoBehaviour
 		string line;
 		int iLine=0;
 
+		int numLevel = ParseLevel(textNumLevel.text);
+		if(numLevel<1){
+			return;
+		}
+		//Skip lines
+		for(int i=0;i<(15*(numLevel-1))+1;i++){
+			line = sr.ReadLine();
+		}
+		//Read level
 		while((line = sr.ReadLine()) != null && iLine<numRows+1)
 		{
-			if(iLine>0){
-				List<string> list = line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries).ToList();
-				int iNum=0;
-				foreach(string s in list)
-				{
-					if(s!="-"){
-						currentLevel[iLine-1,iNum] = int.Parse(s);
-					}else{
-						currentLevel[iLine-1,iNum] = -1;
-					}
-					iNum++;
+			List<string> list = line.Split(new char[0], StringSplitOptions.RemoveEmptyEntries).ToList();
+			int iNum=0;
+			foreach(string s in list)
+			{
+				if(s!="-"){
+					currentLevel[iLine,iNum] = int.Parse(s);
+				}else{
+					currentLevel[iLine,iNum] = -1;
 				}
+				iNum++;
 			}
 			iLine++;
 		}
