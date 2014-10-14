@@ -575,9 +575,13 @@ MonoBehaviour:
   spacing: .5
   initialOffset: .5
   nParticles: 12
+  nBounceParticles: 2
   layermask:
     serializedVersion: 2
-    m_Bits: 6144
+    m_Bits: 3072
+  layermask2:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!4 &188
 Transform:
   m_ObjectHideFlags: 0
@@ -1866,7 +1870,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: .200000003
+  m_Radius: .270000011
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &566
 MonoBehaviour:
@@ -2944,6 +2948,7 @@ RectTransform:
   - {fileID: 1458713523}
   - {fileID: 632232985}
   - {fileID: 453653203}
+  - {fileID: 1353935743}
   - {fileID: 415351816}
   - {fileID: 507480258}
   - {fileID: 1012585948}
@@ -3889,7 +3894,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1246200339}
-  - {fileID: 1353935743}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
@@ -4689,7 +4693,7 @@ RectTransform:
   - {fileID: 901849314}
   - {fileID: 140630510}
   m_Father: {fileID: 169262541}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 1500}
@@ -5092,7 +5096,7 @@ RectTransform:
   - {fileID: 1443885054}
   - {fileID: 1560669544}
   m_Father: {fileID: 169262541}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 1500}
@@ -5477,7 +5481,7 @@ RectTransform:
   - {fileID: 396195063}
   - {fileID: 1219765969}
   m_Father: {fileID: 169262541}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 1500}
@@ -6560,7 +6564,7 @@ RectTransform:
   - {fileID: 1240050006}
   - {fileID: 660780426}
   m_Father: {fileID: 169262541}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -.000125070001, y: 1500}
@@ -6679,7 +6683,6 @@ MonoBehaviour:
   star1: {fileID: 2029583640}
   star2: {fileID: 1443885055}
   star3: {fileID: 1560669545}
-  slider: {fileID: 0}
 --- !u!1 &844835526
 GameObject:
   m_ObjectHideFlags: 0
@@ -7506,7 +7509,7 @@ RectTransform:
   - {fileID: 220338299}
   - {fileID: 1553100326}
   m_Father: {fileID: 169262541}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 1500}
@@ -8814,11 +8817,11 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1353935742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.13649603e-05}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.79999995, y: 6, z: .99999994}
   m_Children: []
-  m_Father: {fileID: 266536344}
-  m_RootOrder: 1
+  m_Father: {fileID: 169262541}
+  m_RootOrder: 13
   m_AnchorMin: {x: .5, y: 0}
   m_AnchorMax: {x: .5, y: 0}
   m_AnchoredPosition: {x: -65, y: 108}
