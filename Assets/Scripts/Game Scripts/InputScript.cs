@@ -23,6 +23,7 @@ public class InputScript : MonoBehaviour
 	GameObject[] bounceParticles;
 	float maxDist=0;
 	float maxDistBounce=0;
+	float offsetDist=0;
 	bool bBounceOn=false;
 	Vector3 hitPoint;
 	Vector3 hitNormal;
@@ -155,7 +156,7 @@ public class InputScript : MonoBehaviour
 			
 			for(int i=0;i<nBounceParticles;i++)
 			{
-				Vector3 targetPos = hitPoint + reflection*(i+1)*spacing;
+				Vector3 targetPos = hitPoint + reflection*offsetDist + reflection*i*spacing;
 				float dist = Vector3.Distance(targetPos, hitPoint);
 
 				if(maxDistBounce>0){
@@ -236,7 +237,8 @@ public class InputScript : MonoBehaviour
 		}
 		//Comprobar raycast desde el centro del launcher contra los Boundaries
 		else if(Physics.Raycast(ray, out hit, 100, layermask)){
-			maxDist = Vector3.Distance(launcher.transform.position, hit.point)-0.27f;
+			maxDist = Vector3.Distance(launcher.transform.position, hit.point) - 0.27f;
+			offsetDist = (1-((maxDist/spacing)-(int)(maxDist/spacing)))*spacing;
 			Vector3 v = (launcher.transform.position - hit.point).normalized;
 			hitPoint = hit.point + v*0.27f;
 			hitNormal = hit.normal;
