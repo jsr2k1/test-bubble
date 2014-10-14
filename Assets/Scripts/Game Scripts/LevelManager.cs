@@ -131,7 +131,7 @@ public class LevelManager : MonoBehaviour
 						stars = 3;
 				}
 
-				slider.value = (float) score / (float) ReferenceScore;
+				//slider.value = (float) score / (float) ReferenceScore;
 		}
 	
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
