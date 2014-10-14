@@ -38,8 +38,10 @@ public class Splash : MonoBehaviour
 		if(!PlayerPrefs.HasKey("Lifes")){
 			PlayerPrefs.SetInt("Lifes", 5);
 		}
-	}
 
+
+	}
+	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	IEnumerator DisplayScene()
@@ -47,6 +49,7 @@ public class Splash : MonoBehaviour
 		yield return new WaitForSeconds(timer);
 		Application.LoadLevel(1);
 	}
+
 }
 
 
