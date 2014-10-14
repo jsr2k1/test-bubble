@@ -236,8 +236,9 @@ public class InputScript : MonoBehaviour
 		}
 		//Comprobar raycast desde el centro del launcher contra los Boundaries
 		else if(Physics.Raycast(ray, out hit, 100, layermask)){
-			maxDist = Vector3.Distance(launcher.transform.position, hit.point);
-			hitPoint = hit.point;
+			maxDist = Vector3.Distance(launcher.transform.position, hit.point)-0.27f;
+			Vector3 v = (launcher.transform.position - hit.point).normalized;
+			hitPoint = hit.point + v*0.27f;
 			hitNormal = hit.normal;
 			rayDirection = ray.direction;
 			bBounceOn=true;
