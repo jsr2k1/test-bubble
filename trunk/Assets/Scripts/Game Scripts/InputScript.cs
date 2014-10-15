@@ -9,6 +9,7 @@ public class InputScript : MonoBehaviour
 	public Transform thresoldLineTransform;
 
 	float x, y, zRotation;
+	public float ballRadius;
 
 	public GameObject particlePrefab1;
 	public GameObject particlePrefab2;
@@ -28,6 +29,8 @@ public class InputScript : MonoBehaviour
 	Vector3 hitPoint;
 	Vector3 hitNormal;
 	Vector3 rayDirection;
+
+	bool bSetTrue=false;
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -90,6 +93,7 @@ public class InputScript : MonoBehaviour
 				//Dont draw the line or do actions when the click its under the launcher point
 				if(pos.y > thresoldLineTransform.position.y)
 				{
+					SetParticles(true);
 					zRotation = Mathf.Rad2Deg * Mathf.Atan2(-x, y);
 					launcher.eulerAngles = new Vector3(0, 0, zRotation);
 					UpdateParticlesPosition(x,y);
@@ -108,13 +112,6 @@ public class InputScript : MonoBehaviour
 				if(pos.y > thresoldLineTransform.position.y){
 					Vector2 FinalPos = new Vector2(pos.x, pos.y);
 					InGameScriptRefrences.strikerManager.Shoot(FinalPos);
-				}
-			}
-			//Se ha pulsado en la pantalla
-			if(Input.GetButtonDown("Fire1"))
-			{
-				if(pos.y > thresoldLineTransform.position.y){
-					SetParticles(true);
 				}
 			}
 		}
@@ -206,49 +203,62 @@ public class InputScript : MonoBehaviour
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Comprobar si la linea de objetivo colisiona con alguna bola
+	//Comprobar si la linea de objetivo colisiona con alguna bola o con los laterales de la pantalla.
+	//Lanzamos 3 rayos para asegurar que la linea de target indique realmente donde ira la bola.
 	void CheckCollision()
 	{
 		Vector3 v1 = launcher.transform.right.normalized;
 		Vector3 v2 = -launcher.transform.right.normalized;
 
-		Vector3 p1 = launcher.transform.position + v1*0.27f; //0.27 es el radio de las bolitas
-		Vector3 p2 = launcher.transform.position + v2*0.27f; //0.27 es el radio de las bolitas
+		Vector3 p1 = launcher.transform.position + v1*ballRadius;
+		Vector3 p2 = launcher.transform.position + v2*ballRadius;
 
 		RaycastHit hit;
 		Ray ray = new Ray(launcher.transform.position, launcher.transform.up);
 		Ray ray1 = new Ray(p1, launcher.transform.up);
 		Ray ray2 = new Ray(p2, launcher.transform.up);
 
-		//Comprobar raycast desde el centro del launcher contra los PlayingObjects
-		if(Physics.Raycast(ray, out hit, 100, layermask2)){
-			maxDist = Vector3.Distance(launcher.transform.position, hit.point);
-			bBounceOn=false;
-		}
+		float maxDist1=100000;
+		float maxDist2=100000;
+		float maxDist3=100000;
+		float maxDist4=100000;
+		maxDist = 0;
+		bool bHit=false;
+
 		//Comprobar raycast con un rayo desde la derecha del launcher contra los PlayingObjects
-		else if(Physics.Raycast(ray1, out hit, 100, layermask2)){
-			maxDist = Vector3.Distance(launcher.transform.position, hit.point);
+		if(Physics.Raycast(ray1, out hit, 100, layermask2)){
+			maxDist1 = Vector3.Distance(launcher.transform.position, hit.point) - 0.1f;
 			bBounceOn=false;
+			bHit=true;
 		}
 		//Comprobar raycast con un rayo desde la izquierda del launcher contra los PlayingObjects
-		else if(Physics.Raycast(ray2, out hit, 100, layermask2)){
-			maxDist = Vector3.Distance(launcher.transform.position, hit.point);
-			bBounceOn=false;
+		if(Physics.Raycast(ray2, out hit, 100, layermask2)){
+			maxDist2 = Vector3.Distance(launcher.transform.position, hit.point) - 0.1f;
+			bBounceOn = false;
+			bHit=true;
 		}
-		//Comprobar raycast desde el centro del launcher contra los Boundaries
-		else if(Physics.Raycast(ray, out hit, 100, layermask)){
-			maxDist = Vector3.Distance(launcher.transform.position, hit.point) - 0.27f;
-			offsetDist = (1-((maxDist/spacing)-(int)(maxDist/spacing)))*spacing;
-			Vector3 v = (launcher.transform.position - hit.point).normalized;
-			hitPoint = hit.point + v*0.27f;
-			hitNormal = hit.normal;
-			rayDirection = ray.direction;
-			bBounceOn=true;
+		//Comprobar raycast desde el centro del launcher contra los PlayingObjects
+		if(Physics.Raycast(ray, out hit, 100, layermask2)){
+			maxDist3 = Vector3.Distance(launcher.transform.position, hit.point) - 0.1f;
+			bBounceOn = false;
+			bHit=true;
 		}
-		else{
-			maxDist = 0;
-			bBounceOn=false;
+		if(!bHit){
+			//Comprobar raycast desde el centro del launcher contra los Boundaries
+			if(Physics.Raycast(ray, out hit, 100, layermask)){
+				maxDist4 = Vector3.Distance(launcher.transform.position, hit.point) - ballRadius;;
+				offsetDist = (1-((maxDist4/spacing)-(int)(maxDist4/spacing)))*spacing;
+				Debug.Log(offsetDist);
+				Vector3 v = (launcher.transform.position - hit.point).normalized;
+				hitPoint = hit.point + v*ballRadius;;
+				hitNormal = hit.normal;
+				rayDirection = ray.direction;
+				bBounceOn=true;
+			}
 		}
+		maxDist = Mathf.Min(maxDist1, Mathf.Min(maxDist2, Mathf.Min(maxDist3, maxDist4)));
+		if(maxDist>1000)
+			maxDist=0;
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
