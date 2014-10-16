@@ -89,30 +89,11 @@ public class LevelManager : MonoBehaviour
 				if (PlayerPrefs.GetInt ("Level") < levelNo) {
 					PlayerPrefs.SetInt ("Level", levelNo);
 				}
-				
-=======
-		if(PlayerPrefs.GetString("GameType").Equals("Normal")){
-			totalNumberOfRowsLeft = minimumNumberOfRows;
-			currentBalls = NumberOfBalls;
-			//setting the balls of the level
-			ballsManager.setBallsLeft(NumberOfBalls);
->>>>>>> .r169
-		}
-		scoreTextLabel = GameObject.Find("ScoreTextLabel").GetComponent<Text>();
+
 	}
 
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	internal void GameIsFinished()
-	{
-		gameState = GameState.GameFinish;
-		SoundFxManager.instance.themeMusic.volume *= .4f;
-		SoundFxManager.instance.Play(SoundFxManager.instance.levelClearSound);
-		winPop.GetComponent<PopUpMgr>().ShowPopUp();
-		PlayerPrefs.SetInt("STARS_" + levelNo, stars);
-		PlayerPrefs.SetInt("SCORE_" + levelNo, score);
-		//Invoke("LoadLevelAgain", 2f); 
-	}
+	
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
