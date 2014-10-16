@@ -25,8 +25,8 @@ public class ObjectFormationPattern : MonoBehaviour
     int x;
     int y;
 
-	void Awake () 
-    {
+	void Awake() 
+   {
         type = LevelManager.patternType;
         instance = this;
 	
@@ -34,70 +34,65 @@ public class ObjectFormationPattern : MonoBehaviour
 
     //New Playing object is added to the game only if it returns TRUE 
     internal bool ShouldAddObject(int _columnNo,int _rowNo)
-    {
+   {
         x = _columnNo;
         y = _rowNo;
 
-      
-
-        if (type == PatternType.ZigZag1)
+        if(type == PatternType.ZigZag1)
             return ZigZag(2);
-        if (type == PatternType.ZigZag2)
+        if(type == PatternType.ZigZag2)
             return ZigZag(3);
-        if (type == PatternType.ZigZag3)
+        if(type == PatternType.ZigZag3)
             return ZigZag(4);
-
-        if (type == PatternType.Net1)
+        if(type == PatternType.Net1)
             return Net1();
-        if (type == PatternType.Net2)
+        if(type == PatternType.Net2)
             return Net2();
-        if (type == PatternType.Net3)
+        if(type == PatternType.Net3)
             return Net3();
-        if (type == PatternType.Net4)
+        if(type == PatternType.Net4)
             return Net4();
-
-		if (type == PatternType.TextLevel)
+		if(type == PatternType.TextLevel)
 			return TextLevelLoad();
 
         return true;
-        
     }
 
     bool Net4()
-    {
-        if (x % 3 == 0 || y % 3 == 0)
+   {
+        if(x % 3 == 0 || y % 3 == 0)
             return true;
         else
             return false;
     }
 
     bool Net3()
-    {
-        if (x % 2 == 0 || y % 3 == 0)
+   {
+        if(x % 2 == 0 || y % 3 == 0)
             return true;
         else
             return false;
     }
 
     bool Net2()
-    {
-        if (x % 3 == 0 || y % 2 == 0)
+   {
+        if(x % 3 == 0 || y % 2 == 0)
             return true;
         else
             return false;
     }
 
     bool Net1()
-    {
-        if (x % 2 == 0 || y % 2 == 0)
+   {
+        if(x % 2 == 0 || y % 2 == 0)
             return true;
         else
             return false;
     }
 
     private bool ZigZag(int factor)
-    {
-        if (x % factor == 0)
+   {
+        if(x % factor == 0)
             return true;
         else
             return false;
@@ -107,14 +102,14 @@ public class ObjectFormationPattern : MonoBehaviour
 	{
 		if(y%2==0 && x>8)
 		{
-			//On the unpairs files there are only 7 balls instead of 8 balls
+			//On the unpairs files there are only 9 balls instead of 10 balls
 			return false;
 		}
 
 		//Temp levelArray
 		List<List<string>> levelArray = LevelParser.instance.GetLevelArray();
 
-		if (!levelArray[y][x].Equals("-"))
+		if(!levelArray[y][x].Equals("-"))
 			return true;
 		else
 			return false;

@@ -15,7 +15,7 @@ public class PlayingObjectGeneration : MonoBehaviour
 	Transform thresoldLineTransform;
 	public static bool isBusy = false;
 	float rowStartingPos;
-	float objectGenerationheight;
+	float objectGenerationHeight;
 	bool isStarting = true;
 
 	//Row ad for the top limit vars
@@ -36,13 +36,12 @@ public class PlayingObjectGeneration : MonoBehaviour
 	void Start()
 	{   
 		numberOfObjectsInARow = 10;
-		//limit = GameObject.Find("StickyBalls").transform;
-		//Checking for the GameType to put the correct number of rows per level
-		/*if(PlayerPrefs.GetString("GameType").Equals("Normal"))
 
-		numberOfObjectsInARow = 8;*/
-
-		objectGenerationheight = transform.position.y;
+		if(PlayerPrefs.GetString("GameType").Equals("Arcade")){
+			objectGenerationHeight = transform.position.y-objectGapY;
+		}else{
+			objectGenerationHeight = transform.position.y;
+		}
 		rowStartingPos = startingXPos;
 		isBusy = false;
 		thresoldLineTransform = GameObject.Find("Thresold Line").transform;
@@ -65,7 +64,6 @@ public class PlayingObjectGeneration : MonoBehaviour
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	//Ensures that there is atleast a minimum no of rows in the screen
 	internal void CheckForMinRowCount(GameObject bottomMostObject)
 	{
@@ -73,14 +71,14 @@ public class PlayingObjectGeneration : MonoBehaviour
 
 		if(bottomMostObject == null){
 			numberOfRowsPresent = 0;
-		} else
-			numberOfRowsPresent = Mathf.RoundToInt((objectGenerationheight - bottomMostObject.transform.position.y) / rowGap);
-
+		}else{
+			numberOfRowsPresent = Mathf.RoundToInt((objectGenerationHeight - bottomMostObject.transform.position.y) / rowGap);
+		}
 		rowCounter = numberOfRowsPresent;
 
-		if(rowCounter < Mathf.Min(6, LevelManager.minimumNumberOfRows) && LevelManager.instance.totalNumberOfRowsLeft > 0){
-				CancelInvoke("InitiateRowAdd");
-				InitiateRowAdd();
+		if(rowCounter < Mathf.Min(6, LevelManager.minimumNumberOfRows) /*&& LevelManager.instance.totalNumberOfRowsLeft > 0*/){
+			CancelInvoke("InitiateRowAdd");
+			InitiateRowAdd();
 		}
 	}
 	
@@ -92,63 +90,64 @@ public class PlayingObjectGeneration : MonoBehaviour
 
 		//Moving down the limiter 
 		if(PlayerPrefs.GetString("GameType").Equals("Normal") && rowAddCount > 14){
-				Invoke("MoveLimiter", .12f);
+			Invoke("MoveLimiter", .12f);
 		}
-
-		if(LevelManager.gameState == GameState.GameFinish || LevelManager.gameState == GameState.GameOver)
-				return;
-
+		if(LevelManager.gameState == GameState.GameFinish || LevelManager.gameState == GameState.GameOver){
+			return;
+		}
+		/*
 		if(LevelManager.instance.totalNumberOfRowsLeft == 0){
-				currentRowAddingInterval = LevelManager.rowAddingInterval;
-				//iTween.MoveBy(gameObject, new Vector3(0, -rowGap, 0), fallDownTime);
-				//Invoke("InitiateRowAdd", currentRowAddingInterval);
-				Invoke("CheckForGameOver", fallDownTime);
-				return;
+			currentRowAddingInterval = LevelManager.rowAddingInterval;
+			//iTween.MoveBy(gameObject, new Vector3(0, -rowGap, 0), fallDownTime);
+			//Invoke("InitiateRowAdd", currentRowAddingInterval);
+			Invoke("CheckForGameOver", fallDownTime);
+			return;
 		}
-
+		*/
 		if(isBusy){
-				Invoke("InitiateRowAdd", .1f);
-		} else{
-				StartCoroutine(AddRow());
+			Invoke("InitiateRowAdd", .1f);
+		}else{
+			StartCoroutine(AddRow());
 		}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Adds new row at top of the screen and move the objects down by rowgap
 	IEnumerator AddRow()
-	{        
+	{   
+		//Alternar 10 bolas en una fila y 9 bolas en la siguiente
+		if(PlayerPrefs.GetString("GameType").Equals("Arcade")){
+			if(numberOfRowsGenerated%2==0){
+				numberOfObjectsInARow=9;
+			}else{
+				numberOfObjectsInARow=10;
+			}
+		}
 		isBusy = true;
 		InGameScriptRefrences.playingObjectManager.topRowObjects = new PlayingObject[numberOfObjectsInARow];
 
-		float x;
-		if(rowStartingPos == startingXPos)
+		if(rowStartingPos == startingXPos){
 			rowStartingPos = startingXPos - objectGap * .5f;
-		else
+		}else{
 			rowStartingPos = startingXPos;
-
-		x = rowStartingPos;
-
-		//int objectCount = GetObjectCount();
-
+		}
+		float x = rowStartingPos;
 		numberOfRowsGenerated++;
 
-		GameObject tempObject;
-
-		for(int i = 0; i < numberOfObjectsInARow; i++){
-			//int index = Random.Range(0, objectCount);
+		for(int i=0; i<numberOfObjectsInARow; i++)
+		{
 			int index = Random.Range(0, 6); //Queremos un random de 0-5 pq tenemos 6 bolitas
 
 			if(PlayerPrefs.GetString("GameType").Equals("Normal")){
-				//Checking the unpair rows that only contains 8 object
+				//Checking the unpair rows that only contains 9 object
 				if(rowCounter % 2 == 1 || rowCounter % 2 == 0 && i <= 8){
-					//print(rowCounter + "|" + i);
 					index = LevelParser.instance.GetBallColor(rowCounter, i);
 				}
 			}
 			Vector3 pos = new Vector3(x, currentYPos, 0);
 
 			if(ObjectFormationPattern.instance.ShouldAddObject(i, rowCounter)){
-				tempObject = (GameObject)Instantiate(playingObjectsPrefabs[index], Vector3.zero, Quaternion.identity);
+				GameObject tempObject = (GameObject)Instantiate(playingObjectsPrefabs[index], Vector3.zero, Quaternion.identity);
 				tempObject.transform.parent = transform;
 				tempObject.transform.localPosition = pos;
 				tempObject.GetComponent<PlayingObject>().RefreshAdjacentObjectList();
@@ -156,27 +155,26 @@ public class PlayingObjectGeneration : MonoBehaviour
 			}
 			x -= objectGap;
 
-			if(i % 4 == 0)
+			if(i % 4 == 0){
 				yield return new WaitForSeconds(.02f);
+			}
 		}
-
 		isBusy = false;
 		iTween.Defaults.easeType = iTween.EaseType.linear;
-
 		currentYPos = numberOfRowsGenerated * rowGap;
-		iTween.MoveTo(gameObject, new Vector3(0, objectGenerationheight - currentYPos, 0), fallDownTime);
+		iTween.MoveTo(gameObject, new Vector3(0, objectGenerationHeight - currentYPos, 0), fallDownTime);
 
 		rowCounter++;
 		if(rowCounter >= LevelManager.minimumNumberOfRows){
-				currentRowAddingInterval = LevelManager.rowAddingInterval;
+			currentRowAddingInterval = LevelManager.rowAddingInterval;
+			fallDownTime = .5f;
+		}else{
+			currentRowAddingInterval = 0f;
+			if(isStarting){
+				fallDownTime = .2f;
+			}else{
 				fallDownTime = .5f;
-		} else{
-				currentRowAddingInterval = 0f;
-
-				if(isStarting)
-						fallDownTime = .2f;
-				else
-						fallDownTime = .5f;
+			}
 		}
 		LevelManager.instance.totalNumberOfRowsLeft--;
 		Invoke("InitiateRowAdd", currentRowAddingInterval);
