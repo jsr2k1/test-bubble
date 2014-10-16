@@ -95,15 +95,17 @@ public class PlayingObjectGeneration : MonoBehaviour
 		if(LevelManager.gameState == GameState.GameFinish || LevelManager.gameState == GameState.GameOver){
 			return;
 		}
-		/*
-		if(LevelManager.instance.totalNumberOfRowsLeft == 0){
-			currentRowAddingInterval = LevelManager.rowAddingInterval;
-			//iTween.MoveBy(gameObject, new Vector3(0, -rowGap, 0), fallDownTime);
-			//Invoke("InitiateRowAdd", currentRowAddingInterval);
-			Invoke("CheckForGameOver", fallDownTime);
-			return;
+
+		if(PlayerPrefs.GetString("GameType").Equals("Normal")){
+			if(LevelManager.instance.totalNumberOfRowsLeft == 0){
+				currentRowAddingInterval = LevelManager.rowAddingInterval;
+				//iTween.MoveBy(gameObject, new Vector3(0, -rowGap, 0), fallDownTime);
+				//Invoke("InitiateRowAdd", currentRowAddingInterval);
+				Invoke("CheckForGameOver", fallDownTime);
+				return;
+			}
 		}
-		*/
+
 		if(isBusy){
 			Invoke("InitiateRowAdd", .1f);
 		}else{

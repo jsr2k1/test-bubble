@@ -110,6 +110,7 @@ public class StrikerManager : MonoBehaviour
 		strikerScript.currentStrikerObject = currentStrikerObject;
 		GenerateNextStriker();   
 		SaveBallsID();
+		inputScript.CheckColor();
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -138,7 +139,7 @@ public class StrikerManager : MonoBehaviour
 		}
 		//ARCADE MODE
 		else{
-			index = Random.Range(0, 5);
+			index = isSwap ? currentStrikerBallID : Random.Range(0,6);
 			nextStrikerObject = (GameObject)Instantiate(InGameScriptRefrences.playingObjectGeneration.playingObjectsPrefabs[index], nextStrikerPosition.position, Quaternion.identity);
 		}
 

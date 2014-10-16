@@ -248,7 +248,6 @@ public class InputScript : MonoBehaviour
 			if(Physics.Raycast(ray, out hit, 100, layermask)){
 				maxDist4 = Vector3.Distance(launcher.transform.position, hit.point) - ballRadius;;
 				offsetDist = (1-((maxDist4/spacing)-(int)(maxDist4/spacing)))*spacing;
-				Debug.Log(offsetDist);
 				Vector3 v = (launcher.transform.position - hit.point).normalized;
 				hitPoint = hit.point + v*ballRadius;;
 				hitNormal = hit.normal;
