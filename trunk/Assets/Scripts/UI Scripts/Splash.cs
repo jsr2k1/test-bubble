@@ -4,15 +4,16 @@ using System.Collections;
 public class Splash : MonoBehaviour
 {
 	public float timer;
+	public static Sprite spriteIMG;
 
 	void Start()
 	{
 		StartCoroutine("DisplayScene");
 
-		//PlayerPrefs.DeleteAll();
+		PlayerPrefs.DeleteAll();
 
 		if(PlayerPrefs.HasKey("Music")==false){
-			PlayerPrefs.SetInt("Music", 1);
+			PlayerPrefs.SetInt("Music", 0);
 		}
 		if(PlayerPrefs.HasKey("Sounds")==false){
 			PlayerPrefs.SetInt("Sounds", 1);
@@ -39,6 +40,7 @@ public class Splash : MonoBehaviour
 			PlayerPrefs.SetInt("Lifes", 5);
 		}
 
+		FB.Init(OnInitComplete);
 
 	}
 	
@@ -50,6 +52,10 @@ public class Splash : MonoBehaviour
 		Application.LoadLevel(1);
 	}
 
+	private void OnInitComplete()
+	{
+		Debug.Log("FB.Init completed: Is user logged in? " + FB.IsLoggedIn);
+	}
 }
 
 

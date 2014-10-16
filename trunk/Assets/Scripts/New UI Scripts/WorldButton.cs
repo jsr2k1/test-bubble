@@ -11,6 +11,7 @@ public class WorldButton : MonoBehaviour
 	public Image star1;
 	public Image star2;
 	public Image star3;
+	public Image ProfileImg;
 	Button button;
 
 	void Awake ()
@@ -54,6 +55,13 @@ public class WorldButton : MonoBehaviour
 			stars.transform.parent = transform;
 			stars.transform.localPosition = new Vector3 (0, 36, 0);
 			stars.transform.localScale = new Vector3 (0.8f, 0.8f, 1.0f);
+		}
+
+
+		if (gameObject.name == (PlayerPrefs.GetInt("Level")+1).ToString()){
+			//ProfileImg.transform.parent = transform;
+			ProfileImg.transform.position = transform.position +  new Vector3 (40, 60, 0);
+			ProfileImg.transform.localScale = new Vector3 (0.8f, 0.8f, 1.0f);
 		}
 	}
 

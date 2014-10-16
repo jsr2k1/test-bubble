@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedAppIndex: 0
   appIds:
-  - 0
+  - 730922200278965
   appLabels:
-  - App Name
+  - Bubble Paradise 2
   cookie: 1
   logging: 1
   status: 1

@@ -39,7 +39,8 @@ public class LevelManager : MonoBehaviour
 	public Image star3;
 	int stars = 0;
 
-	public Slider slider;
+		public Text levelText1;
+		public Text levelText2;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -51,19 +52,51 @@ public class LevelManager : MonoBehaviour
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	void Start()
-	{
-		//Camera.main.aspect = .666f;
-		gameState = GameState.Start;
-		rowAddingInterval = Mathf.Max(1, rowAddingInterval);
-		minimumNumberOfRows = Mathf.Max(1, minimumNumberOfRows);
-		totalNumberOfRowsLeft = Mathf.Max(minimumNumberOfRows, totalNumberOfRowsLeft);
+		void Start ()
+		{
+				//Camera.main.aspect = .666f;
+				gameState = GameState.Start;
+				rowAddingInterval = Mathf.Max (1, rowAddingInterval);
+				minimumNumberOfRows = Mathf.Max (1, minimumNumberOfRows);
+				totalNumberOfRowsLeft = Mathf.Max (minimumNumberOfRows, totalNumberOfRowsLeft);
 
+				if (PlayerPrefs.GetString ("GameType").Equals ("Normal")) {
+						totalNumberOfRowsLeft = minimumNumberOfRows;
+						currentBalls = NumberOfBalls;
+						//setting the balls of the level
+						ballsManager.setBallsLeft (NumberOfBalls);
+				}
+				scoreTextLabel = GameObject.Find ("ScoreTextLabel").GetComponent<Text> ();
+				levelText1.text = "Level " + levelNo;
+				levelText2.text = "Level " + levelNo;
+		}
+	
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		internal void GameIsFinished ()
+		{
+				gameState = GameState.GameFinish;
+				SoundFxManager.instance.themeMusic.volume *= .4f;
+				SoundFxManager.instance.Play (SoundFxManager.instance.levelClearSound);
+				winPop.GetComponent<PopUpMgr> ().ShowPopUp ();
+
+				
+				if (PlayerPrefs.GetInt ("SCORE_" + levelNo) < score || !PlayerPrefs.HasKey("SCORE_" + levelNo)) {
+					PlayerPrefs.SetInt ("STARS_" + levelNo, stars);
+					PlayerPrefs.SetInt ("SCORE_" + levelNo, score);
+				}
+
+				if (PlayerPrefs.GetInt ("Level") < levelNo) {
+					PlayerPrefs.SetInt ("Level", levelNo);
+				}
+				
+=======
 		if(PlayerPrefs.GetString("GameType").Equals("Normal")){
 			totalNumberOfRowsLeft = minimumNumberOfRows;
 			currentBalls = NumberOfBalls;
 			//setting the balls of the level
 			ballsManager.setBallsLeft(NumberOfBalls);
+>>>>>>> .r169
 		}
 		scoreTextLabel = GameObject.Find("ScoreTextLabel").GetComponent<Text>();
 	}

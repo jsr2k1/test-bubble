@@ -8,6 +8,6 @@ public class LifesText : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		lifes.text = "Lifes: " + PlayerPrefs.GetInt ("Lifes");
+		lifes.text = PlayerPrefs.GetInt ("Lifes").ToString();
 	}
 }
