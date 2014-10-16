@@ -67,14 +67,16 @@ public class WorldButton : MonoBehaviour
 
 	public void ButtonPressed ()
 	{
-		PlayerPrefs.SetString ("GameType", "Normal");
-		LevelManager.patternType = PatternType.TextLevel;
-		LevelParser.instance.LoadTextLevel (int.Parse (name), ActualWorld);
+		if (PlayerPrefs.GetInt("Lifes")>0){
+			PlayerPrefs.SetString ("GameType", "Normal");
+			LevelManager.patternType = PatternType.TextLevel;
+			LevelParser.instance.LoadTextLevel (int.Parse (name), ActualWorld);
 
-		LevelManager.NumberOfBalls = numberBalls;
-		LevelManager.ReferenceScore = refScore;
-		LevelManager.rowAddingInterval = 1;
-		LevelManager.levelNo = int.Parse (name);
-		Application.LoadLevel (3);
+			LevelManager.NumberOfBalls = numberBalls;
+			LevelManager.ReferenceScore = refScore;
+			LevelManager.rowAddingInterval = 1;
+			LevelManager.levelNo = int.Parse (name);
+			Application.LoadLevel (3);
+		}
 	}
 }

@@ -8,12 +8,10 @@ public class Splash : MonoBehaviour
 
 	void Start()
 	{
-		PlayerPrefs.DeleteAll ();
-
 		StartCoroutine("DisplayScene");
 
 		if(!PlayerPrefs.HasKey("Lifes")){
-			PlayerPrefs.SetInt("Lifes", 2);
+			PlayerPrefs.SetInt("Lifes", 3);
 		}
 
 		if(PlayerPrefs.HasKey("Music")==false){

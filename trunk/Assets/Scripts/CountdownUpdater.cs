@@ -13,7 +13,6 @@ public class CountdownUpdater : MonoBehaviour {
 	}
 
 	void Update () {
-		Debug.Log (lifeManager.countdown);
 		contador.text = lifeManager.countdown;
 	}
 }
