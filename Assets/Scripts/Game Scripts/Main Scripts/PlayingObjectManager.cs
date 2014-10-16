@@ -241,11 +241,13 @@ public class PlayingObjectManager : MonoBehaviour
 		{
 			float currentY = InGameScriptRefrences.playingObjectGeneration.gameObject.transform.position.y;
 
-			//El limite superior nos marca la distancia que podemos bajar todas las bolas
+			//Las bolas estan demasiado altas -> las bajamos
+			//El limite SUPERIOR nos marca la distancia que podemos bajar todas las bolas
 			if(distTop < distBottom){
 				iTween.MoveTo(InGameScriptRefrences.playingObjectGeneration.gameObject, new Vector3(0, currentY-distTop, 0), InGameScriptRefrences.playingObjectGeneration.fallDownTime);
 			}
 			//Las bolas estan demasiado altas -> las bajamos
+			//El limite INFERIOR nos marca la distancia que podemos bajar todas las bolas
 			else if(distBottom > 0.05f){
 				iTween.MoveTo(InGameScriptRefrences.playingObjectGeneration.gameObject, new Vector3(0, currentY-distBottom, 0), InGameScriptRefrences.playingObjectGeneration.fallDownTime);
 			}

@@ -24,7 +24,7 @@ public class LoadModeButton : MonoBehaviour
 		
 		LevelManager.minimumNumberOfRows = 3 + val;
 		//LevelManager.rowAddingInterval = 9 - val;
-		LevelManager.rowAddingInterval = 1;
+		LevelManager.rowAddingInterval = 8;
 		
 		LevelManager.levelNo = levelNo;
 		Application.LoadLevel (3);

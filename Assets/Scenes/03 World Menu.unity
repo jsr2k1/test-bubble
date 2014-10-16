@@ -3862,6 +3862,10 @@ Prefab:
       propertyPath: m_Interactable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: numberBalls
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
@@ -10607,7 +10611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 20
+  numberBalls: 200
   ActualWorld: 1
   refScore: 0
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
@@ -11690,6 +11694,22 @@ Prefab:
     - target: {fileID: 11400018, guid: b355caa85febe0b49976078d576eda4f, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: b355caa85febe0b49976078d576eda4f, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: b355caa85febe0b49976078d576eda4f, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400022, guid: b355caa85febe0b49976078d576eda4f, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400022, guid: b355caa85febe0b49976078d576eda4f, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400012, guid: b355caa85febe0b49976078d576eda4f, type: 2}
