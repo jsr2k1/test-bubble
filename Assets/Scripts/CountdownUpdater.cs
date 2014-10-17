@@ -1,18 +1,28 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
 public class CountdownUpdater : MonoBehaviour {
 	
 	public Text contador;
-
 	LifeManager lifeManager;
 
-	void Awake (){
-		lifeManager = GameObject.Find ("LifeMgr").GetComponent<LifeManager> ();
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	void Awake()
+	{
+		GameObject go = GameObject.Find("LifeMgr");
+		if(go!=null){
+			lifeManager = go.GetComponent<LifeManager>();
+		}
 	}
 
-	void Update () {
-		contador.text = lifeManager.countdown;
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	void Update()
+	{
+		if(lifeManager!=null){
+			contador.text = lifeManager.countdown;
+		}
 	}
 }

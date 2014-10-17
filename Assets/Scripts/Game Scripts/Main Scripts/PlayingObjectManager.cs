@@ -150,8 +150,12 @@ public class PlayingObjectManager : MonoBehaviour
 		UpdatePlayingObjectsList();
 
 		for(int i = 0; i < allPlayingObjectScripts.Length; i++) {
-			if(allPlayingObjectScripts[i]!=null)
+			if(allPlayingObjectScripts[i]!=null){
 				allPlayingObjectScripts[i].Reset();
+				//En el modo Arcade, los vecinos de cada bola no se asignan correctamente
+				//Hacemos otra reasignacion para solucionarlo
+				allPlayingObjectScripts[i].RefreshAdjacentObjectList();
+			}
 		}
 		if(allPlayingObjectScripts.Length == 10 && LevelManager.instance.totalNumberOfRowsLeft == 0){
 			LevelManager.instance.GameIsFinished();

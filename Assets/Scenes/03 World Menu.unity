@@ -838,6 +838,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1138782989}
@@ -1837,7 +1841,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2036,7 +2040,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2440,6 +2444,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 2020869904}
@@ -2532,6 +2540,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 768572004}
@@ -2704,6 +2716,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 288755016}
@@ -2901,7 +2917,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3252,7 +3268,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3473,7 +3489,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3868,7 +3884,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3968,6 +3984,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1628641241}
@@ -4064,6 +4084,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
@@ -4362,6 +4386,10 @@ Prefab:
       propertyPath: m_Name
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 2113044715}
@@ -4609,6 +4637,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 843548010}
@@ -5579,7 +5611,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5770,6 +5802,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 976492919}
@@ -6051,7 +6087,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -6889,7 +6925,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -7384,7 +7420,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -7484,6 +7520,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 925507851}
@@ -8379,6 +8419,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1149014467}
@@ -8728,7 +8772,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -8940,7 +8984,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -10020,7 +10064,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -11057,6 +11101,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 417028906}
@@ -11189,7 +11237,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -11831,6 +11879,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 559597261}
@@ -11963,7 +12015,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -12660,6 +12712,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1836516572}
@@ -13075,7 +13131,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -13260,6 +13316,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1306815260}
@@ -13352,6 +13412,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 445548383}
@@ -13484,7 +13548,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -13824,6 +13888,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1866394745}
@@ -14293,6 +14361,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 390089416}
@@ -14725,7 +14797,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -14946,7 +15018,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -15145,6 +15217,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 255053423}
@@ -15237,6 +15313,10 @@ Prefab:
       propertyPath: ProfileImg
       value: 
       objectReference: {fileID: 654491542}
+    - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 2008707662}
@@ -15503,7 +15583,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: .588}
   m_Sprite: {fileID: 21300000, guid: 9719b92e4da0a194c86c96ab69aa60ba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
