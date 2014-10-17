@@ -83,7 +83,7 @@ public class IAPManager : MonoBehaviour
 	
 	private void createdCallback (bool succeeded)
 	{
-		Debug.Log ("InAppPurchaseManager: " + succeeded);
+		//Debug.Log ("InAppPurchaseManager: " + succeeded);
 		InAppPurchaseManager.MainInAppAPI.AwardInterruptedPurchases (awardInterruptedPurchases);
 	}
 	
