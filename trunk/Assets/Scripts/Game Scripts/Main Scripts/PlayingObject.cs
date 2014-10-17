@@ -57,9 +57,9 @@ public class PlayingObject : MonoBehaviour
 		for(int i = 0; i < numberOfAdjacentObjects; i++)
 		{
 			PlayingObject temp = GetObjectInTheDirection(adjacentObjectAngles[i]);
-			adjacentPlayingObjects[i] = temp;
 
 			if(temp != null){
+				adjacentPlayingObjects[i] = temp;
 				if(i < 3){
 					temp.adjacentPlayingObjects[i + 3] = this;
 				}else{
@@ -74,7 +74,7 @@ public class PlayingObject : MonoBehaviour
 	PlayingObject GetObjectInTheDirection(float angle)
 	{
 		RaycastHit hit;
-		float maxDistance = .6f;
+		float maxDistance = .4f;
 
 		float radAngle = angle * Mathf.Deg2Rad;
 

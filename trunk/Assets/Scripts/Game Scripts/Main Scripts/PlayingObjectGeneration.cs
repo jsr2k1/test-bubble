@@ -87,15 +87,16 @@ public class PlayingObjectGeneration : MonoBehaviour
 	void InitiateRowAdd()
 	{
 		rowAddCount++;
-
+		
+		//No se usa? --> joel
+		/*
 		//Moving down the limiter 
 		if(PlayerPrefs.GetString("GameType").Equals("Normal") && rowAddCount > 14){
 			Invoke("MoveLimiter", .12f);
-		}
+		}*/
 		if(LevelManager.gameState == GameState.GameFinish || LevelManager.gameState == GameState.GameOver){
 			return;
 		}
-
 		if(PlayerPrefs.GetString("GameType").Equals("Normal")){
 			if(LevelManager.instance.totalNumberOfRowsLeft == 0){
 				currentRowAddingInterval = LevelManager.rowAddingInterval;
@@ -105,7 +106,6 @@ public class PlayingObjectGeneration : MonoBehaviour
 				return;
 			}
 		}
-
 		if(isBusy){
 			Invoke("InitiateRowAdd", .1f);
 		}else{
@@ -212,11 +212,11 @@ public class PlayingObjectGeneration : MonoBehaviour
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	/* no se usa? --> joel
 	private void MoveLimiter()
 	{
 		//limit.Translate(Vector3.down * 0.6f);
-	}
+	}*/
 }
 
 

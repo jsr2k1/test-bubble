@@ -17,6 +17,8 @@ public class LevelEditor : MonoBehaviour
 	public Text textNumColor;
 	public Text textNumLevel;
 
+	public ToggleGroup toggleColors;
+
 	int[,] currentLevel;
 	int numRows=13;
 	int numCols=10;
@@ -58,18 +60,15 @@ public class LevelEditor : MonoBehaviour
 	// Si se pulsa un boton vacio, entonces ponemos una bola random. Si el boton esta lleno, se vacia.
 	public void LevelButtonPressed()
 	{
-		int numColor = ParseColor(textNumColor.text);
-		if(numColor<1){
-			return;
-		}
-		Image imageComponent = eventSystem.currentSelectedObject.GetComponent<Image>();
-		Text textComponent = eventSystem.currentSelectedObject.transform.GetChild(0).GetComponent<Text>();
+		Image imageComponent = eventSystem.currentSelectedGameObject.GetComponent<Image>();
+		Text textComponent = eventSystem.currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>();
 
 		int i,j;
 		ParseButton(textComponent.text, out i, out j);
 
 		if(currentLevel[i,j] < 0){
-			int index = UnityEngine.Random.Range(0,numColor);
+			int index = GetColor();
+			if(index<0) return;
 			imageComponent.sprite = ballColors[index];
 			imageComponent.color = new Color(1,1,1,1f);
 			currentLevel[i,j] = index;
@@ -77,6 +76,23 @@ public class LevelEditor : MonoBehaviour
 			imageComponent.sprite = spriteEmpty;
 			imageComponent.color = new Color(1,1,1,0.2f);
 			currentLevel[i,j] = -1;
+		}
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Si esta pulsado algun boton de color, devolvemos el indice del color
+	//Si esta pulsado el boton de random, devolvemos un color aleatorio
+	int GetColor()
+	{
+		int numColors = ParseNumColors(textNumColor.text);
+		if(numColors<1){
+			return -1;
+		}
+		int nColor = int.Parse(toggleColors.ActiveToggles().First().name);
+		if(nColor==0){
+			return UnityEngine.Random.Range(0,numColors);
+		}else{
+			return nColor-1;
 		}
 	}
 
@@ -109,7 +125,7 @@ public class LevelEditor : MonoBehaviour
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	int ParseColor(string sColor)
+	int ParseNumColors(string sColor)
 	{
 		//Do some checks
 		int res;
@@ -117,12 +133,12 @@ public class LevelEditor : MonoBehaviour
 			Debug.Log("El numero de colores es incorrecto");
 			return -1;
 		}
-		int numColor = int.Parse(textNumColor.text);
-		if(numColor<1 || numColor>6){
+		int numColors = int.Parse(textNumColor.text);
+		if(numColors<1 || numColors>6){
 			Debug.Log("El numero tiene que ser entre 1 y 6");
 			return -1;
 		}
-		return numColor;
+		return numColors;
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
