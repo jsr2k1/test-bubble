@@ -2,19 +2,52 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class FacebookBubble : MonoBehaviour {
-
+public class FacebookBubble : MonoBehaviour
+{
 	public Image profilePic;
+	Button facebookButton;
+	Image facebookImage;
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void Awake()
+	{
+		facebookButton = GetComponent<Button>();
+		facebookImage = GetComponent<Image>();
+		
+		if(FB.IsLoggedIn){
+			facebookButton.enabled=false;
+			facebookImage.enabled=false;
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+	void Update()
+	{
+		if(FB.IsLoggedIn && facebookButton.enabled){
+			facebookButton.enabled=false;
+			facebookImage.enabled=false;
+		}
+		
+		if(!FB.IsLoggedIn && !facebookButton.enabled){
+			facebookButton.enabled=true;
+			facebookImage.enabled=true;
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void loginfacebook()
 	{
 		FB.Login("email", AuthCallback);
 	}
 
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-	void AuthCallback(FBResult result) {
-		if(FB.IsLoggedIn) {
+	void AuthCallback(FBResult result)
+	{
+		if(FB.IsLoggedIn){
 			Debug.Log(FB.UserId);
 			//StartCoroutine("OnLoggedIn"); 
 		} else {
@@ -22,7 +55,8 @@ public class FacebookBubble : MonoBehaviour {
 		}
 	}                                                                                     
 
-
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	/*
 	IEnumerator OnLoggedIn()
 
