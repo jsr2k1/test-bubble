@@ -11,23 +11,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0c0342116464e26abb476a494c827a, type: 3}
   m_Name: GA_Settings
   m_EditorClassIdentifier: 
-  TotalMessagesSubmitted: 1
-  TotalMessagesFailed: 5
-  DesignMessagesSubmitted: 1
-  DesignMessagesFailed: 0
+  TotalMessagesSubmitted: 12
+  TotalMessagesFailed: 62
+  DesignMessagesSubmitted: 12
+  DesignMessagesFailed: 1
   QualityMessagesSubmitted: 0
   QualityMessagesFailed: 0
   ErrorMessagesSubmitted: 0
-  ErrorMessagesFailed: 5
+  ErrorMessagesFailed: 61
   BusinessMessagesSubmitted: 0
   BusinessMessagesFailed: 0
   UserMessagesSubmitted: 0
   UserMessagesFailed: 0
   CustomArea: 
   TrackTarget: {fileID: 0}
-  GameKey: 7f03c148905fd3e688a3b1d0264b1add
-  SecretKey: 1b33cc3514016a45ed38a2a5ddcf51646e9b768e
-  ApiKey: 5147d393b6eda3856d565bf67739f28d70446a86
+  GameKey: 02fb57ac8008da87f0c5c9494904fe2f
+  SecretKey: 679c49fe2d1beea7c175acc363ea0f62cafd230d
+  ApiKey: c89d9e1c620fe30181512bd9039f7b51f332de66
   Build: 0.1
   SignUpOpen: 0
   FirstName: 
@@ -36,7 +36,7 @@ MonoBehaviour:
   GameName: Bubble Paradise 2
   PasswordConfirm: 
   EmailOptIn: 1
-  EmailGA: smartinez@aratingastudios.com
+  EmailGA: aratingadevelopers@gmail.com
   IntroScreen: 0
   DebugMode: 1
   DebugAddEvent: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
   CB_foldout: 1
   CB_appID: 
   CB_appSig: 
-  CurrentInspectorState: 1
+  CurrentInspectorState: 4
   ClosedHints: 
   DisplayHints: 0
   DisplayHintsScrollState: {x: 0, y: 0}
