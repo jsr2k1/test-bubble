@@ -21,7 +21,7 @@ public class FacebookRequest : MonoBehaviour
 	//Texture2D lastResponseTexture;
 	string lastResponse = "";
 	
-	bool showDebug=true;
+	bool showDebug=false;
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -70,7 +70,7 @@ public class FacebookRequest : MonoBehaviour
 			}
 			//Invitar amigos
 			else{
-				FriendSelectorFilters = "[\"no_app_users\"]";
+				FriendSelectorFilters = "[\"app_non_users\"]";
 			}
 			CallAppRequestAsFriendSelector();
 			status = "Friend Selector called";

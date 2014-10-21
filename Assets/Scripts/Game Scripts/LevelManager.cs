@@ -93,6 +93,9 @@ public class LevelManager : MonoBehaviour
 
 	internal void GameIsOver()
 	{	
+		if(gameState != GameState.Start){
+			return;
+		}
 		gameState = GameState.GameOver;
 		InGameScriptRefrences.playingObjectManager.FallAllPlayingObjects();
 		SoundFxManager.instance.themeMusic.volume *= .4f;

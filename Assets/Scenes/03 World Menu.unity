@@ -3867,6 +3867,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ButtonPressed
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: numberBalls
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 2113044715}
