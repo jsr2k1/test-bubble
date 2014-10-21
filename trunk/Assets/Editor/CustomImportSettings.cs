@@ -13,6 +13,7 @@ public class CustomImportSettings : AssetPostprocessor
 		{
 			textureImporter.textureType = TextureImporterType.Sprite;
 			textureImporter.textureFormat = TextureImporterFormat.AutomaticTruecolor;
+			textureImporter.generateMipsInLinearSpace = false;
 		}
 	}
 	
