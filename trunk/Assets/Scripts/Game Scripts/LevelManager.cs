@@ -106,7 +106,8 @@ public class LevelManager : MonoBehaviour
 		SoundFxManager.instance.themeMusic.volume *= .4f;
 		loosePop.GetComponent<PopUpMgr>().ShowPopUp();
 		Invoke("PlayLevelFailSound", .2f);
-		PlayerPrefs.SetInt ("Lifes", PlayerPrefs.GetInt("Lifes") - 1 );
+		LivesManager.lives--;
+		//PlayerPrefs.SetInt("Lives", PlayerPrefs.GetInt("Lives") - 1 );
 		//Invoke("LoadLevelAgain", 3f);
 	}
 
