@@ -66,7 +66,7 @@ public class LifeManager : MonoBehaviour
 
 			countdown = t.Minutes.ToString ("00") + ":" + t.Seconds.ToString ("00");
 
-			if (seconds < 300) {
+			if (seconds < secondsToLife) {
 				seconds = seconds + 1;
 
 			} else {
