@@ -10,6 +10,8 @@ public class Splash : MonoBehaviour
 	{
 		StartCoroutine("DisplayScene");
 
+		PlayerPrefs.DeleteAll ();
+
 		if(!PlayerPrefs.HasKey("Lifes")){
 			PlayerPrefs.SetInt("Lifes", 3);
 		}
