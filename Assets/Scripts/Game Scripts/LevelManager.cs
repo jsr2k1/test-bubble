@@ -37,10 +37,15 @@ public class LevelManager : MonoBehaviour
 	public Image star1;
 	public Image star2;
 	public Image star3;
+	public Image star11;
+	public Image star22;
+	public Image star33;
 	int stars = 0;
 
 	public Text levelText1;
 	public Text levelText2;
+
+	public Slider slider;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -132,18 +137,21 @@ public class LevelManager : MonoBehaviour
 
 		if(score > 0.5 * ReferenceScore){
 			star1.GetComponent<Image>().enabled = true;
+			star11.GetComponent<Image>().enabled = true;
 			stars = 1;
 		}
 		if(score > 0.75 * ReferenceScore){
 			star2.GetComponent<Image>().enabled = true;
+			star22.GetComponent<Image>().enabled = true;
 			stars = 2;
 		}
 		if(score > ReferenceScore){
 			star3.GetComponent<Image>().enabled = true;
+			star33.GetComponent<Image>().enabled = true;
 			stars = 3;
 		}
 
-		//slider.value =(float) score /(float) ReferenceScore;
+		slider.value = ((float) score /(float) ReferenceScore);
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
