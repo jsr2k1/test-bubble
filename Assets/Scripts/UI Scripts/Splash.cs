@@ -5,17 +5,16 @@ public class Splash : MonoBehaviour
 {
 	public float timer;
 	public static Sprite spriteIMG;
+	public bool bDeleteAllKeys; //debug
 
-	void Start()
+	void Awake()
 	{
-		StartCoroutine("DisplayScene");
-
-		PlayerPrefs.DeleteAll ();
-
-		if(!PlayerPrefs.HasKey("Lifes")){
-			PlayerPrefs.SetInt("Lifes", 3);
+		if(bDeleteAllKeys){
+			PlayerPrefs.DeleteAll();
 		}
-
+		if(!PlayerPrefs.HasKey("Lives")){
+			PlayerPrefs.SetInt("Lives", 5);
+		}
 		if(PlayerPrefs.HasKey("Music")==false){
 			PlayerPrefs.SetInt("Music", 0);
 		}
@@ -42,7 +41,8 @@ public class Splash : MonoBehaviour
 		}
 
 		FB.Init(OnInitComplete);
-
+		
+		StartCoroutine("DisplayScene");
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,9 +52,14 @@ public class Splash : MonoBehaviour
 		yield return new WaitForSeconds(timer);
 		Application.LoadLevel(1);
 	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	private void OnInitComplete()
 	{
 		Debug.Log("FB.Init completed: Is user logged in? " + FB.IsLoggedIn);
 	}
 }
+
+
+
