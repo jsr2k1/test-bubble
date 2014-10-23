@@ -23,7 +23,7 @@ public class LivesManager : MonoBehaviour
 	void Update()
 	{
 		if(lives>=5){
-			sCountdown = "LLENO";
+			sCountdown = "FULL";
 			seconds=0;
 			return;
 		}
