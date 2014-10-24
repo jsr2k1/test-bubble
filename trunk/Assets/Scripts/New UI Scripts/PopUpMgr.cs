@@ -51,6 +51,11 @@ public class PopUpMgr : MonoBehaviour
 		Application.LoadLevel(2);
 	}
 
+	public void RetryArcadeLevel()
+	{
+		Application.LoadLevel(4);
+	}
+
 	public void RetryLevel()
 	{
 		Application.LoadLevel(3);
