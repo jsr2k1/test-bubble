@@ -13,7 +13,7 @@ public class Splash : MonoBehaviour
 			PlayerPrefs.DeleteAll();
 		}
 		if(!PlayerPrefs.HasKey("Lives")){
-			PlayerPrefs.SetInt("Lives", 5);
+			PlayerPrefs.SetInt("Lives", 4);
 		}
 		if(PlayerPrefs.HasKey("Music")==false){
 			PlayerPrefs.SetInt("Music", 0);

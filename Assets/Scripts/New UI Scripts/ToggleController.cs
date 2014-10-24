@@ -7,6 +7,9 @@ public class ToggleController : MonoBehaviour, IPointerClickHandler
 {
 	public void OnPointerClick(PointerEventData data)
 	{
-		audio.Play();
+		int i = PlayerPrefs.GetInt("Sounds");
+		if(i>0){
+			audio.Play();
+		}
 	}
 }
