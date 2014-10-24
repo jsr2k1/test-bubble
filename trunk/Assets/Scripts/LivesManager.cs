@@ -16,6 +16,20 @@ public class LivesManager : MonoBehaviour
 	{
 		DontDestroyOnLoad(gameObject);
 		UpdateCurrentTime();
+		CheckLives();
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Si el usuario ha cerrado la aplicacion durante una partida debe perder una vida
+	void CheckLives()
+	{
+		if(!PlayerPrefs.HasKey("bPlaying")){
+			PlayerPrefs.SetInt("bPlaying", 0);
+		}
+		else if(PlayerPrefs.GetInt("bPlaying") == 1){
+			lives--;
+			PlayerPrefs.SetInt("bPlaying", 0);
+		}
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -84,7 +98,7 @@ public class LivesManager : MonoBehaviour
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+	//Parece que no funciona en ANDROID
 	void OnApplicationQuit()
 	{
 		SaveCurrentTime();

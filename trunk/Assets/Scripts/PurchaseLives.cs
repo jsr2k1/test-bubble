@@ -4,29 +4,29 @@ using UnityEngine.UI;
 
 public class PurchaseLives : MonoBehaviour
 {
+	PopUpMgr LivesPopUp;
+	PopUpMgr ShopCoinsPopUp;
+	public Text coinstext;
 
-		PopUpMgr LivesPopUp;
-		PopUpMgr ShopCoinsPopUp;
-		public Text coinstext;
+	void Awake()
+	{
+		LivesPopUp = GameObject.Find("LivesPopUp").GetComponent<PopUpMgr>();
+		ShopCoinsPopUp = GameObject.Find("ShopCoinsPopUp").GetComponent<PopUpMgr>();
+	}
 
-		void Awake ()
+	public void purchaseLives()
+	{
+		if(LivesManager.lives < 5 && PlayerPrefs.GetInt("Coins") > 100)
 		{
-				LivesPopUp = GameObject.Find ("LivesPopUp").GetComponent<PopUpMgr> ();
-				ShopCoinsPopUp = GameObject.Find ("ShopCoinsPopUp").GetComponent<PopUpMgr> ();
-		}
+			LivesManager.lives = 5;
+			PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 100);
+			coinstext.text = PlayerPrefs.GetInt("Coins").ToString();
 
-		public void purchaseLives ()
+		}
+		else if(LivesManager.lives < 5 && PlayerPrefs.GetInt("Coins") < 100)
 		{
-				if (LivesManager.lives < 5 && PlayerPrefs.GetInt("Coins")>100) {
-
-						LivesManager.lives = 5;
-						PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins")-100);
-						coinstext.text = PlayerPrefs.GetInt("Coins").ToString();
-
-				} else if (LivesManager.lives < 5 && PlayerPrefs.GetInt("Coins")<100){
-
-						LivesPopUp.HidePopUp (false);
-						ShopCoinsPopUp.ShowPopUp ();
-				}
+			LivesPopUp.HidePopUp(false);
+			ShopCoinsPopUp.ShowPopUp();
 		}
+	}
 }

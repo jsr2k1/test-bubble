@@ -27,6 +27,9 @@ public class PopUpMgr : MonoBehaviour
 			if(LevelManager.instance!=null){
 				LevelManager.instance.pauseCtrlForced(GameState.Pause);
 			}
+			if(PlayerPrefs.GetInt("Sounds")==1){
+				audio.Play();
+			}
 		}
 	}
 
@@ -41,6 +44,9 @@ public class PopUpMgr : MonoBehaviour
 			if(bChangeState){
 				bExitPause=true;
 			}
+			if(PlayerPrefs.GetInt("Sounds")==1){
+				audio.Play();
+			}
 		}
 	}
 
@@ -48,21 +54,38 @@ public class PopUpMgr : MonoBehaviour
 
 	public void GoToWorlds()
 	{
+		if(PlayerPrefs.GetInt("Sounds")==1){
+			audio.Play();
+		}
+		PlayerPrefs.SetInt("bPlaying", 0);
 		Application.LoadLevel(2);
 	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void GoToMainMenu()
 	{
 		Application.LoadLevel(1);
 	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void RetryArcadeLevel()
 	{
+		if(PlayerPrefs.GetInt("Sounds")==1){
+			audio.Play();
+		}
 		Application.LoadLevel(4);
 	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void RetryLevel()
 	{
+		if(PlayerPrefs.GetInt("Sounds")==1){
+			audio.Play();
+		}
+		PlayerPrefs.SetInt("bPlaying", 1);
 		Application.LoadLevel(3);
 	}
 

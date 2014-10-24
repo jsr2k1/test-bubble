@@ -1,6 +1,7 @@
 ﻿////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //http://blog.bigfootgaming.net/custom-facebook-open-graph-objects-unity3d/
 //https://developers.facebook.com/docs/games/requests/v2.1#gifting
+//http://www.neatplug.com/integration-guide-unity3d-facebook-sns-plugin
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using UnityEngine;
@@ -8,6 +9,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 using System.Collections.Generic;
+using Facebook;
 
 public class FacebookRequest : MonoBehaviour
 {
@@ -22,6 +24,10 @@ public class FacebookRequest : MonoBehaviour
 	string FriendSelectorMessage = "Derp";
 	string FriendSelectorData = "{}";
 	string FriendSelectorTitle = "";
+	
+	List<object> FriendSelectorFiltersArr;
+	string[] excludeIds;
+	int? maxRecipients;
 	
 	//Texture2D lastResponseTexture;
 	string lastResponse = "";
@@ -65,6 +71,9 @@ public class FacebookRequest : MonoBehaviour
 	
 	public void ButtonPressed()
 	{
+		if(PlayerPrefs.GetInt("Sounds")==1){
+			audio.Play();
+		}
 		try{
 			//Pedir vidas
 			if(bForceConnect){
@@ -72,12 +81,14 @@ public class FacebookRequest : MonoBehaviour
 				if(!FB.IsLoggedIn){
 					FB.Login("email", AuthCallback);
 				}
+				CallAppRequestSendLives();
 			}
 			//Invitar amigos
 			else{
 				FriendSelectorFilters = "[\"app_non_users\"]";
+				CallAppRequestInvite();
 			}
-			CallAppRequestAsFriendSelector();
+			
 			status = "Friend Selector called";
 		}
 		catch(Exception e){
@@ -95,14 +106,14 @@ public class FacebookRequest : MonoBehaviour
 		} else {
 			Debug.Log("User cancelled login");
 		}
-	} 
+	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	void CallAppRequestAsFriendSelector()
+	void FriendsSelector()
 	{
 		// If there's a Max Recipients specified, include it
-		int? maxRecipients = null;
+		maxRecipients = null;
 		if(FriendSelectorMax != "")
 		{
 			try{
@@ -111,10 +122,9 @@ public class FacebookRequest : MonoBehaviour
 				status = e.Message;
 			}
 		}
-		
 		// include the exclude ids
-		string[] excludeIds =(FriendSelectorExcludeIds == "") ? null : FriendSelectorExcludeIds.Split(',');
-		List<object> FriendSelectorFiltersArr = null;
+		excludeIds =(FriendSelectorExcludeIds == "") ? null : FriendSelectorExcludeIds.Split(',');
+		FriendSelectorFiltersArr = null;
 		if(!String.IsNullOrEmpty(FriendSelectorFilters))
 		{
 			try{
@@ -124,10 +134,38 @@ public class FacebookRequest : MonoBehaviour
 				throw new Exception("JSON Parse error");
 			}
 		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Invite facebook friends to play this game
+	void CallAppRequestInvite()
+	{
+		FriendsSelector();
 		
 		FB.AppRequest(
 			FriendSelectorMessage,
 			null,
+			FriendSelectorFiltersArr,
+			excludeIds,
+			maxRecipients,
+			FriendSelectorData,
+			FriendSelectorTitle,
+			callback : appRequestCallback
+		);
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Request for a life
+	void CallAppRequestSendLives()
+	{
+		string objectId="746045498766635";
+		
+		FriendsSelector();
+			
+		FB.AppRequest(
+			FriendSelectorMessage,
+			OGActionType.Send,
+			objectId,
 			FriendSelectorFiltersArr,
 			excludeIds,
 			maxRecipients,
