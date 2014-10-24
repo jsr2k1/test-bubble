@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System;
+using UnityEditor.Sprites;
 
 public class CustomImportSettings : AssetPostprocessor 
 {
@@ -13,7 +14,6 @@ public class CustomImportSettings : AssetPostprocessor
 		{
 			textureImporter.textureType = TextureImporterType.Sprite;
 			textureImporter.textureFormat = TextureImporterFormat.AutomaticTruecolor;
-			textureImporter.generateMipsInLinearSpace = false;
 		}
 	}
 	
