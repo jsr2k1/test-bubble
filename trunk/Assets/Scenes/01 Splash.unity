@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 2
-  bDeleteAllKeys: 0
+  bDeleteAllKeys: 1
 --- !u!1 &807021553
 GameObject:
   m_ObjectHideFlags: 0
