@@ -51,6 +51,11 @@ public class PopUpMgr : MonoBehaviour
 		Application.LoadLevel(2);
 	}
 
+	public void GoToMainMenu()
+	{
+		Application.LoadLevel(1);
+	}
+
 	public void RetryArcadeLevel()
 	{
 		Application.LoadLevel(4);
