@@ -716,7 +716,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-      - m_Target: {fileID: 228457230}
+      - m_Target: {fileID: 402549660}
         m_MethodName: Play
         m_Mode: 1
         m_Arguments:
@@ -2258,7 +2258,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-      - m_Target: {fileID: 228457230}
+      - m_Target: {fileID: 1073303869}
         m_MethodName: Play
         m_Mode: 1
         m_Arguments:
@@ -2602,7 +2602,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-      - m_Target: {fileID: 228457230}
+      - m_Target: {fileID: 1747573032}
         m_MethodName: Play
         m_Mode: 1
         m_Arguments:
@@ -3080,6 +3080,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1904409056}
         m_MethodName: LoadArcadeMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+      - m_Target: {fileID: 1904409060}
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
