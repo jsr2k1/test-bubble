@@ -1,33 +1,52 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
-	public Toggle musicToggle;
-	public Toggle soundsToggle;
-	GameObject audioManagerMusic;
+	public AudioClip[] audioClips;
+	
+	Toggle musicToggle;
+	Toggle soundsToggle;
+	int oldLevel=0;
+	int lastArcadeClip=0;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Awake()
 	{
-		audioManagerMusic = GameObject.Find("AudioManagerMusic");
+		DontDestroyOnLoad(gameObject);
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void OnLevelWasLoaded(int level)
+	{
+		GetToggleComponents();
+		SetToggleValues();
+		PlayAudio(level);
+		oldLevel=level;
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void GetToggleComponents()
+	{
+		musicToggle = GameObject.Find("LeftToggle_Music").GetComponent<Toggle>();
+		soundsToggle = GameObject.Find("CenterToggle_Sounds").GetComponent<Toggle>();
+	}
 
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	void SetToggleValues()
+	{
 		//Music
 		int i = PlayerPrefs.GetInt("Music");
 		if(i > 0){
-			if(audioManagerMusic && !audioManagerMusic.audio.isPlaying){
-				audioManagerMusic.audio.Play();
-			}
 			musicToggle.isOn = true;
 		}else{
-			if(audioManagerMusic && audioManagerMusic.audio.isPlaying){
-				audioManagerMusic.audio.Stop();
-			}
 			musicToggle.isOn = false;
 		}
-
 		//Sounds
 		int j = PlayerPrefs.GetInt("Sounds");
 		if(j > 0){
@@ -36,53 +55,41 @@ public class AudioManager : MonoBehaviour
 			soundsToggle.isOn = false;
 		}
 	}
-
+	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	void Update()
+	
+	void PlayAudio(int level)
 	{
-		SetToggles();
-	}
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	void SetToggles()
-	{
-		if(musicToggle==null && GameObject.Find("LeftToggle_Music")!=null){
-			musicToggle = GameObject.Find("LeftToggle_Music").GetComponent<Toggle>();
-		}
-		if(soundsToggle==null && GameObject.Find("CenterToggle_Sounds")!=null){
-			soundsToggle = GameObject.Find("CenterToggle_Sounds").GetComponent<Toggle>();
-		}
-	}
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	public void SetMusic(bool b)
-	{
-		if(audioManagerMusic==null)
-			return;
-
-		if(b){
-			PlayerPrefs.SetInt("Music", 1);
-			audioManagerMusic.audio.Play();
-		}else{
-			PlayerPrefs.SetInt("Music", 0);
-			audioManagerMusic.audio.Stop();
-		}
-	}
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	public void SetSounds(bool b)
-	{
-		if(audioManagerMusic==null)
-			return;
-
-		if(b){
-			PlayerPrefs.SetInt("Sounds", 1);
-		}else{
-			PlayerPrefs.SetInt("Sounds", 0);
+		int i = PlayerPrefs.GetInt("Music");
+		if(i > 0){
+			//En la pantalla principal reproducimos el clip 0
+			if(level==1 && (oldLevel==0 || oldLevel==4)){
+				audio.clip = audioClips[0];
+				audio.Play();
+			}
+			//En la pantalla de los mundos continuamos reproduciendo el clip 0
+			else if(level==2 && oldLevel==3){
+				audio.clip = audioClips[0];
+				audio.Play();
+			}
+			//En el modo MUNDOS reproducimos el clip 1 en los mundos pares y el clip 2 en los impares
+			else if(level==3){
+				if(LevelManager.levelNo%2==0){
+					audio.clip = audioClips[1];
+				}else{
+					audio.clip = audioClips[2];
+				}
+				audio.Play();
+			}//En el modo ARCADE reproducimos el clip 1	y el clip 2 alternados
+			else if(level==4){
+				if(lastArcadeClip==0){
+					audio.clip = audioClips[1];
+				}else{
+					audio.clip = audioClips[2];
+				}
+				audio.Play();
+				lastArcadeClip = (lastArcadeClip+1)%2;
+			}
 		}
 	}
 }

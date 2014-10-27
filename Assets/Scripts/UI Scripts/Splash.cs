@@ -6,6 +6,7 @@ public class Splash : MonoBehaviour
 	public float timer;
 	public static Sprite spriteIMG;
 	public bool bDeleteAllKeys; //debug
+	public int initial_lives;
 
 	void Awake()
 	{
@@ -13,7 +14,7 @@ public class Splash : MonoBehaviour
 			PlayerPrefs.DeleteAll();
 		}
 		if(!PlayerPrefs.HasKey("Lives")){
-			PlayerPrefs.SetInt("Lives", 4);
+			PlayerPrefs.SetInt("Lives", initial_lives);
 		}
 		if(PlayerPrefs.HasKey("Music")==false){
 			PlayerPrefs.SetInt("Music", 0);

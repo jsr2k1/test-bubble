@@ -14,11 +14,14 @@ public class WorldButton : MonoBehaviour
 	public Transform ProfileImg;
 	public Sprite bubbleFilled;
 	Button button;
+	AudioSource audioSource;
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Awake()
 	{
+		audioSource = GameObject.Find("1").GetComponent<AudioSource>();
+		
 		button = GetComponent<Button>();
 
 		if(gameObject.name == "1" || PlayerPrefs.HasKey("STARS_" +(int.Parse(gameObject.name) - 1))){
@@ -67,7 +70,11 @@ public class WorldButton : MonoBehaviour
 
 	public void ButtonPressed()
 	{
-		if(PlayerPrefs.GetInt("Lives")>0){
+		if(audioSource && PlayerPrefs.GetInt("Sounds")==1){
+			audioSource.Play();
+		}
+		if(PlayerPrefs.GetInt("Lives")>0)
+		{
 			PlayerPrefs.SetString("GameType", "Normal");
 			LevelManager.patternType = PatternType.TextLevel;
 			LevelParser.instance.LoadTextLevel(int.Parse(name), ActualWorld);
