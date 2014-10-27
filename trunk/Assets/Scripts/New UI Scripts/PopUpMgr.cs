@@ -4,10 +4,10 @@ using System.Collections;
 
 public class PopUpMgr : MonoBehaviour
 {
+	public Image ImgBlack;
 	Animator anim;
 	bool bExitPause=false;
 	bool bShow=false;
-	public Image ImgBlack;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -27,7 +27,7 @@ public class PopUpMgr : MonoBehaviour
 			if(LevelManager.instance!=null){
 				LevelManager.instance.pauseCtrlForced(GameState.Pause);
 			}
-			if(PlayerPrefs.GetInt("Sounds")==1){
+			if(audio && PlayerPrefs.GetInt("Sounds")==1){
 				audio.Play();
 			}
 		}
