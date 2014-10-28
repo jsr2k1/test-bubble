@@ -6,9 +6,18 @@ using UnityEngine.UI;
 public class LivesManager : MonoBehaviour
 {
 	public static String sCountdown;
-	public static int lives;
 	public int secondsToLife = 300;
 	float seconds = 0;
+	
+	static int m_lives;
+	public static int lives{
+		get{ 
+			return m_lives;
+		}set{ 
+			m_lives=value;
+			PlayerPrefs.SetInt("Lives", m_lives);
+		}
+	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

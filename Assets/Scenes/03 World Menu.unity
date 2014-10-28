@@ -2122,7 +2122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a3f3a88f1c6c734982bb8f856a49479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinstext: {fileID: 1206212781}
+  coinstext: {fileID: 2038943004}
 --- !u!114 &239758570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15681,7 +15681,7 @@ Prefab:
     - target: {fileID: 11400004, guid: b496dbe2d9461404caffadd843da0ef4, type: 2}
       propertyPath: coinstext
       value: 
-      objectReference: {fileID: 1206212781}
+      objectReference: {fileID: 2038943004}
     - target: {fileID: 22400000, guid: b496dbe2d9461404caffadd843da0ef4, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0

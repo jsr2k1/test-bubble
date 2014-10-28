@@ -73,7 +73,8 @@ public class WorldButton : MonoBehaviour
 		if(audioSource && PlayerPrefs.GetInt("Sounds")==1){
 			audioSource.Play();
 		}
-		if(PlayerPrefs.GetInt("Lives")>0)
+		int nLives=PlayerPrefs.GetInt("Lives");
+		if(nLives>0)
 		{
 			PlayerPrefs.SetString("GameType", "Normal");
 			LevelManager.patternType = PatternType.TextLevel;
