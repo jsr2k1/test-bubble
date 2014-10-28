@@ -137,14 +137,14 @@ public class LevelManager : MonoBehaviour
 		score += points;
 		scoreTextLabel.text = score.ToString("000000");
 
-		if(PlayerPrefs.GetString("GameType") == "Normal"){
-
-			if(score > 0.5 * ReferenceScore){
+		if(PlayerPrefs.GetString("GameType") == "Normal")
+		{
+			if(score > 0.3 * ReferenceScore){
 				star1.GetComponent<Image>().enabled = true;
 				star11.GetComponent<Image>().enabled = true;
 				stars = 1;
 			}
-			if(score > 0.75 * ReferenceScore){
+			if(score > 0.6 * ReferenceScore){
 				star2.GetComponent<Image>().enabled = true;
 				star22.GetComponent<Image>().enabled = true;
 				stars = 2;
@@ -154,10 +154,9 @@ public class LevelManager : MonoBehaviour
 				star33.GetComponent<Image>().enabled = true;
 				stars = 3;
 			}
-			slider.value =((float)score /(float)ReferenceScore);
+			float currentScore = ((float)score /(float)ReferenceScore);
+			slider.value = Mathf.Clamp(currentScore, 0.2f, 1.0f);
 		}
-
-
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
