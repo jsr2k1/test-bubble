@@ -156,7 +156,7 @@ public class StrikerManager : MonoBehaviour
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Verificar que el striker actual todavia es de un color existente en la escena
+	//Comprobar que el striker actual todavia es de un color existente en la escena
 	//Sino entonces cambiar el color por otro
 	void CheckCurrentStrikerColor()
 	{

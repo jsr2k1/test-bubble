@@ -180,12 +180,12 @@ public class InputScript : MonoBehaviour
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	//Comprobamos que el color de las particulas apuntadoras es el mismo que el color de la bola actual del striker
 	public void CheckColor()
 	{
-		if(Striker.instance==null || Striker.instance.currentStrikerObject==null || Striker.instance.currentStrikerObject.transform.childCount == 0)
+		if(Striker.instance==null || Striker.instance.currentStrikerObject==null || Striker.instance.currentStrikerObject.transform.childCount == 0){
 			return;
-
+		}
 		string sCurrentColor = particles[0].GetComponent<SpriteRenderer>().sprite.texture.name;
 		SpriteRenderer sp = Striker.instance.currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
 		string sBallColor = sp.sprite.texture.name;
