@@ -192,7 +192,8 @@ public class PlayingObjectManager : MonoBehaviour
 		for(int i = 0; i < objects.Length; i++)
 		{
 			string tempName = objects[i].name;
-			if(!currentAvailableObjectsNames.Contains(tempName) && objects[i].name!="777(Clone)"){
+			PlayingObject playObj = objects[i].GetComponent<PlayingObject>();
+			if(!currentAvailableObjectsNames.Contains(tempName) && objects[i].name!="777(Clone)" && playObj.isConnected){
 				currentAvailableObjectsNames.Add(tempName);
 				GetObjectReference(tempName);
 			}

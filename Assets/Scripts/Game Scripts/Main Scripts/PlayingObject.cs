@@ -188,7 +188,7 @@ public class PlayingObject : MonoBehaviour
 	internal void TraceForConnection()
 	{
 		if(isTracedForConnection || burst)
-				return;
+			return;
 
 		isTracedForConnection = true;
 
