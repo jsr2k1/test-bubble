@@ -13,8 +13,8 @@ public class LivesManager : MonoBehaviour
 	public static int lives{
 		get{ 
 			return m_lives;
-		}set{ 
-			m_lives=value;
+		}set{
+			m_lives = Mathf.Max(value, 0);
 			PlayerPrefs.SetInt("Lives", m_lives);
 		}
 	}

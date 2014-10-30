@@ -28,7 +28,7 @@ public class LevelManager : MonoBehaviour
 	public static int minimumNumberOfRows = 6;
 	public static float rowAddingInterval = 10f;
 	public static int NumberOfBalls = 0;
-	private int currentBalls = 0;
+	public static int currentBalls = 0;
 	internal int totalNumberOfRowsLeft = 0;
 	Text scoreTextLabel;
 	public Image winPop;
@@ -193,10 +193,12 @@ public class LevelManager : MonoBehaviour
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void BallLaunched()
-	{
-		currentBalls--;
-		if(PlayerPrefs.GetString("GameType") == "Normal"){
-			ballsManager.setBallsLeft(currentBalls);
+	{	
+		if(currentBalls>0){
+			currentBalls--;
+			if(PlayerPrefs.GetString("GameType") == "Normal"){
+				ballsManager.setBallsLeft(currentBalls);
+			}
 		}
 		if(currentBalls == 0){
 			StartCoroutine("Finishing");

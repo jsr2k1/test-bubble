@@ -76,21 +76,26 @@ public class PlayingObjectManager : MonoBehaviour
 
 	internal void FallDisconnectedObjects()
 	{
-		if(PlayingObjectGeneration.isBusy) {
-			Invoke("FallDisconnectedObjects", .1f);
-			return;
+		if(PlayerPrefs.GetString("GameType") == "Arcade"){
+			if(PlayingObjectGeneration.isBusy) {
+				Invoke("FallDisconnectedObjects", .1f);
+				return;
+			}
 		}
-		StartCoroutine(_FallDisconnectedObjects());
+		//StartCoroutine(_FallDisconnectedObjects());
+		_FallDisconnectedObjects();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	IEnumerator _FallDisconnectedObjects()
+	//No funciona bien con corutinas pq entonces cuando hay bolas cayendo el striker sigue generando
+	//bolas de colores que en realidad ya no van a estar en la escena
+	//IEnumerator _FallDisconnectedObjects()
+	void _FallDisconnectedObjects()
 	{
 		for(int i = 0; i < allPlayingObjectScripts.Length; i++){
 			allPlayingObjectScripts[i].isConnected = false;
 		}
-		yield return new WaitForSeconds(.01f);
+		//yield return new WaitForSeconds(.01f);
 
 		for(int i = 0; i < topRowObjects.Length; i++){
 			if(topRowObjects[i]){
@@ -105,6 +110,7 @@ public class PlayingObjectManager : MonoBehaviour
 			}
 		}
 		Invoke("ResetAllObjects", .02f); 
+		//ResetAllObjects();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

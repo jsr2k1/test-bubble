@@ -5756,7 +5756,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: numberBalls
-      value: 20
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: refScore
@@ -18256,7 +18256,7 @@ GameObject:
   - 114: {fileID: 1964660604}
   - 222: {fileID: 1964660603}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: WorldScroll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19789,7 +19789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 20
+  numberBalls: 6
   ActualWorld: 1
   refScore: 2000
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
