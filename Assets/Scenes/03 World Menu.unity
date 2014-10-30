@@ -5756,7 +5756,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: numberBalls
-      value: 6
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: refScore
@@ -19789,7 +19789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 6
+  numberBalls: 20
   ActualWorld: 1
   refScore: 2000
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
