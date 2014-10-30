@@ -85,8 +85,12 @@ public class PopUpMgr : MonoBehaviour
 		if(PlayerPrefs.GetInt("Sounds")==1){
 			audio.Play();
 		}
-		PlayerPrefs.SetInt("bPlaying", 1);
-		Application.LoadLevel(3);
+		if(LivesManager.lives>0){
+			PlayerPrefs.SetInt("bPlaying", 1);
+			Application.LoadLevel(3);
+		}else{
+			Application.LoadLevel(2);
+		}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

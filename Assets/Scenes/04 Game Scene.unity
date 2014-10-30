@@ -4281,10 +4281,10 @@ RectTransform:
   - {fileID: 1856298619}
   m_Father: {fileID: 169262541}
   m_RootOrder: 4
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -163.300003, y: 406.600006}
-  m_SizeDelta: {x: 245.800003, y: 49.2000008}
+  m_AnchorMin: {x: .5, y: 1}
+  m_AnchorMax: {x: .5, y: 1}
+  m_AnchoredPosition: {x: -163.300003, y: -43.3999939}
+  m_SizeDelta: {x: 245.800003, y: 49.2000122}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &274010394
 MonoBehaviour:
