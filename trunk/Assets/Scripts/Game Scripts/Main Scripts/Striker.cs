@@ -26,6 +26,10 @@ public class Striker : MonoBehaviour
 	public Sprite spriteMultiBall;
 	public Sprite spriteBombBall;
 	public Sprite spriteFireBall;
+	
+	//Creamos un evento para poder saber cuando se ha disparado un booster
+	public delegate void SpecialBallLaunched();
+	public static event SpecialBallLaunched OnSpecialBallLaunched;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -51,12 +55,18 @@ public class Striker : MonoBehaviour
 		isBusy = true;
 
 		//Telling the NumberOfBallsManager on the game scene that one ball has left and its being shooted
-		LevelManager.instance.BallLaunched();
+		if(PlayerPrefs.GetString("GameType") == "Normal"){
+			LevelManager.instance.BallLaunched();
+		}
 
 		if(sCurrentSpecialBall!=""){
 			int quantity = PlayerPrefs.GetInt(sCurrentSpecialBall) - 1;
 			PlayerPrefs.SetInt(sCurrentSpecialBall, quantity);
 			sCurrentSpecialBall="";
+			
+			if(OnSpecialBallLaunched!=null){
+				OnSpecialBallLaunched();
+			}
 		}
 	}
 

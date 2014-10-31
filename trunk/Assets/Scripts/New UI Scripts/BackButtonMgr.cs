@@ -8,7 +8,7 @@ public class BackButtonMgr : MonoBehaviour
 		if(PlayerPrefs.GetInt("Sounds")==1){
 			audio.Play();
 		}
-		if(Application.loadedLevel==3)//Worlds
+		if(Application.loadedLevel==3)//Worlds game scene
 		{
 			LivesManager.lives--;
 			PlayerPrefs.SetInt("bPlaying", 0);

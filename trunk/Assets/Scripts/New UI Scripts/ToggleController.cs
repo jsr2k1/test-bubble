@@ -31,6 +31,9 @@ public class ToggleController : MonoBehaviour, IPointerClickHandler
 	
 	public void SetMusic(bool b)
 	{
+		if(audioManager==null){
+			return;
+		}
 		if(b){
 			PlayerPrefs.SetInt("Music", 1);
 			audioManager.PlayAudio();

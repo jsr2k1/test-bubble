@@ -67,7 +67,7 @@ public class StrikerManager : MonoBehaviour
 	//Generates shooting object
 	internal void GenerateStriker()
 	{
-		if(LevelManager.currentBalls<=0){
+		if(LevelManager.currentBalls<=0 && PlayerPrefs.GetString("GameType").Equals("Normal")){
 			return;
 		}
 		striker.transform.position = currentStrikerPosition.position;
