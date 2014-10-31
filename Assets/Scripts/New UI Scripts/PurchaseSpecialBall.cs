@@ -15,6 +15,10 @@ public class PurchaseSpecialBall : MonoBehaviour
 	PopUpMgr ShopBoostersPopUp;
 	PopUpMgr ShopCoinsPopUp;
 	//bool bShowCoinsPopUp=false;
+	
+	//Creamos un evento para poder saber cuando se ha comprado un booster
+	public delegate void SpecialBallLaunched();
+	public static event SpecialBallLaunched OnSpecialBallBuyed;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -52,6 +56,10 @@ public class PurchaseSpecialBall : MonoBehaviour
 
 			NumberBallText.text = PlayerPrefs.GetInt(BallString).ToString();
 			CoinsText.text = PlayerPrefs.GetInt("Coins").ToString();
+			
+			if(OnSpecialBallBuyed!=null){
+				OnSpecialBallBuyed();
+			}
 		}
 		//Si no hay suficiente dinero, abrir el popup para comprar monedas
 		else{
