@@ -60,8 +60,7 @@ public class WorldButton : MonoBehaviour
 		}
 
 		if(gameObject.name ==(PlayerPrefs.GetInt("Level")+1).ToString()){
-			//ProfileImg.transform.parent = transform;
-			ProfileImg.position = transform.position +  new Vector3(40, 60, 0);
+			ProfileImg.position = transform.position +  new Vector3(50, 50, 0);
 			ProfileImg.localScale = new Vector3(0.8f, 0.8f, 1.0f);
 		}
 	}
