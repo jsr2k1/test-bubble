@@ -19,7 +19,7 @@ public class AdsDemo : MonoBehaviour
 		// Ads - NOTE: You can pass in multiple "AdDesc" objects if you want more then one ad.
 		var desc = new AdDesc();
 		// global settings
-		desc.Testing = true;// NOTE: To test ads on iOS, you must enable them in iTunes Connect.
+		desc.Testing = false;// NOTE: To test ads on iOS, you must enable them in iTunes Connect.
 		desc.Visible = true;
 		desc.EventCallback = eventCallback;
 
@@ -63,7 +63,7 @@ public class AdsDemo : MonoBehaviour
 		desc.BB10_BlackBerryAdvertising_AdGravity = AdGravity.BottomCenter;
 		desc.BB10_BlackBerryAdvertising_AdSize = BB10_BlackBerryAdvertising_AdSize.Wide_320x53;
 
-		desc.BB10_MillennialMediaAdvertising_APID = "";
+		desc.BB10_MillennialMediaAdvertising_APID = "182506";
 		desc.BB10_MillennialMediaAdvertising_AdGravity = AdGravity.BottomCenter;
 		desc.BB10_GuiAdScale = 2;
 		//desc.BB10_AdGUIOverrideEnabled = true;
@@ -84,7 +84,7 @@ public class AdsDemo : MonoBehaviour
 		desc.Android_AdAPI = AdAPIs.AdMob;// Choose between AdMob or AmazonAds
 		#endif
 			
-		desc.Android_AdMob_UnitID = "";// NOTE: You can use legacy (PublisherID) too, You MUST have this even for Testing!
+		desc.Android_AdMob_UnitID = "ca-app-pub-4996019706488907/6665040478";// NOTE: You can use legacy (PublisherID) too, You MUST have this even for Testing!
 		desc.Android_AdMob_AdGravity = AdGravity.BottomCenter;
 		desc.Android_AdMob_AdSize = Android_AdMob_AdSize.Banner_320x50;
 			
