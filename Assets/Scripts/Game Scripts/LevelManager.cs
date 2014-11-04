@@ -44,6 +44,7 @@ public class LevelManager : MonoBehaviour
 	public Text levelText1;
 	public Text levelText2;
 	public Slider slider;
+		public Text highscoretext;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -88,6 +89,13 @@ public class LevelManager : MonoBehaviour
 		if(PlayerPrefs.GetInt("SCORE_" + levelNo) < score || !PlayerPrefs.HasKey("SCORE_" + levelNo)){
 			PlayerPrefs.SetInt("STARS_" + levelNo, stars);
 			PlayerPrefs.SetInt("SCORE_" + levelNo, score);
+
+				if (PlayerPrefs.GetString ("GameType") == "Arcade") {
+						if (score > PlayerPrefs.GetInt ("Highscore")) {
+								PlayerPrefs.SetInt ("Highscore", score);
+								highscoretext.text = score.ToString();
+						}
+				}
 		}
 		if(PlayerPrefs.GetInt("Level") < levelNo){
 			PlayerPrefs.SetInt("Level", levelNo);

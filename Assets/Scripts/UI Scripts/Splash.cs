@@ -13,6 +13,7 @@ public class Splash : MonoBehaviour
 		if(bDeleteAllKeys){
 			PlayerPrefs.DeleteAll();
 		}
+
 		if(!PlayerPrefs.HasKey("Lives")){
 			PlayerPrefs.SetInt("Lives", initial_lives);
 		}
@@ -39,6 +40,10 @@ public class Splash : MonoBehaviour
 		}
 		if(!PlayerPrefs.HasKey("World")){
 			PlayerPrefs.SetInt("World", 1);
+		}
+
+		if(!PlayerPrefs.HasKey("Highscore")){
+			PlayerPrefs.SetInt("Highscore", 0);
 		}
 
 		FB.Init(OnInitComplete);
