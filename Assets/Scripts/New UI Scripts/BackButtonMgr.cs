@@ -3,6 +3,8 @@ using System.Collections;
 
 public class BackButtonMgr : MonoBehaviour
 {
+	AdBanner banner;
+
 	public void BackButtonPressed()
 	{
 		if(PlayerPrefs.GetInt("Sounds")==1){
