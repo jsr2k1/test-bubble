@@ -71,11 +71,33 @@ public class LevelEditor : MonoBehaviour
 			if(index<0) return;
 			imageComponent.sprite = ballColors[index];
 			imageComponent.color = new Color(1,1,1,1f);
-			currentLevel[i,j] = index;
+			currentLevel[i,j] = GetIndex(index);
 		}else{
 			imageComponent.sprite = spriteEmpty;
 			imageComponent.color = new Color(1,1,1,0.2f);
 			currentLevel[i,j] = -1;
+		}
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	int GetIndex(int index)
+	{
+		if(index==6){ //bola loro
+			return 7;
+		}else{
+			return index;
+		}
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	int GetIndexInv(int index)
+	{
+		if(index==7){ //bola loro
+			return 6;
+		}else{
+			return index;
 		}
 	}
 
@@ -91,6 +113,8 @@ public class LevelEditor : MonoBehaviour
 		int nColor = int.Parse(toggleColors.ActiveToggles().First().name);
 		if(nColor==0){
 			return UnityEngine.Random.Range(0,numColors);
+		//}else if(nColor==7){
+		//	return nColor;
 		}else{
 			return nColor-1;
 		}
@@ -231,7 +255,7 @@ public class LevelEditor : MonoBehaviour
 			foreach(string s in list)
 			{
 				if(s!="-"){
-					currentLevel[iLine,iNum] = int.Parse(s);
+					currentLevel[iLine,iNum] = GetIndexInv(int.Parse(s));
 				}else{
 					currentLevel[iLine,iNum] = -1;
 				}

@@ -163,11 +163,52 @@ public class PlayingObjectManager : MonoBehaviour
 				allPlayingObjectScripts[i].RefreshAdjacentObjectList();
 			}
 		}
-		if(allPlayingObjectScripts.Length == 10 && LevelManager.instance.totalNumberOfRowsLeft == 0){
+		if(CheckGameIsFinished()){
 			LevelManager.instance.GameIsFinished();
 		}
 	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Dependiendo de la mision del nivel actual, comprobamos si se ha superado el nivel o no
+	bool CheckGameIsFinished()
+	{
+		bool res=false;
+		if(GetLevelMission()==1){//Mision normal
+			if(allPlayingObjectScripts.Length == 10 && LevelManager.instance.totalNumberOfRowsLeft == 0){
+				res=true;
+			}
+		}else if(GetLevelMission()==2){//Mision liberar animales
+			if(AllAnimalsAreFree()){
+				res=true;
+			}
+		}
+		return res;
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	int GetLevelMission()
+	{
+		int ln=LevelManager.levelNo;
+		if(ln==1){
+			return 2;
+		}else{
+			return 1;
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	bool AllAnimalsAreFree()
+	{
+		for(int i = 0; i < allPlayingObjectScripts.Length; i++){
+			if(allPlayingObjectScripts[i].name=="parrot_ball(Clone)"){
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	internal void FallAllPlayingObjects()
