@@ -90,12 +90,7 @@ public class LevelManager : MonoBehaviour
 			PlayerPrefs.SetInt("STARS_" + levelNo, stars);
 			PlayerPrefs.SetInt("SCORE_" + levelNo, score);
 
-				if (PlayerPrefs.GetString ("GameType") == "Arcade") {
-						if (score > PlayerPrefs.GetInt ("Highscore")) {
-								PlayerPrefs.SetInt ("Highscore", score);
-								highscoretext.text = score.ToString();
-						}
-				}
+
 		}
 		if(PlayerPrefs.GetInt("Level") < levelNo){
 			PlayerPrefs.SetInt("Level", levelNo);
@@ -115,7 +110,16 @@ public class LevelManager : MonoBehaviour
 		SoundFxManager.instance.themeMusic.volume *= .4f;
 		loosePop.GetComponent<PopUpMgr>().ShowPopUp();
 		Invoke("PlayLevelFailSound", .2f);
-		LivesManager.lives--;
+
+
+		if (PlayerPrefs.GetString ("GameType") == "Arcade") {
+			if (score > PlayerPrefs.GetInt ("Highscore")) {
+				PlayerPrefs.SetInt ("Highscore", score);
+				highscoretext.text = score.ToString ();
+			}
+		} else {
+				LivesManager.lives--;
+		}
 		//PlayerPrefs.SetInt("Lives", PlayerPrefs.GetInt("Lives") - 1 );
 		//Invoke("LoadLevelAgain", 3f);
 	}
