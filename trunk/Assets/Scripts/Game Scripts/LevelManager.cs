@@ -109,7 +109,6 @@ public class LevelManager : MonoBehaviour
 		loosePop.GetComponent<PopUpMgr>().ShowPopUp();
 		Invoke("PlayLevelFailSound", .2f);
 
-
 		if (PlayerPrefs.GetString ("GameType") == "Arcade") {
 			if (score > PlayerPrefs.GetInt ("Highscore")) {
 				PlayerPrefs.SetInt ("Highscore", score);

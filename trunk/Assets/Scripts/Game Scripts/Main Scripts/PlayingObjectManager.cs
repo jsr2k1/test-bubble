@@ -192,10 +192,9 @@ public class PlayingObjectManager : MonoBehaviour
 	
 	int GetLevelMission()
 	{
-		int ln=LevelManager.levelNo;
-		if(ln==1){
+		if(LevelManager.levelNo==1){//Mision liberar animales
 			return 2;
-		}else{
+		}else{//Mision normal
 			return 1;
 		}
 	}
@@ -230,10 +229,6 @@ public class PlayingObjectManager : MonoBehaviour
 		if(allPlayingObjectScripts == null){
 			return null;
 		}
-		/* No lo entiendo?
-		if(allPlayingObjectScripts.Length > 7){
-			return null;
-		}*/
 		currentAvailableObjectsNames = new ArrayList();
 		currentAvailableObjects = new ArrayList();
 
@@ -243,7 +238,7 @@ public class PlayingObjectManager : MonoBehaviour
 		{
 			string tempName = objects[i].name;
 			PlayingObject playObj = objects[i].GetComponent<PlayingObject>();
-			if(!currentAvailableObjectsNames.Contains(tempName) && objects[i].name!="777(Clone)" && playObj.isConnected){
+			if(!currentAvailableObjectsNames.Contains(tempName) && objects[i].name!="777(Clone)" && objects[i].name!="888(Clone)" && playObj.isConnected){
 				currentAvailableObjectsNames.Add(tempName);
 				GetObjectReference(tempName);
 			}
