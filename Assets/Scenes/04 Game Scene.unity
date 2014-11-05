@@ -6892,6 +6892,7 @@ MonoBehaviour:
   levelText1: {fileID: 578549044}
   levelText2: {fileID: 1853050283}
   slider: {fileID: 222129265}
+  highscoretext: {fileID: 0}
 --- !u!1 &844835526
 GameObject:
   m_ObjectHideFlags: 0
