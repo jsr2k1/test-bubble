@@ -172,6 +172,9 @@ public class PlayingObjectManager : MonoBehaviour
 	//Dependiendo de la mision del nivel actual, comprobamos si se ha superado el nivel o no
 	bool CheckGameIsFinished()
 	{
+		if(PlayerPrefs.GetString("GameType").Equals("Arcade")){
+			return false;
+		}
 		bool res=false;
 		if(GetLevelMission()==1){//Mision normal
 			if(allPlayingObjectScripts.Length == 10 && LevelManager.instance.totalNumberOfRowsLeft == 0){

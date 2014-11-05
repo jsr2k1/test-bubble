@@ -85,6 +85,8 @@ public class LevelEditor : MonoBehaviour
 	{
 		if(index==6){ //bola loro
 			return 7;
+		}else if(index==7){ //bola piedra
+			return 8;
 		}else{
 			return index;
 		}
@@ -96,6 +98,8 @@ public class LevelEditor : MonoBehaviour
 	{
 		if(index==7){ //bola loro
 			return 6;
+		}else if(index==8){ //bola piedra
+			return 7;
 		}else{
 			return index;
 		}
@@ -113,8 +117,6 @@ public class LevelEditor : MonoBehaviour
 		int nColor = int.Parse(toggleColors.ActiveToggles().First().name);
 		if(nColor==0){
 			return UnityEngine.Random.Range(0,numColors);
-		//}else if(nColor==7){
-		//	return nColor;
 		}else{
 			return nColor-1;
 		}

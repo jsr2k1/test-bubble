@@ -89,8 +89,6 @@ public class LevelManager : MonoBehaviour
 		if(PlayerPrefs.GetInt("SCORE_" + levelNo) < score || !PlayerPrefs.HasKey("SCORE_" + levelNo)){
 			PlayerPrefs.SetInt("STARS_" + levelNo, stars);
 			PlayerPrefs.SetInt("SCORE_" + levelNo, score);
-
-
 		}
 		if(PlayerPrefs.GetInt("Level") < levelNo){
 			PlayerPrefs.SetInt("Level", levelNo);

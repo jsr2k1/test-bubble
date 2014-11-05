@@ -3,23 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-namespace com.adjust.sdk {
-#if UNITY_ANDROID
-	public class AdjustAndroid : IAdjust {
-
+namespace com.adjust.sdk
+{
+#if UNITY_ANDROID && !UNITY_EDITOR
+	public class AdjustAndroid : IAdjust
+	{
 		private AndroidJavaClass ajcAdjust;
 		private AndroidJavaClass ajcAdjustUnity;
 		private AndroidJavaObject ajoCurrentActivity;
 
-		public AdjustAndroid() {
+		public AdjustAndroid()
+		{
 			ajcAdjust = new AndroidJavaClass("com.adjust.sdk.Adjust");
 			ajcAdjustUnity = new AndroidJavaClass("com.adjust.sdk.AdjustUnity");
 			AndroidJavaClass ajcUnityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"); 
 			ajoCurrentActivity = ajcUnityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
 		}
 
-		public void appDidLaunch(string appToken, AdjustUtil.AdjustEnvironment environment, string sdkPrefix, AdjustUtil.LogLevel logLevel, bool eventBuffering) {
-
+		public void appDidLaunch(string appToken, AdjustUtil.AdjustEnvironment environment, string sdkPrefix, AdjustUtil.LogLevel logLevel, bool eventBuffering)
+		{
 			string sEnvironment = environment.ToString ().ToLower ();
 			string sLogLevel = logLevel.ToString ().ToLower ();
 
