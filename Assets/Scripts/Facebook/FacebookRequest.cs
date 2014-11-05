@@ -158,7 +158,7 @@ public class FacebookRequest : MonoBehaviour
 	//Request for a life
 	void CallAppRequestSendLives()
 	{
-		string objectId="746045498766635";
+		string objectId="730922200278965";
 		
 		FriendsSelector();
 			
