@@ -34,41 +34,7 @@ public class AdBanner : MonoBehaviour
 		desc.Editor_MillennialMediaAdvertising_AdGravity = AdGravity.BottomCenter;
 		desc.Editor_GuiAdScale = 1;
 		//desc.Editor_MillennialMediaAdvertising_RefreshRate = 120,
-		
-		// Win8 settings
-		desc.Win8_AdAPI = AdAPIs.MicrosoftAdvertising;
-		desc.Win8_MicrosoftAdvertising_ApplicationID = "";
-		desc.Win8_MicrosoftAdvertising_UnitID = "";
-		desc.Win8_MicrosoftAdvertising_AdGravity = AdGravity.BottomCenter;
-		desc.Win8_MicrosoftAdvertising_AdSize = Win8_MicrosoftAdvertising_AdSize.Wide_728x90;
-		//desc.Win8_MicrosoftAdvertising_UseBuiltInRefresh = false;
-		//desc.Win8_MicrosoftAdvertising_RefreshRate = 120;
-		
-		// WP8 settings
-		desc.WP8_AdAPI = AdAPIs.MicrosoftAdvertising;
-		desc.WP8_MicrosoftAdvertising_ApplicationID = "";
-		desc.WP8_MicrosoftAdvertising_UnitID = "";
-		desc.WP8_MicrosoftAdvertising_AdGravity = AdGravity.BottomCenter;
-		desc.WP8_MicrosoftAdvertising_AdSize = WP8_MicrosoftAdvertising_AdSize.Wide_480x80;
-		//desc.WP8_MicrosoftAdvertising_UseBuiltInRefresh = false;
-		//desc.WP8_MicrosoftAdvertising_RefreshRate = 120;
-		
-		desc.WP8_AdMob_UnitID = "";// NOTE: You can use legacy (PublisherID) too, You MUST have this even for Testing!
-		desc.WP8_AdMob_AdGravity = AdGravity.BottomCenter;
-		desc.WP8_AdMob_AdSize = Reign.WP8_AdMob_AdSize.Banner;
-		
-		// BB10 settings
-		desc.BB10_AdAPI = AdAPIs.MillennialMediaAdvertising;
-		desc.BB10_BlackBerryAdvertising_ZoneID = "";
-		desc.BB10_BlackBerryAdvertising_AdGravity = AdGravity.BottomCenter;
-		desc.BB10_BlackBerryAdvertising_AdSize = BB10_BlackBerryAdvertising_AdSize.Wide_320x53;
-		
-		desc.BB10_MillennialMediaAdvertising_APID = "182506";
-		desc.BB10_MillennialMediaAdvertising_AdGravity = AdGravity.BottomCenter;
-		desc.BB10_GuiAdScale = 2;
-		//desc.BB10_AdGUIOverrideEnabled = true;
-		//desc.BB10_MillennialMediaAdvertising_RefreshRate = 120;
-		
+
 		// iOS settings
 		desc.iOS_AdAPI = AdAPIs.iAd;
 		desc.iOS_iAd_AdGravity = AdGravity.BottomCenter;

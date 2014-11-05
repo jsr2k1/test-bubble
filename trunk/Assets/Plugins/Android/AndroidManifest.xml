@@ -79,5 +79,7 @@
     <activity android:name="com.facebook.unity.FBUnityDeepLinkingActivity" android:exported="true">
     </activity>
     <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="\ 730922200278965" />
+         <activity android:name="com.purplebrain.adbuddiz.sdk.AdBuddizActivity" 
+               android:theme="@android:style/Theme.Translucent" />
   </application>
 </manifest>
