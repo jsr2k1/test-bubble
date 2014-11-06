@@ -23,7 +23,7 @@ public class PurchaseLives : MonoBehaviour
 		if(PlayerPrefs.GetInt("Sounds")==1){
 			audio.Play();
 		}
-		if(LivesManager.lives < 5 && PlayerPrefs.GetInt("Coins") > 100)
+		if(LivesManager.lives < 5 && PlayerPrefs.GetInt("Coins") >= 100)
 		{
 			LivesManager.lives = 5;
 			PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 100);
