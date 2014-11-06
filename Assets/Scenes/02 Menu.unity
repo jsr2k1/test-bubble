@@ -908,8 +908,8 @@ RectTransform:
   - {fileID: 1073303864}
   - {fileID: 1747573028}
   - {fileID: 1232638879}
-  - {fileID: 2085255405}
   - {fileID: 1147725667}
+  - {fileID: 2085255405}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
@@ -1108,6 +1108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quitPop: {fileID: 1147725671}
+  thisPop: {fileID: 2085255408}
 --- !u!82 &518888849
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1177,8 +1178,9 @@ GameObject:
   - 222: {fileID: 606614560}
   - 114: {fileID: 606614559}
   - 114: {fileID: 606614558}
+  - 114: {fileID: 606614561}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Yes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1240,7 +1242,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 606614559}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606614561}
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &606614559
@@ -1270,6 +1284,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 606614556}
+--- !u!114 &606614561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 606614556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6e60f0e1c61274daf01b25d4fab3ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PopUpquit: {fileID: 1147725671}
 --- !u!1001 &625132973
 Prefab:
   m_ObjectHideFlags: 0
@@ -2445,7 +2471,7 @@ RectTransform:
   - {fileID: 606614557}
   - {fileID: 1778975110}
   m_Father: {fileID: 459459912}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 1500}
@@ -3547,8 +3573,9 @@ GameObject:
   - 222: {fileID: 1778975113}
   - 114: {fileID: 1778975112}
   - 114: {fileID: 1778975111}
+  - 114: {fileID: 1778975114}
   m_Layer: 5
-  m_Name: Button
+  m_Name: No
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3610,7 +3637,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1778975112}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1778975114}
+        m_MethodName: Continue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1778975112
@@ -3640,6 +3679,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1778975109}
+--- !u!114 &1778975114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1778975109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6e60f0e1c61274daf01b25d4fab3ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PopUpquit: {fileID: 1147725671}
 --- !u!1 &1806564057
 GameObject:
   m_ObjectHideFlags: 0
@@ -4303,7 +4354,7 @@ RectTransform:
   - {fileID: 2065175017}
   - {fileID: 1173270316}
   m_Father: {fileID: 459459912}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 1500}
