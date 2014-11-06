@@ -18,7 +18,7 @@ public class Splash : MonoBehaviour
 			PlayerPrefs.SetInt("Lives", initial_lives);
 		}
 		if(PlayerPrefs.HasKey("Music")==false){
-			PlayerPrefs.SetInt("Music", 0);
+			PlayerPrefs.SetInt("Music", 1);
 		}
 		if(PlayerPrefs.HasKey("Sounds")==false){
 			PlayerPrefs.SetInt("Sounds", 1);
