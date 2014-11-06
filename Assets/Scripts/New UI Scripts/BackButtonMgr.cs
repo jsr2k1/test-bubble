@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class BackButtonMgr : MonoBehaviour
 {
 	AdBanner banner;
+	public Image quitPop;
 
 	public void BackButtonPressed()
 	{
@@ -25,7 +27,7 @@ public class BackButtonMgr : MonoBehaviour
 			Application.LoadLevel(1); //Go to Menu Scene
 		}
 		else{
-			Application.Quit();
+			quitPop.GetComponent<PopUpMgr>().ShowPopUp();
 		}
 	}
 }
