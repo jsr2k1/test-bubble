@@ -56,7 +56,7 @@ public class WorldButton : MonoBehaviour
 
 		if(stars != null){
 			stars.transform.parent = transform;
-			stars.transform.localPosition = new Vector3(0, 36, 0);
+			stars.transform.localPosition = new Vector3(0, 40, 0);
 			stars.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
 		}
 
