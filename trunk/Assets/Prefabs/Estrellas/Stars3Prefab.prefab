@@ -28,9 +28,9 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mat: {fileID: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: e033cc4310bbdad4a9bef0620a370fb2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a734cf9eac0f2cd4f8f2018665444995, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

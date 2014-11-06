@@ -32,4 +32,13 @@ public class BackButtonMgr : MonoBehaviour
 			thisPop.GetComponent<PopUpMgr>().HidePopUp();
 		}
 	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	void Update()
+	{
+		if(Input.GetKeyDown(KeyCode.Escape)){
+			BackButtonPressed();
+		}
+	}
 }

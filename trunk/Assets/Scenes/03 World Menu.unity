@@ -5754,7 +5754,6 @@ GameObject:
   m_Component:
   - 224: {fileID: 654491541}
   - 222: {fileID: 654491543}
-  - 114: {fileID: 654491542}
   m_Layer: 5
   m_Name: FBProfileImage
   m_TagString: Untagged
@@ -5781,18 +5780,6 @@ RectTransform:
   m_AnchoredPosition: {x: 199.240005, y: -1022.20001}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: .5, y: .5}
---- !u!114 &654491542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 654491540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfa308ba5b02ffd44a9d741610e90b8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dummyParent: {fileID: 1300469492}
 --- !u!222 &654491543
 CanvasRenderer:
   m_ObjectHideFlags: 0
