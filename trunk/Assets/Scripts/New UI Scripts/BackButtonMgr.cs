@@ -6,6 +6,7 @@ public class BackButtonMgr : MonoBehaviour
 {
 	AdBanner banner;
 	public Image quitPop;
+	public Image thisPop;
 
 	public void BackButtonPressed()
 	{
@@ -28,6 +29,7 @@ public class BackButtonMgr : MonoBehaviour
 		}
 		else{
 			quitPop.GetComponent<PopUpMgr>().ShowPopUp();
+			thisPop.GetComponent<PopUpMgr>().HidePopUp();
 		}
 	}
 }
