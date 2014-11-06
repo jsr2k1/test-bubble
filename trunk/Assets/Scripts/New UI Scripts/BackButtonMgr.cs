@@ -7,6 +7,7 @@ public class BackButtonMgr : MonoBehaviour
 	AdBanner banner;
 	public Image quitPop;
 	public Image thisPop;
+	public Image livesPop;
 
 	public void BackButtonPressed()
 	{
@@ -15,9 +16,8 @@ public class BackButtonMgr : MonoBehaviour
 		}
 		if(Application.loadedLevel==3)//Worlds game scene
 		{
-			LivesManager.lives--;
-			PlayerPrefs.SetInt("bPlaying", 0);
-			Application.LoadLevel(2); //Go to World Scene
+			thisPop.GetComponent<PopUpMgr>().HidePopUp(false);
+			livesPop.GetComponent<PopUpMgr>().ShowPopUp();
 		}
 		else if(Application.loadedLevel==4)//Arcade
 		{
@@ -28,8 +28,9 @@ public class BackButtonMgr : MonoBehaviour
 			Application.LoadLevel(1); //Go to Menu Scene
 		}
 		else{
-			quitPop.GetComponent<PopUpMgr>().ShowPopUp();
 			thisPop.GetComponent<PopUpMgr>().HidePopUp();
+			quitPop.GetComponent<PopUpMgr>().ShowPopUp();
+
 		}
 	}
 	
