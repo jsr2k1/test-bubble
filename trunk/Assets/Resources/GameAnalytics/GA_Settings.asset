@@ -45,9 +45,9 @@ MonoBehaviour:
   UseBundleVersion: 0
   AllowRoaming: 1
   ArchiveData: 1
-  NewSessionOnResume: 1
+  NewSessionOnResume: 0
   AutoSubmitUserInfo: 1
-  DelayQuitToSendData: 1
+  DelayQuitToSendData: 0
   HeatmapGridSize: {x: 1, y: 1, z: 1}
   CustomUserID: 0
   SubmitInterval: 10
@@ -58,11 +58,11 @@ MonoBehaviour:
   TimePlayed: 300
   Sessions: 1
   Trigger_AdsEnabled: 0
-  Trigger_AdsEnabled_network: 1
+  Trigger_AdsEnabled_network: 0
   Trigger_SceneChange: 1
-  Trigger_SceneChange_network: 1
+  Trigger_SceneChange_network: 0
   IAD_foldout: 1
-  IAD_enabled: 1
+  IAD_enabled: 0
   CB_enabled: 0
   IAD_type: 0
   IAD_layout: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
   CB_foldout: 1
   CB_appID: 
   CB_appSig: 
-  CurrentInspectorState: 1
+  CurrentInspectorState: 0
   ClosedHints: 
   DisplayHints: 0
   DisplayHintsScrollState: {x: 0, y: 0}

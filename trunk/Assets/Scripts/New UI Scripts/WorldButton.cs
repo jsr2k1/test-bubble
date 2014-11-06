@@ -15,7 +15,8 @@ public class WorldButton : MonoBehaviour
 	public Sprite bubbleFilled;
 	Button button;
 	AudioSource audioSource;
-	
+	public Image livesPop;
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Awake()
@@ -73,19 +74,20 @@ public class WorldButton : MonoBehaviour
 			audioSource.Play();
 		}
 		int nLives=PlayerPrefs.GetInt("Lives");
-		if(nLives>0)
-		{
-			PlayerPrefs.SetString("GameType", "Normal");
+		if (nLives > 0) {
+			PlayerPrefs.SetString ("GameType", "Normal");
 			LevelManager.patternType = PatternType.TextLevel;
-			LevelParser.instance.LoadTextLevel(int.Parse(name), ActualWorld);
+			LevelParser.instance.LoadTextLevel (int.Parse (name), ActualWorld);
 
 			LevelManager.NumberOfBalls = numberBalls;
 			LevelManager.ReferenceScore = refScore;
 			LevelManager.rowAddingInterval = 1;
-			LevelManager.levelNo = int.Parse(name);
-			
-			PlayerPrefs.SetInt("bPlaying", 1);
-			Application.LoadLevel(3);
+			LevelManager.levelNo = int.Parse (name);
+
+			PlayerPrefs.SetInt ("bPlaying", 1);
+			Application.LoadLevel (3);
+		} else {
+			livesPop.GetComponent<PopUpMgr>().ShowPopUp();
 		}
 	}
 }
