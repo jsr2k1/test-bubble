@@ -908,8 +908,8 @@ RectTransform:
   - {fileID: 1073303864}
   - {fileID: 1747573028}
   - {fileID: 1232638879}
-  - {fileID: 1147725667}
   - {fileID: 2085255405}
+  - {fileID: 1147725667}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Sprite: {fileID: 21300000, guid: e0c2cce73e2b13e478e7092b6d48826f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -2472,7 +2472,7 @@ RectTransform:
   - {fileID: 606614557}
   - {fileID: 1778975110}
   m_Father: {fileID: 459459912}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 1500}
@@ -4355,7 +4355,7 @@ RectTransform:
   - {fileID: 2065175017}
   - {fileID: 1173270316}
   m_Father: {fileID: 459459912}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 1500}
