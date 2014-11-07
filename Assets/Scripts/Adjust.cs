@@ -49,7 +49,7 @@ public class Adjust : MonoBehaviour
 
 #if UNITY_ANDROID && !UNITY_EDITOR
 		Adjust.instance = new AdjustAndroid();
-#elif UNITY_IOS
+#elif UNITY_IOS && !UNITY_EDITOR
 		Adjust.instance = new AdjustIOS();
 #elif UNITY_WP8
 		Adjust.instance = new AdjustWP8();
