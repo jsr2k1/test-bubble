@@ -196,7 +196,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &66137066
@@ -338,7 +338,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &85107012
@@ -653,83 +653,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 99739522}
---- !u!1 &108088116
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100002, guid: 180026e13ad969f42be77742f60aa16b, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 108088117}
-  - 222: {fileID: 108088120}
-  - 114: {fileID: 108088119}
-  - 114: {fileID: 108088118}
-  m_Layer: 5
-  m_Name: ProfileImage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &108088117
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 22400002, guid: 180026e13ad969f42be77742f60aa16b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 108088116}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .649999976, y: .649999976, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1300469493}
-  m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -.5, y: -.5}
-  m_SizeDelta: {x: 10.0999928, y: 4.20000076}
-  m_Pivot: {x: .5, y: .5}
---- !u!114 &108088118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400004, guid: 180026e13ad969f42be77742f60aa16b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 108088116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed4fc53a07a41b64b9a438a2c1eba584, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &108088119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: 180026e13ad969f42be77742f60aa16b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 108088116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 4ded7938f36662f4195f28d690c70b7f, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 1
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &108088120
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 22200002, guid: 180026e13ad969f42be77742f60aa16b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 108088116}
 --- !u!1 &115642907
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,7 +936,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -1266,7 +1189,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -1506,7 +1429,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &200693773
@@ -1712,7 +1635,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &219373471
@@ -2320,7 +2243,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &255053426
@@ -2496,7 +2419,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -2699,7 +2622,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &288755018
@@ -2893,7 +2816,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -3062,7 +2985,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -3295,7 +3218,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -3494,7 +3417,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &390089419
@@ -3721,7 +3644,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &417028909
@@ -3897,7 +3820,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -4075,7 +3998,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -4253,7 +4176,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -4397,7 +4320,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &445548386
@@ -4598,7 +4521,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &482226287
@@ -4888,7 +4811,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &559597264
@@ -5064,7 +4987,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -5237,7 +5160,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -5407,7 +5330,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -5826,7 +5749,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_Layer
       value: 5
@@ -5932,7 +5855,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &620835969
@@ -6193,7 +6116,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -6272,48 +6195,6 @@ Prefab:
   m_RootGameObject: {fileID: 843548010}
   m_IsPrefabParent: 0
   m_IsExploded: 1
---- !u!1 &654491540
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100000, guid: 180026e13ad969f42be77742f60aa16b, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 654491541}
-  - 222: {fileID: 654491543}
-  m_Layer: 5
-  m_Name: FBProfileImage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &654491541
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 22400000, guid: 180026e13ad969f42be77742f60aa16b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 654491540}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .800000012, y: .800000012, z: 1.50669646}
-  m_Children:
-  - {fileID: 1300469493}
-  m_Father: {fileID: 760642363}
-  m_RootOrder: 2
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 150, y: -1003.28998}
-  m_SizeDelta: {x: 80, y: 80}
-  m_Pivot: {x: .5, y: .5}
---- !u!222 &654491543
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 22200000, guid: 180026e13ad969f42be77742f60aa16b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 654491540}
 --- !u!1001 &670642663
 Prefab:
   m_ObjectHideFlags: 0
@@ -6552,7 +6433,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -6640,6 +6521,90 @@ Prefab:
   m_RootGameObject: {fileID: 793464054}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1001 &728154570
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 760642363}
+    m_Modifications:
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -1003.28998
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_AnchorMin.x
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_AnchorMin.y
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_Pivot.x
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_Pivot.y
+      value: .5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+  m_RootGameObject: {fileID: 941603408}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &760642362
 GameObject:
   m_ObjectHideFlags: 0
@@ -6670,7 +6635,7 @@ RectTransform:
   m_Children:
   - {fileID: 535142128}
   - {fileID: 1880936033}
-  - {fileID: 654491541}
+  - {fileID: 941603409}
   - {fileID: 1009997718}
   - {fileID: 1774855182}
   - {fileID: 1508664479}
@@ -6769,7 +6734,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &768572007
@@ -6975,7 +6940,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &780889098
@@ -7151,7 +7116,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -7286,7 +7251,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &793464057
@@ -7833,7 +7798,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &843548013
@@ -8178,7 +8143,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &924304720
@@ -8320,7 +8285,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &925507854
@@ -8496,7 +8461,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -8584,6 +8549,49 @@ Prefab:
   m_RootGameObject: {fileID: 200693770}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &941603408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+  m_PrefabInternal: {fileID: 728154570}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 941603409}
+  - 222: {fileID: 941603410}
+  m_Layer: 5
+  m_Name: FBProfileImg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &941603409
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9,
+    type: 2}
+  m_PrefabInternal: {fileID: 728154570}
+  m_GameObject: {fileID: 941603408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: .800000012, y: .800000012, z: 1.50669646}
+  m_Children:
+  - {fileID: 1436977095}
+  - {fileID: 1003032625}
+  m_Father: {fileID: 760642363}
+  m_RootOrder: 2
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 150, y: -1003.28998}
+  m_SizeDelta: {x: 80, y: 80}
+  m_Pivot: {x: .5, y: .5}
+--- !u!222 &941603410
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22200002, guid: 015fa8c8f93a67a44964e564020fdec9,
+    type: 2}
+  m_PrefabInternal: {fileID: 728154570}
+  m_GameObject: {fileID: 941603408}
 --- !u!1 &976492919
 GameObject:
   m_ObjectHideFlags: 0
@@ -8640,7 +8648,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &976492922
@@ -8816,7 +8824,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -8968,6 +8976,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!1 &1003032622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100004, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+  m_PrefabInternal: {fileID: 728154570}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1003032625}
+  - 222: {fileID: 1003032624}
+  - 114: {fileID: 1003032623}
+  m_Layer: 5
+  m_Name: ImageMarco
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1003032623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 015fa8c8f93a67a44964e564020fdec9,
+    type: 2}
+  m_PrefabInternal: {fileID: 728154570}
+  m_GameObject: {fileID: 1003032622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 7060ca36817a7cd43a0ee7d8b1dd198f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1003032624
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22200004, guid: 015fa8c8f93a67a44964e564020fdec9,
+    type: 2}
+  m_PrefabInternal: {fileID: 728154570}
+  m_GameObject: {fileID: 1003032622}
+--- !u!224 &1003032625
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22400004, guid: 015fa8c8f93a67a44964e564020fdec9,
+    type: 2}
+  m_PrefabInternal: {fileID: 728154570}
+  m_GameObject: {fileID: 1003032622}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 941603409}
+  m_RootOrder: 1
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -.600000024, y: -.400000006}
+  m_SizeDelta: {x: 94.4000015, y: 99}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1 &1009997717
 GameObject:
   m_ObjectHideFlags: 0
@@ -9336,7 +9408,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1033337953
@@ -9659,7 +9731,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -9837,7 +9909,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -10006,7 +10078,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -10160,67 +10232,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1106881748}
---- !u!1 &1116372903
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 1116372904}
-  - 222: {fileID: 1116372906}
-  - 114: {fileID: 1116372905}
-  m_Layer: 5
-  m_Name: ImageMarco
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1116372904
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1116372903}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1300469493}
-  m_RootOrder: 1
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -.600000024, y: -.400000006}
-  m_SizeDelta: {x: 94.4000015, y: 99}
-  m_Pivot: {x: .5, y: .5}
---- !u!114 &1116372905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1116372903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 7354144b38ed8e041b8ad2f4cf2a5eb7, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &1116372906
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1116372903}
 --- !u!1 &1131226069
 GameObject:
   m_ObjectHideFlags: 0
@@ -10277,7 +10288,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1131226072
@@ -10419,7 +10430,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1138782992
@@ -10561,7 +10572,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1149014470
@@ -10933,7 +10944,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1201360813
@@ -11194,7 +11205,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -11372,7 +11383,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -11550,7 +11561,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -11728,7 +11739,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -11872,7 +11883,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1296038576
@@ -11958,40 +11969,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 1520177890}
   m_GameObject: {fileID: 1296038573}
---- !u!1 &1300469492
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 1300469493}
-  m_Layer: 5
-  m_Name: DummyParent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1300469493
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1300469492}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 108088117}
-  - {fileID: 1116372904}
-  m_Father: {fileID: 654491541}
-  m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: .5, y: .5}
 --- !u!1 &1306815260
 GameObject:
   m_ObjectHideFlags: 0
@@ -12048,7 +12025,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1306815263
@@ -12190,7 +12167,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1344245648
@@ -12451,6 +12428,83 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lives: {fileID: 1418095068}
+--- !u!1 &1436977094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+  m_PrefabInternal: {fileID: 728154570}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1436977095}
+  - 222: {fileID: 1436977098}
+  - 114: {fileID: 1436977097}
+  - 114: {fileID: 1436977096}
+  m_Layer: 5
+  m_Name: ProfileImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1436977095
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22400000, guid: 015fa8c8f93a67a44964e564020fdec9,
+    type: 2}
+  m_PrefabInternal: {fileID: 728154570}
+  m_GameObject: {fileID: 1436977094}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: .650000036, y: .650000036, z: 1}
+  m_Children: []
+  m_Father: {fileID: 941603409}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -.5, y: -.5}
+  m_SizeDelta: {x: 30.0999928, y: 24.2000008}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &1436977096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 015fa8c8f93a67a44964e564020fdec9,
+    type: 2}
+  m_PrefabInternal: {fileID: 728154570}
+  m_GameObject: {fileID: 1436977094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed4fc53a07a41b64b9a438a2c1eba584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1436977097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 015fa8c8f93a67a44964e564020fdec9,
+    type: 2}
+  m_PrefabInternal: {fileID: 728154570}
+  m_GameObject: {fileID: 1436977094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ba4ff22c5eeb1264aa794b338b9b5715, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1436977098
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22200000, guid: 015fa8c8f93a67a44964e564020fdec9,
+    type: 2}
+  m_PrefabInternal: {fileID: 728154570}
+  m_GameObject: {fileID: 1436977094}
 --- !u!1 &1445893131
 GameObject:
   m_ObjectHideFlags: 0
@@ -12626,7 +12680,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1449946207
@@ -13092,7 +13146,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -13311,7 +13365,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1509037303
@@ -13453,7 +13507,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1519984873
@@ -13629,7 +13683,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -13773,7 +13827,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1523032876
@@ -14290,7 +14344,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -14520,7 +14574,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1628641244
@@ -15033,7 +15087,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -15462,7 +15516,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -15640,7 +15694,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -16070,7 +16124,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1836516575
@@ -16394,7 +16448,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -16572,7 +16626,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -16741,7 +16795,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -16876,7 +16930,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1864544213
@@ -17018,7 +17072,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1866394748
@@ -17339,7 +17393,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1877166230
@@ -17599,7 +17653,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -18065,7 +18119,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -18614,7 +18668,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -18892,7 +18946,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1999211900
@@ -19068,7 +19122,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -19489,7 +19543,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &2008707665
@@ -19631,7 +19685,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &2020869907
@@ -19906,7 +19960,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -20079,7 +20133,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 654491541}
+      objectReference: {fileID: 941603409}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -20472,7 +20526,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 654491541}
+  ProfileImg: {fileID: 941603409}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &2113044718
