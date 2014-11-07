@@ -5,7 +5,7 @@ using System;
 
 namespace com.adjust.sdk
 {
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if UNITY_ANDROID
 	public class AdjustAndroid : IAdjust
 	{
 		private AndroidJavaClass ajcAdjust;

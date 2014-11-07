@@ -85,6 +85,8 @@ public class FacebookRequest : MonoBehaviour
 			}
 			//Invitar amigos
 			else{
+				Debug.Log("Facebook Invite pressed");
+				Adjust.trackEvent("3xnjnv");
 				FriendSelectorFilters = "[\"app_non_users\"]";
 				CallAppRequestInvite();
 			}
