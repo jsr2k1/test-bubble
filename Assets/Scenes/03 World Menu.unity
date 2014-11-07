@@ -196,7 +196,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &66137066
@@ -338,7 +338,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &85107012
@@ -936,7 +936,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -1189,7 +1189,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -1429,7 +1429,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &200693773
@@ -1635,7 +1635,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &219373471
@@ -2244,7 +2244,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &255053426
@@ -2420,7 +2420,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -2623,7 +2623,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &288755018
@@ -2817,7 +2817,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -2986,7 +2986,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -3219,7 +3219,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -3418,7 +3418,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &390089419
@@ -3560,7 +3560,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &417028909
@@ -3736,7 +3736,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -3914,7 +3914,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -4092,7 +4092,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -4236,7 +4236,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &445548386
@@ -4437,7 +4437,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &482226287
@@ -4727,7 +4727,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &559597264
@@ -4903,7 +4903,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -5076,7 +5076,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -5246,7 +5246,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -5665,7 +5665,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_Layer
       value: 5
@@ -5771,7 +5771,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &620835969
@@ -6032,7 +6032,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -6349,7 +6349,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -6478,11 +6478,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -1003.28998
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
       propertyPath: m_SizeDelta.x
@@ -6515,6 +6515,10 @@ Prefab:
     - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
       propertyPath: m_Pivot.y
       value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
@@ -6650,7 +6654,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &768572007
@@ -6856,7 +6860,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &780889098
@@ -7032,7 +7036,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -7167,7 +7171,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &793464057
@@ -7714,7 +7718,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &843548013
@@ -8059,7 +8063,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &924304720
@@ -8201,7 +8205,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &925507854
@@ -8377,7 +8381,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -8490,7 +8494,7 @@ RectTransform:
   m_GameObject: {fileID: 941603408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .800000012, y: .800000012, z: 1.50669646}
+  m_LocalScale: {x: .800000012, y: .800000012, z: 1}
   m_Children:
   - {fileID: 1436977095}
   - {fileID: 1003032625}
@@ -8498,7 +8502,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 150, y: -1003.28998}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: .5, y: .5}
 --- !u!222 &941603410
@@ -8564,7 +8568,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &976492922
@@ -8740,7 +8744,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -9324,7 +9328,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1033337953
@@ -9647,7 +9651,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -9825,7 +9829,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -9994,7 +9998,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -10204,7 +10208,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1131226072
@@ -10346,7 +10350,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1138782992
@@ -10488,7 +10492,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1149014470
@@ -10860,7 +10864,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1201360813
@@ -11121,7 +11125,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -11299,7 +11303,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -11477,7 +11481,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -11655,7 +11659,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -11799,7 +11803,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1296038576
@@ -11941,7 +11945,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1306815263
@@ -12083,7 +12087,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1344245648
@@ -12596,7 +12600,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1449946207
@@ -13062,7 +13066,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -13281,7 +13285,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1509037303
@@ -13508,7 +13512,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1519984873
@@ -13684,7 +13688,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -13828,7 +13832,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1523032876
@@ -14345,7 +14349,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -14575,7 +14579,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1628641244
@@ -15173,7 +15177,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -15602,7 +15606,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -15780,7 +15784,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -16093,7 +16097,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1836516575
@@ -16417,7 +16421,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -16595,7 +16599,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -16764,7 +16768,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -16899,7 +16903,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1864544213
@@ -17041,7 +17045,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1866394748
@@ -17362,7 +17366,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1877166230
@@ -17622,7 +17626,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -18088,7 +18092,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -18637,7 +18641,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -18915,7 +18919,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &1999211900
@@ -19091,7 +19095,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -19512,7 +19516,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &2008707665
@@ -19654,7 +19658,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &2020869907
@@ -19929,7 +19933,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -20102,7 +20106,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: ProfileImg
       value: 
-      objectReference: {fileID: 941603409}
+      objectReference: {fileID: 941603408}
     - target: {fileID: 11400004, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: m_PreserveAspect
       value: 1
@@ -20495,7 +20499,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603409}
+  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
 --- !u!114 &2113044718

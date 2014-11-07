@@ -11,7 +11,7 @@ public class WorldButton : MonoBehaviour
 	public Image star1;
 	public Image star2;
 	public Image star3;
-	public Transform ProfileImg;
+	public GameObject ProfileImg;
 	public Sprite bubbleFilled;
 	Button button;
 	AudioSource audioSource;
@@ -59,10 +59,14 @@ public class WorldButton : MonoBehaviour
 			stars.transform.localPosition = new Vector3(0, 40, 0);
 			stars.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
 		}
-
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void Update()
+	{
 		if(gameObject.name ==(PlayerPrefs.GetInt("Level")+1).ToString()){
-			ProfileImg.position = transform.position +  new Vector3(0, 70, 0);
-			ProfileImg.localScale = new Vector3(0.8f, 0.8f, 1.0f);
+			ProfileImg.transform.position = gameObject.transform.position + new Vector3(0.0f, 60.0f, 0.0f);
 		}
 	}
 	
