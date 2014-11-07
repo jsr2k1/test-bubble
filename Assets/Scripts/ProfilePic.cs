@@ -19,7 +19,7 @@ public class ProfilePic : MonoBehaviour
 	
 	void Start()
 	{
-		if(spritefb == null){
+		if(FB.IsLoggedIn && spritefb == null){
 			StartCoroutine("getProfileImage");
 		}
 	}
