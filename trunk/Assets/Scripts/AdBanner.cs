@@ -36,7 +36,8 @@ public class AdBanner : MonoBehaviour
 		//desc.Editor_MillennialMediaAdvertising_RefreshRate = 120,
 
 		// iOS settings
-		desc.iOS_AdAPI = AdAPIs.iAd;
+		//desc.iOS_AdAPI = AdAPIs.iAd;
+		desc.iOS_AdAPI = AdAPIs.AdMob;
 		desc.iOS_iAd_AdGravity = AdGravity.BottomCenter;
 		
 		desc.iOS_AdMob_AdGravity = AdGravity.BottomCenter;
@@ -50,7 +51,7 @@ public class AdBanner : MonoBehaviour
 		desc.Android_AdAPI = AdAPIs.AdMob;// Choose between AdMob or AmazonAds
 		#endif
 		
-		desc.Android_AdMob_UnitID = "ca-app-pub-4996019706488907/6665040478";// NOTE: You can use legacy (PublisherID) too, You MUST have this even for Testing!
+		desc.Android_AdMob_UnitID = "ca-app-pub-4996019706488907/5332751276";// NOTE: You can use legacy (PublisherID) too, You MUST have this even for Testing!
 		desc.Android_AdMob_AdGravity = AdGravity.BottomCenter;
 		desc.Android_AdMob_AdSize = Android_AdMob_AdSize.SmartBanner;
 		
