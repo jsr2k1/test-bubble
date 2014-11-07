@@ -15,7 +15,7 @@ public class IAPManager : MonoBehaviour
 	private string item2 = "xxxxxxxxxxx2";
 	private string item3 = "xxxxxxxxxxx3";
 	#else
-	private string item1 = "extrasmall";
+	private string item1 = "xsmall";
 	private string item2 = "small";
 	private string item3 = "medium";
 	private string item4 = "big";
@@ -58,7 +58,7 @@ public class IAPManager : MonoBehaviour
 		// iOS
 		desc.iOS_InAppPurchaseAPI = InAppPurchaseAPIs.AppleStore;
 		desc.iOS_AppleStore_InAppIDs = inAppIDs;
-		desc.iOS_AppleStore_SharedSecretKey = "";// NOTE: Must set SharedSecretKey, even for Testing!
+		desc.iOS_AppleStore_SharedSecretKey = "e60ebb2d723149f4ab400404b28aad43";// NOTE: Must set SharedSecretKey, even for Testing!
 		
 		// Android
 		// Choose for either GooglePlay or Amazon.
