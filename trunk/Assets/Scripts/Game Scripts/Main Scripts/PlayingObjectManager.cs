@@ -16,6 +16,15 @@ public class PlayingObjectManager : MonoBehaviour
 
 	GameObject bottomMostObject, topMostObject;
 	GameObject BottomBoundaryObj, TopBoundaryObj;
+	
+	public enum MissionType{
+		Normal=0,
+		Animals=1,
+		Fruits=2
+	}
+	
+	public static int missionCount;
+	public static int missionCountTotal;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -33,10 +42,12 @@ public class PlayingObjectManager : MonoBehaviour
 		currentObjectName = "";
 		playingObjectList = new ArrayList();        
 		RefreshPlayingObjectList();
+		
+		UpdatePlayingObjectsList();
+		GetMissionCountTotal();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	//Refreshes PlaingObjectList
 	public void RefreshPlayingObjectList()
 	{
@@ -176,11 +187,11 @@ public class PlayingObjectManager : MonoBehaviour
 			return false;
 		}
 		bool res=false;
-		if(GetLevelMission()==1){//Mision normal
+		if(GetLevelMission()==MissionType.Normal){
 			if(allPlayingObjectScripts.Length == 10 && LevelManager.instance.totalNumberOfRowsLeft == 0){
 				res=true;
 			}
-		}else if(GetLevelMission()==2){//Mision liberar animales
+		}else if(GetLevelMission()==MissionType.Animals){
 			if(AllAnimalsAreFree()){
 				res=true;
 			}
@@ -190,12 +201,24 @@ public class PlayingObjectManager : MonoBehaviour
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	int GetLevelMission()
+	public static MissionType GetLevelMission()
 	{
-		if(LevelManager.levelNo==1){//Mision liberar animales
-			return 2;
-		}else{//Mision normal
-			return 1;
+		if(LevelManager.levelNo == 4 || LevelManager.levelNo == 6 || LevelManager.levelNo == 8){
+			return MissionType.Animals;
+		}else{
+			return MissionType.Normal;
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void GetMissionCountTotal()
+	{
+		missionCountTotal=0;
+		for(int i = 0; i < allPlayingObjectScripts.Length; i++){
+			if(allPlayingObjectScripts[i].name=="parrot_ball(Clone)"){
+				missionCountTotal++;
+			}
 		}
 	}
 	
@@ -203,12 +226,13 @@ public class PlayingObjectManager : MonoBehaviour
 
 	bool AllAnimalsAreFree()
 	{
+		missionCount=0;
 		for(int i = 0; i < allPlayingObjectScripts.Length; i++){
 			if(allPlayingObjectScripts[i].name=="parrot_ball(Clone)"){
-				return false;
+				missionCount++;
 			}
 		}
-		return true;
+		return missionCount==0;
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
