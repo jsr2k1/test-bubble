@@ -11,13 +11,13 @@ using System.Collections;
 /// </summary>
 public static class ApplicationEx
 {
-	#if UNITY_ANDROID
+	#if UNITY_ANDROID && !UNITY_EDITOR
 	private static AndroidJavaClass native;
 	#endif
 	
 	static ApplicationEx()
 	{
-		#if UNITY_ANDROID
+		#if UNITY_ANDROID && !UNITY_EDITOR
 		native = new AndroidJavaClass("com.reignstudios.reignnative.ReignUnityActivity");
 		#endif
 	}
@@ -27,7 +27,8 @@ public static class ApplicationEx
 	/// </summary>
 	public static void Quit()
 	{
-		#if UNITY_ANDROID && !UNITY_4_5
+		//#if UNITY_ANDROID && !UNITY_4_5
+		#if UNITY_ANDROID && !UNITY_EDITOR
 		if (native != null)
 		{
 			PlayerPrefs.Save();
