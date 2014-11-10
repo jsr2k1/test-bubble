@@ -24,7 +24,7 @@ public class PlayingObjectManager : MonoBehaviour
 	}
 	
 	public static int missionCount;
-	public static int missionCountTotal;
+	public static int missionCountTotal=-1;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -32,6 +32,7 @@ public class PlayingObjectManager : MonoBehaviour
 	{
 		BottomBoundaryObj = GameObject.Find("Thresold Line");
 		TopBoundaryObj = GameObject.Find("Top");
+		missionCountTotal=-1;
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -44,7 +45,6 @@ public class PlayingObjectManager : MonoBehaviour
 		RefreshPlayingObjectList();
 		
 		UpdatePlayingObjectsList();
-		GetMissionCountTotal();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -165,6 +165,7 @@ public class PlayingObjectManager : MonoBehaviour
 		currentObjectName = "";
 
 		UpdatePlayingObjectsList();
+		GetMissionCountTotal();
 
 		for(int i = 0; i < allPlayingObjectScripts.Length; i++) {
 			if(allPlayingObjectScripts[i]!=null){
@@ -214,10 +215,12 @@ public class PlayingObjectManager : MonoBehaviour
 	
 	void GetMissionCountTotal()
 	{
-		missionCountTotal=0;
-		for(int i = 0; i < allPlayingObjectScripts.Length; i++){
-			if(allPlayingObjectScripts[i].name=="parrot_ball(Clone)"){
-				missionCountTotal++;
+		if(missionCountTotal<0){
+			missionCountTotal=0;
+			for(int i = 0; i < allPlayingObjectScripts.Length; i++){
+				if(allPlayingObjectScripts[i].name=="parrot_ball(Clone)"){
+					missionCountTotal++;
+				}
 			}
 		}
 	}
@@ -226,13 +229,14 @@ public class PlayingObjectManager : MonoBehaviour
 
 	bool AllAnimalsAreFree()
 	{
-		missionCount=0;
+		int count=0;
 		for(int i = 0; i < allPlayingObjectScripts.Length; i++){
 			if(allPlayingObjectScripts[i].name=="parrot_ball(Clone)"){
-				missionCount++;
+				count++;
 			}
 		}
-		return missionCount==0;
+		missionCount = missionCountTotal-count;
+		return (missionCount==missionCountTotal);
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

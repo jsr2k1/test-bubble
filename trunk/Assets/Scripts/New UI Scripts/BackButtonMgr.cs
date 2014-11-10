@@ -8,29 +8,34 @@ public class BackButtonMgr : MonoBehaviour
 	public Image quitPop;
 	public Image thisPop;
 	public Image livesPop;
+	bool backPressed=false;
 
 	public void BackButtonPressed()
 	{
-		if(PlayerPrefs.GetInt("Sounds")==1){
+		if(PlayerPrefs.GetInt("Sounds")==1)
 			audio.Play();
+		
+		//MENU
+		if(Application.loadedLevel==1){
+			if(!backPressed){
+				thisPop.GetComponent<PopUpMgr>().HidePopUp();
+			}
+			quitPop.GetComponent<PopUpMgr>().ShowPopUp();
 		}
-		if(Application.loadedLevel==3)//Worlds game scene
-		{
-			thisPop.GetComponent<PopUpMgr>().HidePopUp(false);
+		//WORLDS
+		else if(Application.loadedLevel==2){
+			Application.LoadLevel(1); //Go to Menu Scene
+		}
+		//GAME-WORLDS
+		else if(Application.loadedLevel==3){
+			if(!backPressed){
+				thisPop.GetComponent<PopUpMgr>().HidePopUp(false);
+			}
 			livesPop.GetComponent<PopUpMgr>().ShowPopUp();
 		}
-		else if(Application.loadedLevel==4)//Arcade
-		{
+		//GAME-ARCADE
+		else if(Application.loadedLevel==4){
 			Application.LoadLevel(1); //Go to Menu Scene
-		}
-		else if(Application.loadedLevel==2)//World Scene
-		{
-			Application.LoadLevel(1); //Go to Menu Scene
-		}
-		else{
-			thisPop.GetComponent<PopUpMgr>().HidePopUp();
-			quitPop.GetComponent<PopUpMgr>().ShowPopUp();
-
 		}
 	}
 	
@@ -39,7 +44,9 @@ public class BackButtonMgr : MonoBehaviour
 	void Update()
 	{
 		if(Input.GetKeyDown(KeyCode.Escape)){
+			backPressed=true;
 			BackButtonPressed();
+			backPressed=false;
 		}
 	}
 }

@@ -31,7 +31,6 @@ public class PopUpMgr : MonoBehaviour
 			if(audio && PlayerPrefs.GetInt("Sounds")==1){
 				audio.Play();
 			}
-
 		}
 	}
 

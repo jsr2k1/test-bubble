@@ -35,7 +35,7 @@ public class WorldButton : MonoBehaviour
 		Text currentText = Instantiate(numTextPrefab) as Text;
 		currentText.text = gameObject.name;
 		currentText.transform.position = transform.position;
-		currentText.transform.parent = transform;
+		currentText.transform.SetParent(transform);
 		currentText.name = "label_" + gameObject.name;
 		currentText.transform.localScale = new Vector3(0.2f, 0.2f, 1.0f);
 
@@ -55,7 +55,7 @@ public class WorldButton : MonoBehaviour
 		}
 
 		if(stars != null){
-			stars.transform.parent = transform;
+			stars.transform.SetParent(transform);
 			stars.transform.localPosition = new Vector3(0, 40, 0);
 			stars.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
 		}

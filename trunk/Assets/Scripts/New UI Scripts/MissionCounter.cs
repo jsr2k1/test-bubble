@@ -4,32 +4,30 @@ using System.Collections;
 
 public class MissionCounter : MonoBehaviour
 {
-	//PlayingObjectManager.MissionType currentMission;
+	PlayingObjectManager.MissionType currentMission;
 	public Image imgMission;
 	public Text textMission;
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Awake()
-	{/*
+	{
+		imgMission.enabled=false;
+		textMission.enabled=false;
 		currentMission = PlayingObjectManager.GetLevelMission();
-		
-		if(currentMission == PlayingObjectManager.MissionType.Normal){
-			imgMission.enabled=false;
-			textMission.enabled=false;
-		}
-		else if(currentMission == PlayingObjectManager.MissionType.Animals){
-			imgMission.enabled=true;
-			textMission.enabled=true;
-		}*/
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Update()
-	{/*
+	{
+		if(currentMission == PlayingObjectManager.MissionType.Animals && !imgMission.enabled && PlayingObjectManager.missionCountTotal>0){
+			imgMission.enabled=true;
+			textMission.enabled=true;
+		}
+		
 		if(currentMission == PlayingObjectManager.MissionType.Animals){
-			textMission.text = (PlayingObjectManager.missionCountTotal-PlayingObjectManager.missionCount) + "/" + PlayingObjectManager.missionCountTotal;
-		}*/
+			textMission.text = PlayingObjectManager.missionCount + "/" + PlayingObjectManager.missionCountTotal;
+		}
 	}
 }
