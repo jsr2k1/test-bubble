@@ -6,7 +6,9 @@ using System.Diagnostics;
 
 public class AdjustEditor : MonoBehaviour {
 
+	#if UNITY_IOS
 	static string iOSBuildPath = "";
+	#endif
 	static bool isEnabled = true;
 
 	[PostProcessBuild]

@@ -10,6 +10,7 @@ public class AdBanner : MonoBehaviour
 {
 	private static Ad ad;
 	private string adStatus;
+	public bool bDebug=false;
 	
 	void Start()
 	{
@@ -85,24 +86,26 @@ public class AdBanner : MonoBehaviour
 		}
 	}
 
-	/*
+	
 	void OnGUI()
 	{
-		GUI.matrix = Matrix4x4.identity;
-		GUI.color = Color.white;
-		
-		GUI.Label(new Rect(0, Screen.height/2, 256, 64), "Ad status: " + adStatus);
-		
-		// Manual Refresh does not work on (Apple iAd) or (BB10 Ads).
-		if (GUI.Button(new Rect(0, 0, 128, 64), "Manual Refresh")) ad.Refresh();
-		
-		// Show / Hide Ad
-		if (GUI.Button(new Rect(0, 128+8, 128, 64), "Show / Hide")) ad.Visible = !ad.Visible;
-		
-		// You can also manually draw GUI based Ads if you want to control GUI sort order
-		//ad.Draw();
+		if(bDebug){
+			GUI.matrix = Matrix4x4.identity;
+			GUI.color = Color.white;
+			
+			GUI.Label(new Rect(0, Screen.height/2, 256, 64), "Ad status: " + adStatus);
+			
+			// Manual Refresh does not work on (Apple iAd) or (BB10 Ads).
+			if (GUI.Button(new Rect(0, 0, 128, 64), "Manual Refresh")) ad.Refresh();
+			
+			// Show / Hide Ad
+			if (GUI.Button(new Rect(0, 128+8, 128, 64), "Show / Hide")) ad.Visible = !ad.Visible;
+			
+			// You can also manually draw GUI based Ads if you want to control GUI sort order
+			//ad.Draw();
+		}
 	}
-	*/
+	
 
 	void Update()
 	{
