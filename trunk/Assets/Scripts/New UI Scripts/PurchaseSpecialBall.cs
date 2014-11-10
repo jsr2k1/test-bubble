@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PurchaseSpecialBall : MonoBehaviour
 {
 	public Text NumberBallText;
-	public Text CoinsText;
+	//public Text CoinsText;
 	public string BallString;
 	public int price;
 
@@ -55,7 +55,7 @@ public class PurchaseSpecialBall : MonoBehaviour
 			PlayerPrefs.SetInt("Coins", coins);
 
 			NumberBallText.text = PlayerPrefs.GetInt(BallString).ToString();
-			CoinsText.text = PlayerPrefs.GetInt("Coins").ToString();
+			//CoinsText.text = PlayerPrefs.GetInt("Coins").ToString();
 			
 			if(OnSpecialBallBuyed!=null){
 				OnSpecialBallBuyed();
