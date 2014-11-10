@@ -4,7 +4,7 @@ using System.Collections;
 
 public class MissionCounter : MonoBehaviour
 {
-	PlayingObjectManager.MissionType currentMission;
+	//PlayingObjectManager.MissionType currentMission;
 	public Image imgMission;
 	public Text textMission;
 	
