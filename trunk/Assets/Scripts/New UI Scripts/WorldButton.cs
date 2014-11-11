@@ -15,6 +15,8 @@ public class WorldButton : MonoBehaviour
 	Button button;
 	AudioSource audioSource;
 	public Image livesPop;
+	public Image startPop;
+	public Text levelTextPop;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -79,7 +81,9 @@ public class WorldButton : MonoBehaviour
 			LevelManager.levelNo = int.Parse (name);
 
 			PlayerPrefs.SetInt ("bPlaying", 1);
-			Application.LoadLevel (3);
+			//Application.LoadLevel (3);
+			levelTextPop.text = "LEVEL " + LevelManager.levelNo.ToString();
+			startPop.GetComponent<PopUpMgr>().ShowPopUp();
 		} else {
 			livesPop.GetComponent<PopUpMgr>().ShowPopUp();
 		}
