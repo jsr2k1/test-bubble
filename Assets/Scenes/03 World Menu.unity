@@ -130,9 +130,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &66137066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,9 +273,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &85107012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,6 +946,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1138782989}
@@ -1206,6 +1216,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 780889095}
@@ -1424,9 +1442,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &200693773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1630,9 +1649,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &219373471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1972,7 +1992,7 @@ MonoBehaviour:
   x2: {fileID: 21300000, guid: 7d644c466d32c4ee991ed5e3f8f49cd5, type: 3}
   x3: {fileID: 21300000, guid: 0cd1ac991eb944d0991db523f67fad75, type: 3}
   x4: {fileID: 21300000, guid: d10053e01f3054d2abad9d803fee2571, type: 3}
-  x5: {fileID: 0}
+  x5: {fileID: 21300000, guid: 85ebed247e764484586bab9aedba9935, type: 3}
 --- !u!1 &239758567
 GameObject:
   m_ObjectHideFlags: 0
@@ -2316,9 +2336,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &255053426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2575,6 +2596,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 219373468}
@@ -2695,9 +2724,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &288755018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2963,6 +2993,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 2020869904}
@@ -3132,6 +3170,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 768572004}
@@ -3365,6 +3411,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 288755016}
@@ -3490,9 +3544,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &390089419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3632,9 +3687,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &417028909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3891,6 +3947,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1131226069}
@@ -4069,6 +4133,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1999211897}
@@ -4247,6 +4319,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1344245645}
@@ -4308,9 +4388,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &445548386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4509,9 +4590,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &482226287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4799,9 +4881,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &559597264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5049,6 +5132,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1628641241}
@@ -5222,6 +5313,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
@@ -5401,6 +5500,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 66137063}
@@ -5782,6 +5889,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 2113044715}
@@ -5843,9 +5958,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &620835969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6178,6 +6294,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 843548010}
@@ -6504,6 +6628,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 793464054}
@@ -6598,6 +6730,72 @@ Prefab:
   m_RootGameObject: {fileID: 941603408}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &742490951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 742490954}
+  - 222: {fileID: 742490953}
+  - 114: {fileID: 742490952}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &742490952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 742490951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: .999188662, b: .970588207, a: 1}
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 4a110488b11dd3946b032a0233f79306, type: 3}
+    m_FontSize: 29
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: LEVEL NUMBER
+--- !u!222 &742490953
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 742490951}
+--- !u!224 &742490954
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 742490951}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1502618723}
+  m_RootOrder: 0
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -1.29999995, y: 255.199997}
+  m_SizeDelta: {x: 234.399994, y: 46.7999992}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1 &760642362
 GameObject:
   m_ObjectHideFlags: 0
@@ -6726,9 +6924,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &768572007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6932,9 +7131,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &780889098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7182,6 +7382,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 976492919}
@@ -7243,9 +7451,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &793464057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7790,9 +7999,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &843548013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8135,9 +8345,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &924304720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8277,9 +8488,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &925507854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8536,6 +8748,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 200693770}
@@ -8653,9 +8873,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &976492922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8903,6 +9124,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 925507851}
@@ -9209,8 +9438,9 @@ RectTransform:
   - {fileID: 281124140}
   - {fileID: 2135650040}
   - {fileID: 902129909}
-  - {fileID: 1669811590}
   - {fileID: 1739849704}
+  - {fileID: 1502618723}
+  - {fileID: 1669811590}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
@@ -9413,9 +9643,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &1033337953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9819,6 +10050,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 924304717}
@@ -9988,6 +10227,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1149014467}
@@ -10166,6 +10413,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1449946204}
@@ -10237,6 +10492,185 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1106881748}
+--- !u!1 &1120998555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100006, guid: b496dbe2d9461404caffadd843da0ef4, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1120998556}
+  - 222: {fileID: 1120998560}
+  - 114: {fileID: 1120998559}
+  - 114: {fileID: 1120998558}
+  - 82: {fileID: 1120998557}
+  m_Layer: 5
+  m_Name: CloseButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1120998556
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22400006, guid: b496dbe2d9461404caffadd843da0ef4,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120998555}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.20000005, y: 1.20000005, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1502618723}
+  m_RootOrder: 1
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 207, y: 241}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: .5, y: .5}
+--- !u!82 &1120998557
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200000, guid: b496dbe2d9461404caffadd843da0ef4,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120998555}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: b38cf6f64fe74dd418ebeed09f85c80e, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!114 &1120998558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400012, guid: b496dbe2d9461404caffadd843da0ef4,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120998555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: .501960814, g: .501960814, b: .501960814, a: 1}
+    m_HighlightedColor: {r: .501960814, g: .501960814, b: .501960814, a: .698039234}
+    m_PressedColor: {r: .345098048, g: .345098048, b: .345098048, a: .698039234}
+    m_DisabledColor: {r: .250980407, g: .250980407, b: .250980407, a: .501960814}
+    m_ColorMultiplier: 2
+    m_FadeDuration: .100000001
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1120998559}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1502618725}
+        m_MethodName: HidePopUp
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 1
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1120998559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400014, guid: b496dbe2d9461404caffadd843da0ef4,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120998555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: .588}
+  m_Sprite: {fileID: 21300000, guid: 53cd65dc309614b4b8361c94430b48c5, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1120998560
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22200006, guid: b496dbe2d9461404caffadd843da0ef4,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120998555}
 --- !u!1 &1131226069
 GameObject:
   m_ObjectHideFlags: 0
@@ -10293,9 +10727,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &1131226072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10435,9 +10870,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &1138782992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10577,9 +11013,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &1149014470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10949,9 +11386,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &1201360813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11094,7 +11532,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy Lives
+  m_Text: BUY LIVES
 --- !u!222 &1203056672
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11359,6 +11797,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1523032873}
@@ -11537,6 +11983,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1864544210}
@@ -11715,6 +12169,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1033337950}
@@ -11893,6 +12355,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 620835966}
@@ -11954,9 +12424,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &1296038576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12096,9 +12567,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &1306815263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12238,9 +12710,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &1344245648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12788,9 +13261,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &1449946207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13130,6 +13604,133 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!1 &1476546170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1476546171}
+  - 222: {fileID: 1476546175}
+  - 114: {fileID: 1476546174}
+  - 114: {fileID: 1476546173}
+  - 114: {fileID: 1476546172}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1476546171
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1476546170}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: .5, y: .5, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1502618723}
+  m_RootOrder: 2
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: -124}
+  m_SizeDelta: {x: 210, y: 210}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &1476546172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1476546170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b81f3636df23942b1e149650f07ed5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1476546173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1476546170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
+    m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
+    m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
+    m_ColorMultiplier: 1
+    m_FadeDuration: .100000001
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1476546174}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1476546172}
+        m_MethodName: loadlevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1476546174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1476546170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 24f0d72dcdb078747b09bff0655ba0a8, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1476546175
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1476546170}
 --- !u!1 &1480176919
 GameObject:
   m_ObjectHideFlags: 0
@@ -13328,11 +13929,176 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 417028906}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1502618722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100008, guid: b496dbe2d9461404caffadd843da0ef4, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1502618723}
+  - 222: {fileID: 1502618728}
+  - 114: {fileID: 1502618727}
+  - 95: {fileID: 1502618726}
+  - 114: {fileID: 1502618725}
+  - 82: {fileID: 1502618724}
+  m_Layer: 5
+  m_Name: InfoLevelPopUp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1502618723
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22400008, guid: b496dbe2d9461404caffadd843da0ef4,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1502618722}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 742490954}
+  - {fileID: 1120998556}
+  - {fileID: 1476546171}
+  m_Father: {fileID: 1032201309}
+  m_RootOrder: 9
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -3.05175781e-05, y: 1499.99988}
+  m_SizeDelta: {x: 700, y: 875}
+  m_Pivot: {x: .5, y: .5}
+--- !u!82 &1502618724
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1502618722}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: b38cf6f64fe74dd418ebeed09f85c80e, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!114 &1502618725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400016, guid: b496dbe2d9461404caffadd843da0ef4,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1502618722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53cd5877c14ace441a5d0bc3276e472b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImgBlack: {fileID: 281124141}
+--- !u!95 &1502618726
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 9500000, guid: b496dbe2d9461404caffadd843da0ef4,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1502618722}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6ebfe2d029ed51740b34c67abf9237c1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1502618727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400018, guid: b496dbe2d9461404caffadd843da0ef4,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1502618722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 02265518ffc22bb42a230a2e92946fa3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1502618728
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 22200008, guid: b496dbe2d9461404caffadd843da0ef4,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1502618722}
 --- !u!1 &1508664478
 GameObject:
   m_ObjectHideFlags: 0
@@ -13473,9 +14239,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &1509037303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13700,9 +14467,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &1519984873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13959,6 +14727,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1296038573}
@@ -14020,9 +14796,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &1523032876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14547,6 +15324,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 559597261}
@@ -14704,9 +15489,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &1628641244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14828,7 +15614,7 @@ RectTransform:
   - {fileID: 239758568}
   - {fileID: 815061003}
   m_Father: {fileID: 1032201309}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 1500}
@@ -15302,6 +16088,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1519984870}
@@ -15338,7 +16132,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1032201309}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -43.5, y: 44.4000015}
@@ -15731,6 +16525,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 85107009}
@@ -15900,6 +16702,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1836516572}
@@ -16139,9 +16949,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &1836516575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16546,6 +17357,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1877166227}
@@ -16715,6 +17534,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1306815260}
@@ -16884,6 +17711,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 445548383}
@@ -16945,9 +17780,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &1864544213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17087,9 +17923,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &1866394748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17408,9 +18245,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &1877166230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17742,6 +18580,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1866394745}
@@ -18208,6 +19054,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 390089416}
@@ -18766,6 +19620,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1201360810}
@@ -18961,9 +19823,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &1999211900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19220,6 +20083,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 482226284}
@@ -19558,9 +20429,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &2008707665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19700,9 +20572,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &2020869907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20114,6 +20987,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 255053423}
@@ -20283,6 +21164,14 @@ Prefab:
       propertyPath: livesPop
       value: 
       objectReference: {fileID: 1669811593}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: levelTextPop
+      value: 
+      objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: startPop
+      value: 
+      objectReference: {fileID: 1502618727}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 2008707662}
@@ -20602,9 +21491,10 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  ProfileImg: {fileID: 941603408}
   bubbleFilled: {fileID: 21300000, guid: fd137979a0e1aed4386d7253e519e8c2, type: 3}
   livesPop: {fileID: 1669811593}
+  startPop: {fileID: 1502618727}
+  levelTextPop: {fileID: 742490952}
 --- !u!114 &2113044718
 MonoBehaviour:
   m_ObjectHideFlags: 0
