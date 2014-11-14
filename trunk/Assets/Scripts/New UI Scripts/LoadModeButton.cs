@@ -7,8 +7,6 @@ public class LoadModeButton : MonoBehaviour
 	{
 		Adjust.trackEvent("1b5w81");
 		
-		Debug.Log("PLAY button pressed");
-		
 		if(PlayerPrefs.GetInt("Sounds")==1){
 			audio.Play();
 		}
@@ -20,8 +18,6 @@ public class LoadModeButton : MonoBehaviour
 	public void LoadArcadeMode()
 	{
 		Adjust.trackEvent("xr59vt");
-		
-		Debug.Log("ARCADE button pressed");
 		
 		PlayerPrefs.SetString("GameType", "Arcade");
 		

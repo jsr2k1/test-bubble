@@ -1,7 +1,6 @@
 ﻿////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //http://blog.bigfootgaming.net/custom-facebook-open-graph-objects-unity3d/
-//https://developers.facebook.com/docs/games/requests/v2.1#gifting
-//http://www.neatplug.com/integration-guide-unity3d-facebook-sns-plugin
+//https://developers.facebook.com/docs/games/requests/v2.2
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using UnityEngine;
@@ -79,14 +78,14 @@ public class FacebookRequest : MonoBehaviour
 			if(bForceConnect){
 				FriendSelectorFilters = "[\"app_users\"]";
 				if(!FB.IsLoggedIn){
-					FB.Login("email", AuthCallback);
+					FB.Login("public_profile,email,user_friends,publish_actions", AuthCallback);
 				}
 				CallAppRequestSendLives();
 			}
 			//Invitar amigos
 			else{
 				Debug.Log("Facebook Invite pressed");
-				Adjust.trackEvent("3xnjnv");
+				//Adjust.trackEvent("3xnjnv");
 				FriendSelectorFilters = "[\"app_non_users\"]";
 				CallAppRequestInvite();
 			}
@@ -116,8 +115,7 @@ public class FacebookRequest : MonoBehaviour
 	{
 		// If there's a Max Recipients specified, include it
 		maxRecipients = null;
-		if(FriendSelectorMax != "")
-		{
+		if(FriendSelectorMax != ""){
 			try{
 				maxRecipients = Int32.Parse(FriendSelectorMax);
 			}catch(Exception e){
@@ -127,8 +125,7 @@ public class FacebookRequest : MonoBehaviour
 		// include the exclude ids
 		excludeIds =(FriendSelectorExcludeIds == "") ? null : FriendSelectorExcludeIds.Split(',');
 		FriendSelectorFiltersArr = null;
-		if(!String.IsNullOrEmpty(FriendSelectorFilters))
-		{
+		if(!String.IsNullOrEmpty(FriendSelectorFilters)){
 			try{
 				FriendSelectorFiltersArr = Facebook.MiniJSON.Json.Deserialize(FriendSelectorFilters) as List<object>;
 			}
@@ -152,34 +149,61 @@ public class FacebookRequest : MonoBehaviour
 			maxRecipients,
 			FriendSelectorData,
 			FriendSelectorTitle,
-			callback : appRequestCallback
+			callback : Callback
 		);
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Request for a life
+	//Crear una instancia de la vida que vamos a enviar
 	void CallAppRequestSendLives()
 	{
-		string objectId="730922200278965";
+		Dictionary<string, string> formData = new Dictionary<string, string>();
 		
-		FriendsSelector();
+		//formData["og:url"] = "http://samples.ogp.me/746045498766635";
+		formData["og:title"] = "Sample Life";
+		formData["og:type"] = "bubbleparadisetwo:life";
+		//formData["og:image"] = "https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png";
+		//formData["og:description"] = "";
+		formData["fb:app_id"] = "730922200278965";
+		
+		Dictionary<string, string> formDic = new Dictionary<string, string>();
+		formDic["object"] = Facebook.MiniJSON.Json.Serialize(formData);
+		FB.API("me/objects/bubbleparadisetwo:life", HttpMethod.POST, SendLiveCallback, formDic);
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Si se ha creado correctamente la instancia del objeto tipo Lifes -> hacemos el AppRequest
+	void SendLiveCallback(FBResult result)
+	{
+		if(!String.IsNullOrEmpty(result.Error)){
+			Debug.Log("-_-_ Send Live: Error Response:" + result.Error);
+		}
+		else if(!String.IsNullOrEmpty(result.Text)){
+			Dictionary<string, object> dictJson = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
 			
-		FB.AppRequest(
-			FriendSelectorMessage,
-			OGActionType.Send,
-			objectId,
-			FriendSelectorFiltersArr,
-			excludeIds,
-			maxRecipients,
-			FriendSelectorData,
-			FriendSelectorTitle,
-			callback : appRequestCallback
-		);
+			string objectId = dictJson["id"] as string;
+			
+			FriendsSelector();
+			
+			FB.AppRequest(FriendSelectorMessage,
+				OGActionType.Send,
+				objectId,
+				FriendSelectorFiltersArr,
+				excludeIds,
+				maxRecipients,
+				FriendSelectorData,
+				FriendSelectorTitle,
+				callback : Callback
+				);
+		}
+		else{
+			lastResponse = "Empty Response\n";
+		}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	void appRequestCallback(FBResult result)
+	void Callback(FBResult result)
 	{
 		//lastResponseTexture = null;
 		// Some platforms return the empty string instead of null.

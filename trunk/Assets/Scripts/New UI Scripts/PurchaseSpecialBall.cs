@@ -63,7 +63,7 @@ public class PurchaseSpecialBall : MonoBehaviour
 		}
 		//Si no hay suficiente dinero, abrir el popup para comprar monedas
 		else{
-			ShopBoostersPopUp.HidePopUp(false);
+			ShopBoostersPopUp.HidePopUp();
 			//bShowCoinsPopUp=true;
 			ShopCoinsPopUp.ShowPopUp();
 		}

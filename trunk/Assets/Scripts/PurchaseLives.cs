@@ -31,7 +31,7 @@ public class PurchaseLives : MonoBehaviour
 		}
 		else if(LivesManager.lives < 5 && PlayerPrefs.GetInt("Coins") < 100)
 		{
-			LivesPopUp.HidePopUp(false);
+			LivesPopUp.HidePopUp();
 			ShopCoinsPopUp.ShowPopUp();
 		}
 	}
