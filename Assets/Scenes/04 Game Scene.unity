@@ -2755,7 +2755,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400018, guid: b355caa85febe0b49976078d576eda4f, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22400000, guid: b355caa85febe0b49976078d576eda4f, type: 2}
       propertyPath: m_SizeDelta.x
@@ -3548,7 +3548,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1012585949}
         m_MethodName: HidePopUp
-        m_Mode: 6
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
@@ -4719,6 +4719,7 @@ GameObject:
   - 222: {fileID: 453653205}
   - 114: {fileID: 453653204}
   - 95: {fileID: 453653206}
+  - 114: {fileID: 453653207}
   m_Layer: 5
   m_Name: ImageBlack
   m_TagString: Untagged
@@ -4785,6 +4786,17 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &453653207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 453653202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 949df4276ae04dc40a64dc214d6072f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &453691140
 GameObject:
   m_ObjectHideFlags: 0
@@ -5576,7 +5588,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 783562919}
         m_MethodName: HidePopUp
-        m_Mode: 6
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
@@ -12058,7 +12070,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 387061178}
         m_MethodName: HidePopUp
-        m_Mode: 6
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,

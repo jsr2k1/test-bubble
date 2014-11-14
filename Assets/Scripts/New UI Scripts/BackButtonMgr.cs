@@ -8,7 +8,6 @@ public class BackButtonMgr : MonoBehaviour
 	public Image quitPop;
 	public Image thisPop;
 	public Image livesPop;
-	bool backPressed=false;
 
 	public void BackButtonPressed()
 	{
@@ -17,9 +16,7 @@ public class BackButtonMgr : MonoBehaviour
 		
 		//MENU
 		if(Application.loadedLevel==1){
-			if(!backPressed){
-				thisPop.GetComponent<PopUpMgr>().HidePopUp();
-			}
+			thisPop.GetComponent<PopUpMgr>().HidePopUp();
 			quitPop.GetComponent<PopUpMgr>().ShowPopUp();
 		}
 		//WORLDS
@@ -28,9 +25,7 @@ public class BackButtonMgr : MonoBehaviour
 		}
 		//GAME-WORLDS
 		else if(Application.loadedLevel==3){
-			if(!backPressed){
-				thisPop.GetComponent<PopUpMgr>().HidePopUp(false);
-			}
+			thisPop.GetComponent<PopUpMgr>().HidePopUp();
 			livesPop.GetComponent<PopUpMgr>().ShowPopUp();
 		}
 		//GAME-ARCADE
@@ -44,9 +39,22 @@ public class BackButtonMgr : MonoBehaviour
 	void Update()
 	{
 		if(Input.GetKeyDown(KeyCode.Escape)){
-			backPressed=true;
-			BackButtonPressed();
-			backPressed=false;
+			//MENU
+			if(Application.loadedLevel==1){
+				quitPop.GetComponent<PopUpMgr>().ShowPopUp();
+			}
+			//WORLDS
+			else if(Application.loadedLevel==2){
+				Application.LoadLevel(1); //Go to Menu Scene
+			}
+			//GAME-WORLDS
+			else if(Application.loadedLevel==3){
+				livesPop.GetComponent<PopUpMgr>().ShowPopUp();
+			}
+			//GAME-ARCADE
+			else if(Application.loadedLevel==4){
+				Application.LoadLevel(1); //Go to Menu Scene
+			}
 		}
 	}
 }
