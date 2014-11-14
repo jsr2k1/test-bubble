@@ -3,9 +3,11 @@ using System.Collections;
 
 public class LoadLevelFromPop : MonoBehaviour
 {
-
-		public void  loadlevel ()
-		{
-				Application.LoadLevel (3);
-		}
+	public PopUpMgr popUpMgr;
+	
+	public void loadlevel()
+	{
+		popUpMgr.HidePopUp();
+		Application.LoadLevel(3);
+	}
 }
