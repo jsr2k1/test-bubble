@@ -1815,7 +1815,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2135650044}
         m_MethodName: HidePopUp
-        m_Mode: 6
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
@@ -2620,6 +2620,7 @@ GameObject:
   - 222: {fileID: 281124142}
   - 114: {fileID: 281124141}
   - 95: {fileID: 281124143}
+  - 114: {fileID: 281124144}
   m_Layer: 0
   m_Name: ImageBlack
   m_TagString: Untagged
@@ -2686,6 +2687,17 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &281124144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 281124139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 949df4276ae04dc40a64dc214d6072f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &288755016
 GameObject:
   m_ObjectHideFlags: 0
@@ -16794,7 +16806,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 902129910}
         m_MethodName: HidePopUp
-        m_Mode: 6
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
@@ -18148,7 +18160,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1669811591}
         m_MethodName: HidePopUp
-        m_Mode: 6
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
