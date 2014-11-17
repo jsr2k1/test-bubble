@@ -1331,19 +1331,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400000, guid: ed54df8e7f0af43458b6d31140ca8442, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 15.5799999
+      value: 2.79999995
       objectReference: {fileID: 0}
     - target: {fileID: 22400000, guid: ed54df8e7f0af43458b6d31140ca8442, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -2.54013062
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22400000, guid: ed54df8e7f0af43458b6d31140ca8442, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 207.420013
+      value: 93.8000031
       objectReference: {fileID: 0}
     - target: {fileID: 22400000, guid: ed54df8e7f0af43458b6d31140ca8442, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 45.1000061
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 22400000, guid: ed54df8e7f0af43458b6d31140ca8442, type: 2}
       propertyPath: m_AnchorMin.x
@@ -1371,16 +1371,21 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: ed54df8e7f0af43458b6d31140ca8442, type: 2}
       propertyPath: m_Text
-      value: 0
+      value: 00000
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: ed54df8e7f0af43458b6d31140ca8442, type: 2}
       propertyPath: m_FontData.m_FontSize
-      value: 22
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: ed54df8e7f0af43458b6d31140ca8442, type: 2}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 12800000, guid: 4a110488b11dd3946b032a0233f79306,
+        type: 3}
+    - target: {fileID: 11400000, guid: ed54df8e7f0af43458b6d31140ca8442, type: 2}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed54df8e7f0af43458b6d31140ca8442, type: 2}
   m_RootGameObject: {fileID: 2038943002}
@@ -2219,8 +2224,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -.200000003, y: -3}
-  m_SizeDelta: {x: 77.5, y: 36}
+  m_AnchoredPosition: {x: -4.0999999, y: -1}
+  m_SizeDelta: {x: 85, y: 40}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &253547212
 MonoBehaviour:
@@ -2250,9 +2255,9 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 22
-    m_FontStyle: 1
+    m_Font: {fileID: 12800000, guid: 4a110488b11dd3946b032a0233f79306, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -12973,8 +12978,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -67.9000015, y: -3}
-  m_SizeDelta: {x: 44.0999985, y: 47.7000008}
+  m_AnchoredPosition: {x: -73.8000031, y: 1}
+  m_SizeDelta: {x: 37.0999985, y: 43.9000015}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1418095068
 MonoBehaviour:
@@ -20706,8 +20711,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 15.5799999, y: -2.54013062}
-  m_SizeDelta: {x: 207.420013, y: 45.1000061}
+  m_AnchoredPosition: {x: 2.79999995, y: 0}
+  m_SizeDelta: {x: 93.8000031, y: 40}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &2038943004
 MonoBehaviour:
@@ -20724,9 +20729,9 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 22
-    m_FontStyle: 1
+    m_Font: {fileID: 12800000, guid: 4a110488b11dd3946b032a0233f79306, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -20735,7 +20740,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 00000
 --- !u!222 &2038943005
 CanvasRenderer:
   m_ObjectHideFlags: 0
