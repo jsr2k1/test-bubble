@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class quitgame : MonoBehaviour {
-
+	
 	public Image PopUpquit;
 
 	public void Quit(){
@@ -13,4 +13,6 @@ public class quitgame : MonoBehaviour {
 	public void Continue(){
 		PopUpquit.GetComponent<PopUpMgr> ().HidePopUp ();
 	}
+	
+
 }
