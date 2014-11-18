@@ -566,6 +566,13 @@ MonoBehaviour:
   layermask2:
     serializedVersion: 2
     m_Bits: 1024
+  targetSprites:
+  - {fileID: 21300000, guid: 80a1f177f370a5444b65c6e70b70f773, type: 3}
+  - {fileID: 21300000, guid: a43bf82ccd48eb54b9905d149a5bfad9, type: 3}
+  - {fileID: 21300000, guid: 2faea02208c058b48a1160bf2c77654e, type: 3}
+  - {fileID: 21300000, guid: a5f191d7ef704384fb3d2ab89a2ddd21, type: 3}
+  - {fileID: 21300000, guid: 15213f61226e00b429f0adfc1caea004, type: 3}
+  - {fileID: 21300000, guid: 6de8e948cfbba584baf0255571be6bfc, type: 3}
 --- !u!4 &188
 Transform:
   m_ObjectHideFlags: 0

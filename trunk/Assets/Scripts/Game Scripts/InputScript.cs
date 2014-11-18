@@ -19,6 +19,7 @@ public class InputScript : MonoBehaviour
 	public int nBounceParticles;
 	public LayerMask layermask = -1;
 	public LayerMask layermask2 = -1;
+	public Sprite[] targetSprites;
 
 	GameObject[] particles;
 	GameObject[] bounceParticles;
@@ -43,6 +44,8 @@ public class InputScript : MonoBehaviour
 	//tenemos 2 prefabs con la animacion con desfase
 	void CreateParticles()
 	{
+		GameObject particleParent = new GameObject("ParticleParent");
+		
 		//primer rayo
 		particles = new GameObject[nParticles];
 		for(int i=0;i<nParticles;i++)
@@ -55,6 +58,7 @@ public class InputScript : MonoBehaviour
 			}
 			particle.renderer.enabled=false;
 			particles[i] = particle;
+			particle.transform.SetParent(particleParent.transform);
 		}
 		//segundo rayo
 		bounceParticles = new GameObject[nBounceParticles];
@@ -68,6 +72,7 @@ public class InputScript : MonoBehaviour
 			}
 			particle.renderer.enabled=false;
 			bounceParticles[i] = particle;
+			particle.transform.SetParent(particleParent.transform);
 		}
 	}
 
@@ -192,10 +197,10 @@ public class InputScript : MonoBehaviour
 
 		if(sCurrentColor!=sBallColor){
 			for(int i=0;i<nParticles;i++){
-				particles[i].GetComponent<SpriteRenderer>().sprite = sp.sprite;
+				particles[i].GetComponent<SpriteRenderer>().sprite = targetSprites[int.Parse(sBallColor)-1];
 			}
 			for(int i=0;i<nBounceParticles;i++){
-				bounceParticles[i].GetComponent<SpriteRenderer>().sprite = sp.sprite;
+				bounceParticles[i].GetComponent<SpriteRenderer>().sprite = targetSprites[int.Parse(sBallColor)-1];
 			}
 		}
 	}
