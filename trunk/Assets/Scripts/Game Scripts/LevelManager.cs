@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour
 	public static LevelManager instance;
 	public static GameState gameState = GameState.Start;
 	public static StrikerManager strikerManager;
-	internal int score = 0;
+	public static int score = 0;
 	public static int levelNo = 0;
 	public static PatternType patternType = PatternType.None;
 	public static int totalNoOfRows = 50;
@@ -149,17 +149,17 @@ public class LevelManager : MonoBehaviour
 		if(PlayerPrefs.GetString("GameType") == "Normal")
 		{
 			if(score > 0.3 * ReferenceScore){
-				star1.GetComponent<Image>().enabled = true;
+				//star1.GetComponent<Image>().enabled = true;
 				star11.GetComponent<Image>().enabled = true;
 				stars = 1;
 			}
 			if(score > 0.6 * ReferenceScore){
-				star2.GetComponent<Image>().enabled = true;
+				//star2.GetComponent<Image>().enabled = true;
 				star22.GetComponent<Image>().enabled = true;
 				stars = 2;
 			}
 			if(score > ReferenceScore){
-				star3.GetComponent<Image>().enabled = true;
+				//star3.GetComponent<Image>().enabled = true;
 				star33.GetComponent<Image>().enabled = true;
 				stars = 3;
 			}
