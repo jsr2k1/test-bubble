@@ -26,6 +26,7 @@ public class Striker : MonoBehaviour
 	public Sprite spriteMultiBall;
 	public Sprite spriteBombBall;
 	public Sprite spriteFireBall;
+	public InputScript inputScript;
 	
 	//Creamos un evento para poder saber cuando se ha disparado un booster
 	public delegate void SpecialBallLaunched();
@@ -218,6 +219,7 @@ public class Striker : MonoBehaviour
 				//Desactivar booster
 				if(fireBall){
 					currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = oldSprite;
+					inputScript.CheckColor();
 					fireBall = false;
 					sCurrentSpecialBall = "";
 				}
@@ -227,6 +229,7 @@ public class Striker : MonoBehaviour
 						oldSprite = currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
 					}
 					currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = spriteFireBall;
+					inputScript.CheckColorBooster();
 					fireBall = true;
 					bombBall = false;
 					multiBall = false;
@@ -252,6 +255,7 @@ public class Striker : MonoBehaviour
 				//Desactivar booster
 				if(bombBall){
 					currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = oldSprite;
+					inputScript.CheckColor();
 					bombBall = false;
 					sCurrentSpecialBall = "";
 				}
@@ -261,6 +265,7 @@ public class Striker : MonoBehaviour
 						oldSprite = currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
 					}
 					currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = spriteBombBall;
+					inputScript.CheckColorBooster();
 					bombBall = true;
 					fireBall = false;
 					multiBall = false;
@@ -286,7 +291,7 @@ public class Striker : MonoBehaviour
 				//Desactivar booster
 				if(multiBall){
 					currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = oldSprite;
-
+					inputScript.CheckColor();
 					multiBall = false;
 					sCurrentSpecialBall = "";
 				}
@@ -296,6 +301,7 @@ public class Striker : MonoBehaviour
 						oldSprite = currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
 					}
 					currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = spriteMultiBall;
+					inputScript.CheckColorBooster();
 					multiBall = true;
 					fireBall = false;
 					bombBall = false;
