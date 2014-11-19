@@ -183,6 +183,24 @@ public class InputScript : MonoBehaviour
 			bounceParticles[i].renderer.enabled = bEnable;
 		}
 	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public void CheckColorBooster()
+	{
+		if(Striker.instance==null || Striker.instance.currentStrikerObject==null || Striker.instance.currentStrikerObject.transform.childCount == 0){
+			return;
+		}
+		SpriteRenderer sp = Striker.instance.currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
+		
+		for(int i=0;i<nParticles;i++){
+			particles[i].GetComponent<SpriteRenderer>().sprite = sp.sprite;
+		}
+		for(int i=0;i<nBounceParticles;i++){
+			bounceParticles[i].GetComponent<SpriteRenderer>().sprite = sp.sprite;
+		}
+		
+	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Comprobamos que el color de las particulas apuntadoras es el mismo que el color de la bola actual del striker
