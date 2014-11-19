@@ -58,7 +58,7 @@ public class PopUpMgr : MonoBehaviour
 	//Esta funcion salta con un evento en la animacion para parar la animacion que aparezcan 0 estrellas
 	public void SetNumStars0()
 	{
-		if(LevelManager.score < 0.3 * LevelManager.ReferenceScore){
+		if(name=="WinPopUp" && LevelManager.score < 0.3 * LevelManager.ReferenceScore){
 			anim.speed=0;
 		}
 	}
@@ -67,7 +67,7 @@ public class PopUpMgr : MonoBehaviour
 	//Esta funcion salta con un evento en la animacion para parar la animacion que aparezca 1 estrella
 	public void SetNumStars1()
 	{
-		if(LevelManager.score < 0.6 * LevelManager.ReferenceScore){
+		if(name=="WinPopUp" && LevelManager.score < 0.6 * LevelManager.ReferenceScore){
 			anim.speed=0;
 		}
 	}
@@ -76,7 +76,7 @@ public class PopUpMgr : MonoBehaviour
 	//Esta funcion salta con un evento en la animacion para parar la animacion que aparezcan 2 estrellas
 	public void SetNumStars2()
 	{
-		if(LevelManager.score < LevelManager.ReferenceScore){
+		if(name=="WinPopUp" && LevelManager.score < LevelManager.ReferenceScore){
 			anim.speed=0;
 		}
 	}
@@ -138,7 +138,8 @@ public class PopUpMgr : MonoBehaviour
 				LevelManager.instance.pauseCtrlForced(GameState.Pause);
 				popUpActionChangeState = PopUpAction.Skip;
 			}
-		}/*
+		}
+		/*
 		//Imagen negra de fondo
 		if(popUpActionImageBlack==PopUpAction.On && ImgBlack!=null){
 			ImgBlack.GetComponent<Animator>().SetTrigger("ShowPopUp");
