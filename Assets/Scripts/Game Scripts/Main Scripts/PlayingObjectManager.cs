@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayingObjectManager : MonoBehaviour
 {
@@ -204,7 +205,8 @@ public class PlayingObjectManager : MonoBehaviour
 	
 	public static MissionType GetLevelMission()
 	{
-		if(LevelManager.levelNo == 4 || LevelManager.levelNo == 6 || LevelManager.levelNo == 8){
+		List<int> listAnimalLevels = new List<int>(new int[]{4, 6, 8, 12});
+		if(listAnimalLevels.IndexOf(LevelManager.levelNo) > -1){
 			return MissionType.Animals;
 		}else{
 			return MissionType.Normal;
