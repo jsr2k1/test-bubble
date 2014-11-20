@@ -15,15 +15,21 @@ using Facebook;
 
 public class FacebookRequest : MonoBehaviour
 {
-	public bool bForceConnect=false;
-	Button facebookButton;
-	Image facebookImage;
+	public GameObject buttonInvite;
+	public GameObject buttonMessages;
+	public GameObject buttonAskForLife;
+	public PopUpMgr sendLifePopUp;
+	public Text[] textUserID;
+	public Image[] imageUser;
 	
+	List<string> sendLifeUserList;
+	List<string> requestsList;
+		
 	string status = "Ready";
 	string FriendSelectorMax = "";
 	string FriendSelectorExcludeIds = "";
 	string FriendSelectorFilters = "";
-	string FriendSelectorMessage = "Derp";
+	//string FriendSelectorMessage = "Derp";
 	string FriendSelectorData = "{}";
 	string FriendSelectorTitle = "";
 	
@@ -36,33 +42,31 @@ public class FacebookRequest : MonoBehaviour
 	
 	bool showDebug=false;
 	
+	string objectId = "1494978434114506"; //id de la instancia de la vida que hemos creado en la consola de Facebook
+	//string user_id; //current user_id to send the message
+	//string user_name; //current user_name to send the message
+	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Awake()
 	{
-		facebookButton = GetComponent<Button>();
-		facebookImage = GetComponent<Image>();
-		
-		if(FB.IsLoggedIn){
-			facebookButton.enabled=true;
-			facebookImage.enabled=true;
-		}
+		buttonMessages.SetActive(false);
+		InvokeRepeating("ReadAllRequests", 1.0f, 5.0f);
+		sendLifeUserList = new List<string>();
+		requestsList = new List<string>();
+		//DeleteAllRequests(); //Only for testing
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Update()
 	{
-		if(FB.IsLoggedIn && !facebookButton.enabled){
-			facebookButton.enabled=true;
-			facebookImage.enabled=true;
+		if(FB.IsLoggedIn && !buttonInvite.activeSelf){
+			buttonInvite.SetActive(true);
 		}
-		
-		if(!FB.IsLoggedIn && facebookButton.enabled && !bForceConnect){
-			facebookButton.enabled=false;
-			facebookImage.enabled=false;
+		if(!FB.IsLoggedIn && buttonInvite.activeSelf){
+			buttonInvite.SetActive(false);
 		}
-		
 		if(showDebug){
 			Debug.Log("status: " + status);
 			Debug.Log("lastResponse: " + lastResponse);
@@ -74,7 +78,7 @@ public class FacebookRequest : MonoBehaviour
 	public void ButtonPressedAskLive()
 	{
 		if(PlayerPrefs.GetInt("Sounds")==1){
-			audio.Play();
+			buttonAskForLife.audio.Play();
 		}
 		try{
 			FriendSelectorFilters = "[\"app_users\"]";
@@ -94,14 +98,13 @@ public class FacebookRequest : MonoBehaviour
 	public void ButtonPressedInviteFriends()
 	{
 		if(PlayerPrefs.GetInt("Sounds")==1){
-			audio.Play();
+			buttonInvite.audio.Play();
 		}
 		try{
 			Debug.Log("Facebook Invite pressed");
 			//Adjust.trackEvent("3xnjnv");
 			FriendSelectorFilters = "[\"app_non_users\"]";
-			//InviteFriends();
-			ReadAllRequests();
+			InviteFriends();
 			status = "Friend Selector called";
 		}
 		catch(Exception e){
@@ -154,7 +157,7 @@ public class FacebookRequest : MonoBehaviour
 		FriendsSelector();
 		
 		FB.AppRequest(
-			FriendSelectorMessage,
+			"Invite friends to play",
 			null,
 			FriendSelectorFiltersArr,
 			excludeIds,
@@ -166,13 +169,13 @@ public class FacebookRequest : MonoBehaviour
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Pedir una vida de un usuario a otro
 	void AskForOneLife()
 	{
-		string objectId = "1494978434114506";
-		
 		FriendsSelector();
 		
-		FB.AppRequest(FriendSelectorMessage,
+		FB.AppRequest(
+			"Ask for one life",
 			OGActionType.Send,
 			objectId,
 			FriendSelectorFiltersArr,
@@ -188,13 +191,66 @@ public class FacebookRequest : MonoBehaviour
 	
 	void ReadAllRequests()
 	{
-		FB.API("v2.2/me/apprequests?fields=id,from,object,action_type", HttpMethod.GET, ReadAllRequestsCallback);
+		Debug.Log("ReadAllRequests");
+		
+		if(FB.IsLoggedIn){
+			FB.API("v2.2/me/apprequests?fields=id,from,object,action_type", HttpMethod.GET, ReadAllRequestsCallback);
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void DeleteAllRequests()
+	{
+		Debug.Log("DeleteAllRequests");
+		
+		if(FB.IsLoggedIn){
+			FB.API("v2.2/me/apprequests?fields=id", HttpMethod.GET, DeleteAllRequestsCallback);
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void DeleteAllRequestsCallback(FBResult result)
+	{
+		if(!String.IsNullOrEmpty(result.Error)){
+			Debug.Log("DeleteAllRequestsCallback: Error Response:" + result.Error);
+		}
+		else if(!String.IsNullOrEmpty(result.Text)){
+			Debug.Log("DeleteAllRequestsCallback: Success Response:" + result.Text);
+			Dictionary<string, object> requests = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
+			List<object> data = requests["data"] as List<object>;
+			
+			if(data!=null && data.Count>0){
+				foreach(object request in data){
+					Dictionary<string, object> currentRequest = request as Dictionary<string,object>;
+					string requestID = currentRequest["id"] as String;
+					DeleteRequest(requestID);
+				}
+			}
+		}
+		else{
+			Debug.Log("DeleteAllRequestsCallback: Empty Response");
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void DeleteRequest(string requestID)
+	{
+		Debug.Log("DeleteRequest");
+		
+		if(FB.IsLoggedIn){
+			FB.API("v2.2/"+requestID, HttpMethod.DELETE, Callback);
+		}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void ReadAllRequestsCallback(FBResult result)
 	{
+		buttonMessages.SetActive(false);
+		
 		if(!String.IsNullOrEmpty(result.Error)){
 			Debug.Log("ReadAllRequestsCallback: Error Response:" + result.Error);
 		}
@@ -202,22 +258,89 @@ public class FacebookRequest : MonoBehaviour
 			Debug.Log("ReadAllRequestsCallback: Success Response:" + result.Text);
 			Dictionary<string, object> requests = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
 			List<object> data = requests["data"] as List<object>;
-			Dictionary<string, object> request0 = data[0] as Dictionary<string,object>;
-			Dictionary<string, object> from = request0["from"] as Dictionary<string,object>;
-		
-			Debug.Log(from["id"]);
-			Debug.Log(from["name"]);
-			Debug.Log(request0["action_type"] as string);
+			
+			if(data!=null && data.Count>0){
+				buttonMessages.SetActive(true);
+				for(int i=0;i<3 && i<data.Count;i++)
+				{
+					Dictionary<string, object> request = data[i] as Dictionary<string,object>;
+					string requestID = request["id"] as String;
+					string action_type = request["action_type"] as string;
+					
+					Dictionary<string, object> from = request["from"] as Dictionary<string,object>;
+					string user_id = from["id"] as string;
+					string user_name = from["name"] as string;
+					
+					if(action_type == OGActionType.AskFor.ToString()){
+						textUserID[i].text="Send a life to "+user_name;
+						sendLifeUserList.Add(user_id);
+					}else{
+						textUserID[i].text="Receive a life from "+user_name;
+					}
+					requestsList.Add(requestID);
+					StartCoroutine(getProfileImage(i, user_id));
+					
+					Debug.Log(user_id);
+					Debug.Log(user_name);
+					Debug.Log(action_type);
+				}
+			}
 		}
 		else{
 			Debug.Log("ReadAllRequestsCallback: Empty Response");
 		}
-	}	
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	IEnumerator getProfileImage(int index, string user_id)
+	{
+		WWW url = new WWW("https" + "://graph.facebook.com/" + user_id + "/picture?type=large"); //+ "?access_token=" + FB.AccessToken);
+		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.DXT1, false); //TextureFormat must be DXT5
+		yield return url;
+		url.LoadImageIntoTexture(textFb2);
+		imageUser[index].sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0.5f, 0.5f));
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Mostrar el popup con los mensajes
+	public void ButtonPressedMessages()
+	{
+		if(PlayerPrefs.GetInt("Sounds")==1){
+			buttonMessages.audio.Play();
+		}
+		sendLifePopUp.ShowPopUp();
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Responder a todos los mensajes de pedir vida
+	public void ButtonPressedAccept()
+	{
+		//Enviar vidas a quien las haya pedido
+		foreach(string user in sendLifeUserList){
+			FB.AppRequest(
+				"Send one life",
+				OGActionType.Send,
+				objectId,
+				new string[]{user},
+				FriendSelectorData,
+				FriendSelectorTitle,
+				callback : Callback
+			);
+		}
+		sendLifeUserList.Clear();
+		
+		//Borrar las requests ya procesadas
+		foreach(string request in requestsList){
+			DeleteRequest(request);
+		}
+		requestsList.Clear();
+	}
 	
 	/*
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Crear una instancia de la vida que vamos a enviar
-	void AskForOneLife()
+	void CreateOneLife()
 	{
 		Dictionary<string, string> formData = new Dictionary<string, string>();
 	
@@ -231,36 +354,6 @@ public class FacebookRequest : MonoBehaviour
 		Dictionary<string, string> formDic = new Dictionary<string, string>();
 		formDic["object"] = Facebook.MiniJSON.Json.Serialize(formData);
 		FB.API("v2.2/me/objects/bubbleparadisetwo:life", HttpMethod.POST, AskForOneLifeCallback, formDic);
-	}
-	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Si se ha creado correctamente la instancia del objeto tipo Lifes -> hacemos el AppRequest
-	void AskForOneLifeCallback(FBResult result)
-	{
-		if(!String.IsNullOrEmpty(result.Error)){
-			lastResponse="-_-_ Send Live: Error Response:" + result.Error;
-		}
-		else if(!String.IsNullOrEmpty(result.Text)){
-			lastResponse="-_-_ Send Live: Object created ok:" + result.Text;
-			Dictionary<string, object> dictJson = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
-			string objectId = dictJson["id"] as string;
-			
-			FriendsSelector();
-			
-			FB.AppRequest(FriendSelectorMessage,
-				OGActionType.AskFor,
-				objectId,
-				FriendSelectorFiltersArr,
-				excludeIds,
-				maxRecipients,
-				FriendSelectorData,
-				FriendSelectorTitle,
-				callback : Callback
-				);
-		}
-		else{
-			lastResponse = "Empty Response\n";
-		}
 	}*/
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
