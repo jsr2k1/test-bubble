@@ -121,7 +121,7 @@ public sealed class FB : ScriptableObject
         FB.logging = logging;
         FB.status = status;
         FB.xfbml = xfbml;
-        FB.frictionlessRequests = false/*frictionlessRequests*/;
+        FB.frictionlessRequests = frictionlessRequests;
         FB.authResponse = authResponse;
         FB.OnInitComplete = onInitComplete;
         FB.OnHideUnity = onHideUnity;
@@ -179,7 +179,7 @@ public sealed class FB : ScriptableObject
             xfbml,
             FBSettings.ChannelUrl,
             authResponse,
-            false/*frictionlessRequests*/,
+            frictionlessRequests,
             OnHideUnity
         );
     }
