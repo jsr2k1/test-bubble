@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: 3e001fe81785bff4aa55b99b7bd11589
+guid: 30ecdbb2e216bde4dad99c002ad65dea
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: world_mode_button
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -22,11 +21,11 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: 1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
