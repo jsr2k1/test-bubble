@@ -205,7 +205,7 @@ public class PlayingObjectManager : MonoBehaviour
 	
 	public static MissionType GetLevelMission()
 	{
-		List<int> listAnimalLevels = new List<int>(new int[]{4, 6, 8, 12, 15});
+		List<int> listAnimalLevels = new List<int>(new int[]{4, 6, 8, 12});
 		if(listAnimalLevels.IndexOf(LevelManager.levelNo) > -1){
 			return MissionType.Animals;
 		}else{
