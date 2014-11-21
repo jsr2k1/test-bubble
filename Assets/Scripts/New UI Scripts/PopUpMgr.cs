@@ -6,7 +6,7 @@ public class PopUpMgr : MonoBehaviour
 {
 	public Image ImgBlack;
 	Animator anim;
-	bool bShow=false;
+	public bool bShow=false;
 
 	public enum PopUpAction{
 		On,
