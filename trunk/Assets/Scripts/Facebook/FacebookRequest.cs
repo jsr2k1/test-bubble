@@ -18,12 +18,12 @@ public class FacebookRequest : MonoBehaviour
 	public GameObject buttonInvite;
 	public GameObject buttonMessages;
 	public GameObject buttonAskForLife;
-	public PopUpMgr sendLifePopUp;
-	public Text[] textUserID;
-	public Image[] imageUser;
+	public PopUpMgr messagesPopUp;
+	public GameObject entryPrefab;
 	
 	List<string> sendLifeUserList;
 	List<string> requestsList;
+	List<GameObject> entriesList;
 		
 	string status = "Ready";
 	string FriendSelectorMax = "";
@@ -43,8 +43,6 @@ public class FacebookRequest : MonoBehaviour
 	bool showDebug=false;
 	
 	string objectId = "1494978434114506"; //id de la instancia de la vida que hemos creado en la consola de Facebook
-	//string user_id; //current user_id to send the message
-	//string user_name; //current user_name to send the message
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -54,6 +52,8 @@ public class FacebookRequest : MonoBehaviour
 		InvokeRepeating("ReadAllRequests", 1.0f, 5.0f);
 		sendLifeUserList = new List<string>();
 		requestsList = new List<string>();
+		entriesList = new List<GameObject>();
+		
 		//DeleteAllRequests(); //Only for testing
 	}
 	
@@ -176,7 +176,7 @@ public class FacebookRequest : MonoBehaviour
 		
 		FB.AppRequest(
 			"Ask for one life",
-			OGActionType.Send,
+			OGActionType.AskFor,
 			objectId,
 			FriendSelectorFiltersArr,
 			excludeIds,
@@ -191,6 +191,9 @@ public class FacebookRequest : MonoBehaviour
 	
 	void ReadAllRequests()
 	{
+		if(messagesPopUp.bShow){
+			return;
+		}
 		Debug.Log("ReadAllRequests");
 		
 		if(FB.IsLoggedIn){
@@ -246,11 +249,21 @@ public class FacebookRequest : MonoBehaviour
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	void ReadAllRequestsCallback(FBResult result)
+
+	void ClearData()
 	{
 		buttonMessages.SetActive(false);
-		
+		requestsList.Clear();
+		foreach(GameObject go in entriesList){
+			Destroy(go);
+		}
+		entriesList.Clear();
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void ReadAllRequestsCallback(FBResult result)
+	{	
 		if(!String.IsNullOrEmpty(result.Error)){
 			Debug.Log("ReadAllRequestsCallback: Error Response:" + result.Error);
 		}
@@ -261,9 +274,10 @@ public class FacebookRequest : MonoBehaviour
 			
 			if(data!=null && data.Count>0){
 				buttonMessages.SetActive(true);
-				for(int i=0;i<3 && i<data.Count;i++)
+				int count=0;
+				foreach(object entry in data)
 				{
-					Dictionary<string, object> request = data[i] as Dictionary<string,object>;
+					Dictionary<string, object> request = entry as Dictionary<string,object>;
 					string requestID = request["id"] as String;
 					string action_type = request["action_type"] as string;
 					
@@ -271,14 +285,20 @@ public class FacebookRequest : MonoBehaviour
 					string user_id = from["id"] as string;
 					string user_name = from["name"] as string;
 					
+					GameObject goEntry = Instantiate(entryPrefab) as GameObject;
+					goEntry.transform.SetParent(messagesPopUp.transform);
+					goEntry.transform.localPosition = new Vector3(0.0f, 145.0f-count*100.0f, 0.0f);
+					entriesList.Add(goEntry);
+					count++;
+					
 					if(action_type == OGActionType.AskFor.ToString()){
-						textUserID[i].text="Send a life to "+user_name;
+						goEntry.transform.GetChild(1).GetComponent<Text>().text = user_name+" needs a life!";
 						sendLifeUserList.Add(user_id);
 					}else{
-						textUserID[i].text="Receive a life from "+user_name;
+						goEntry.transform.GetChild(1).GetComponent<Text>().text = user_name+" gave you a life!";
 					}
 					requestsList.Add(requestID);
-					StartCoroutine(getProfileImage(i, user_id));
+					StartCoroutine(getProfileImage(goEntry.transform.GetChild(2).GetComponent<Image>(), user_id));
 					
 					Debug.Log(user_id);
 					Debug.Log(user_name);
@@ -293,13 +313,13 @@ public class FacebookRequest : MonoBehaviour
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	IEnumerator getProfileImage(int index, string user_id)
+	IEnumerator getProfileImage(Image image, string user_id)
 	{
 		WWW url = new WWW("https" + "://graph.facebook.com/" + user_id + "/picture?type=large"); //+ "?access_token=" + FB.AccessToken);
 		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.DXT1, false); //TextureFormat must be DXT5
 		yield return url;
 		url.LoadImageIntoTexture(textFb2);
-		imageUser[index].sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0.5f, 0.5f));
+		image.sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0.5f, 0.5f));
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -309,7 +329,7 @@ public class FacebookRequest : MonoBehaviour
 		if(PlayerPrefs.GetInt("Sounds")==1){
 			buttonMessages.audio.Play();
 		}
-		sendLifePopUp.ShowPopUp();
+		messagesPopUp.ShowPopUp();
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -335,6 +355,16 @@ public class FacebookRequest : MonoBehaviour
 			DeleteRequest(request);
 		}
 		requestsList.Clear();
+		
+		//Borrar las entradas del popup
+		foreach(GameObject go in entriesList){
+			Destroy(go);
+		}
+		entriesList.Clear();
+		
+		messagesPopUp.HidePopUp();
+		
+		buttonMessages.SetActive(false);
 	}
 	
 	/*
