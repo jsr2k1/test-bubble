@@ -1827,6 +1827,7 @@ MonoBehaviour:
   spriteMultiBall: {fileID: 21300000, guid: a4b20f67cbbd41a40ba00b072d671109, type: 3}
   spriteBombBall: {fileID: 21300000, guid: 09644848fce224b42936900e2c969299, type: 3}
   spriteFireBall: {fileID: 21300000, guid: 5c1b9a533adb9394bb7ddacd4db7039c, type: 3}
+  inputScript: {fileID: 0}
 --- !u!114 &580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2026,19 +2027,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400000, guid: c5ccf54db0bda514ca6f3de8ecf61bb2, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 30
+      value: 22.5
       objectReference: {fileID: 0}
     - target: {fileID: 22400000, guid: c5ccf54db0bda514ca6f3de8ecf61bb2, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -255
+      value: -261.100006
       objectReference: {fileID: 0}
     - target: {fileID: 22400000, guid: c5ccf54db0bda514ca6f3de8ecf61bb2, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 170
+      value: 173.800003
       objectReference: {fileID: 0}
     - target: {fileID: 22400000, guid: c5ccf54db0bda514ca6f3de8ecf61bb2, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 154
+      value: 164.199997
       objectReference: {fileID: 0}
     - target: {fileID: 22400000, guid: c5ccf54db0bda514ca6f3de8ecf61bb2, type: 2}
       propertyPath: m_AnchorMin.x
@@ -2064,6 +2065,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: .5
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c5ccf54db0bda514ca6f3de8ecf61bb2, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c2062c0786758bf46ae7557c98275a52,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5ccf54db0bda514ca6f3de8ecf61bb2, type: 2}
   m_RootGameObject: {fileID: 1571827945}
@@ -3508,6 +3514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ImgBlack: {fileID: 0}
+  bShow: 0
 --- !u!114 &396195065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4214,6 +4221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ImgBlack: {fileID: 453653204}
+  bShow: 0
 --- !u!95 &1012585950
 Animator:
   serializedVersion: 3
@@ -4677,6 +4685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ImgBlack: {fileID: 0}
+  bShow: 0
 --- !u!114 &1219765971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5445,7 +5454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: e58f4e2aef1fe4d4eaaa90bb0762f016, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c2062c0786758bf46ae7557c98275a52, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5475,8 +5484,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 30, y: -255}
-  m_SizeDelta: {x: 170, y: 154}
+  m_AnchoredPosition: {x: 22.5, y: -261.100006}
+  m_SizeDelta: {x: 173.800003, y: 164.199997}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &1611038194
 GameObject:
@@ -5825,6 +5834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ImgBlack: {fileID: 453653204}
+  bShow: 0
 --- !u!95 &1921396410
 Animator:
   serializedVersion: 3
