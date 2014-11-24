@@ -45,12 +45,12 @@ public class LevelParser : MonoBehaviour
 		if(levelNumber > 1){
 			lineLevel =((levelNumber-1)*14+levelNumber)-1;
 		}
-		if(worldToLoad == 1){
+		//if(worldToLoad == 1){
 			ReadFile(level1);
-		}
-		else if(worldToLoad == 2){
-			ReadFile(level2);
-		}
+		//}
+		//else if(worldToLoad == 2){
+		//	ReadFile(level2);
+		//}
 		//Temporary y to fill the level ListArray
 		int tempy = 0;
 		//Every row
