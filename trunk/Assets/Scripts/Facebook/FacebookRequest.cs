@@ -1,9 +1,5 @@
 ﻿////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//http://blog.bigfootgaming.net/custom-facebook-open-graph-objects-unity3d/
-//https://developers.facebook.com/docs/games/requests/v2.1#gifting
-//http://www.neatplug.com/integration-guide-unity3d-facebook-sns-plugin
 //https://developers.facebook.com/docs/games/requests/v2.2
-//https://www.parse.com/tutorials/integrating-facebook-in-unity
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using UnityEngine;
@@ -20,10 +16,13 @@ public class FacebookRequest : MonoBehaviour
 	public GameObject buttonAskForLife;
 	public PopUpMgr messagesPopUp;
 	public GameObject entryPrefab;
+	public GameObject contentMessages;
 	
 	List<string> sendLifeUserList;
 	List<string> requestsList;
 	List<GameObject> entriesList;
+	
+	int livesCounter=0;
 		
 	string status = "Ready";
 	string FriendSelectorMax = "";
@@ -258,12 +257,16 @@ public class FacebookRequest : MonoBehaviour
 			Destroy(go);
 		}
 		entriesList.Clear();
+		
+		livesCounter=0;
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void ReadAllRequestsCallback(FBResult result)
 	{	
+		ClearData();
+		
 		if(!String.IsNullOrEmpty(result.Error)){
 			Debug.Log("ReadAllRequestsCallback: Error Response:" + result.Error);
 		}
@@ -286,7 +289,7 @@ public class FacebookRequest : MonoBehaviour
 					string user_name = from["name"] as string;
 					
 					GameObject goEntry = Instantiate(entryPrefab) as GameObject;
-					goEntry.transform.SetParent(messagesPopUp.transform);
+					goEntry.transform.SetParent(contentMessages.transform);
 					goEntry.transform.localPosition = new Vector3(0.0f, 145.0f-count*100.0f, 0.0f);
 					entriesList.Add(goEntry);
 					count++;
@@ -296,6 +299,7 @@ public class FacebookRequest : MonoBehaviour
 						sendLifeUserList.Add(user_id);
 					}else{
 						goEntry.transform.GetChild(1).GetComponent<Text>().text = user_name+" gave you a life!";
+						livesCounter++;
 					}
 					requestsList.Add(requestID);
 					StartCoroutine(getProfileImage(goEntry.transform.GetChild(2).GetComponent<Image>(), user_id));
@@ -349,6 +353,9 @@ public class FacebookRequest : MonoBehaviour
 			);
 		}
 		sendLifeUserList.Clear();
+		
+		//Sumar las vidas recibidas
+		LivesManager.lives+=livesCounter;
 		
 		//Borrar las requests ya procesadas
 		foreach(string request in requestsList){

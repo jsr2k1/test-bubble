@@ -14,7 +14,7 @@ public class LivesManager : MonoBehaviour
 		get{ 
 			return m_lives;
 		}set{
-			m_lives = Mathf.Max(value, 0);
+			m_lives = Mathf.Clamp(value, 0, 5);
 			PlayerPrefs.SetInt("Lives", m_lives);
 		}
 	}
