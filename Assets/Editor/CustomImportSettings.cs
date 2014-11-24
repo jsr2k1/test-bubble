@@ -14,6 +14,7 @@ public class CustomImportSettings : AssetPostprocessor
 		{
 			textureImporter.textureType = TextureImporterType.Sprite;
 			textureImporter.textureFormat = TextureImporterFormat.AutomaticTruecolor;
+			textureImporter.mipmapEnabled = false;
 		}
 	}
 	

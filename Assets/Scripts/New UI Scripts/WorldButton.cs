@@ -70,21 +70,21 @@ public class WorldButton : MonoBehaviour
 			audioSource.Play();
 		}
 		int nLives=PlayerPrefs.GetInt("Lives");
-		if (nLives > 0) {
-			PlayerPrefs.SetString ("GameType", "Normal");
+		if(nLives > 0) {
+			PlayerPrefs.SetString("GameType", "Normal");
 			LevelManager.patternType = PatternType.TextLevel;
-			LevelParser.instance.LoadTextLevel (int.Parse (name), ActualWorld);
+			LevelParser.instance.LoadTextLevel(int.Parse(name), ActualWorld);
 
 			LevelManager.NumberOfBalls = numberBalls;
 			LevelManager.ReferenceScore = refScore;
 			LevelManager.rowAddingInterval = 1;
-			LevelManager.levelNo = int.Parse (name);
+			LevelManager.levelNo = int.Parse(name);
 
-			PlayerPrefs.SetInt ("bPlaying", 1);
-			//Application.LoadLevel (3);
+			PlayerPrefs.SetInt("bPlaying", 1);
+			//Application.LoadLevel(3);
 
 			levelTextPop.text = "LEVEL " + LevelManager.levelNo.ToString();
-			if (PlayingObjectManager.GetLevelMission() == PlayingObjectManager.MissionType.Animals){
+			if(PlayingObjectManager.GetLevelMission() == PlayingObjectManager.MissionType.Animals){
 				levelTextPop.text = "ANIMALS " + LevelManager.levelNo.ToString();
 			}
 
