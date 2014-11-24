@@ -44,7 +44,7 @@ public class LevelManager : MonoBehaviour
 	public Text levelText1;
 	public Text levelText2;
 	public Slider slider;
-		public Text highscoretext;
+	public Text highscoretext;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
