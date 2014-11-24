@@ -142,10 +142,10 @@ public class LevelEditor : MonoBehaviour
 			return -1;
 		}
 		int numLevel = int.Parse(sLevel);
-		if(numLevel<1 || numLevel>20){
-			Debug.Log("El numero tiene que ser entre 1 y 20");
-			return -1;
-		}
+		//if(numLevel<1 || numLevel>20){
+		//	Debug.Log("El numero tiene que ser entre 1 y 20");
+		//	return -1;
+		//}
 		return numLevel;
 	}
 	
