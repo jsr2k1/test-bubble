@@ -13,7 +13,6 @@ public class WorldButton : MonoBehaviour
 	public Image star3;
 	public Sprite bubbleFilled;
 	Button button;
-	AudioSource audioSource;
 	public Image livesPop;
 	public Image startPop;
 	public Text levelTextPop;
@@ -22,8 +21,6 @@ public class WorldButton : MonoBehaviour
 	
 	void Awake()
 	{
-		audioSource = GameObject.Find("1").GetComponent<AudioSource>();
-		
 		button = GetComponent<Button>();
 
 		if(gameObject.name == "1" || PlayerPrefs.HasKey("STARS_" +(int.Parse(gameObject.name) - 1))){
@@ -66,9 +63,6 @@ public class WorldButton : MonoBehaviour
 
 	public void ButtonPressed()
 	{
-		if(audioSource && PlayerPrefs.GetInt("Sounds")==1){
-			audioSource.Play();
-		}
 		int nLives=PlayerPrefs.GetInt("Lives");
 		if(nLives > 0) {
 			PlayerPrefs.SetString("GameType", "Normal");

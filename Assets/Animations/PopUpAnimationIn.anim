@@ -973,6 +973,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: .512499988
+    functionName: PlayStars1
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: .824999988
     functionName: SetNumStars1
     data: 
@@ -980,8 +987,22 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: .850000024
+    functionName: PlayStars2
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.14999998
     functionName: SetNumStars2
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.1875
+    functionName: PlayStars3
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

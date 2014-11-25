@@ -45,6 +45,15 @@ public class FacebookRequest : MonoBehaviour
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	void CustomDebug(string msg)
+	{
+		if(showDebug){
+			Debug.Log(msg);
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	void Awake()
 	{
 		buttonMessages.SetActive(false);
@@ -66,10 +75,8 @@ public class FacebookRequest : MonoBehaviour
 		if(!FB.IsLoggedIn && buttonInvite.activeSelf){
 			buttonInvite.SetActive(false);
 		}
-		if(showDebug){
-			Debug.Log("status: " + status);
-			Debug.Log("lastResponse: " + lastResponse);
-		}
+		CustomDebug("status: " + status);
+		CustomDebug("lastResponse: " + lastResponse);
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,7 +107,7 @@ public class FacebookRequest : MonoBehaviour
 			buttonInvite.audio.Play();
 		}
 		try{
-			Debug.Log("Facebook Invite pressed");
+			CustomDebug("Facebook Invite pressed");
 			//Adjust.trackEvent("3xnjnv");
 			FriendSelectorFilters = "[\"app_non_users\"]";
 			InviteFriends();
@@ -116,10 +123,10 @@ public class FacebookRequest : MonoBehaviour
 	void AuthCallback(FBResult result)
 	{
 		if(FB.IsLoggedIn){
-			Debug.Log(FB.UserId);
+			CustomDebug(FB.UserId);
 			//StartCoroutine("OnLoggedIn"); 
 		} else {
-			Debug.Log("User cancelled login");
+			CustomDebug("User cancelled login");
 		}
 	}
 	
@@ -193,7 +200,7 @@ public class FacebookRequest : MonoBehaviour
 		if(messagesPopUp.bShow){
 			return;
 		}
-		Debug.Log("ReadAllRequests");
+		CustomDebug("ReadAllRequests");
 		
 		if(FB.IsLoggedIn){
 			FB.API("v2.2/me/apprequests?fields=id,from,object,action_type", HttpMethod.GET, ReadAllRequestsCallback);
@@ -204,7 +211,7 @@ public class FacebookRequest : MonoBehaviour
 	
 	void DeleteAllRequests()
 	{
-		Debug.Log("DeleteAllRequests");
+		CustomDebug("DeleteAllRequests");
 		
 		if(FB.IsLoggedIn){
 			FB.API("v2.2/me/apprequests?fields=id", HttpMethod.GET, DeleteAllRequestsCallback);
@@ -216,10 +223,10 @@ public class FacebookRequest : MonoBehaviour
 	void DeleteAllRequestsCallback(FBResult result)
 	{
 		if(!String.IsNullOrEmpty(result.Error)){
-			Debug.Log("DeleteAllRequestsCallback: Error Response:" + result.Error);
+			CustomDebug("DeleteAllRequestsCallback: Error Response:" + result.Error);
 		}
 		else if(!String.IsNullOrEmpty(result.Text)){
-			Debug.Log("DeleteAllRequestsCallback: Success Response:" + result.Text);
+			CustomDebug("DeleteAllRequestsCallback: Success Response:" + result.Text);
 			Dictionary<string, object> requests = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
 			List<object> data = requests["data"] as List<object>;
 			
@@ -232,7 +239,7 @@ public class FacebookRequest : MonoBehaviour
 			}
 		}
 		else{
-			Debug.Log("DeleteAllRequestsCallback: Empty Response");
+			CustomDebug("DeleteAllRequestsCallback: Empty Response");
 		}
 	}
 	
@@ -240,7 +247,7 @@ public class FacebookRequest : MonoBehaviour
 	
 	void DeleteRequest(string requestID)
 	{
-		Debug.Log("DeleteRequest");
+		CustomDebug("DeleteRequest");
 		
 		if(FB.IsLoggedIn){
 			FB.API("v2.2/"+requestID, HttpMethod.DELETE, Callback);
@@ -268,10 +275,10 @@ public class FacebookRequest : MonoBehaviour
 		ClearData();
 		
 		if(!String.IsNullOrEmpty(result.Error)){
-			Debug.Log("ReadAllRequestsCallback: Error Response:" + result.Error);
+			CustomDebug("ReadAllRequestsCallback: Error Response:" + result.Error);
 		}
 		else if(!String.IsNullOrEmpty(result.Text)){
-			Debug.Log("ReadAllRequestsCallback: Success Response:" + result.Text);
+			CustomDebug("ReadAllRequestsCallback: Success Response:" + result.Text);
 			Dictionary<string, object> requests = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
 			List<object> data = requests["data"] as List<object>;
 			
@@ -304,14 +311,14 @@ public class FacebookRequest : MonoBehaviour
 					requestsList.Add(requestID);
 					StartCoroutine(getProfileImage(goEntry.transform.GetChild(1).GetComponent<Image>(), user_id));
 					
-					Debug.Log(user_id);
-					Debug.Log(user_name);
-					Debug.Log(action_type);
+					CustomDebug(user_id);
+					CustomDebug(user_name);
+					CustomDebug(action_type);
 				}
 			}
 		}
 		else{
-			Debug.Log("ReadAllRequestsCallback: Empty Response");
+			CustomDebug("ReadAllRequestsCallback: Empty Response");
 		}
 	}
 	

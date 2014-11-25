@@ -63,7 +63,7 @@ public class Splash : MonoBehaviour
 
 	private void OnInitComplete()
 	{
-		Debug.Log("FB.Init completed: Is user logged in? " + FB.IsLoggedIn);
+		//Debug.Log("FB.Init completed: Is user logged in? " + FB.IsLoggedIn);
 	}
 }
 
