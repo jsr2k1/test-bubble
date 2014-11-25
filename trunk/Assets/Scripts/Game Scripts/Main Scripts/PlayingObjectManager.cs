@@ -17,6 +17,8 @@ public class PlayingObjectManager : MonoBehaviour
 
 	GameObject bottomMostObject, topMostObject;
 	GameObject BottomBoundaryObj, TopBoundaryObj;
+
+	static List<int> listAnimalLevels = new List<int>(new int[]{4, 6, 8, 12, 15, 20, 25});
 	
 	public enum MissionType{
 		Normal=0,
@@ -205,7 +207,7 @@ public class PlayingObjectManager : MonoBehaviour
 	
 	public static MissionType GetLevelMission()
 	{
-		List<int> listAnimalLevels = new List<int>(new int[]{4, 6, 8, 12, 15, 20});
+
 		if(listAnimalLevels.IndexOf(LevelManager.levelNo) > -1){
 			return MissionType.Animals;
 		}else{
