@@ -8,6 +8,9 @@ public class SwapButton : MonoBehaviour
 		if(PlayerPrefs.GetInt("Sounds")==1){
 			audio.Play();
 		}
-		Striker.instance.Swap();
+
+		if (LevelManager.currentBalls > 1) {
+			Striker.instance.Swap ();
+		}
 	}
 }
