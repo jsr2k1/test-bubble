@@ -295,14 +295,14 @@ public class FacebookRequest : MonoBehaviour
 					count++;
 					
 					if(action_type == OGActionType.AskFor.ToString()){
-						goEntry.transform.GetChild(1).GetComponent<Text>().text = user_name+" needs a life!";
+						goEntry.transform.GetChild(0).GetComponent<Text>().text = user_name+" needs a life!";
 						sendLifeUserList.Add(user_id);
 					}else{
-						goEntry.transform.GetChild(1).GetComponent<Text>().text = user_name+" gave you a life!";
+						goEntry.transform.GetChild(0).GetComponent<Text>().text = user_name+" gave you a life!";
 						livesCounter++;
 					}
 					requestsList.Add(requestID);
-					StartCoroutine(getProfileImage(goEntry.transform.GetChild(2).GetComponent<Image>(), user_id));
+					StartCoroutine(getProfileImage(goEntry.transform.GetChild(1).GetComponent<Image>(), user_id));
 					
 					Debug.Log(user_id);
 					Debug.Log(user_name);
