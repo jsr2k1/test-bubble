@@ -16,9 +16,9 @@ MonoBehaviour:
   - 730922200278965
   appLabels:
   - Bubble Paradise 2
-  cookie: 1
-  logging: 1
-  status: 1
+  cookie: 0
+  logging: 0
+  status: 0
   xfbml: 0
   frictionlessRequests: 1
   iosURLSuffix: 

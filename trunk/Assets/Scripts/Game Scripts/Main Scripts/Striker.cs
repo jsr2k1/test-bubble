@@ -112,7 +112,7 @@ public class Striker : MonoBehaviour
 		if(other.gameObject.tag == "Playing Object" && isBusy){
 			if(fireBall){
 				if(deep < 8){
-					if(other.gameObject.name != "777(Clone)"){
+					if(other.gameObject.name != "777(Clone)" && other.gameObject.name != "888(Clone)"){
 						Destroy(other.gameObject.gameObject);
 						ScoreManagerGame.instance.DisplayScorePopup(10, transform);
 						deep = deep + 1;
@@ -327,7 +327,7 @@ public class Striker : MonoBehaviour
 		int i = 0;
 		while(i < hitColliders.Length){
 			if(hitColliders[i].tag == "Playing Object"){
-				if(hitColliders[i].name != "777(Clone)"){
+				if(hitColliders[i].name != "777(Clone)" && hitColliders[i].name != "888(Clone)"){
 					Destroy(hitColliders[i].gameObject);
 					ScoreManagerGame.instance.DisplayScorePopup(10, transform);
 				}

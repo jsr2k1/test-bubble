@@ -110,14 +110,18 @@ public class LevelEditor : MonoBehaviour
 	//Si esta pulsado el boton de random, devolvemos un color aleatorio
 	int GetColor()
 	{
-		int numColors = ParseNumColors(textNumColor.text);
-		if(numColors<1){
-			return -1;
-		}
 		int nColor = int.Parse(toggleColors.ActiveToggles().First().name);
+		
+		//color random
 		if(nColor==0){
+			int numColors = ParseNumColors(textNumColor.text);
+			if(numColors<1){
+				return -1;
+			}
 			return UnityEngine.Random.Range(0,numColors);
-		}else{
+		}
+		//color fijo
+		else{
 			return nColor-1;
 		}
 	}

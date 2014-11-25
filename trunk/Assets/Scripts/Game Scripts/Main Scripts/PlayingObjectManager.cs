@@ -51,7 +51,7 @@ public class PlayingObjectManager : MonoBehaviour
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Refreshes PlaingObjectList
+	//Refreshes PlayingObjectList
 	public void RefreshPlayingObjectList()
 	{
 		GameObject[] objects = GameObject.FindGameObjectsWithTag("Playing Object");
@@ -192,7 +192,8 @@ public class PlayingObjectManager : MonoBehaviour
 		}
 		bool res=false;
 		if(GetLevelMission()==MissionType.Normal){
-			if(allPlayingObjectScripts.Length == 10 && LevelManager.instance.totalNumberOfRowsLeft == 0){
+			//if(allPlayingObjectScripts.Length==10 && LevelManager.instance.totalNumberOfRowsLeft == 0){
+			if(CheckRemainingObjects() && LevelManager.instance.totalNumberOfRowsLeft == 0){
 				res=true;
 			}
 		}else if(GetLevelMission()==MissionType.Animals){
@@ -201,6 +202,19 @@ public class PlayingObjectManager : MonoBehaviour
 			}
 		}
 		return res;
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Creamos una funcion para contar objectos ya que los objetos piedra tambien tienen que tener el tag "Playing Object"
+	bool CheckRemainingObjects()
+	{
+		int counter=0;
+		foreach(PlayingObject obj in allPlayingObjectScripts){
+			if(obj.name!="888(Clone)"){
+				counter++;
+			}	
+		}
+		return(counter == 10);
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

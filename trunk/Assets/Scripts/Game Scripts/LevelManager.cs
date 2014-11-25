@@ -84,7 +84,7 @@ public class LevelManager : MonoBehaviour
 	{
 		gameState = GameState.GameFinish;
 		SoundFxManager.instance.themeMusic.volume *= .4f;
-		SoundFxManager.instance.Play(SoundFxManager.instance.levelClearSound);
+		//SoundFxManager.instance.Play(SoundFxManager.instance.levelClearSound);
 		winPop.GetComponent<PopUpMgr>().ShowPopUp();
 		
 		if(PlayerPrefs.GetInt("SCORE_" + levelNo) < score || !PlayerPrefs.HasKey("SCORE_" + levelNo)){

@@ -14,6 +14,10 @@ public class PopUpMgr : MonoBehaviour
 		Skip
 	}
 	static PopUpAction popUpActionChangeState = PopUpAction.Skip;
+	
+	public AudioSource sound_stars_1;
+	public AudioSource sound_stars_2;
+	public AudioSource sound_stars_3;
 		
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -58,7 +62,10 @@ public class PopUpMgr : MonoBehaviour
 	//Esta funcion salta con un evento en la animacion para parar la animacion que aparezcan 0 estrellas
 	public void SetNumStars0()
 	{
-		if(name=="WinPopUp" && LevelManager.score < 0.3 * LevelManager.ReferenceScore){
+		if(name!="WinPopUp"){
+			return;
+		}
+		if(LevelManager.score < 0.3 * LevelManager.ReferenceScore){
 			anim.speed=0;
 		}
 	}
@@ -67,18 +74,56 @@ public class PopUpMgr : MonoBehaviour
 	//Esta funcion salta con un evento en la animacion para parar la animacion que aparezca 1 estrella
 	public void SetNumStars1()
 	{
-		if(name=="WinPopUp" && LevelManager.score < 0.6 * LevelManager.ReferenceScore){
+		if(name!="WinPopUp"){
+			return;
+		}
+		if(LevelManager.score < 0.6 * LevelManager.ReferenceScore){
 			anim.speed=0;
 		}
+		sound_stars_1.Play();
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Esta funcion salta con un evento en la animacion para parar la animacion que aparezcan 2 estrellas
 	public void SetNumStars2()
 	{
-		if(name=="WinPopUp" && LevelManager.score < LevelManager.ReferenceScore){
+		if(name!="WinPopUp"){
+			return;
+		}
+		if(LevelManager.score < LevelManager.ReferenceScore){
 			anim.speed=0;
 		}
+		sound_stars_2.Play();
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Esta funcion salta con un evento en la animacion para ejecutar un audio
+	public void PlayStars1()
+	{
+		if(name!="WinPopUp"){
+			return;
+		}
+		sound_stars_1.Play();
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Esta funcion salta con un evento en la animacion para ejecutar un audio
+	public void PlayStars2()
+	{
+		if(name!="WinPopUp"){
+			return;
+		}
+		sound_stars_2.Play();
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Esta funcion salta con un evento en la animacion para ejecutar un audio
+	public void PlayStars3()
+	{
+		if(name!="WinPopUp"){
+			return;
+		}
+		sound_stars_3.Play();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
