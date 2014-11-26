@@ -1826,7 +1826,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 4a110488b11dd3946b032a0233f79306, type: 3}
     m_FontSize: 35
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -2156,6 +2156,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImgBlack: {fileID: 1232638877}
   bShow: 0
+  sound_stars_1: {fileID: 0}
+  sound_stars_2: {fileID: 0}
+  sound_stars_3: {fileID: 0}
 --- !u!114 &1147725671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2901,6 +2904,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImgBlack: {fileID: 1232638877}
   bShow: 0
+  sound_stars_1: {fileID: 0}
+  sound_stars_2: {fileID: 0}
+  sound_stars_3: {fileID: 0}
 --- !u!222 &1442842222
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3121,7 +3127,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 4a110488b11dd3946b032a0233f79306, type: 3}
     m_FontSize: 35
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -4118,6 +4124,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImgBlack: {fileID: 1232638877}
   bShow: 0
+  sound_stars_1: {fileID: 0}
+  sound_stars_2: {fileID: 0}
+  sound_stars_3: {fileID: 0}
 --- !u!114 &2085255408
 MonoBehaviour:
   m_ObjectHideFlags: 0
