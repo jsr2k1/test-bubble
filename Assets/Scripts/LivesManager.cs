@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LivesManager : MonoBehaviour
 {
 	public static String sCountdown;
-	public int secondsToLife = 300;
+	public int secondsToLife;
 	float seconds = 0;
 	
 	static int m_lives;
@@ -24,7 +24,7 @@ public class LivesManager : MonoBehaviour
 	void Start()
 	{
 		DontDestroyOnLoad(gameObject);
-		UpdateCurrentTime();
+		//UpdateCurrentTime(); No es necesario llamar desde aqui pq siempre se llama desde OnApplicationPause()
 		CheckLives();
 	}
 	
@@ -66,6 +66,8 @@ public class LivesManager : MonoBehaviour
 	
 	void UpdateCurrentTime()
 	{
+		Debug.LogWarning("UpdateCurrentTime(), DateTime.Now:"+DateTime.Now+" seconds:"+PlayerPrefs.GetFloat("seconds"));
+		
 		lives = PlayerPrefs.GetInt("Lives");
 		if(lives==5){
 			return;
@@ -81,12 +83,16 @@ public class LivesManager : MonoBehaviour
 		int elapsed = (int)seconds + span;
 		seconds = elapsed % secondsToLife;
 		lives = Mathf.Min(lives + (elapsed / secondsToLife), 5);
+		
+		Debug.LogWarning("elapsed:"+elapsed+" seconds:"+seconds+" lives:"+lives+" span:"+span);
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void SaveCurrentTime()
 	{
+		Debug.LogWarning("SaveCurrentTime(), seconds:"+seconds+", lives:"+lives);
+		
 		PlayerPrefs.SetInt("Lives", lives);
 		PlayerPrefs.SetString("savedTime", DateTime.Now.ToString());
 		PlayerPrefs.SetFloat("seconds", seconds);

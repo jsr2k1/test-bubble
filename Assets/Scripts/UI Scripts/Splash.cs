@@ -13,7 +13,6 @@ public class Splash : MonoBehaviour
 		if(bDeleteAllKeys){
 			PlayerPrefs.DeleteAll();
 		}
-
 		if(!PlayerPrefs.HasKey("Lives")){
 			PlayerPrefs.SetInt("Lives", initial_lives);
 		}
