@@ -7,7 +7,7 @@ PlayerSettings:
   AndroidProfiler: 0
   defaultScreenOrientation: 0
   targetDevice: 2
-  targetGlesGraphics: 1
+  targetGlesGraphics: 2
   targetResolution: 0
   accelerometerFrequency: 60
   companyName: Aratinga Studios
@@ -33,8 +33,8 @@ PlayerSettings:
   allowedAutorotateToLandscapeRight: 0
   allowedAutorotateToLandscapeLeft: 0
   useOSAutorotation: 1
-  use32BitDisplayBuffer: 0
-  use24BitDepthBuffer: 0
+  use32BitDisplayBuffer: 1
+  use24BitDepthBuffer: 1
   defaultIsFullScreen: 0
   defaultIsNativeResolution: 1
   runInBackground: 0
@@ -53,8 +53,10 @@ PlayerSettings:
   xboxEnableKinect: 0
   xboxEnableKinectAutoTracking: 0
   xboxEnableFitness: 0
+  visibleInBackground: 0
   macFullscreenMode: 2
   d3d9FullscreenMode: 1
+  d3d11ForceExclusiveMode: 0
   xboxSpeechDB: 0
   xboxEnableHeadOrientation: 0
   xboxEnableGuest: 0
@@ -93,6 +95,9 @@ PlayerSettings:
   iPhoneHighResSplashScreen: {fileID: 2800000, guid: bb6bdcde626a047c99ba08062c43afa4,
     type: 3}
   iPhoneTallHighResSplashScreen: {fileID: 0}
+  iPhone47inSplashScreen: {fileID: 0}
+  iPhone55inPortraitSplashScreen: {fileID: 0}
+  iPhone55inLandscapeSplashScreen: {fileID: 0}
   iPadPortraitSplashScreen: {fileID: 2800000, guid: bb6bdcde626a047c99ba08062c43afa4,
     type: 3}
   iPadHighResPortraitSplashScreen: {fileID: 0}
@@ -101,13 +106,13 @@ PlayerSettings:
   iPadHighResLandscapeSplashScreen: {fileID: 0}
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
-  AndroidKeystoreName: C:/Users/HP/casinopop.keystore
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: C:/Users/Developer 1/UnityProjects/BubbleParadise2/WIP/aratingastudios.keystore
+  AndroidKeyaliasName: aratingastudios
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
-    - m_Icon: {fileID: 2800000, guid: 3d322e951ae8ace4e8b3c37418be1883, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 4ded7938f36662f4195f28d690c70b7f, type: 3}
       m_Size: 128
   - m_BuildTarget: Android
     m_Icons:
@@ -123,6 +128,9 @@ PlayerSettings:
       m_Size: 36
   m_BuildTargetBatching:
   - m_BuildTarget: Android
+    m_StaticBatching: 1
+    m_DynamicBatching: 1
+  - m_BuildTarget: Standalone
     m_StaticBatching: 1
     m_DynamicBatching: 1
   webPlayerTemplate: APPLICATION:Default
