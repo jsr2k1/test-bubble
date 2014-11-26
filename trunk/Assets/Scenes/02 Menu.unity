@@ -909,9 +909,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c01d7f8114a586479b52920ee98db0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quitPop: {fileID: 1147725671}
-  thisPop: {fileID: 2085255408}
-  livesPop: {fileID: 0}
+  goQuit: {fileID: 1147725666}
+  goLives: {fileID: 0}
+  goSettings: {fileID: 2085255404}
 --- !u!82 &518888849
 AudioSource:
   m_ObjectHideFlags: 0

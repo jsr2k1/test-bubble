@@ -2998,6 +2998,22 @@ Prefab:
       propertyPath: thisPop
       value: 
       objectReference: {fileID: 1012585951}
+    - target: {fileID: 11400008, guid: b355caa85febe0b49976078d576eda4f, type: 2}
+      propertyPath: goSettings
+      value: 
+      objectReference: {fileID: 1012585947}
+    - target: {fileID: 11400008, guid: b355caa85febe0b49976078d576eda4f, type: 2}
+      propertyPath: goLives
+      value: 
+      objectReference: {fileID: 967641503}
+    - target: {fileID: 11400008, guid: b355caa85febe0b49976078d576eda4f, type: 2}
+      propertyPath: goWin
+      value: 
+      objectReference: {fileID: 937484578}
+    - target: {fileID: 11400008, guid: b355caa85febe0b49976078d576eda4f, type: 2}
+      propertyPath: goLose
+      value: 
+      objectReference: {fileID: 599368202}
     m_RemovedComponents:
     - {fileID: 11400012, guid: b355caa85febe0b49976078d576eda4f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b355caa85febe0b49976078d576eda4f, type: 2}
@@ -5082,7 +5098,7 @@ GameObject:
   - 95: {fileID: 599368205}
   - 114: {fileID: 599368204}
   m_Layer: 0
-  m_Name: LoosePopup
+  m_Name: LosePopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9598,9 +9614,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c01d7f8114a586479b52920ee98db0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quitPop: {fileID: 0}
-  thisPop: {fileID: 1012585951}
-  livesPop: {fileID: 967641507}
+  goQuit: {fileID: 0}
+  goLives: {fileID: 967641503}
+  goSettings: {fileID: 1012585947}
+  goShopLives: {fileID: 0}
+  goShopCoins: {fileID: 0}
+  goWin: {fileID: 937484578}
+  goLose: {fileID: 599368202}
 --- !u!114 &1553100328
 MonoBehaviour:
   m_ObjectHideFlags: 0
