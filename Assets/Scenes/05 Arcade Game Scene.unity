@@ -2444,6 +2444,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: b355caa85febe0b49976078d576eda4f, type: 2}
+      propertyPath: goSettings
+      value: 
+      objectReference: {fileID: 1012585947}
     m_RemovedComponents:
     - {fileID: 11400012, guid: b355caa85febe0b49976078d576eda4f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b355caa85febe0b49976078d576eda4f, type: 2}
@@ -5311,9 +5315,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c01d7f8114a586479b52920ee98db0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quitPop: {fileID: 0}
-  thisPop: {fileID: 0}
-  livesPop: {fileID: 0}
+  goQuit: {fileID: 0}
+  goLives: {fileID: 0}
+  goSettings: {fileID: 1012585947}
 --- !u!114 &1553100328
 MonoBehaviour:
   m_ObjectHideFlags: 0

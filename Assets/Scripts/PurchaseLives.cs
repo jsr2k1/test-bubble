@@ -12,7 +12,7 @@ public class PurchaseLives : MonoBehaviour
 
 	void Awake()
 	{
-		LivesPopUp = GameObject.Find("LivesPopUp").GetComponent<PopUpMgr>();
+		LivesPopUp = GameObject.Find("ShopLivesPopUp").GetComponent<PopUpMgr>();
 		ShopCoinsPopUp = GameObject.Find("ShopCoinsPopUp").GetComponent<PopUpMgr>();
 	}
 	
