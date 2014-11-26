@@ -2981,7 +2981,7 @@ Prefab:
     - target: {fileID: 11400004, guid: b355caa85febe0b49976078d576eda4f, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1553100331}
+      objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: b355caa85febe0b49976078d576eda4f, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: Play
@@ -8212,7 +8212,7 @@ GameObject:
   - 114: {fileID: 1337129036}
   - 114: {fileID: 1337129039}
   m_Layer: 0
-  m_Name: Button
+  m_Name: ButtonEndGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9576,7 +9576,6 @@ GameObject:
   - 114: {fileID: 1553100329}
   - 114: {fileID: 1553100328}
   - 114: {fileID: 1553100327}
-  - 82: {fileID: 1553100331}
   m_Layer: 5
   m_Name: RightButton_Back
   m_TagString: Untagged
@@ -9621,6 +9620,7 @@ MonoBehaviour:
   goShopCoins: {fileID: 0}
   goWin: {fileID: 937484578}
   goLose: {fileID: 599368202}
+  goInfoLevel: {fileID: 0}
 --- !u!114 &1553100328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9704,64 +9704,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 180276649}
   m_GameObject: {fileID: 1553100325}
---- !u!82 &1553100331
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1553100325}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: b38cf6f64fe74dd418ebeed09f85c80e, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
 --- !u!1 &1554105852
 GameObject:
   m_ObjectHideFlags: 0
@@ -11179,7 +11121,7 @@ GameObject:
   - 114: {fileID: 1777222330}
   - 114: {fileID: 1777222333}
   m_Layer: 0
-  m_Name: Button
+  m_Name: ButtonPlayOn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
