@@ -20,6 +20,7 @@ public class InputScript : MonoBehaviour
 	public LayerMask layermask = -1;
 	public LayerMask layermask2 = -1;
 	public Sprite[] targetSprites;
+	public Animator characterAnimator;
 
 	GameObject[] particles;
 	GameObject[] bounceParticles;
@@ -115,6 +116,7 @@ public class InputScript : MonoBehaviour
 				if(pos.y > thresoldLineTransform.position.y){
 					Vector2 FinalPos = new Vector2(pos.x, pos.y);
 					InGameScriptRefrences.strikerManager.Shoot(FinalPos);
+					characterAnimator.SetTrigger("Shoot");
 				}
 			}
 		}
