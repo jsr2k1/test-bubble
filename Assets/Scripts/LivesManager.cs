@@ -66,7 +66,7 @@ public class LivesManager : MonoBehaviour
 	
 	void UpdateCurrentTime()
 	{
-		//Debug.LogWarning("UpdateCurrentTime(), DateTime.Now:"+DateTime.Now+" seconds:"+PlayerPrefs.GetFloat("seconds"));
+		Debug.LogWarning("UpdateCurrentTime(), DateTime.Now:"+DateTime.Now+" seconds:"+PlayerPrefs.GetFloat("seconds"));
 		
 		lives = PlayerPrefs.GetInt("Lives");
 		if(lives==5){
@@ -78,20 +78,21 @@ public class LivesManager : MonoBehaviour
 		int span=0;
 		if(PlayerPrefs.HasKey("savedTime")){
 			DateTime savedTime = DateTime.Parse(PlayerPrefs.GetString("savedTime"));
-			span = actualTime.Subtract(savedTime).Seconds;
+			//span = actualTime.Subtract(savedTime).Seconds;
+			span = (int)actualTime.Subtract(savedTime).TotalSeconds;
 		}
 		int elapsed = (int)seconds + span;
 		seconds = elapsed % secondsToLife;
 		lives = Mathf.Min(lives + (elapsed / secondsToLife), 5);
 		
-		//Debug.LogWarning("elapsed:"+elapsed+" seconds:"+seconds+" lives:"+lives+" span:"+span);
+		Debug.LogWarning("elapsed:"+elapsed+" seconds:"+seconds+" lives:"+lives+" span:"+span);
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void SaveCurrentTime()
 	{
-		//Debug.LogWarning("SaveCurrentTime(), seconds:"+seconds+", lives:"+lives);
+		Debug.LogWarning("SaveCurrentTime(), DateTime.Now:"+DateTime.Now+" seconds:"+seconds+", lives:"+lives);
 		
 		PlayerPrefs.SetInt("Lives", lives);
 		PlayerPrefs.SetString("savedTime", DateTime.Now.ToString());
