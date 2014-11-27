@@ -131,8 +131,10 @@ public class PlayingObjectManager : MonoBehaviour
 
 	internal void UpdatePlayingObjectsList()
 	{
+		if(LevelManager.gameState == GameState.Pause){
+			return;
+		}
 		GameObject[] objects = GameObject.FindGameObjectsWithTag("Playing Object");
-
 		allPlayingObjectScripts = new PlayingObject[objects.Length];
 
 		bottomMostObject = null;
