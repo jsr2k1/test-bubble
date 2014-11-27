@@ -5911,8 +5911,8 @@ GameObject:
   - 222: {fileID: 844835531}
   - 114: {fileID: 844835530}
   - 114: {fileID: 844835529}
-  - 114: {fileID: 844835528}
   - 82: {fileID: 844835532}
+  - 114: {fileID: 844835528}
   m_Layer: 0
   m_Name: button3
   m_TagString: Untagged
@@ -5942,16 +5942,15 @@ RectTransform:
 --- !u!114 &844835528
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400054, guid: 967baa7105da8334ba1f6966db4c9b9f,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 844835526}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4214d3023bbb8e43967ac1db75f63e2, type: 3}
+  m_Script: {fileID: 11500000, guid: cfd8df6cc8e554fc796d76a6c9f49579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinstext: {fileID: 1942343238}
+  item: medium
 --- !u!114 &844835529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5991,19 +5990,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 844835530}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 844835528}
-        m_MethodName: PurchaseSomething
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: medium
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &844835530
@@ -8569,8 +8556,8 @@ GameObject:
   - 222: {fileID: 1392031414}
   - 114: {fileID: 1392031413}
   - 114: {fileID: 1392031412}
-  - 114: {fileID: 1392031411}
   - 82: {fileID: 1392031415}
+  - 114: {fileID: 1392031411}
   m_Layer: 0
   m_Name: button4
   m_TagString: Untagged
@@ -8600,16 +8587,15 @@ RectTransform:
 --- !u!114 &1392031411
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400048, guid: 967baa7105da8334ba1f6966db4c9b9f,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1392031409}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4214d3023bbb8e43967ac1db75f63e2, type: 3}
+  m_Script: {fileID: 11500000, guid: cfd8df6cc8e554fc796d76a6c9f49579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinstext: {fileID: 1942343238}
+  item: big
 --- !u!114 &1392031412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8649,19 +8635,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1392031413}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1392031411}
-        m_MethodName: PurchaseSomething
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: big
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1392031413
@@ -9260,8 +9234,8 @@ GameObject:
   - 222: {fileID: 1520790433}
   - 114: {fileID: 1520790432}
   - 114: {fileID: 1520790431}
-  - 114: {fileID: 1520790430}
   - 82: {fileID: 1520790434}
+  - 114: {fileID: 1520790430}
   m_Layer: 0
   m_Name: button5
   m_TagString: Untagged
@@ -9291,16 +9265,15 @@ RectTransform:
 --- !u!114 &1520790430
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400008, guid: 967baa7105da8334ba1f6966db4c9b9f,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1520790428}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4214d3023bbb8e43967ac1db75f63e2, type: 3}
+  m_Script: {fileID: 11500000, guid: cfd8df6cc8e554fc796d76a6c9f49579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinstext: {fileID: 1942343238}
+  item: extrabig
 --- !u!114 &1520790431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9340,19 +9313,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1520790432}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1520790430}
-        m_MethodName: PurchaseSomething
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: extrabig
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1520790432
@@ -9918,8 +9879,8 @@ GameObject:
   - 222: {fileID: 1569848325}
   - 114: {fileID: 1569848324}
   - 114: {fileID: 1569848323}
-  - 114: {fileID: 1569848322}
   - 82: {fileID: 1569848326}
+  - 114: {fileID: 1569848322}
   m_Layer: 0
   m_Name: button2
   m_TagString: Untagged
@@ -9949,16 +9910,15 @@ RectTransform:
 --- !u!114 &1569848322
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400080, guid: 967baa7105da8334ba1f6966db4c9b9f,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1569848320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4214d3023bbb8e43967ac1db75f63e2, type: 3}
+  m_Script: {fileID: 11500000, guid: cfd8df6cc8e554fc796d76a6c9f49579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinstext: {fileID: 1942343238}
+  item: small
 --- !u!114 &1569848323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9998,19 +9958,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1569848324}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1569848322}
-        m_MethodName: PurchaseSomething
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: small
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1569848324
@@ -11248,8 +11196,8 @@ GameObject:
   - 222: {fileID: 1797698620}
   - 114: {fileID: 1797698619}
   - 114: {fileID: 1797698618}
-  - 114: {fileID: 1797698617}
   - 82: {fileID: 1797698621}
+  - 114: {fileID: 1797698617}
   m_Layer: 0
   m_Name: button1
   m_TagString: Untagged
@@ -11279,16 +11227,15 @@ RectTransform:
 --- !u!114 &1797698617
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400086, guid: 967baa7105da8334ba1f6966db4c9b9f,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1797698615}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4214d3023bbb8e43967ac1db75f63e2, type: 3}
+  m_Script: {fileID: 11500000, guid: cfd8df6cc8e554fc796d76a6c9f49579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinstext: {fileID: 1942343238}
+  item: xsmall
 --- !u!114 &1797698618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11328,19 +11275,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1797698619}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1797698617}
-        m_MethodName: PurchaseSomething
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: extrasmall
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1797698619
@@ -11942,9 +11877,8 @@ GameObject:
   - 224: {fileID: 1942343235}
   - 222: {fileID: 1942343239}
   - 114: {fileID: 1942343238}
-  - 114: {fileID: 1942343237}
-  - 114: {fileID: 1942343236}
   - 114: {fileID: 1942343240}
+  - 114: {fileID: 1942343236}
   m_Layer: 0
   m_Name: TextCoins
   m_TagString: Untagged
@@ -11985,19 +11919,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: .5}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
---- !u!114 &1942343237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400096, guid: 967baa7105da8334ba1f6966db4c9b9f,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1942343234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3af0d238edf0a8c4098789a6471c5f8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coins: {fileID: 1942343238}
 --- !u!114 &1942343238
 MonoBehaviour:
   m_ObjectHideFlags: 0
