@@ -9,7 +9,7 @@ public class SwapButton : MonoBehaviour
 			audio.Play();
 		}
 
-		if (LevelManager.currentBalls > 1) {
+		if(PlayerPrefs.GetString("GameType") == "Arcade" || LevelManager.currentBalls > 1){
 			Striker.instance.Swap ();
 		}
 	}
