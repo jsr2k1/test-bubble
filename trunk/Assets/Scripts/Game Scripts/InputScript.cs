@@ -85,7 +85,7 @@ public class InputScript : MonoBehaviour
 		{
 			Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			//Se mantiene pulsada la pantalla
-			if(Input.GetButton("Fire1"))
+			if(Input.GetButton("Fire1") && Striker.instance!=null && Striker.instance.currentStrikerObject!=null)
 			{
 				CheckCollision();
 				CheckCollisionBounce();
@@ -108,7 +108,7 @@ public class InputScript : MonoBehaviour
 				SetParticles(false);
 			}
 			//Se acaba de levantar la pulsacion de la pantalla
-			if(Input.GetButtonUp("Fire1"))
+			if(Input.GetButtonUp("Fire1") && Striker.instance!=null && Striker.instance.currentStrikerObject!=null)
 			{
 				SetParticles(false);
 

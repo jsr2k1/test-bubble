@@ -116,69 +116,73 @@ public class PlayingObjectGeneration : MonoBehaviour
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Adds new row at top of the screen and move the objects down by rowgap
 	IEnumerator AddRow()
-	{   
-		//Alternar 10 bolas en una fila y 9 bolas en la siguiente
-		if(PlayerPrefs.GetString("GameType").Equals("Arcade")){
-			if(numberOfRowsGenerated%2==0){
-				numberOfObjectsInARow=9;
-			}else{
-				numberOfObjectsInARow=10;
-			}
-		}
-		isBusy = true;
-		InGameScriptRefrences.playingObjectManager.topRowObjects = new PlayingObject[numberOfObjectsInARow];
-
-		if(rowStartingPos == startingXPos){
-			rowStartingPos = startingXPos - objectGap * .5f;
-		}else{
-			rowStartingPos = startingXPos;
-		}
-		float x = rowStartingPos;
-		numberOfRowsGenerated++;
-
-		for(int i=0; i<numberOfObjectsInARow; i++)
+	{
+		if(LevelManager.gameState != GameState.Pause)
 		{
-			int index = Random.Range(0, 6); //Queremos un random de 0-5 pq tenemos 6 bolitas
-
-			if(PlayerPrefs.GetString("GameType").Equals("Normal")){
-				//Checking the unpair rows that only contains 9 object
-				if(rowCounter % 2 == 1 || rowCounter % 2 == 0 && i <= 8){
-					index = LevelParser.instance.GetBallColor(rowCounter, i);
+			//Alternar 10 bolas en una fila y 9 bolas en la siguiente
+			if(PlayerPrefs.GetString("GameType").Equals("Arcade")){
+				if(numberOfRowsGenerated%2==0){
+					numberOfObjectsInARow=9;
+				}else{
+					numberOfObjectsInARow=10;
 				}
 			}
-			Vector3 pos = new Vector3(x, currentYPos, 0);
-
-			if(ObjectFormationPattern.instance.ShouldAddObject(i, rowCounter)){
-				GameObject tempObject = (GameObject)Instantiate(playingObjectsPrefabs[index], Vector3.zero, Quaternion.identity);
-				tempObject.transform.parent = transform;
-				tempObject.transform.localPosition = pos;
-				tempObject.GetComponent<PlayingObject>().RefreshAdjacentObjectList();
-				InGameScriptRefrences.playingObjectManager.topRowObjects [i] = tempObject.GetComponent<PlayingObject>();
-			}
-			x -= objectGap;
-
-			if(i % 4 == 0){
-				yield return new WaitForSeconds(.02f);
-			}
-		}
-		isBusy = false;
-		iTween.Defaults.easeType = iTween.EaseType.linear;
-		currentYPos = numberOfRowsGenerated * rowGap;
-		iTween.MoveTo(gameObject, new Vector3(0, objectGenerationHeight - currentYPos, 0), fallDownTime);
-
-		rowCounter++;
-		if(rowCounter >= LevelManager.minimumNumberOfRows){
-			currentRowAddingInterval = LevelManager.rowAddingInterval;
-			fallDownTime = .5f;
-		}else{
-			currentRowAddingInterval = 0f;
-			if(isStarting){
-				fallDownTime = .2f;
+			isBusy = true;
+			InGameScriptRefrences.playingObjectManager.topRowObjects = new PlayingObject[numberOfObjectsInARow];
+	
+			if(rowStartingPos == startingXPos){
+				rowStartingPos = startingXPos - objectGap * .5f;
 			}else{
-				fallDownTime = .5f;
+				rowStartingPos = startingXPos;
 			}
+			float x = rowStartingPos;
+			numberOfRowsGenerated++;
+	
+			for(int i=0; i<numberOfObjectsInARow; i++)
+			{
+				int index = Random.Range(0, 6); //Queremos un random de 0-5 pq tenemos 6 bolitas
+	
+				if(PlayerPrefs.GetString("GameType").Equals("Normal")){
+					//Checking the unpair rows that only contains 9 object
+					if(rowCounter % 2 == 1 || rowCounter % 2 == 0 && i <= 8){
+						index = LevelParser.instance.GetBallColor(rowCounter, i);
+					}
+				}
+				Vector3 pos = new Vector3(x, currentYPos, 0);
+	
+				if(ObjectFormationPattern.instance.ShouldAddObject(i, rowCounter)){
+					GameObject tempObject = (GameObject)Instantiate(playingObjectsPrefabs[index], Vector3.zero, Quaternion.identity);
+					tempObject.transform.parent = transform;
+					tempObject.transform.localPosition = pos;
+					tempObject.GetComponent<PlayingObject>().RefreshAdjacentObjectList();
+					InGameScriptRefrences.playingObjectManager.topRowObjects [i] = tempObject.GetComponent<PlayingObject>();
+				}
+				x -= objectGap;
+	
+				if(i % 4 == 0){
+					yield return new WaitForSeconds(.02f);
+				}
+			}
+			isBusy = false;
+			iTween.Defaults.easeType = iTween.EaseType.linear;
+			currentYPos = numberOfRowsGenerated * rowGap;
+			iTween.MoveTo(gameObject, new Vector3(0, objectGenerationHeight - currentYPos, 0), fallDownTime);
+	
+			rowCounter++;
+			if(rowCounter >= LevelManager.minimumNumberOfRows){
+				currentRowAddingInterval = LevelManager.rowAddingInterval;
+				fallDownTime = .5f;
+			}else{
+				currentRowAddingInterval = 0f;
+				if(isStarting){
+					fallDownTime = .2f;
+				}else{
+					fallDownTime = .5f;
+				}
+			}
+			LevelManager.instance.totalNumberOfRowsLeft--;
 		}
-		LevelManager.instance.totalNumberOfRowsLeft--;
+		
 		Invoke("InitiateRowAdd", currentRowAddingInterval);
 		Invoke("CheckForGameOver", .5f);
 	}
