@@ -600,8 +600,8 @@ GameObject:
   - 222: {fileID: 115642911}
   - 114: {fileID: 115642910}
   - 114: {fileID: 115642909}
-  - 114: {fileID: 115642912}
   - 82: {fileID: 115642913}
+  - 114: {fileID: 115642912}
   m_Layer: 0
   m_Name: button5
   m_TagString: Untagged
@@ -667,19 +667,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 115642910}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 115642912}
-        m_MethodName: PurchaseSomething
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: extrabig
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &115642910
@@ -714,16 +702,15 @@ CanvasRenderer:
 --- !u!114 &115642912
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400008, guid: 967baa7105da8334ba1f6966db4c9b9f,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 115642907}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4214d3023bbb8e43967ac1db75f63e2, type: 3}
+  m_Script: {fileID: 11500000, guid: cfd8df6cc8e554fc796d76a6c9f49579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinstext: {fileID: 2038943004}
+  item: extrabig
 --- !u!82 &115642913
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2988,6 +2975,45 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 293702725}
+--- !u!1 &316377413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 316377415}
+  - 114: {fileID: 316377414}
+  m_Layer: 0
+  m_Name: IAPManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &316377414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 316377413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4214d3023bbb8e43967ac1db75f63e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &316377415
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 316377413}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 303.068359, y: 1247.71741, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
 --- !u!1001 &322469518
 Prefab:
   m_ObjectHideFlags: 0
@@ -13311,7 +13337,6 @@ GameObject:
   - 222: {fileID: 1336651064}
   - 114: {fileID: 1336651063}
   - 114: {fileID: 1336651062}
-  - 82: {fileID: 1336651065}
   m_Layer: 5
   m_Name: ButtonFacebookMessages
   m_TagString: Untagged
@@ -13416,64 +13441,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1336651060}
---- !u!82 &1336651065
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1336651060}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: b38cf6f64fe74dd418ebeed09f85c80e, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
 --- !u!1 &1344245645
 GameObject:
   m_ObjectHideFlags: 0
@@ -14242,8 +14209,8 @@ GameObject:
   - 222: {fileID: 1476373392}
   - 114: {fileID: 1476373391}
   - 114: {fileID: 1476373390}
-  - 114: {fileID: 1476373393}
   - 82: {fileID: 1476373394}
+  - 114: {fileID: 1476373393}
   m_Layer: 0
   m_Name: button4
   m_TagString: Untagged
@@ -14309,19 +14276,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1476373391}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1476373393}
-        m_MethodName: PurchaseSomething
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: big
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1476373391
@@ -14356,16 +14311,15 @@ CanvasRenderer:
 --- !u!114 &1476373393
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400048, guid: 967baa7105da8334ba1f6966db4c9b9f,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1476373388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4214d3023bbb8e43967ac1db75f63e2, type: 3}
+  m_Script: {fileID: 11500000, guid: cfd8df6cc8e554fc796d76a6c9f49579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinstext: {fileID: 2038943004}
+  item: big
 --- !u!82 &1476373394
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15928,8 +15882,8 @@ GameObject:
   - 222: {fileID: 1560431283}
   - 114: {fileID: 1560431282}
   - 114: {fileID: 1560431281}
-  - 114: {fileID: 1560431284}
   - 82: {fileID: 1560431285}
+  - 114: {fileID: 1560431284}
   m_Layer: 0
   m_Name: button3
   m_TagString: Untagged
@@ -15995,19 +15949,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1560431282}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1560431284}
-        m_MethodName: PurchaseSomething
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: medium
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1560431282
@@ -16042,16 +15984,15 @@ CanvasRenderer:
 --- !u!114 &1560431284
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400054, guid: 967baa7105da8334ba1f6966db4c9b9f,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1560431279}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4214d3023bbb8e43967ac1db75f63e2, type: 3}
+  m_Script: {fileID: 11500000, guid: cfd8df6cc8e554fc796d76a6c9f49579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinstext: {fileID: 2038943004}
+  item: medium
 --- !u!82 &1560431285
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20438,7 +20379,6 @@ GameObject:
   - 224: {fileID: 1939313604}
   - 222: {fileID: 1939313608}
   - 114: {fileID: 1939313607}
-  - 114: {fileID: 1939313606}
   - 114: {fileID: 1939313605}
   - 114: {fileID: 1939313609}
   m_Layer: 5
@@ -20476,18 +20416,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 825b8f4654d61e54a8fd34db97dc0497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1939313606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1939313603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3af0d238edf0a8c4098789a6471c5f8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coins: {fileID: 1939313607}
 --- !u!114 &1939313607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21202,8 +21130,8 @@ GameObject:
   - 222: {fileID: 2005612876}
   - 114: {fileID: 2005612875}
   - 114: {fileID: 2005612874}
-  - 114: {fileID: 2005612877}
   - 82: {fileID: 2005612878}
+  - 114: {fileID: 2005612877}
   m_Layer: 0
   m_Name: button2
   m_TagString: Untagged
@@ -21269,19 +21197,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2005612875}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2005612877}
-        m_MethodName: PurchaseSomething
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: small
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2005612875
@@ -21316,16 +21232,15 @@ CanvasRenderer:
 --- !u!114 &2005612877
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400080, guid: 967baa7105da8334ba1f6966db4c9b9f,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2005612872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4214d3023bbb8e43967ac1db75f63e2, type: 3}
+  m_Script: {fileID: 11500000, guid: cfd8df6cc8e554fc796d76a6c9f49579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinstext: {fileID: 2038943004}
+  item: small
 --- !u!82 &2005612878
 AudioSource:
   m_ObjectHideFlags: 0
@@ -21838,10 +21753,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2038943002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3af0d238edf0a8c4098789a6471c5f8c, type: 3}
+  m_Script: {fileID: 11500000, guid: 825b8f4654d61e54a8fd34db97dc0497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coins: {fileID: 2038943004}
 --- !u!114 &2038943007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22363,8 +22277,8 @@ GameObject:
   - 222: {fileID: 2084630552}
   - 114: {fileID: 2084630551}
   - 114: {fileID: 2084630550}
-  - 114: {fileID: 2084630553}
   - 82: {fileID: 2084630554}
+  - 114: {fileID: 2084630553}
   m_Layer: 0
   m_Name: button1
   m_TagString: Untagged
@@ -22430,19 +22344,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2084630551}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2084630553}
-        m_MethodName: PurchaseSomething
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: extrasmall
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2084630551
@@ -22477,16 +22379,15 @@ CanvasRenderer:
 --- !u!114 &2084630553
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400086, guid: 967baa7105da8334ba1f6966db4c9b9f,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2084630548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4214d3023bbb8e43967ac1db75f63e2, type: 3}
+  m_Script: {fileID: 11500000, guid: cfd8df6cc8e554fc796d76a6c9f49579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinstext: {fileID: 2038943004}
+  item: xsmall
 --- !u!82 &2084630554
 AudioSource:
   m_ObjectHideFlags: 0

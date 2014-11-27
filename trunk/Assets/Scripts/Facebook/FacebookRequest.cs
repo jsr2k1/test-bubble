@@ -21,6 +21,13 @@ public class FacebookRequest : MonoBehaviour
 	List<string> sendLifeUserList;
 	List<string> requestsList;
 	List<GameObject> entriesList;
+
+	Dictionary<string, object> requestItem;
+	Dictionary<string, object> fromItem;
+	Dictionary<string, object> pendingRequests;
+	List<object> pendingRequestsData;
+
+	Texture2D textFb2;
 	
 	int livesCounter=0;
 		
@@ -61,6 +68,10 @@ public class FacebookRequest : MonoBehaviour
 		sendLifeUserList = new List<string>();
 		requestsList = new List<string>();
 		entriesList = new List<GameObject>();
+		requestItem = new Dictionary<string, object>();
+		fromItem = new Dictionary<string, object>();
+		pendingRequests = new Dictionary<string, object>();
+		pendingRequestsData = new List<object>();
 		
 		//DeleteAllRequests(); //Only for testing
 	}
@@ -259,13 +270,21 @@ public class FacebookRequest : MonoBehaviour
 	void ClearData()
 	{
 		buttonMessages.SetActive(false);
-		requestsList.Clear();
+
 		foreach(GameObject go in entriesList){
-			Destroy(go);
+			DestroyImmediate(go);
 		}
+
+		requestsList.Clear();
 		entriesList.Clear();
+		requestItem.Clear();
+		fromItem.Clear();
+		pendingRequests.Clear();
+		pendingRequestsData.Clear();
 		
 		livesCounter=0;
+
+		Resources.UnloadUnusedAssets();
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -279,21 +298,21 @@ public class FacebookRequest : MonoBehaviour
 		}
 		else if(!String.IsNullOrEmpty(result.Text)){
 			CustomDebug("ReadAllRequestsCallback: Success Response:" + result.Text);
-			Dictionary<string, object> requests = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
-			List<object> data = requests["data"] as List<object>;
+			pendingRequests = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
+			pendingRequestsData = pendingRequests["data"] as List<object>;
 			
-			if(data!=null && data.Count>0){
+			if(pendingRequestsData!=null && pendingRequestsData.Count>0){
 				buttonMessages.SetActive(true);
 				int count=0;
-				foreach(object entry in data)
+				foreach(object entry in pendingRequestsData)
 				{
-					Dictionary<string, object> request = entry as Dictionary<string,object>;
-					string requestID = request["id"] as String;
-					string action_type = request["action_type"] as string;
+					requestItem = entry as Dictionary<string,object>;
+					string requestID = requestItem["id"] as String;
+					string action_type = requestItem["action_type"] as string;
 					
-					Dictionary<string, object> from = request["from"] as Dictionary<string,object>;
-					string user_id = from["id"] as string;
-					string user_name = from["name"] as string;
+					fromItem = requestItem["from"] as Dictionary<string,object>;
+					string user_id = fromItem["id"] as string;
+					string user_name = fromItem["name"] as string;
 					
 					GameObject goEntry = Instantiate(entryPrefab) as GameObject;
 					goEntry.transform.SetParent(contentMessages.transform);
@@ -327,19 +346,29 @@ public class FacebookRequest : MonoBehaviour
 	IEnumerator getProfileImage(Image image, string user_id)
 	{
 		WWW url = new WWW("https" + "://graph.facebook.com/" + user_id + "/picture?type=large"); //+ "?access_token=" + FB.AccessToken);
-		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.DXT1, false); //TextureFormat must be DXT5
+		textFb2 = new Texture2D(128, 128, TextureFormat.ARGB32, false);
 		yield return url;
 		url.LoadImageIntoTexture(textFb2);
-		image.sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0.5f, 0.5f));
+		if(image!=null){
+			if(textFb2!=null){
+				image.sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0.5f, 0.5f));
+			}else{
+				Debug.Log("ERROR: textFb2 es null");
+			}
+		}else{
+			Debug.Log("ERROR: image es null");
+		}
+		//DestroyImmediate(textFb2);
+		//textFb2=null;
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Mostrar el popup con los mensajes
 	public void ButtonPressedMessages()
 	{
-		if(PlayerPrefs.GetInt("Sounds")==1){
-			buttonMessages.audio.Play();
-		}
+		//if(PlayerPrefs.GetInt("Sounds")==1){
+		//	buttonMessages.audio.Play();
+		//}
 		messagesPopUp.ShowPopUp();
 	}
 	

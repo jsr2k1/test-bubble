@@ -52,6 +52,7 @@ namespace Reign
 			#elif UNITY_BB10
 			pluginAPI = desc.BB10_InAppPurchaseAPI;
 			#else
+			Debug.Log("AVISO: Ha entrado por un if que no deberia entrar: InAppPurchaseAPIs.None");
 			pluginAPI = InAppPurchaseAPIs.None;
 			#endif
 
@@ -554,6 +555,7 @@ namespace Reign.Plugin
 			else if (desc.Android_InAppPurchaseAPI == InAppPurchaseAPIs.Samsung) return new Samsung_InAppPurchasePlugin_Android(desc, callback);
 			else throw new Exception("Unsuported Android_InAppPurchaseAPI: " + desc.Android_InAppPurchaseAPI);
 			#else
+			Debug.Log("AVISO: Ha entrado por un if que no deberia entrar: Dumy_InAppPurchasePlugin");
 			return new Dumy_InAppPurchasePlugin(desc, callback);
 			#endif
 		}
