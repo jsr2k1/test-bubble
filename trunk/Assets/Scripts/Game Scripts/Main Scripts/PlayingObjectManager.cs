@@ -212,7 +212,7 @@ public class PlayingObjectManager : MonoBehaviour
 	{
 		int counter=0;
 		foreach(PlayingObject obj in allPlayingObjectScripts){
-			if(obj.name!="888(Clone)"){
+			if(obj.name!="StoneBall(Clone)"){
 				counter++;
 			}	
 		}
@@ -238,7 +238,7 @@ public class PlayingObjectManager : MonoBehaviour
 		if(missionCountTotal<0){
 			missionCountTotal=0;
 			for(int i = 0; i < allPlayingObjectScripts.Length; i++){
-				if(allPlayingObjectScripts[i].name=="parrot_ball(Clone)"){
+				if(allPlayingObjectScripts[i].name=="ParrotBall(Clone)"){
 					missionCountTotal++;
 				}
 			}
@@ -251,7 +251,7 @@ public class PlayingObjectManager : MonoBehaviour
 	{
 		int count=0;
 		for(int i = 0; i < allPlayingObjectScripts.Length; i++){
-			if(allPlayingObjectScripts[i].name=="parrot_ball(Clone)"){
+			if(allPlayingObjectScripts[i].name=="ParrotBall(Clone)"){
 				count++;
 			}
 		}
@@ -286,7 +286,7 @@ public class PlayingObjectManager : MonoBehaviour
 		{
 			string tempName = objects[i].name;
 			PlayingObject playObj = objects[i].GetComponent<PlayingObject>();
-			if(!currentAvailableObjectsNames.Contains(tempName) && objects[i].name!="777(Clone)" && objects[i].name!="888(Clone)" && playObj.isConnected){
+			if(!currentAvailableObjectsNames.Contains(tempName) && objects[i].name!="DummyBall(Clone)" && objects[i].name!="StoneBall(Clone)" && playObj.isConnected){
 				currentAvailableObjectsNames.Add(tempName);
 				GetObjectReference(tempName);
 			}

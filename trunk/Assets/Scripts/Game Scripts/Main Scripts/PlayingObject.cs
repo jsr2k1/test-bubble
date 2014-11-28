@@ -112,7 +112,7 @@ public class PlayingObject : MonoBehaviour
 		if(isDestroyed)
 			return;
 
-		if(gameObject.name=="777(Clone)")
+		if(gameObject.name=="DummyBall(Clone)")
 			return;
 
 		isDestroyed = true;
@@ -158,7 +158,7 @@ public class PlayingObject : MonoBehaviour
 			}
 			for(int i=0; i<numberOfAdjacentObjects; i++)
 			{
-				if(adjacentPlayingObjects[i]!=null && adjacentPlayingObjects[i].name!="777(Clone)" && adjacentPlayingObjects[i].name!="888(Clone)")
+				if(adjacentPlayingObjects[i]!=null && adjacentPlayingObjects[i].name!="DummyBall(Clone)" && adjacentPlayingObjects[i].name!="StoneBall(Clone)")
 				{
 					if((Striker.instance.multiBall && Striker.instance.multiBallList.Contains(adjacentPlayingObjects[i].name)) || (!Striker.instance.multiBall && adjacentPlayingObjects[i].name==PlayingObjectManager.currentObjectName)){
 						adjacentPlayingObjects[i].Trace(iDeep+1);
