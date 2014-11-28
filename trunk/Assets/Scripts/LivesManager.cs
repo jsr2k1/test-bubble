@@ -78,7 +78,6 @@ public class LivesManager : MonoBehaviour
 		int span=0;
 		if(PlayerPrefs.HasKey("savedTime")){
 			DateTime savedTime = DateTime.Parse(PlayerPrefs.GetString("savedTime"));
-			//span = actualTime.Subtract(savedTime).Seconds;
 			span = (int)actualTime.Subtract(savedTime).TotalSeconds;
 		}
 		int elapsed = (int)seconds + span;
