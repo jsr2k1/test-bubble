@@ -498,7 +498,6 @@ GameObject:
   - 33: {fileID: 3300022}
   - 65: {fileID: 6500016}
   - 23: {fileID: 2300024}
-  - 114: {fileID: 11400014}
   m_Layer: 0
   m_Name: Back Button
   m_TagString: Untagged
@@ -2187,6 +2186,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b220bbca9be2b46a24e8a4ab80d3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  multiBall: 0
+  currentStrikerObject: {fileID: 0}
+  sCurrentSpecialBall: 
+  multiBallList: []
+  spriteMultiBall: {fileID: 0}
+  spriteBombBall: {fileID: 0}
+  spriteFireBall: {fileID: 0}
+  inputScript: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2218,6 +2225,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specialStrikerPrefabs: []
+  thresoldLineTransform: {fileID: 0}
+  inputScript: {fileID: 0}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2230,6 +2239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectGap: .589999974
+  objectGapY: 0
   playingObjectsPrefabs:
   - {fileID: 100000, guid: 69127dd2f86338b458a8e0037dec2470, type: 2}
   - {fileID: 100000, guid: 4a6e367919dd55742bbf35fa04320239, type: 2}
@@ -2237,6 +2247,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: f0431533b69d9ea498fab49e2cbda751, type: 2}
   - {fileID: 100000, guid: 43d5267bee96a7347a0ca76c432db8ad, type: 2}
   - {fileID: 100000, guid: 119e04bf6a13b7b4fa20ef4365d1077c, type: 2}
+  fallDownTime: 0
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2249,17 +2260,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topRowObjects: []
---- !u!114 &11400014
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95020ac54dcda9d4a807d80bc91fb865, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11400016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2282,6 +2282,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de632b68d640c5148aa570a667f40d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballsManager: {fileID: 0}
+  winPop: {fileID: 0}
+  loosePop: {fileID: 0}
+  star1: {fileID: 0}
+  star2: {fileID: 0}
+  star3: {fileID: 0}
+  star11: {fileID: 0}
+  star22: {fileID: 0}
+  star33: {fileID: 0}
+  levelText1: {fileID: 0}
+  levelText2: {fileID: 0}
+  slider: {fileID: 0}
+  highscoretext: {fileID: 0}
 --- !u!114 &11400020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2317,6 +2330,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launcher: {fileID: 400072}
+  thresoldLineTransform: {fileID: 0}
+  ballRadius: 0
+  particlePrefab1: {fileID: 0}
+  particlePrefab2: {fileID: 0}
+  spacing: 0
+  initialOffset: 0
+  nParticles: 0
+  nBounceParticles: 0
+  layermask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  layermask2:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  targetSprites: []
+  characterAnimator: {fileID: 0}
 --- !u!120 &12000000
 LineRenderer:
   m_ObjectHideFlags: 1

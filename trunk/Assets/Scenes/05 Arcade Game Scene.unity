@@ -4369,14 +4369,14 @@ RectTransform:
   m_GameObject: {fileID: 1017914004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .99999994, y: .99999994, z: .99999994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 169262541}
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 272, y: 33}
-  m_SizeDelta: {x: 78, y: 732}
+  m_SizeDelta: {x: 78, y: 737}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1017914006
 MonoBehaviour:
@@ -5229,14 +5229,14 @@ RectTransform:
   m_GameObject: {fileID: 1552033790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .99999994, y: .99999994, z: .99999994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 169262541}
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -272, y: 33}
-  m_SizeDelta: {x: 78, y: 732}
+  m_SizeDelta: {x: 78, y: 737}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1552033792
 MonoBehaviour:
@@ -5318,6 +5318,11 @@ MonoBehaviour:
   goQuit: {fileID: 0}
   goLives: {fileID: 0}
   goSettings: {fileID: 1012585947}
+  goShopLives: {fileID: 0}
+  goShopCoins: {fileID: 0}
+  goWin: {fileID: 0}
+  goLose: {fileID: 0}
+  goInfoLevel: {fileID: 0}
 --- !u!114 &1553100328
 MonoBehaviour:
   m_ObjectHideFlags: 0
