@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 35
+  numberBalls: 40
   ActualWorld: 2
   refScore: 1600
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
@@ -1223,6 +1223,14 @@ Prefab:
       propertyPath: levelTextPop
       value: 
       objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: numberBalls
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: refScore
+      value: 3250
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 780889095}
@@ -1710,9 +1718,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 20
+  numberBalls: 22
   ActualWorld: 2
-  refScore: 0
+  refScore: 1090
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -2672,6 +2680,14 @@ Prefab:
       propertyPath: levelTextPop
       value: 
       objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: numberBalls
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: refScore
+      value: 1090
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 219373468}
@@ -5948,7 +5964,7 @@ Prefab:
       objectReference: {fileID: 742490952}
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: numberBalls
-      value: 35
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: refScore
@@ -6397,9 +6413,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 20
+  numberBalls: 15
   ActualWorld: 2
-  refScore: 0
+  refScore: 4500
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -7595,9 +7611,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 20
+  numberBalls: 30
   ActualWorld: 2
-  refScore: 0
+  refScore: 3250
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -10288,9 +10304,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 20
+  numberBalls: 22
   ActualWorld: 2
-  refScore: 0
+  refScore: 2850
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -12849,6 +12865,14 @@ Prefab:
       propertyPath: levelTextPop
       value: 
       objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: numberBalls
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: refScore
+      value: 2850
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1033337950}
@@ -13035,6 +13059,14 @@ Prefab:
       propertyPath: levelTextPop
       value: 
       objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: numberBalls
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: refScore
+      value: 4500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 620835966}
@@ -13089,9 +13121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 20
+  numberBalls: 30
   ActualWorld: 2
-  refScore: 0
+  refScore: 3500
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -15678,6 +15710,14 @@ Prefab:
       propertyPath: levelTextPop
       value: 
       objectReference: {fileID: 742490952}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: numberBalls
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
+      propertyPath: refScore
+      value: 3500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
   m_RootGameObject: {fileID: 1296038573}
@@ -17691,7 +17731,7 @@ Prefab:
       objectReference: {fileID: 1502618727}
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: numberBalls
-      value: 8
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 50381bc46544bcf478a4f906bf7dcf78, type: 2}
       propertyPath: refScore
@@ -17929,7 +17969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 8
+  numberBalls: 20
   ActualWorld: 1
   refScore: 7800
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
