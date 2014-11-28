@@ -80,7 +80,7 @@ public class LevelEditor : MonoBehaviour
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	//Indice que obtenemos al pulsar un boton del nivel
 	int GetIndex(int index)
 	{
 		if(index==6){ //bola loro
@@ -93,7 +93,7 @@ public class LevelEditor : MonoBehaviour
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+	//Indice que obtenemos al hacer un LOAD
 	int GetIndexInv(int index)
 	{
 		if(index==7){ //bola loro
@@ -182,7 +182,7 @@ public class LevelEditor : MonoBehaviour
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Devuelve un string con la linea de bolas
+	//Devuelve un string con la linea de bolas para hacer el SAVE
 	string GetLine(int index)
 	{
 		string sRes="";
@@ -261,7 +261,7 @@ public class LevelEditor : MonoBehaviour
 			foreach(string s in list)
 			{
 				if(s!="-"){
-					currentLevel[iLine,iNum] = GetIndexInv(int.Parse(s));
+					currentLevel[iLine,iNum] = int.Parse(s);
 				}else{
 					currentLevel[iLine,iNum] = -1;
 				}
@@ -281,7 +281,7 @@ public class LevelEditor : MonoBehaviour
 				if(currentLevel[i,j] != -1){
 					GameObject goButton = GameObject.Find("Button_"+(i+1).ToString("00")+"_"+(j+1).ToString("00"));
 					if(goButton!=null){
-						goButton.GetComponent<Image>().sprite = ballColors[currentLevel[i,j]];
+						goButton.GetComponent<Image>().sprite = ballColors[GetIndexInv(currentLevel[i,j])];
 						goButton.GetComponent<Image>().color = new Color(1,1,1,1f);
 					}
 				}
