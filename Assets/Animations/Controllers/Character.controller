@@ -71,7 +71,7 @@ State:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Character-shoot
+  m_Name: Shoot
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
@@ -90,7 +90,7 @@ State:
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 0}
+  - {fileID: 7400000, guid: 659c21f87f75462418223cbe74ac36ec, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
   m_Position: {x: 192, y: 0, z: 0}
   m_IKOnFeet: 0

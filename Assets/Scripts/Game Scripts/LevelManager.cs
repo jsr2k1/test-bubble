@@ -32,7 +32,7 @@ public class LevelManager : MonoBehaviour
 	internal int totalNumberOfRowsLeft = 0;
 	Text scoreTextLabel;
 	public Image winPop;
-	public Image loosePop;
+	public Image losePop;
 	public static int ReferenceScore;
 	public Image star1;
 	public Image star2;
@@ -107,7 +107,7 @@ public class LevelManager : MonoBehaviour
 		gameState = GameState.GameOver;
 		InGameScriptRefrences.playingObjectManager.FallAllPlayingObjects();
 		SoundFxManager.instance.themeMusic.volume *= .4f;
-		loosePop.GetComponent<PopUpMgr>().ShowPopUp();
+		losePop.GetComponent<PopUpMgr>().ShowPopUp();
 		Invoke("PlayLevelFailSound", .2f);
 
 		if (PlayerPrefs.GetString ("GameType") == "Arcade") {
