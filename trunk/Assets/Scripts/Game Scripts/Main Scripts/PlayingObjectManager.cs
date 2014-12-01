@@ -251,7 +251,7 @@ public class PlayingObjectManager : MonoBehaviour
 	{
 		int count=0;
 		for(int i = 0; i < allPlayingObjectScripts.Length; i++){
-			if(allPlayingObjectScripts[i].name=="ParrotBall(Clone)"){
+			if(allPlayingObjectScripts[i] && allPlayingObjectScripts[i].name=="ParrotBall(Clone)"){
 				count++;
 			}
 		}
