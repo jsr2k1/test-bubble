@@ -912,6 +912,11 @@ MonoBehaviour:
   goQuit: {fileID: 1147725666}
   goLives: {fileID: 0}
   goSettings: {fileID: 2085255404}
+  goShopLives: {fileID: 0}
+  goShopCoins: {fileID: 0}
+  goWin: {fileID: 0}
+  goLose: {fileID: 0}
+  goInfoLevel: {fileID: 0}
 --- !u!82 &518888849
 AudioSource:
   m_ObjectHideFlags: 0
