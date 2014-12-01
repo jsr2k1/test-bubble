@@ -12,7 +12,7 @@ public class Striker : MonoBehaviour
 
 	//Power-ups
 	bool fireBall = false;
-	bool bombBall = false;
+	public bool bombBall = false;
 	public bool multiBall = false;
 	int deep = 0;
 	Transform sliderTransform;
@@ -80,14 +80,17 @@ public class Striker : MonoBehaviour
 		currentStrikerObject.transform.parent = InGameScriptRefrences.playingObjectGeneration.gameObject.transform;
 		currentStrikerObject.tag = "Playing Object";
 		currentStrikerObject.GetComponent<PlayingObject>().ObjectCollidedWithOtherObject(collidedObject);
-
+		
+		/*Lo hago en el Trace() porque asi no funciona bien
 		if(bombBall){
 			DetectAndExplode();
 			//Destroy(currentStrikerObject);
 			bombBall = false;
-			InGameScriptRefrences.playingObjectManager.ResetAllObjects();
+			//InGameScriptRefrences.playingObjectManager.ResetAllObjects();
+			InGameScriptRefrences.playingObjectManager.CheckForObjectsFall();
 			InGameScriptRefrences.playingObjectManager.FallDisconnectedObjects();
 		}
+		*/
 		isBusy = false;
 		InGameScriptRefrences.strikerManager.GenerateStriker();
 	}
@@ -326,7 +329,6 @@ public class Striker : MonoBehaviour
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	//Function to throw raycast to see wich balls are sorrounding the bomb ball
 	private void DetectAndExplode()
 	{
@@ -336,6 +338,7 @@ public class Striker : MonoBehaviour
 			if(hitColliders[i].tag == "Playing Object"){
 				if(hitColliders[i].name != "DummyBall(Clone)" && hitColliders[i].name != "StoneBall(Clone)"){
 					Destroy(hitColliders[i].gameObject);
+					//hitColliders[i].GetComponent<PlayingObject>().burst=true;
 					ScoreManagerGame.instance.DisplayScorePopup(10, transform);
 				}
 			}
