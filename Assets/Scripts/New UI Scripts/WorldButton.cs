@@ -77,9 +77,9 @@ public class WorldButton : MonoBehaviour
 			PlayerPrefs.SetInt("bPlaying", 1);
 			//Application.LoadLevel(3);
 
-			levelTextPop.text = "LEVEL " + LevelManager.levelNo.ToString();
+			levelTextPop.text = "NIVEL " + LevelManager.levelNo.ToString();
 			if(PlayingObjectManager.GetLevelMission() == PlayingObjectManager.MissionType.Animals){
-				levelTextPop.text = "ANIMALS " + LevelManager.levelNo.ToString();
+				levelTextPop.text = "ANIMALES " + LevelManager.levelNo.ToString();
 			}
 
 
