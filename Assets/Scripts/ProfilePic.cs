@@ -14,7 +14,11 @@ public class ProfilePic : MonoBehaviour
 	
 	void Awake()
 	{
+
 		string currentLevel = (PlayerPrefs.GetInt("Level")+1).ToString();
+		if (PlayerPrefs.GetInt("Level")+1 > 40) {
+			currentLevel = "40";
+		}
 		currentWorld = GameObject.Find(currentLevel).transform;
 		ratio = (float)Screen.width/ref_width;
 	}

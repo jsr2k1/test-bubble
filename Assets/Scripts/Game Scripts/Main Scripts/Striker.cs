@@ -148,7 +148,7 @@ public class Striker : MonoBehaviour
 		}
 
 		//Destroy current shooting object hold by striker and generate new striker object.
-		if((other.gameObject.name == "Top" || other.gameObject.name == "Top Down") && isBusy){
+		if((/*other.gameObject.name == "Top" || */other.gameObject.name == "Top Down") && isBusy){
 			rigidbody.isKinematic = true;
 			Destroy(currentStrikerObject);
 			isBusy = false;
