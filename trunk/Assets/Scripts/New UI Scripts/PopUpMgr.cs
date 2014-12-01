@@ -32,7 +32,9 @@ public class PopUpMgr : MonoBehaviour
 	{
 		if(!bShow){
 			popUpActionChangeState = PopUpAction.Off;
-			ImageBlack.popUpActionImageBlack = PopUpAction.On;
+			if(name!="WinPopUp" && name!="LosePopUp"){
+				ImageBlack.popUpActionImageBlack = PopUpAction.On;
+			}
 			anim.SetTrigger("ShowPopUp");
 			bShow=true;
 			
@@ -48,13 +50,42 @@ public class PopUpMgr : MonoBehaviour
 	{
 		if(bShow){
 			popUpActionChangeState = PopUpAction.On;
-			ImageBlack.popUpActionImageBlack = PopUpAction.Off;
+			if(name!="WinCharacterPopUp" && name!="LoseCharacterPopUp"){
+				ImageBlack.popUpActionImageBlack = PopUpAction.Off;
+			}
 			anim.SetTrigger("HidePopUp");
 			bShow=false;
 			
-			if(PlayerPrefs.GetInt("Sounds")==1){
+			if(audio && PlayerPrefs.GetInt("Sounds")==1){
 				audio.Play();
 			}
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Esta funcion se ejecuta mediante un evento en la animacion de ShowPopUp y solo se tiene en cuenta para el PopUpWinCharacter
+	public void HidePopUpWinLoseCharacter()
+	{
+		if(name=="WinCharacterPopUp" || name=="LoseCharacterPopUp"){
+			HidePopUp();
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Esta funcion se ejecuta mediante un evento en la animacion de HidePopUp y solo se tiene en cuenta para el PopUpWinCharacter
+	public void ShowPopUpWin()
+	{
+		if(name=="WinCharacterPopUp"){
+			GameObject.Find("WinPopUp").GetComponent<PopUpMgr>().ShowPopUp();
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Esta funcion se ejecuta mediante un evento en la animacion de HidePopUp y solo se tiene en cuenta para el PopUpWinCharacter
+	public void ShowPopUpLose()
+	{
+		if(name=="LoseCharacterPopUp"){
+			GameObject.Find("LosePopup").GetComponent<PopUpMgr>().ShowPopUp();
 		}
 	}
 	
