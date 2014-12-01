@@ -155,16 +155,24 @@ public class PlayingObject : MonoBehaviour
 	
 			for(int i=0; i<numberOfAdjacentObjects; i++)
 			{
-				if(adjacentPlayingObjects[i]!=null && adjacentPlayingObjects[i].name!="DummyBall(Clone)" && adjacentPlayingObjects[i].name!="StoneBall(Clone)")
+				if(adjacentPlayingObjects[i]!=null && adjacentPlayingObjects[i].name!="DummyBall(Clone)" /*&& adjacentPlayingObjects[i].name!="StoneBall(Clone)"*/)
 				{
-					if(Striker.instance.multiBall){
+					//MULTIBALL
+					if(Striker.instance.multiBall && adjacentPlayingObjects[i].name!="StoneBall(Clone)"){
 						if(gameObject.name=="MultiBall" || adjacentPlayingObjects[i].name==gameObject.name){
 							adjacentPlayingObjects[i].Trace(iDeep+1);
 						}else{
-							//adjacentPlayingObjects[i].isTraced = true; //Si pongo esto no funciona bien la multiball
 							iTween.PunchScale(adjacentPlayingObjects[i].gameObject, new Vector3(.2f, .2f, .2f), 1f);
 						}
-					}else{
+					}//BOMBBALL -> Tambien rompe las bolas piedra
+					else if(Striker.instance.bombBall){
+						if(iDeep==0 || iDeep==1){
+							adjacentPlayingObjects[i].Trace(iDeep+1);
+						}else{
+							iTween.PunchScale(adjacentPlayingObjects[i].gameObject, new Vector3(.2f, .2f, .2f), 1f);
+						}
+					}//NORMAL
+					else if(adjacentPlayingObjects[i].name!="StoneBall(Clone)"){
 						if(adjacentPlayingObjects[i].name==PlayingObjectManager.currentObjectName){
 							adjacentPlayingObjects[i].Trace(iDeep+1);
 						}else{
@@ -178,15 +186,13 @@ public class PlayingObject : MonoBehaviour
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	//Checks if the Playing object is connected to the top , If its free it will fall/destroyed.
 	internal void TraceForConnection()
 	{
-		if(isTracedForConnection || burst)
+		if(isTracedForConnection || burst){
 			return;
-
+		}
 		isTracedForConnection = true;
-
 		isConnected = true;
 
 		for(int i = 0; i < numberOfAdjacentObjects; i++){
@@ -221,6 +227,9 @@ public class PlayingObject : MonoBehaviour
 
 		if(Striker.instance.multiBall){
 			Striker.instance.multiBall=false;
+		}
+		if(Striker.instance.bombBall){
+			Striker.instance.bombBall=false;
 		}
 	}
 
