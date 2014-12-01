@@ -20,8 +20,8 @@ public class Striker : MonoBehaviour
 	public GameObject currentStrikerObject = null;
 	Texture oldTexture;
 	Sprite oldSprite;
+	string oldName;
 	public string sCurrentSpecialBall="";
-	public List<string> multiBallList;
 
 	public Sprite spriteMultiBall;
 	public Sprite spriteBombBall;
@@ -88,9 +88,7 @@ public class Striker : MonoBehaviour
 			InGameScriptRefrences.playingObjectManager.ResetAllObjects();
 			InGameScriptRefrences.playingObjectManager.FallDisconnectedObjects();
 		}
-
 		isBusy = false;
-
 		InGameScriptRefrences.strikerManager.GenerateStriker();
 	}
 
@@ -219,6 +217,7 @@ public class Striker : MonoBehaviour
 				//Desactivar booster
 				if(fireBall){
 					currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = oldSprite;
+					currentStrikerObject.name = oldName;
 					inputScript.CheckColor();
 					fireBall = false;
 					sCurrentSpecialBall = "";
@@ -227,8 +226,10 @@ public class Striker : MonoBehaviour
 				else{
 					if(!bombBall && !multiBall){
 						oldSprite = currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+						oldName = currentStrikerObject.name;
 					}
 					currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = spriteFireBall;
+					currentStrikerObject.name = "FireBall";
 					inputScript.CheckColorBooster();
 					fireBall = true;
 					bombBall = false;
@@ -255,6 +256,7 @@ public class Striker : MonoBehaviour
 				//Desactivar booster
 				if(bombBall){
 					currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = oldSprite;
+					currentStrikerObject.name = oldName;
 					inputScript.CheckColor();
 					bombBall = false;
 					sCurrentSpecialBall = "";
@@ -263,8 +265,10 @@ public class Striker : MonoBehaviour
 				else{
 					if(!fireBall && !multiBall){
 						oldSprite = currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+						oldName = currentStrikerObject.name;
 					}
 					currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = spriteBombBall;
+					currentStrikerObject.name = "BombBall";
 					inputScript.CheckColorBooster();
 					bombBall = true;
 					fireBall = false;
@@ -291,6 +295,7 @@ public class Striker : MonoBehaviour
 				//Desactivar booster
 				if(multiBall){
 					currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = oldSprite;
+					currentStrikerObject.name = oldName;
 					inputScript.CheckColor();
 					multiBall = false;
 					sCurrentSpecialBall = "";
@@ -299,8 +304,10 @@ public class Striker : MonoBehaviour
 				else{
 					if(!bombBall && !fireBall){
 						oldSprite = currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+						oldName = currentStrikerObject.name;
 					}
 					currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = spriteMultiBall;
+					currentStrikerObject.name = "MultiBall";
 					inputScript.CheckColorBooster();
 					multiBall = true;
 					fireBall = false;

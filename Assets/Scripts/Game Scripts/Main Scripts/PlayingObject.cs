@@ -148,36 +148,31 @@ public class PlayingObject : MonoBehaviour
 		if(!isTraced)
 		{
 			isTraced = true;
-			AssignBurst();
+			burst = true;
 
 			PlayingObjectManager.burstCounter++;
 			iTween.PunchScale(gameObject, new Vector3(.2f, .2f, .2f), 1f);
-
-			if(Striker.instance.multiBall && iDeep==0){
-				InitializeListMultiBall();
-			}
+	
 			for(int i=0; i<numberOfAdjacentObjects; i++)
 			{
 				if(adjacentPlayingObjects[i]!=null && adjacentPlayingObjects[i].name!="DummyBall(Clone)" && adjacentPlayingObjects[i].name!="StoneBall(Clone)")
 				{
-					if((Striker.instance.multiBall && Striker.instance.multiBallList.Contains(adjacentPlayingObjects[i].name)) || (!Striker.instance.multiBall && adjacentPlayingObjects[i].name==PlayingObjectManager.currentObjectName)){
-						adjacentPlayingObjects[i].Trace(iDeep+1);
+					if(Striker.instance.multiBall){
+						if(gameObject.name=="MultiBall" || adjacentPlayingObjects[i].name==gameObject.name){
+							adjacentPlayingObjects[i].Trace(iDeep+1);
+						}else{
+							//adjacentPlayingObjects[i].isTraced = true; //Si pongo esto no funciona bien la multiball
+							iTween.PunchScale(adjacentPlayingObjects[i].gameObject, new Vector3(.2f, .2f, .2f), 1f);
+						}
 					}else{
-						adjacentPlayingObjects[i].isTraced = true;
-						iTween.PunchScale(adjacentPlayingObjects[i].gameObject, new Vector3(.2f, .2f, .2f), 1f);
+						if(adjacentPlayingObjects[i].name==PlayingObjectManager.currentObjectName){
+							adjacentPlayingObjects[i].Trace(iDeep+1);
+						}else{
+							adjacentPlayingObjects[i].isTraced = true;
+							iTween.PunchScale(adjacentPlayingObjects[i].gameObject, new Vector3(.2f, .2f, .2f), 1f);
+						}
 					}
 				}
-			}
-		}
-	}
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	void InitializeListMultiBall()
-	{
-		for(int i=0; i<numberOfAdjacentObjects; i++){
-			if(adjacentPlayingObjects[i]!=null){
-				Striker.instance.multiBallList.Add(adjacentPlayingObjects[i].name);
 			}
 		}
 	}
@@ -205,10 +200,7 @@ public class PlayingObject : MonoBehaviour
 
 	internal void ObjectCollidedWithOtherObject(GameObject collidedObject)
 	{
-		if(Striker.instance.multiBall){
-			PlayingObjectManager.currentObjectName = collidedObject.name;
-			gameObject.name = collidedObject.name;
-		}else{
+		if(!Striker.instance.multiBall){
 			PlayingObjectManager.currentObjectName = gameObject.name;
 		}
 		AdjustPosition(collidedObject.transform.position);
@@ -224,9 +216,8 @@ public class PlayingObject : MonoBehaviour
 		}
 		RefreshAdjacentObjectList();
 		SoundFxManager.instance.Play(SoundFxManager.instance.collisionSound);
-		Striker.instance.multiBallList = new List<string>();
 		Trace(0);
-		CheckForObjectFall();
+		InGameScriptRefrences.playingObjectManager.CheckForObjectsFall(); 
 
 		if(Striker.instance.multiBall){
 			Striker.instance.multiBall=false;
@@ -278,20 +269,6 @@ public class PlayingObject : MonoBehaviour
 			}
 		}
 		transform.position = new Vector3(x, y, 0);
-	}
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	void CheckForObjectFall()
-	{
-		InGameScriptRefrences.playingObjectManager.CheckForObjectsFall();        
-	}
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	internal void AssignBurst()
-	{
-		burst = true;
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
