@@ -43,9 +43,6 @@ public class PurchaseSpecialBall : MonoBehaviour
 
 	public void PurchaseBall()
 	{
-		if(PlayerPrefs.GetInt("Sounds")==1){
-			audio.Play();
-		}
 		//Comprar un booster y restar dinero disponible
 		if(PlayerPrefs.GetInt("Coins") >= price){
 			quantity = PlayerPrefs.GetInt(BallString) + 1;
