@@ -355,7 +355,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 2
+    m_StopTime: 2.125
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -1010,6 +1010,13 @@ AnimationClip:
     messageOptions: 0
   - time: 1.70000005
     functionName: PlayStars3
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.125
+    functionName: SetNumStars3
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
