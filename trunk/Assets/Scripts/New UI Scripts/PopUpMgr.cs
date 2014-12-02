@@ -18,12 +18,15 @@ public class PopUpMgr : MonoBehaviour
 	public AudioSource sound_stars_1;
 	public AudioSource sound_stars_2;
 	public AudioSource sound_stars_3;
+	
+	AudioManager audioManager;
 		
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Awake()
 	{
 		anim = GetComponent<Animator>();
+		audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,10 +58,6 @@ public class PopUpMgr : MonoBehaviour
 			}
 			anim.SetTrigger("HidePopUp");
 			bShow=false;
-			
-			if(audio && PlayerPrefs.GetInt("Sounds")==1){
-				audio.Play();
-			}
 		}
 	}
 	
@@ -98,6 +97,9 @@ public class PopUpMgr : MonoBehaviour
 		}
 		if(LevelManager.score < 0.3 * LevelManager.ReferenceScore){
 			anim.speed=0;
+			if(PlayerPrefs.GetInt("Music")==1){
+				audioManager.PlayAudio();
+			}
 		}
 	}
 	
@@ -110,6 +112,9 @@ public class PopUpMgr : MonoBehaviour
 		}
 		if(LevelManager.score < 0.6 * LevelManager.ReferenceScore){
 			anim.speed=0;
+			if(PlayerPrefs.GetInt("Music")==1){
+				audioManager.PlayAudio();
+			}
 		}
 	}
 	
@@ -122,6 +127,21 @@ public class PopUpMgr : MonoBehaviour
 		}
 		if(LevelManager.score < LevelManager.ReferenceScore){
 			anim.speed=0;
+			if(PlayerPrefs.GetInt("Music")==1){
+				audioManager.PlayAudio();
+			}
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Esta funcion salta con un evento en la animacion para parar la animacion que aparezcan 2 estrellas
+	public void SetNumStars3()
+	{
+		if(name!="WinPopUp"){
+			return;
+		}
+		if(PlayerPrefs.GetInt("Music")==1){
+			audioManager.PlayAudio();
 		}
 	}
 	
@@ -132,7 +152,9 @@ public class PopUpMgr : MonoBehaviour
 		if(name!="WinPopUp"){
 			return;
 		}
-		sound_stars_1.Play();
+		if(LevelManager.score > 0.3 * LevelManager.ReferenceScore){
+			sound_stars_1.Play();
+		}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -142,7 +164,9 @@ public class PopUpMgr : MonoBehaviour
 		if(name!="WinPopUp"){
 			return;
 		}
-		sound_stars_2.Play();
+		if(LevelManager.score > 0.6 * LevelManager.ReferenceScore){
+			sound_stars_2.Play();
+		}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -152,7 +176,9 @@ public class PopUpMgr : MonoBehaviour
 		if(name!="WinPopUp"){
 			return;
 		}
-		sound_stars_3.Play();
+		if(LevelManager.score > LevelManager.ReferenceScore){
+			sound_stars_3.Play();
+		}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
