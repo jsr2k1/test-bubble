@@ -5042,7 +5042,7 @@ GameObject:
   - 95: {fileID: 599368205}
   - 114: {fileID: 599368204}
   m_Layer: 0
-  m_Name: LosePopup
+  m_Name: LosePopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

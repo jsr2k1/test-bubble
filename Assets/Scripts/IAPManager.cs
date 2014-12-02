@@ -142,9 +142,6 @@ public class IAPManager : MonoBehaviour
 		*/
 	public void PurchaseSomething(string item)
 	{
-		//if(PlayerPrefs.GetInt("Sounds")==1){
-		//	audio.Play();
-		//}
 		if(!waiting) {
 			waiting = true;
 			InAppPurchaseManager.MainInAppAPI.Buy(item, buyAppCallback);

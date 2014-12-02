@@ -1016,7 +1016,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 2.125
-    functionName: SetNumStars3
+    functionName: PlayGameMusic
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

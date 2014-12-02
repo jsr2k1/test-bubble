@@ -84,7 +84,7 @@ public class PopUpMgr : MonoBehaviour
 	public void ShowPopUpLose()
 	{
 		if(name=="LoseCharacterPopUp"){
-			GameObject.Find("LosePopup").GetComponent<PopUpMgr>().ShowPopUp();
+			GameObject.Find("LosePopUp").GetComponent<PopUpMgr>().ShowPopUp();
 		}
 	}
 	
@@ -135,9 +135,9 @@ public class PopUpMgr : MonoBehaviour
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Esta funcion salta con un evento en la animacion para parar la animacion que aparezcan 2 estrellas
-	public void SetNumStars3()
+	public void PlayGameMusic()
 	{
-		if(name!="WinPopUp"){
+		if(name!="WinPopUp" && name!="LosePopUp"){
 			return;
 		}
 		if(PlayerPrefs.GetInt("Music")==1){
@@ -185,9 +185,6 @@ public class PopUpMgr : MonoBehaviour
 
 	public void GoToWorlds()
 	{
-		if(PlayerPrefs.GetInt("Sounds")==1){
-			audio.Play();
-		}
 		PlayerPrefs.SetInt("bPlaying", 0);
 		Application.LoadLevel(2);
 	}
@@ -203,9 +200,6 @@ public class PopUpMgr : MonoBehaviour
 
 	public void RetryArcadeLevel()
 	{
-		if(PlayerPrefs.GetInt("Sounds")==1){
-			audio.Play();
-		}
 		Application.LoadLevel(4);
 	}
 	
@@ -213,9 +207,6 @@ public class PopUpMgr : MonoBehaviour
 
 	public void RetryLevel()
 	{
-		if(PlayerPrefs.GetInt("Sounds")==1){
-			audio.Play();
-		}
 		if(LivesManager.lives>0){
 			PlayerPrefs.SetInt("bPlaying", 1);
 			Application.LoadLevel(3);

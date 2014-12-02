@@ -41,10 +41,6 @@ public class FacebookBubble : MonoBehaviour
 	public void loginfacebook()
 	{
 		FB.Login("public_profile,email,user_friends,publish_actions", AuthCallback);
-		
-		if(PlayerPrefs.GetInt("Sounds")==1){
-			audio.Play();
-		}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
