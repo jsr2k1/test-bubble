@@ -6,6 +6,7 @@ public class Splash : MonoBehaviour
 	public float timer;
 	public static Sprite spriteIMG;
 	public bool bDeleteAllKeys; //debug
+	public bool bAllLevelsCompleted; //debug
 	public int initial_lives;
 
 	void Awake()
@@ -23,16 +24,16 @@ public class Splash : MonoBehaviour
 			PlayerPrefs.SetInt("Sounds", 1);
 		}
 		if(PlayerPrefs.HasKey("Multicolor Ball")==false){
-			PlayerPrefs.SetInt("Multicolor Ball", 3);
+			PlayerPrefs.SetInt("Multicolor Ball", 0);
 		}
 		if(PlayerPrefs.HasKey("Fire Ball")==false){
-			PlayerPrefs.SetInt("Fire Ball", 3);
+			PlayerPrefs.SetInt("Fire Ball", 0);
 		}
 		if(PlayerPrefs.HasKey("Bomb Ball")==false){
-			PlayerPrefs.SetInt("Bomb Ball", 3);
+			PlayerPrefs.SetInt("Bomb Ball", 0);
 		}
 		if(PlayerPrefs.HasKey("Coins")==false){
-			PlayerPrefs.SetInt("Coins", 500);
+			PlayerPrefs.SetInt("Coins", 100);
 		}
 		if(!PlayerPrefs.HasKey("Level")){
 			PlayerPrefs.SetInt("Level", 0);
@@ -40,13 +41,16 @@ public class Splash : MonoBehaviour
 		if(!PlayerPrefs.HasKey("World")){
 			PlayerPrefs.SetInt("World", 1);
 		}
-
 		if(!PlayerPrefs.HasKey("Highscore")){
 			PlayerPrefs.SetInt("Highscore", 0);
 		}
-
+		if(bAllLevelsCompleted){
+			for(int i=0;i<40;i++){
+				PlayerPrefs.SetInt("STARS_" + i, 3);
+				PlayerPrefs.SetInt("SCORE_" + i, 1000);
+			}
+		}
 		FB.Init(OnInitComplete);
-		
 		StartCoroutine("DisplayScene");
 	}
 	
