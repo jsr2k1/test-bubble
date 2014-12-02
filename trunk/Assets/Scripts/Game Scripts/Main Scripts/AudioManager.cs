@@ -5,6 +5,7 @@ using System.Collections;
 public class AudioManager : MonoBehaviour
 {
 	public AudioClip[] audioClips;
+	public AudioClip UIClick;
 	
 	Toggle musicToggle;
 	Toggle soundsToggle;
