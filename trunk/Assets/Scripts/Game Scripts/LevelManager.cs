@@ -112,7 +112,7 @@ public class LevelManager : MonoBehaviour
 		//SoundFxManager.instance.themeMusic.volume *= .4f;
 		audioManager.StopAudio();
 		losePop.GetComponent<PopUpMgr>().ShowPopUp();
-		Invoke("PlayLevelFailSound", .2f);
+		//Invoke("PlayLevelFailSound", .2f);
 
 		if (PlayerPrefs.GetString ("GameType") == "Arcade") {
 			if (score > PlayerPrefs.GetInt ("Highscore")) {
@@ -127,12 +127,12 @@ public class LevelManager : MonoBehaviour
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	/*
 	void PlayLevelFailSound()
 	{
 		SoundFxManager.instance.Play(SoundFxManager.instance.levelFailSound);
 	}
-
+	*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void LoadLevelAgain()
