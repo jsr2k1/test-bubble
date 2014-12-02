@@ -166,6 +166,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1f9d86c52af17774288f7650d0d395fe, type: 3}
   - {fileID: 8300000, guid: a3a2bf4ccca638a44965bfb19021499d, type: 3}
   - {fileID: 8300000, guid: ffe6018e925518246920456f0bfb0b12, type: 3}
+  UIClick: {fileID: 8300000, guid: b38cf6f64fe74dd418ebeed09f85c80e, type: 3}
 --- !u!4 &194216154
 Transform:
   m_ObjectHideFlags: 0
@@ -269,6 +270,10 @@ Prefab:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: be6d2155466fd7548b9213f975c99dc7, type: 2}
+      propertyPath: UIClick
+      value: 
+      objectReference: {fileID: 8300000, guid: b38cf6f64fe74dd418ebeed09f85c80e, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be6d2155466fd7548b9213f975c99dc7, type: 2}
   m_RootGameObject: {fileID: 194216151}

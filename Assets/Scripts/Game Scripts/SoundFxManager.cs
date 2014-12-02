@@ -11,7 +11,7 @@ public class SoundFxManager : MonoBehaviour
     public AudioSource levelClearSound;
     public AudioSource levelFailSound;
     
-    public AudioSource themeMusic;
+    //public AudioSource themeMusic;
 
     public AudioSource collisionSound;
     public AudioSource wallCollisionSound;
