@@ -70,9 +70,6 @@ public class SpecialBallButton : MonoBehaviour
 	
 	public void OnButtonClick()
 	{
-		if(PlayerPrefs.GetInt("Sounds")==1){
-			audio.Play();
-		}
 		//Comprobamos si quedan boosters disponibles
 		if(PlayerPrefs.GetInt(BallString) > 0){
 			if(BallString == "Fire Ball"){

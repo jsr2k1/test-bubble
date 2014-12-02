@@ -94,9 +94,6 @@ public class FacebookRequest : MonoBehaviour
 	//Pedir una vida a tus amigos
 	public void ButtonPressedAskLive()
 	{
-		if(PlayerPrefs.GetInt("Sounds")==1){
-			buttonAskForLife.audio.Play();
-		}
 		try{
 			FriendSelectorFilters = "[\"app_users\"]";
 			if(!FB.IsLoggedIn){
@@ -114,9 +111,6 @@ public class FacebookRequest : MonoBehaviour
 	//Invitar a amigos que no tienen el juego instalado
 	public void ButtonPressedInviteFriends()
 	{
-		if(PlayerPrefs.GetInt("Sounds")==1){
-			buttonInvite.audio.Play();
-		}
 		try{
 			CustomDebug("Facebook Invite pressed");
 			//Adjust.trackEvent("3xnjnv");
@@ -366,9 +360,6 @@ public class FacebookRequest : MonoBehaviour
 	//Mostrar el popup con los mensajes
 	public void ButtonPressedMessages()
 	{
-		//if(PlayerPrefs.GetInt("Sounds")==1){
-		//	buttonMessages.audio.Play();
-		//}
 		messagesPopUp.ShowPopUp();
 	}
 	

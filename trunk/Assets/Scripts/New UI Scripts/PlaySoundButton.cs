@@ -13,6 +13,7 @@ public class PlaySoundButton : MonoBehaviour
 		audioSource = gameObject.AddComponent<AudioSource>();
 		audioSource.loop = false;
 		audioSource.clip = GameObject.Find("AudioManager").GetComponent<AudioManager>().UIClick;
+		audioSource.playOnAwake = false;
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

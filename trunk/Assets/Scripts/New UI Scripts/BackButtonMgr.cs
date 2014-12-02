@@ -56,9 +56,6 @@ public class BackButtonMgr : MonoBehaviour
 
 	public void BackButtonPressed()
 	{
-		if(PlayerPrefs.GetInt("Sounds")==1 && audio!=null)
-			audio.Play();
-		
 		//MENU
 		if(Application.loadedLevel==1){
 			settingsPopUp.HidePopUp();
