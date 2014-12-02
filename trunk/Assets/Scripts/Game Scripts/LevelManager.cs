@@ -45,11 +45,13 @@ public class LevelManager : MonoBehaviour
 	public Text levelText2;
 	public Slider slider;
 	public Text highscoretext;
+	AudioManager audioManager;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Awake()
 	{
+		audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 		totalNumberOfRowsLeft = totalNoOfRows;
 		instance = this;
 		score = 0;
@@ -83,7 +85,8 @@ public class LevelManager : MonoBehaviour
 	internal void GameIsFinished()
 	{
 		gameState = GameState.GameFinish;
-		SoundFxManager.instance.themeMusic.volume *= .4f;
+		audioManager.StopAudio();
+		//SoundFxManager.instance.themeMusic.volume *= .4f;
 		//SoundFxManager.instance.Play(SoundFxManager.instance.levelClearSound);
 		winPop.GetComponent<PopUpMgr>().ShowPopUp();
 		
@@ -106,7 +109,8 @@ public class LevelManager : MonoBehaviour
 		}
 		gameState = GameState.GameOver;
 		InGameScriptRefrences.playingObjectManager.FallAllPlayingObjects();
-		SoundFxManager.instance.themeMusic.volume *= .4f;
+		//SoundFxManager.instance.themeMusic.volume *= .4f;
+		audioManager.StopAudio();
 		losePop.GetComponent<PopUpMgr>().ShowPopUp();
 		Invoke("PlayLevelFailSound", .2f);
 
