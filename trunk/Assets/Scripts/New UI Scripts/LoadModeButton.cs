@@ -7,9 +7,6 @@ public class LoadModeButton : MonoBehaviour
 	{
 		Adjust.trackEvent("1b5w81");
 		
-		if(PlayerPrefs.GetInt("Sounds")==1){
-			audio.Play();
-		}
 		Application.LoadLevel(2);
 	}
 
@@ -20,10 +17,7 @@ public class LoadModeButton : MonoBehaviour
 		Adjust.trackEvent("xr59vt");
 		
 		PlayerPrefs.SetString("GameType", "Arcade");
-		
-		if(PlayerPrefs.GetInt("Sounds")==1){
-			audio.Play();
-		}
+
 		int levelNo = 1;
 		int val = levelNo % 4;
 		
