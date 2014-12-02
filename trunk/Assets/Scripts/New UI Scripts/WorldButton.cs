@@ -16,6 +16,9 @@ public class WorldButton : MonoBehaviour
 	public Image livesPop;
 	public Image startPop;
 	public Text levelTextPop;
+	
+	AudioSource audioSource;
+	AudioManager audioManager;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -57,12 +60,20 @@ public class WorldButton : MonoBehaviour
 			stars.transform.localPosition = new Vector3(0, 40, 0);
 			stars.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
 		}
+		
+		audioSource = gameObject.AddComponent<AudioSource>();
+		audioSource.loop = false;
+		audioSource.clip = GameObject.Find("AudioManager").GetComponent<AudioManager>().UIClick;
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void ButtonPressed()
 	{
+		if(audioSource && PlayerPrefs.GetInt("Sounds")==1){
+			audioSource.Play();
+		}
+		
 		int nLives=PlayerPrefs.GetInt("Lives");
 		if(nLives > 0) {
 			PlayerPrefs.SetString("GameType", "Normal");
