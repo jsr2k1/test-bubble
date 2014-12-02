@@ -2141,7 +2141,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400008, guid: b355caa85febe0b49976078d576eda4f, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 22400008, guid: b355caa85febe0b49976078d576eda4f, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -5652,7 +5652,7 @@ GameObject:
   - 95: {fileID: 1921396410}
   - 114: {fileID: 1921396409}
   m_Layer: 0
-  m_Name: LosePopUp
+  m_Name: LosePopUpArcade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
