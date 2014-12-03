@@ -84,6 +84,7 @@ public class WorldButton : MonoBehaviour
 			LevelManager.ReferenceScore = refScore;
 			LevelManager.rowAddingInterval = 1;
 			LevelManager.levelNo = int.Parse(name);
+			LevelManager.worldNo = ActualWorld;
 
 			PlayerPrefs.SetInt("bPlaying", 1);
 			//Application.LoadLevel(3);

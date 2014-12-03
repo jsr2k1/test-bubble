@@ -23,6 +23,7 @@ public class LevelManager : MonoBehaviour
 	public static StrikerManager strikerManager;
 	public static int score = 0;
 	public static int levelNo = 0;
+	public static int worldNo = 0;
 	public static PatternType patternType = PatternType.None;
 	public static int totalNoOfRows = 50;
 	public static int minimumNumberOfRows = 6;
