@@ -76,8 +76,8 @@ public class LevelManager : MonoBehaviour
 		}
 		scoreTextLabel = GameObject.Find("ScoreTextLabel").GetComponent<Text>();
 		if(PlayerPrefs.GetString("GameType") == "Normal"){
-			levelText1.text = "Level " + levelNo;
-			levelText2.text = "Level " + levelNo;
+			levelText1.text = levelNo.ToString();
+			levelText2.text = levelNo.ToString();
 		}
 	}
 	

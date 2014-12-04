@@ -3275,6 +3275,7 @@ GameObject:
   - 222: {fileID: 276076542}
   - 114: {fileID: 276076541}
   - 114: {fileID: 276076540}
+  - 114: {fileID: 276076543}
   m_Layer: 5
   m_Name: Highscore text
   m_TagString: Untagged
@@ -3338,13 +3339,24 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Puntuaci\xF3n m\xE1xima:"
+  m_Text: id_highscore
 --- !u!222 &276076542
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 276076538}
+--- !u!114 &276076543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 276076538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c5f59df9c621d44b275f9878c34b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &285351351
 GameObject:
   m_ObjectHideFlags: 0
@@ -3355,6 +3367,7 @@ GameObject:
   - 224: {fileID: 285351352}
   - 222: {fileID: 285351354}
   - 114: {fileID: 285351353}
+  - 114: {fileID: 285351355}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3404,13 +3417,24 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: AJUSTES
+  m_Text: id_settings
 --- !u!222 &285351354
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 285351351}
+--- !u!114 &285351355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 285351351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c5f59df9c621d44b275f9878c34b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &373965508
 GameObject:
   m_ObjectHideFlags: 0
@@ -4107,6 +4131,7 @@ GameObject:
   - 222: {fileID: 992076854}
   - 114: {fileID: 992076853}
   - 114: {fileID: 992076852}
+  - 114: {fileID: 992076855}
   m_Layer: 5
   m_Name: Score text
   m_TagString: Untagged
@@ -4170,13 +4195,24 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Puntuaci\xF3n:"
+  m_Text: id_score
 --- !u!222 &992076854
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 992076850}
+--- !u!114 &992076855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 992076850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c5f59df9c621d44b275f9878c34b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1012585947
 GameObject:
   m_ObjectHideFlags: 0
