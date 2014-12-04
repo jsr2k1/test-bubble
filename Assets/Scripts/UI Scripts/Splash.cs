@@ -24,16 +24,16 @@ public class Splash : MonoBehaviour
 			PlayerPrefs.SetInt("Sounds", 1);
 		}
 		if(PlayerPrefs.HasKey("Multicolor Ball")==false){
-			PlayerPrefs.SetInt("Multicolor Ball", 0);
+			PlayerPrefs.SetInt("Multicolor Ball", 2);
 		}
 		if(PlayerPrefs.HasKey("Fire Ball")==false){
-			PlayerPrefs.SetInt("Fire Ball", 0);
+			PlayerPrefs.SetInt("Fire Ball", 2);
 		}
 		if(PlayerPrefs.HasKey("Bomb Ball")==false){
-			PlayerPrefs.SetInt("Bomb Ball", 0);
+			PlayerPrefs.SetInt("Bomb Ball", 2);
 		}
 		if(PlayerPrefs.HasKey("Coins")==false){
-			PlayerPrefs.SetInt("Coins", 100);
+			PlayerPrefs.SetInt("Coins", 0);
 		}
 		if(!PlayerPrefs.HasKey("Level")){
 			PlayerPrefs.SetInt("Level", 0);
