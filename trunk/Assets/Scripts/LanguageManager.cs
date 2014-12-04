@@ -55,6 +55,7 @@ public class LanguageManager : MonoBehaviour {
 		dict.Add ("id_highscore", new string[] {"Puntuaci\u00F3n m\u00E1xima:", "High Score:"});
 		dict.Add ("id_playon", new string[] {"Continuar", "Play on"});
 		dict.Add ("id_endgame", new string[] {"Salir", "End game"});
+		dict.Add ("id_win", new string[] {"¡Has ganado!", "You won!"});
 	}
 
 }
