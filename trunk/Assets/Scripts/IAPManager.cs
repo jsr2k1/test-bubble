@@ -17,7 +17,7 @@ public class IAPManager : MonoBehaviour
 	private string item2 = "xxxxxxxxxxx2";
 	private string item3 = "xxxxxxxxxxx3";
 	#else
-	private string item1 = "xsmall";
+	private string item1 = "extrasmall";
 	private string item2 = "small";
 	private string item3 = "medium";
 	private string item4 = "big";
@@ -34,11 +34,11 @@ public class IAPManager : MonoBehaviour
 		
 		// InApp-Purchases - NOTE: you can set different "In App IDs" for each platform.
 		var inAppIDs = new InAppPurchaseID[5];
-		inAppIDs [0] = new InAppPurchaseID(item1, 1.99m, "$", InAppPurchaseTypes.Consumable);
+		inAppIDs [0] = new InAppPurchaseID(item1, 0.99m, "$", InAppPurchaseTypes.Consumable);
 		inAppIDs [1] = new InAppPurchaseID(item2, 0.99m, "$", InAppPurchaseTypes.Consumable);
-		inAppIDs [2] = new InAppPurchaseID(item3, 2.49m, "$", InAppPurchaseTypes.Consumable);
+		inAppIDs [2] = new InAppPurchaseID(item3, 0.99m, "$", InAppPurchaseTypes.Consumable);
 		inAppIDs [3] = new InAppPurchaseID(item4, 0.99m, "$", InAppPurchaseTypes.Consumable);
-		inAppIDs [4] = new InAppPurchaseID(item5, 2.49m, "$", InAppPurchaseTypes.Consumable);
+		inAppIDs [4] = new InAppPurchaseID(item5, 0.99m, "$", InAppPurchaseTypes.Consumable);
 		
 		restoreInAppStatusText = new string[inAppIDs.Length];
 		var desc = new InAppPurchaseDesc();
