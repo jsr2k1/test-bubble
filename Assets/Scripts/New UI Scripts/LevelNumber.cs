@@ -6,6 +6,6 @@ public class LevelNumber : MonoBehaviour
 {
 	void Awake()
 	{
-		GetComponent<Text>().text = "LEVEL "+LevelManager.levelNo;
+		GetComponent<Text>().text = LevelManager.levelNo.ToString();
 	}
 }
