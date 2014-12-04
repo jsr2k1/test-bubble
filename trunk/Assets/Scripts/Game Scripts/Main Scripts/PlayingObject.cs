@@ -247,6 +247,12 @@ public class PlayingObject : MonoBehaviour
 			if(transform.position.y > collidedObjectPos.y){ 
 				x = collidedObjectPos.x - InGameScriptRefrences.playingObjectGeneration.objectGap;
 				y = collidedObjectPos.y;
+				//Comprobar que la bola no se quede enganchada fuera de la pantalla por la izquierda
+				float leftDist = Mathf.Abs(x-leftCollider.position.x);
+				if(leftDist<0.45f){
+					x = collidedObjectPos.x - InGameScriptRefrences.playingObjectGeneration.objectGap * .5f;
+					y = collidedObjectPos.y - InGameScriptRefrences.playingObjectGeneration.rowGap;
+				}
 			}
 			//LEFT-LOWER
 			else{
@@ -265,6 +271,12 @@ public class PlayingObject : MonoBehaviour
 			if(transform.position.y > collidedObjectPos.y){
 				x = collidedObjectPos.x + InGameScriptRefrences.playingObjectGeneration.objectGap;
 				y = collidedObjectPos.y;
+				//Comprobar que la bola no se quede enganchada fuera de la pantalla por la derecha
+				float rightDist = Mathf.Abs(x-rightCollider.position.x);
+				if(rightDist<0.45f){
+					x = collidedObjectPos.x + InGameScriptRefrences.playingObjectGeneration.objectGap * .5f;
+					y = collidedObjectPos.y - InGameScriptRefrences.playingObjectGeneration.rowGap;
+				}
 			}
 			//RIGHT-LOWER
 			else{ 
