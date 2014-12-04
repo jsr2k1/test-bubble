@@ -355,7 +355,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 2.125
+    m_StopTime: 2.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -994,13 +994,6 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.375
-    functionName: HidePopUpWinLoseCharacter
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 1.5
     functionName: SetNumStars2
     data: 
@@ -1017,6 +1010,13 @@ AnimationClip:
     messageOptions: 0
   - time: 2.125
     functionName: PlayGameMusic
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.5
+    functionName: HidePopUpWinLoseCharacter
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
