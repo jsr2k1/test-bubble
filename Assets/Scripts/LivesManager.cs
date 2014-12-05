@@ -46,7 +46,8 @@ public class LivesManager : MonoBehaviour
 	void Update()
 	{
 		if(lives>=5){
-			sCountdown = "FULL";
+			string[] res = LanguageManager.dict ["id_full"];
+			sCountdown = res [LanguageManager.lang];
 			seconds=0;
 			return;
 		}
