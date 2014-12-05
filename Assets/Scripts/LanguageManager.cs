@@ -58,6 +58,7 @@ public class LanguageManager : MonoBehaviour {
 		dict.Add ("id_win", new string[] {"¡Has ganado!", "You won!"});
 		dict.Add ("id_messages", new string[] {"Mensajes", "Messages"});
 		dict.Add ("id_full", new string[] {"LLENO", "FULL"});
+		dict.Add ("id_soon", new string[] {"Pr\u00F3ximamente...", "Coming soon..."});
 	}
 
 }
