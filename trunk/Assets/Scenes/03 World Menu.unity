@@ -2830,6 +2830,7 @@ GameObject:
   - 224: {fileID: 293702726}
   - 222: {fileID: 293702728}
   - 114: {fileID: 293702727}
+  - 114: {fileID: 293702729}
   m_Layer: 5
   m_Name: TextFrame
   m_TagString: Untagged
@@ -2879,13 +2880,24 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Messages
+  m_Text: id_messages
 --- !u!222 &293702728
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 293702725}
+--- !u!114 &293702729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 293702725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c5f59df9c621d44b275f9878c34b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &316377413
 GameObject:
   m_ObjectHideFlags: 0
