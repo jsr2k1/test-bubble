@@ -153,7 +153,9 @@ public class PopUpMgr : MonoBehaviour
 			return;
 		}
 		if(LevelManager.score > 0.3 * LevelManager.ReferenceScore){
-			sound_stars_1.Play();
+			if(PlayerPrefs.GetInt("Sounds")==1){
+				sound_stars_1.Play();
+			}
 		}
 	}
 	
@@ -165,7 +167,9 @@ public class PopUpMgr : MonoBehaviour
 			return;
 		}
 		if(LevelManager.score > 0.6 * LevelManager.ReferenceScore){
-			sound_stars_2.Play();
+			if(PlayerPrefs.GetInt("Sounds")==1){
+				sound_stars_2.Play();
+			}
 		}
 	}
 	
@@ -177,7 +181,9 @@ public class PopUpMgr : MonoBehaviour
 			return;
 		}
 		if(LevelManager.score > LevelManager.ReferenceScore){
-			sound_stars_3.Play();
+			if(PlayerPrefs.GetInt("Sounds")==1){
+				sound_stars_3.Play();
+			}
 		}
 	}
 
