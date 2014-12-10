@@ -16,6 +16,7 @@ public class Splash : MonoBehaviour
 		}
 		if(!PlayerPrefs.HasKey("Lives")){
 			PlayerPrefs.SetInt("Lives", initial_lives);
+			LivesManager.lives = 5;
 		}
 		if(PlayerPrefs.HasKey("Music")==false){
 			PlayerPrefs.SetInt("Music", 1);
@@ -33,7 +34,7 @@ public class Splash : MonoBehaviour
 			PlayerPrefs.SetInt("Bomb Ball", 2);
 		}
 		if(PlayerPrefs.HasKey("Coins")==false){
-			PlayerPrefs.SetInt("Coins", 0);
+			PlayerPrefs.SetInt("Coins", 300);
 		}
 		if(!PlayerPrefs.HasKey("Level")){
 			PlayerPrefs.SetInt("Level", 0);
