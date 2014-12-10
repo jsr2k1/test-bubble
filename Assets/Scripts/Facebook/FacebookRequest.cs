@@ -50,6 +50,9 @@ public class FacebookRequest : MonoBehaviour
 	
 	string objectId = "1494978434114506"; //id de la instancia de la vida que hemos creado en la consola de Facebook
 	
+	public static string facebookUserID;
+	public static string facebookUserName;
+	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void CustomDebug(string msg)
@@ -73,6 +76,7 @@ public class FacebookRequest : MonoBehaviour
 		pendingRequests = new Dictionary<string, object>();
 		pendingRequestsData = new List<object>();
 		
+		GetFacebookUserID();
 		//DeleteAllRequests(); //Only for testing
 	}
 	
@@ -88,6 +92,32 @@ public class FacebookRequest : MonoBehaviour
 		}
 		CustomDebug("status: " + status);
 		CustomDebug("lastResponse: " + lastResponse);
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void GetFacebookUserID()
+	{
+		if(FB.IsLoggedIn){
+			FB.API("v2.2/me?fields=id,name", HttpMethod.GET, GetFacebookUserIDCallback);
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void GetFacebookUserIDCallback(FBResult result)
+	{
+		if(!String.IsNullOrEmpty(result.Error)){
+			CustomDebug("DeleteAllRequestsCallback: Error Response:" + result.Error);
+		}
+		else if(!String.IsNullOrEmpty(result.Text)){
+			Dictionary<string, object> dict = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
+			facebookUserID = dict["id"].ToString();
+			facebookUserName = dict["name"].ToString();
+		}
+		else{
+			lastResponse = "Empty Response\n";
+		}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -263,12 +293,12 @@ public class FacebookRequest : MonoBehaviour
 
 	void ClearData()
 	{
-		buttonMessages.SetActive(false);
-
+		if(buttonMessages!=null){
+			buttonMessages.SetActive(false);
+		}
 		foreach(GameObject go in entriesList){
 			DestroyImmediate(go);
 		}
-
 		requestsList.Clear();
 		entriesList.Clear();
 		requestItem.Clear();
