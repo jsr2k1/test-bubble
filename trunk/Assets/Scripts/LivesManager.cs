@@ -24,7 +24,7 @@ public class LivesManager : MonoBehaviour
 	void Start()
 	{
 		DontDestroyOnLoad(gameObject);
-		//UpdateCurrentTime(); No es necesario llamar desde aqui pq siempre se llama desde OnApplicationPause()
+		UpdateCurrentTime(); 
 		CheckLives();
 	}
 	
@@ -67,7 +67,7 @@ public class LivesManager : MonoBehaviour
 	
 	void UpdateCurrentTime()
 	{
-		//Debug.LogWarning("UpdateCurrentTime(), DateTime.Now:"+DateTime.Now+" seconds:"+PlayerPrefs.GetFloat("seconds"));
+		//Debug.Log("UpdateCurrentTime(), DateTime.Now:"+DateTime.Now+" seconds:"+PlayerPrefs.GetFloat("seconds"));
 		
 		lives = PlayerPrefs.GetInt("Lives");
 		if(lives==5){
@@ -85,14 +85,14 @@ public class LivesManager : MonoBehaviour
 		seconds = elapsed % secondsToLife;
 		lives = Mathf.Min(lives + (elapsed / secondsToLife), 5);
 		
-		//Debug.LogWarning("elapsed:"+elapsed+" seconds:"+seconds+" lives:"+lives+" span:"+span);
+		//Debug.Log("elapsed:"+elapsed+" seconds:"+seconds+" lives:"+lives+" span:"+span);
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void SaveCurrentTime()
 	{
-		//Debug.LogWarning("SaveCurrentTime(), DateTime.Now:"+DateTime.Now+" seconds:"+seconds+", lives:"+lives);
+		//Debug.Log("SaveCurrentTime(), DateTime.Now:"+DateTime.Now+" seconds:"+seconds+", lives:"+lives);
 		
 		PlayerPrefs.SetInt("Lives", lives);
 		PlayerPrefs.SetString("savedTime", DateTime.Now.ToString());
@@ -103,6 +103,7 @@ public class LivesManager : MonoBehaviour
 
 	void OnApplicationPause(bool pause)
 	{
+		//Debug.Log("-_-_-_ OnApplicationPause");
 		//La applicacion ha pasado a segundo plano
 		if(pause){
 			SaveCurrentTime();
@@ -117,6 +118,7 @@ public class LivesManager : MonoBehaviour
 	//Parece que no funciona en ANDROID
 	void OnApplicationQuit()
 	{
+		//Debug.Log("-_-_-_ OnApplicationQuit");
 		SaveCurrentTime();
 	}
 }
