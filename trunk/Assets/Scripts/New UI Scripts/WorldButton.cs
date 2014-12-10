@@ -93,10 +93,9 @@ public class WorldButton : MonoBehaviour
 			if(PlayingObjectManager.GetLevelMission() == PlayingObjectManager.MissionType.Animals){
 				levelTextPop.text = LevelManager.levelNo.ToString();
 			}
-
-
 			startPop.GetComponent<PopUpMgr>().ShowPopUp();
-		} else {
+		}
+		else{
 			livesPop.GetComponent<PopUpMgr>().ShowPopUp();
 		}
 	}
