@@ -18,6 +18,22 @@ TextureImporter:
     21300026: sprite-sheet_13
     21300028: sprite-sheet_14
     21300030: sprite-sheet_15
+    21300032: Character-shoot_0
+    21300034: Character-shoot_1
+    21300036: Character-shoot_2
+    21300038: Character-shoot_3
+    21300040: Character-shoot_4
+    21300042: Character-shoot_5
+    21300044: Character-shoot_6
+    21300046: Character-shoot_7
+    21300048: Character-shoot_8
+    21300050: Character-shoot_9
+    21300052: Character-shoot_10
+    21300054: Character-shoot_11
+    21300056: Character-shoot_12
+    21300058: Character-shoot_13
+    21300060: Character-shoot_14
+    21300062: Character-shoot_15
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -59,163 +75,163 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: sprite-sheet_0
+    - name: Character-shoot_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 960
-        width: 410
-        height: 320
+        y: 585
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite-sheet_1
+    - name: Character-shoot_1
       rect:
         serializedVersion: 2
-        x: 410
-        y: 960
-        width: 410
-        height: 320
+        x: 250
+        y: 585
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite-sheet_2
+    - name: Character-shoot_2
       rect:
         serializedVersion: 2
-        x: 820
-        y: 960
-        width: 410
-        height: 320
+        x: 500
+        y: 585
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite-sheet_3
+    - name: Character-shoot_3
       rect:
         serializedVersion: 2
-        x: 1230
-        y: 960
-        width: 410
-        height: 320
+        x: 750
+        y: 585
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite-sheet_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 640
-        width: 410
-        height: 320
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite-sheet_5
-      rect:
-        serializedVersion: 2
-        x: 410
-        y: 640
-        width: 410
-        height: 320
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite-sheet_6
-      rect:
-        serializedVersion: 2
-        x: 820
-        y: 640
-        width: 410
-        height: 320
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite-sheet_7
-      rect:
-        serializedVersion: 2
-        x: 1230
-        y: 640
-        width: 410
-        height: 320
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite-sheet_8
+    - name: Character-shoot_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 320
-        width: 410
-        height: 320
+        y: 390
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite-sheet_9
+    - name: Character-shoot_5
       rect:
         serializedVersion: 2
-        x: 410
-        y: 320
-        width: 410
-        height: 320
+        x: 250
+        y: 390
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite-sheet_10
+    - name: Character-shoot_6
       rect:
         serializedVersion: 2
-        x: 820
-        y: 320
-        width: 410
-        height: 320
+        x: 500
+        y: 390
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite-sheet_11
+    - name: Character-shoot_7
       rect:
         serializedVersion: 2
-        x: 1230
-        y: 320
-        width: 410
-        height: 320
+        x: 750
+        y: 390
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite-sheet_12
+    - name: Character-shoot_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 195
+        width: 250
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Character-shoot_9
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 195
+        width: 250
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Character-shoot_10
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 195
+        width: 250
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Character-shoot_11
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 195
+        width: 250
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Character-shoot_12
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 410
-        height: 320
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite-sheet_13
+    - name: Character-shoot_13
       rect:
         serializedVersion: 2
-        x: 410
+        x: 250
         y: 0
-        width: 410
-        height: 320
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite-sheet_14
+    - name: Character-shoot_14
       rect:
         serializedVersion: 2
-        x: 820
+        x: 500
         y: 0
-        width: 410
-        height: 320
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite-sheet_15
+    - name: Character-shoot_15
       rect:
         serializedVersion: 2
-        x: 1230
+        x: 750
         y: 0
-        width: 410
-        height: 320
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

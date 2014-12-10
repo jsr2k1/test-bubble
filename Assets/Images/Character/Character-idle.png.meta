@@ -54,7 +54,7 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -3
-  maxTextureSize: 4096
+  maxTextureSize: 2048
   textureSettings:
     filterMode: -1
     aniso: -1
@@ -79,79 +79,79 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 960
-        width: 410
-        height: 320
+        y: 585
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_1
       rect:
         serializedVersion: 2
-        x: 410
-        y: 960
-        width: 410
-        height: 320
+        x: 250
+        y: 585
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_2
       rect:
         serializedVersion: 2
-        x: 820
-        y: 960
-        width: 410
-        height: 320
+        x: 500
+        y: 585
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_3
       rect:
         serializedVersion: 2
-        x: 1230
-        y: 960
-        width: 410
-        height: 320
+        x: 750
+        y: 585
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_4
       rect:
         serializedVersion: 2
-        x: 1640
-        y: 960
-        width: 410
-        height: 320
+        x: 1000
+        y: 585
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_5
       rect:
         serializedVersion: 2
-        x: 2050
-        y: 960
-        width: 410
-        height: 320
+        x: 1250
+        y: 585
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_6
       rect:
         serializedVersion: 2
-        x: 2460
-        y: 960
-        width: 410
-        height: 320
+        x: 1500
+        y: 585
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_7
       rect:
         serializedVersion: 2
-        x: 2870
-        y: 960
-        width: 410
-        height: 320
+        x: 1750
+        y: 585
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,79 +159,79 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 640
-        width: 410
-        height: 320
+        y: 390
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_9
       rect:
         serializedVersion: 2
-        x: 410
-        y: 640
-        width: 410
-        height: 320
+        x: 250
+        y: 390
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_10
       rect:
         serializedVersion: 2
-        x: 820
-        y: 640
-        width: 410
-        height: 320
+        x: 500
+        y: 390
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_11
       rect:
         serializedVersion: 2
-        x: 1230
-        y: 640
-        width: 410
-        height: 320
+        x: 750
+        y: 390
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_12
       rect:
         serializedVersion: 2
-        x: 1640
-        y: 640
-        width: 410
-        height: 320
+        x: 1000
+        y: 390
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_13
       rect:
         serializedVersion: 2
-        x: 2050
-        y: 640
-        width: 410
-        height: 320
+        x: 1250
+        y: 390
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_14
       rect:
         serializedVersion: 2
-        x: 2460
-        y: 640
-        width: 410
-        height: 320
+        x: 1500
+        y: 390
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_15
       rect:
         serializedVersion: 2
-        x: 2870
-        y: 640
-        width: 410
-        height: 320
+        x: 1750
+        y: 390
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,79 +239,79 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 320
-        width: 410
-        height: 320
+        y: 195
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_17
       rect:
         serializedVersion: 2
-        x: 410
-        y: 320
-        width: 410
-        height: 320
+        x: 250
+        y: 195
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_18
       rect:
         serializedVersion: 2
-        x: 820
-        y: 320
-        width: 410
-        height: 320
+        x: 500
+        y: 195
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_19
       rect:
         serializedVersion: 2
-        x: 1230
-        y: 320
-        width: 410
-        height: 320
+        x: 750
+        y: 195
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_20
       rect:
         serializedVersion: 2
-        x: 1640
-        y: 320
-        width: 410
-        height: 320
+        x: 1000
+        y: 195
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_21
       rect:
         serializedVersion: 2
-        x: 2050
-        y: 320
-        width: 410
-        height: 320
+        x: 1250
+        y: 195
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_22
       rect:
         serializedVersion: 2
-        x: 2460
-        y: 320
-        width: 410
-        height: 320
+        x: 1500
+        y: 195
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_23
       rect:
         serializedVersion: 2
-        x: 2870
-        y: 320
-        width: 410
-        height: 320
+        x: 1750
+        y: 195
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,78 +320,78 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 410
-        height: 320
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_25
       rect:
         serializedVersion: 2
-        x: 410
+        x: 250
         y: 0
-        width: 410
-        height: 320
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_26
       rect:
         serializedVersion: 2
-        x: 820
+        x: 500
         y: 0
-        width: 410
-        height: 320
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_27
       rect:
         serializedVersion: 2
-        x: 1230
+        x: 750
         y: 0
-        width: 410
-        height: 320
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_28
       rect:
         serializedVersion: 2
-        x: 1640
+        x: 1000
         y: 0
-        width: 410
-        height: 320
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_29
       rect:
         serializedVersion: 2
-        x: 2050
+        x: 1250
         y: 0
-        width: 410
-        height: 320
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_30
       rect:
         serializedVersion: 2
-        x: 2460
+        x: 1500
         y: 0
-        width: 410
-        height: 320
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Character-idle_31
       rect:
         serializedVersion: 2
-        x: 2870
+        x: 1750
         y: 0
-        width: 410
-        height: 320
+        width: 250
+        height: 195
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
