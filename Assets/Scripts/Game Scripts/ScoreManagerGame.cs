@@ -7,12 +7,14 @@ public class ScoreManagerGame : MonoBehaviour
     public GameObject scoreItemPrefab;
     int bonusPoint;
     int numberOfItemPoppedInARow = 0;
+	GameObject CanvasForeground;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Start () 
     {
         instance = this;
+		CanvasForeground = GameObject.Find("CanvasForeground");
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -21,6 +23,8 @@ public class ScoreManagerGame : MonoBehaviour
     { 
         GameObject scoreItem = (GameObject)Instantiate(scoreItemPrefab, go.position + new Vector3(0, 0, 1), Quaternion.identity);
         //scoreItem.transform.eulerAngles = new Vector3(0, 180, 0);
+		scoreItem.transform.SetParent(CanvasForeground.transform);
+		scoreItem.transform.localScale=new Vector3(1,1,1);
 
         bonusPoint = score * numberOfItemPoppedInARow;
         int points = score + bonusPoint;

@@ -5208,7 +5208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 16d2dd5a7bd52b94dab3e3f406819ef6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 99173c8d46b11934bb2384d406b567ef, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
