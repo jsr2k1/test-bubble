@@ -52,8 +52,8 @@ public class PopUpMgr : MonoBehaviour
 	public void HidePopUp()
 	{
 		if(bShow){
-			popUpActionChangeState = PopUpAction.On;
 			if(name!="WinCharacterPopUp" && name!="LoseCharacterPopUp"){
+				popUpActionChangeState = PopUpAction.On;
 				ImageBlack.popUpActionImageBlack = PopUpAction.Off;
 			}
 			anim.SetTrigger("HidePopUp");
@@ -71,7 +71,7 @@ public class PopUpMgr : MonoBehaviour
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Esta funcion se ejecuta mediante un evento en la animacion de HidePopUp y solo se tiene en cuenta para el PopUpWinCharacter
+	//Esta funcion se ejecuta mediante un evento en la animacion de HidePopUp y solo se tiene en cuenta para el WinCharacterPopUp
 	public void ShowPopUpWin()
 	{
 		if(name=="WinCharacterPopUp"){
@@ -80,7 +80,7 @@ public class PopUpMgr : MonoBehaviour
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Esta funcion se ejecuta mediante un evento en la animacion de HidePopUp y solo se tiene en cuenta para el PopUpWinCharacter
+	//Esta funcion se ejecuta mediante un evento en la animacion de HidePopUp y solo se tiene en cuenta para el LoseCharacterPopUp
 	public void ShowPopUpLose()
 	{
 		if(name=="LoseCharacterPopUp"){
