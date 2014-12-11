@@ -223,7 +223,6 @@ public class PlayingObjectManager : MonoBehaviour
 	
 	public static MissionType GetLevelMission()
 	{
-
 		if(listAnimalLevels.IndexOf(LevelManager.levelNo) > -1){
 			return MissionType.Animals;
 		}else{

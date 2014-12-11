@@ -14982,6 +14982,7 @@ GameObject:
   - 114: {fileID: 1502618727}
   - 95: {fileID: 1502618726}
   - 114: {fileID: 1502618725}
+  - 114: {fileID: 1502618724}
   m_Layer: 5
   m_Name: InfoLevelPopUp
   m_TagString: Untagged
@@ -15012,6 +15013,20 @@ RectTransform:
   m_AnchoredPosition: {x: -3.05175781e-05, y: 1499.99988}
   m_SizeDelta: {x: 700, y: 875}
   m_Pivot: {x: .5, y: .5}
+--- !u!114 &1502618724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1502618722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84a5f33587da8a9479f192b6f37f964a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image_despeja: {fileID: 21300000, guid: 19ec53df2cad7984f9c20f1f0437042a, type: 3}
+  image_animales: {fileID: 21300000, guid: a2f76916dcc791242b68cae94edf52e3, type: 3}
+  text: {fileID: 1425645682}
 --- !u!114 &1502618725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17194,7 +17209,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -47.7999878, y: 45.8999939}
+  m_AnchoredPosition: {x: -57.9000015, y: 56}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1739849705
