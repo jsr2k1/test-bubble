@@ -52,7 +52,7 @@ public class LanguageManager : MonoBehaviour
 		dict.Add("id_no", new string[] {"NO", "NO"});
 		dict.Add("id_cash", new string[] {"ORO:", "CASH:"});
 		dict.Add("id_buylives", new string[] {"Comprar Vidas", "CASH: "});
-		dict.Add("id_askfriends", new string[] {"Preguntar Amigos", "Ask Friends"});
+		dict.Add("id_askfriends", new string[] {"Pedir a Amigos", "Ask Friends"});
 		dict.Add("id_level", new string[] {"NIVEL", "LEVEL"});
 		dict.Add("id_levelfail", new string[] {"¡Nivel fallido!", "Level failed!"});
 		dict.Add("id_levelsuccess", new string[] {"¡Nivel completado!", "Level completed!"});
