@@ -1,16 +1,21 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ScorePopupItem : MonoBehaviour 
 {
-    public TextMesh myTextMesh;
+    //public TextMesh myTextMesh;
+    public Text text;
     static float delay = 0;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Awake()
 	{
-		renderer.sortingLayerName = "MiddleLayer";
+		//renderer.sortingLayerName = "FrontLayer";
+		//transform.localScale = new Vector3(1,1,1);
+		//iTween.ScaleTo(gameObject, new Vector3(0.5f, 0.5f, 1), 0.3f);
+		//text.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -18,8 +23,8 @@ public class ScorePopupItem : MonoBehaviour
 	void Start() 
     {        
         delay = .1f;
-        renderer.material.color = Color.red;
-        renderer.material.color = new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, .9f);
+        //renderer.material.color = Color.red;
+        //renderer.material.color = new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, .9f);
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,8 +38,10 @@ public class ScorePopupItem : MonoBehaviour
 
     internal void BringItForward(int score)
     {        
-        myTextMesh.text = score.ToString();
+        //myTextMesh.text = score.ToString();
+		text.text = score.ToString();
         Invoke("ZoomIn", delay);
+		//Invoke("ZoomIn", 0.1f);
         delay += .1f;
     }
 
@@ -43,7 +50,7 @@ public class ScorePopupItem : MonoBehaviour
     void ZoomIn()
     {
 		SoundFxManager.instance.Play(SoundFxManager.instance.burstSound);
-        iTween.MoveBy(gameObject, new Vector3(0, .5f, 0), .5f);
+        iTween.MoveBy(gameObject, new Vector3(0, .2f, 0), 2.0f);
         Invoke("ZoomOut", .5f);
     }
 
@@ -51,9 +58,9 @@ public class ScorePopupItem : MonoBehaviour
 
     void ZoomOut()
     {
-        iTween.ScaleTo(gameObject, new Vector3(0, 0, 0), .4f);
+        iTween.ScaleTo(gameObject, new Vector3(0, 0, 0), .1f);
         Destroy(gameObject, .2f);
     }
-	
-	
 }
+
+

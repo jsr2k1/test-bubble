@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: 062571916ec13054190605b23b5680a0
+guid: 16d2dd5a7bd52b94dab3e3f406819ef6
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: arcade_mode_button
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,7 +25,7 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: 1
+    aniso: -1
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0

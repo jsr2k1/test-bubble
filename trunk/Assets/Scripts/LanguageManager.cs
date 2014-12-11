@@ -69,6 +69,9 @@ public class LanguageManager : MonoBehaviour
 		dict.Add("id_messages", new string[] {"Mensajes", "Messages"});
 		dict.Add("id_full", new string[] {"LLENO", "FULL"});
 		dict.Add("id_soon", new string[] {"Pr\u00F3ximamente...", "Coming soon..."});
+		dict.Add("id_PLAY", new string[] {"JUGAR", "PLAY"});
+		dict.Add("id_ARCADE", new string[] {"ARCADE", "ARCADE"});
+		dict.Add("id_CONNECT", new string[] {"CONECTA", "CONNECT"});
 	}
 }
 
