@@ -19,6 +19,10 @@ public class WorldButton : MonoBehaviour
 	
 	AudioSource audioSource;
 	AudioManager audioManager;
+	
+	//Creamos un evento para poder saber cuando se ha pulsado un boton del mapa
+	public delegate void WorldButtonPressed();
+	public static event WorldButtonPressed OnWorldButtonPressed;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -97,6 +101,10 @@ public class WorldButton : MonoBehaviour
 		}
 		else{
 			livesPop.GetComponent<PopUpMgr>().ShowPopUp();
+		}
+		
+		if(OnWorldButtonPressed!=null){
+			OnWorldButtonPressed();
 		}
 	}
 }
