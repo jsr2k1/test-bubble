@@ -7,6 +7,7 @@ public class FacebookBubble : MonoBehaviour
 	public Image profilePic;
 	Button facebookButton;
 	Image facebookImage;
+	GameObject facebookText;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -14,10 +15,12 @@ public class FacebookBubble : MonoBehaviour
 	{
 		facebookButton = GetComponent<Button>();
 		facebookImage = GetComponent<Image>();
+		facebookText = transform.GetChild(0).gameObject;
 		
 		if(FB.IsLoggedIn){
 			facebookButton.enabled=false;
 			facebookImage.enabled=false;
+			facebookText.SetActive(false);
 		}
 	}
 	
@@ -28,11 +31,13 @@ public class FacebookBubble : MonoBehaviour
 		if(FB.IsLoggedIn && facebookButton.enabled){
 			facebookButton.enabled=false;
 			facebookImage.enabled=false;
+			facebookText.SetActive(false);
 		}
 		
 		if(!FB.IsLoggedIn && !facebookButton.enabled){
 			facebookButton.enabled=true;
 			facebookImage.enabled=true;
+			facebookText.SetActive(true);
 		}
 	}
 	
