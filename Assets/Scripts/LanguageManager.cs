@@ -47,7 +47,7 @@ public class LanguageManager : MonoBehaviour
 		dict.Add("id_play", new string[] {"JUGAR", "PLAY"});
 		dict.Add("id_connect", new string[] {"CONECTAR", "CONNECT"});
 		dict.Add("id_settings", new string[] {"AJUSTES", "SETTINGS"});
-		dict.Add("id_quit", new string[] {"SALIR DEL JUEGO?", "QUIT GAME?"});
+		dict.Add("id_quit", new string[] {"SALIR DEL JUEGO?", "EXIT GAME?"});
 		dict.Add("id_yes", new string[] {"SI", "YES"});
 		dict.Add("id_no", new string[] {"NO", "NO"});
 		dict.Add("id_cash", new string[] {"ORO:", "CASH:"});
