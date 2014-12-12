@@ -42,7 +42,7 @@ public class SpecialBallButton : MonoBehaviour
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	void SetButtons()
+	public void SetButtons()
 	{
 		if(PlayerPrefs.GetInt(BallString) > 0){
 			buttonCount.interactable = false;
