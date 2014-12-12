@@ -34,6 +34,7 @@ public class LevelManager : MonoBehaviour
 	Text scoreTextLabel;
 	public Image winPop;
 	public Image losePop;
+	public Image moreBubblesPop;
 	public static int ReferenceScore;
 	public Image star1;
 	public Image star2;
@@ -103,7 +104,7 @@ public class LevelManager : MonoBehaviour
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	internal void GameIsOver()
+	public void GameIsOver()
 	{	
 		if(gameState != GameState.Start){
 			return;
@@ -224,8 +225,8 @@ public class LevelManager : MonoBehaviour
 
 	IEnumerator Finishing()
 	{
-		yield return new WaitForSeconds(1);
-		GameIsOver();
+		yield return new WaitForSeconds(0.6f);
+		moreBubblesPop.GetComponent<PopUpMgr> ().ShowPopUp ();
 	}
 }
 

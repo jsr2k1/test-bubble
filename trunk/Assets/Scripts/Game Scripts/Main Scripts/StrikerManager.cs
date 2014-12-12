@@ -91,8 +91,10 @@ public class StrikerManager : MonoBehaviour
 
 	internal void SaveBallsID()
 	{
-		currentStrikerBallID = int.Parse(currentStrikerObject.name.Substring(0, 1)) - 1;
-		//nextStrikerBallID = int.Parse(nextStrikerObject.name.Substring(0, 1)) - 1;
+		if (currentStrikerObject != null) {
+			currentStrikerBallID = int.Parse (currentStrikerObject.name.Substring (0, 1)) - 1;
+			//nextStrikerBallID = int.Parse(nextStrikerObject.name.Substring(0, 1)) - 1;
+		}
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -119,7 +121,7 @@ public class StrikerManager : MonoBehaviour
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Generates Next Shooting Object
-	void GenerateNextStriker()
+	internal void GenerateNextStriker()
 	{
 		int index;
 
@@ -203,6 +205,10 @@ public class StrikerManager : MonoBehaviour
 				iTween.MoveTo(nextStrikerObject.gameObject, currentStrikerPosition.position, .4f);
 			}
 		}
+	}
+
+	public void FixStrikerPosition(){
+		currentStrikerObject.transform.position = currentStrikerPosition.position;
 	}
 }
 
