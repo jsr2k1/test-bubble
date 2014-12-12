@@ -182,6 +182,8 @@ public class PlayingObjectManager : MonoBehaviour
 		}
 		if(CheckGameIsFinished()){
 			LevelManager.instance.GameIsFinished();
+		}else{
+			CheckGameIsOver();
 		}
 	}
 	
@@ -207,12 +209,21 @@ public class PlayingObjectManager : MonoBehaviour
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Comprobar si ya no tenemos mas disparos
+	void CheckGameIsOver()
+	{
+		if(LevelManager.currentBalls == 0){
+			StartCoroutine(LevelManager.instance.Finishing());
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Creamos una funcion para contar objectos ya que los objetos piedra tambien tienen que tener el tag "Playing Object"
 	bool CheckRemainingObjects()
 	{
 		int counter=0;
 		foreach(PlayingObject obj in allPlayingObjectScripts){
-			if(obj.name!="StoneBall(Clone)"){
+			if(obj!=null && obj.name!="StoneBall(Clone)"){
 				counter++;
 			}	
 		}

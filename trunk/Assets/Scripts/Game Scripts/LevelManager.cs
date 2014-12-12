@@ -83,7 +83,7 @@ public class LevelManager : MonoBehaviour
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	//Hemos SUPERADO el nivel
 	internal void GameIsFinished()
 	{
 		gameState = GameState.GameFinish;
@@ -103,7 +103,7 @@ public class LevelManager : MonoBehaviour
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	//Hemos PERDIDO el nivel
 	public void GameIsOver()
 	{	
 		if(gameState != GameState.Start){
@@ -216,14 +216,16 @@ public class LevelManager : MonoBehaviour
 				ballsManager.setBallsLeft(currentBalls);
 			}
 		}
-		if(currentBalls == 0){
-			StartCoroutine("Finishing");
-		}
+		//No lo podemos hacer aqui pq primero tenemos que comprobar si ha completado el nivel justo con el ultimo disparo
+		//Esto lo haremos en PlayingObjectManager.CheckGameIsOver()
+		//if(currentBalls == 0){
+		//	StartCoroutine("Finishing");
+		//}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	IEnumerator Finishing()
+	
+	public IEnumerator Finishing()
 	{
 		yield return new WaitForSeconds(0.6f);
 		moreBubblesPop.GetComponent<PopUpMgr> ().ShowPopUp ();
