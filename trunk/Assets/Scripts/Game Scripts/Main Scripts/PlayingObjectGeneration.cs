@@ -22,7 +22,7 @@ public class PlayingObjectGeneration : MonoBehaviour
 	private int rowAddCount = 0;
 	//public Transform limit; --las stickyballs de momento no se usan
 
-	float thresholdOffsetGameOver = 0.4f;
+	public static float thresholdOffsetGameOver = 0.6f;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
