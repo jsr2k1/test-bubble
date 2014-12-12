@@ -169,6 +169,9 @@ public class StrikerManager : MonoBehaviour
 	//Sino entonces cambiar el color por otro
 	void CheckCurrentStrikerColor()
 	{
+		if(remainingObjects==null || remainingObjects[0]==null){
+			return;
+		}
 		ArrayList listNames =  InGameScriptRefrences.playingObjectManager.GetRemainingObjectsNames();
 
 		if(listNames!=null && listNames.Count>0){
