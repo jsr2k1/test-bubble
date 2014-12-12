@@ -215,7 +215,7 @@ public class PlayingObject : MonoBehaviour
 		//GetComponent<SphereCollider>().radius /= .8f;
 
 		if(PlayerPrefs.GetString("GameType") == "Arcade"){
-			if(transform.position.y < thresoldLineTransform.position.y){
+			if(transform.position.y < thresoldLineTransform.position.y + PlayingObjectGeneration.thresholdOffsetGameOver){
 				LevelManager.instance.GameIsOver();
 				return;
 			}
