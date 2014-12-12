@@ -68,22 +68,26 @@ public class Adjust : MonoBehaviour
 
 	public static void trackEvent(string eventToken, Dictionary<string,string> parameters = null)
 	{
+		#if !UNITY_EDITOR
 		if(Adjust.instance == null){
 			Debug.Log(Adjust.errorMessage);
 			return;
 		}
 		Adjust.instance.trackEvent(eventToken, parameters);
+		#endif
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public static void trackRevenue(double cents, string eventToken = null, Dictionary<string,string> parameters = null)
 	{
+		#if !UNITY_EDITOR
 		if(Adjust.instance == null){
 			Debug.Log(Adjust.errorMessage);
 			return;
 		}
 		Adjust.instance.trackRevenue(cents ,eventToken, parameters);
+		#endif
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

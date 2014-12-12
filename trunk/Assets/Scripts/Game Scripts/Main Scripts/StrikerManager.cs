@@ -99,8 +99,10 @@ public class StrikerManager : MonoBehaviour
 
 	internal void GenerateSwapStriker()
 	{     
+		if(striker==null || currentStrikerPosition==null){
+			return;
+		}
 		isSwap = true;
-
 		striker.transform.position = currentStrikerPosition.position;
 		currentStrikerObject = nextStrikerObject;
 		currentStrikerObject.transform.parent = striker.transform;
