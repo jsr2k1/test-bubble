@@ -15938,6 +15938,7 @@ MonoBehaviour:
   messagesPopUp: {fileID: 1493177120}
   entryPrefab: {fileID: 100000, guid: ece7330dfd7caed4b9382d573a33137e, type: 2}
   contentMessages: {fileID: 406429160}
+  timeReadRequest: 30
 --- !u!1 &1560431279
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,7 @@ public class FacebookRequest : MonoBehaviour
 	public PopUpMgr messagesPopUp;
 	public GameObject entryPrefab;
 	public GameObject contentMessages;
+	public float timeReadRequest;
 	
 	List<string> sendLifeUserList;
 	List<string> requestsList;
@@ -67,7 +68,7 @@ public class FacebookRequest : MonoBehaviour
 	void Awake()
 	{
 		buttonMessages.SetActive(false);
-		InvokeRepeating("ReadAllRequests", 1.0f, 5.0f);
+		InvokeRepeating("ReadAllRequests", 1.0f, timeReadRequest);
 		sendLifeUserList = new List<string>();
 		requestsList = new List<string>();
 		entriesList = new List<GameObject>();
@@ -315,6 +316,9 @@ public class FacebookRequest : MonoBehaviour
 	
 	void ReadAllRequestsCallback(FBResult result)
 	{	
+		if(buttonMessages==null){
+			return;
+		}
 		ClearData();
 		
 		if(!String.IsNullOrEmpty(result.Error)){
