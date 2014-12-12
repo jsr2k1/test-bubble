@@ -212,7 +212,7 @@ public class PlayingObjectManager : MonoBehaviour
 	//Comprobar si ya no tenemos mas disparos
 	void CheckGameIsOver()
 	{
-		if(LevelManager.currentBalls == 0){
+		if(PlayerPrefs.GetString("GameType").Equals("Normal") && LevelManager.currentBalls == 0){
 			StartCoroutine(LevelManager.instance.Finishing());
 		}
 	}
