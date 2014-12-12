@@ -17,7 +17,7 @@ public class IAPManager : MonoBehaviour
 	private string item2 = "xxxxxxxxxxx2";
 	private string item3 = "xxxxxxxxxxx3";
 	#else
-	private string item1 = "extrasmall";
+	private string item1 = "xsmall";
 	private string item2 = "small";
 	private string item3 = "medium";
 	private string item4 = "big";
