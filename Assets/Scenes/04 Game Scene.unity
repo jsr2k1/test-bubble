@@ -9618,7 +9618,7 @@ RectTransform:
   - {fileID: 1504761661}
   - {fileID: 1183100951}
   m_Father: {fileID: 169262541}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 1500}
@@ -10471,6 +10471,7 @@ MonoBehaviour:
   thisPop: {fileID: 1357181899}
   multiBall: {fileID: 976997331}
   ballsManager: {fileID: 1437516066}
+  multiBallButton: {fileID: 1760115819}
 --- !u!1 &1520790428
 GameObject:
   m_ObjectHideFlags: 0
@@ -13745,6 +13746,7 @@ MonoBehaviour:
   thisPop: {fileID: 1357181899}
   multiBall: {fileID: 0}
   ballsManager: {fileID: 0}
+  multiBallButton: {fileID: 0}
 --- !u!1 &2029583638
 GameObject:
   m_ObjectHideFlags: 0

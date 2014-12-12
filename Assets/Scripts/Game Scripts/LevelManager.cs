@@ -228,7 +228,7 @@ public class LevelManager : MonoBehaviour
 	public IEnumerator Finishing()
 	{
 		yield return new WaitForSeconds(0.6f);
-		moreBubblesPop.GetComponent<PopUpMgr> ().ShowPopUp ();
+		moreBubblesPop.GetComponent<PopUpMgr>().ShowPopUp();
 	}
 }
 
