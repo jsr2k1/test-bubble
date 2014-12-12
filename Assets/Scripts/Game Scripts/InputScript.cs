@@ -32,6 +32,9 @@ public class InputScript : MonoBehaviour
 	Vector3 hitNormal;
 	Vector3 rayDirection;
 	
+	public PopUpMgr LosePopUpArcade;
+	public PopUpMgr SettingsPopUp;
+	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Awake()
@@ -77,11 +80,27 @@ public class InputScript : MonoBehaviour
 			particle.transform.SetParent(particleParent.transform);
 		}
 	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//En el modo Arcade, a veces cuando entras el juego esta en modo Pause y no deberia.
+	//Comprobamos si esta en modo Pause y no hay ningun popup entonces lo ponemos en modo play.
+	void CheckPauseError()
+	{
+		if(PlayerPrefs.GetString("GameType").Equals("Arcade")){
+			if(LevelManager.gameState != GameState.Start){
+				if(!LosePopUpArcade.bShow && !SettingsPopUp.bShow){
+					LevelManager.gameState = GameState.Start;
+				}
+			}
+		}
+	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Update()
 	{
+		CheckPauseError();
+		
 		if(LevelManager.gameState == GameState.Start)
 		{
 			Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
