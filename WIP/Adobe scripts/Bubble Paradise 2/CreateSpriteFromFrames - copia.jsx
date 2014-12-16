@@ -22,7 +22,7 @@
 	var iSourceSizeW = 410;
 	var iSourceSizeH = 320;
 	var iRows = 4;
-	var iCols = 4;
+	var iCols = 8;
 	
 	Main();
 	
