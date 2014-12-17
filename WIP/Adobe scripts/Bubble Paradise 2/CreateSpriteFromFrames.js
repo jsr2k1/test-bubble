@@ -19,10 +19,10 @@
 	app.preferences.rulerUnits = Units.PIXELS;
 	app.preferences.typeUnits = TypeUnits.POINTS;
 	
-	var iSourceSizeW = 410;
-	var iSourceSizeH = 320;
+	var iSourceSizeW = 116;
+	var iSourceSizeH = 116;
 	var iRows = 4;
-	var iCols = 8;
+	var iCols = 4;
 	
 	Main();
 	
