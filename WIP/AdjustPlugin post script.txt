@@ -1,0 +1,1 @@
+ /usr/local/bin/pythonw PostprocessBuildPlayer_AdjustPostBuildiOS.py '/Users/marcmuhlenbach/Desktop/BubbleParadise2Unity/BP2_XCode'
