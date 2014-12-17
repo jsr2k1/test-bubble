@@ -31,6 +31,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 400002}
   - 212: {fileID: 21200000}
+  - 95: {fileID: 9586716}
+  - 114: {fileID: 11426150}
   m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
@@ -90,6 +92,21 @@ Rigidbody:
 --- !u!1002 &5400001
 EditorExtensionImpl:
   serializedVersion: 6
+--- !u!95 &9586716
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 449558cf9f9a4214e872ade49ebc048c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1002 &11400001
 EditorExtensionImpl:
   serializedVersion: 6
@@ -128,6 +145,17 @@ MonoBehaviour:
 --- !u!1002 &11400005
 EditorExtensionImpl:
   serializedVersion: 6
+--- !u!114 &11426150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 567c9ac548c14214eb8d84bc07838686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -163,7 +191,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 3963034399
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d1a9e925feb57914aacb7e0e9a8e362b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 07727c18698116847b0f019c5acfd40e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
