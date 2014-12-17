@@ -7,43 +7,6 @@ using System.Collections.Generic;
 using System.Collections;
 
 /// <summary>
-/// Helper hacks.
-/// </summary>
-public static class ApplicationEx
-{
-	#if UNITY_ANDROID && !UNITY_EDITOR
-	private static AndroidJavaClass native;
-	#endif
-	
-	static ApplicationEx()
-	{
-		#if UNITY_ANDROID && !UNITY_EDITOR
-		native = new AndroidJavaClass("com.reignstudios.reignnative.ReignUnityActivity");
-		#endif
-	}
-
-	/// <summary>
-	/// Used to force quit and Android app.
-	/// </summary>
-	public static void Quit()
-	{
-		//#if UNITY_ANDROID && !UNITY_4_5
-		#if UNITY_ANDROID && !UNITY_EDITOR
-		if (native != null)
-		{
-			PlayerPrefs.Save();
-			System.Threading.Thread.Sleep(1000);
-			native.CallStatic("QuitApp");
-			native.Dispose();
-			native = null;
-		}
-		#else
-		Application.Quit();
-		#endif
-	}
-}
-
-/// <summary>
 /// Main Reign delegate class.
 /// </summary>
 public class ReignServices : MonoBehaviour
