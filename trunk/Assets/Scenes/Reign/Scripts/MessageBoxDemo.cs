@@ -8,13 +8,30 @@ using Reign;
 
 public class MessageBoxDemo : MonoBehaviour
 {
+	GUIStyle uiStyle;
+
+	void Start ()
+	{
+		uiStyle = new GUIStyle()
+		{
+			alignment = TextAnchor.MiddleCenter,
+			fontSize = 32,
+			normal = new GUIStyleState() {textColor = Color.white}
+		};
+	}
+
 	void OnGUI()
 	{
+		float offset = 0;
+		GUI.Label(new Rect((Screen.width/2)-(256*.5f), offset, 256, 32), "<< MessageBox Demo >>", uiStyle);
+		if (GUI.Button(new Rect(0, offset, 64, 32), "Back")) Application.LoadLevel("MainDemo");
+		offset += 34;
+
 		// Simple OK message box
-		if (GUI.Button(new Rect(0, 0, 256, 64), "Show OK MessageBox")) MessageBoxManager.Show("Yahoo", "Hello World!");
+		if (GUI.Button(new Rect(0, offset, 256, 64), "Show OK MessageBox")) MessageBoxManager.Show("Yahoo", "Hello World!");
 
 		// OK/Cancel message box
-		if (GUI.Button(new Rect(Screen.width-256, 0, 256, 64), "Show OK/Cancel MessageBox")) MessageBoxManager.Show("Yahoo", "Are you Awesome!?", MessageBoxTypes.OkCancel, callback);
+		if (GUI.Button(new Rect(Screen.width-256, offset, 256, 64), "Show OK/Cancel MessageBox")) MessageBoxManager.Show("Yahoo", "Are you Awesome!?", MessageBoxTypes.OkCancel, callback);
 	}
 
 	private void callback(MessageBoxResult result)
@@ -26,11 +43,6 @@ public class MessageBoxDemo : MonoBehaviour
 
 	void Update()
 	{
-		// NOTE: If you are getting unity activity pause timeout issues on Android, call "ApplicationEx.Quit();"
-		// There seems to be what may be a memeory leak in Unity4.3+
-		// Until this is fixed I recomend trying to calling this quit method on Android.
-		// (It will save your player prefs and use "System.exit(0)" instead of "finish()" on Android)
-		// If you have a better work-around, email support, Thanks.
-		if (Input.GetKeyUp(KeyCode.Escape)) ApplicationEx.Quit();// NOTE: Unity 4.5 does not need this
+		if (Input.GetKeyUp(KeyCode.Escape)) Application.Quit();
 	}
 }
