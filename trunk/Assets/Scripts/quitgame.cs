@@ -7,9 +7,13 @@ public class quitgame : MonoBehaviour {
 	public Image PopUpquit;
 
 	public void Quit(){
-		Application.Quit ();
+		if (Application.loadedLevel == 1) {
+			Application.Quit ();
+		} else {
+			Application.LoadLevel(1);
+		}
 	}
-
+	
 	public void Continue(){
 		PopUpquit.GetComponent<PopUpMgr> ().HidePopUp ();
 	}
