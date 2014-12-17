@@ -8,11 +8,27 @@ using Reign;
 
 public class InterstitialAdDemo : MonoBehaviour
 {
-	private static InterstitialAd ad;
+	public static InterstitialAdDemo Singleton;
+	private InterstitialAd ad;
+	GUIStyle uiStyle;
 
 	void Start()
 	{
-		DontDestroyOnLoad(gameObject);// Make sure the start method never gets called more then once.
+		if (Singleton != null)
+		{
+			Destroy(gameObject);
+			return;
+		}
+		Singleton = this;
+
+		uiStyle = new GUIStyle()
+		{
+			alignment = TextAnchor.MiddleCenter,
+			fontSize = 32,
+			normal = new GUIStyleState() {textColor = Color.white},
+		};
+
+		DontDestroyOnLoad(gameObject);// Make sure the start method never gets called more then once. So we don't create the same Ad twice.
 
 		var desc = new InterstitialAdDesc();
 
@@ -22,15 +38,15 @@ public class InterstitialAdDemo : MonoBehaviour
 
 		// WP8
 		desc.WP8_AdAPI = InterstitialAdAPIs.AdMob;
-		desc.WP8_AdMob_UnitID = "ca-app-pub-5295031539813538/9735508408";// NOTE: Must set event for testing
+		desc.WP8_AdMob_UnitID = "";// NOTE: Must set event for testing
 			
 		// iOS
 		desc.iOS_AdAPI = InterstitialAdAPIs.AdMob;
-		desc.iOS_AdMob_UnitID = "ca-app-pub-5295031539813538/9735508408";// NOTE: Must set event for testing
+		desc.iOS_AdMob_UnitID = "";// NOTE: Must set event for testing
 			
 		// Android
 		desc.Android_AdAPI = InterstitialAdAPIs.AdMob;
-		desc.Android_AdMob_UnitID = "ca-app-pub-5295031539813538/9735508408";// NOTE: Must set event for testing
+		desc.Android_AdMob_UnitID = "";// NOTE: Must set event for testing
 
 		// create ad
 		ad = InterstitialAdManager.CreateAd(desc, createdCallback);
@@ -54,7 +70,17 @@ public class InterstitialAdDemo : MonoBehaviour
 		GUI.matrix = Matrix4x4.identity;
 		GUI.color = Color.white;
 
-		if (GUI.Button(new Rect(0, 0, 128, 64), "Show Ad"))
+		float offset = 0;
+		GUI.Label(new Rect((Screen.width/2)-(256*.5f), offset, 256, 32), "<< Interstitial Ads Demo >>", uiStyle);
+		if (GUI.Button(new Rect(0, offset, 64, 32), "Back"))
+		{
+			gameObject.SetActive(false);
+			Application.LoadLevel("MainDemo");
+			return;
+		}
+		offset += 34;
+
+		if (GUI.Button(new Rect(0, offset, 128, 64), "Show Ad"))
 		{
 			ad.Cache();
 		}
@@ -62,11 +88,6 @@ public class InterstitialAdDemo : MonoBehaviour
 
 	void Update()
 	{
-		// NOTE: If you are getting unity activity pause timeout issues on Android, call "ApplicationEx.Quit();"
-		// There seems to be what may be a memeory leak in Unity4.3+
-		// Until this is fixed I recomend trying to calling this quit method on Android.
-		// (It will save your player prefs and use "System.exit(0)" instead of "finish()" on Android)
-		// If you have a better work-around, email support, Thanks.
-		if (Input.GetKeyUp(KeyCode.Escape)) ApplicationEx.Quit();// NOTE: Unity 4.5 does not need this
+		if (Input.GetKeyUp(KeyCode.Escape)) Application.Quit();
 	}
 }

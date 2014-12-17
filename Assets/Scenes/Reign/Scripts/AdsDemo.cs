@@ -8,18 +8,35 @@ using Reign;
 
 public class AdsDemo : MonoBehaviour
 {
-	private static Ad ad;
+	public static AdsDemo Singleton;
+	private Ad ad;
 	private string adStatus;
+	GUIStyle uiStyle;
 
 	void Start()
 	{
-		DontDestroyOnLoad(gameObject);// Make sure the start method never gets called more then once.
+		if (Singleton != null)
+		{
+			Destroy(gameObject);
+			return;
+		}
+		Singleton = this;
+
+		uiStyle = new GUIStyle()
+		{
+			alignment = TextAnchor.MiddleCenter,
+			fontSize = 32,
+			normal = new GUIStyleState() {textColor = Color.white},
+		};
+
+		// NOTE: use 'ad.Visible = true/false' instead of delete and re-creating Ads!
+		DontDestroyOnLoad(gameObject);// Make sure the start method never gets called more then once. So we don't create the same Ad twice.
 		adStatus = "none";
 
 		// Ads - NOTE: You can pass in multiple "AdDesc" objects if you want more then one ad.
 		var desc = new AdDesc();
 		// global settings
-		desc.Testing = false;// NOTE: To test ads on iOS, you must enable them in iTunes Connect.
+		desc.Testing = true;// NOTE: To test ads on iOS, you must enable them in iTunes Connect.
 		desc.Visible = true;
 		desc.EventCallback = eventCallback;
 
@@ -63,7 +80,7 @@ public class AdsDemo : MonoBehaviour
 		desc.BB10_BlackBerryAdvertising_AdGravity = AdGravity.BottomCenter;
 		desc.BB10_BlackBerryAdvertising_AdSize = BB10_BlackBerryAdvertising_AdSize.Wide_320x53;
 
-		desc.BB10_MillennialMediaAdvertising_APID = "182506";
+		desc.BB10_MillennialMediaAdvertising_APID = "";
 		desc.BB10_MillennialMediaAdvertising_AdGravity = AdGravity.BottomCenter;
 		desc.BB10_GuiAdScale = 2;
 		//desc.BB10_AdGUIOverrideEnabled = true;
@@ -84,7 +101,7 @@ public class AdsDemo : MonoBehaviour
 		desc.Android_AdAPI = AdAPIs.AdMob;// Choose between AdMob or AmazonAds
 		#endif
 			
-		desc.Android_AdMob_UnitID = "ca-app-pub-4996019706488907/6665040478";// NOTE: You can use legacy (PublisherID) too, You MUST have this even for Testing!
+		desc.Android_AdMob_UnitID = "";// NOTE: You can use legacy (PublisherID) too, You MUST have this even for Testing!
 		desc.Android_AdMob_AdGravity = AdGravity.BottomCenter;
 		desc.Android_AdMob_AdSize = Android_AdMob_AdSize.Banner_320x50;
 			
@@ -118,13 +135,24 @@ public class AdsDemo : MonoBehaviour
 		GUI.matrix = Matrix4x4.identity;
 		GUI.color = Color.white;
 
+		float offset = 0;
+		GUI.Label(new Rect((Screen.width/2)-(256*.5f), offset, 256, 32), "<< Banner Ads Demo >>", uiStyle);
+		if (GUI.Button(new Rect(0, offset, 64, 32), "Back"))
+		{
+			gameObject.SetActive(false);
+			Application.LoadLevel("MainDemo");
+			return;
+		}
+		offset += 34;
+
 		GUI.Label(new Rect(0, Screen.height/2, 256, 64), "Ad status: " + adStatus);
 				
 		// Manual Refresh does not work on (Apple iAd) or (BB10 Ads).
-		if (GUI.Button(new Rect(0, 0, 128, 64), "Manual Refresh")) ad.Refresh();
+		if (GUI.Button(new Rect(0, offset, 128, 64), "Manual Refresh")) ad.Refresh();
+		offset += 68;
 
 		// Show / Hide Ad
-		if (GUI.Button(new Rect(0, 128+8, 128, 64), "Show / Hide")) ad.Visible = !ad.Visible;
+		if (GUI.Button(new Rect(0, offset, 128, 64), "Show / Hide")) ad.Visible = !ad.Visible;
 
 		// You can also manually draw GUI based Ads if you want to control GUI sort order
 		//ad.Draw();
@@ -132,11 +160,6 @@ public class AdsDemo : MonoBehaviour
 
 	void Update()
 	{
-		// NOTE: If you are getting unity activity pause timeout issues on Android, call "ApplicationEx.Quit();"
-		// There seems to be what may be a memeory leak in Unity4.3+
-		// Until this is fixed I recomend trying to calling this quit method on Android.
-		// (It will save your player prefs and use "System.exit(0)" instead of "finish()" on Android)
-		// If you have a better work-around, email support, Thanks.
-		if (Input.GetKeyUp(KeyCode.Escape)) ApplicationEx.Quit();// NOTE: Unity 4.5 does not need this
+		if (Input.GetKeyUp(KeyCode.Escape)) Application.Quit();
 	}
 }
