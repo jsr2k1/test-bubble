@@ -20,15 +20,11 @@ namespace Reign
 			ReignServices.CheckStatus();
 			
 			#if !DISABLE_REIGN
-				#if UNITY_EDITOR || UNITY_METRO || UNITY_WP8
-				plugin = new EmailPlugin();
-				#elif UNITY_IOS
-				plugin = new EmailPlugin_iOS();
-				#elif UNITY_ANDROID
-				plugin = new EmailPlugin_Android();
-				#elif UNITY_BB10
-				plugin = new EmailPlugin_BB10();
-				#endif
+			#if UNITY_WINRT && !UNITY_EDITOR
+			plugin = new EmailPlugin_WinRT();
+			#else
+			plugin = new EmailPlugin();
+			#endif
 			#endif
 		}
 

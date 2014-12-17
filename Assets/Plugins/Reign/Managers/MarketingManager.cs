@@ -24,15 +24,11 @@ namespace Reign
 			ReignServices.CheckStatus();
 			
 			#if !DISABLE_REIGN
-				#if UNITY_EDITOR || UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX || UNITY_STANDALONE_OSX || UNITY_METRO || UNITY_WP8
-				plugin = new MarketingPlugin();
-				#elif UNITY_BB10
-				plugin = new MarketingPlugin_BB10();
-				#elif UNITY_ANDROID
-				plugin = new MarketingPlugin_Android();
-				#elif UNITY_IOS
-				plugin = new MarketingPlugin_iOS();
-				#endif
+			#if UNITY_WINRT && !UNITY_EDITOR
+			plugin = new MarketingPlugin_WinRT();
+			#else
+			plugin = new MarketingPlugin();
+			#endif
 			#endif
 		}
 

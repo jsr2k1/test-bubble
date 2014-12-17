@@ -3,7 +3,7 @@
 // -------------------------------------------------------
 
 //#define TEST_ASYNC
-#if ((UNITY_METRO || UNITY_WP8) && !UNITY_EDITOR) || TEST_ASYNC
+#if (UNITY_WINRT && !UNITY_EDITOR) || TEST_ASYNC
 #define ASYNC
 #endif
 
@@ -13,10 +13,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Reign.Plugin;
-
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 namespace Reign
 {
@@ -75,23 +71,13 @@ namespace Reign
 			ques = new List<StreamManagerQue>();
 
 			#if !DISABLE_REIGN
-				#if UNITY_EDITOR || UNITY_METRO || UNITY_WP8
-				plugin = new StreamPlugin();
-				#elif UNITY_STANDALONE_WIN
-				plugin = new StreamPlugin_Win32();
-				#elif UNITY_STANDALONE_LINUX
-				plugin = new StreamPlugin_Linux();
-				#elif UNITY_WEBPLAYER
-				plugin = new StreamPlugin_Web();
-				#elif UNITY_IOS
-				plugin = new StreamPlugin_iOS();
-				#elif UNITY_ANDROID
-				plugin = new StreamPlugin_Android();
-				#elif UNITY_BB10
-				plugin = new StreamPlugin_BB10();
-				#endif
-				
-				ReignServices.AddService(update, null, null);
+			#if UNITY_WINRT && !UNITY_EDITOR
+			plugin = new StreamPlugin_WinRT();
+			#else
+			plugin = new StreamPlugin();
+			#endif
+
+			ReignServices.AddService(update, null, null);
 			#endif
 		}
 
@@ -462,24 +448,6 @@ namespace Reign
 			#if ASYNC
 			asyncSaveDone = false;
 			plugin.SaveFileDialog(stream, folderLocation, fileTypes, async_streamSavedCallback);
-			#elif UNITY_EDITOR
-			savingStream = false;
-			string fileName = EditorUtility.SaveFilePanel("Save file", "", "FileName", "png");
-			if (!string.IsNullOrEmpty(fileName))
-			{
-				var data = new byte[stream.Length];
-				stream.Position = 0;
-				stream.Read(data, 0, data.Length);
-				using (var file = new FileStream(fileName, FileMode.Create, FileAccess.Write))
-				{
-					file.Write(data, 0, data.Length);
-				}
-				if (streamSavedCallback != null) streamSavedCallback(true);
-			}
-			else
-			{
-				if (streamSavedCallback != null) streamSavedCallback(false);
-			}
 			#else
 			plugin.SaveFileDialog(stream, folderLocation, fileTypes, noAsync_streamSavedCallback);
 			#endif
@@ -512,21 +480,6 @@ namespace Reign
 			#if ASYNC
 			asyncSaveDone = false;
 			plugin.SaveFileDialog(data, folderLocation, fileTypes, async_streamSavedCallback);
-			#elif UNITY_EDITOR
-			savingStream = false;
-			string fileName = EditorUtility.SaveFilePanel("Save file", "", "FileName", "png");
-			if (!string.IsNullOrEmpty(fileName))
-			{
-				using (var file = new FileStream(fileName, FileMode.Create, FileAccess.Write))
-				{
-					file.Write(data, 0, data.Length);
-				}
-				if (streamSavedCallback != null) streamSavedCallback(true);
-			}
-			else
-			{
-				if (streamSavedCallback != null) streamSavedCallback(false);
-			}
 			#else
 			plugin.SaveFileDialog(data, folderLocation, fileTypes, noAsync_streamSavedCallback);
 			#endif
@@ -572,12 +525,6 @@ namespace Reign
 			#if ASYNC
 			asyncLoadDone = false;
 			plugin.LoadFileDialog(folderLocation, x, y, width, height, fileTypes, async_streamLoadedCallback);
-			#elif UNITY_EDITOR
-			loadingStream = false;
-			if (streamLoadedCallback == null) return;
-			string fileName = EditorUtility.OpenFilePanel("Load file", "", "png");
-			if (!string.IsNullOrEmpty(fileName)) streamLoadedCallback(new FileStream(fileName, FileMode.Open, FileAccess.Read), true);
-			else streamLoadedCallback(null, false);
 			#else
 			plugin.LoadFileDialog(folderLocation, x, y, width, height, fileTypes, noAsync_streamLoadedCallback);
 			#endif
@@ -611,7 +558,7 @@ namespace Reign
 		/// <returns>Dst path.</returns>
 		public static string ConvertToPlatformSlash(string path)
 		{
-			#if UNITY_METRO || UNITY_WP8 || UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+			#if UNITY_WINRT || UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
 			return path.Replace('/', '\\');
 			#else
 			return path.Replace('\\', '/');
@@ -642,7 +589,7 @@ namespace Reign
 				fileName = match.Value.Substring(0, match.Value.Length-1);
 			}
 
-			#if UNITY_METRO || UNITY_WP8
+			#if UNITY_WINRT
 			return fileName + '\\';
 			#else
 			return fileName + '/';

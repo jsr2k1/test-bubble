@@ -16,7 +16,7 @@ namespace Reign
 	{
 		/// <summary>
 		/// Use to check if the API is doing GUI operations.
-		/// NOTE: If Scoreoid, you should disable your UI to let the Reign UI take over.
+		/// NOTE: If ReignScores, you should disable your UI to let the Reign UI take over.
 		/// </summary>
 		public static bool PerformingGUIOperation
 		{
@@ -42,12 +42,12 @@ namespace Reign
 		/// <summary>
 		/// Use to get the authenticated user ID.
 		/// </summary>
-		public static string UserID
+		public static string Username
 		{
 			get
 			{
 				if (plugin == null) return "???";
-				return plugin.UserID;
+				return plugin.Username;
 			}
 		}
 
@@ -158,12 +158,12 @@ namespace Reign
 
 		/// <summary>
 		/// Use to manualy login a user.
-		/// NOTE: Only supports Scoreoid.
+		/// NOTE: Only supports ReignScores.
 		/// </summary>
-		/// <param name="userID">Username or UserID.</param>
+		/// <param name="userID">Username</param>
 		/// <param name="password">User Password.</param>
 		/// <param name="callback">The callback that fires when done.</param>
-		public static void ManualLogin(string userID, string password, AuthenticateCallbackMethod callback)
+		public static void ManualLogin(string username, string password, AuthenticateCallbackMethod callback)
 		{
 			if (waitingForOperation)
 			{
@@ -173,17 +173,17 @@ namespace Reign
 
 			waitingForOperation = true;
 			authenticateCallback = callback;
-			plugin.ManualLogin(userID, password, async_authenticateCallback, ReignServices.Singleton);
+			plugin.ManualLogin(username, password, async_authenticateCallback, ReignServices.Singleton);
 		}
 
 		/// <summary>
 		/// Use to manualy create a user.
-		/// NOTE: Only supports Scoreoid.
+		/// NOTE: Only supports ReignScores.
 		/// </summary>
-		/// <param name="userID">Username or UserID.</param>
+		/// <param name="userID">Username</param>
 		/// <param name="password">User Password.</param>
 		/// <param name="callback">The callback that fires when done.</param>
-		public static void ManualCreateUser(string userID, string password, AuthenticateCallbackMethod callback)
+		public static void ManualCreateUser(string username, string password, AuthenticateCallbackMethod callback)
 		{
 			if (waitingForOperation)
 			{
@@ -193,7 +193,7 @@ namespace Reign
 
 			waitingForOperation = true;
 			authenticateCallback = callback;
-			plugin.ManualCreateUser(userID, password, async_authenticateCallback, ReignServices.Singleton);
+			plugin.ManualCreateUser(username, password, async_authenticateCallback, ReignServices.Singleton);
 		}
 	
 		/// <summary>
@@ -217,7 +217,7 @@ namespace Reign
 		
 		/// <summary>
 		/// Use to request scores.
-		/// NOTE: Only supports Scoreoid.
+		/// NOTE: Only supports ReignScores.
 		/// </summary>
 		/// <param name="leaderboardID">Leaderboard ID.</param>
 		/// <param name="offset">Item offset.</param>
@@ -240,8 +240,9 @@ namespace Reign
 		/// Use to report a achievement.
 		/// </summary>
 		/// <param name="achievementID">Achievement ID.</param>
+		/// <param name="percentComplete">Percent Complete.</param>
 		/// <param name="callback">The callback that fires when done.</param>
-		public static void ReportAchievement(string achievementID, ReportAchievementCallbackMethod callback)
+		public static void ReportAchievement(string achievementID, float percentComplete, ReportAchievementCallbackMethod callback)
 		{
 			if (waitingForOperation)
 			{
@@ -249,14 +250,16 @@ namespace Reign
 				return;
 			}
 
+			// make sure percent is within range
+			if (percentComplete < 0f) percentComplete = 0f;
+
 			waitingForOperation = true;
 			reportAchievementCallback = callback;
-			plugin.ReportAchievement(achievementID, async_reportAchievementCallback, ReignServices.Singleton);
+			plugin.ReportAchievement(achievementID, percentComplete, async_reportAchievementCallback, ReignServices.Singleton);
 		}
 		
 		/// <summary>
 		/// Use to request achievements.
-		/// NOTE: Only supports Scoreoid.
 		/// </summary>
 		/// <param name="callback">The callback that fires when done.</param>
 		public static void RequestAchievements(RequestAchievementsCallbackMethod callback)
@@ -269,7 +272,7 @@ namespace Reign
 
 			waitingForOperation = true;
 			requestAchievementsCallback = callback;
-			plugin.RequestAchievements(async_requestAchievementsCallback);
+			plugin.RequestAchievements(async_requestAchievementsCallback, ReignServices.Singleton);
 		}
 
 		/// <summary>
@@ -304,7 +307,7 @@ namespace Reign
 
 			waitingForOperation = true;
 			showNativeViewCallback = callback;
-			plugin.ShowNativeAchievementsPage(async_showNativeViewCallback);
+			plugin.ShowNativeAchievementsPage(async_showNativeViewCallback, ReignServices.Singleton);
 		}
 	}
 }
@@ -318,7 +321,7 @@ namespace Reign.Plugin
 	{
 		public bool PerformingGUIOperation {get; private set;}
 		public bool IsAuthenticated {get; private set;}
-		public string UserID {get; private set;}
+		public string Username {get; private set;}
 
 		/// <summary>
 		/// Dumy constructor.
@@ -328,7 +331,7 @@ namespace Reign.Plugin
 		{
 			PerformingGUIOperation = false;
 			IsAuthenticated = false;
-			UserID = "???";
+			Username = "???";
 			if (callback != null) callback(false, "Dumy Score object");
 		}
 
@@ -378,9 +381,10 @@ namespace Reign.Plugin
 		/// Dumy method.
 		/// </summary>
 		/// <param name="achievementID"></param>
+		/// <param name="percentComplete"></param>
 		/// <param name="callback"></param>
 		/// <param name="services"></param>
-		public void ReportAchievement(string achievementID, ReportAchievementCallbackMethod callback, MonoBehaviour services)
+		public void ReportAchievement(string achievementID, float percentComplete, ReportAchievementCallbackMethod callback, MonoBehaviour services)
 		{
 			if (callback != null) callback(false, "Dumy Score Obj");
 		}
@@ -401,7 +405,7 @@ namespace Reign.Plugin
 		/// Dumy method.
 		/// </summary>
 		/// <param name="callback"></param>
-		public void RequestAchievements(RequestAchievementsCallbackMethod callback)
+		public void RequestAchievements(RequestAchievementsCallbackMethod callback, MonoBehaviour services)
 		{
 			if (callback != null) callback(null, false, "Dumy Score Obj");
 		}
@@ -423,7 +427,7 @@ namespace Reign.Plugin
 		/// Dumy method.
 		/// </summary>
 		/// <param name="callback"></param>
-		public void ShowNativeAchievementsPage(ShowNativeViewDoneCallbackMethod callback)
+		public void ShowNativeAchievementsPage(ShowNativeViewDoneCallbackMethod callback, MonoBehaviour services)
 		{
 			if (callback != null) callback(false, "Dumy Score Obj");
 		}
@@ -472,31 +476,30 @@ namespace Reign.Plugin
 			return new Dumy_ScorePluginPlugin(desc, callback);
 			#elif UNITY_EDITOR
 			if (desc.Editor_ScoreAPI == ScoreAPIs.None) return new Dumy_ScorePluginPlugin(desc, callback);
-			else if (desc.Editor_ScoreAPI == ScoreAPIs.Scoreoid) return new Scoreoid_ScorePlugin(desc, callback);
+			else if (desc.Editor_ScoreAPI == ScoreAPIs.ReignScores) return new ReignScores_ScorePlugin(desc, callback);
 			else throw new Exception("Unsuported Editor_ScoreAPI: " + desc.Editor_ScoreAPI);
 			#elif UNITY_WP8
 			if (desc.WP8_ScoreAPI == ScoreAPIs.None) return new Dumy_ScorePluginPlugin(desc, callback);
-			else if (desc.WP8_ScoreAPI == ScoreAPIs.Scoreoid) return new Scoreoid_ScorePlugin(desc, callback);
+			else if (desc.WP8_ScoreAPI == ScoreAPIs.ReignScores) return new ReignScores_ScorePlugin(desc, callback);
 			else throw new Exception("Unsuported WP8_ScoreAPI: " + desc.WP8_ScoreAPI);
 			#elif UNITY_METRO
 			if (desc.Win8_ScoreAPI == ScoreAPIs.None) return new Dumy_ScorePluginPlugin(desc, callback);
-			else if (desc.Win8_ScoreAPI == ScoreAPIs.Scoreoid) return new Scoreoid_ScorePlugin(desc, callback);
+			else if (desc.Win8_ScoreAPI == ScoreAPIs.ReignScores) return new ReignScores_ScorePlugin(desc, callback);
 			else throw new Exception("Unsuported Win8_ScoreAPI: " + desc.Win8_ScoreAPI);
 			#elif UNITY_ANDROID
 			if (desc.Android_ScoreAPI == ScoreAPIs.None) return new Dumy_ScorePluginPlugin(desc, callback);
-			else if (desc.Android_ScoreAPI == ScoreAPIs.Scoreoid) return new Scoreoid_ScorePlugin_Android(desc, callback);
+			else if (desc.Android_ScoreAPI == ScoreAPIs.ReignScores) return new ReignScores_ScorePlugin(desc, callback);
 			else if (desc.Android_ScoreAPI == ScoreAPIs.GooglePlay) return new GooglePlay_ScorePlugin(desc, callback);
 			else if (desc.Android_ScoreAPI == ScoreAPIs.GameCircle) return new Amazon_GameCircle_ScorePlugin(desc, callback);
 			else throw new Exception("Unsuported Android_ScoreAPI: " + desc.Android_ScoreAPI);
 			#elif UNITY_IOS
 			if (desc.iOS_ScoreAPI == ScoreAPIs.None) return new Dumy_ScorePluginPlugin(desc, callback);
-			else if (desc.iOS_ScoreAPI == ScoreAPIs.Scoreoid) return new Scoreoid_ScorePlugin_iOS(desc, callback);
+			else if (desc.iOS_ScoreAPI == ScoreAPIs.ReignScores) return new ReignScores_ScorePlugin(desc, callback);
 			else if (desc.iOS_ScoreAPI == ScoreAPIs.GameCenter) return new GameCenter_ScorePlugin(desc, callback);
 			else throw new Exception("Unsuported iOS_ScoreAPI: " + desc.iOS_ScoreAPI);
 			#elif UNITY_BB10
 			if (desc.BB10_ScoreAPI == ScoreAPIs.None) return new Dumy_ScorePluginPlugin(desc, callback);
-			else if (desc.BB10_ScoreAPI == ScoreAPIs.Scoreoid) return new Scoreoid_ScorePlugin_BB10(desc, callback);
-			else if (desc.BB10_ScoreAPI == ScoreAPIs.Scoreloop) return new Scoreloop_ScorePlugin_BB10(desc, callback);
+			else if (desc.BB10_ScoreAPI == ScoreAPIs.ReignScores) return new ReignScores_ScorePlugin(desc, callback);
 			else throw new Exception("Unsuported BB10_ScoreAPI: " + desc.BB10_ScoreAPI);
 			#else
 			return new Dumy_ScorePluginPlugin(desc, callback);

@@ -3,7 +3,7 @@
 // -------------------------------------------------------
 
 //#define TEST_ASYNC
-#if ((UNITY_METRO || UNITY_WP8) && !UNITY_EDITOR) || TEST_ASYNC
+#if (UNITY_WINRT && !UNITY_EDITOR) || TEST_ASYNC
 #define ASYNC
 #endif
 
@@ -52,7 +52,6 @@ namespace Reign
 			#elif UNITY_BB10
 			pluginAPI = desc.BB10_InAppPurchaseAPI;
 			#else
-			Debug.Log("AVISO: Ha entrado por un if que no deberia entrar: InAppPurchaseAPIs.None");
 			pluginAPI = InAppPurchaseAPIs.None;
 			#endif
 
@@ -534,28 +533,27 @@ namespace Reign.Plugin
 			return new InAppPurchasePlugin(desc, callback);
 			#elif UNITY_METRO
 			if (desc.Win8_InAppPurchaseAPI == InAppPurchaseAPIs.None) return new Dumy_InAppPurchasePlugin(desc, callback);
-			else if (desc.Win8_InAppPurchaseAPI == InAppPurchaseAPIs.MicrosoftStore) return new MicrosoftStore_InAppPurchasePlugin(desc, callback);
+			else if (desc.Win8_InAppPurchaseAPI == InAppPurchaseAPIs.MicrosoftStore) return new MicrosoftStore_InAppPurchasePlugin_WinRT(desc, callback);
 			else throw new Exception("Unsuported Win8_InAppPurchaseAPI: " + desc.Win8_InAppPurchaseAPI);
 			#elif UNITY_WP8
 			if (desc.WP8_InAppPurchaseAPI == InAppPurchaseAPIs.None) return new Dumy_InAppPurchasePlugin(desc, callback);
-			else if (desc.WP8_InAppPurchaseAPI == InAppPurchaseAPIs.MicrosoftStore) return new MicrosoftStore_InAppPurchasePlugin(desc, callback);
+			else if (desc.WP8_InAppPurchaseAPI == InAppPurchaseAPIs.MicrosoftStore) return new MicrosoftStore_InAppPurchasePlugin_WinRT(desc, callback);
 			else throw new Exception("Unsuported WP8_InAppPurchaseAPI " + desc.WP8_InAppPurchaseAPI);
 			#elif UNITY_BB10
 			if (desc.BB10_InAppPurchaseAPI == InAppPurchaseAPIs.None) return new Dumy_InAppPurchasePlugin(desc, callback);
-			else if (desc.BB10_InAppPurchaseAPI == InAppPurchaseAPIs.BlackBerryWorld) return new InAppPurchasePlugin_BB10(desc, callback);
+			else if (desc.BB10_InAppPurchaseAPI == InAppPurchaseAPIs.BlackBerryWorld) return new InAppPurchasePlugin(desc, callback);
 			else throw new Exception("Unsuported BB10_InAppPurchaseAPI: " + desc.BB10_InAppPurchaseAPI);
 			#elif UNITY_IOS
 			if (desc.iOS_InAppPurchaseAPI == InAppPurchaseAPIs.None) return new Dumy_InAppPurchasePlugin(desc, callback);
-			else if (desc.iOS_InAppPurchaseAPI == InAppPurchaseAPIs.AppleStore) return new AppleStore_InAppPurchasePlugin_iOS(desc, callback);
+			else if (desc.iOS_InAppPurchaseAPI == InAppPurchaseAPIs.AppleStore) return new AppleStore_InAppPurchasePlugin(desc, callback);
 			else throw new Exception("Unsuported iOS_InAppPurchaseAPI: " + desc.iOS_InAppPurchaseAPI);
 			#elif UNITY_ANDROID
 			if (desc.Android_InAppPurchaseAPI == InAppPurchaseAPIs.None) return new Dumy_InAppPurchasePlugin(desc, callback);
-			else if (desc.Android_InAppPurchaseAPI == InAppPurchaseAPIs.GooglePlay) return new GooglePlay_InAppPurchasePlugin_Android(desc, callback);
-			else if (desc.Android_InAppPurchaseAPI == InAppPurchaseAPIs.Amazon) return new Amazon_InAppPurchasePlugin_Android(desc, callback);
-			else if (desc.Android_InAppPurchaseAPI == InAppPurchaseAPIs.Samsung) return new Samsung_InAppPurchasePlugin_Android(desc, callback);
+			else if (desc.Android_InAppPurchaseAPI == InAppPurchaseAPIs.GooglePlay) return new GooglePlay_InAppPurchasePlugin(desc, callback);
+			else if (desc.Android_InAppPurchaseAPI == InAppPurchaseAPIs.Amazon) return new Amazon_InAppPurchasePlugin(desc, callback);
+			else if (desc.Android_InAppPurchaseAPI == InAppPurchaseAPIs.Samsung) return new Samsung_InAppPurchasePlugin(desc, callback);
 			else throw new Exception("Unsuported Android_InAppPurchaseAPI: " + desc.Android_InAppPurchaseAPI);
 			#else
-			Debug.Log("AVISO: Ha entrado por un if que no deberia entrar: Dumy_InAppPurchasePlugin");
 			return new Dumy_InAppPurchasePlugin(desc, callback);
 			#endif
 		}
