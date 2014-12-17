@@ -12,6 +12,7 @@ public class BackButtonMgr : MonoBehaviour
 	public GameObject goWin;
 	public GameObject goLose;
 	public GameObject goInfoLevel;
+	public GameObject goQuitArcade;
 	
 	PopUpMgr quitPopUp;
 	PopUpMgr livesPopUp;
@@ -21,6 +22,7 @@ public class BackButtonMgr : MonoBehaviour
 	PopUpMgr winPopUp;
 	PopUpMgr losePopUp;
 	PopUpMgr infoLevelPopUp;
+	PopUpMgr quitArcadePopUp;
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -50,6 +52,9 @@ public class BackButtonMgr : MonoBehaviour
 		if(goInfoLevel!=null){
 			infoLevelPopUp = goInfoLevel.GetComponent<PopUpMgr>();
 		}
+		if(goQuitArcade!=null){
+			quitArcadePopUp = goQuitArcade.GetComponent<PopUpMgr>();
+		}		
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -72,7 +77,8 @@ public class BackButtonMgr : MonoBehaviour
 		}
 		//GAME-ARCADE
 		else if(Application.loadedLevel==4){
-			Application.LoadLevel(1); //Go to Menu Scene
+			settingsPopUp.HidePopUp();
+			quitArcadePopUp.ShowPopUp();
 		}
 	}
 	
@@ -112,7 +118,7 @@ public class BackButtonMgr : MonoBehaviour
 				}
 				//GAME-ARCADE
 				else if(Application.loadedLevel==4){
-					Application.LoadLevel(1); //Go to Menu Scene
+					quitArcadePopUp.ShowPopUp();
 				}
 			}
 		}
