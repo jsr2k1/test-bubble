@@ -32,9 +32,11 @@
 	    
 	    <!-- Amazon Ads -->
 	    <activity android:name="com.amazon.device.ads.AdActivity" android:configChanges="keyboardHidden|orientation|screenSize"/>
+
+	    <!-- GooglePlay Services Version -->
+	    <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
 	    
 	    <!-- AdMob Activity -->
-	    <meta-data android:name="com.google.android.gms.version" android:value="5077000"/>
 		<activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
 
 		<!-- GooglePlay Leaderboards and Achievements -->
