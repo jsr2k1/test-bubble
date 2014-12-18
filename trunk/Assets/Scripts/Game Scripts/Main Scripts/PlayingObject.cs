@@ -109,12 +109,15 @@ public class PlayingObject : MonoBehaviour
 	//Destroy the Playing Object after right combination is formed
 	internal void BurstMe(bool fall)
 	{
-		if(isDestroyed)
+		if(this==null){
 			return;
-
-		if(gameObject.name=="DummyBall(Clone)")
+		}
+		if(isDestroyed){
 			return;
-
+		}
+		if(gameObject.name=="DummyBall(Clone)"){
+			return;
+		}
 		isDestroyed = true;
 
 		Destroy(GetComponent<SphereCollider>());
