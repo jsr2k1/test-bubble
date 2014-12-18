@@ -65,6 +65,12 @@ public class PlayingObjectManager : MonoBehaviour
 
 	internal void CheckForObjectsFall()
 	{
+		if(PlayingObjectManager.burstCounter<3){
+			AudioManager.instance.PlayFxSound(AudioManager.instance.hookSound);
+		}else{
+			AudioManager.instance.PlayFxSound(AudioManager.instance.burstSound);
+		}
+		
 		if(PlayingObjectManager.burstCounter < 3 && !Striker.instance.multiBall){
 			ResetAllObjects();
 			return;
