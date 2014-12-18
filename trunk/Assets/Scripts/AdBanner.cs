@@ -12,6 +12,8 @@ public class AdBanner : MonoBehaviour
 	private string adStatus;
 	public bool bDebug=false;
 	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	void Start()
 	{
 		//DontDestroyOnLoad(gameObject);// Make sure the start method never gets called more then once.
@@ -44,6 +46,7 @@ public class AdBanner : MonoBehaviour
 		desc.iOS_AdMob_AdGravity = AdGravity.BottomCenter;
 		desc.iOS_AdMob_UnitID = "ca-app-pub-4996019706488907/6665040478";// NOTE: You can use legacy (PublisherID) too, You MUST have this even for Testing!
 		desc.iOS_AdMob_AdSize = iOS_AdMob_AdSize.SmartBannerPortrait;
+		//desc.iOS_AdMob_AdSize = iOS_AdMob_AdSize.Banner_320x50;
 		
 		// Android settings
 		#if AMAZON
@@ -60,37 +63,48 @@ public class AdBanner : MonoBehaviour
 		desc.Android_AmazonAds_AdSize = Android_AmazonAds_AdSize.Wide_320x50;
 		desc.Android_AmazonAds_AdGravity = AdGravity.BottomCenter;
 		//desc.Android_AmazonAds_RefreshRate = 120;
-		
+
 		// create ad
 		ad = AdManager.CreateAd(desc, adCreatedCallback);
-
+		
 		// show ad
-		ad.Visible = true;
-		ad.Draw();
+		//ad.Visible = true;
+		//ad.Draw();
 	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	private void adCreatedCallback(bool succeeded)
 	{
 		adStatus = succeeded ? "Ads Succeded" : "Ads Failed";
+		if(bDebug){
+			Debug.Log("adCreatedCallback: "+adStatus);
+		}
 	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	private void eventCallback(AdEvents adEvent, string eventMessage)
 	{
+		if(bDebug){
+			Debug.Log("eventCallback: "+adEvent);
+		}
 		// NOTE: On BB10 these events never get called!
 		switch (adEvent)
 		{
-		case AdEvents.Refreshed: adStatus = "Refreshed"; break;
-		case AdEvents.Clicked: adStatus = "Clicked"; break;
-		case AdEvents.Error: adStatus = "Error: " + eventMessage; break;
+			case AdEvents.Refreshed: adStatus = "Refreshed"; break;
+			case AdEvents.Clicked: adStatus = "Clicked"; break;
+			case AdEvents.Error: adStatus = "Error: " + eventMessage; break;
 		}
 	}
 
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void OnGUI()
 	{
 		if(bDebug){
 			GUI.matrix = Matrix4x4.identity;
-			GUI.color = Color.white;
+			GUI.color = Color.blue;
 			
 			GUI.Label(new Rect(0, Screen.height/2, 256, 64), "Ad status: " + adStatus);
 			
@@ -105,6 +119,7 @@ public class AdBanner : MonoBehaviour
 		}
 	}
 	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Update()
 	{
@@ -115,10 +130,14 @@ public class AdBanner : MonoBehaviour
 		// If you have a better work-around, email support, Thanks.
 		//if (Input.GetKeyUp(KeyCode.Escape)) ApplicationEx.Quit();// NOTE: Unity 4.5 does not need this
 	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void OnDestroy()
 	{
 		ad.Visible = false;
 	}
-
 }
+
+
+

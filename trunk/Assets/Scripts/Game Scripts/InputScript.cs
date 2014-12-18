@@ -34,6 +34,7 @@ public class InputScript : MonoBehaviour
 	
 	public PopUpMgr LosePopUpArcade;
 	public PopUpMgr SettingsPopUp;
+	public PopUpMgr QuitArcadePopUp;
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -88,7 +89,7 @@ public class InputScript : MonoBehaviour
 	{
 		if(PlayerPrefs.GetString("GameType").Equals("Arcade")){
 			if(LevelManager.gameState != GameState.Start){
-				if(!LosePopUpArcade.bShow && !SettingsPopUp.bShow){
+				if(!LosePopUpArcade.bShow && !SettingsPopUp.bShow && !QuitArcadePopUp.bShow){
 					LevelManager.gameState = GameState.Start;
 				}
 			}
@@ -98,9 +99,7 @@ public class InputScript : MonoBehaviour
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Update()
-	{
-		CheckPauseError();
-		
+	{	
 		if(LevelManager.gameState == GameState.Start)
 		{
 			Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -140,6 +139,8 @@ public class InputScript : MonoBehaviour
 				}
 			}
 		}
+		
+		CheckPauseError();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

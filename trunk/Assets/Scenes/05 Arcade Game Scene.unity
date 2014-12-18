@@ -576,6 +576,7 @@ MonoBehaviour:
   characterAnimator: {fileID: 1017035936}
   LosePopUpArcade: {fileID: 1921396409}
   SettingsPopUp: {fileID: 1012585949}
+  QuitArcadePopUp: {fileID: 731817564}
 --- !u!4 &188
 Transform:
   m_ObjectHideFlags: 0
@@ -4654,7 +4655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cd5877c14ace441a5d0bc3276e472b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ImgBlack: {fileID: 0}
+  ImgBlack: {fileID: 453653204}
   bShow: 0
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
@@ -6323,6 +6324,10 @@ Prefab:
       propertyPath: m_Text
       value: id_quitlevel
       objectReference: {fileID: 0}
+    - target: {fileID: 11408400, guid: 3cb3df9fdc8396d428b4eb8c282dc6c2, type: 2}
+      propertyPath: ImgBlack
+      value: 
+      objectReference: {fileID: 453653204}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3cb3df9fdc8396d428b4eb8c282dc6c2, type: 2}
   m_RootGameObject: {fileID: 731817560}
