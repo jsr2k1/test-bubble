@@ -221,10 +221,9 @@ public class PlayingObject : MonoBehaviour
 			}
 		}
 		RefreshAdjacentObjectList();
-		AudioManager.instance.PlayFxSound(AudioManager.instance.hookSound);
 		Trace(0);
-		InGameScriptRefrences.playingObjectManager.CheckForObjectsFall(); 
-
+		InGameScriptRefrences.playingObjectManager.CheckForObjectsFall();
+		
 		if(Striker.instance.multiBall){
 			Striker.instance.multiBall=false;
 		}

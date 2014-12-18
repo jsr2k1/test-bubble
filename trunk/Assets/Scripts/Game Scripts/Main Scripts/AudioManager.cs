@@ -121,8 +121,7 @@ public class AudioManager : MonoBehaviour
 	
 	public void PlayFxSound(AudioSource audiosource)
 	{
-		int i = PlayerPrefs.GetInt("Sounds");
-		if(i>0 && !audiosource.isPlaying){
+		if(PlayerPrefs.GetInt("Sounds")>0 && !audiosource.isPlaying){
 			audiosource.Play();
 		}
 	}
