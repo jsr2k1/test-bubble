@@ -19,14 +19,11 @@ public class PopUpMgr : MonoBehaviour
 	public AudioSource sound_stars_2;
 	public AudioSource sound_stars_3;
 	
-	AudioManager audioManager;
-		
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Awake()
 	{
 		anim = GetComponent<Animator>();
-		audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -98,7 +95,7 @@ public class PopUpMgr : MonoBehaviour
 		if(LevelManager.score < 0.3 * LevelManager.ReferenceScore){
 			anim.speed=0;
 			if(PlayerPrefs.GetInt("Music")==1){
-				audioManager.PlayAudio();
+				AudioManager.instance.PlayAudio();
 			}
 		}
 	}
@@ -113,7 +110,7 @@ public class PopUpMgr : MonoBehaviour
 		if(LevelManager.score < 0.6 * LevelManager.ReferenceScore){
 			anim.speed=0;
 			if(PlayerPrefs.GetInt("Music")==1){
-				audioManager.PlayAudio();
+				AudioManager.instance.PlayAudio();
 			}
 		}
 	}
@@ -128,7 +125,7 @@ public class PopUpMgr : MonoBehaviour
 		if(LevelManager.score < LevelManager.ReferenceScore){
 			anim.speed=0;
 			if(PlayerPrefs.GetInt("Music")==1){
-				audioManager.PlayAudio();
+				AudioManager.instance.PlayAudio();
 			}
 		}
 	}
@@ -141,7 +138,7 @@ public class PopUpMgr : MonoBehaviour
 			return;
 		}
 		if(PlayerPrefs.GetInt("Music")==1){
-			audioManager.PlayAudio();
+			AudioManager.instance.PlayAudio();
 		}
 	}
 	

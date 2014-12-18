@@ -146,7 +146,7 @@ public class Striker : MonoBehaviour
 
 		//Rebound the striker on collision with left/right boundary
 		if(other.gameObject.name == "Left" || other.gameObject.name == "Right"){
-			SoundFxManager.instance.Play(SoundFxManager.instance.wallCollisionSound);
+			AudioManager.instance.PlayFxSound(AudioManager.instance.wallCollisionSound);
 			currentMovingDirection = Vector3.Reflect(currentMovingDirection, other.contacts[0].normal).normalized;
 		}
 

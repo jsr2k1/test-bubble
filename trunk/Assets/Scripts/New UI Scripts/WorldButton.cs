@@ -18,7 +18,6 @@ public class WorldButton : MonoBehaviour
 	public Text levelTextPop;
 	
 	AudioSource audioSource;
-	AudioManager audioManager;
 	
 	//Creamos un evento para poder saber cuando se ha pulsado un boton del mapa
 	public delegate void WorldButtonPressed();
@@ -67,7 +66,7 @@ public class WorldButton : MonoBehaviour
 		
 		audioSource = gameObject.AddComponent<AudioSource>();
 		audioSource.loop = false;
-		audioSource.clip = GameObject.Find("AudioManager").GetComponent<AudioManager>().UIClick;
+		audioSource.clip = AudioManager.instance.UIClick;
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

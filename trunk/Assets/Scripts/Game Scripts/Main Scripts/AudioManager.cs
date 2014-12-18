@@ -4,6 +4,8 @@ using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
+	public static AudioManager instance;
+	
 	public AudioClip[] audioClips;
 	public AudioClip UIClick;
 	
@@ -11,12 +13,18 @@ public class AudioManager : MonoBehaviour
 	Toggle soundsToggle;
 	int oldLevel=0;
 	int lastArcadeClip=0;
+	
+	public AudioSource shootingSound;
+	public AudioSource hookSound;
+	public AudioSource wallCollisionSound;
+	public AudioSource burstSound;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Awake()
 	{
 		DontDestroyOnLoad(gameObject);
+		instance = this;
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -106,6 +114,16 @@ public class AudioManager : MonoBehaviour
 			}else{
 				audio.Play();
 			}
+		}
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public void PlayFxSound(AudioSource audiosource)
+	{
+		int i = PlayerPrefs.GetInt("Sounds");
+		if(i>0 && !audiosource.isPlaying){
+			audiosource.Play();
 		}
 	}
 	

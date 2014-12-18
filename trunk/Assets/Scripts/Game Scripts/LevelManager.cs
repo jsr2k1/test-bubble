@@ -47,13 +47,11 @@ public class LevelManager : MonoBehaviour
 	public Text levelText2;
 	public Slider slider;
 	public Text highscoretext;
-	AudioManager audioManager;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Awake()
 	{
-		audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 		totalNumberOfRowsLeft = totalNoOfRows;
 		instance = this;
 		score = 0;
@@ -87,9 +85,7 @@ public class LevelManager : MonoBehaviour
 	internal void GameIsFinished()
 	{
 		gameState = GameState.GameFinish;
-		audioManager.StopAudio();
-		//SoundFxManager.instance.themeMusic.volume *= .4f;
-		//SoundFxManager.instance.Play(SoundFxManager.instance.levelClearSound);
+		AudioManager.instance.StopAudio();
 		winPop.GetComponent<PopUpMgr>().ShowPopUp();
 		
 		if(PlayerPrefs.GetInt("SCORE_" + levelNo) < score || !PlayerPrefs.HasKey("SCORE_" + levelNo)){
@@ -111,10 +107,8 @@ public class LevelManager : MonoBehaviour
 		}
 		gameState = GameState.GameOver;
 		InGameScriptRefrences.playingObjectManager.FallAllPlayingObjects();
-		//SoundFxManager.instance.themeMusic.volume *= .4f;
-		audioManager.StopAudio();
+		AudioManager.instance.StopAudio();
 		losePop.GetComponent<PopUpMgr>().ShowPopUp();
-		//Invoke("PlayLevelFailSound", .2f);
 
 		if (PlayerPrefs.GetString ("GameType") == "Arcade") {
 			if (score > PlayerPrefs.GetInt ("Highscore")) {
@@ -127,14 +121,7 @@ public class LevelManager : MonoBehaviour
 		//PlayerPrefs.SetInt("Lives", PlayerPrefs.GetInt("Lives") - 1 );
 		//Invoke("LoadLevelAgain", 3f);
 	}
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/*
-	void PlayLevelFailSound()
-	{
-		SoundFxManager.instance.Play(SoundFxManager.instance.levelFailSound);
-	}
-	*/
+	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void LoadLevelAgain()

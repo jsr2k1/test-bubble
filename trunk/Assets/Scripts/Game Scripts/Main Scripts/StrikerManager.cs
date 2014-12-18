@@ -187,7 +187,6 @@ public class StrikerManager : MonoBehaviour
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	//Shoots current playing object in the direction of touch
 	internal void Shoot(Vector3 touchedPosition)
 	{
@@ -199,7 +198,7 @@ public class StrikerManager : MonoBehaviour
 			
 		if(LevelManager.instance.running())
 		{
-			SoundFxManager.instance.Play(SoundFxManager.instance.shootingSound);
+			AudioManager.instance.PlayFxSound(AudioManager.instance.shootingSound);
 
 			Vector3 dir = (touchedPosition - currentStrikerPosition.position).normalized;
 			strikerScript.Shoot(new Vector3(-dir.x, dir.y, 0.0f));
@@ -209,6 +208,8 @@ public class StrikerManager : MonoBehaviour
 			}
 		}
 	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void FixStrikerPosition(){
 		currentStrikerObject.transform.position = currentStrikerPosition.position;

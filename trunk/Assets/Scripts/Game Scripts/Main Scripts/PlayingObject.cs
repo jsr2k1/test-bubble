@@ -221,7 +221,7 @@ public class PlayingObject : MonoBehaviour
 			}
 		}
 		RefreshAdjacentObjectList();
-		SoundFxManager.instance.Play(SoundFxManager.instance.collisionSound);
+		AudioManager.instance.PlayFxSound(AudioManager.instance.hookSound);
 		Trace(0);
 		InGameScriptRefrences.playingObjectManager.CheckForObjectsFall(); 
 
