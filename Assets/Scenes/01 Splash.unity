@@ -123,6 +123,7 @@ GameObject:
   - 4: {fileID: 194216154}
   - 114: {fileID: 194216153}
   - 82: {fileID: 194216152}
+  - 114: {fileID: 194216155}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -226,6 +227,18 @@ Transform:
   - {fileID: 2009771208}
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &194216155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 194216151}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e86b5b745db8e46afdedcd6b819159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateInterval: 1
 --- !u!1 &349014489
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 2
-  bDeleteAllKeys: 1
+  bDeleteAllKeys: 0
   bAllLevelsCompleted: 0
   initial_lives: 5
 --- !u!1001 &680489053
