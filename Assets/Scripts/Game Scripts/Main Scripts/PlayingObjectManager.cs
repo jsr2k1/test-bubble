@@ -76,9 +76,9 @@ public class PlayingObjectManager : MonoBehaviour
 			return;
 		}
 		BurstObjects();
-		FallDisconnectedObjects();
+//		FallDisconnectedObjects();
 	}
-
+/*
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Burst all the playing objects whose Burst attribute is marked true.
 	void BurstObjects()
@@ -90,6 +90,45 @@ public class PlayingObjectManager : MonoBehaviour
 				allPlayingObjectScripts[i].BurstMe(false);
 			}
 		}
+	}
+	*/
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Burst all the playing objects whose Burst attribute is marked true.
+	void BurstObjects()
+	{
+		Striker.instance.currentStrikerObject.GetComponent<PlayingObject>().BurstMe(false);
+		
+		UpdatePlayingObjectsList();
+		
+		StartCoroutine(BurstOneObject(0));
+		
+		//for(int i = 0; i < allPlayingObjectScripts.Length; i++) {
+		//	if(allPlayingObjectScripts[i].burst){
+		//		allPlayingObjectScripts[i].BurstMe(false);
+		//	}
+		//}
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	IEnumerator BurstOneObject(int i)
+	{
+		//Debug.Log(Time.time + " : " + i);
+		//yield return new WaitForSeconds(0.5f);
+		
+		if(i < allPlayingObjectScripts.Length){
+			if(allPlayingObjectScripts[i].burst){
+				allPlayingObjectScripts[i].BurstMe(false);
+				//yield return null;
+				yield return new WaitForSeconds(0.025f);
+			}
+			StartCoroutine(BurstOneObject(i+1));
+		}else{
+			FallDisconnectedObjects();
+			InGameScriptRefrences.strikerManager.GenerateStriker();
+		}
+		
+		//yield return null;
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

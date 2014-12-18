@@ -92,7 +92,7 @@ public class Striker : MonoBehaviour
 		}
 		*/
 		isBusy = false;
-		InGameScriptRefrences.strikerManager.GenerateStriker();
+		//joel InGameScriptRefrences.strikerManager.GenerateStriker();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
