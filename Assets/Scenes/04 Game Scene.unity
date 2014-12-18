@@ -1264,6 +1264,7 @@ MonoBehaviour:
   BallString: Bomb Ball
   counter: {fileID: 972992544}
   buttonCount: {fileID: 1018224909}
+  shopPop: {fileID: 783562921}
 --- !u!114 &11401920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1738,6 +1739,7 @@ MonoBehaviour:
   BallString: Fire Ball
   counter: {fileID: 1184714346}
   buttonCount: {fileID: 1663411606}
+  shopPop: {fileID: 783562921}
 --- !u!114 &142509080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7023,6 +7025,7 @@ GameObject:
   - 114: {fileID: 1018224910}
   - 114: {fileID: 1018224909}
   - 114: {fileID: 1018224912}
+  - 114: {fileID: 1018224913}
   m_Layer: 0
   m_Name: BombBallButtonAdd
   m_TagString: Untagged
@@ -7087,8 +7090,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 783562919}
-        m_MethodName: ShowPopUp
+      - m_Target: {fileID: 1018224913}
+        m_MethodName: OnButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7151,6 +7154,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cd6b58df2b7e940810c6a2a96aac65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1018224913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1018224907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86c286a3835938489bb8b3d0126cfa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BallString: Bomb Ball
+  counter: {fileID: 972992544}
+  buttonCount: {fileID: 1018224909}
+  shopPop: {fileID: 783562921}
 --- !u!1 &1057932308
 GameObject:
   m_ObjectHideFlags: 0
@@ -10877,6 +10895,7 @@ GameObject:
   - 114: {fileID: 1663411607}
   - 114: {fileID: 1663411606}
   - 114: {fileID: 1663411609}
+  - 114: {fileID: 1663411610}
   m_Layer: 0
   m_Name: FireBallButtonAdd
   m_TagString: Untagged
@@ -10941,8 +10960,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 783562919}
-        m_MethodName: ShowPopUp
+      - m_Target: {fileID: 1663411610}
+        m_MethodName: OnButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11005,6 +11024,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cd6b58df2b7e940810c6a2a96aac65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1663411610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1663411604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86c286a3835938489bb8b3d0126cfa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BallString: Fire Ball
+  counter: {fileID: 1184714346}
+  buttonCount: {fileID: 1663411606}
+  shopPop: {fileID: 783562921}
 --- !u!1 &1678229672
 GameObject:
   m_ObjectHideFlags: 0
@@ -11501,6 +11535,7 @@ MonoBehaviour:
   BallString: Multicolor Ball
   counter: {fileID: 976997331}
   buttonCount: {fileID: 1764159184}
+  shopPop: {fileID: 783562921}
 --- !u!1 &1761807951
 GameObject:
   m_ObjectHideFlags: 0
@@ -11606,6 +11641,7 @@ GameObject:
   - 114: {fileID: 1764159185}
   - 114: {fileID: 1764159184}
   - 114: {fileID: 1764159187}
+  - 114: {fileID: 1764159188}
   m_Layer: 0
   m_Name: MulticolorBallButtonAdd
   m_TagString: Untagged
@@ -11670,18 +11706,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 783562919}
-        m_MethodName: ShowPopUp
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
       - m_Target: {fileID: 1764159187}
         m_MethodName: PlayUIClick
         m_Mode: 1
@@ -11694,6 +11718,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 1764159188}
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1764159185
@@ -11734,6 +11770,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cd6b58df2b7e940810c6a2a96aac65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1764159188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1764159182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86c286a3835938489bb8b3d0126cfa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BallString: Multicolor Ball
+  counter: {fileID: 976997331}
+  buttonCount: {fileID: 1764159184}
+  shopPop: {fileID: 783562921}
 --- !u!1 &1777222328
 GameObject:
   m_ObjectHideFlags: 0

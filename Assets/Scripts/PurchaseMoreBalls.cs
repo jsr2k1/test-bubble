@@ -24,7 +24,7 @@ public class PurchaseMoreBalls : MonoBehaviour
 			ballsManager.setBallsLeft(5);
 			PlayerPrefs.SetInt("Multicolor Ball", PlayerPrefs.GetInt("Multicolor Ball") + 1);
 			multiBall.text = PlayerPrefs.GetInt("Multicolor Ball").ToString();
-			multiBallButton.SetButtons();
+
 			
 			InGameScriptRefrences.strikerManager.GenerateNextStriker();
 			InGameScriptRefrences.strikerManager.GenerateStriker();

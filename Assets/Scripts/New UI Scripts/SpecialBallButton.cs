@@ -7,14 +7,13 @@ public class SpecialBallButton : MonoBehaviour
 	public string BallString;
 	public Text counter;
 	public Button buttonCount;
-	Button buttonBall;
+	public Image shopPop;
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Awake()
 	{
-		buttonBall = GetComponent<Button>();
-		SetButtons();
+
 		SetText();
 	}
 	
@@ -22,10 +21,10 @@ public class SpecialBallButton : MonoBehaviour
 	
 	void OnEnable()
 	{
-		Striker.OnSpecialBallLaunched += SetButtons;
+
 		Striker.OnSpecialBallLaunched += SetText;
 		
-		PurchaseSpecialBall.OnSpecialBallBuyed += SetButtons;
+
 		PurchaseSpecialBall.OnSpecialBallBuyed += SetText;
 	}
 	
@@ -33,25 +32,14 @@ public class SpecialBallButton : MonoBehaviour
 	
 	void OnDisable()
 	{
-		Striker.OnSpecialBallLaunched -= SetButtons;
+
 		Striker.OnSpecialBallLaunched -= SetText;
 		
-		PurchaseSpecialBall.OnSpecialBallBuyed -= SetButtons;
+
 		PurchaseSpecialBall.OnSpecialBallBuyed -= SetText;
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	public void SetButtons()
-	{
-		if(PlayerPrefs.GetInt(BallString) > 0){
-			buttonCount.interactable = false;
-			buttonBall.interactable = true;
-		}else{
-			buttonCount.interactable = true;
-			buttonBall.interactable = false;
-		}
-	}
+
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -71,16 +59,18 @@ public class SpecialBallButton : MonoBehaviour
 	public void OnButtonClick()
 	{
 		//Comprobamos si quedan boosters disponibles
-		if(PlayerPrefs.GetInt(BallString) > 0){
-			if(BallString == "Fire Ball"){
-				Striker.instance.SetFireBall();
-			}else if(BallString == "Bomb Ball"){
-				Striker.instance.SetBombBall();	
-			}else if(BallString == "Multicolor Ball"){
-				Striker.instance.SetMultiBall();	
+		if (PlayerPrefs.GetInt (BallString) > 0) {
+			if (BallString == "Fire Ball") {
+				Striker.instance.SetFireBall ();
+			} else if (BallString == "Bomb Ball") {
+				Striker.instance.SetBombBall ();	
+			} else if (BallString == "Multicolor Ball") {
+				Striker.instance.SetMultiBall ();	
 			}
+		} else {
+			shopPop.GetComponent<PopUpMgr>().ShowPopUp();
 		}
-		SetButtons();
+
 		SetText();
 	}
 }
