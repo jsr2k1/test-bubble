@@ -5,15 +5,6 @@ using UnityEngine.EventSystems;
 
 public class ToggleController : MonoBehaviour, IPointerClickHandler
 {
-	AudioManager audioManager;
-	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	void Awake()
-	{
-		audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-	}
-	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Añadimos esta funcion para que haga click al pulsar sobre uno de los toggles.
 	//Para poder llamar a esta funcion hemos tenido que hacer que la classe 'ToggleController' implemente la interfaz 'IPointerClickHandler'.
@@ -31,15 +22,15 @@ public class ToggleController : MonoBehaviour, IPointerClickHandler
 	
 	public void SetMusic(bool b)
 	{
-		if(audioManager==null){
+		if(AudioManager.instance==null){
 			return;
 		}
 		if(b){
 			PlayerPrefs.SetInt("Music", 1);
-			audioManager.PlayAudio();
+			AudioManager.instance.PlayAudio();
 		}else{
 			PlayerPrefs.SetInt("Music", 0);
-			audioManager.StopAudio();
+			AudioManager.instance.StopAudio();
 		}
 	}
 	

@@ -4,7 +4,6 @@ using System.Collections;
 public class PlaySoundButton : MonoBehaviour
 {
 	AudioSource audioSource;
-	AudioManager audioManager;
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -12,7 +11,7 @@ public class PlaySoundButton : MonoBehaviour
 	{
 		audioSource = gameObject.AddComponent<AudioSource>();
 		audioSource.loop = false;
-		audioSource.clip = GameObject.Find("AudioManager").GetComponent<AudioManager>().UIClick;
+		audioSource.clip = AudioManager.instance.UIClick;
 		audioSource.playOnAwake = false;
 	}
 	
