@@ -9,15 +9,17 @@ public class PopUpMgr : MonoBehaviour
 	public bool bShow=false;
 
 	public enum PopUpAction{
-		On,
-		Off,
-		Skip
+		OnShow,
+		OnHide,
+		Idle
 	}
-	static PopUpAction popUpActionChangeState = PopUpAction.Skip;
+	public static PopUpAction popUpActionChangeState = PopUpAction.Idle;
 	
 	public AudioSource sound_stars_1;
 	public AudioSource sound_stars_2;
 	public AudioSource sound_stars_3;
+	
+	public static GameObject currentPopUpObj=null;
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -31,9 +33,10 @@ public class PopUpMgr : MonoBehaviour
 	public void ShowPopUp()
 	{
 		if(!bShow){
-			popUpActionChangeState = PopUpAction.Off;
+			currentPopUpObj=gameObject;
+			popUpActionChangeState = PopUpAction.OnHide;
 			if(name!="WinPopUp" && name!="LosePopUp"){
-				ImageBlack.popUpActionImageBlack = PopUpAction.On;
+				ImageBlack.popUpActionImageBlack = PopUpAction.OnShow;
 			}
 			anim.SetTrigger("ShowPopUp");
 			bShow=true;
@@ -49,9 +52,10 @@ public class PopUpMgr : MonoBehaviour
 	public void HidePopUp()
 	{
 		if(bShow){
+			currentPopUpObj=null;
 			if(name!="WinCharacterPopUp" && name!="LoseCharacterPopUp"){
-				popUpActionChangeState = PopUpAction.On;
-				ImageBlack.popUpActionImageBlack = PopUpAction.Off;
+				popUpActionChangeState = PopUpAction.OnShow;
+				ImageBlack.popUpActionImageBlack = PopUpAction.OnHide;
 			}
 			anim.SetTrigger("HidePopUp");
 			bShow=false;
@@ -224,13 +228,13 @@ public class PopUpMgr : MonoBehaviour
 	{
 		//Play mode
 		if(LevelManager.instance!=null){
-			if(popUpActionChangeState==PopUpAction.On){
+			if(popUpActionChangeState==PopUpAction.OnShow){
 				LevelManager.instance.pauseCtrlForced(GameState.Start);
-				popUpActionChangeState = PopUpAction.Skip;
+				popUpActionChangeState = PopUpAction.Idle;
 			}
-			else if(popUpActionChangeState==PopUpAction.Off){
+			else if(popUpActionChangeState==PopUpAction.OnHide){
 				LevelManager.instance.pauseCtrlForced(GameState.Pause);
-				popUpActionChangeState = PopUpAction.Skip;
+				popUpActionChangeState = PopUpAction.Idle;
 			}
 		}
 		/*
