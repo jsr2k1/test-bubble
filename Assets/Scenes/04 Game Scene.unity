@@ -1173,6 +1173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specialStrikerPrefabs: []
+  currentStrikerObject: {fileID: 0}
   thresoldLineTransform: {fileID: 0}
   inputScript: {fileID: 186}
 --- !u!114 &597
@@ -2353,6 +2354,14 @@ Prefab:
       propertyPath: m_Colors.m_DisabledColor.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: b355caa85febe0b49976078d576eda4f, type: 2}
+      propertyPath: goBoosters
+      value: 
+      objectReference: {fileID: 783562917}
+    - target: {fileID: 11400008, guid: b355caa85febe0b49976078d576eda4f, type: 2}
+      propertyPath: goShopCoins
+      value: 
+      objectReference: {fileID: 387061176}
     m_RemovedComponents:
     - {fileID: 11400012, guid: b355caa85febe0b49976078d576eda4f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b355caa85febe0b49976078d576eda4f, type: 2}
@@ -6429,7 +6438,7 @@ GameObject:
   - 95: {fileID: 967641506}
   - 114: {fileID: 967641505}
   m_Layer: 0
-  m_Name: LivesPopup
+  m_Name: LivesPopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10057,12 +10066,13 @@ MonoBehaviour:
   goLives: {fileID: 967641503}
   goSettings: {fileID: 1012585947}
   goShopLives: {fileID: 0}
-  goShopCoins: {fileID: 0}
+  goShopCoins: {fileID: 387061176}
   goWin: {fileID: 937484578}
   goLose: {fileID: 599368202}
   goInfoLevel: {fileID: 0}
   goQuitArcade: {fileID: 0}
   goMessages: {fileID: 0}
+  goBoosters: {fileID: 783562917}
 --- !u!114 &1553100328
 MonoBehaviour:
   m_ObjectHideFlags: 0

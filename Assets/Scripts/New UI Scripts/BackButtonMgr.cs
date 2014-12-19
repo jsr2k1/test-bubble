@@ -7,24 +7,12 @@ public class BackButtonMgr : MonoBehaviour
 	public GameObject goQuit;
 	public GameObject goLives;
 	public GameObject goSettings;
-	public GameObject goShopLives;
-	public GameObject goShopCoins;
-	public GameObject goWin;
-	public GameObject goLose;
-	public GameObject goInfoLevel;
 	public GameObject goQuitArcade;
-	public GameObject goMessages;
 	
 	PopUpMgr quitPopUp;
 	PopUpMgr livesPopUp;
 	PopUpMgr settingsPopUp;
-	PopUpMgr shopLivesPopUp;
-	PopUpMgr shopCoinsPopUp;
-	PopUpMgr winPopUp;
-	PopUpMgr losePopUp;
-	PopUpMgr infoLevelPopUp;
 	PopUpMgr quitArcadePopUp;
-	PopUpMgr messagesPopUp;
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -39,26 +27,8 @@ public class BackButtonMgr : MonoBehaviour
 		if(goSettings!=null){
 			settingsPopUp = goSettings.GetComponent<PopUpMgr>();
 		}
-		if(goShopLives!=null){
-			shopLivesPopUp = goShopLives.GetComponent<PopUpMgr>();
-		}
-		if(goShopCoins!=null){
-			shopCoinsPopUp = goShopCoins.GetComponent<PopUpMgr>();
-		}
-		if(goWin!=null){
-			winPopUp = goWin.GetComponent<PopUpMgr>();
-		}
-		if(goLose!=null){
-			losePopUp = goLose.GetComponent<PopUpMgr>();
-		}
-		if(goInfoLevel!=null){
-			infoLevelPopUp = goInfoLevel.GetComponent<PopUpMgr>();
-		}
 		if(goQuitArcade!=null){
 			quitArcadePopUp = goQuitArcade.GetComponent<PopUpMgr>();
-		}		
-		if(goMessages!=null){
-			messagesPopUp = goMessages.GetComponent<PopUpMgr>();
 		}
 	}
 	
@@ -102,17 +72,8 @@ public class BackButtonMgr : MonoBehaviour
 				}
 				//WORLDS
 				else if(Application.loadedLevel==2){
-					if(shopLivesPopUp.bShow){
-						shopLivesPopUp.HidePopUp();
-					}
-					else if(shopCoinsPopUp.bShow){
-						shopCoinsPopUp.HidePopUp();
-					}
-					else if(infoLevelPopUp.bShow){
-						infoLevelPopUp.HidePopUp();
-					}
-					else if(messagesPopUp.bShow){
-						messagesPopUp.HidePopUp();
+					if(PopUpMgr.currentPopUpObj!=null){
+						PopUpMgr.currentPopUpObj.GetComponent<PopUpMgr>().HidePopUp();
 					}
 					else{
 						Application.LoadLevel(1); //Go to Menu Scene
@@ -120,7 +81,12 @@ public class BackButtonMgr : MonoBehaviour
 				}
 				//GAME-WORLDS
 				else if(Application.loadedLevel==3){
-					if(!winPopUp.bShow && !losePopUp.bShow){
+					if(PopUpMgr.currentPopUpObj!=null){
+						string s = PopUpMgr.currentPopUpObj.name;
+						if(s!="MoreBubblesPopup" && s!="WinPopUp" && s!="LosePopUp"){
+							PopUpMgr.currentPopUpObj.GetComponent<PopUpMgr>().HidePopUp();
+						}
+					}else{
 						livesPopUp.ShowPopUp();
 					}
 				}

@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ImageBlack : MonoBehaviour
 {
-	public static PopUpMgr.PopUpAction popUpActionImageBlack = PopUpMgr.PopUpAction.Skip;
+	public static PopUpMgr.PopUpAction popUpActionImageBlack = PopUpMgr.PopUpAction.Idle;
 	Animator animator;
 	bool bShow=false;
 	
@@ -12,21 +12,21 @@ public class ImageBlack : MonoBehaviour
 	void Awake()
 	{
 		animator = GetComponent<Animator>();
-		popUpActionImageBlack = PopUpMgr.PopUpAction.Skip;
+		popUpActionImageBlack = PopUpMgr.PopUpAction.Idle;
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Update()
 	{
-		if(popUpActionImageBlack==PopUpMgr.PopUpAction.On && !bShow){
+		if(popUpActionImageBlack==PopUpMgr.PopUpAction.OnShow && !bShow){
 			animator.SetTrigger("ShowPopUp");
-			popUpActionImageBlack=PopUpMgr.PopUpAction.Skip;
+			popUpActionImageBlack=PopUpMgr.PopUpAction.Idle;
 			bShow=true;
 		}
-		else if(popUpActionImageBlack==PopUpMgr.PopUpAction.Off && bShow){
+		else if(popUpActionImageBlack==PopUpMgr.PopUpAction.OnHide && bShow){
 			animator.SetTrigger("HidePopUp");
-			popUpActionImageBlack=PopUpMgr.PopUpAction.Skip;
+			popUpActionImageBlack=PopUpMgr.PopUpAction.Idle;
 			bShow=false;
 		}
 	}
