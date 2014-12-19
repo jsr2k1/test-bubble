@@ -125,6 +125,7 @@ public class PlayingObjectManager : MonoBehaviour
 			FallDisconnectedObjects();
 			InGameScriptRefrences.playingObjectManager.GetRemainingObjects();
 			InGameScriptRefrences.strikerManager.CheckCurrentStrikerColor();
+			Striker.instance.inputScript.CheckColor();
 			//InGameScriptRefrences.strikerManager.GenerateNextStriker();
 			//InGameScriptRefrences.strikerManager.GenerateStriker();
 		}
