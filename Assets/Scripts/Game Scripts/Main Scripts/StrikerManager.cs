@@ -10,7 +10,7 @@ public class StrikerManager : MonoBehaviour
 	public GameObject[] specialStrikerPrefabs;
 	Transform currentStrikerPosition;
 	Transform nextStrikerPosition;
-	GameObject currentStrikerObject;
+	public GameObject currentStrikerObject;
 	GameObject nextStrikerObject;
 	public Transform thresoldLineTransform;
 	private int currentStrikerBallID;
@@ -67,7 +67,7 @@ public class StrikerManager : MonoBehaviour
 	//Generates shooting object
 	internal void GenerateStriker()
 	{
-		if(LevelManager.currentBalls<=0 && PlayerPrefs.GetString("GameType").Equals("Normal")){
+		if(LevelManager.currentBalls<1 && PlayerPrefs.GetString("GameType").Equals("Normal")){
 			return;
 		}
 		striker.transform.position = currentStrikerPosition.position;
@@ -89,10 +89,10 @@ public class StrikerManager : MonoBehaviour
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	internal void SaveBallsID()
+	public void SaveBallsID()
 	{
-		if (currentStrikerObject != null) {
-			currentStrikerBallID = int.Parse (currentStrikerObject.name.Substring (0, 1)) - 1;
+		if(currentStrikerObject != null) {
+			currentStrikerBallID = int.Parse(currentStrikerObject.name.Substring(0, 1)) - 1;
 			//nextStrikerBallID = int.Parse(nextStrikerObject.name.Substring(0, 1)) - 1;
 		}
 	}
@@ -115,7 +115,7 @@ public class StrikerManager : MonoBehaviour
 		}
 		strikerScript.currentStrikerObject = currentStrikerObject;
 		GenerateNextStriker();   
-		SaveBallsID();
+		//SaveBallsID();
 		inputScript.CheckColor();
 	}
 
@@ -188,13 +188,15 @@ public class StrikerManager : MonoBehaviour
 				strikerScript.currentStrikerObject = currentStrikerObject;
 			}
 			//NextStrikerObject
-			if(nextStrikerObject==null || !listNames.Contains(nextStrikerObject.name)){
-				if(nextStrikerObject!=null){
-					Destroy(nextStrikerObject);
+			if(LevelManager.currentBalls>1){
+				if(nextStrikerObject==null || !listNames.Contains(nextStrikerObject.name)){
+					if(nextStrikerObject!=null){
+						Destroy(nextStrikerObject);
+					}
+					nextStrikerObject = (GameObject)Instantiate((GameObject)remainingObjects[0], nextStrikerPosition.position, Quaternion.identity);
+					nextStrikerObject.tag = "Striker";
+					nextStrikerObject.GetComponent<SphereCollider>().enabled = false;
 				}
-				nextStrikerObject = (GameObject)Instantiate((GameObject)remainingObjects[0], nextStrikerPosition.position, Quaternion.identity);
-				nextStrikerObject.tag = "Striker";
-				nextStrikerObject.GetComponent<SphereCollider>().enabled = false;
 			}
 		}
 	}

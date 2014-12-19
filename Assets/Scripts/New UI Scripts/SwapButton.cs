@@ -10,12 +10,14 @@ public class SwapButton : MonoBehaviour
 	
 	public void SwapBalls()
 	{
-		if(PlayerPrefs.GetInt("Sounds")==1){
-			audio.Play();
-		}
-		if(PlayerPrefs.GetString("GameType") == "Arcade" || LevelManager.currentBalls > 1){
+		if(PlayerPrefs.GetString("GameType") == "Arcade" || LevelManager.currentBalls > 1)
+		{
 			Striker.instance.Swap();
+			swapImageAnim.SetTrigger("SwapPressed");
+			
+			if(PlayerPrefs.GetInt("Sounds")==1){
+				audio.Play();
+			}
 		}
-		swapImageAnim.SetTrigger("SwapPressed");
 	}
 }

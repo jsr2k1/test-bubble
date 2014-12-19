@@ -98,6 +98,7 @@ public class PlayingObjectManager : MonoBehaviour
 	void BurstObjects()
 	{
 		//Striker.instance.currentStrikerObject.GetComponent<PlayingObject>().BurstMe(false);
+		Striker.instance.currentStrikerObject.transform.GetChild(0).renderer.enabled = false;
 		
 		UpdatePlayingObjectsList();
 		
