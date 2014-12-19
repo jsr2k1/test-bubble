@@ -73,6 +73,7 @@ public class PlayingObjectManager : MonoBehaviour
 		
 		if(PlayingObjectManager.burstCounter < 3 && !Striker.instance.multiBall){
 			ResetAllObjects();
+			//InGameScriptRefrences.strikerManager.GenerateNextStriker();
 			return;
 		}
 		BurstObjects();
@@ -96,7 +97,7 @@ public class PlayingObjectManager : MonoBehaviour
 	//Burst all the playing objects whose Burst attribute is marked true.
 	void BurstObjects()
 	{
-		Striker.instance.currentStrikerObject.GetComponent<PlayingObject>().BurstMe(false);
+		//Striker.instance.currentStrikerObject.GetComponent<PlayingObject>().BurstMe(false);
 		
 		UpdatePlayingObjectsList();
 		
@@ -113,22 +114,19 @@ public class PlayingObjectManager : MonoBehaviour
 
 	IEnumerator BurstOneObject(int i)
 	{
-		//Debug.Log(Time.time + " : " + i);
-		//yield return new WaitForSeconds(0.5f);
-		
 		if(i < allPlayingObjectScripts.Length){
 			if(allPlayingObjectScripts[i].burst){
 				allPlayingObjectScripts[i].BurstMe(false);
-				//yield return null;
 				yield return new WaitForSeconds(0.025f);
 			}
 			StartCoroutine(BurstOneObject(i+1));
 		}else{
 			FallDisconnectedObjects();
-			InGameScriptRefrences.strikerManager.GenerateStriker();
+			InGameScriptRefrences.playingObjectManager.GetRemainingObjects();
+			InGameScriptRefrences.strikerManager.CheckCurrentStrikerColor();
+			//InGameScriptRefrences.strikerManager.GenerateNextStriker();
+			//InGameScriptRefrences.strikerManager.GenerateStriker();
 		}
-		
-		//yield return null;
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

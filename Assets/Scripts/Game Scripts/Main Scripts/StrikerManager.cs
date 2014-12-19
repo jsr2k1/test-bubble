@@ -121,7 +121,7 @@ public class StrikerManager : MonoBehaviour
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Generates Next Shooting Object
-	internal void GenerateNextStriker()
+	public void GenerateNextStriker()
 	{
 		int index;
 
@@ -167,21 +167,34 @@ public class StrikerManager : MonoBehaviour
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Comprobar que el striker actual todavia es de un color existente en la escena
 	//Sino entonces cambiar el color por otro
-	void CheckCurrentStrikerColor()
+	public void CheckCurrentStrikerColor()
 	{
 		if(remainingObjects==null || remainingObjects[0]==null){
 			return;
 		}
-		ArrayList listNames =  InGameScriptRefrences.playingObjectManager.GetRemainingObjectsNames();
-
+		ArrayList listNames = InGameScriptRefrences.playingObjectManager.GetRemainingObjectsNames();
+		remainingObjects = InGameScriptRefrences.playingObjectManager.GetRemainingObjects();
+		
 		if(listNames!=null && listNames.Count>0){
-			if(!listNames.Contains(currentStrikerObject.name)){
-				Destroy(currentStrikerObject);
-				currentStrikerObject = (GameObject)Instantiate((GameObject)remainingObjects[0], currentStrikerObject.transform.position, Quaternion.identity);
+			//CurrentStrikerObject
+			if(currentStrikerObject==null || !listNames.Contains(currentStrikerObject.name)){
+				if(currentStrikerObject!=null){
+					Destroy(currentStrikerObject);
+				}
+				currentStrikerObject = (GameObject)Instantiate((GameObject)remainingObjects[0], currentStrikerPosition.position, Quaternion.identity);
 				currentStrikerObject.tag = "Striker";
 				currentStrikerObject.GetComponent<SphereCollider>().enabled = false;
 				currentStrikerObject.transform.parent = striker.transform;
 				strikerScript.currentStrikerObject = currentStrikerObject;
+			}
+			//NextStrikerObject
+			if(nextStrikerObject==null || !listNames.Contains(nextStrikerObject.name)){
+				if(nextStrikerObject!=null){
+					Destroy(nextStrikerObject);
+				}
+				nextStrikerObject = (GameObject)Instantiate((GameObject)remainingObjects[0], nextStrikerPosition.position, Quaternion.identity);
+				nextStrikerObject.tag = "Striker";
+				nextStrikerObject.GetComponent<SphereCollider>().enabled = false;
 			}
 		}
 	}

@@ -92,7 +92,7 @@ public class Striker : MonoBehaviour
 		}
 		*/
 		isBusy = false;
-		//joel InGameScriptRefrences.strikerManager.GenerateStriker();
+		InGameScriptRefrences.strikerManager.GenerateStriker();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -205,6 +205,8 @@ public class Striker : MonoBehaviour
 			return;
 		}
 		rigidbody.isKinematic = true;
+		
+		InGameScriptRefrences.strikerManager.SaveBallsID();
 		Destroy(currentStrikerObject);
 		isBusy = false;
 		InGameScriptRefrences.strikerManager.isFirstObject = true;
