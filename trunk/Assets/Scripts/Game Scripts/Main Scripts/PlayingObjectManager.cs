@@ -11,7 +11,7 @@ public class PlayingObjectManager : MonoBehaviour
 	float thresholdOffsetWorldMode = 2.0f;
 
 	PlayingObject[] allPlayingObjectScripts;
-	ArrayList playingObjectList;
+	//ArrayList playingObjectList;
 	ArrayList currentAvailableObjects = new ArrayList();
 	ArrayList currentAvailableObjectsNames = new ArrayList();
 
@@ -44,12 +44,11 @@ public class PlayingObjectManager : MonoBehaviour
 	{
 		burstCounter = 0;
 		currentObjectName = "";
-		playingObjectList = new ArrayList();        
-		RefreshPlayingObjectList();
-		
-		UpdatePlayingObjectsList();
+		//playingObjectList = new ArrayList();        
+		//RefreshPlayingObjectList();
+		//UpdatePlayingObjectsList();  --> no sirve de nada pq los objetos todavia no estan creados
 	}
-
+	/*joel -> esto no se usa nunca ?¿
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Refreshes PlayingObjectList
 	public void RefreshPlayingObjectList()
@@ -60,7 +59,7 @@ public class PlayingObjectManager : MonoBehaviour
 			playingObjectList.Add(objects[i].GetComponent<PlayingObject>());
 		}
 	}
-
+	*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	internal void CheckForObjectsFall()
@@ -126,6 +125,13 @@ public class PlayingObjectManager : MonoBehaviour
 			InGameScriptRefrences.playingObjectManager.GetRemainingObjects();
 			InGameScriptRefrences.strikerManager.CheckCurrentStrikerColor();
 			Striker.instance.inputScript.CheckColor();
+			
+			if(CheckGameIsFinished()){
+				LevelManager.instance.GameIsFinished();
+			}else{
+				CheckGameIsOver();
+			}
+			
 			//InGameScriptRefrences.strikerManager.GenerateNextStriker();
 			//InGameScriptRefrences.strikerManager.GenerateStriker();
 		}
@@ -215,7 +221,6 @@ public class PlayingObjectManager : MonoBehaviour
 		currentObjectName = "";
 
 		UpdatePlayingObjectsList();
-		GetMissionCountTotal();
 
 		for(int i = 0; i < allPlayingObjectScripts.Length; i++) {
 			if(allPlayingObjectScripts[i]!=null){
@@ -224,11 +229,6 @@ public class PlayingObjectManager : MonoBehaviour
 				//Hacemos otra reasignacion para solucionarlo
 				allPlayingObjectScripts[i].RefreshAdjacentObjectList();
 			}
-		}
-		if(CheckGameIsFinished()){
-			LevelManager.instance.GameIsFinished();
-		}else{
-			CheckGameIsOver();
 		}
 	}
 	
@@ -288,7 +288,7 @@ public class PlayingObjectManager : MonoBehaviour
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	void GetMissionCountTotal()
+	public void GetMissionCountTotal()
 	{
 		if(missionCountTotal<0){
 			missionCountTotal=0;
@@ -304,9 +304,9 @@ public class PlayingObjectManager : MonoBehaviour
 
 	bool AllAnimalsAreFree()
 	{
-		int count=0;
+		int count=0; //Loros que quedan en la pantalla
 		for(int i = 0; i < allPlayingObjectScripts.Length; i++){
-			if(allPlayingObjectScripts[i] && allPlayingObjectScripts[i].name=="ParrotBall(Clone)"){
+			if(allPlayingObjectScripts[i] && allPlayingObjectScripts[i].name=="ParrotBall(Clone)" && allPlayingObjectScripts[i].isConnected){
 				count++;
 			}
 		}

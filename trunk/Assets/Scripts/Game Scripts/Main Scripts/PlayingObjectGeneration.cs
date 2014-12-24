@@ -19,7 +19,7 @@ public class PlayingObjectGeneration : MonoBehaviour
 	bool isStarting = true;
 
 	//Row ad for the top limit vars
-	private int rowAddCount = 0;
+	//private int rowAddCount = 0;
 	//public Transform limit; --las stickyballs de momento no se usan
 
 	public static float thresholdOffsetGameOver = 0.6f;
@@ -86,7 +86,7 @@ public class PlayingObjectGeneration : MonoBehaviour
 
 	void InitiateRowAdd()
 	{
-		rowAddCount++;
+		//rowAddCount++;
 		
 		//No se usa? --> joel
 		/*
