@@ -2932,7 +2932,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 316377413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 303.068359, y: 1247.71741, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -20317,13 +20317,7 @@ MonoBehaviour:
   goQuit: {fileID: 0}
   goLives: {fileID: 0}
   goSettings: {fileID: 902129908}
-  goShopLives: {fileID: 2135650039}
-  goShopCoins: {fileID: 1669811589}
-  goWin: {fileID: 0}
-  goLose: {fileID: 0}
-  goInfoLevel: {fileID: 1502618722}
   goQuitArcade: {fileID: 0}
-  goMessages: {fileID: 1493177117}
 --- !u!1 &1939313603
 GameObject:
   m_ObjectHideFlags: 0

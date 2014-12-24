@@ -1176,6 +1176,7 @@ MonoBehaviour:
   currentStrikerObject: {fileID: 0}
   thresoldLineTransform: {fileID: 0}
   inputScript: {fileID: 186}
+  bStartDone: 0
 --- !u!114 &597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4611,6 +4612,45 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 467314850}
+--- !u!1 &534356207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 534356209}
+  - 114: {fileID: 534356208}
+  m_Layer: 0
+  m_Name: IAPManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &534356208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534356207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4214d3023bbb8e43967ac1db75f63e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &534356209
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534356207}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!1 &578549041
 GameObject:
   m_ObjectHideFlags: 0
@@ -5708,12 +5748,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballsManager: {fileID: 1437516066}
-  winPop: {fileID: 464616085}
-  losePop: {fileID: 1078338432}
-  moreBubblesPop: {fileID: 1357181899}
-  star1: {fileID: 2029583640}
-  star2: {fileID: 1443885055}
-  star3: {fileID: 1560669545}
+  winPop: {fileID: 464616083}
+  losePop: {fileID: 1078338430}
+  moreBubblesPop: {fileID: 1357181897}
   star11: {fileID: 1326434881}
   star22: {fileID: 2075478560}
   star33: {fileID: 196251764}
@@ -7796,7 +7833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac163d4869615a543a9817da785e1c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moreBubblesPop: {fileID: 1357181899}
+  moreBubblesPop: {fileID: 1357181897}
 --- !u!1 &1184241980
 GameObject:
   m_ObjectHideFlags: 0
@@ -10065,14 +10102,7 @@ MonoBehaviour:
   goQuit: {fileID: 0}
   goLives: {fileID: 967641503}
   goSettings: {fileID: 1012585947}
-  goShopLives: {fileID: 0}
-  goShopCoins: {fileID: 387061176}
-  goWin: {fileID: 937484578}
-  goLose: {fileID: 599368202}
-  goInfoLevel: {fileID: 0}
   goQuitArcade: {fileID: 0}
-  goMessages: {fileID: 0}
-  goBoosters: {fileID: 783562917}
 --- !u!114 &1553100328
 MonoBehaviour:
   m_ObjectHideFlags: 0
