@@ -33,11 +33,13 @@ public class PopUpMgr : MonoBehaviour
 	public void ShowPopUp()
 	{
 		if(!bShow){
-			if(name== "SettingsPopUp"){
-				if(LevelManager.instance.totalNumberOfRowsLeft > 0 || !InGameScriptRefrences.strikerManager.bStartDone){
-					return;
+			//if(PlayerPrefs.GetString("GameType")!="Arcade"){
+				if(name== "SettingsPopUp"){
+					if(/*LevelManager.instance.totalNumberOfRowsLeft > 0 || */!InGameScriptRefrences.strikerManager.bStartDone){
+						return;
+					}
 				}
-			}
+			//}
 			currentPopUpObj=gameObject;
 			popUpActionChangeState = PopUpAction.OnHide;
 			if(name!="WinPopUp" && name!="LosePopUp"){
