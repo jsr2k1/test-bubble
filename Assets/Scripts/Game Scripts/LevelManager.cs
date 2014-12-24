@@ -32,13 +32,10 @@ public class LevelManager : MonoBehaviour
 	public static int currentBalls = 0;
 	internal int totalNumberOfRowsLeft = 0;
 	Text scoreTextLabel;
-	public Image winPop;
-	public Image losePop;
-	public Image moreBubblesPop;
+	public PopUpMgr winPop;
+	public PopUpMgr losePop;
+	public PopUpMgr moreBubblesPop;
 	public static int ReferenceScore;
-	public Image star1;
-	public Image star2;
-	public Image star3;
 	public Image star11;
 	public Image star22;
 	public Image star33;
@@ -86,7 +83,7 @@ public class LevelManager : MonoBehaviour
 	{
 		gameState = GameState.GameFinish;
 		AudioManager.instance.StopAudio();
-		winPop.GetComponent<PopUpMgr>().ShowPopUp();
+		winPop.ShowPopUp();
 		
 		if(PlayerPrefs.GetInt("SCORE_" + levelNo) < score || !PlayerPrefs.HasKey("SCORE_" + levelNo)){
 			PlayerPrefs.SetInt("STARS_" + levelNo, stars);
@@ -108,7 +105,7 @@ public class LevelManager : MonoBehaviour
 		gameState = GameState.GameOver;
 		InGameScriptRefrences.playingObjectManager.FallAllPlayingObjects();
 		AudioManager.instance.StopAudio();
-		losePop.GetComponent<PopUpMgr>().ShowPopUp();
+		losePop.ShowPopUp();
 
 		if (PlayerPrefs.GetString ("GameType") == "Arcade") {
 			if (score > PlayerPrefs.GetInt ("Highscore")) {
@@ -143,18 +140,15 @@ public class LevelManager : MonoBehaviour
 		if(PlayerPrefs.GetString("GameType") == "Normal")
 		{
 			if(score > 0.3 * ReferenceScore){
-				//star1.GetComponent<Image>().enabled = true;
-				star11.GetComponent<Image>().enabled = true;
+				star11.enabled = true;
 				stars = 1;
 			}
 			if(score > 0.6 * ReferenceScore){
-				//star2.GetComponent<Image>().enabled = true;
-				star22.GetComponent<Image>().enabled = true;
+				star22.enabled = true;
 				stars = 2;
 			}
 			if(score > ReferenceScore){
-				//star3.GetComponent<Image>().enabled = true;
-				star33.GetComponent<Image>().enabled = true;
+				star33.enabled = true;
 				stars = 3;
 			}
 			float currentScore = ((float)score /(float)ReferenceScore);
@@ -215,7 +209,7 @@ public class LevelManager : MonoBehaviour
 	public IEnumerator Finishing()
 	{
 		yield return new WaitForSeconds(0.6f);
-		moreBubblesPop.GetComponent<PopUpMgr>().ShowPopUp();
+		moreBubblesPop.ShowPopUp();
 	}
 }
 

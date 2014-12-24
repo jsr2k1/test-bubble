@@ -72,6 +72,7 @@ public class PlayingObjectManager : MonoBehaviour
 		
 		if(PlayingObjectManager.burstCounter < 3 && !Striker.instance.multiBall){
 			ResetAllObjects();
+			CheckGameIsOver();
 			//InGameScriptRefrences.strikerManager.GenerateNextStriker();
 			return;
 		}

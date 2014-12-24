@@ -10,7 +10,7 @@ public class IAPManager : MonoBehaviour
 	//private string formatedPriceText;
 	//public Text coinstext;
 
-	bool bStarted=false;
+	static bool bStarted=false;
 	
 	#if SAMSUNG
 	private string item1 = "xxxxxxxxxxx1";
@@ -30,7 +30,7 @@ public class IAPManager : MonoBehaviour
 			return;
 		}
 
-		DontDestroyOnLoad(gameObject);// Make sure the start method never gets called more then once.
+		//DontDestroyOnLoad(gameObject);// Make sure the start method never gets called more then once.
 		
 		// InApp-Purchases - NOTE: you can set different "In App IDs" for each platform.
 		var inAppIDs = new InAppPurchaseID[5];
