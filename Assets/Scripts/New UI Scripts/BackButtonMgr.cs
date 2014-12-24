@@ -95,9 +95,6 @@ public class BackButtonMgr : MonoBehaviour
 				}
 				//GAME-ARCADE
 				else if(Application.loadedLevel==4){
-					if(LevelManager.instance.totalNumberOfRowsLeft > 0){
-						return;
-					}
 					quitArcadePopUp.ShowPopUp();
 				}
 			}

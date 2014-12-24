@@ -10,7 +10,7 @@ public class IAPManager : MonoBehaviour
 	//private string formatedPriceText;
 	//public Text coinstext;
 
-	static bool bStarted=false;
+	bool bStarted=false;
 	
 	#if SAMSUNG
 	private string item1 = "xxxxxxxxxxx1";
@@ -30,15 +30,15 @@ public class IAPManager : MonoBehaviour
 			return;
 		}
 
-		//DontDestroyOnLoad(gameObject);// Make sure the start method never gets called more then once.
+		DontDestroyOnLoad(gameObject);// Make sure the start method never gets called more then once.
 		
 		// InApp-Purchases - NOTE: you can set different "In App IDs" for each platform.
 		var inAppIDs = new InAppPurchaseID[5];
-		inAppIDs [0] = new InAppPurchaseID(item1, 0.99m, "$", InAppPurchaseTypes.Consumable);
-		inAppIDs [1] = new InAppPurchaseID(item2, 0.99m, "$", InAppPurchaseTypes.Consumable);
-		inAppIDs [2] = new InAppPurchaseID(item3, 0.99m, "$", InAppPurchaseTypes.Consumable);
-		inAppIDs [3] = new InAppPurchaseID(item4, 0.99m, "$", InAppPurchaseTypes.Consumable);
-		inAppIDs [4] = new InAppPurchaseID(item5, 0.99m, "$", InAppPurchaseTypes.Consumable);
+		inAppIDs[0] = new InAppPurchaseID(item1, 0.99m, "$", InAppPurchaseTypes.Consumable);
+		inAppIDs[1] = new InAppPurchaseID(item2, 0.99m, "$", InAppPurchaseTypes.Consumable);
+		inAppIDs[2] = new InAppPurchaseID(item3, 0.99m, "$", InAppPurchaseTypes.Consumable);
+		inAppIDs[3] = new InAppPurchaseID(item4, 0.99m, "$", InAppPurchaseTypes.Consumable);
+		inAppIDs[4] = new InAppPurchaseID(item5, 0.99m, "$", InAppPurchaseTypes.Consumable);
 		
 		restoreInAppStatusText = new string[inAppIDs.Length];
 		var desc = new InAppPurchaseDesc();
@@ -99,8 +99,8 @@ public class IAPManager : MonoBehaviour
 	{
 		int appIndex = InAppPurchaseManager.MainInAppAPI.GetAppIndexForAppID(inAppID);
 		if(appIndex != -1) {
-			restoreInAppStatusText [appIndex] = "Restore Status: " + inAppID + ": " + succeeded + " Index: " + appIndex;
-			Debug.Log(restoreInAppStatusText [appIndex]);
+			restoreInAppStatusText[appIndex] = "Restore Status: " + inAppID + ": " + succeeded + " Index: " + appIndex;
+			Debug.Log(restoreInAppStatusText[appIndex]);
 		}
 	}
 	/*
@@ -127,7 +127,7 @@ public class IAPManager : MonoBehaviour
 						InAppPurchaseManager.MainInAppAPI.Restore(restoreAppsCallback);
 				} else {
 						for(int i = 0; i != restoreInAppStatusText.Length; ++i) {
-								GUI.Label(new Rect(Screen.width - 256, 64 * i, 256, 64), restoreInAppStatusText [i]);
+								GUI.Label(new Rect(Screen.width - 256, 64 * i, 256, 64), restoreInAppStatusText[i]);
 						}
 				}
 		
@@ -166,7 +166,7 @@ public class IAPManager : MonoBehaviour
 		int appIndex = InAppPurchaseManager.MainInAppAPI.GetAppIndexForAppID(inAppID);
 		//MessageBoxManager.Show("App Buy Status", inAppID + " Success: " + succeeded + " Index: " + appIndex);
 		if(appIndex != -1)
-			restoreInAppStatusText [appIndex] = "Restore Status: " + inAppID + ": " + succeeded + " Index: " + appIndex;
+			restoreInAppStatusText[appIndex] = "Restore Status: " + inAppID + ": " + succeeded + " Index: " + appIndex;
 		if(succeeded) {
 			if(inAppID == "xsmall") {
 				int coins = PlayerPrefs.GetInt("Coins");
@@ -209,8 +209,8 @@ public class IAPManager : MonoBehaviour
 		waiting = false;
 		int appIndex = InAppPurchaseManager.MainInAppAPI.GetAppIndexForAppID(inAppID);
 		if(appIndex != -1) {
-			restoreInAppStatusText [appIndex] = "Restore Status: " + inAppID + ": " + succeeded + " Index: " + appIndex;
-			Debug.Log(restoreInAppStatusText [appIndex]);
+			restoreInAppStatusText[appIndex] = "Restore Status: " + inAppID + ": " + succeeded + " Index: " + appIndex;
+			Debug.Log(restoreInAppStatusText[appIndex]);
 		}
 	}
 	
