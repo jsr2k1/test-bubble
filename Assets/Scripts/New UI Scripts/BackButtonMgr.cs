@@ -81,6 +81,9 @@ public class BackButtonMgr : MonoBehaviour
 				}
 				//GAME-WORLDS
 				else if(Application.loadedLevel==3){
+					if(LevelManager.instance.totalNumberOfRowsLeft > 0 || !InGameScriptRefrences.strikerManager.bStartDone){
+						return;
+					}
 					if(PopUpMgr.currentPopUpObj!=null){
 						string s = PopUpMgr.currentPopUpObj.name;
 						if(s!="MoreBubblesPopup" && s!="WinPopUp" && s!="LosePopUp"){
@@ -92,6 +95,9 @@ public class BackButtonMgr : MonoBehaviour
 				}
 				//GAME-ARCADE
 				else if(Application.loadedLevel==4){
+					if(LevelManager.instance.totalNumberOfRowsLeft > 0){
+						return;
+					}
 					quitArcadePopUp.ShowPopUp();
 				}
 			}

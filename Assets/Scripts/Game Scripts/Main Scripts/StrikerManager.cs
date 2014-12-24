@@ -20,11 +20,13 @@ public class StrikerManager : MonoBehaviour
 	internal bool isFirstObject = true;
 	ArrayList remainingObjects;
 	public InputScript inputScript;
+	public bool bStartDone=false;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Start()
 	{
+		bStartDone=false;
 		StartCoroutine(StartLoader());
 	}
 
@@ -51,9 +53,11 @@ public class StrikerManager : MonoBehaviour
 		//Invoke("UpdateThresoldPosition", .2f);
 		//Invoke("GenerateStriker", .2f);
 		InGameScriptRefrences.playingObjectManager.ResetAllObjects();
+		InGameScriptRefrences.playingObjectManager.GetMissionCountTotal();
 		GenerateNextStriker();
 		UpdateThresoldPosition();
 		GenerateStriker();
+		bStartDone=true;
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
