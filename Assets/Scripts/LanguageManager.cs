@@ -47,7 +47,7 @@ public class LanguageManager : MonoBehaviour
 		dict.Add("id_play", new string[] {"JUGAR", "PLAY"});
 		dict.Add("id_connect", new string[] {"CONECTAR", "CONNECT"});
 		dict.Add("id_settings", new string[] {"AJUSTES", "SETTINGS"});
-		dict.Add("id_quit", new string[] {"SALIR DEL JUEGO?", "EXIT GAME?"});
+		dict.Add("id_quit", new string[] {"¿SALIR DEL JUEGO?", "EXIT GAME?"});
 		dict.Add("id_yes", new string[] {"SI", "YES"});
 		dict.Add("id_no", new string[] {"NO", "NO"});
 		dict.Add("id_cash", new string[] {"ORO:", "CASH:"});
@@ -57,7 +57,7 @@ public class LanguageManager : MonoBehaviour
 		dict.Add("id_levelfail", new string[] {"¡Nivel fallido!", "Level failed!"});
 		dict.Add("id_levelsuccess", new string[] {"¡Nivel completado!", "Level completed!"});
 		dict.Add("id_score", new string[] {"Puntuaci\u00F3n: ", "Score: "});
-		dict.Add("id_quitlevel", new string[] {"SALIR DEL NIVEL?", "QUIT LEVEL?"});
+		dict.Add("id_quitlevel", new string[] {"¿SALIR DEL NIVEL?", "QUIT LEVEL?"});
 		dict.Add("id_lifeinfo", new string[] {"¡Perder\u00E1s una vida!", "You will lose a life!"});
 		dict.Add("id_noballs", new string[] {"No tienes m\u00E1s disparos...", "You are out of bubbles..."});
 		dict.Add("id_infoclear", new string[] {"Despeja el nivel", "Clear the level"});
@@ -75,6 +75,13 @@ public class LanguageManager : MonoBehaviour
 		dict.Add("id_outofbubbles", new string[] {"¡No te quedan m\u00E1s bolas!", "You are out of bubbles!"});
 		dict.Add("id_infooutofbubbles", new string[] {"¡Consigue 5 bolas extra y una bola multicolor!", "Get one multicolor ball and 5 extra bubbles!"});
 		dict.Add("id_quitarcade", new string[] {"¡Perder\u00E1s el progreso actual!", "You will lose the current progress!"});
+		dict.Add("id_tutorial_1", new string[] {"Pulsa la pantalla para apuntar y disparar", "Touch the screen to aim and shoot"});
+		dict.Add("id_tutorial_2", new string[] {"Junta 3 bolas para que exploten", "Match 3 bubbles to explode them"});
+		dict.Add("id_tutorial_3", new string[] {"Despeja el techo para superar el nivel", "Clear all ceiling bubbles to win the level"});
+		dict.Add("id_tutorial_4", new string[] {"Peta las bolas que rodean al loro para liberarlo", "Free the parrot by bursting the bubbles around him"});
+		dict.Add("id_tutorial_5", new string[] {"Tienes un n\u00FAmero limitado de disparos para completar el nivel", "You have a limited number of shots to complete the level"});
+		dict.Add("id_tutorial_6", new string[] {"Puedes hacer rebotar las bolas en las paredes", "Use the walls to rebound the bubbles"});
+		dict.Add("id_tutorial_7", new string[] {"Pulsa las flechas para cambiar las bolas", "Switch bubbles by touching the arrows"});
 	}
 }
 
