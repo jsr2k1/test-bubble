@@ -14,7 +14,6 @@ public class ProfilePic : MonoBehaviour
 	
 	void Awake()
 	{
-
 		string currentLevel = (PlayerPrefs.GetInt("Level")+1).ToString();
 		if (PlayerPrefs.GetInt("Level")+1 > 40) {
 			currentLevel = "40";
@@ -51,3 +50,8 @@ public class ProfilePic : MonoBehaviour
 		profilePic.sprite = spritefb;
 	}
 }
+
+
+
+
+

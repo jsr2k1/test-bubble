@@ -44,6 +44,10 @@ public class LevelManager : MonoBehaviour
 	public Text levelText2;
 	public Slider slider;
 	public Text highscoretext;
+	
+	//Creamos un evento para saber el momento exacto en el que se ha superado un nivel para guardarlo en el Parse
+	public delegate void LevelIsCompleted();
+	public static event LevelIsCompleted OnLevelIsCompleted;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -91,6 +95,9 @@ public class LevelManager : MonoBehaviour
 		}
 		if(PlayerPrefs.GetInt("Level") < levelNo){
 			PlayerPrefs.SetInt("Level", levelNo);
+			if(OnLevelIsCompleted!=null){
+				OnLevelIsCompleted();
+			}
 		}
 		PlayerPrefs.SetInt("bPlaying", 0);
 	}
