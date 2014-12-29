@@ -35,7 +35,7 @@ public class PopUpMgr : MonoBehaviour
 		if(!bShow){
 			//if(PlayerPrefs.GetString("GameType")!="Arcade"){
 				if(name== "SettingsPopUp"){
-					if(/*LevelManager.instance.totalNumberOfRowsLeft > 0 || */!InGameScriptRefrences.strikerManager.bStartDone){
+					if(InGameScriptRefrences.strikerManager!=null &&!InGameScriptRefrences.strikerManager.bStartDone){
 						return;
 					}
 				}

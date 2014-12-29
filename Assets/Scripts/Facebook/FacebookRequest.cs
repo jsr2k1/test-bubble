@@ -51,8 +51,11 @@ public class FacebookRequest : MonoBehaviour
 	
 	string objectId = "1494978434114506"; //id de la instancia de la vida que hemos creado en la consola de Facebook
 	
-	public static string facebookUserID;
 	public static string facebookUserName;
+	
+	//Creamos un evento para saber el momento en que el usuario hace login y guardar la info en el Parse
+	public delegate void UserIsLoggedInFacebook();
+	public static event UserIsLoggedInFacebook OnUserIsLoggedInFacebook;
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -77,7 +80,6 @@ public class FacebookRequest : MonoBehaviour
 		pendingRequests = new Dictionary<string, object>();
 		pendingRequestsData = new List<object>();
 		
-		GetFacebookUserID();
 		//DeleteAllRequests(); //Only for testing
 	}
 	
@@ -97,27 +99,26 @@ public class FacebookRequest : MonoBehaviour
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	void GetFacebookUserID()
+	public static void GetFacebookUserName()
 	{
 		if(FB.IsLoggedIn){
-			FB.API("v2.2/me?fields=id,name", HttpMethod.GET, GetFacebookUserIDCallback);
+			FB.API("v2.2/me?fields=id,name", HttpMethod.GET, GetFacebookUserNameCallback);
 		}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	void GetFacebookUserIDCallback(FBResult result)
+	static void GetFacebookUserNameCallback(FBResult result)
 	{
 		if(!String.IsNullOrEmpty(result.Error)){
-			CustomDebug("DeleteAllRequestsCallback: Error Response:" + result.Error);
+			Debug.Log("GetFacebookUserNameCallback: Error Response:" + result.Error);
 		}
 		else if(!String.IsNullOrEmpty(result.Text)){
 			Dictionary<string, object> dict = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
-			facebookUserID = dict["id"].ToString();
 			facebookUserName = dict["name"].ToString();
 		}
-		else{
-			lastResponse = "Empty Response\n";
+		if(OnUserIsLoggedInFacebook!=null){
+			OnUserIsLoggedInFacebook();
 		}
 	}
 	

@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 public class ParseManager : MonoBehaviour
 {
 	ParseObject currentParseObject;
-	string currentLevel;
 	string currentObjectID;
 	Task getObjTask;
 	Task getObjIDTask;
 	bool emptyEntry=false;
 	public bool bDebug;
+	
+	//Creamos un evento para saber el momento en que se ha creado la entrada en el Parse
+	public delegate void NewEntryCreated();
+	public static event NewEntryCreated OnNewEntryCreated;
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -22,37 +25,72 @@ public class ParseManager : MonoBehaviour
 	{
 		currentParseObject = null;
 	}
-
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Cuando el usuario hace login en Facebook se guarda un registro en Parse (si no existe ya)
+	//Cuando el usuario consigue terminar un nivel se guarda en Parse
+	void OnEnable()
+	{
+		FacebookRequest.OnUserIsLoggedInFacebook += CreateParseEntry;
+		LevelManager.OnLevelIsCompleted += SaveCurrentLevel;
+	}
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	void Start()
+	void OnDisable()
 	{
-		if(FB.IsLoggedIn){
-			StartCoroutine(CreateEntry("currentLevel", "1"));
-			//StartCoroutine(GetCurrentLevel(facebookUserID));
-			//StartCoroutine(SetCurrentLevel(facebookUserID, "14"));
+		FacebookRequest.OnUserIsLoggedInFacebook += CreateParseEntry;
+		LevelManager.OnLevelIsCompleted -= SaveCurrentLevel;
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void CreateParseEntry()
+	{
+		if(FB.UserId==null){
+			return;
+		}
+		StartCoroutine(CreateNewEntry());
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	IEnumerator CreateNewEntry()
+	{
+		while(FB.UserId==null) yield return null;
+		GetObject(FB.UserId);
+		while(!getObjIDTask.IsCompleted) yield return null;
+		while(!emptyEntry && !getObjTask.IsCompleted) yield return null;
+		
+		//No existe una entrada para ese usuario -> la creamos
+		if(currentParseObject==null){
+			ParseObject facebookUserObj = new ParseObject("FacebookUser");
+			facebookUserObj["facebookUserID"] = FB.UserId;
+			facebookUserObj["facebookUserName"] = FacebookRequest.facebookUserName;
+			facebookUserObj["currentLevel"] = PlayerPrefs.GetInt("Level").ToString();
+			facebookUserObj.SaveAsync();
+			CustomDebug("PARSE_MANAGER: New entry created - ID:"+FB.UserId+", Name:"+FacebookRequest.facebookUserName);
+		}
+		//Ya existe una entrada para el usuario -> recuperamos los valores
+		else{
+			string currentLevel = currentParseObject.Get<string>("currentLevel");
+			PlayerPrefs.SetInt("Level", int.Parse(currentLevel));
+			CustomDebug("PARSE_MANAGER: Entry already exists - ID:"+FB.UserId+", currentLevel:"+currentLevel);
+		}
+		
+		if(OnNewEntryCreated!=null){
+			OnNewEntryCreated();
 		}
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	IEnumerator CreateEntry(string entry, string currentLevel)
+	void SaveCurrentLevel()
 	{
-		while(FacebookRequest.facebookUserID==null) yield return null;
-		GetObject(FacebookRequest.facebookUserID);
-		while(!getObjIDTask.IsCompleted) yield return null;
-		while(!emptyEntry && !getObjTask.IsCompleted) yield return null;
-		
-		if(currentParseObject==null){
-			ParseObject facebookUserObj = new ParseObject("FacebookUser");
-			facebookUserObj["facebookUserID"] = FacebookRequest.facebookUserID;
-			facebookUserObj["facebookUserName"] = FacebookRequest.facebookUserName;
-			facebookUserObj[entry] = currentLevel;
-			facebookUserObj.SaveAsync();
-			if(bDebug){
-				Debug.Log("PARSE_MANAGER: New entry created - facebookUserID:"+FacebookRequest.facebookUserID);
-			}
+		if(FB.UserId==null){
+			return;
 		}
+		StartCoroutine(SetValue("currentLevel", PlayerPrefs.GetInt("Level").ToString()));
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -62,29 +100,23 @@ public class ParseManager : MonoBehaviour
 		GetObject(facebookUserID);
 		while(!getObjIDTask.IsCompleted) yield return null;
 		while(!getObjTask.IsCompleted) yield return null;
-		
-		currentLevel = currentParseObject.Get<string>("currentLevel");
-		
-		if(bDebug){
-			Debug.Log("PARSE_MANAGER: GetCurrentLevel - facebookUserID:"+FacebookRequest.facebookUserID+", currentLevel:"+currentLevel);
-		}
+		int currentLevel = int.Parse(currentParseObject.Get<string>("currentLevel"));
+		CustomDebug("PARSE_MANAGER: GetCurrentLevel - facebookUserID:"+FB.UserId+", currentLevel:"+currentLevel);
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	IEnumerator SetCurrentLevel(string facebookUserID, string currentLevel)
+	//Guardamos en el registro de Parse del usuario el valor correspondiente a la key
+	IEnumerator SetValue(string key, string value)
 	{
-		GetObject(facebookUserID);
+		GetObject(FB.UserId);
 		while(!getObjIDTask.IsCompleted) yield return null;
 		while(!getObjTask.IsCompleted) yield return null;
 		
 		currentParseObject.SaveAsync().ContinueWith(t => {
-			currentParseObject["currentLevel"] = currentLevel;
+			currentParseObject[key] = value;
 			currentParseObject.SaveAsync();
 		});
-		if(bDebug){
-			Debug.Log("PARSE_MANAGER: SetCurrentLevel - facebookUserID:"+FacebookRequest.facebookUserID+", currentLevel:"+currentLevel);
-		}
+		CustomDebug("PARSE_MANAGER: SetValue - facebookUserID:"+FB.UserId+", key:"+key+", value:"+value);
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -113,7 +145,7 @@ public class ParseManager : MonoBehaviour
 		}
 		if(count==0){
 			if(bDebug){
-				Debug.Log("PARSE_MANAGER: No entries - facebookUserID:"+FacebookRequest.facebookUserID);
+				Debug.Log("PARSE_MANAGER: No entries - facebookUserID:"+FB.UserId);
 			}
 			emptyEntry=true;
 			return;
@@ -126,6 +158,16 @@ public class ParseManager : MonoBehaviour
 			});
 		}
 	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void CustomDebug(string s)
+	{
+		if(bDebug){
+			Debug.Log(s);
+		}
+	}
+
 }
 
 

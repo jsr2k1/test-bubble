@@ -13,7 +13,6 @@ public class SpecialBallButton : MonoBehaviour
 	
 	void Awake()
 	{
-
 		SetText();
 	}
 	
@@ -21,10 +20,7 @@ public class SpecialBallButton : MonoBehaviour
 	
 	void OnEnable()
 	{
-
 		Striker.OnSpecialBallLaunched += SetText;
-		
-
 		PurchaseSpecialBall.OnSpecialBallBuyed += SetText;
 	}
 	
@@ -32,14 +28,9 @@ public class SpecialBallButton : MonoBehaviour
 	
 	void OnDisable()
 	{
-
 		Striker.OnSpecialBallLaunched -= SetText;
-		
-
 		PurchaseSpecialBall.OnSpecialBallBuyed -= SetText;
 	}
-	
-
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
