@@ -11,7 +11,7 @@ public class Striker : MonoBehaviour
 	Transform myTransform;
 
 	//Power-ups
-	bool fireBall = false;
+	public bool fireBall = false;
 	public bool bombBall = false;
 	public bool multiBall = false;
 	int deep = 0;
@@ -118,6 +118,9 @@ public class Striker : MonoBehaviour
 						other.gameObject.GetComponent<PlayingObject>().DestroyPlayingObject();
 						ScoreManagerGame.instance.DisplayScorePopup(10, transform);
 						deep = deep + 1;
+						if(deep==1){
+							AudioManager.instance.PlayFxSound(AudioManager.instance.burstSound);
+						}
 					}else{
 						Destroy(currentStrikerObject);
 						fireBall = false;

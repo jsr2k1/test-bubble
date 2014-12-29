@@ -1159,7 +1159,7 @@ MonoBehaviour:
   spriteMultiBall: {fileID: 21300000, guid: a4b20f67cbbd41a40ba00b072d671109, type: 3}
   spriteBombBall: {fileID: 21300000, guid: 09644848fce224b42936900e2c969299, type: 3}
   spriteFireBall: {fileID: 21300000, guid: 5c1b9a533adb9394bb7ddacd4db7039c, type: 3}
-  inputScript: {fileID: 0}
+  inputScript: {fileID: 186}
 --- !u!114 &595
 MonoBehaviour:
   m_ObjectHideFlags: 0
