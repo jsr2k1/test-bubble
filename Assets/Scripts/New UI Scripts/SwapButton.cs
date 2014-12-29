@@ -10,6 +10,9 @@ public class SwapButton : MonoBehaviour
 	
 	public void SwapBalls()
 	{
+		if(Striker.instance.fireBall || Striker.instance.bombBall || Striker.instance.multiBall){
+			return;
+		}
 		if(PlayerPrefs.GetString("GameType") == "Arcade" || LevelManager.currentBalls > 1)
 		{
 			Striker.instance.Swap();
