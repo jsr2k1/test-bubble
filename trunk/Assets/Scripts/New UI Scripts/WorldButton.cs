@@ -92,10 +92,10 @@ public class WorldButton : MonoBehaviour
 			PlayerPrefs.SetInt("bPlaying", 1);
 			//Application.LoadLevel(3);
 
-			levelTextPop.text = LevelManager.levelNo.ToString();
-			if(PlayingObjectManager.GetLevelMission() == PlayingObjectManager.MissionType.Animals){
-				levelTextPop.text = LevelManager.levelNo.ToString();
-			}
+			levelTextPop.text = LanguageManager.GetText("id_level")+" "+LevelManager.levelNo.ToString();
+			//if(PlayingObjectManager.GetLevelMission() == PlayingObjectManager.MissionType.Animals){
+			//	levelTextPop.text = LevelManager.levelNo.ToString();
+			//}
 			startPop.GetComponent<PopUpMgr>().ShowPopUp();
 		}
 		else{
