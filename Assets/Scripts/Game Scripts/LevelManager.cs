@@ -44,6 +44,10 @@ public class LevelManager : MonoBehaviour
 	public Text levelText2;
 	public Slider slider;
 	public Text highscoretext;
+	public GameObject BallCounter;
+	Animator anim;
+
+	public AudioSource fewballs;
 	
 	//Creamos un evento para saber el momento exacto en el que se ha superado un nivel para guardarlo en el Parse
 	public delegate void LevelIsCompleted();
@@ -56,6 +60,9 @@ public class LevelManager : MonoBehaviour
 		totalNumberOfRowsLeft = totalNoOfRows;
 		instance = this;
 		score = 0;
+		if (BallCounter != null) {
+			anim = BallCounter.GetComponent<Animator> ();
+		}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -207,8 +214,15 @@ public class LevelManager : MonoBehaviour
 			currentBalls--;
 			if(PlayerPrefs.GetString("GameType") == "Normal"){
 				ballsManager.setBallsLeft(currentBalls);
+				if (currentBalls==5){
+					if (PlayerPrefs.GetInt("Sounds")==1){
+						fewballs.Play();
+					}
+					anim.SetTrigger("FewBalls");
+				}
 			}
 		}
+		
 		//No lo podemos hacer aqui pq primero tenemos que comprobar si ha completado el nivel justo con el ultimo disparo
 		//Esto lo haremos en PlayingObjectManager.CheckGameIsOver()
 		//if(currentBalls == 0){
