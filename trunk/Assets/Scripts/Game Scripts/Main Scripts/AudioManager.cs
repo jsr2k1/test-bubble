@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
 	
 	public AudioClip[] audioClips;
 	public AudioClip UIClick;
+	public AudioClip UIClickBooster;
 	
 	Toggle musicToggle;
 	Toggle soundsToggle;

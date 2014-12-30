@@ -95,11 +95,12 @@ public class LevelManager : MonoBehaviour
 		}
 		if(PlayerPrefs.GetInt("Level") < levelNo){
 			PlayerPrefs.SetInt("Level", levelNo);
-			if(OnLevelIsCompleted!=null){
-				OnLevelIsCompleted();
-			}
 		}
 		PlayerPrefs.SetInt("bPlaying", 0);
+		
+		if(OnLevelIsCompleted!=null){
+			OnLevelIsCompleted(); //Lanzamos este evento para que guarde el progreso en el parse
+		}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -114,14 +115,18 @@ public class LevelManager : MonoBehaviour
 		AudioManager.instance.StopAudio();
 		losePop.ShowPopUp();
 
-		if (PlayerPrefs.GetString ("GameType") == "Arcade") {
-			if (score > PlayerPrefs.GetInt ("Highscore")) {
-				PlayerPrefs.SetInt ("Highscore", score);
-				highscoretext.text = score.ToString ();
+		if(PlayerPrefs.GetString("GameType") == "Arcade"){
+			if(score > PlayerPrefs.GetInt("Highscore")){
+				PlayerPrefs.SetInt("Highscore", score);
+				highscoretext.text = score.ToString();
+				if(OnLevelIsCompleted!=null){
+					OnLevelIsCompleted(); //Lanzamos este evento para que guarde el highscore en el Parse
+				}
 			}
-		} else {
-				LivesManager.lives--;
+		}else{
+			LivesManager.lives--;
 		}
+
 		//PlayerPrefs.SetInt("Lives", PlayerPrefs.GetInt("Lives") - 1 );
 		//Invoke("LoadLevelAgain", 3f);
 	}
@@ -158,7 +163,7 @@ public class LevelManager : MonoBehaviour
 				star33.enabled = true;
 				stars = 3;
 			}
-			float currentScore = ((float)score /(float)ReferenceScore);
+			float currentScore =((float)score /(float)ReferenceScore);
 			slider.value = Mathf.Clamp(currentScore, 0.2f, 1.0f);
 		}
 	}

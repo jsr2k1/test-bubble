@@ -31,31 +31,34 @@ public class ParseManager : MonoBehaviour
 	//Cuando el usuario consigue terminar un nivel se guarda en Parse
 	void OnEnable()
 	{
-		FacebookRequest.OnUserIsLoggedInFacebook += CreateParseEntry;
-		LevelManager.OnLevelIsCompleted += SaveCurrentLevel;
+		FacebookRequest.OnUserIsLoggedInFacebook += CheckParseEntry;
+		LevelManager.OnLevelIsCompleted += SaveCurrentData;
+		ButtonsInfoLives.OnExitLevel +=SaveCurrentData;
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void OnDisable()
 	{
-		FacebookRequest.OnUserIsLoggedInFacebook += CreateParseEntry;
-		LevelManager.OnLevelIsCompleted -= SaveCurrentLevel;
+		FacebookRequest.OnUserIsLoggedInFacebook += CheckParseEntry;
+		LevelManager.OnLevelIsCompleted -= SaveCurrentData;
+		ButtonsInfoLives.OnExitLevel -=SaveCurrentData;
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	void CreateParseEntry()
+	void CheckParseEntry()
 	{
-		if(FB.UserId==null){
+		if(!FB.IsLoggedIn){
 			return;
 		}
-		StartCoroutine(CreateNewEntry());
+		StartCoroutine(CheckEntry());
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	IEnumerator CreateNewEntry()
+	//Si el usuario no esta dado de alta en Parse -> Creamos una nueva entrada
+	//Si ya esta dado de alta -> Recuperamos los datos
+	IEnumerator CheckEntry()
 	{
 		while(FB.UserId==null) yield return null;
 		GetObject(FB.UserId);
@@ -67,15 +70,14 @@ public class ParseManager : MonoBehaviour
 			ParseObject facebookUserObj = new ParseObject("FacebookUser");
 			facebookUserObj["facebookUserID"] = FB.UserId;
 			facebookUserObj["facebookUserName"] = FacebookRequest.facebookUserName;
-			facebookUserObj["currentLevel"] = PlayerPrefs.GetInt("Level").ToString();
+			FillObj(facebookUserObj);
 			facebookUserObj.SaveAsync();
 			CustomDebug("PARSE_MANAGER: New entry created - ID:"+FB.UserId+", Name:"+FacebookRequest.facebookUserName);
 		}
 		//Ya existe una entrada para el usuario -> recuperamos los valores
 		else{
-			string currentLevel = currentParseObject.Get<string>("currentLevel");
-			PlayerPrefs.SetInt("Level", int.Parse(currentLevel));
-			CustomDebug("PARSE_MANAGER: Entry already exists - ID:"+FB.UserId+", currentLevel:"+currentLevel);
+			GetUserData();
+			CustomDebug("PARSE_MANAGER: Entry already exists - ID:"+FB.UserId);
 		}
 		
 		if(OnNewEntryCreated!=null){
@@ -85,38 +87,91 @@ public class ParseManager : MonoBehaviour
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	void SaveCurrentLevel()
+	void SaveCurrentData()
 	{
-		if(FB.UserId==null){
+		if(!FB.IsLoggedIn){
 			return;
 		}
-		StartCoroutine(SetValue("currentLevel", PlayerPrefs.GetInt("Level").ToString()));
+		StartCoroutine(SaveCurrentDataUser());
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	IEnumerator GetCurrentLevel(string facebookUserID)
-	{
-		GetObject(facebookUserID);
-		while(!getObjIDTask.IsCompleted) yield return null;
-		while(!getObjTask.IsCompleted) yield return null;
-		int currentLevel = int.Parse(currentParseObject.Get<string>("currentLevel"));
-		CustomDebug("PARSE_MANAGER: GetCurrentLevel - facebookUserID:"+FB.UserId+", currentLevel:"+currentLevel);
-	}
-	
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Guardamos en el registro de Parse del usuario el valor correspondiente a la key
-	IEnumerator SetValue(string key, string value)
+	//Guardamos en el registro de Parse del usuario los datos de los niveles
+	IEnumerator SaveCurrentDataUser()
 	{
 		GetObject(FB.UserId);
 		while(!getObjIDTask.IsCompleted) yield return null;
 		while(!getObjTask.IsCompleted) yield return null;
 		
 		currentParseObject.SaveAsync().ContinueWith(t => {
-			currentParseObject[key] = value;
+			FillObj(currentParseObject);
 			currentParseObject.SaveAsync();
 		});
-		CustomDebug("PARSE_MANAGER: SetValue - facebookUserID:"+FB.UserId+", key:"+key+", value:"+value);
+		CustomDebug("PARSE_MANAGER: SaveCurrentDataUser - facebookUserID:"+FB.UserId);
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Rellenamos los campos del ParseObject con los datos del PlayerPrefs
+	void FillObj(ParseObject obj)
+	{
+		obj["currentLevel"] = PlayerPrefs.GetInt("Level").ToString();
+		obj["Coins"] = PlayerPrefs.GetInt("Coins").ToString();
+		obj["MulticolorBall"] = PlayerPrefs.GetInt("Multicolor Ball").ToString();
+		obj["FireBall"] = PlayerPrefs.GetInt("Fire Ball").ToString();
+		obj["BombBall"] = PlayerPrefs.GetInt("Bomb Ball").ToString();
+		obj["HighScore"] = PlayerPrefs.GetInt("Highscore").ToString();
+		obj["starsDic"] = FillStarsDictionary();
+		obj["scoreDic"] = FillScoreDictionary();
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Guardamos las estrellas que tiene el usuario en los niveles en un diccionario para mandarlo al Parse
+	IDictionary<string, string> FillStarsDictionary()
+	{
+		Dictionary<string,string> dicStars = new Dictionary<string,string>();
+		int currentLevel = PlayerPrefs.GetInt("Level");
+		for(int i=1;i<=currentLevel;i++){
+			int stars = PlayerPrefs.GetInt("STARS_" + i);
+			dicStars.Add("STARS_"+i, stars.ToString());
+		}
+		return dicStars;
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Guardamos el score que tiene el usuario en los niveles en un diccionario para mandarlo al Parse
+	IDictionary<string, string> FillScoreDictionary()
+	{
+		Dictionary<string,string> dicStars = new Dictionary<string,string>();
+		int currentLevel = PlayerPrefs.GetInt("Level");
+		for(int i=1;i<=currentLevel;i++){
+			int stars = PlayerPrefs.GetInt("SCORE_" + i);
+			dicStars.Add("SCORE_"+i, stars.ToString());
+		}
+		return dicStars;
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Obtenemos los datos del usuario y actualizamos el PlayerPrefs
+	void GetUserData()
+	{
+		PlayerPrefs.SetInt("Level", int.Parse(currentParseObject.Get<string>("currentLevel")));
+		PlayerPrefs.SetInt("Coins", int.Parse(currentParseObject.Get<string>("Coins")));
+		PlayerPrefs.SetInt("Multicolor Ball", int.Parse(currentParseObject.Get<string>("MulticolorBall")));
+		PlayerPrefs.SetInt("Fire Ball", int.Parse(currentParseObject.Get<string>("FireBall")));
+		PlayerPrefs.SetInt("Bomb Ball", int.Parse(currentParseObject.Get<string>("BombBall")));
+		PlayerPrefs.SetInt("Highscore", int.Parse(currentParseObject.Get<string>("HighScore")));
+
+		//STARS
+		int currentLevel = PlayerPrefs.GetInt("Level");
+		IDictionary<string, string> dicStars = currentParseObject.Get<IDictionary<string, string>>("starsDic");
+		for(int i=1;i<=currentLevel;i++){
+			PlayerPrefs.SetInt("STARS_"+i, int.Parse(dicStars["STARS_"+i]));
+		}
+		//SCORE
+		IDictionary<string, string> dicScore = currentParseObject.Get<IDictionary<string, string>>("scoreDic");
+		for(int i=1;i<=currentLevel;i++){
+			PlayerPrefs.SetInt("SCORE_"+i, int.Parse(dicScore["SCORE_"+i]));
+		}
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
