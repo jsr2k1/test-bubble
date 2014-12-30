@@ -207,6 +207,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a3a2bf4ccca638a44965bfb19021499d, type: 3}
   - {fileID: 8300000, guid: ffe6018e925518246920456f0bfb0b12, type: 3}
   UIClick: {fileID: 8300000, guid: b38cf6f64fe74dd418ebeed09f85c80e, type: 3}
+  UIClickBooster: {fileID: 8300000, guid: 288702cbb96b94dba8a39e14bc52f8ae, type: 3}
   shootingSound: {fileID: 584472782}
   hookSound: {fileID: 733087561}
   wallCollisionSound: {fileID: 1326388707}
@@ -436,6 +437,10 @@ Prefab:
       propertyPath: burstSound
       value: 
       objectReference: {fileID: 2009771207}
+    - target: {fileID: 11400000, guid: be6d2155466fd7548b9213f975c99dc7, type: 2}
+      propertyPath: UIClickBooster
+      value: 
+      objectReference: {fileID: 8300000, guid: 288702cbb96b94dba8a39e14bc52f8ae, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be6d2155466fd7548b9213f975c99dc7, type: 2}
   m_RootGameObject: {fileID: 194216151}

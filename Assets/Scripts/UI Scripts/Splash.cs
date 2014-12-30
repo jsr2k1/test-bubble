@@ -39,9 +39,6 @@ public class Splash : MonoBehaviour
 		if(!PlayerPrefs.HasKey("Level")){
 			PlayerPrefs.SetInt("Level", 0);
 		}
-		if(!PlayerPrefs.HasKey("World")){
-			PlayerPrefs.SetInt("World", 1);
-		}
 		if(!PlayerPrefs.HasKey("Highscore")){
 			PlayerPrefs.SetInt("Highscore", 0);
 		}

@@ -58,7 +58,10 @@ public class StrikerManager : MonoBehaviour
 		UpdateThresoldPosition();
 		GenerateStriker();
 		bStartDone=true;
-		TutorialManager.instance.ShowTutorial();
+		
+		if(TutorialManager.instance!=null){
+			TutorialManager.instance.ShowTutorial();
+		}
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
