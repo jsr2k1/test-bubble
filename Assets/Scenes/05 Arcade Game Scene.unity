@@ -1152,6 +1152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b220bbca9be2b46a24e8a4ab80d3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireBall: 0
   bombBall: 0
   multiBall: 0
   currentStrikerObject: {fileID: 0}
