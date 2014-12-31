@@ -6,11 +6,12 @@ public class Splash : MonoBehaviour
 	public float timer;
 	public static Sprite spriteIMG;
 	public bool bDeleteAllKeys; //debug
-	public bool bAllLevelsCompleted; //debug
+	public int force_current_level=-1; //debug
 	public int initial_lives;
 
 	void Awake()
 	{
+		//Test Only
 		if(bDeleteAllKeys){
 			PlayerPrefs.DeleteAll();
 		}
@@ -42,12 +43,11 @@ public class Splash : MonoBehaviour
 		if(!PlayerPrefs.HasKey("Highscore")){
 			PlayerPrefs.SetInt("Highscore", 0);
 		}
-		if(bAllLevelsCompleted){
-			for(int i=0;i<40;i++){
-				PlayerPrefs.SetInt("STARS_" + i, 3);
-				PlayerPrefs.SetInt("SCORE_" + i, 1000);
-			}
+		//Test Only
+		if(force_current_level>0){
+			PlayerPrefs.SetInt("Level", force_current_level);
 		}
+		
 		FB.Init(OnInitComplete);
 		StartCoroutine("DisplayScene");
 	}

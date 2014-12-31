@@ -19,7 +19,7 @@ public class TutorialManager : MonoBehaviour
 	{
 		instance = this;
 		
-		int[] items = new int[]{1,2,3,4,5,6,7};
+		int[] items = new int[]{1,2,3,4,5,6,7,8,9};//Lista de niveles en los que van a aparecer los tutoriales
 		tutorialsList = items.ToList();
 		tutorialPopUp = tutorialImage.GetComponent<PopUpMgr>();
 	}
@@ -31,7 +31,7 @@ public class TutorialManager : MonoBehaviour
 		if(tutorialsList.Contains(LevelManager.levelNo)){
 			int index = tutorialsList.IndexOf(LevelManager.levelNo);
 			tutorialImage.sprite = tutorialSprites[index];
-			tutorialText.text = LanguageManager.GetText("id_tutorial_"+(index+1));
+			tutorialText.text = LanguageManager.GetText("id_"+tutorialImage.sprite.name);
 			tutorialPopUp.ShowPopUp();
 		}
 	}

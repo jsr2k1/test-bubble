@@ -75,13 +75,18 @@ public class LanguageManager : MonoBehaviour
 		dict.Add("id_outofbubbles", new string[] {"¡No te quedan m\u00E1s bolas!", "You are out of bubbles!"});
 		dict.Add("id_infooutofbubbles", new string[] {"¡Consigue 5 bolas extra y una bola multicolor!", "Get one multicolor ball and 5 extra bubbles!"});
 		dict.Add("id_quitarcade", new string[] {"¡Perder\u00E1s el progreso actual!", "You will lose the current progress!"});
-		dict.Add("id_tutorial_1", new string[] {"Pulsa la pantalla para apuntar y disparar", "Touch the screen to aim and shoot"});
-		dict.Add("id_tutorial_2", new string[] {"Junta 3 bolas para que exploten", "Match 3 bubbles to explode them"});
-		dict.Add("id_tutorial_3", new string[] {"Despeja el techo para superar el nivel", "Clear all ceiling bubbles to win the level"});
-		dict.Add("id_tutorial_4", new string[] {"Peta las bolas que rodean al loro para liberarlo", "Free the parrot by bursting the bubbles around him"});
-		dict.Add("id_tutorial_5", new string[] {"Tienes un n\u00FAmero limitado de disparos para completar el nivel", "You have a limited number of shots to complete the level"});
-		dict.Add("id_tutorial_6", new string[] {"Puedes hacer rebotar las bolas en las paredes", "Use the walls to rebound the bubbles"});
-		dict.Add("id_tutorial_7", new string[] {"Pulsa las flechas para cambiar las bolas", "Switch bubbles by touching the arrows"});
+		
+		//Tutoriales
+		dict.Add("id_tutorial_pulsa_pantalla", new string[] {"Pulsa la pantalla para apuntar y disparar", "Touch the screen to aim and shoot"});
+		dict.Add("id_tutorial_junta_3_bolitas", new string[] {"Junta 3 bolas para que exploten", "Match 3 bubbles to explode them"});
+		dict.Add("id_tutorial_despeja_techo", new string[] {"Despeja el techo para superar el nivel", "Clear all ceiling bubbles to win the level"});
+		dict.Add("id_tutorial_libera_lorito", new string[] {"Peta las bolas que rodean al loro para liberarlo", "Free the parrot by bursting the bubbles around him"});
+		dict.Add("id_tutorial_num_tiros", new string[] {"Tienes un n\u00FAmero limitado de disparos para completar el nivel", "You have a limited number of shots to complete the level"});
+		dict.Add("id_tutorial_paredes", new string[] {"Puedes hacer rebotar las bolas en las paredes", "Use the walls to rebound the bubbles"});
+		dict.Add("id_tutorial_cambia_bolas", new string[] {"Pulsa las flechas para cambiar las bolas", "Switch bubbles by touching the arrows"});
+		dict.Add("id_tutorial_booster_bomba", new string[] {"Usa la bomba para petar varias bolas, incluso obst\u00E1culos", "Use the bomb to destroy several bubbles, including obstacles"});
+		dict.Add("id_tutorial_booster_fuego", new string[] {"Usa la bola fuego para destruir muchas bolas", "Use the fireball to destroy everything in its way"});
+		dict.Add("id_tutorial_booster_multicolor", new string[] {"Usa la bola multicolor para combinar con cualquier color", "Use the Multicolor bubble to combine the match with any color"});
 	}
 }
 
