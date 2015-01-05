@@ -39,8 +39,8 @@ public class AdBanner : MonoBehaviour
 		//desc.Editor_MillennialMediaAdvertising_RefreshRate = 120,
 
 		// iOS settings
-		desc.iOS_AdAPI = AdAPIs.iAd;
-		//desc.iOS_AdAPI = AdAPIs.AdMob;
+		//desc.iOS_AdAPI = AdAPIs.iAd;
+		desc.iOS_AdAPI = AdAPIs.AdMob;
 		desc.iOS_iAd_AdGravity = AdGravity.BottomCenter;
 		
 		desc.iOS_AdMob_AdGravity = AdGravity.BottomCenter;
