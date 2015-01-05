@@ -454,6 +454,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 70e258e7cfadbdd4f8cca006521e52f4, type: 3}
   - {fileID: 21300000, guid: 3064d44d5006162498f2809527ccae7a, type: 3}
   - {fileID: 21300000, guid: 333b4a1db4eda6d4a961b687306e5dc3, type: 3}
+  - {fileID: 21300000, guid: a578c2b0f4c396a4e829bc8ee3af6f58, type: 3}
   - {fileID: 21300000, guid: 6c7de6e37cfaeb040a444bb61c7c9d71, type: 3}
   - {fileID: 21300000, guid: 50d16d6a4ef73754fa5c14e11c6db20e, type: 3}
   tutorialImage: {fileID: 2042718802}
