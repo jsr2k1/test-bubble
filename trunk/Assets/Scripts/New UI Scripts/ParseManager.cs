@@ -64,7 +64,7 @@ public class ParseManager : MonoBehaviour
 		GetObject(FB.UserId);
 		while(!getObjIDTask.IsCompleted) yield return null;
 		while(!emptyEntry && !getObjTask.IsCompleted) yield return null;
-		
+	
 		//No existe una entrada para ese usuario -> la creamos
 		if(currentParseObject==null){
 			ParseObject facebookUserObj = new ParseObject("FacebookUser");
@@ -79,10 +79,8 @@ public class ParseManager : MonoBehaviour
 			GetUserData();
 			CustomDebug("PARSE_MANAGER: Entry already exists - ID:"+FB.UserId);
 			currentParseObject=null;
-			emptyEntry=false;
-			getObjIDTask=null;
-			getObjTask=null;
 		}
+		emptyEntry=false;
 		
 		if(OnNewEntryCreated!=null){
 			OnNewEntryCreated();
@@ -178,7 +176,7 @@ public class ParseManager : MonoBehaviour
 		}
 		
 		//Si es la primera vez que el usuario se conecta a facebook en ese dispositivo -> Cogemos los valores maximos entre Parse y PlayerPrefs
-		//Si ya se ha conectado antes -> se mantienen los valores que habia en el PlayerPrefs
+		//Si ya se ha conectado antes -> Se mantienen los valores que habia en el PlayerPrefs
 		if(PlayerPrefs.GetInt("FirstTimeFacebookLogin")==1){
 			PlayerPrefs.SetInt("Coins", Mathf.Max(PlayerPrefs.GetInt("Coins"), int.Parse(currentParseObject.Get<string>("Coins"))));
 			PlayerPrefs.SetInt("Multicolor Ball", Mathf.Max(PlayerPrefs.GetInt("Multicolor Ball"), int.Parse(currentParseObject.Get<string>("MulticolorBall"))));
@@ -203,7 +201,7 @@ public class ParseManager : MonoBehaviour
 		//Obtenemos el objectID del resultado
 		IEnumerable<ParseObject> results = task.Result;
 		int count=0;
-		Debug.Log("CallbackGetObject: "+task);
+		
 		foreach(ParseObject res in results){
 			if(count>0){
 				Debug.LogError("ERROR: Hay mas de un resultado");
@@ -215,7 +213,7 @@ public class ParseManager : MonoBehaviour
 		}
 		if(count==0){
 			if(bDebug){
-				Debug.Log("PARSE_MANAGER: No entries - facebookUserID:"+FB.UserId);
+				CustomDebug("PARSE_MANAGER: No entries - facebookUserID:"+FB.UserId);
 			}
 			emptyEntry=true;
 			currentParseObject=null;
