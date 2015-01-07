@@ -33,16 +33,18 @@ public class ParseManager : MonoBehaviour
 	{
 		FacebookRequest.OnUserIsLoggedInFacebook += CheckParseEntry;
 		LevelManager.OnLevelIsCompleted += SaveCurrentData;
-		ButtonsInfoLives.OnExitLevel +=SaveCurrentData;
+		ButtonsInfoLives.OnExitLevel += SaveCurrentData;
+		IAPManager.OnPurchaseDone += SaveCurrentData;
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void OnDisable()
 	{
-		FacebookRequest.OnUserIsLoggedInFacebook += CheckParseEntry;
+		FacebookRequest.OnUserIsLoggedInFacebook -= CheckParseEntry;
 		LevelManager.OnLevelIsCompleted -= SaveCurrentData;
 		ButtonsInfoLives.OnExitLevel -=SaveCurrentData;
+		IAPManager.OnPurchaseDone -= SaveCurrentData;
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

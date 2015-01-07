@@ -24,6 +24,12 @@ public class IAPManager : MonoBehaviour
 	private string item5 = "extrabig";
 	#endif
 	
+	//Creamos un evento para saber el momento en que se ha hecho una compra
+	public delegate void PurchaseDone();
+	public static event PurchaseDone OnPurchaseDone;
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	void Start()
 	{
 		if(bStarted){
@@ -89,11 +95,15 @@ public class IAPManager : MonoBehaviour
 		bStarted=true;
 	}
 	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	private void createdCallback(bool succeeded)
 	{
 		//Debug.Log("InAppPurchaseManager: " + succeeded);
 		InAppPurchaseManager.MainInAppAPI.AwardInterruptedPurchases(awardInterruptedPurchases);
 	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	private void awardInterruptedPurchases(string inAppID, bool succeeded)
 	{
@@ -103,43 +113,48 @@ public class IAPManager : MonoBehaviour
 			Debug.Log(restoreInAppStatusText[appIndex]);
 		}
 	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/*
-		void OnGUI()
-		{
-				float scale = new Vector2(Screen.width, Screen.height).magnitude / new Vector2(1280, 720).magnitude;
+	void OnGUI()
+	{
+			float scale = new Vector2(Screen.width, Screen.height).magnitude / new Vector2(1280, 720).magnitude;
+	
+			// Buy
+			if(!waiting && GUI.Button(new Rect(0, 0, 148, 64 * scale), "Buy NonConsumable")) {
+					waiting = true;
+					// NOTE: You can pass in a "InAppID string value" or an "index" value.
+					InAppPurchaseManager.MainInAppAPI.Buy(item1, buyAppCallback);
+			}
+	
+			if(!waiting && GUI.Button(new Rect(0, 64 * scale, 148, 64 * scale), "Buy Consumable")) {
+					waiting = true;
+					// NOTE: You can pass in a "InAppID string value" or an "index" value.
+					InAppPurchaseManager.MainInAppAPI.Buy(item3, buyAppCallback);
+			}
+	
+			// Restore
+			if(!waiting && GUI.Button(new Rect(0, 128 * scale, 148, 64 * scale), "Restore Apps")) {
+					waiting = true;
+					InAppPurchaseManager.MainInAppAPI.Restore(restoreAppsCallback);
+			} else {
+					for(int i = 0; i != restoreInAppStatusText.Length; ++i) {
+							GUI.Label(new Rect(Screen.width - 256, 64 * i, 256, 64), restoreInAppStatusText[i]);
+					}
+			}
+	
+			// Get price information
+			if(!waiting && GUI.Button(new Rect(148 + 16, 0, 148, 64 * scale), "Get Price Info")) {
+					waiting = true;
+					InAppPurchaseManager.MainInAppAPI.GetProductInfo(productInfoCallback);
+			} else if(formatedPriceText != null) {
+					GUI.Label(new Rect(148 * 2 + 16 + 8, 0, 128, 32), formatedPriceText);
+			}
+	}
+	*/
 		
-				// Buy
-				if(!waiting && GUI.Button(new Rect(0, 0, 148, 64 * scale), "Buy NonConsumable")) {
-						waiting = true;
-						// NOTE: You can pass in a "InAppID string value" or an "index" value.
-						InAppPurchaseManager.MainInAppAPI.Buy(item1, buyAppCallback);
-				}
-		
-				if(!waiting && GUI.Button(new Rect(0, 64 * scale, 148, 64 * scale), "Buy Consumable")) {
-						waiting = true;
-						// NOTE: You can pass in a "InAppID string value" or an "index" value.
-						InAppPurchaseManager.MainInAppAPI.Buy(item3, buyAppCallback);
-				}
-		
-				// Restore
-				if(!waiting && GUI.Button(new Rect(0, 128 * scale, 148, 64 * scale), "Restore Apps")) {
-						waiting = true;
-						InAppPurchaseManager.MainInAppAPI.Restore(restoreAppsCallback);
-				} else {
-						for(int i = 0; i != restoreInAppStatusText.Length; ++i) {
-								GUI.Label(new Rect(Screen.width - 256, 64 * i, 256, 64), restoreInAppStatusText[i]);
-						}
-				}
-		
-				// Get price information
-				if(!waiting && GUI.Button(new Rect(148 + 16, 0, 148, 64 * scale), "Get Price Info")) {
-						waiting = true;
-						InAppPurchaseManager.MainInAppAPI.GetProductInfo(productInfoCallback);
-				} else if(formatedPriceText != null) {
-						GUI.Label(new Rect(148 * 2 + 16 + 8, 0, 128, 32), formatedPriceText);
-				}
-		}
-		*/
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	public void PurchaseSomething(string item)
 	{
 		if(!waiting) {
@@ -147,6 +162,8 @@ public class IAPManager : MonoBehaviour
 			InAppPurchaseManager.MainInAppAPI.Buy(item, buyAppCallback);
 		}
 	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	private void productInfoCallback(InAppPurchaseInfo[] priceInfos, bool succeeded)
 	{
@@ -160,6 +177,8 @@ public class IAPManager : MonoBehaviour
 		}
 	}
 	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	void buyAppCallback(string inAppID, bool succeeded)
 	{
 		waiting = false;
@@ -167,42 +186,42 @@ public class IAPManager : MonoBehaviour
 		//MessageBoxManager.Show("App Buy Status", inAppID + " Success: " + succeeded + " Index: " + appIndex);
 		if(appIndex != -1)
 			restoreInAppStatusText[appIndex] = "Restore Status: " + inAppID + ": " + succeeded + " Index: " + appIndex;
-		if(succeeded) {
+		
+		if(succeeded)
+		{
 			if(inAppID == "xsmall") {
 				int coins = PlayerPrefs.GetInt("Coins");
 				coins = coins + 100;
 				PlayerPrefs.SetInt("Coins", coins);	
-				//coinstext.text = PlayerPrefs.GetInt("Coins").ToString();
 			}
 			if(inAppID == "small") {
 				int coins = PlayerPrefs.GetInt("Coins");
 				coins = coins + 400;
 				PlayerPrefs.SetInt("Coins", coins);	
-				//coinstext.text = PlayerPrefs.GetInt("Coins").ToString();
 			}
-						
 			if(inAppID == "medium") {
 				int coins = PlayerPrefs.GetInt("Coins");
 				coins = coins + 800;
 				PlayerPrefs.SetInt("Coins", coins);	
-				//coinstext.text = PlayerPrefs.GetInt("Coins").ToString();
 			}
-						
 			if(inAppID == "big") {
 				int coins = PlayerPrefs.GetInt("Coins");
 				coins = coins + 2000;
 				PlayerPrefs.SetInt("Coins", coins);	
-				//coinstext.text = PlayerPrefs.GetInt("Coins").ToString();
 			}
-						
 			if(inAppID == "extrabig") {
 				int coins = PlayerPrefs.GetInt("Coins");
 				coins = coins + 5000;
 				PlayerPrefs.SetInt("Coins", coins);	
-				//coinstext.text = PlayerPrefs.GetInt("Coins").ToString();
+			}
+			
+			if(OnPurchaseDone!=null){
+				OnPurchaseDone();
 			}
 		}
 	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void restoreAppsCallback(string inAppID, bool succeeded)
 	{
@@ -213,6 +232,8 @@ public class IAPManager : MonoBehaviour
 			Debug.Log(restoreInAppStatusText[appIndex]);
 		}
 	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Update()
 	{
