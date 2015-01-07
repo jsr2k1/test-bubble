@@ -27,6 +27,8 @@ public class IAPManager : MonoBehaviour
 	//Creamos un evento para saber el momento en que se ha hecho una compra
 	public delegate void PurchaseDone();
 	public static event PurchaseDone OnPurchaseDone;
+
+	public bool bTesting;
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -50,7 +52,7 @@ public class IAPManager : MonoBehaviour
 		var desc = new InAppPurchaseDesc();
 		
 		// Global
-		desc.Testing = true;
+		desc.Testing = bTesting;
 		
 		// Editor
 		desc.Editor_InAppIDs = inAppIDs;
