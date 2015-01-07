@@ -33,6 +33,24 @@ public class StreamsDemo : MonoBehaviour
 		// NOTE: Other usfull methods...
 		//StreamManager.SaveScreenShotToPictures(...);
 		//StreamManager.MakeFourCC(...);
+
+		// NOTE: With ImageTools you can do stuff like >>>
+		// <<< Decode images and resize them: (Example)
+		/*
+		var decoder = new PngDecoder();
+		var image = new ExtendedImage();
+		decoder.Decode(image, stream);
+		var newImage = ExtendedImage.Resize(image, 32, 32, new NearestNeighborResizer());
+		currentImage = new Texture2D(newImage.PixelWidth, newImage.PixelHeight);
+		currentImage.SetPixels(newImage.Colors);
+		currentImage.Apply();
+		*/
+
+		// <<< Encode images to other formats Unity doesn't support: (Example)
+		/*
+		var encoder = new PngEncoder();
+		encoder.Encode(image, stream);
+		*/
 	}
 
 	void OnGUI()
@@ -100,7 +118,13 @@ public class StreamsDemo : MonoBehaviour
 		{
 			waiting = true;
 			// NOTE: Unity only supports loading png and jpg data
-			StreamManager.LoadFileDialog(FolderLocations.Pictures, new string[]{".png", ".jpg"}, imageLoadedCallback);
+			StreamManager.LoadFileDialog(FolderLocations.Pictures, 128, 128, new string[]{".png", ".jpg", ".jpeg"}, imageLoadedCallback);
+		}
+
+		if (!waiting && GUI.Button(new Rect(0, ((332+128)*scale)+offset, 128, 64*scale), "Camera Picker"))
+		{
+			waiting = true;
+			StreamManager.LoadCameraPicker(CameraQuality.Med, 128, 128, imageLoadedCallback);
 		}
 	}
 

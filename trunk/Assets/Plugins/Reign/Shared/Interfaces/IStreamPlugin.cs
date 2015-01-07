@@ -40,6 +40,27 @@ namespace Reign
 	}
 
 	/// <summary>
+	/// Camera resolution quality.
+	/// </summary>
+	public enum CameraQuality
+	{
+		/// <summary>
+		/// Low rez
+		/// </summary>
+		Low,
+
+		/// <summary>
+		/// Med rez
+		/// </summary>
+		Med,
+
+		/// <summary>
+		/// High Rez
+		/// </summary>
+		High
+	}
+
+	/// <summary>
 	/// Used to check for existing files
 	/// </summary>
 	/// <param name="exists">True if file exists</param>
@@ -136,13 +157,24 @@ namespace Reign.Plugin
 		/// Use to have the user pick a file
 		/// </summary>
 		/// <param name="folderLocation">Folder location</param>
+		/// <param name="maxWidth">Image size returned will not be above the Max Width value (set 0 to disable)</param>
+		/// <param name="maxHeight">Image size returned will not be above the Max Height value (set 0 to disable)</param>
 		/// <param name="x">iOS popup X pos</param>
 		/// <param name="y">iOS popup Y pos</param>
 		/// <param name="width">iOS popup Width</param>
 		/// <param name="height">iOS popup Height</param>
 		/// <param name="fileTypes">File types use can see in popup</param>
 		/// <param name="streamLoadedCallback">Callback fired when done</param>
-		void LoadFileDialog(FolderLocations folderLocation, int x, int y, int width, int height, string[] fileTypes, StreamLoadedCallbackMethod streamLoadedCallback);
+		void LoadFileDialog(FolderLocations folderLocation, int maxWidth, int maxHeight, int x, int y, int width, int height, string[] fileTypes, StreamLoadedCallbackMethod streamLoadedCallback);
+
+		/// <summary>
+		/// Use to have the user take a picture with there native camera
+		/// </summary>
+		/// <param name="quality">Camera resolution quality</param>
+		/// <param name="maxWidth">Image size returned will not be above the Max Width value (set 0 to disable)</param>
+		/// <param name="maxHeight">Image size returned will not be above the Max Height value (set 0 to disable)</param>
+		/// <param name="streamLoadedCallback">Callback fired when done</param>
+		void LoadCameraPicker(CameraQuality quality, int maxWidth, int maxHeight, StreamLoadedCallbackMethod streamLoadedCallback);
 
 		/// <summary>
 		/// Used to handle internal events

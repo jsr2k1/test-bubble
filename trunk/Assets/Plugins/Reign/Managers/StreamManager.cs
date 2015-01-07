@@ -23,7 +23,8 @@ namespace Reign
 		SaveFile,
 		SaveFileDialog,
 		LoadFile,
-		LoadFileDialog
+		LoadFileDialog,
+		LoadCameraPicker
 	}
 
 	class StreamManagerQue
@@ -36,9 +37,11 @@ namespace Reign
 
 		public string FileName;
 		public FolderLocations FolderLocation;
+		public CameraQuality CameraQuality;
 		public Stream Stream;
 		public byte[] Data;
 		public string[] FileTypes;
+		public int MaxWidth, MaxHeight;
 
 		public StreamManagerQue(StreamManagerQueTypes type)
 		{
@@ -73,6 +76,12 @@ namespace Reign
 			#if !DISABLE_REIGN
 			#if UNITY_WINRT && !UNITY_EDITOR
 			plugin = new StreamPlugin_WinRT();
+			#elif UNITY_ANDROID
+			plugin = new StreamPlugin_Android();
+			#elif UNITY_IOS
+			plugin = new StreamPlugin_iOS();
+			#elif UNITY_BLACKBERRY
+			plugin = new StreamPlugin_BB10();
 			#else
 			plugin = new StreamPlugin();
 			#endif
@@ -232,6 +241,16 @@ namespace Reign
 							ques.Remove(que);
 						}
 						break;
+
+					case StreamManagerQueTypes.LoadCameraPicker:
+						if (!loadingStream)
+						{
+							LoadCameraPicker(que.CameraQuality, que.MaxWidth, que.MaxHeight, que.streamLoadedCallback);
+							ques.Remove(que);
+						}
+						break;
+
+					default: Debug.LogError("Unsuported StreamManagerQueTypes: " + que); break;
 				}
 			}
 		}
@@ -493,7 +512,20 @@ namespace Reign
 		/// <param name="streamLoadedCallback">The callback that fires when done.</param>
 		public static void LoadFileDialog(FolderLocations folderLocation, string[] fileTypes, StreamLoadedCallbackMethod streamLoadedCallback)
 		{
-			LoadFileDialog(folderLocation, 0, 0, 10, 10, fileTypes, streamLoadedCallback);
+			LoadFileDialog(folderLocation, 0, 0, 0, 0, 10, 10, fileTypes, streamLoadedCallback);
+		}
+
+		/// <summary>
+		/// Use to have to user pic a file. (Remember to dispose loaded stream)
+		/// </summary>
+		/// <param name="folderLocation">Folder location from where the user should choose from.</param>
+		/// <param name="maxWidth">Image size returned will not be above the Max Width value (set 0 to disable)</param>
+		/// <param name="maxHeight">Image size returned will not be above the Max Height value (set 0 to disable)</param>
+		/// <param name="fileTypes">File types the user can see in file popup.</param>
+		/// <param name="streamLoadedCallback">The callback that fires when done.</param>
+		public static void LoadFileDialog(FolderLocations folderLocation, int maxWidth, int maxHeight, string[] fileTypes, StreamLoadedCallbackMethod streamLoadedCallback)
+		{
+			LoadFileDialog(folderLocation, maxWidth, maxHeight, 0, 0, 10, 10, fileTypes, streamLoadedCallback);
 		}
 		
 		/// <summary>
@@ -508,6 +540,24 @@ namespace Reign
 		/// <param name="fileTypes">File types the user can see in file popup.</param>
 		/// <param name="streamLoadedCallback">The callback that fires when done.</param>
 		public static void LoadFileDialog(FolderLocations folderLocation, int x, int y, int width, int height, string[] fileTypes, StreamLoadedCallbackMethod streamLoadedCallback)
+		{
+			LoadFileDialog(folderLocation, 0, 0, 0, 0, 10, 10, fileTypes, streamLoadedCallback);
+		}
+
+		/// <summary>
+		/// Use to have to user pic a file on iOS. (Remember to dispose loaded stream)
+		/// NOTE: The x, y, width, height is ONLY for iOS (other platforms ignore these values).
+		/// </summary>
+		/// <param name="folderLocation">Folder location from where the user should choose from.</param>
+		/// <param name="maxWidth">Image size returned will not be above the Max Width value (set 0 to disable)</param>
+		/// <param name="maxHeight">Image size returned will not be above the Max Height value (set 0 to disable)</param>
+		/// <param name="x">iOS iPad dlg X.</param>
+		/// <param name="y">iOS iPad dlg Y.</param>
+		/// <param name="width">iOS iPad dlg Width.</param>
+		/// <param name="height">iOS iPad dlg Height.</param>
+		/// <param name="fileTypes">File types the user can see in file popup.</param>
+		/// <param name="streamLoadedCallback">The callback that fires when done.</param>
+		public static void LoadFileDialog(FolderLocations folderLocation, int maxWidth, int maxHeight, int x, int y, int width, int height, string[] fileTypes, StreamLoadedCallbackMethod streamLoadedCallback)
 		{
 			if (loadingStream)
 			{
@@ -524,9 +574,50 @@ namespace Reign
 		
 			#if ASYNC
 			asyncLoadDone = false;
-			plugin.LoadFileDialog(folderLocation, x, y, width, height, fileTypes, async_streamLoadedCallback);
+			plugin.LoadFileDialog(folderLocation, maxWidth, maxHeight, x, y, width, height, fileTypes, async_streamLoadedCallback);
 			#else
-			plugin.LoadFileDialog(folderLocation, x, y, width, height, fileTypes, noAsync_streamLoadedCallback);
+			plugin.LoadFileDialog(folderLocation, maxWidth, maxHeight, x, y, width, height, fileTypes, noAsync_streamLoadedCallback);
+			#endif
+		}
+
+		/// <summary>
+		/// Use to have the user take a picture with there native camera
+		/// </summary>
+		/// <param name="quality">Camera resolution quality (Has no effect on some defices)</param>
+		/// <param name="streamLoadedCallback">Callback fired when done</param>
+		public static void LoadCameraPicker(CameraQuality quality, StreamLoadedCallbackMethod streamLoadedCallback)
+		{
+			LoadCameraPicker(quality, 0, 0, streamLoadedCallback);
+		}
+
+		/// <summary>
+		/// Use to have the user take a picture with there native camera
+		/// </summary>
+		/// <param name="quality">Camera resolution quality (Has no effect on some defices)</param>
+		/// <param name="maxWidth">Image size returned will not be above the Max Width value (set 0 to disable)</param>
+		/// <param name="maxHeight">Image size returned will not be above the Max Height value (set 0 to disable)</param>
+		/// <param name="streamLoadedCallback">Callback fired when done</param>
+		public static void LoadCameraPicker(CameraQuality quality, int maxWidth, int maxHeight, StreamLoadedCallbackMethod streamLoadedCallback)
+		{
+			if (loadingStream)
+			{
+				var que = new StreamManagerQue(StreamManagerQueTypes.LoadCameraPicker);
+				que.streamLoadedCallback = streamLoadedCallback;
+				que.MaxWidth = maxWidth;
+				que.MaxHeight = maxHeight;
+				que.CameraQuality = quality;
+				ques.Add(que);
+				return;
+			}
+
+			loadingStream = true;
+			StreamManager.streamLoadedCallback = streamLoadedCallback;
+
+			#if ASYNC
+			asyncLoadDone = false;
+			plugin.LoadCameraPicker(quality, maxWidth, maxHeight, async_streamLoadedCallback);
+			#else
+			plugin.LoadCameraPicker(quality, maxWidth, maxHeight, noAsync_streamLoadedCallback);
 			#endif
 		}
 
