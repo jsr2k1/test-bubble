@@ -28,6 +28,8 @@ public class PlayingObjectManager : MonoBehaviour
 	
 	public static int missionCount;
 	public static int missionCountTotal=-1;
+	
+	public static List<PlayingObject> objectsToBurst;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -36,6 +38,7 @@ public class PlayingObjectManager : MonoBehaviour
 		BottomBoundaryObj = GameObject.Find("Thresold Line");
 		TopBoundaryObj = GameObject.Find("Top");
 		missionCountTotal=-1;
+		objectsToBurst = new List<PlayingObject>();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -98,7 +101,7 @@ public class PlayingObjectManager : MonoBehaviour
 	void BurstObjects()
 	{
 		//Striker.instance.currentStrikerObject.GetComponent<PlayingObject>().BurstMe(false);
-		Striker.instance.currentStrikerObject.transform.GetChild(0).renderer.enabled = false;
+		Striker.instance.currentStrikerObject.transform.GetChild(0).renderer.enabled = false; //Para que no se vea que la ultima bola que peta es la lanzada
 		
 		UpdatePlayingObjectsList();
 		
@@ -115,13 +118,21 @@ public class PlayingObjectManager : MonoBehaviour
 
 	IEnumerator BurstOneObject(int i)
 	{
-		if(i < allPlayingObjectScripts.Length){
+		/*if(i < allPlayingObjectScripts.Length){
 			if(allPlayingObjectScripts[i].burst){
 				allPlayingObjectScripts[i].BurstMe(false);
 				yield return new WaitForSeconds(0.025f);
 			}
 			StartCoroutine(BurstOneObject(i+1));
-		}else{
+		}*/
+		if(i<objectsToBurst.Count){
+			if(objectsToBurst[i].burst){
+				objectsToBurst[i].BurstMe(false);
+			}
+			yield return new WaitForSeconds(0.025f);
+			StartCoroutine(BurstOneObject(i+1));
+		}
+		else{
 			FallDisconnectedObjects();
 			InGameScriptRefrences.playingObjectManager.GetRemainingObjects();
 			InGameScriptRefrences.strikerManager.CheckCurrentStrikerColor();
@@ -132,6 +143,8 @@ public class PlayingObjectManager : MonoBehaviour
 			}else{
 				CheckGameIsOver();
 			}
+			
+			objectsToBurst.Clear();
 			
 			//InGameScriptRefrences.strikerManager.GenerateNextStriker();
 			//InGameScriptRefrences.strikerManager.GenerateStriker();
@@ -269,7 +282,7 @@ public class PlayingObjectManager : MonoBehaviour
 	{
 		int counter=0;
 		foreach(PlayingObject obj in allPlayingObjectScripts){
-			if(obj!=null && obj.name!="StoneBall(Clone)"){
+			if(obj!=null && obj.name!="StoneBall(Clone)" && obj.isConnected){
 				counter++;
 			}	
 		}
