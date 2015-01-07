@@ -159,6 +159,7 @@ public class PlayingObject : MonoBehaviour
 		{
 			isTraced = true;
 			burst = true;
+			PlayingObjectManager.objectsToBurst.Add(this);
 
 			PlayingObjectManager.burstCounter++;
 			iTween.PunchScale(gameObject, new Vector3(.2f, .2f, .2f), 1f);
