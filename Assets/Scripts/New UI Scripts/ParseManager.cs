@@ -68,7 +68,8 @@ public class ParseManager : MonoBehaviour
 		while(!emptyEntry && !getObjTask.IsCompleted) yield return null;
 	
 		//No existe una entrada para ese usuario -> la creamos
-		if(currentParseObject==null){
+		//if(currentParseObject==null){
+		if(emptyEntry && currentParseObject==null){
 			ParseObject facebookUserObj = new ParseObject("FacebookUser");
 			facebookUserObj["facebookUserID"] = FB.UserId;
 			facebookUserObj["facebookUserName"] = FacebookRequest.facebookUserName;
@@ -77,7 +78,7 @@ public class ParseManager : MonoBehaviour
 			CustomDebug("PARSE_MANAGER: New entry created - ID:"+FB.UserId+", Name:"+FacebookRequest.facebookUserName);
 		}
 		//Ya existe una entrada para el usuario -> recuperamos los valores
-		else{
+		else if(!emptyEntry && currentParseObject!=null){
 			GetUserData();
 			CustomDebug("PARSE_MANAGER: Entry already exists - ID:"+FB.UserId);
 			currentParseObject=null;
@@ -176,7 +177,6 @@ public class ParseManager : MonoBehaviour
 		for(int i=1;i<=currentLevel;i++){
 			PlayerPrefs.SetInt("SCORE_"+i, Mathf.Max(PlayerPrefs.GetInt("SCORE_"+i), int.Parse(dicScore["SCORE_"+i])));
 		}
-		
 		//Si es la primera vez que el usuario se conecta a facebook en ese dispositivo -> Cogemos los valores maximos entre Parse y PlayerPrefs
 		//Si ya se ha conectado antes -> Se mantienen los valores que habia en el PlayerPrefs
 		if(PlayerPrefs.GetInt("FirstTimeFacebookLogin")==1){
@@ -186,7 +186,6 @@ public class ParseManager : MonoBehaviour
 			PlayerPrefs.SetInt("Bomb Ball", Mathf.Max(PlayerPrefs.GetInt("Bomb Ball"), int.Parse(currentParseObject.Get<string>("BombBall"))));
 			PlayerPrefs.SetInt("FirstTimeFacebookLogin",0);
 		}
-		
 		//Dado que en algunos casos cogemos el valor maximo, hay que actualizar los datos en Parse tambien
 		SaveCurrentData();
 	}
@@ -223,7 +222,8 @@ public class ParseManager : MonoBehaviour
 			emptyEntry=true;
 			currentParseObject=null;
 			return;
-		}else{
+		}
+		else if(count==1){
 			//Obtenemos el ParseObject a partir de su objectID
 			ParseQuery<ParseObject> query = ParseObject.GetQuery("FacebookUser");
 			getObjTask = query.GetAsync(currentObjectID).ContinueWith(t => {
