@@ -75,7 +75,11 @@ public class PlayingObjectManager : MonoBehaviour
 		
 		if(PlayingObjectManager.burstCounter < 3 && !Striker.instance.multiBall){
 			ResetAllObjects();
-			CheckGameIsOver();
+			if(CheckGameIsFinished()){
+				LevelManager.instance.GameIsFinished();
+			}else{
+				CheckGameIsOver();
+			}
 			//InGameScriptRefrences.strikerManager.GenerateNextStriker();
 			return;
 		}
@@ -282,7 +286,7 @@ public class PlayingObjectManager : MonoBehaviour
 	{
 		int counter=0;
 		foreach(PlayingObject obj in allPlayingObjectScripts){
-			if(obj!=null && obj.name!="StoneBall(Clone)" && obj.isConnected){
+			if(obj!=null && obj.name!="StoneBall(Clone)" && obj.name!="FireBall" &&obj.isConnected){
 				counter++;
 			}	
 		}
