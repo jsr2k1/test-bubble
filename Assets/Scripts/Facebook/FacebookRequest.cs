@@ -346,6 +346,7 @@ public class FacebookRequest : MonoBehaviour
 					GameObject goEntry = Instantiate(entryPrefab) as GameObject;
 					goEntry.transform.SetParent(contentMessages.transform);
 					goEntry.transform.localPosition = new Vector3(0.0f, 145.0f-count*100.0f, 0.0f);
+					goEntry.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 					entriesList.Add(goEntry);
 					count++;
 					
