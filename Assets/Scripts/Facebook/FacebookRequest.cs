@@ -1,6 +1,6 @@
-﻿////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+﻿//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //https://developers.facebook.com/docs/games/requests/v2.2
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,7 +28,7 @@ public class FacebookRequest : MonoBehaviour
 	Dictionary<string, object> pendingRequests;
 	List<object> pendingRequestsData;
 
-	Texture2D textFb2;
+	public static Dictionary<string, Sprite> friendsPictures;
 	
 	int livesCounter=0;
 		
@@ -47,7 +47,7 @@ public class FacebookRequest : MonoBehaviour
 	//Texture2D lastResponseTexture;
 	string lastResponse = "";
 	
-	bool showDebug=false;
+	public bool bShowDebug=false;
 	
 	string objectId = "1494978434114506"; //id de la instancia de la vida que hemos creado en la consola de Facebook
 	
@@ -57,21 +57,14 @@ public class FacebookRequest : MonoBehaviour
 	public delegate void UserIsLoggedInFacebook();
 	public static event UserIsLoggedInFacebook OnUserIsLoggedInFacebook;
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	void CustomDebug(string msg)
-	{
-		if(showDebug){
-			Debug.Log(msg);
-		}
-	}
-	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Awake()
 	{
 		buttonMessages.SetActive(false);
 		InvokeRepeating("ReadAllRequests", 1.0f, timeReadRequest);
+		GetFriendsPictures();
+		
 		sendLifeUserList = new List<string>();
 		requestsList = new List<string>();
 		entriesList = new List<GameObject>();
@@ -79,11 +72,12 @@ public class FacebookRequest : MonoBehaviour
 		fromItem = new Dictionary<string, object>();
 		pendingRequests = new Dictionary<string, object>();
 		pendingRequestsData = new List<object>();
+		friendsPictures = new Dictionary<string, Sprite>();
 		
 		//DeleteAllRequests(); //Only for testing
 	}
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Update()
 	{
@@ -93,11 +87,11 @@ public class FacebookRequest : MonoBehaviour
 		if(!FB.IsLoggedIn && buttonInvite.activeSelf){
 			buttonInvite.SetActive(false);
 		}
-		CustomDebug("status: " + status);
-		CustomDebug("lastResponse: " + lastResponse);
+		if(bShowDebug) Debug.Log("status: " + status);
+		if(bShowDebug) Debug.Log("lastResponse: " + lastResponse);
 	}
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public static void GetFacebookUserName()
 	{
@@ -106,7 +100,7 @@ public class FacebookRequest : MonoBehaviour
 		}
 	}
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	static void GetFacebookUserNameCallback(FBResult result)
 	{
@@ -122,7 +116,64 @@ public class FacebookRequest : MonoBehaviour
 		}
 	}
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void GetFriendsPictures()
+	{
+		if(bShowDebug) Debug.Log("GetFriendsPictures");
+		
+		if(FB.IsLoggedIn){
+			FB.API("v2.2/me/friends", HttpMethod.GET, GetFriendsPicturesCallback);
+		}
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void GetFriendsPicturesCallback(FBResult result)
+	{
+		if(!String.IsNullOrEmpty(result.Error)){
+			if(bShowDebug) Debug.Log("GetFriendsPicturesCallback: Error Response:" + result.Error);
+		}
+		else if(!String.IsNullOrEmpty(result.Text)){
+			if(bShowDebug) Debug.Log("GetFriendsPicturesCallback: Success Response:" + result.Text);
+			Dictionary<string, object> friends = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
+			List<object> data = friends["data"] as List<object>;
+			
+			if(data!=null && data.Count>0){
+				foreach(object friend in data){
+					Dictionary<string, object> currentFriend = friend as Dictionary<string,object>;
+					string friendID = currentFriend["id"] as String;
+					//string friendName = currentFriend["name"] as String;
+					StartCoroutine(getProfileImage(friendID));
+				}
+			}
+		}
+		else{
+			if(bShowDebug) Debug.Log("GetFriendsPicturesCallback: Empty Response");
+		}
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	IEnumerator getProfileImage(string user_id)
+	{
+		WWW url = new WWW("https" + "://graph.facebook.com/" + user_id + "/picture?type=large"); //+ "?access_token=" + FB.AccessToken);
+		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.ARGB32, false);
+		yield return url;
+		url.LoadImageIntoTexture(textFb2);
+		
+		if(textFb2!=null){
+			if(bShowDebug) Debug.Log("getProfileImage:"+user_id);
+			friendsPictures.Add(user_id, Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0.5f, 0.5f)));
+		}else{
+			if(bShowDebug) Debug.Log("ERROR: textFb2 es null");
+		}
+		
+		//DestroyImmediate(textFb2);
+		//textFb2=null;
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Pedir una vida a tus amigos
 	public void ButtonPressedAskLive()
 	{
@@ -139,12 +190,12 @@ public class FacebookRequest : MonoBehaviour
 		}
 	}
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Invitar a amigos que no tienen el juego instalado
 	public void ButtonPressedInviteFriends()
 	{
 		try{
-			CustomDebug("Facebook Invite pressed");
+			if(bShowDebug) Debug.Log("Facebook Invite pressed");
 			//Adjust.trackEvent("3xnjnv");
 			FriendSelectorFilters = "[\"app_non_users\"]";
 			InviteFriends();
@@ -155,19 +206,19 @@ public class FacebookRequest : MonoBehaviour
 		}
 	}
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void AuthCallback(FBResult result)
 	{
 		if(FB.IsLoggedIn){
-			CustomDebug(FB.UserId);
+			if(bShowDebug) Debug.Log(FB.UserId);
 			//StartCoroutine("OnLoggedIn"); 
 		} else {
-			CustomDebug("User cancelled login");
+			if(bShowDebug) Debug.Log("User cancelled login");
 		}
 	}
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void FriendsSelector()
 	{
@@ -193,7 +244,7 @@ public class FacebookRequest : MonoBehaviour
 		}
 	}
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Invite facebook friends to play this game
 	void InviteFriends()
 	{
@@ -211,7 +262,7 @@ public class FacebookRequest : MonoBehaviour
 		);
 	}
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Pedir una vida de un usuario a otro
 	void AskForOneLife()
 	{
@@ -230,90 +281,21 @@ public class FacebookRequest : MonoBehaviour
 		);
 	}
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void ReadAllRequests()
 	{
 		if(messagesPopUp.bShow){
 			return;
 		}
-		CustomDebug("ReadAllRequests");
+		if(bShowDebug) Debug.Log("ReadAllRequests");
 		
 		if(FB.IsLoggedIn){
 			FB.API("v2.2/me/apprequests?fields=id,from,object,action_type", HttpMethod.GET, ReadAllRequestsCallback);
 		}
 	}
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	void DeleteAllRequests()
-	{
-		CustomDebug("DeleteAllRequests");
-		
-		if(FB.IsLoggedIn){
-			FB.API("v2.2/me/apprequests?fields=id", HttpMethod.GET, DeleteAllRequestsCallback);
-		}
-	}
-	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	void DeleteAllRequestsCallback(FBResult result)
-	{
-		if(!String.IsNullOrEmpty(result.Error)){
-			CustomDebug("DeleteAllRequestsCallback: Error Response:" + result.Error);
-		}
-		else if(!String.IsNullOrEmpty(result.Text)){
-			CustomDebug("DeleteAllRequestsCallback: Success Response:" + result.Text);
-			Dictionary<string, object> requests = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
-			List<object> data = requests["data"] as List<object>;
-			
-			if(data!=null && data.Count>0){
-				foreach(object request in data){
-					Dictionary<string, object> currentRequest = request as Dictionary<string,object>;
-					string requestID = currentRequest["id"] as String;
-					DeleteRequest(requestID);
-				}
-			}
-		}
-		else{
-			CustomDebug("DeleteAllRequestsCallback: Empty Response");
-		}
-	}
-	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	void DeleteRequest(string requestID)
-	{
-		CustomDebug("DeleteRequest");
-		
-		if(FB.IsLoggedIn){
-			FB.API("v2.2/"+requestID, HttpMethod.DELETE, Callback);
-		}
-	}
-	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	void ClearData()
-	{
-		if(buttonMessages!=null){
-			buttonMessages.SetActive(false);
-		}
-		foreach(GameObject go in entriesList){
-			DestroyImmediate(go);
-		}
-		requestsList.Clear();
-		entriesList.Clear();
-		requestItem.Clear();
-		fromItem.Clear();
-		pendingRequests.Clear();
-		pendingRequestsData.Clear();
-		
-		livesCounter=0;
-
-		Resources.UnloadUnusedAssets();
-	}
-	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void ReadAllRequestsCallback(FBResult result)
 	{	
@@ -323,10 +305,10 @@ public class FacebookRequest : MonoBehaviour
 		ClearData();
 		
 		if(!String.IsNullOrEmpty(result.Error)){
-			CustomDebug("ReadAllRequestsCallback: Error Response:" + result.Error);
+			if(bShowDebug) Debug.Log("ReadAllRequestsCallback: Error Response:" + result.Error);
 		}
 		else if(!String.IsNullOrEmpty(result.Text)){
-			CustomDebug("ReadAllRequestsCallback: Success Response:" + result.Text);
+			if(bShowDebug) Debug.Log("ReadAllRequestsCallback: Success Response:" + result.Text);
 			pendingRequests = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
 			pendingRequestsData = pendingRequests["data"] as List<object>;
 			
@@ -357,49 +339,94 @@ public class FacebookRequest : MonoBehaviour
 						goEntry.transform.GetChild(0).GetComponent<Text>().text = user_name+" gave you a life!";
 						livesCounter++;
 					}
+					goEntry.transform.GetChild(1).GetComponent<FriendProfilePicture>().id = user_id;
 					requestsList.Add(requestID);
-					StartCoroutine(getProfileImage(goEntry.transform.GetChild(1).GetComponent<Image>(), user_id));
-					
-					CustomDebug(user_id);
-					CustomDebug(user_name);
-					CustomDebug(action_type);
+					if(bShowDebug) Debug.Log("Request: "+user_id+", "+user_name+", "+action_type);
 				}
 			}
 		}
 		else{
-			CustomDebug("ReadAllRequestsCallback: Empty Response");
+			if(bShowDebug) Debug.Log("ReadAllRequestsCallback: Empty Response");
 		}
 	}
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	IEnumerator getProfileImage(Image image, string user_id)
+	void DeleteAllRequests()
 	{
-		WWW url = new WWW("https" + "://graph.facebook.com/" + user_id + "/picture?type=large"); //+ "?access_token=" + FB.AccessToken);
-		textFb2 = new Texture2D(128, 128, TextureFormat.ARGB32, false);
-		yield return url;
-		url.LoadImageIntoTexture(textFb2);
-		if(image!=null){
-			if(textFb2!=null){
-				image.sprite = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0.5f, 0.5f));
-			}else{
-				Debug.Log("ERROR: textFb2 es null");
-			}
-		}else{
-			Debug.Log("ERROR: image es null");
+		if(bShowDebug) Debug.Log("DeleteAllRequests");
+		
+		if(FB.IsLoggedIn){
+			FB.API("v2.2/me/apprequests?fields=id", HttpMethod.GET, DeleteAllRequestsCallback);
 		}
-		//DestroyImmediate(textFb2);
-		//textFb2=null;
 	}
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void DeleteAllRequestsCallback(FBResult result)
+	{
+		if(!String.IsNullOrEmpty(result.Error)){
+			if(bShowDebug) Debug.Log("DeleteAllRequestsCallback: Error Response:" + result.Error);
+		}
+		else if(!String.IsNullOrEmpty(result.Text)){
+			if(bShowDebug) Debug.Log("DeleteAllRequestsCallback: Success Response:" + result.Text);
+			Dictionary<string, object> requests = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
+			List<object> data = requests["data"] as List<object>;
+			
+			if(data!=null && data.Count>0){
+				foreach(object request in data){
+					Dictionary<string, object> currentRequest = request as Dictionary<string,object>;
+					string requestID = currentRequest["id"] as String;
+					DeleteRequest(requestID);
+				}
+			}
+		}
+		else{
+			if(bShowDebug) Debug.Log("DeleteAllRequestsCallback: Empty Response");
+		}
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void DeleteRequest(string requestID)
+	{
+		if(bShowDebug) Debug.Log("DeleteRequest");
+		
+		if(FB.IsLoggedIn){
+			FB.API("v2.2/"+requestID, HttpMethod.DELETE, Callback);
+		}
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	void ClearData()
+	{
+		if(buttonMessages!=null){
+			buttonMessages.SetActive(false);
+		}
+		foreach(GameObject go in entriesList){
+			DestroyImmediate(go);
+		}
+		requestsList.Clear();
+		entriesList.Clear();
+		requestItem.Clear();
+		fromItem.Clear();
+		pendingRequests.Clear();
+		pendingRequestsData.Clear();
+		
+		livesCounter=0;
+
+		Resources.UnloadUnusedAssets();
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Mostrar el popup con los mensajes
 	public void ButtonPressedMessages()
 	{
 		messagesPopUp.ShowPopUp();
 	}
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Responder a todos los mensajes de pedir vida
 	public void ButtonPressedAccept()
 	{
@@ -438,7 +465,7 @@ public class FacebookRequest : MonoBehaviour
 	}
 	
 	/*
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Crear una instancia de la vida que vamos a enviar
 	void CreateOneLife()
 	{
@@ -456,7 +483,7 @@ public class FacebookRequest : MonoBehaviour
 		FB.API("v2.2/me/objects/bubbleparadisetwo:life", HttpMethod.POST, AskForOneLifeCallback, formDic);
 	}*/
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Callback(FBResult result)
 	{
