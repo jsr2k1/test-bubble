@@ -177,7 +177,7 @@ public class StrikerManager : MonoBehaviour
 	//Sino entonces cambiar el color por otro
 	public void CheckCurrentStrikerColor()
 	{
-		if(remainingObjects==null || remainingObjects[0]==null){
+		if(remainingObjects==null || remainingObjects[0]==null || LevelManager.currentBalls<1){
 			return;
 		}
 		ArrayList listNames = InGameScriptRefrences.playingObjectManager.GetRemainingObjectsNames();
