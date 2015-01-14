@@ -19,7 +19,7 @@ public class FacebookManager : MonoBehaviour
 	public GameObject friendFramePrefab;
 	public GameObject contentMessages;
 	public float timeReadRequest;
-	public GameObject CanvasWidth;
+	public GameObject ImageDummy;
 	
 	List<string> sendLifeUserList;
 	List<string> requestsList;
@@ -149,7 +149,7 @@ public class FacebookManager : MonoBehaviour
 					string name = currentFriend["name"] as String;
 					GameObject friendEntry = Instantiate(friendFramePrefab, new Vector3(10000F, 10000F, 0), Quaternion.identity) as GameObject;
 					friendEntry.GetComponent<ProfilePic>().Initialize(friendID, name);
-					friendEntry.transform.SetParent(CanvasWidth.transform);
+					friendEntry.transform.SetParent(ImageDummy.transform);
 					friendEntry.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
 					StartCoroutine(GetProfileImage(friendID));
 				}

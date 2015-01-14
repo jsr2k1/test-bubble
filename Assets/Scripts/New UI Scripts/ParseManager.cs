@@ -70,8 +70,6 @@ public class ParseManager : MonoBehaviour
 			currentParseObject=null;
 		}
 		emptyEntry=false;
-		
-		FacebookBubble.instance.EnableButtons();
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -101,7 +99,7 @@ public class ParseManager : MonoBehaviour
 			currentParseObject=null;
 		}else{
 			currentFriendLevel="not_found";
-			Debug.Log("GetFacebookFriendParse - No se ha encontrado el amigo: "+friendID+", facebookName:"+facebookName);
+			CustomDebug("GetFacebookFriendParse - No se ha encontrado el amigo: "+friendID+", facebookName:"+facebookName);
 		}
 		emptyEntry=false;
 		isBusy=false;
@@ -142,6 +140,7 @@ public class ParseManager : MonoBehaviour
 			FillObj(currentParseObject);
 			currentParseObject.SaveAsync();
 		});
+		FacebookBubble.instance.EnableButtons();
 		CustomDebug("PARSE_MANAGER: SaveCurrentDataUser - facebookUserID:"+FB.UserId);
 	}
 	
