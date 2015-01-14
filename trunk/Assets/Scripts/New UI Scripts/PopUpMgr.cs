@@ -7,6 +7,7 @@ public class PopUpMgr : MonoBehaviour
 	public Image ImgBlack;
 	Animator anim;
 	public bool bShow=false;
+	public GameObject buttonNext;
 
 	public enum PopUpAction{
 		OnShow,
@@ -70,7 +71,7 @@ public class PopUpMgr : MonoBehaviour
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Esta funcion se ejecuta mediante un evento en la animacion de ShowPopUp y solo se tiene en cuenta para el PopUpWinCharacter
+	//Esta funcion se ejecuta mediante un evento en la animacion de ShowPopUp para que se oculte automaticamente
 	public void HidePopUpWinLoseCharacter()
 	{
 		if(name=="WinCharacterPopUp" || name=="LoseCharacterPopUp"){
@@ -108,6 +109,7 @@ public class PopUpMgr : MonoBehaviour
 			if(PlayerPrefs.GetInt("Music")==1){
 				AudioManager.instance.PlayAudio();
 			}
+			buttonNext.SetActive(true);
 		}
 	}
 	
@@ -123,6 +125,7 @@ public class PopUpMgr : MonoBehaviour
 			if(PlayerPrefs.GetInt("Music")==1){
 				AudioManager.instance.PlayAudio();
 			}
+			buttonNext.SetActive(true);
 		}
 	}
 	
@@ -138,11 +141,12 @@ public class PopUpMgr : MonoBehaviour
 			if(PlayerPrefs.GetInt("Music")==1){
 				AudioManager.instance.PlayAudio();
 			}
+			buttonNext.SetActive(true);
 		}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Esta funcion salta con un evento en la animacion para parar la animacion que aparezcan 2 estrellas
+	//Esta funcion salta con un evento en la animacion para volver a reproducir el audio
 	public void PlayGameMusic()
 	{
 		if(name!="WinPopUp" && name!="LosePopUp"){
@@ -150,6 +154,9 @@ public class PopUpMgr : MonoBehaviour
 		}
 		if(PlayerPrefs.GetInt("Music")==1){
 			AudioManager.instance.PlayAudio();
+		}
+		if(buttonNext!=null){
+			buttonNext.SetActive(true);
 		}
 	}
 	

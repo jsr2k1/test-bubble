@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
 public class FacebookBubble : MonoBehaviour
 {
+	public static FacebookBubble instance;
 	Button facebookButton;
 	public Button playButton;
 	public Button arcadeButton;
@@ -14,6 +15,8 @@ public class FacebookBubble : MonoBehaviour
 	
 	void Awake()
 	{
+		instance = this;
+	
 		facebookButton = GetComponent<Button>();
 		facebookImage = GetComponent<Image>();
 		facebookText = transform.GetChild(0).gameObject;
@@ -43,22 +46,8 @@ public class FacebookBubble : MonoBehaviour
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Nos suscribimos a un evento de la clase Parse para esperar a estar seguros de que ya tenemos la entrada del usuario
-	void OnEnable()
-	{
-		ParseManager.OnNewEntryCreated += EnableButtons;
-	}
 	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	void Disable()
-	{
-		ParseManager.OnNewEntryCreated -= EnableButtons;
-	}
-	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	void EnableButtons()
+	public void EnableButtons()
 	{
 		playButton.interactable = true;
 		arcadeButton.interactable = true;
@@ -80,7 +69,7 @@ public class FacebookBubble : MonoBehaviour
 	{
 		if(FB.IsLoggedIn){
 			Debug.Log(FB.UserId);
-			FacebookRequest.GetFacebookUserName(); //Obtenemos el nombre del usuario
+			FacebookManager.GetFacebookUserName(); //Obtenemos el nombre del usuario
 		} else {
 			Debug.Log("User cancelled login");
 			EnableButtons();

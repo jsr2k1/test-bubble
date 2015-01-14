@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class FriendProfilePicture : MonoBehaviour
+public class RequestPicture : MonoBehaviour
 {
 	Image image;
 	public string id;
@@ -22,11 +22,11 @@ public class FriendProfilePicture : MonoBehaviour
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+	//Obtenemos la imagen de facebook y la ponemos en la request
 	IEnumerator GetPicture()
 	{
-		if(FacebookRequest.friendsPictures.ContainsKey(id)){
-			image.sprite = FacebookRequest.friendsPictures[id];
+		if(FacebookManager.friendsPictures.ContainsKey(id)){
+			image.sprite = FacebookManager.friendsPictures[id];
 		}
 		else{
 			yield return new WaitForSeconds(1);
