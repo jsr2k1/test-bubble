@@ -48,10 +48,6 @@ public class LevelManager : MonoBehaviour
 	Animator anim;
 
 	public AudioSource fewballs;
-	
-	//Creamos un evento para saber el momento exacto en el que se ha superado un nivel para guardarlo en el Parse
-	public delegate void LevelIsCompleted();
-	public static event LevelIsCompleted OnLevelIsCompleted;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -105,9 +101,7 @@ public class LevelManager : MonoBehaviour
 		}
 		PlayerPrefs.SetInt("bPlaying", 0);
 		
-		if(OnLevelIsCompleted!=null){
-			OnLevelIsCompleted(); //Lanzamos este evento para que guarde el progreso en el parse
-		}
+		ParseManager.instance.SaveCurrentData();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -126,13 +120,12 @@ public class LevelManager : MonoBehaviour
 			if(score > PlayerPrefs.GetInt("Highscore")){
 				PlayerPrefs.SetInt("Highscore", score);
 				highscoretext.text = score.ToString();
-				if(OnLevelIsCompleted!=null){
-					OnLevelIsCompleted(); //Lanzamos este evento para que guarde el highscore en el Parse
-				}
 			}
 		}else{
 			LivesManager.lives--;
 		}
+		
+		ParseManager.instance.SaveCurrentData();
 
 		//PlayerPrefs.SetInt("Lives", PlayerPrefs.GetInt("Lives") - 1 );
 		//Invoke("LoadLevelAgain", 3f);

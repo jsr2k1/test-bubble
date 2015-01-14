@@ -9,15 +9,17 @@ using System;
 using System.Collections.Generic;
 using Facebook;
 
-public class FacebookRequest : MonoBehaviour
+public class FacebookManager : MonoBehaviour
 {
 	public GameObject buttonInvite;
 	public GameObject buttonMessages;
 	public GameObject buttonAskForLife;
 	public PopUpMgr messagesPopUp;
 	public GameObject entryPrefab;
+	public GameObject friendFramePrefab;
 	public GameObject contentMessages;
 	public float timeReadRequest;
+	public GameObject CanvasWidth;
 	
 	List<string> sendLifeUserList;
 	List<string> requestsList;
@@ -53,17 +55,12 @@ public class FacebookRequest : MonoBehaviour
 	
 	public static string facebookUserName;
 	
-	//Creamos un evento para saber el momento en que el usuario hace login y guardar la info en el Parse
-	public delegate void UserIsLoggedInFacebook();
-	public static event UserIsLoggedInFacebook OnUserIsLoggedInFacebook;
-	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Awake()
 	{
 		buttonMessages.SetActive(false);
 		InvokeRepeating("ReadAllRequests", 1.0f, timeReadRequest);
-		GetFriendsPictures();
 		
 		sendLifeUserList = new List<string>();
 		requestsList = new List<string>();
@@ -75,6 +72,13 @@ public class FacebookRequest : MonoBehaviour
 		friendsPictures = new Dictionary<string, Sprite>();
 		
 		//DeleteAllRequests(); //Only for testing
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void Start()
+	{
+		GetFriendsPictures();
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -111,9 +115,7 @@ public class FacebookRequest : MonoBehaviour
 			Dictionary<string, object> dict = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
 			facebookUserName = dict["name"].ToString();
 		}
-		if(OnUserIsLoggedInFacebook!=null){
-			OnUserIsLoggedInFacebook();
-		}
+		ParseManager.instance.CheckParseEntry();
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -128,7 +130,8 @@ public class FacebookRequest : MonoBehaviour
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+	//Obtenemos las imagenes de los amigos de Facebook y las guardamos en un diccionario
+	//Creamos una instancia del prefab de imagen de amigos para cada uno
 	void GetFriendsPicturesCallback(FBResult result)
 	{
 		if(!String.IsNullOrEmpty(result.Error)){
@@ -143,8 +146,12 @@ public class FacebookRequest : MonoBehaviour
 				foreach(object friend in data){
 					Dictionary<string, object> currentFriend = friend as Dictionary<string,object>;
 					string friendID = currentFriend["id"] as String;
-					//string friendName = currentFriend["name"] as String;
-					StartCoroutine(getProfileImage(friendID));
+					string name = currentFriend["name"] as String;
+					GameObject friendEntry = Instantiate(friendFramePrefab, new Vector3(10000F, 10000F, 0), Quaternion.identity) as GameObject;
+					friendEntry.GetComponent<ProfilePic>().Initialize(friendID, name);
+					friendEntry.transform.SetParent(CanvasWidth.transform);
+					friendEntry.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
+					StartCoroutine(GetProfileImage(friendID));
 				}
 			}
 		}
@@ -154,8 +161,8 @@ public class FacebookRequest : MonoBehaviour
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	IEnumerator getProfileImage(string user_id)
+	//Obtenemos las imagenes de los amigos de Facebook para ponerlas en las requests
+	IEnumerator GetProfileImage(string user_id)
 	{
 		WWW url = new WWW("https" + "://graph.facebook.com/" + user_id + "/picture?type=large"); //+ "?access_token=" + FB.AccessToken);
 		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.ARGB32, false);
@@ -163,7 +170,7 @@ public class FacebookRequest : MonoBehaviour
 		url.LoadImageIntoTexture(textFb2);
 		
 		if(textFb2!=null){
-			if(bShowDebug) Debug.Log("getProfileImage:"+user_id);
+			if(bShowDebug) Debug.Log("GetProfileImage:"+user_id);
 			friendsPictures.Add(user_id, Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0.5f, 0.5f)));
 		}else{
 			if(bShowDebug) Debug.Log("ERROR: textFb2 es null");
@@ -296,7 +303,7 @@ public class FacebookRequest : MonoBehaviour
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+	//Leemos todas las peticiones pendientes del servidor y creamos una instancia del prefab de peticion para cada una de ellas
 	void ReadAllRequestsCallback(FBResult result)
 	{	
 		if(buttonMessages==null){
@@ -339,7 +346,7 @@ public class FacebookRequest : MonoBehaviour
 						goEntry.transform.GetChild(0).GetComponent<Text>().text = user_name+" gave you a life!";
 						livesCounter++;
 					}
-					goEntry.transform.GetChild(1).GetComponent<FriendProfilePicture>().id = user_id;
+					goEntry.transform.GetChild(1).GetComponent<RequestPicture>().id = user_id;
 					requestsList.Add(requestID);
 					if(bShowDebug) Debug.Log("Request: "+user_id+", "+user_name+", "+action_type);
 				}
@@ -351,7 +358,8 @@ public class FacebookRequest : MonoBehaviour
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+	//Esta funcion solo de usa a modo de test
+	//La funcion que se usa despues de procesar cada peticion es -> DeleteRequest
 	void DeleteAllRequests()
 	{
 		if(bShowDebug) Debug.Log("DeleteAllRequests");
@@ -398,7 +406,7 @@ public class FacebookRequest : MonoBehaviour
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	//Borramoa todas las listas y diccionarios que vamos usando para procesar las peticiones
 	void ClearData()
 	{
 		if(buttonMessages!=null){

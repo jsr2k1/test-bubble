@@ -9,6 +9,8 @@ public class IAPManager : MonoBehaviour
 	private string[] restoreInAppStatusText;
 	//private string formatedPriceText;
 	//public Text coinstext;
+	
+	public bool bTesting;
 
 	bool bStarted=false;
 	
@@ -23,12 +25,6 @@ public class IAPManager : MonoBehaviour
 	private string item4 = "big";
 	private string item5 = "extrabig";
 	#endif
-	
-	//Creamos un evento para saber el momento en que se ha hecho una compra
-	public delegate void PurchaseDone();
-	public static event PurchaseDone OnPurchaseDone;
-
-	public bool bTesting;
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -217,9 +213,7 @@ public class IAPManager : MonoBehaviour
 				PlayerPrefs.SetInt("Coins", coins);	
 			}
 			
-			if(OnPurchaseDone!=null){
-				OnPurchaseDone();
-			}
+			ParseManager.instance.SaveCurrentData();
 		}
 	}
 	

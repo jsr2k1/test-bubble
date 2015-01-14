@@ -8,48 +8,34 @@ using System.Threading.Tasks;
 
 public class ParseManager : MonoBehaviour
 {
+	public static ParseManager instance;
 	ParseObject currentParseObject;
 	string currentObjectID;
+	string currentUserID;
 	Task getObjTask;
 	Task getObjIDTask;
 	bool emptyEntry=false;
 	public bool bDebug;
+	public bool isBusy=false;
 	
-	//Creamos un evento para saber el momento en que se ha creado la entrada en el Parse
-	public delegate void NewEntryCreated();
-	public static event NewEntryCreated OnNewEntryCreated;
+	public string currentFriendID;
+	public string currentFriendLevel;
+	
+	//Creamos un evento para saber el momento en que se han obtenido los datos del amigo de facebook
+	public delegate void GetFacebookFriendDone();
+	public static event GetFacebookFriendDone OnGetFacebookFriendDone;
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Awake()
 	{
+		instance = this;
 		currentParseObject = null;
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Cuando el usuario hace login en Facebook se guarda un registro en Parse (si no existe ya)
-	//Cuando el usuario consigue terminar un nivel se guarda en Parse
-	void OnEnable()
-	{
-		FacebookRequest.OnUserIsLoggedInFacebook += CheckParseEntry;
-		LevelManager.OnLevelIsCompleted += SaveCurrentData;
-		ButtonsInfoLives.OnExitLevel += SaveCurrentData;
-		IAPManager.OnPurchaseDone += SaveCurrentData;
-	}
 	
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	void OnDisable()
-	{
-		FacebookRequest.OnUserIsLoggedInFacebook -= CheckParseEntry;
-		LevelManager.OnLevelIsCompleted -= SaveCurrentData;
-		ButtonsInfoLives.OnExitLevel -=SaveCurrentData;
-		IAPManager.OnPurchaseDone -= SaveCurrentData;
-	}
-	
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	void CheckParseEntry()
+	public void CheckParseEntry()
 	{
 		if(!FB.IsLoggedIn){
 			return;
@@ -72,10 +58,10 @@ public class ParseManager : MonoBehaviour
 		if(emptyEntry && currentParseObject==null){
 			ParseObject facebookUserObj = new ParseObject("FacebookUser");
 			facebookUserObj["facebookUserID"] = FB.UserId;
-			facebookUserObj["facebookUserName"] = FacebookRequest.facebookUserName;
+			facebookUserObj["facebookUserName"] = FacebookManager.facebookUserName;
 			FillObj(facebookUserObj);
 			facebookUserObj.SaveAsync();
-			CustomDebug("PARSE_MANAGER: New entry created - ID:"+FB.UserId+", Name:"+FacebookRequest.facebookUserName);
+			CustomDebug("PARSE_MANAGER: New entry created - ID:"+FB.UserId+", Name:"+FacebookManager.facebookUserName);
 		}
 		//Ya existe una entrada para el usuario -> recuperamos los valores
 		else if(!emptyEntry && currentParseObject!=null){
@@ -85,14 +71,58 @@ public class ParseManager : MonoBehaviour
 		}
 		emptyEntry=false;
 		
-		if(OnNewEntryCreated!=null){
-			OnNewEntryCreated();
+		FacebookBubble.instance.EnableButtons();
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public void GetFacebookFriend(string friendID, string facebookName)
+	{
+		if(!FB.IsLoggedIn){
+			return;
+		}
+		isBusy=true;
+		StartCoroutine(GetFacebookFriendParse(friendID, facebookName));
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	IEnumerator GetFacebookFriendParse(string friendID, string facebookName)
+	{
+		GetObject(friendID);
+		while(!getObjIDTask.IsCompleted) yield return null;
+		while(!emptyEntry && !getObjTask.IsCompleted) yield return null;
+		
+		currentFriendID = friendID;
+		if(currentParseObject!=null){
+			currentFriendLevel = GetCurrentLevel(currentParseObject.Get<string>("currentLevel"));
+			string name = currentParseObject.Get<string>("facebookUserName");
+			CustomDebug("GetFacebookFriendParse - ID:"+friendID+", name:"+name);
+			currentParseObject=null;
+		}else{
+			currentFriendLevel="not_found";
+			Debug.Log("GetFacebookFriendParse - No se ha encontrado el amigo: "+friendID+", facebookName:"+facebookName);
+		}
+		emptyEntry=false;
+		isBusy=false;
+		
+		if(OnGetFacebookFriendDone!=null){
+			OnGetFacebookFriendDone();
 		}
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	void SaveCurrentData()
+	string GetCurrentLevel(string sLevel)
+	{
+		int level = int.Parse(sLevel) + 1;
+		level = Mathf.Min(level, LevelParser.instance.maxLevels);
+		return level.ToString();
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public void SaveCurrentData()
 	{
 		if(!FB.IsLoggedIn){
 			return;
@@ -194,6 +224,7 @@ public class ParseManager : MonoBehaviour
 	//Para poder obtener el Object, primero tenemos que obtener su ObjectID
 	void GetObject(string facebookUserID)
 	{
+		currentUserID=facebookUserID;
 		ParseQuery<ParseObject> query = ParseObject.GetQuery("FacebookUser").WhereEqualTo("facebookUserID", facebookUserID);
 		getObjIDTask = query.FindAsync().ContinueWith(CallbackGetObject);
 	}
@@ -217,7 +248,7 @@ public class ParseManager : MonoBehaviour
 		}
 		if(count==0){
 			if(bDebug){
-				CustomDebug("PARSE_MANAGER: No entries - facebookUserID:"+FB.UserId);
+				CustomDebug("CallbackGetObject: No entries - facebookUserID:"+currentUserID);
 			}
 			emptyEntry=true;
 			currentParseObject=null;
