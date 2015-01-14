@@ -123,22 +123,22 @@ public class Striker : MonoBehaviour
 						}
 					}else{
 						Destroy(currentStrikerObject);
-						fireBall = false;
 						deep = 0;
 						InGameScriptRefrences.playingObjectManager.ResetAllObjects();
 						InGameScriptRefrences.playingObjectManager.FallDisconnectedObjects();
 						FreeStriker(other.gameObject);
+						fireBall = false;
 					}
 				} else{
 					Destroy(currentStrikerObject);
-					fireBall = false;
 					deep = 0;
 					InGameScriptRefrences.playingObjectManager.ResetAllObjects();
 					InGameScriptRefrences.playingObjectManager.FallDisconnectedObjects();
 					FreeStriker(other.gameObject);
+					fireBall = false;
 				}
 			}
-			else if(multiBall && other.gameObject.name == "DummyBall(Clone)"){
+			else if((multiBall || bombBall) && other.gameObject.name == "DummyBall(Clone)"){
 				Destroy(currentStrikerObject);
 				//multiBall=false;
 				FreeStriker(other.gameObject);
@@ -155,7 +155,11 @@ public class Striker : MonoBehaviour
 		}
 
 		//Destroy current shooting object hold by striker and generate new striker object.
-		if((/*other.gameObject.name == "Top" || */other.gameObject.name == "Top Down") && isBusy){
+		//Joel:Nunca entra por aqui
+		if((/*other.gameObject.name == "Top" || */other.gameObject.name == "Top Down") && isBusy)
+		{
+			Debug.Log("REVISAR!!");
+			/*
 			rigidbody.isKinematic = true;
 			Destroy(currentStrikerObject);
 			isBusy = false;
@@ -166,6 +170,7 @@ public class Striker : MonoBehaviour
 				fireBall = false;
 				deep = 0;
 			}
+			*/
 		}
 
 		if(bombBall == false && fireBall == false){

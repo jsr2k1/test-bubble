@@ -73,7 +73,7 @@ public class PlayingObjectManager : MonoBehaviour
 			AudioManager.instance.PlayFxSound(AudioManager.instance.burstSound);
 		}
 		
-		if(PlayingObjectManager.burstCounter < 3 && !Striker.instance.multiBall){
+		if(PlayingObjectManager.burstCounter < 3 && !Striker.instance.multiBall && !Striker.instance.bombBall && !Striker.instance.fireBall){
 			ResetAllObjects();
 			if(CheckGameIsFinished()){
 				LevelManager.instance.GameIsFinished();

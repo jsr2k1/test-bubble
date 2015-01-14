@@ -120,7 +120,9 @@ public class PlayingObject : MonoBehaviour
 		}
 		isDestroyed = true;
 
-		Destroy(GetComponent<SphereCollider>());
+		if(!fall){//Para que pete al colisionar con el objeto "Down"
+			Destroy(GetComponent<SphereCollider>());
+		}
 
 		RefreshNeighbourAdjacentList();
 		gameObject.tag = "Untagged";
@@ -132,7 +134,7 @@ public class PlayingObject : MonoBehaviour
 				rigidbody.isKinematic = false;
 				rigidbody.AddForce(new Vector3(0, Random.Range(1.5f, 2.5f), 0), ForceMode.VelocityChange);
 				GetComponent<RotationScript>().enabled = true;
-				Destroy(gameObject, 3f);
+				//Destroy(gameObject, 3f); Vamos a hacer que se destruya al colisionar con el objeto "Down"
 			} else{                
 				Destroy(gameObject);
 			}
@@ -160,7 +162,6 @@ public class PlayingObject : MonoBehaviour
 			isTraced = true;
 			burst = true;
 			PlayingObjectManager.objectsToBurst.Add(this);
-
 			PlayingObjectManager.burstCounter++;
 			iTween.PunchScale(gameObject, new Vector3(.2f, .2f, .2f), 1f);
 	
@@ -177,13 +178,13 @@ public class PlayingObject : MonoBehaviour
 						}
 					}//BOMBBALL -> Tambien rompe las bolas piedra
 					else if(Striker.instance.bombBall){
-						if(iDeep==0 || iDeep==1){
+						if(iDeep<2){
 							adjacentPlayingObjects[i].Trace(iDeep+1);
 						}else{
 							iTween.PunchScale(adjacentPlayingObjects[i].gameObject, new Vector3(.2f, .2f, .2f), 1f);
 						}
 					}//NORMAL
-					else if(adjacentPlayingObjects[i].name!="StoneBall(Clone)"){
+					else if(adjacentPlayingObjects[i].name!="StoneBall(Clone)" && !Striker.instance.fireBall){
 						if(adjacentPlayingObjects[i].name==PlayingObjectManager.currentObjectName){
 							adjacentPlayingObjects[i].Trace(iDeep+1);
 						}else{
@@ -210,6 +211,15 @@ public class PlayingObject : MonoBehaviour
 			if(adjacentPlayingObjects[i]){
 				adjacentPlayingObjects[i].TraceForConnection();
 			}
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Para detectar cuando una bola cae y colisiona con el objeto "Down" -> queremos que pete y sume puntos
+	void OnCollisionEnter(Collision other)
+	{
+		if(other.gameObject.name == "Down"){
+			DestroyPlayingObject();
 		}
 	}
 
