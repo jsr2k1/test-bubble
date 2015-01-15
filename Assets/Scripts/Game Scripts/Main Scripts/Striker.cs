@@ -115,7 +115,7 @@ public class Striker : MonoBehaviour
 				if(deep < 8){
 					if(other.gameObject.name != "DummyBall(Clone)" && other.gameObject.name != "StoneBall(Clone)"){
 						//Destroy(other.gameObject.gameObject);
-						other.gameObject.GetComponent<PlayingObject>().DestroyPlayingObject();
+						other.gameObject.GetComponent<PlayingObject>().DestroyPlayingObject(true);
 						ScoreManagerGame.instance.DisplayScorePopup(10, transform);
 						deep = deep + 1;
 						if(deep==1){
