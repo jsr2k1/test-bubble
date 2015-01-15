@@ -91,29 +91,20 @@ public class ProfilePic : MonoBehaviour
 	
 	void LateUpdate()
 	{
-		if((bFriend && spritefb!=null && bInit) || !bFriend){
+		if((bFriend /*&& spritefb!=null*/ && bInit) || !bFriend){
 			transform.position = currentLevel.position + new Vector3(0.0f, 52.0f*ratio, 0.0f);
 		}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	//Obtenemos la imagen de facebook y la ponemos en la request
 	IEnumerator GetProfileImage()
 	{
-		WWW url;
-		if(!bFriend){
-			url = new WWW("https://graph.facebook.com/"+FB.UserId+"/picture?type=large"); //+ "?access_token=" + FB.AccessToken);
+		if(FacebookManager.instance.friendsPictures.ContainsKey(bFriend ? friendID : FB.UserId)){
+			profilePic.sprite = FacebookManager.instance.friendsPictures[bFriend ? friendID : FB.UserId];
 		}else{
-			url = new WWW("https://graph.facebook.com/"+friendID+"/picture?type=large");
-		}
-		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.DXT1, false); //TextureFormat must be DXT5
-		yield return url;
-		url.LoadImageIntoTexture(textFb2);
-		spritefb = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0.5f, 0.5f));;
-		if(spritefb!=null){
-			profilePic.sprite = spritefb;
-		}else{
-			Debug.Log("El sprite no se ha creado correctamente - friendID:"+friendID+", facebookName:"+facebookName);
+			yield return new WaitForSeconds(1);
+			StartCoroutine(GetProfileImage());
 		}
 	}
 }

@@ -25,10 +25,9 @@ public class RequestPicture : MonoBehaviour
 	//Obtenemos la imagen de facebook y la ponemos en la request
 	IEnumerator GetPicture()
 	{
-		if(FacebookManager.friendsPictures.ContainsKey(id)){
-			image.sprite = FacebookManager.friendsPictures[id];
-		}
-		else{
+		if(FacebookManager.instance.friendsPictures.ContainsKey(id)){
+			image.sprite = FacebookManager.instance.friendsPictures[id];
+		}else{
 			yield return new WaitForSeconds(1);
 			StartCoroutine(GetPicture());
 		}
