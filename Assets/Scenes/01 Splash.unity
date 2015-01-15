@@ -279,7 +279,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 4
 --- !u!1 &445606289
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +626,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ced352bb34d2c4f90900501a0af55b93, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: ced352bb34d2c4f90900501a0af55b93, type: 2}
       propertyPath: appToken
@@ -635,6 +635,10 @@ Prefab:
     - target: {fileID: 11400000, guid: ced352bb34d2c4f90900501a0af55b93, type: 2}
       propertyPath: environment
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ced352bb34d2c4f90900501a0af55b93, type: 2}
+      propertyPath: m_Name
+      value: AdjustManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ced352bb34d2c4f90900501a0af55b93, type: 2}
@@ -738,7 +742,7 @@ GameObject:
   - 114: {fileID: 735657240}
   - 114: {fileID: 735657239}
   m_Layer: 0
-  m_Name: Parse
+  m_Name: ParseManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -896,7 +900,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 85d94ef4997142e45a45ffc1a0075fb5, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85d94ef4997142e45a45ffc1a0075fb5, type: 2}
@@ -999,7 +1003,7 @@ GameObject:
   - 4: {fileID: 1376207343}
   - 114: {fileID: 1376207342}
   m_Layer: 0
-  m_Name: LivesMgr
+  m_Name: LivesManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1028,7 +1032,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
 --- !u!1001 &1659412855
 Prefab:
   m_ObjectHideFlags: 0
@@ -1071,6 +1075,10 @@ Prefab:
     - target: {fileID: 11472028, guid: 076a5c6a2de27704295e13b870eb5936, type: 2}
       propertyPath: bDebug
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 172028, guid: 076a5c6a2de27704295e13b870eb5936, type: 2}
+      propertyPath: m_Name
+      value: ParseManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 076a5c6a2de27704295e13b870eb5936, type: 2}
@@ -1148,7 +1156,7 @@ GameObject:
   - 4: {fileID: 1764625429}
   - 114: {fileID: 1764625428}
   m_Layer: 0
-  m_Name: Adjust
+  m_Name: AdjustManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1182,7 +1190,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1 &1953046918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,4 +1485,4 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
