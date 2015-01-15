@@ -139,15 +139,17 @@ public class PlayingObject : MonoBehaviour
 				Destroy(gameObject);
 			}
 		} else{
-			DestroyPlayingObject();
+			DestroyPlayingObject(true);
 		}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public void DestroyPlayingObject()
+	public void DestroyPlayingObject(bool bAaddScore)
 	{
-		ScoreManagerGame.instance.DisplayScorePopup(10, transform);
+		if(PlayerPrefs.GetString("GameType")!="Arcade"){
+			ScoreManagerGame.instance.DisplayScorePopup(10, transform);
+		}
 		Instantiate(burstParticle, transform.position, Quaternion.identity);
 		burstParticle.renderer.sortingLayerName = "MiddleLayer";
 		Destroy(gameObject);
@@ -219,7 +221,11 @@ public class PlayingObject : MonoBehaviour
 	void OnCollisionEnter(Collision other)
 	{
 		if(other.gameObject.name == "Down"){
-			DestroyPlayingObject();
+			if(PlayerPrefs.GetString("GameType")=="Arcade"){
+				DestroyPlayingObject(false);
+			}else{
+				DestroyPlayingObject(true);
+			}
 		}
 	}
 
