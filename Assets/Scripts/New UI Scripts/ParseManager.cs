@@ -61,6 +61,7 @@ public class ParseManager : MonoBehaviour
 			facebookUserObj["facebookUserName"] = FacebookManager.facebookUserName;
 			FillObj(facebookUserObj);
 			facebookUserObj.SaveAsync();
+			FacebookBubble.instance.EnableButtons();
 			CustomDebug("PARSE_MANAGER: New entry created - ID:"+FB.UserId+", Name:"+FacebookManager.facebookUserName);
 		}
 		//Ya existe una entrada para el usuario -> recuperamos los valores
@@ -134,12 +135,15 @@ public class ParseManager : MonoBehaviour
 	{
 		GetObject(FB.UserId);
 		while(!getObjIDTask.IsCompleted) yield return null;
-		while(!getObjTask.IsCompleted) yield return null;
+		while(!emptyEntry && !getObjTask.IsCompleted) yield return null;
 		
-		currentParseObject.SaveAsync().ContinueWith(t => {
-			FillObj(currentParseObject);
-			currentParseObject.SaveAsync();
-		});
+		if(currentParseObject!=null){
+			currentParseObject.SaveAsync().ContinueWith(t => {
+				FillObj(currentParseObject);
+				currentParseObject.SaveAsync();
+			});
+		}
+		emptyEntry=false;
 		FacebookBubble.instance.EnableButtons();
 		CustomDebug("PARSE_MANAGER: SaveCurrentDataUser - facebookUserID:"+FB.UserId);
 	}
@@ -156,6 +160,7 @@ public class ParseManager : MonoBehaviour
 		obj["HighScore"] = PlayerPrefs.GetInt("Highscore").ToString();
 		obj["starsDic"] = FillStarsDictionary();
 		obj["scoreDic"] = FillScoreDictionary();
+		obj["deviceID"] = SystemInfo.deviceUniqueIdentifier;
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -207,8 +212,11 @@ public class ParseManager : MonoBehaviour
 			PlayerPrefs.SetInt("SCORE_"+i, Mathf.Max(PlayerPrefs.GetInt("SCORE_"+i), int.Parse(dicScore["SCORE_"+i])));
 		}
 		//Si es la primera vez que el usuario se conecta a facebook en ese dispositivo -> Cogemos los valores maximos entre Parse y PlayerPrefs
-		//Si ya se ha conectado antes -> Se mantienen los valores que habia en el PlayerPrefs
-		if(PlayerPrefs.GetInt("FirstTimeFacebookLogin")==1){
+		//Si ya se ha conectado antes -> 
+		//------> Si se esta conectando con el mismo dispositivo -> Se mantienen los valores que habia en el PlayerPrefs
+		//------> Si es otro dispositivo -> Cogemos el valor maximo
+		string deviceID = currentParseObject.Get<string>("deviceID");
+		if(PlayerPrefs.GetInt("FirstTimeFacebookLogin")==1 ||(PlayerPrefs.GetInt("FirstTimeFacebookLogin")==0 && deviceID!=SystemInfo.deviceUniqueIdentifier)){
 			PlayerPrefs.SetInt("Coins", Mathf.Max(PlayerPrefs.GetInt("Coins"), int.Parse(currentParseObject.Get<string>("Coins"))));
 			PlayerPrefs.SetInt("Multicolor Ball", Mathf.Max(PlayerPrefs.GetInt("Multicolor Ball"), int.Parse(currentParseObject.Get<string>("MulticolorBall"))));
 			PlayerPrefs.SetInt("Fire Ball", Mathf.Max(PlayerPrefs.GetInt("Fire Ball"), int.Parse(currentParseObject.Get<string>("FireBall"))));
