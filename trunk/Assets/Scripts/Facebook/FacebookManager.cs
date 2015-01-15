@@ -11,15 +11,15 @@ using Facebook;
 
 public class FacebookManager : MonoBehaviour
 {
-	public GameObject buttonInvite;
-	public GameObject buttonMessages;
-	public GameObject buttonAskForLife;
-	public PopUpMgr messagesPopUp;
+	public static FacebookManager instance;
+	GameObject buttonInvite;
+	GameObject buttonMessages;
+	PopUpMgr messagesPopUp;
 	public GameObject entryPrefab;
 	public GameObject friendFramePrefab;
-	public GameObject contentMessages;
+	GameObject contentMessages;
 	public float timeReadRequest;
-	public GameObject ImageDummy;
+	GameObject ImageDummy;
 	
 	List<string> sendLifeUserList;
 	List<string> requestsList;
@@ -30,7 +30,7 @@ public class FacebookManager : MonoBehaviour
 	Dictionary<string, object> pendingRequests;
 	List<object> pendingRequestsData;
 
-	public static Dictionary<string, Sprite> friendsPictures;
+	public Dictionary<string, Sprite> friendsPictures;
 	
 	int livesCounter=0;
 		
@@ -53,14 +53,15 @@ public class FacebookManager : MonoBehaviour
 	
 	string objectId = "1494978434114506"; //id de la instancia de la vida que hemos creado en la consola de Facebook
 	
-	public static string facebookUserName;
+	public static string facebookUserName; //Tiene que ser static pq se llama desde FacebookBubble en el menu y FacebookManager no existe todavia
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Awake()
 	{
-		buttonMessages.SetActive(false);
-		InvokeRepeating("ReadAllRequests", 1.0f, timeReadRequest);
+		DontDestroyOnLoad(gameObject);
+
+		instance = this;
 		
 		sendLifeUserList = new List<string>();
 		requestsList = new List<string>();
@@ -75,22 +76,50 @@ public class FacebookManager : MonoBehaviour
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Al cargar el nivel de los mundos vamos leyendo las requests cada cierto tiempo
+	void OnLevelWasLoaded(int level)
+	{	
+		//Worlds
+		if(level == 2){
+			GetObjectReferences();
+			InvokeRepeating("ReadAllRequests", 1.0f, timeReadRequest);
+			if(!friendsPictures.ContainsKey(FB.UserId)){
+				StartCoroutine(GetProfileImage(FB.UserId));
+			}
+			GetFriendsPictures();
+		}else{
+			CancelInvoke("ReadAllRequests");
+		}
+	}
 	
-	void Start()
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void GetObjectReferences()
 	{
-		GetFriendsPictures();
+		buttonInvite = GameObject.Find("ButtonFacebookInvite");
+		buttonMessages = GameObject.Find("ButtonFacebookMessages");
+		messagesPopUp = GameObject.Find("FacebookMessagesPopUp").GetComponent<PopUpMgr>();
+		contentMessages = GameObject.Find("Content");
+		ImageDummy = GameObject.Find("ImageDummy");
+		
+		if(buttonMessages!=null){
+			buttonMessages.SetActive(false);
+		}
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Update()
 	{
-		if(FB.IsLoggedIn && !buttonInvite.activeSelf){
-			buttonInvite.SetActive(true);
+		if(Application.loadedLevel==2){ //Worlds
+			if(FB.IsLoggedIn && !buttonInvite.activeSelf){
+				buttonInvite.SetActive(true);
+			}
+			if(!FB.IsLoggedIn && buttonInvite.activeSelf){
+				buttonInvite.SetActive(false);
+			}
 		}
-		if(!FB.IsLoggedIn && buttonInvite.activeSelf){
-			buttonInvite.SetActive(false);
-		}
+			
 		if(bShowDebug) Debug.Log("status: " + status);
 		if(bShowDebug) Debug.Log("lastResponse: " + lastResponse);
 	}
@@ -145,13 +174,16 @@ public class FacebookManager : MonoBehaviour
 			if(data!=null && data.Count>0){
 				foreach(object friend in data){
 					Dictionary<string, object> currentFriend = friend as Dictionary<string,object>;
-					string friendID = currentFriend["id"] as String;
+					string facebookID = currentFriend["id"] as String;
 					string name = currentFriend["name"] as String;
 					GameObject friendEntry = Instantiate(friendFramePrefab, new Vector3(10000F, 10000F, 0), Quaternion.identity) as GameObject;
-					friendEntry.GetComponent<ProfilePic>().Initialize(friendID, name);
+					friendEntry.GetComponent<ProfilePic>().Initialize(facebookID, name);
 					friendEntry.transform.SetParent(ImageDummy.transform);
 					friendEntry.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
-					StartCoroutine(GetProfileImage(friendID));
+					
+					if(!friendsPictures.ContainsKey(facebookID)){
+						StartCoroutine(GetProfileImage(facebookID));
+					}
 				}
 			}
 		}
@@ -162,18 +194,19 @@ public class FacebookManager : MonoBehaviour
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Obtenemos las imagenes de los amigos de Facebook para ponerlas en las requests
-	IEnumerator GetProfileImage(string user_id)
+	IEnumerator GetProfileImage(string facebookID)
 	{
-		WWW url = new WWW("https" + "://graph.facebook.com/" + user_id + "/picture?type=large"); //+ "?access_token=" + FB.AccessToken);
+		WWW url = new WWW("https" + "://graph.facebook.com/" + facebookID + "/picture?type=large"); //+ "?access_token=" + FB.AccessToken);
 		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.ARGB32, false);
 		yield return url;
 		url.LoadImageIntoTexture(textFb2);
 		
 		if(textFb2!=null){
-			if(bShowDebug) Debug.Log("GetProfileImage:"+user_id);
-			friendsPictures.Add(user_id, Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0.5f, 0.5f)));
+			if(bShowDebug) Debug.Log("GetProfileImage:"+facebookID);
+			friendsPictures.Add(facebookID, Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0.5f, 0.5f)));
 		}else{
 			if(bShowDebug) Debug.Log("ERROR: textFb2 es null");
+			StartCoroutine(GetProfileImage(facebookID));
 		}
 		
 		//DestroyImmediate(textFb2);
