@@ -191,6 +191,10 @@ public class FacebookManager : MonoBehaviour
 					friendEntry.transform.SetParent(ImageDummy.transform);
 					friendEntry.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
 					
+					//Colgamos la entrada del imageDummy y dejamos el profile pic del usuario que siga siendo el ultimo para que se vea delante
+					int index = friendEntry.transform.GetSiblingIndex();
+					friendEntry.transform.SetSiblingIndex(index-1);
+					
 					if(!friendsDict.ContainsKey(facebookID)){
 						StartCoroutine(GetProfileImage(facebookID));
 					}
