@@ -152,13 +152,11 @@ public class PlayingObject : MonoBehaviour
 
 		if(fall){
 			if(burst == false){
-				ScoreManagerGame.instance.DisplayScorePopup(10, transform);
 				rigidbody.useGravity = true;
 				rigidbody.isKinematic = false;
 				rigidbody.AddForce(new Vector3(0, Random.Range(1.5f, 2.5f), 0), ForceMode.VelocityChange);
 				rotationScript.enabled = true;
 				spriteRenderer.sortingLayerName = "FallingObjLayer";
-				//Destroy(gameObject, 3f); Vamos a hacer que se destruya al colisionar con el objeto "Down"
 			} else{                
 				Destroy(gameObject);
 			}
