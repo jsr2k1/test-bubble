@@ -71,12 +71,12 @@ PlayerSettings:
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   productGUID: 587e7f29ea01bea40b54400b88060aec
-  iPhoneBundleVersion: 1.0
-  AndroidBundleVersionCode: 1
+  iPhoneBundleVersion: 1.0.5
+  AndroidBundleVersionCode: 105
   AndroidMinSdkVersion: 9
-  AndroidPreferredInstallLocation: 1
+  AndroidPreferredInstallLocation: 0
   aotOptions: 
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 1
   iPhoneStrippingLevel: 3
   iPhoneScriptCallOptimization: 0
   ForceInternetPermission: 0
@@ -116,15 +116,17 @@ PlayerSettings:
       m_Size: 128
   - m_BuildTarget: Android
     m_Icons:
-    - m_Icon: {fileID: 2800000, guid: 4ded7938f36662f4195f28d690c70b7f, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 028914499ccfbfd4689bc8685ba95c32, type: 3}
+      m_Size: 192
+    - m_Icon: {fileID: 2800000, guid: 89e100c83b7c05d4296cd88499994dc3, type: 3}
       m_Size: 144
-    - m_Icon: {fileID: 2800000, guid: 4ded7938f36662f4195f28d690c70b7f, type: 3}
+    - m_Icon: {fileID: 2800000, guid: f165adda781cbbc45a4a31636e0c2f70, type: 3}
       m_Size: 96
-    - m_Icon: {fileID: 2800000, guid: 4ded7938f36662f4195f28d690c70b7f, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 3b1b84c3cd487104eaaf486cd937edce, type: 3}
       m_Size: 72
-    - m_Icon: {fileID: 2800000, guid: 4ded7938f36662f4195f28d690c70b7f, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 6c89e8e70f441624c8b34ff011057521, type: 3}
       m_Size: 48
-    - m_Icon: {fileID: 2800000, guid: 4ded7938f36662f4195f28d690c70b7f, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 2c975c3804b9c3e468a152fa4544f7c7, type: 3}
       m_Size: 36
   m_BuildTargetBatching:
   - m_BuildTarget: Android
@@ -135,6 +137,7 @@ PlayerSettings:
     m_DynamicBatching: 1
   webPlayerTemplate: APPLICATION:Default
   m_TemplateCustomTags: {}
+  locationUsageDescription: 
   XboxTitleId: 
   XboxImageXexPath: 
   XboxSpaPath: 
