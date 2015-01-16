@@ -14,5 +14,8 @@ public class FacebookButtons : MonoBehaviour, IPointerClickHandler
 		else if(name=="ButtonFacebookMessages"){
 			FacebookManager.instance.ButtonPressedMessages();
 		}
+		else if(name=="ButtonAskFriends"){
+			FacebookManager.instance.ButtonPressedAskLive();
+		}
 	}
 }
