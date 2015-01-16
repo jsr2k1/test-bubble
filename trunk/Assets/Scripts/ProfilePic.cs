@@ -100,8 +100,8 @@ public class ProfilePic : MonoBehaviour
 	//Obtenemos la imagen de facebook y la ponemos en la request
 	IEnumerator GetProfileImage()
 	{
-		if(FacebookManager.instance.friendsPictures.ContainsKey(bFriend ? friendID : FB.UserId)){
-			profilePic.sprite = FacebookManager.instance.friendsPictures[bFriend ? friendID : FB.UserId];
+		if(FacebookManager.instance.friendsDict.ContainsKey(bFriend ? friendID : FB.UserId)){
+			profilePic.sprite = FacebookManager.instance.friendsDict[bFriend ? friendID : FB.UserId].profilePicture;
 		}else{
 			yield return new WaitForSeconds(1);
 			StartCoroutine(GetProfileImage());
