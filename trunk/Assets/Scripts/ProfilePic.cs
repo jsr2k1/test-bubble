@@ -91,7 +91,7 @@ public class ProfilePic : MonoBehaviour
 	
 	void LateUpdate()
 	{
-		if((bFriend /*&& spritefb!=null*/ && bInit) || !bFriend){
+		if((bFriend && bInit) || !bFriend){
 			transform.position = currentLevel.position + new Vector3(0.0f, 52.0f*ratio, 0.0f);
 		}
 	}
