@@ -4,17 +4,9 @@ using System.Collections;
 
 public class PopUpMgr : MonoBehaviour
 {
-	public Image ImgBlack;
 	Animator anim;
 	public bool bShow=false;
 	public GameObject buttonNext;
-
-	public enum PopUpAction{
-		OnShow,
-		OnHide,
-		Idle
-	}
-	public static PopUpAction popUpActionChangeState = PopUpAction.Idle;
 	
 	public AudioSource sound_stars_1;
 	public AudioSource sound_stars_2;
@@ -34,17 +26,15 @@ public class PopUpMgr : MonoBehaviour
 	public void ShowPopUp()
 	{
 		if(!bShow){
-			//if(PlayerPrefs.GetString("GameType")!="Arcade"){
-				if(name== "SettingsPopUp"){
-					if(InGameScriptRefrences.strikerManager!=null &&!InGameScriptRefrences.strikerManager.bStartDone){
-						return;
-					}
+			if(name== "SettingsPopUp" || name=="RankingPopUpArcade"){
+				if(InGameScriptRefrences.strikerManager!=null &&!InGameScriptRefrences.strikerManager.bStartDone){
+					return;
 				}
-			//}
+			}
 			currentPopUpObj=gameObject;
-			popUpActionChangeState = PopUpAction.OnHide;
+			StartCoroutine(ChangeState(false));
 			if(name!="WinPopUp" && name!="LosePopUp"){
-				ImageBlack.popUpActionImageBlack = PopUpAction.OnShow;
+				ImageBlack.popUpActionImageBlack = ImageBlack.PopUpAction.OnShow;
 			}
 			anim.SetTrigger("ShowPopUp");
 			bShow=true;
@@ -62,11 +52,26 @@ public class PopUpMgr : MonoBehaviour
 		if(bShow){
 			currentPopUpObj=null;
 			if(name!="WinCharacterPopUp" && name!="LoseCharacterPopUp"){
-				popUpActionChangeState = PopUpAction.OnShow;
-				ImageBlack.popUpActionImageBlack = PopUpAction.OnHide;
+				StartCoroutine(ChangeState(true));
+				ImageBlack.popUpActionImageBlack = ImageBlack.PopUpAction.OnHide;
 			}
 			anim.SetTrigger("HidePopUp");
 			bShow=false;
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Nos esperamos un frame antes de cambiar de estado para que no de problemas con el InputScript
+	IEnumerator ChangeState(bool bShow)
+	{
+		yield return new WaitForEndOfFrame();
+		
+		if(LevelManager.instance!=null){
+			if(bShow){
+				LevelManager.instance.pauseCtrlForced(GameState.Start);
+			}else{
+				LevelManager.instance.pauseCtrlForced(GameState.Pause);
+			}
 		}
 	}
 	
@@ -234,33 +239,6 @@ public class PopUpMgr : MonoBehaviour
 		}else{
 			Application.LoadLevel(2);
 		}
-	}
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Nos esperamos un frame antes de poner el juego en playmode para que no de problemas con el Update del InputScript
-	void Update()
-	{
-		//Play mode
-		if(LevelManager.instance!=null){
-			if(popUpActionChangeState==PopUpAction.OnShow){
-				LevelManager.instance.pauseCtrlForced(GameState.Start);
-				popUpActionChangeState = PopUpAction.Idle;
-			}
-			else if(popUpActionChangeState==PopUpAction.OnHide){
-				LevelManager.instance.pauseCtrlForced(GameState.Pause);
-				popUpActionChangeState = PopUpAction.Idle;
-			}
-		}
-		/*
-		//Imagen negra de fondo
-		if(popUpActionImageBlack==PopUpAction.On && ImgBlack!=null){
-			ImgBlack.GetComponent<Animator>().SetTrigger("ShowPopUp");
-			popUpActionImageBlack=PopUpAction.Skip;
-		}
-		else if(popUpActionImageBlack==PopUpAction.Off && ImgBlack!=null){
-			ImgBlack.GetComponent<Animator>().SetTrigger("HidePopUp");
-			popUpActionImageBlack=PopUpAction.Skip;
-		}*/
 	}
 }
 

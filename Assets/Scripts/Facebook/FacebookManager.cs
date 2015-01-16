@@ -1,4 +1,4 @@
-﻿//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //https://developers.facebook.com/docs/games/requests/v2.2
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -8,6 +8,16 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using Facebook;
+
+public class Friend
+{
+	public string id;
+	public string name;
+	public string highScore;
+	public Sprite profilePicture;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public class FacebookManager : MonoBehaviour
 {
@@ -30,7 +40,7 @@ public class FacebookManager : MonoBehaviour
 	Dictionary<string, object> pendingRequests;
 	List<object> pendingRequestsData;
 
-	public Dictionary<string, Sprite> friendsPictures;
+	public Dictionary<string, Friend> friendsDict;
 	
 	int livesCounter=0;
 		
@@ -70,7 +80,7 @@ public class FacebookManager : MonoBehaviour
 		fromItem = new Dictionary<string, object>();
 		pendingRequests = new Dictionary<string, object>();
 		pendingRequestsData = new List<object>();
-		friendsPictures = new Dictionary<string, Sprite>();
+		friendsDict = new Dictionary<string, Friend>();
 		
 		//DeleteAllRequests(); //Only for testing
 	}
@@ -83,7 +93,7 @@ public class FacebookManager : MonoBehaviour
 		if(level == 2){
 			GetObjectReferences();
 			InvokeRepeating("ReadAllRequests", 1.0f, timeReadRequest);
-			if(!friendsPictures.ContainsKey(FB.UserId)){
+			if(!friendsDict.ContainsKey(FB.UserId)){
 				StartCoroutine(GetProfileImage(FB.UserId));
 			}
 			GetFriendsPictures();
@@ -181,7 +191,7 @@ public class FacebookManager : MonoBehaviour
 					friendEntry.transform.SetParent(ImageDummy.transform);
 					friendEntry.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
 					
-					if(!friendsPictures.ContainsKey(facebookID)){
+					if(!friendsDict.ContainsKey(facebookID)){
 						StartCoroutine(GetProfileImage(facebookID));
 					}
 				}
@@ -203,7 +213,9 @@ public class FacebookManager : MonoBehaviour
 		
 		if(textFb2!=null){
 			if(bShowDebug) Debug.Log("GetProfileImage:"+facebookID);
-			friendsPictures.Add(facebookID, Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0.5f, 0.5f)));
+			Friend friend = new Friend();
+			friend.profilePicture = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0.5f, 0.5f));
+			friendsDict.Add(facebookID, friend);
 		}else{
 			if(bShowDebug) Debug.Log("ERROR: textFb2 es null");
 			StartCoroutine(GetProfileImage(facebookID));
@@ -244,6 +256,51 @@ public class FacebookManager : MonoBehaviour
 		catch(Exception e){
 			status = e.Message;
 		}
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Mostrar el popup con los mensajes
+	public void ButtonPressedMessages()
+	{
+		messagesPopUp.ShowPopUp();
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Responder a todos los mensajes de pedir vida
+	public void ButtonPressedAccept()
+	{
+		//Enviar vidas a quien las haya pedido
+		foreach(string user in sendLifeUserList){
+			FB.AppRequest(
+				"Send one life",
+				OGActionType.Send,
+				objectId,
+				new string[]{user},
+			FriendSelectorData,
+			FriendSelectorTitle,
+			callback : Callback
+			);
+		}
+		sendLifeUserList.Clear();
+		
+		//Sumar las vidas recibidas
+		LivesManager.lives+=livesCounter;
+		
+		//Borrar las requests ya procesadas
+		foreach(string request in requestsList){
+			DeleteRequest(request);
+		}
+		requestsList.Clear();
+		
+		//Borrar las entradas del popup
+		foreach(GameObject go in entriesList){
+			Destroy(go);
+		}
+		entriesList.Clear();
+		
+		messagesPopUp.HidePopUp();
+		
+		buttonMessages.SetActive(false);
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -458,51 +515,6 @@ public class FacebookManager : MonoBehaviour
 		livesCounter=0;
 
 		Resources.UnloadUnusedAssets();
-	}
-	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Mostrar el popup con los mensajes
-	public void ButtonPressedMessages()
-	{
-		messagesPopUp.ShowPopUp();
-	}
-	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Responder a todos los mensajes de pedir vida
-	public void ButtonPressedAccept()
-	{
-		//Enviar vidas a quien las haya pedido
-		foreach(string user in sendLifeUserList){
-			FB.AppRequest(
-				"Send one life",
-				OGActionType.Send,
-				objectId,
-				new string[]{user},
-				FriendSelectorData,
-				FriendSelectorTitle,
-				callback : Callback
-			);
-		}
-		sendLifeUserList.Clear();
-		
-		//Sumar las vidas recibidas
-		LivesManager.lives+=livesCounter;
-		
-		//Borrar las requests ya procesadas
-		foreach(string request in requestsList){
-			DeleteRequest(request);
-		}
-		requestsList.Clear();
-		
-		//Borrar las entradas del popup
-		foreach(GameObject go in entriesList){
-			Destroy(go);
-		}
-		entriesList.Clear();
-		
-		messagesPopUp.HidePopUp();
-		
-		buttonMessages.SetActive(false);
 	}
 	
 	/*

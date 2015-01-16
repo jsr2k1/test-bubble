@@ -3,7 +3,12 @@ using System.Collections;
 
 public class ImageBlack : MonoBehaviour
 {
-	public static PopUpMgr.PopUpAction popUpActionImageBlack = PopUpMgr.PopUpAction.Idle;
+	public enum PopUpAction{
+		OnShow,
+		OnHide,
+		Idle
+	}
+	public static PopUpAction popUpActionImageBlack = PopUpAction.Idle;
 	Animator animator;
 	bool bShow=false;
 	
@@ -12,21 +17,21 @@ public class ImageBlack : MonoBehaviour
 	void Awake()
 	{
 		animator = GetComponent<Animator>();
-		popUpActionImageBlack = PopUpMgr.PopUpAction.Idle;
+		popUpActionImageBlack = PopUpAction.Idle;
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Update()
 	{
-		if(popUpActionImageBlack==PopUpMgr.PopUpAction.OnShow && !bShow){
+		if(popUpActionImageBlack==PopUpAction.OnShow && !bShow){
 			animator.SetTrigger("ShowPopUp");
-			popUpActionImageBlack=PopUpMgr.PopUpAction.Idle;
+			popUpActionImageBlack=PopUpAction.Idle;
 			bShow=true;
 		}
-		else if(popUpActionImageBlack==PopUpMgr.PopUpAction.OnHide && bShow){
+		else if(popUpActionImageBlack==PopUpAction.OnHide && bShow){
 			animator.SetTrigger("HidePopUp");
-			popUpActionImageBlack=PopUpMgr.PopUpAction.Idle;
+			popUpActionImageBlack=PopUpAction.Idle;
 			bShow=false;
 		}
 	}

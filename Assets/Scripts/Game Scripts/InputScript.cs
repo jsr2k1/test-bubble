@@ -7,6 +7,7 @@ public class InputScript : MonoBehaviour
 	//Launcher Sprite
 	public Transform launcher;
 	public Transform thresoldLineTransform;
+	public Transform topThresoldLine;
 
 	float x, y, zRotation;
 	public float ballRadius;
@@ -34,6 +35,7 @@ public class InputScript : MonoBehaviour
 	
 	public PopUpMgr LosePopUpArcade;
 	public PopUpMgr SettingsPopUp;
+	public PopUpMgr RankingPopUp;
 	public PopUpMgr QuitArcadePopUp;
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -89,7 +91,7 @@ public class InputScript : MonoBehaviour
 	{
 		if(PlayerPrefs.GetString("GameType").Equals("Arcade")){
 			if(LevelManager.gameState != GameState.Start){
-				if(!LosePopUpArcade.bShow && !SettingsPopUp.bShow && !QuitArcadePopUp.bShow){
+				if(!LosePopUpArcade.bShow && !SettingsPopUp.bShow && !RankingPopUp.bShow && !QuitArcadePopUp.bShow){
 					LevelManager.gameState = GameState.Start;
 				}
 			}
@@ -114,7 +116,7 @@ public class InputScript : MonoBehaviour
 				y = Input.mousePosition.y - camera.WorldToScreenPoint(launcher.position).y;
 
 				//Dont draw the line or do actions when the click its under the launcher point
-				if(pos.y > thresoldLineTransform.position.y)
+				if(pos.y > thresoldLineTransform.position.y && pos.y < topThresoldLine.position.y)
 				{
 					SetParticles(true);
 					zRotation = Mathf.Rad2Deg * Mathf.Atan2(-x, y);
@@ -132,7 +134,7 @@ public class InputScript : MonoBehaviour
 				SetParticles(false);
 
 				//Dont draw the line or do actions when the click its under the launcher point
-				if(pos.y > thresoldLineTransform.position.y){
+				if(pos.y > thresoldLineTransform.position.y && pos.y < topThresoldLine.position.y){
 					Vector2 FinalPos = new Vector2(pos.x, pos.y);
 					InGameScriptRefrences.strikerManager.Shoot(FinalPos);
 					characterAnimator.SetTrigger("Shoot");

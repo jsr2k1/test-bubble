@@ -411,6 +411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launcher: {fileID: 121854533}
   thresoldLineTransform: {fileID: 286}
+  topThresoldLine: {fileID: 295}
   ballRadius: .25
   particlePrefab1: {fileID: 100000, guid: ae1336630128ad24a9ef7c0f18950c1a, type: 2}
   particlePrefab2: {fileID: 100000, guid: 95c202fcda79f304c8f3c255d47252d5, type: 2}
@@ -434,6 +435,7 @@ MonoBehaviour:
   characterAnimator: {fileID: 1876706082}
   LosePopUpArcade: {fileID: 0}
   SettingsPopUp: {fileID: 0}
+  RankingPopUp: {fileID: 0}
   QuitArcadePopUp: {fileID: 0}
 --- !u!114 &187
 MonoBehaviour:
