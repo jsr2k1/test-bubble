@@ -21,6 +21,11 @@ public class PlayingObject : MonoBehaviour
 
 	Transform leftCollider;
 	Transform rightCollider;
+	
+	float destroy_threshold; //umbral para destruir las bolas que caen
+	SpriteRenderer spriteRenderer;
+	SphereCollider sphereCollider;
+	RotationScript rotationScript;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -28,6 +33,11 @@ public class PlayingObject : MonoBehaviour
 	{
 		leftCollider = GameObject.Find("Left").transform;
 		rightCollider = GameObject.Find("Right").transform;
+		
+		destroy_threshold = GameObject.Find("Down").transform.position.y;
+		spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+		sphereCollider = GetComponent<SphereCollider>();
+		rotationScript = GetComponent<RotationScript>();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -36,6 +46,23 @@ public class PlayingObject : MonoBehaviour
 	{
 		if(thresoldLineTransform == null){
 			thresoldLineTransform = GameObject.Find("Thresold Line").transform;
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	void Update()
+	{
+		//Cuando una bola que esta cayendo supera el umbral, la destruimos
+		if(rigidbody.useGravity){
+			float dist = Random.Range(0.0f,1.5f);
+			if(transform.position.y < destroy_threshold-dist){
+				if(PlayerPrefs.GetString("GameType")=="Arcade"){
+					DestroyPlayingObject(false);
+				}else{
+					DestroyPlayingObject(true);
+				}
+			}
 		}
 	}
 
@@ -119,11 +146,7 @@ public class PlayingObject : MonoBehaviour
 			return;
 		}
 		isDestroyed = true;
-
-		if(!fall){//Para que pete al colisionar con el objeto "Down"
-			Destroy(GetComponent<SphereCollider>());
-		}
-
+		Destroy(sphereCollider);
 		RefreshNeighbourAdjacentList();
 		gameObject.tag = "Untagged";
 
@@ -133,7 +156,8 @@ public class PlayingObject : MonoBehaviour
 				rigidbody.useGravity = true;
 				rigidbody.isKinematic = false;
 				rigidbody.AddForce(new Vector3(0, Random.Range(1.5f, 2.5f), 0), ForceMode.VelocityChange);
-				GetComponent<RotationScript>().enabled = true;
+				rotationScript.enabled = true;
+				spriteRenderer.sortingLayerName = "FallingObjLayer";
 				//Destroy(gameObject, 3f); Vamos a hacer que se destruya al colisionar con el objeto "Down"
 			} else{                
 				Destroy(gameObject);
@@ -217,19 +241,6 @@ public class PlayingObject : MonoBehaviour
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Para detectar cuando una bola cae y colisiona con el objeto "Down" -> queremos que pete y sume puntos
-	void OnCollisionEnter(Collision other)
-	{
-		if(other.gameObject.name == "Down"){
-			if(PlayerPrefs.GetString("GameType")=="Arcade"){
-				DestroyPlayingObject(false);
-			}else{
-				DestroyPlayingObject(true);
-			}
-		}
-	}
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	internal void ObjectCollidedWithOtherObject(GameObject collidedObject)
 	{
@@ -237,9 +248,6 @@ public class PlayingObject : MonoBehaviour
 			PlayingObjectManager.currentObjectName = gameObject.name;
 		}
 		AdjustPosition(collidedObject.transform.position);
-
-		//No entiendo pq hay que hacer esto?
-		//GetComponent<SphereCollider>().radius /= .8f;
 
 		if(PlayerPrefs.GetString("GameType") == "Arcade"){
 			if(transform.position.y < thresoldLineTransform.position.y + PlayingObjectGeneration.thresholdOffsetGameOver){
