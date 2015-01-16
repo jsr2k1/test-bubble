@@ -577,7 +577,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.53552771, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 6, y: .100000001, z: 3}
   m_Children: []
   m_Father: {fileID: 225}
@@ -3153,6 +3153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImgBlack: {fileID: 0}
   bShow: 0
+  buttonNext: {fileID: 0}
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
   sound_stars_3: {fileID: 0}
@@ -4064,6 +4065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImgBlack: {fileID: 453653204}
   bShow: 0
+  buttonNext: {fileID: 0}
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
   sound_stars_3: {fileID: 0}
@@ -4236,6 +4238,8 @@ MonoBehaviour:
   levelText2: {fileID: 1853050283}
   slider: {fileID: 0}
   highscoretext: {fileID: 673741713}
+  BallCounter: {fileID: 0}
+  fewballs: {fileID: 0}
 --- !u!1 &921357669
 GameObject:
   m_ObjectHideFlags: 0
@@ -4478,6 +4482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImgBlack: {fileID: 453653204}
   bShow: 0
+  buttonNext: {fileID: 0}
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
   sound_stars_3: {fileID: 0}
@@ -4833,6 +4838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImgBlack: {fileID: 0}
   bShow: 0
+  buttonNext: {fileID: 0}
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
   sound_stars_3: {fileID: 0}
@@ -6162,6 +6168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImgBlack: {fileID: 453653204}
   bShow: 0
+  buttonNext: {fileID: 0}
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
   sound_stars_3: {fileID: 0}
