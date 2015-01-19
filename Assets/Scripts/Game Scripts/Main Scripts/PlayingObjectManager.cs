@@ -75,18 +75,19 @@ public class PlayingObjectManager : MonoBehaviour
 		
 		if(PlayingObjectManager.burstCounter < 3 && !Striker.instance.multiBall && !Striker.instance.bombBall && !Striker.instance.fireBall){
 			ResetAllObjects();
-			if(CheckGameIsFinished()){
-				LevelManager.instance.GameIsFinished();
-			}else{
-				CheckGameIsOver();
-			}
 			//InGameScriptRefrences.strikerManager.GenerateNextStriker();
 			return;
 		}
 		BurstObjects();
-//		FallDisconnectedObjects();
+		FallDisconnectedObjects();
+		
+		if(CheckGameIsFinished()){
+			LevelManager.instance.GameIsFinished();
+		}else{
+			CheckGameIsOver();
+		}
 	}
-/*
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Burst all the playing objects whose Burst attribute is marked true.
 	void BurstObjects()
@@ -99,7 +100,7 @@ public class PlayingObjectManager : MonoBehaviour
 			}
 		}
 	}
-	*/
+/*
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Burst all the playing objects whose Burst attribute is marked true.
 	void BurstObjects()
@@ -117,18 +118,18 @@ public class PlayingObjectManager : MonoBehaviour
 		//	}
 		//}
 	}
-
+*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+/*
 	IEnumerator BurstOneObject(int i)
 	{
-		/*if(i < allPlayingObjectScripts.Length){
-			if(allPlayingObjectScripts[i].burst){
-				allPlayingObjectScripts[i].BurstMe(false);
-				yield return new WaitForSeconds(0.025f);
-			}
-			StartCoroutine(BurstOneObject(i+1));
-		}*/
+//		if(i < allPlayingObjectScripts.Length){
+//			if(allPlayingObjectScripts[i].burst){
+//				allPlayingObjectScripts[i].BurstMe(false);
+//				yield return new WaitForSeconds(0.025f);
+//			}
+//			StartCoroutine(BurstOneObject(i+1));
+//		}
 		if(i<objectsToBurst.Count){
 			if(objectsToBurst[i].burst){
 				objectsToBurst[i].BurstMe(false);
@@ -154,7 +155,7 @@ public class PlayingObjectManager : MonoBehaviour
 			//InGameScriptRefrences.strikerManager.GenerateStriker();
 		}
 	}
-
+*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	internal void FallDisconnectedObjects()
@@ -193,7 +194,7 @@ public class PlayingObjectManager : MonoBehaviour
 			}
 		}
 		Invoke("ResetAllObjects", .02f); 
-		//ResetAllObjects();
+		ResetAllObjects();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
