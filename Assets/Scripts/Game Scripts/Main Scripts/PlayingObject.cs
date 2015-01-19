@@ -50,8 +50,8 @@ public class PlayingObject : MonoBehaviour
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	void Update()
+	//void Update()
+	void FixedUpdate()
 	{
 		//Cuando una bola que esta cayendo supera el umbral, la destruimos
 		if(rigidbody.useGravity){
