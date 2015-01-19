@@ -13,7 +13,8 @@ public class RotationScript : MonoBehaviour {
         myTransform = transform;
     }
 
-    void FixedUpdate()
+	void Update()
+    //void FixedUpdate()
     {
         if (!rotate)
             return;
