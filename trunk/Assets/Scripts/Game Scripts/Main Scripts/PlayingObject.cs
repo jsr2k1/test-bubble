@@ -167,9 +167,11 @@ public class PlayingObject : MonoBehaviour
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public void DestroyPlayingObject(bool bAaddScore)
+	public void DestroyPlayingObject(bool bAddScore)
 	{
-		ScoreManagerGame.instance.DisplayScorePopup(10, transform);
+		if(bAddScore){
+			ScoreManagerGame.instance.DisplayScorePopup(10, transform);
+		}
 		Instantiate(burstParticle, transform.position, Quaternion.identity);
 		burstParticle.renderer.sortingLayerName = "MiddleLayer";
 		Destroy(gameObject);
