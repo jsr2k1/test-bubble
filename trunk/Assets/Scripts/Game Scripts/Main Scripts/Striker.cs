@@ -137,13 +137,10 @@ public class Striker : MonoBehaviour
 					FreeStriker(other.gameObject);
 					fireBall = false;
 				}
-			}
-			else if((multiBall || bombBall) && other.gameObject.name == "DummyBall(Clone)"){
+			}else if((multiBall || bombBall) && other.gameObject.name == "DummyBall(Clone)"){
 				Destroy(currentStrikerObject);
-				//multiBall=false;
 				FreeStriker(other.gameObject);
-			}
-			else{
+			}else{
 				FreeStriker(other.gameObject);
 			}
 		}
@@ -152,25 +149,6 @@ public class Striker : MonoBehaviour
 		if(other.gameObject.name == "Left" || other.gameObject.name == "Right"){
 			AudioManager.instance.PlayFxSound(AudioManager.instance.wallCollisionSound);
 			currentMovingDirection = Vector3.Reflect(currentMovingDirection, other.contacts[0].normal).normalized;
-		}
-
-		//Destroy current shooting object hold by striker and generate new striker object.
-		//Joel:Nunca entra por aqui
-		if((/*other.gameObject.name == "Top" || */other.gameObject.name == "Top Down") && isBusy)
-		{
-			Debug.Log("REVISAR!!");
-			/*
-			rigidbody.isKinematic = true;
-			Destroy(currentStrikerObject);
-			isBusy = false;
-			InGameScriptRefrences.strikerManager.GenerateStriker();
-			InGameScriptRefrences.playingObjectManager.ResetAllObjects();
-			InGameScriptRefrences.playingObjectManager.FallDisconnectedObjects();
-			if(fireBall){
-				fireBall = false;
-				deep = 0;
-			}
-			*/
 		}
 
 		if(bombBall == false && fireBall == false){

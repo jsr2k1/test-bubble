@@ -323,15 +323,6 @@ public class PlayingObject : MonoBehaviour
 		}
 		transform.position = new Vector3(x, y, 0);
 	}
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	internal void GameOverFall()
-	{
-		rigidbody.useGravity = true;
-		rigidbody.isKinematic = false;
-		rigidbody.AddForce(new Vector3(0, Random.Range(2f, 3f), 0), ForceMode.VelocityChange);
-	}
 }
 
 

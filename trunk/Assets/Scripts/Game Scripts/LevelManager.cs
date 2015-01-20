@@ -112,7 +112,6 @@ public class LevelManager : MonoBehaviour
 			return;
 		}
 		gameState = GameState.GameOver;
-		//InGameScriptRefrences.playingObjectManager.FallAllPlayingObjects();
 		AudioManager.instance.StopAudio();
 		losePop.ShowPopUp();
 
