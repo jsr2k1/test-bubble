@@ -12,8 +12,7 @@ public class ToggleController : MonoBehaviour, IPointerClickHandler
 	//de los toggles segun la informacion de PlayerPrefs desde el AudioManager
 	public void OnPointerClick(PointerEventData data)
 	{
-		int i = PlayerPrefs.GetInt("Sounds");
-		if(i>0){
+		if(AudioManager.instance.bSoundsOn){
 			audio.Play();
 		}
 	}
@@ -27,9 +26,11 @@ public class ToggleController : MonoBehaviour, IPointerClickHandler
 		}
 		if(b){
 			PlayerPrefs.SetInt("Music", 1);
+			AudioManager.instance.bMusicOn=true;
 			AudioManager.instance.PlayAudio();
 		}else{
 			PlayerPrefs.SetInt("Music", 0);
+			AudioManager.instance.bMusicOn=false;
 			AudioManager.instance.StopAudio();
 		}
 	}
@@ -40,8 +41,10 @@ public class ToggleController : MonoBehaviour, IPointerClickHandler
 	{
 		if(b){
 			PlayerPrefs.SetInt("Sounds", 1);
+			AudioManager.instance.bSoundsOn=true;
 		}else{
 			PlayerPrefs.SetInt("Sounds", 0);
+			AudioManager.instance.bSoundsOn=false;
 		}
 	}
 }

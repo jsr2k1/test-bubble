@@ -23,7 +23,7 @@ public class PlaySoundButton : MonoBehaviour
 	
 	public void PlayUIClick()
 	{
-		if(audioSource && PlayerPrefs.GetInt("Sounds")==1){
+		if(audioSource && AudioManager.instance.bSoundsOn){
 			audioSource.Play();
 		}
 	}

@@ -19,6 +19,9 @@ public class AudioManager : MonoBehaviour
 	public AudioSource hookSound;
 	public AudioSource wallCollisionSound;
 	public AudioSource burstSound;
+	
+	public bool bMusicOn;
+	public bool bSoundsOn;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -26,6 +29,18 @@ public class AudioManager : MonoBehaviour
 	{
 		DontDestroyOnLoad(gameObject);
 		instance = this;
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void Start()
+	{
+		if(PlayerPrefs.GetInt("Music")==1){
+			bMusicOn=true;
+		}
+		if(PlayerPrefs.GetInt("Sounds")==1){
+			bSoundsOn=true;
+		}
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -51,20 +66,8 @@ public class AudioManager : MonoBehaviour
 
 	void SetToggleValues()
 	{
-		//Music
-		int i = PlayerPrefs.GetInt("Music");
-		if(i > 0){
-			musicToggle.isOn = true;
-		}else{
-			musicToggle.isOn = false;
-		}
-		//Sounds
-		int j = PlayerPrefs.GetInt("Sounds");
-		if(j > 0){
-			soundsToggle.isOn = true;
-		}else{
-			soundsToggle.isOn = false;
-		}
+		musicToggle.isOn = AudioManager.instance.bMusicOn;
+		soundsToggle.isOn = AudioManager.instance.bSoundsOn;
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -108,8 +111,7 @@ public class AudioManager : MonoBehaviour
 	
 	void PlayAudio(int level)
 	{
-		int i = PlayerPrefs.GetInt("Music");
-		if(i > 0){
+		if(AudioManager.instance.bMusicOn){
 			if((level==2 && oldLevel==1) || level==1 && oldLevel==2){
 				//No hacemos nada
 			}else{
@@ -122,7 +124,7 @@ public class AudioManager : MonoBehaviour
 	
 	public void PlayFxSound(AudioSource audiosource)
 	{
-		if(PlayerPrefs.GetInt("Sounds")>0 && !audiosource.isPlaying){
+		if(AudioManager.instance.bSoundsOn && !audiosource.isPlaying){
 			audiosource.Play();
 		}
 	}

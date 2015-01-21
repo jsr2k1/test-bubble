@@ -21,9 +21,11 @@ public class Splash : MonoBehaviour
 		}
 		if(PlayerPrefs.HasKey("Music")==false){
 			PlayerPrefs.SetInt("Music", 1);
+			AudioManager.instance.bMusicOn=true;
 		}
 		if(PlayerPrefs.HasKey("Sounds")==false){
 			PlayerPrefs.SetInt("Sounds", 1);
+			AudioManager.instance.bSoundsOn=true;
 		}
 		if(PlayerPrefs.HasKey("Multicolor Ball")==false){
 			PlayerPrefs.SetInt("Multicolor Ball", 2);

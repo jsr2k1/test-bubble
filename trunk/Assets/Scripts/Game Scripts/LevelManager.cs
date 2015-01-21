@@ -211,8 +211,8 @@ public class LevelManager : MonoBehaviour
 			currentBalls--;
 			if(LevelManager.GameType == LevelManager.GameTypes.NORMAL){
 				ballsManager.setBallsLeft(currentBalls);
-				if (currentBalls==5){
-					if (PlayerPrefs.GetInt("Sounds")==1){
+				if(currentBalls==5){
+					if(AudioManager.instance.bSoundsOn){
 						fewballs.Play();
 					}
 					anim.SetTrigger("FewBalls");
