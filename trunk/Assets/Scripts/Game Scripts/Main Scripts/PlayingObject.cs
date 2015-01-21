@@ -6,8 +6,8 @@ public class PlayingObject : MonoBehaviour
 {
 	public GameObject burstParticle;
 	GameObject burstParticleInstance;
-	ParticleAnimator particleAnimator;
-	ParticleEmitter particleEmitter;
+	ParticleAnimator particleAnim;
+	ParticleEmitter particleEmit;
 	static int numberOfAdjacentObjects = 6;
 
 	//Angles of neighbour objects(this will be used while detecting neighbour objects through raycast
@@ -43,10 +43,10 @@ public class PlayingObject : MonoBehaviour
 		rotationScript = GetComponent<RotationScript>();
 		
 		burstParticleInstance = Instantiate(burstParticle, new Vector3(10000,10000,1), Quaternion.identity) as GameObject;
-		particleAnimator = burstParticleInstance.GetComponent<ParticleAnimator>();
-		particleAnimator.autodestruct = false;
-		particleEmitter = burstParticleInstance.GetComponent<ParticleEmitter>();
-		particleEmitter.emit = false;
+		particleAnim = burstParticleInstance.GetComponent<ParticleAnimator>();
+		particleAnim.autodestruct = false;
+		particleEmit = burstParticleInstance.GetComponent<ParticleEmitter>();
+		particleEmit.emit = false;
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -185,8 +185,8 @@ public class PlayingObject : MonoBehaviour
 		burstParticleInstance.transform.position = transform.position;
 		//burstParticle.renderer.sortingLayerName = "MiddleLayer";
 		burstParticleInstance.renderer.sortingLayerName = "MiddleLayer";
-		particleEmitter.emit = true;
-		particleAnimator.autodestruct = true;
+		particleEmit.emit = true;
+		particleAnim.autodestruct = true;
 		Destroy(gameObject);
 	}
 
