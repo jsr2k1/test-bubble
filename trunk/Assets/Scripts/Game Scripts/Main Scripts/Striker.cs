@@ -31,6 +31,9 @@ public class Striker : MonoBehaviour
 	//Creamos un evento para poder saber cuando se ha disparado un booster
 	public delegate void SpecialBallLaunched();
 	public static event SpecialBallLaunched OnSpecialBallLaunched;
+	
+	bool bCollision=false;
+	Collision other;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -104,10 +107,28 @@ public class Striker : MonoBehaviour
 		//speed += 5 * Time.deltaTime;
 		myTransform.Translate(currentMovingDirection * speed * Time.deltaTime);
 	}
-
+	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	void OnCollisionEnter(Collision other)
+	void Update()
+	{
+		if(bCollision){
+			DoCollisionActions();
+			bCollision=false;
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	void OnCollisionEnter(Collision otherObj)
+	{
+		other = otherObj;
+		bCollision = true;
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	void DoCollisionActions()
+	//void OnCollisionEnter(Collision other)
 	{
 		//When the Striker hits board playing object
 		if(other.gameObject.tag == "Playing Object" && isBusy){
