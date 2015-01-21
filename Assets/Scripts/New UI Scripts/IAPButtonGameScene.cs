@@ -25,12 +25,9 @@ public class IAPButtonGameScene : MonoBehaviour, IPointerClickHandler
 	//No podemos asignar el objeto mediante la interfaz de Unity pq en esta escena no existe
 	public void OnPointerClick(PointerEventData data)
 	{
-		int i = PlayerPrefs.GetInt("Sounds");
-
-		if(i>0){
+		if(AudioManager.instance.bSoundsOn){
 			audio.Play();
 		}
-
 		if(iapManager!=null){
 			iapManager.PurchaseSomething(item);
 		}else{

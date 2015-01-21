@@ -39,7 +39,7 @@ public class PopUpMgr : MonoBehaviour
 			anim.SetTrigger("ShowPopUp");
 			bShow=true;
 			
-			if(audio && PlayerPrefs.GetInt("Sounds")==1){
+			if(audio && AudioManager.instance.bSoundsOn){
 				audio.Play();
 			}
 		}
@@ -111,7 +111,7 @@ public class PopUpMgr : MonoBehaviour
 		}
 		if(LevelManager.score < 0.3 * LevelManager.ReferenceScore){
 			anim.speed=0;
-			if(PlayerPrefs.GetInt("Music")==1){
+			if(AudioManager.instance.bMusicOn){
 				AudioManager.instance.PlayAudio();
 			}
 			buttonNext.SetActive(true);
@@ -127,7 +127,7 @@ public class PopUpMgr : MonoBehaviour
 		}
 		if(LevelManager.score < 0.6 * LevelManager.ReferenceScore){
 			anim.speed=0;
-			if(PlayerPrefs.GetInt("Music")==1){
+			if(AudioManager.instance.bMusicOn){
 				AudioManager.instance.PlayAudio();
 			}
 			buttonNext.SetActive(true);
@@ -143,7 +143,7 @@ public class PopUpMgr : MonoBehaviour
 		}
 		if(LevelManager.score < LevelManager.ReferenceScore){
 			anim.speed=0;
-			if(PlayerPrefs.GetInt("Music")==1){
+			if(AudioManager.instance.bMusicOn){
 				AudioManager.instance.PlayAudio();
 			}
 			buttonNext.SetActive(true);
@@ -157,7 +157,7 @@ public class PopUpMgr : MonoBehaviour
 		if(name!="WinPopUp" && name!="LosePopUp"){
 			return;
 		}
-		if(PlayerPrefs.GetInt("Music")==1){
+		if(AudioManager.instance.bMusicOn){
 			AudioManager.instance.PlayAudio();
 		}
 		if(buttonNext!=null){
@@ -173,7 +173,7 @@ public class PopUpMgr : MonoBehaviour
 			return;
 		}
 		if(LevelManager.score > 0.3 * LevelManager.ReferenceScore){
-			if(PlayerPrefs.GetInt("Sounds")==1){
+			if(AudioManager.instance.bSoundsOn){
 				sound_stars_1.Play();
 			}
 		}
@@ -187,7 +187,7 @@ public class PopUpMgr : MonoBehaviour
 			return;
 		}
 		if(LevelManager.score > 0.6 * LevelManager.ReferenceScore){
-			if(PlayerPrefs.GetInt("Sounds")==1){
+			if(AudioManager.instance.bSoundsOn){
 				sound_stars_2.Play();
 			}
 		}
@@ -201,7 +201,7 @@ public class PopUpMgr : MonoBehaviour
 			return;
 		}
 		if(LevelManager.score > LevelManager.ReferenceScore){
-			if(PlayerPrefs.GetInt("Sounds")==1){
+			if(AudioManager.instance.bSoundsOn){
 				sound_stars_3.Play();
 			}
 		}

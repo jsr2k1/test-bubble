@@ -74,7 +74,7 @@ public class WorldButton : MonoBehaviour
 
 	public void ButtonPressed()
 	{
-		if(audioSource && PlayerPrefs.GetInt("Sounds")==1){
+		if(audioSource && AudioManager.instance.bSoundsOn){
 			audioSource.Play();
 		}
 		

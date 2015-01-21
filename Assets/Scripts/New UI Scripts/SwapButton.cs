@@ -18,7 +18,7 @@ public class SwapButton : MonoBehaviour
 			Striker.instance.Swap();
 			swapImageAnim.SetTrigger("SwapPressed");
 			
-			if(PlayerPrefs.GetInt("Sounds")==1){
+			if(AudioManager.instance.bSoundsOn){
 				audio.Play();
 			}
 		}
