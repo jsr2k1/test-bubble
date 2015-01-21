@@ -75,7 +75,7 @@ public class StrikerManager : MonoBehaviour
 	//Generates shooting object
 	internal void GenerateStriker()
 	{
-		if(LevelManager.currentBalls<1 && PlayerPrefs.GetString("GameType").Equals("Normal")){
+		if(LevelManager.currentBalls<1 && LevelManager.GameType == LevelManager.GameTypes.NORMAL){
 			return;
 		}
 		striker.transform.position = currentStrikerPosition.position;
@@ -134,8 +134,7 @@ public class StrikerManager : MonoBehaviour
 		int index;
 
 		//WORLD MODE
-		if(PlayerPrefs.GetString("GameType").Equals("Normal"))
-		{
+		if(LevelManager.GameType == LevelManager.GameTypes.NORMAL){
 			if(isSwap){
 				index = currentStrikerBallID;
 				nextStrikerObject = (GameObject)Instantiate(InGameScriptRefrences.playingObjectGeneration.playingObjectsPrefabs[index], nextStrikerPosition.position, Quaternion.identity);
@@ -159,7 +158,7 @@ public class StrikerManager : MonoBehaviour
 			index = isSwap ? currentStrikerBallID : Random.Range(0,6);
 			nextStrikerObject = (GameObject)Instantiate(InGameScriptRefrences.playingObjectGeneration.playingObjectsPrefabs[index], nextStrikerPosition.position, Quaternion.identity);
 		}
-		if(PlayerPrefs.GetString("GameType").Equals("Arcade") || LevelManager.currentBalls>1){
+		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE || LevelManager.currentBalls>1){
 			nextStrikerObject.tag = "Striker";
 			nextStrikerObject.GetComponent<SphereCollider>().enabled = false;
 			//iTween.PunchScale(nextStrikerObject, new Vector3(.2f, .2f, .2f), 1f);

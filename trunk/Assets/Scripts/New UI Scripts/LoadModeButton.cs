@@ -16,7 +16,7 @@ public class LoadModeButton : MonoBehaviour
 	{
 		Adjust.trackEvent("xr59vt");
 		
-		PlayerPrefs.SetString("GameType", "Arcade");
+		LevelManager.GameType = LevelManager.GameTypes.ARCADE;
 
 		int levelNo = 1;
 		int val = levelNo % 4;

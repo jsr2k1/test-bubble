@@ -48,6 +48,12 @@ public class LevelManager : MonoBehaviour
 	Animator anim;
 
 	public AudioSource fewballs;
+	
+	public enum GameTypes{
+		ARCADE = 0,
+		NORMAL = 1	
+	}
+	public static GameTypes GameType;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -71,14 +77,14 @@ public class LevelManager : MonoBehaviour
 		minimumNumberOfRows = Mathf.Max(1, minimumNumberOfRows);
 		totalNumberOfRowsLeft = Mathf.Max(minimumNumberOfRows, totalNumberOfRowsLeft);
 
-		if(PlayerPrefs.GetString("GameType").Equals("Normal")){
+		if(LevelManager.GameType == LevelManager.GameTypes.NORMAL){
 			totalNumberOfRowsLeft = minimumNumberOfRows;
 			currentBalls = NumberOfBalls;
 			//setting the balls of the level
 			ballsManager.setBallsLeft(NumberOfBalls);
 		}
 		scoreTextLabel = GameObject.Find("ScoreTextLabel").GetComponent<Text>();
-		if(PlayerPrefs.GetString("GameType") == "Normal"){
+		if(LevelManager.GameType == LevelManager.GameTypes.NORMAL){
 			levelText1.text = LanguageManager.GetText("id_level") + " " + levelNo.ToString();
 			levelText2.text = LanguageManager.GetText("id_level") + " " + levelNo.ToString();
 		}
@@ -115,7 +121,7 @@ public class LevelManager : MonoBehaviour
 		AudioManager.instance.StopAudio();
 		losePop.ShowPopUp();
 
-		if(PlayerPrefs.GetString("GameType") == "Arcade"){
+		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
 			if(score > PlayerPrefs.GetInt("Highscore")){
 				PlayerPrefs.SetInt("Highscore", score);
 				highscoretext.text = score.ToString();
@@ -134,7 +140,7 @@ public class LevelManager : MonoBehaviour
 
 	void LoadLevelAgain()
 	{
-		if(PlayerPrefs.GetString("GameType") == "Arcade"){
+		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
 			Application.LoadLevel(1);
 		} else{
 			Application.LoadLevel(2);
@@ -148,8 +154,7 @@ public class LevelManager : MonoBehaviour
 		score += points;
 		scoreTextLabel.text = score.ToString("000000");
 
-		if(PlayerPrefs.GetString("GameType") == "Normal")
-		{
+		if(LevelManager.GameType == LevelManager.GameTypes.NORMAL){
 			if(score > 0.3 * ReferenceScore){
 				star11.enabled = true;
 				stars = 1;
@@ -204,7 +209,7 @@ public class LevelManager : MonoBehaviour
 	{	
 		if(currentBalls>0){
 			currentBalls--;
-			if(PlayerPrefs.GetString("GameType") == "Normal"){
+			if(LevelManager.GameType == LevelManager.GameTypes.NORMAL){
 				ballsManager.setBallsLeft(currentBalls);
 				if (currentBalls==5){
 					if (PlayerPrefs.GetInt("Sounds")==1){

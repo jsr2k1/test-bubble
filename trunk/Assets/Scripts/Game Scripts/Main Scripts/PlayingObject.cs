@@ -66,7 +66,7 @@ public class PlayingObject : MonoBehaviour
 		if(rigidbody.useGravity){
 			float dist = Random.Range(0.0f,1.5f);
 			if(transform.position.y < destroy_threshold-dist){
-				if(PlayerPrefs.GetString("GameType")=="Arcade"){
+				if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
 					DestroyPlayingObject(false);
 				}else{
 					DestroyPlayingObject(true);
@@ -260,7 +260,7 @@ public class PlayingObject : MonoBehaviour
 		}
 		AdjustPosition(collidedObject.transform.position);
 
-		if(PlayerPrefs.GetString("GameType") == "Arcade"){
+		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
 			if(transform.position.y < thresoldLineTransform.position.y + PlayingObjectGeneration.thresholdOffsetGameOver){
 				LevelManager.instance.GameIsOver();
 				return;

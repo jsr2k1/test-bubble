@@ -56,7 +56,7 @@ public class Striker : MonoBehaviour
 		isBusy = true;
 
 		//Telling the NumberOfBallsManager on the game scene that one ball has left and its being shooted
-		if(PlayerPrefs.GetString("GameType") == "Normal"){
+		if(LevelManager.GameType == LevelManager.GameTypes.NORMAL){
 			LevelManager.instance.BallLaunched();
 		}
 
@@ -150,7 +150,8 @@ public class Striker : MonoBehaviour
 			AudioManager.instance.PlayFxSound(AudioManager.instance.wallCollisionSound);
 			currentMovingDirection = Vector3.Reflect(currentMovingDirection, other.contacts[0].normal).normalized;
 		}
-
+		//TODO: CREO QUE NUNCA ENTRA POR AQUI -> SE PUEDE BORRAR?
+		/*
 		if(bombBall == false && fireBall == false){
 			//Its top so the balls get stuck here
 			if(other.gameObject.tag == "TopLimit" && isBusy)
@@ -178,7 +179,7 @@ public class Striker : MonoBehaviour
 
 				InGameScriptRefrences.strikerManager.GenerateStriker();
 			}
-		}
+		}*/
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
