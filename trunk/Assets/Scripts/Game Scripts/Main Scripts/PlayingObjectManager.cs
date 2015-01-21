@@ -78,7 +78,7 @@ public class PlayingObjectManager : MonoBehaviour
 			//InGameScriptRefrences.strikerManager.GenerateNextStriker();
 		}else{
 			BurstObjects();
-			//FallDisconnectedObjects();
+			FallDisconnectedObjects();
 		}
 		
 		if(CheckGameIsFinished()){
@@ -87,7 +87,7 @@ public class PlayingObjectManager : MonoBehaviour
 			CheckGameIsOver();
 		}
 	}
-/*
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Burst all the playing objects whose Burst attribute is marked true.
 	void BurstObjects()
@@ -100,7 +100,7 @@ public class PlayingObjectManager : MonoBehaviour
 			}
 		}
 	}
-*/
+/*
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Burst all the playing objects whose Burst attribute is marked true.
 	void BurstObjects()
@@ -155,7 +155,7 @@ public class PlayingObjectManager : MonoBehaviour
 			//InGameScriptRefrences.strikerManager.GenerateStriker();
 		}
 	}
-
+*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	internal void FallDisconnectedObjects()
