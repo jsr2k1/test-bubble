@@ -162,7 +162,7 @@ public class StrikerManager : MonoBehaviour
 		if(PlayerPrefs.GetString("GameType").Equals("Arcade") || LevelManager.currentBalls>1){
 			nextStrikerObject.tag = "Striker";
 			nextStrikerObject.GetComponent<SphereCollider>().enabled = false;
-			iTween.PunchScale(nextStrikerObject, new Vector3(.2f, .2f, .2f), 1f);
+			//iTween.PunchScale(nextStrikerObject, new Vector3(.2f, .2f, .2f), 1f);
 		}
 		//Switching down the swap flag
 		isSwap = false;

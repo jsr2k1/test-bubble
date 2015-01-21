@@ -5,6 +5,9 @@ using System.Collections.Generic;
 public class PlayingObject : MonoBehaviour
 {
 	public GameObject burstParticle;
+	GameObject burstParticleInstance;
+	ParticleAnimator particleAnimator;
+	ParticleEmitter particleEmitter;
 	static int numberOfAdjacentObjects = 6;
 
 	//Angles of neighbour objects(this will be used while detecting neighbour objects through raycast
@@ -38,6 +41,12 @@ public class PlayingObject : MonoBehaviour
 		spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
 		sphereCollider = GetComponent<SphereCollider>();
 		rotationScript = GetComponent<RotationScript>();
+		
+		burstParticleInstance = Instantiate(burstParticle, new Vector3(10000,10000,1), Quaternion.identity) as GameObject;
+		particleAnimator = burstParticleInstance.GetComponent<ParticleAnimator>();
+		particleAnimator.autodestruct = false;
+		particleEmitter = burstParticleInstance.GetComponent<ParticleEmitter>();
+		particleEmitter.emit = false;
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -172,8 +181,12 @@ public class PlayingObject : MonoBehaviour
 		if(bAddScore){
 			ScoreManagerGame.instance.DisplayScorePopup(10, transform);
 		}
-		Instantiate(burstParticle, transform.position, Quaternion.identity);
-		burstParticle.renderer.sortingLayerName = "MiddleLayer";
+		//Instantiate(burstParticle, transform.position, Quaternion.identity);
+		burstParticleInstance.transform.position = transform.position;
+		//burstParticle.renderer.sortingLayerName = "MiddleLayer";
+		burstParticleInstance.renderer.sortingLayerName = "MiddleLayer";
+		particleEmitter.emit = true;
+		particleAnimator.autodestruct = true;
 		Destroy(gameObject);
 	}
 
@@ -187,7 +200,7 @@ public class PlayingObject : MonoBehaviour
 			burst = true;
 			PlayingObjectManager.objectsToBurst.Add(this);
 			PlayingObjectManager.burstCounter++;
-			iTween.PunchScale(gameObject, new Vector3(.2f, .2f, .2f), 1f);
+			//iTween.PunchScale(gameObject, new Vector3(.2f, .2f, .2f), 1f);
 	
 			for(int i=0; i<numberOfAdjacentObjects; i++)
 			{
@@ -198,14 +211,14 @@ public class PlayingObject : MonoBehaviour
 						if(gameObject.name=="MultiBall" || adjacentPlayingObjects[i].name==gameObject.name){
 							adjacentPlayingObjects[i].Trace(iDeep+1);
 						}else{
-							iTween.PunchScale(adjacentPlayingObjects[i].gameObject, new Vector3(.2f, .2f, .2f), 1f);
+							//iTween.PunchScale(adjacentPlayingObjects[i].gameObject, new Vector3(.2f, .2f, .2f), 1f);
 						}
 					}//BOMBBALL -> Tambien rompe las bolas piedra
 					else if(Striker.instance.bombBall){
 						if(iDeep<2){
 							adjacentPlayingObjects[i].Trace(iDeep+1);
 						}else{
-							iTween.PunchScale(adjacentPlayingObjects[i].gameObject, new Vector3(.2f, .2f, .2f), 1f);
+							//iTween.PunchScale(adjacentPlayingObjects[i].gameObject, new Vector3(.2f, .2f, .2f), 1f);
 						}
 					}//NORMAL
 					else if(adjacentPlayingObjects[i].name!="StoneBall(Clone)" && !Striker.instance.fireBall){
@@ -213,7 +226,7 @@ public class PlayingObject : MonoBehaviour
 							adjacentPlayingObjects[i].Trace(iDeep+1);
 						}else{
 							adjacentPlayingObjects[i].isTraced = true;
-							iTween.PunchScale(adjacentPlayingObjects[i].gameObject, new Vector3(.2f, .2f, .2f), 1f);
+							//iTween.PunchScale(adjacentPlayingObjects[i].gameObject, new Vector3(.2f, .2f, .2f), 1f);
 						}
 					}
 				}
