@@ -160,7 +160,7 @@ public class PlayingObjectManager : MonoBehaviour
 
 	internal void FallDisconnectedObjects()
 	{
-		if(PlayerPrefs.GetString("GameType") == "Arcade"){
+		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
 			if(PlayingObjectGeneration.isBusy) {
 				Invoke("FallDisconnectedObjects", .1f);
 				return;
@@ -227,7 +227,7 @@ public class PlayingObjectManager : MonoBehaviour
 		}
 		InGameScriptRefrences.playingObjectGeneration.CheckForMinRowCount(bottomMostObject);
 
-		if(PlayerPrefs.GetString("GameType") == "Normal"){
+		if(LevelManager.GameType == LevelManager.GameTypes.NORMAL){
 			CheckMovePlayingObjects();
 		}
 	}
@@ -246,7 +246,7 @@ public class PlayingObjectManager : MonoBehaviour
 				allPlayingObjectScripts[i].Reset();
 				//En el modo Arcade, los vecinos de cada bola no se asignan correctamente
 				//Hacemos otra reasignacion para solucionarlo
-				if(PlayerPrefs.GetString("GameType").Equals("Arcade")){
+				if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
 					allPlayingObjectScripts[i].RefreshAdjacentObjectList();
 				}
 			}
@@ -257,7 +257,7 @@ public class PlayingObjectManager : MonoBehaviour
 	//Dependiendo de la mision del nivel actual, comprobamos si se ha superado el nivel o no
 	bool CheckGameIsFinished()
 	{
-		if(PlayerPrefs.GetString("GameType").Equals("Arcade")){
+		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
 			return false;
 		}
 		bool res=false;
@@ -278,7 +278,7 @@ public class PlayingObjectManager : MonoBehaviour
 	//Comprobar si ya no tenemos mas disparos
 	void CheckGameIsOver()
 	{
-		if(PlayerPrefs.GetString("GameType").Equals("Normal") && LevelManager.currentBalls == 0){
+		if(LevelManager.GameType == LevelManager.GameTypes.NORMAL && LevelManager.currentBalls == 0){
 			StartCoroutine(LevelManager.instance.Finishing());
 		}
 	}

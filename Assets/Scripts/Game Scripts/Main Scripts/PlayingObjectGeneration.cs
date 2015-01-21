@@ -37,7 +37,7 @@ public class PlayingObjectGeneration : MonoBehaviour
 	{   
 		numberOfObjectsInARow = 10;
 
-		if(PlayerPrefs.GetString("GameType").Equals("Arcade")){
+		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
 			objectGenerationHeight = transform.position.y-objectGapY;
 		}else{
 			objectGenerationHeight = transform.position.y;
@@ -86,18 +86,10 @@ public class PlayingObjectGeneration : MonoBehaviour
 
 	void InitiateRowAdd()
 	{
-		//rowAddCount++;
-		
-		//No se usa? --> joel
-		/*
-		//Moving down the limiter 
-		if(PlayerPrefs.GetString("GameType").Equals("Normal") && rowAddCount > 14){
-			Invoke("MoveLimiter", .12f);
-		}*/
 		if(LevelManager.gameState == GameState.GameFinish || LevelManager.gameState == GameState.GameOver){
 			return;
 		}
-		if(PlayerPrefs.GetString("GameType").Equals("Normal")){
+		if(LevelManager.GameType == LevelManager.GameTypes.NORMAL){
 			if(LevelManager.instance.totalNumberOfRowsLeft == 0){
 				currentRowAddingInterval = LevelManager.rowAddingInterval;
 				//iTween.MoveBy(gameObject, new Vector3(0, -rowGap, 0), fallDownTime);
@@ -120,7 +112,7 @@ public class PlayingObjectGeneration : MonoBehaviour
 		if(LevelManager.gameState != GameState.Pause)
 		{
 			//Alternar 10 bolas en una fila y 9 bolas en la siguiente
-			if(PlayerPrefs.GetString("GameType").Equals("Arcade")){
+			if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
 				if(numberOfRowsGenerated%2==0){
 					numberOfObjectsInARow=9;
 				}else{
@@ -142,7 +134,7 @@ public class PlayingObjectGeneration : MonoBehaviour
 			{
 				int index = Random.Range(0, 6); //Queremos un random de 0-5 pq tenemos 6 bolitas
 	
-				if(PlayerPrefs.GetString("GameType").Equals("Normal")){
+				if(LevelManager.GameType == LevelManager.GameTypes.NORMAL){
 					//Checking the unpair rows that only contains 9 object
 					if(rowCounter % 2 == 1 || rowCounter % 2 == 0 && i <= 8){
 						index = LevelParser.instance.GetBallColor(rowCounter, i);
@@ -199,7 +191,7 @@ public class PlayingObjectGeneration : MonoBehaviour
 	//Arcade Mode --> If any of the objects touches threshold line. The game is over.
 	private void CheckForGameOver()
 	{
-		if(PlayerPrefs.GetString("GameType") == "Arcade"){
+		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
 			GameObject[] objects = GameObject.FindGameObjectsWithTag("Playing Object");
 
 			for(int i = 0; i < objects.Length; i++)

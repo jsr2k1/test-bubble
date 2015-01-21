@@ -80,7 +80,7 @@ public class WorldButton : MonoBehaviour
 		
 		int nLives=PlayerPrefs.GetInt("Lives");
 		if(nLives > 0) {
-			PlayerPrefs.SetString("GameType", "Normal");
+			LevelManager.GameType = LevelManager.GameTypes.NORMAL;
 			LevelManager.patternType = PatternType.TextLevel;
 			LevelParser.instance.LoadTextLevel(int.Parse(name), ActualWorld);
 

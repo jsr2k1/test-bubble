@@ -13,7 +13,7 @@ public class SwapButton : MonoBehaviour
 		if(Striker.instance.fireBall || Striker.instance.bombBall || Striker.instance.multiBall){
 			return;
 		}
-		if(PlayerPrefs.GetString("GameType") == "Arcade" || LevelManager.currentBalls > 1)
+		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE || LevelManager.currentBalls > 1)
 		{
 			Striker.instance.Swap();
 			swapImageAnim.SetTrigger("SwapPressed");

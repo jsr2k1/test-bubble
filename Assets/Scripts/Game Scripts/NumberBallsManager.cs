@@ -17,7 +17,7 @@ public class NumberBallsManager : MonoBehaviour
 
 	void Start()
 	{
-		if(PlayerPrefs.GetString("GameType").Equals("Arcade")){
+		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
 			ballsText.text = "";
 		}
 	}

@@ -89,7 +89,7 @@ public class InputScript : MonoBehaviour
 	//Comprobamos si esta en modo Pause y no hay ningun popup entonces lo ponemos en modo play.
 	void CheckPauseError()
 	{
-		if(PlayerPrefs.GetString("GameType").Equals("Arcade")){
+		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
 			if(LevelManager.gameState != GameState.Start){
 				if(!LosePopUpArcade.bShow && !SettingsPopUp.bShow && !RankingPopUp.bShow && !QuitArcadePopUp.bShow){
 					LevelManager.gameState = GameState.Start;
