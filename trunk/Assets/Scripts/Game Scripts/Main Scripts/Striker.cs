@@ -31,9 +31,6 @@ public class Striker : MonoBehaviour
 	//Creamos un evento para poder saber cuando se ha disparado un booster
 	public delegate void SpecialBallLaunched();
 	public static event SpecialBallLaunched OnSpecialBallLaunched;
-	
-	bool bCollision=false;
-	Collision other;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -84,16 +81,6 @@ public class Striker : MonoBehaviour
 		currentStrikerObject.tag = "Playing Object";
 		currentStrikerObject.GetComponent<PlayingObject>().ObjectCollidedWithOtherObject(collidedObject);
 		
-		/*Lo hago en el Trace() porque asi no funciona bien
-		if(bombBall){
-			DetectAndExplode();
-			//Destroy(currentStrikerObject);
-			bombBall = false;
-			//InGameScriptRefrences.playingObjectManager.ResetAllObjects();
-			InGameScriptRefrences.playingObjectManager.CheckForObjectsFall();
-			InGameScriptRefrences.playingObjectManager.FallDisconnectedObjects();
-		}
-		*/
 		isBusy = false;
 		InGameScriptRefrences.strikerManager.GenerateStriker();
 	}
@@ -104,38 +91,19 @@ public class Striker : MonoBehaviour
 	{
 		if(isBusy == false)
 			return;
-		//speed += 5 * Time.deltaTime;
+
 		myTransform.Translate(currentMovingDirection * speed * Time.deltaTime);
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	void Update()
-	{
-		if(bCollision){
-			DoCollisionActions();
-			bCollision=false;
-		}
-	}
-	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	void OnCollisionEnter(Collision otherObj)
-	{
-		other = otherObj;
-		bCollision = true;
-	}
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	void DoCollisionActions()
-	//void OnCollisionEnter(Collision other)
+	void OnCollisionEnter(Collision other)
 	{
 		//When the Striker hits board playing object
 		if(other.gameObject.tag == "Playing Object" && isBusy){
 			if(fireBall){
 				if(deep < 8){
 					if(other.gameObject.name != "DummyBall(Clone)" && other.gameObject.name != "StoneBall(Clone)"){
-						//Destroy(other.gameObject.gameObject);
 						other.gameObject.GetComponent<PlayingObject>().DestroyPlayingObject(true);
 						ScoreManagerGame.instance.DisplayScorePopup(10, transform);
 						deep = deep + 1;
@@ -171,36 +139,6 @@ public class Striker : MonoBehaviour
 			AudioManager.instance.PlayFxSound(AudioManager.instance.wallCollisionSound);
 			currentMovingDirection = Vector3.Reflect(currentMovingDirection, other.contacts[0].normal).normalized;
 		}
-		//TODO: CREO QUE NUNCA ENTRA POR AQUI -> SE PUEDE BORRAR?
-		/*
-		if(bombBall == false && fireBall == false){
-			//Its top so the balls get stuck here
-			if(other.gameObject.tag == "TopLimit" && isBusy)
-			{
-				//lo que mete la bola en el top_row_objects array
-				InGameScriptRefrences.playingObjectManager.topRowObjects[int.Parse(other.gameObject.name)] = currentStrikerObject.GetComponent<PlayingObject>();
-
-				//Assigning the other object collider property to false
-				other.gameObject.GetComponent<LaserOcclusor>().ToggleCollider(false);
-
-				rigidbody.isKinematic = true;        
-
-				//Para comprobar si hay colision con el techo y con otra bola a la vez
-				Vector3 dir = other.transform.position - currentStrikerObject.transform.position;
-				dir = Vector3.Normalize(dir);
-				float dist = Vector3.Distance(other.transform.position, currentStrikerObject.transform.position);
-
-				currentStrikerObject.transform.Translate(dir * dist);
-				currentStrikerObject.GetComponent<SphereCollider>().enabled = true;
-				currentStrikerObject.transform.parent = InGameScriptRefrences.playingObjectGeneration.gameObject.transform;
-				currentStrikerObject.tag = "Playing Object";
-				currentStrikerObject.GetComponent<PlayingObject>().RefreshAdjacentObjectList();
-
-				isBusy = false;
-
-				InGameScriptRefrences.strikerManager.GenerateStriker();
-			}
-		}*/
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -337,24 +275,6 @@ public class Striker : MonoBehaviour
 	internal bool GetMultiBall()
 	{
 		return multiBall;
-	}
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Function to throw raycast to see wich balls are sorrounding the bomb ball
-	private void DetectAndExplode()
-	{
-		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f);
-		int i = 0;
-		while(i < hitColliders.Length){
-			if(hitColliders[i].tag == "Playing Object"){
-				if(hitColliders[i].name != "DummyBall(Clone)" && hitColliders[i].name != "StoneBall(Clone)"){
-					Destroy(hitColliders[i].gameObject);
-					//hitColliders[i].GetComponent<PlayingObject>().burst=true;
-					ScoreManagerGame.instance.DisplayScorePopup(10, transform);
-				}
-			}
-			i++;
-		}
 	}
 }
 
