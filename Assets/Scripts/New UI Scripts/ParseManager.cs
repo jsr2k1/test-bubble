@@ -217,7 +217,8 @@ public class ParseManager : MonoBehaviour
 		//------> Si es otro dispositivo -> Cogemos el valor maximo
 		string deviceID = currentParseObject.Get<string>("deviceID");
 		if(PlayerPrefs.GetInt("FirstTimeFacebookLogin")==1 ||(PlayerPrefs.GetInt("FirstTimeFacebookLogin")==0 && deviceID!=SystemInfo.deviceUniqueIdentifier)){
-			PlayerPrefs.SetInt("Coins", Mathf.Max(PlayerPrefs.GetInt("Coins"), int.Parse(currentParseObject.Get<string>("Coins"))));
+			//PlayerPrefs.SetInt("Coins", Mathf.Max(PlayerPrefs.GetInt("Coins"), int.Parse(currentParseObject.Get<string>("Coins"))));
+			CoinsManager.instance.SetCoins(Mathf.Max(PlayerPrefs.GetInt("Coins"), int.Parse(currentParseObject.Get<string>("Coins"))));
 			PlayerPrefs.SetInt("Multicolor Ball", Mathf.Max(PlayerPrefs.GetInt("Multicolor Ball"), int.Parse(currentParseObject.Get<string>("MulticolorBall"))));
 			PlayerPrefs.SetInt("Fire Ball", Mathf.Max(PlayerPrefs.GetInt("Fire Ball"), int.Parse(currentParseObject.Get<string>("FireBall"))));
 			PlayerPrefs.SetInt("Bomb Ball", Mathf.Max(PlayerPrefs.GetInt("Bomb Ball"), int.Parse(currentParseObject.Get<string>("BombBall"))));

@@ -32,7 +32,6 @@ public class CoinsUpdate : MonoBehaviour
 
 	void SetCoins()
 	{
-		PlayerPrefs.SetInt("Coins", CoinsManager.instance.coins);
 		text.text = CoinsManager.instance.coins.ToString();
 	}
 
