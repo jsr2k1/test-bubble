@@ -13,6 +13,8 @@ public class PopUpMgr : MonoBehaviour
 	public AudioSource sound_stars_3;
 	
 	public static GameObject currentPopUpObj=null;
+
+	public Text scoreText;
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -30,6 +32,9 @@ public class PopUpMgr : MonoBehaviour
 				if(InGameScriptRefrences.strikerManager!=null &&!InGameScriptRefrences.strikerManager.bStartDone){
 					return;
 				}
+			}
+			if(name=="LosePopUpArcade" || name=="WinPopUp"){
+				scoreText.text = LevelManager.score.ToString();
 			}
 			currentPopUpObj=gameObject;
 			StartCoroutine(ChangeState(false));

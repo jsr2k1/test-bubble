@@ -190,27 +190,32 @@ public class IAPManager : MonoBehaviour
 			if(inAppID == "xsmall") {
 				int coins = PlayerPrefs.GetInt("Coins");
 				coins = coins + 100;
-				PlayerPrefs.SetInt("Coins", coins);	
+				//PlayerPrefs.SetInt("Coins", coins);
+				CoinsManager.instance.SetCoins(coins);
 			}
 			if(inAppID == "small") {
 				int coins = PlayerPrefs.GetInt("Coins");
 				coins = coins + 400;
-				PlayerPrefs.SetInt("Coins", coins);	
+				//PlayerPrefs.SetInt("Coins", coins);
+				CoinsManager.instance.SetCoins(coins);
 			}
 			if(inAppID == "medium") {
 				int coins = PlayerPrefs.GetInt("Coins");
 				coins = coins + 800;
-				PlayerPrefs.SetInt("Coins", coins);	
+				//PlayerPrefs.SetInt("Coins", coins);
+				CoinsManager.instance.SetCoins(coins);
 			}
 			if(inAppID == "big") {
 				int coins = PlayerPrefs.GetInt("Coins");
 				coins = coins + 2000;
-				PlayerPrefs.SetInt("Coins", coins);	
+				//PlayerPrefs.SetInt("Coins", coins);
+				CoinsManager.instance.SetCoins(coins);
 			}
 			if(inAppID == "extrabig") {
 				int coins = PlayerPrefs.GetInt("Coins");
 				coins = coins + 5000;
-				PlayerPrefs.SetInt("Coins", coins);	
+				//PlayerPrefs.SetInt("Coins", coins);
+				CoinsManager.instance.SetCoins(coins);
 			}
 			
 			ParseManager.instance.SaveCurrentData();

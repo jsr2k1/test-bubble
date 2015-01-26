@@ -15,26 +15,26 @@ public class ScorePopupItem : MonoBehaviour
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    internal static void ResetDelay()
+	/*
+    public static void ResetDelay()
     {
         delay = 0;
     }
-
+*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    internal void BringItForward(int score)
+	/*
+    public void BringItForward(int score)
     {        
 		text.text = score.ToString();
         Invoke("ZoomIn", delay);
         delay += .1f;
     }
-
+*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	/*
     void ZoomIn()
     {
-        iTween.MoveBy(gameObject, new Vector3(0, .2f, 0), 2.0f);
+        //iTween.MoveBy(gameObject, new Vector3(0, .2f, 0), 2.0f);
         Invoke("ZoomOut", .5f);
     }
 
@@ -42,10 +42,10 @@ public class ScorePopupItem : MonoBehaviour
 
     void ZoomOut()
     {
-        iTween.ScaleTo(gameObject, new Vector3(0, 0, 0), .1f);
+        //iTween.ScaleTo(gameObject, new Vector3(0, 0, 0), .1f);
         //Destroy(gameObject, .2f);
         transform.position = new Vector3(10000,10000,0);
-    }
+    }*/
 }
 
 

@@ -212,6 +212,8 @@ MonoBehaviour:
   hookSound: {fileID: 733087561}
   wallCollisionSound: {fileID: 1326388707}
   burstSound: {fileID: 2009771207}
+  bMusicOn: 0
+  bSoundsOn: 0
 --- !u!4 &194216154
 Transform:
   m_ObjectHideFlags: 0
@@ -1033,6 +1035,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!1 &1602396753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1602396755}
+  - 114: {fileID: 1602396754}
+  m_Layer: 0
+  m_Name: CoinsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1602396754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1602396753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 307d308dfd4da4a21a103432b47de1b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coins: 0
+--- !u!4 &1602396755
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1602396753}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .490924627, y: 14.2171679, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
 --- !u!1001 &1659412855
 Prefab:
   m_ObjectHideFlags: 0

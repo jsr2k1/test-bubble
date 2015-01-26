@@ -49,7 +49,8 @@ public class PurchaseSpecialBall : MonoBehaviour
 			coins = PlayerPrefs.GetInt("Coins") - price;
 
 			PlayerPrefs.SetInt(BallString, quantity);
-			PlayerPrefs.SetInt("Coins", coins);
+			//PlayerPrefs.SetInt("Coins", coins);
+			CoinsManager.instance.SetCoins(coins);
 
 			NumberBallText.text = PlayerPrefs.GetInt(BallString).ToString();
 			//CoinsText.text = PlayerPrefs.GetInt("Coins").ToString();

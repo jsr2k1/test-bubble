@@ -11,7 +11,6 @@ public class PlayingObjectManager : MonoBehaviour
 	float thresholdOffsetWorldMode = 2.0f;
 
 	PlayingObject[] allPlayingObjectScripts;
-	//ArrayList playingObjectList;
 	ArrayList currentAvailableObjects = new ArrayList();
 	ArrayList currentAvailableObjectsNames = new ArrayList();
 
@@ -47,22 +46,8 @@ public class PlayingObjectManager : MonoBehaviour
 	{
 		burstCounter = 0;
 		currentObjectName = "";
-		//playingObjectList = new ArrayList();        
-		//RefreshPlayingObjectList();
-		//UpdatePlayingObjectsList();  --> no sirve de nada pq los objetos todavia no estan creados
 	}
-	/*joel -> esto no se usa nunca ?¿
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Refreshes PlayingObjectList
-	public void RefreshPlayingObjectList()
-	{
-		GameObject[] objects = GameObject.FindGameObjectsWithTag("Playing Object");
 
-		for(int i = 0; i < objects.Length; i++) {
-			playingObjectList.Add(objects[i].GetComponent<PlayingObject>());
-		}
-	}
-	*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	internal void CheckForObjectsFall()
@@ -72,7 +57,13 @@ public class PlayingObjectManager : MonoBehaviour
 		}else{
 			AudioManager.instance.PlayFxSound(AudioManager.instance.burstSound);
 		}
-		
+
+		if(PlayingObjectManager.burstCounter > 2 || Striker.instance.multiBall || Striker.instance.bombBall || Striker.instance.fireBall){
+			ScoreManagerGame.instance.SetBonus(true);
+		}else{
+			ScoreManagerGame.instance.SetBonus(false);
+		}
+
 		if(PlayingObjectManager.burstCounter < 3 && !Striker.instance.multiBall && !Striker.instance.bombBall && !Striker.instance.fireBall){
 			ResetAllObjects();
 			//InGameScriptRefrences.strikerManager.GenerateNextStriker();
@@ -98,6 +89,22 @@ public class PlayingObjectManager : MonoBehaviour
 			if(allPlayingObjectScripts[i].burst){
 				allPlayingObjectScripts[i].BurstMe(false);
 			}
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Cambiar el bonus de todos los PlayingObjects
+	public void SetBonus()
+	{
+		for(int i = 0; i < allPlayingObjectScripts.Length; i++) {
+			allPlayingObjectScripts[i].SetNextBonus();
+		}
+
+		if(Striker.instance.currentStrikerObject!=null){
+			Striker.instance.currentStrikerObject.GetComponent<PlayingObject>().SetNextBonus();
+		}
+		if(InGameScriptRefrences.strikerManager.nextStrikerObject!=null){
+			InGameScriptRefrences.strikerManager.nextStrikerObject.GetComponent<PlayingObject>().SetNextBonus();
 		}
 	}
 /*
@@ -193,7 +200,8 @@ public class PlayingObjectManager : MonoBehaviour
 				}
 			}
 		}
-		Invoke("ResetAllObjects", .02f); 
+		Invoke("ResetAllObjects", .02f);
+		//ScoreManagerGame.instance.SetBonus(burstCounter);
 		ResetAllObjects();
 	}
 
@@ -332,6 +340,8 @@ public class PlayingObjectManager : MonoBehaviour
 			}
 		}
 		missionCount = missionCountTotal-count;
+		MissionCounter.instance.SetCounter();
+
 		return (missionCount==missionCountTotal);
 	}
 	
@@ -351,15 +361,18 @@ public class PlayingObjectManager : MonoBehaviour
 		{
 			string tempName = objects[i].name;
 			PlayingObject playObj = objects[i].GetComponent<PlayingObject>();
+
 			if(!currentAvailableObjectsNames.Contains(tempName) && objects[i].name!="DummyBall(Clone)" && objects[i].name!="StoneBall(Clone)" && playObj.isConnected){
 				currentAvailableObjectsNames.Add(tempName);
 				GetObjectReference(tempName);
 			}
 		}
+
 		if(currentAvailableObjects.Count == 0){
 			return null;
+		}else{
+			return currentAvailableObjects;
 		}
-		return currentAvailableObjects;
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

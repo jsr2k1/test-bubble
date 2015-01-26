@@ -18,7 +18,8 @@ public class PurchaseMoreBalls : MonoBehaviour
 
 		if(coins >= 160){
 			coins = coins - 160;
-			PlayerPrefs.SetInt("Coins", coins);
+			//PlayerPrefs.SetInt("Coins", coins);
+			CoinsManager.instance.SetCoins(coins);
 
 			LevelManager.currentBalls = 5;
 			ballsManager.setBallsLeft(5);
