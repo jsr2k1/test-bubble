@@ -144,7 +144,7 @@ public class PlayingObjectGeneration : MonoBehaviour
 	
 				if(ObjectFormationPattern.instance.ShouldAddObject(i, rowCounter)){
 					GameObject tempObject = (GameObject)Instantiate(playingObjectsPrefabs[index], Vector3.zero, Quaternion.identity);
-					tempObject.transform.parent = transform;
+					tempObject.transform.SetParent(transform);
 					tempObject.transform.localPosition = pos;
 					tempObject.GetComponent<PlayingObject>().RefreshAdjacentObjectList();
 					InGameScriptRefrences.playingObjectManager.topRowObjects [i] = tempObject.GetComponent<PlayingObject>();
@@ -159,6 +159,7 @@ public class PlayingObjectGeneration : MonoBehaviour
 			iTween.Defaults.easeType = iTween.EaseType.linear;
 			currentYPos = numberOfRowsGenerated * rowGap;
 			iTween.MoveTo(gameObject, new Vector3(0, objectGenerationHeight - currentYPos, 0), fallDownTime);
+			//transform.position = new Vector3(0, objectGenerationHeight - currentYPos, 0);
 	
 			rowCounter++;
 			if(rowCounter >= LevelManager.minimumNumberOfRows){

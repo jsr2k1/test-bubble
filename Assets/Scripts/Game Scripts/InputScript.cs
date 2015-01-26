@@ -140,6 +140,9 @@ public class InputScript : MonoBehaviour
 					characterAnimator.SetTrigger("Shoot");
 				}
 			}
+			if(Input.GetButtonDown("Fire1")){
+				InGameScriptRefrences.playingObjectManager.SetBonus();
+			}
 		}
 		
 		CheckPauseError();

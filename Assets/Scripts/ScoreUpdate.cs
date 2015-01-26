@@ -2,8 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class ScoreUpdate : MonoBehaviour {
-
+public class ScoreUpdate : MonoBehaviour
+{
+	/*
 	public Text finalscore;
 	Text score;
 
@@ -16,4 +17,5 @@ public class ScoreUpdate : MonoBehaviour {
 	{
 		score.text = int.Parse(finalscore.text).ToString();
 	}
+	*/
 }

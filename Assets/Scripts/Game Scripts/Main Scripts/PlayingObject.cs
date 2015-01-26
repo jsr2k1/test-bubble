@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class PlayingObject : MonoBehaviour
 {
@@ -8,6 +9,12 @@ public class PlayingObject : MonoBehaviour
 	GameObject burstParticleInstance;
 	ParticleAnimator particleAnim;
 	ParticleEmitter particleEmit;
+
+	public GameObject scorePrefab;
+	GameObject scoreInstance;
+	Text scoreText;
+	//TextMesh textMesh;
+
 	static int numberOfAdjacentObjects = 6;
 
 	//Angles of neighbour objects(this will be used while detecting neighbour objects through raycast
@@ -30,6 +37,12 @@ public class PlayingObject : MonoBehaviour
 	SphereCollider sphereCollider;
 	RotationScript rotationScript;
 
+	GameObject burstParticlesParent;
+	GameObject scoresParent;
+	float scoreLife;
+
+	public bool isBooster;
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Awake()
@@ -42,11 +55,24 @@ public class PlayingObject : MonoBehaviour
 		sphereCollider = GetComponent<SphereCollider>();
 		rotationScript = GetComponent<RotationScript>();
 		
+		burstParticlesParent = GameObject.Find("BurstParticlesParent");
+
 		burstParticleInstance = Instantiate(burstParticle, new Vector3(10000,10000,1), Quaternion.identity) as GameObject;
+		burstParticleInstance.transform.SetParent(burstParticlesParent.transform);
 		particleAnim = burstParticleInstance.GetComponent<ParticleAnimator>();
 		particleAnim.autodestruct = false;
 		particleEmit = burstParticleInstance.GetComponent<ParticleEmitter>();
 		particleEmit.emit = false;
+
+		scoresParent = GameObject.Find("ScoresParent");
+
+		scoreInstance = Instantiate(scorePrefab, new Vector3(10,10,1), Quaternion.identity) as GameObject;
+		scoreInstance.transform.SetParent(scoresParent.transform);
+		scoreInstance.transform.localScale = new Vector3(1,1,1);
+		scoreText = scoreInstance.GetComponent<Text>();
+		//textMesh = scoreInstance.GetComponent<TextMesh>();
+		//textMesh.renderer.sortingLayerName = "MiddleLayer";
+		scoreLife = Random.Range(0.3f, 0.8f);
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -66,11 +92,7 @@ public class PlayingObject : MonoBehaviour
 		if(rigidbody.useGravity){
 			float dist = Random.Range(0.0f,1.5f);
 			if(transform.position.y < destroy_threshold-dist){
-				if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
-					DestroyPlayingObject(false);
-				}else{
-					DestroyPlayingObject(true);
-				}
+				DestroyPlayingObject();
 			}
 		}
 	}
@@ -120,7 +142,6 @@ public class PlayingObject : MonoBehaviour
 			if(hit.collider.gameObject.tag == "Playing Object"){
 				return hit.collider.gameObject.GetComponent<PlayingObject>();
 			}
-			//print(hit.collider.gameObject.name); // coz of striker
 		}
 
 		return null;
@@ -139,7 +160,14 @@ public class PlayingObject : MonoBehaviour
 				}
 			}
 		}     
-	}    
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Ponemos el nuevo valor al score
+	public void SetNextBonus()
+	{
+		scoreText.text = ScoreManagerGame.instance.GetCurrentScore(10);
+	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Destroy the Playing Object after right combination is formed
@@ -170,23 +198,28 @@ public class PlayingObject : MonoBehaviour
 				Destroy(gameObject);
 			}
 		} else{
-			DestroyPlayingObject(true);
+			DestroyPlayingObject();
 		}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public void DestroyPlayingObject(bool bAddScore)
+	public void DestroyPlayingObject()
 	{
-		if(bAddScore){
-			ScoreManagerGame.instance.DisplayScorePopup(10, transform);
+		//ScoreManagerGame.instance.DisplayScorePopup(10, transform);
+		if(!isBooster){
+			scoreInstance.transform.position = transform.position;
+			//scoreText.text = ScoreManagerGame.instance.GetCurrentScore(10);
+			//textMesh.text = ScoreManagerGame.instance.GetCurrentScore(10);
+			ScoreManagerGame.instance.AddScore();
+			Destroy(scoreInstance, scoreLife);
 		}
-		//Instantiate(burstParticle, transform.position, Quaternion.identity);
+
 		burstParticleInstance.transform.position = transform.position;
-		//burstParticle.renderer.sortingLayerName = "MiddleLayer";
 		burstParticleInstance.renderer.sortingLayerName = "MiddleLayer";
 		particleEmit.emit = true;
 		particleAnim.autodestruct = true;
+
 		Destroy(gameObject);
 	}
 

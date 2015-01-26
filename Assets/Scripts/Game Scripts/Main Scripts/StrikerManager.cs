@@ -11,7 +11,7 @@ public class StrikerManager : MonoBehaviour
 	Transform currentStrikerPosition;
 	Transform nextStrikerPosition;
 	public GameObject currentStrikerObject;
-	GameObject nextStrikerObject;
+	public GameObject nextStrikerObject;
 	public Transform thresoldLineTransform;
 	private int currentStrikerBallID;
 	//private int nextStrikerBallID;
@@ -22,6 +22,9 @@ public class StrikerManager : MonoBehaviour
 	public InputScript inputScript;
 	public bool bStartDone=false;
 
+	//bool bMove;
+	//float speed=4;
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Start()
@@ -31,10 +34,19 @@ public class StrikerManager : MonoBehaviour
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	//Movemos el next striker a la posicion del striker
 	void Update()
 	{
-		//GameState gameState;
+		/*if(bMove){
+			if(nextStrikerObject!=null){
+				if(Vector3.Distance(nextStrikerObject.gameObject.transform.position, currentStrikerPosition.position) > 0.01f){
+					float step = speed * Time.deltaTime;
+					nextStrikerObject.gameObject.transform.position = Vector3.MoveTowards(nextStrikerObject.gameObject.transform.position, currentStrikerPosition.position, step);
+				}else{
+					bMove=false;
+				}
+			}
+		}*/
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -80,7 +92,7 @@ public class StrikerManager : MonoBehaviour
 		}
 		striker.transform.position = currentStrikerPosition.position;
 		currentStrikerObject = nextStrikerObject;
-		currentStrikerObject.transform.parent = striker.transform;
+		currentStrikerObject.transform.SetParent(striker.transform);
 		
 		if(isFirstObject){
 			currentStrikerObject.transform.localPosition = Vector3.zero;
@@ -115,7 +127,7 @@ public class StrikerManager : MonoBehaviour
 		isSwap = true;
 		striker.transform.position = currentStrikerPosition.position;
 		currentStrikerObject = nextStrikerObject;
-		currentStrikerObject.transform.parent = striker.transform;
+		currentStrikerObject.transform.SetParent(striker.transform);
 
 		if(isFirstObject){
 			currentStrikerObject.transform.localPosition = Vector3.zero;
@@ -191,7 +203,7 @@ public class StrikerManager : MonoBehaviour
 				currentStrikerObject = (GameObject)Instantiate((GameObject)remainingObjects[0], currentStrikerPosition.position, Quaternion.identity);
 				currentStrikerObject.tag = "Striker";
 				currentStrikerObject.GetComponent<SphereCollider>().enabled = false;
-				currentStrikerObject.transform.parent = striker.transform;
+				currentStrikerObject.transform.SetParent(striker.transform);
 				strikerScript.currentStrikerObject = currentStrikerObject;
 			}
 			//NextStrikerObject
@@ -221,12 +233,15 @@ public class StrikerManager : MonoBehaviour
 		if(LevelManager.instance.running())
 		{
 			AudioManager.instance.PlayFxSound(AudioManager.instance.shootingSound);
+			//ScoreManagerGame.instance.ResetScore();
 
 			Vector3 dir = (touchedPosition - currentStrikerPosition.position).normalized;
 			strikerScript.Shoot(new Vector3(-dir.x, dir.y, 0.0f));
 
 			if(nextStrikerObject!=null){
 				iTween.MoveTo(nextStrikerObject.gameObject, currentStrikerPosition.position, .4f);
+				//nextStrikerObject.gameObject.transform.position = currentStrikerPosition.position;
+				//bMove=true;
 			}
 		}
 	}

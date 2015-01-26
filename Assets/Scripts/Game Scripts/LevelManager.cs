@@ -31,7 +31,7 @@ public class LevelManager : MonoBehaviour
 	public static int NumberOfBalls = 0;
 	public static int currentBalls = 0;
 	internal int totalNumberOfRowsLeft = 0;
-	Text scoreTextLabel;
+	public static Text scoreTextLabel;
 	public PopUpMgr winPop;
 	public PopUpMgr losePop;
 	public PopUpMgr moreBubblesPop;
