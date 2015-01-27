@@ -92,12 +92,17 @@ public class LevelManager : MonoBehaviour
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Hemos SUPERADO el nivel
-	internal void GameIsFinished()
+	public void GameIsFinished()
 	{
 		gameState = GameState.GameFinish;
 		AudioManager.instance.StopAudio();
 		winPop.ShowPopUp();
-		
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Guardamos los datos en el PlayerPrefs
+	public void SaveGameData()
+	{
 		if(PlayerPrefs.GetInt("SCORE_" + levelNo) < score || !PlayerPrefs.HasKey("SCORE_" + levelNo)){
 			PlayerPrefs.SetInt("STARS_" + levelNo, stars);
 			PlayerPrefs.SetInt("SCORE_" + levelNo, score);
