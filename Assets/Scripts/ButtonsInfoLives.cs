@@ -14,7 +14,7 @@ public class ButtonsInfoLives : MonoBehaviour
 		PlayerPrefs.SetInt("bPlaying", 0);
 		LivesManager.lives--;
 		ParseManager.instance.SaveCurrentData();
-		Application.LoadLevel(2);
+		Application.LoadLevel(3);
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////v

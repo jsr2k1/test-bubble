@@ -7,7 +7,7 @@ public class LoadModeButton : MonoBehaviour
 	{
 		Adjust.trackEvent("1b5w81");
 		
-		Application.LoadLevel(2);
+		Application.LoadLevel(3);
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -27,6 +27,6 @@ public class LoadModeButton : MonoBehaviour
 		LevelManager.rowAddingInterval = 8;
 		LevelManager.levelNo = levelNo;
 		
-		Application.LoadLevel (4);
+		Application.LoadLevel(5);
 	}
 }

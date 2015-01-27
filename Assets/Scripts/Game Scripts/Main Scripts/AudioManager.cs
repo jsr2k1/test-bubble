@@ -47,11 +47,13 @@ public class AudioManager : MonoBehaviour
 	
 	void OnLevelWasLoaded(int level)
 	{
-		GetToggleComponents();
-		SetToggleValues();
-		SetAudio(level);
-		PlayAudio(level);
-		oldLevel=level;
+		if(level>1){
+			GetToggleComponents();
+			SetToggleValues();
+			SetAudio(level);
+			PlayAudio(level);
+			oldLevel=level;
+		}
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

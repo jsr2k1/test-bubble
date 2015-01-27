@@ -7,10 +7,10 @@ public class quitgame : MonoBehaviour {
 	public Image PopUpquit;
 
 	public void Quit(){
-		if (Application.loadedLevel == 1) {
+		if (Application.loadedLevel == 2) {
 			Application.Quit ();
 		} else {
-			Application.LoadLevel(1);
+			Application.LoadLevel(2);
 		}
 	}
 	
