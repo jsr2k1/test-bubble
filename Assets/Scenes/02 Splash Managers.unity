@@ -667,7 +667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 2
   bDeleteAllKeys: 0
-  force_current_level: -1
+  force_current_level: 20
   initial_lives: 5
 --- !u!1001 &680489053
 Prefab:
@@ -842,8 +842,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bDebug: 0
   isBusy: 0
-  currentFriendID: 
-  currentFriendLevel: 
 --- !u!114 &735657240
 MonoBehaviour:
   m_ObjectHideFlags: 0

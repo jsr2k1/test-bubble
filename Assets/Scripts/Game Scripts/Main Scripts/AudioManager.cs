@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
 	
 	Toggle musicToggle;
 	Toggle soundsToggle;
-	int oldLevel=0;
+	string oldLevel="";
 	int lastArcadeClip=0;
 	
 	public AudioSource shootingSound;
@@ -47,12 +47,13 @@ public class AudioManager : MonoBehaviour
 	
 	void OnLevelWasLoaded(int level)
 	{
-		if(level>1){
+		if(level>2){
 			GetToggleComponents();
 			SetToggleValues();
-			SetAudio(level);
-			PlayAudio(level);
-			oldLevel=level;
+			SetAudio(Application.loadedLevelName);
+			PlayAudio(Application.loadedLevelName);
+			//oldLevel=level;
+			oldLevel=Application.loadedLevelName;
 		}
 	}
 	
@@ -74,25 +75,25 @@ public class AudioManager : MonoBehaviour
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Establece para cada escena el clip de audio que le corresponde
-	void SetAudio(int level)
+	void SetAudio(string level)
 	{
 		//En la pantalla principal reproducimos el clip 0
-		if(level==1 && (oldLevel==0 || oldLevel==4)){
+		if(level=="03 Menu" && (oldLevel=="02 Splash Managers" || oldLevel=="06 Arcade Game Scene")){
 			audio.clip = audioClips[0];
 		}
 		//En la pantalla de los mundos continuamos reproduciendo el clip 0
-		else if(level==2 && oldLevel==3){
+		else if(level=="04 World Menu" && oldLevel=="05 Game Scene"){
 			audio.clip = audioClips[0];
 		}
 		//En el modo MUNDOS reproducimos el clip 1 en los mundos pares y el clip 2 en los impares
-		else if(level==3){
+		else if(level=="05 Game Scene"){
 			if(LevelManager.levelNo%2==0){
 				audio.clip = audioClips[1];
 			}else{
 				audio.clip = audioClips[2];
 			}
 		}//En el modo ARCADE reproducimos el clip 1	y el clip 2 alternados
-		else if(level==4){
+		else if(level=="06 Arcade Game Scene"){
 			if(lastArcadeClip==0){
 				audio.clip = audioClips[1];
 			}else{
@@ -106,15 +107,15 @@ public class AudioManager : MonoBehaviour
 	
 	public void PlayAudio()
 	{
-		PlayAudio(Application.loadedLevel);
+		PlayAudio(Application.loadedLevelName);
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	void PlayAudio(int level)
+	void PlayAudio(string level)
 	{
 		if(AudioManager.instance.bMusicOn){
-			if((level==2 && oldLevel==1) || level==1 && oldLevel==2){
+			if((level=="03 Menu" && oldLevel=="04 World Menu") || (level=="04 World Menu" && oldLevel=="03 Menu")){
 				//No hacemos nada
 			}else{
 				audio.Play();

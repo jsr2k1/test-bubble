@@ -37,21 +37,21 @@ public class BackButtonMgr : MonoBehaviour
 	public void BackButtonPressed()
 	{
 		//MENU
-		if(Application.loadedLevel==2){
+		if(Application.loadedLevelName=="03 Menu"){
 			settingsPopUp.HidePopUp();
 			quitPopUp.ShowPopUp();
 		}
 		//WORLDS
-		else if(Application.loadedLevel==3){
-			Application.LoadLevel(2); //Go to Menu Scene
+		else if(Application.loadedLevelName=="04 World Menu"){
+			Application.LoadLevel("03 Menu"); //Go to Menu Scene
 		}
 		//GAME-WORLDS
-		else if(Application.loadedLevel==4){
+		else if(Application.loadedLevelName=="05 Game Scene"){
 			settingsPopUp.HidePopUp();
 			livesPopUp.ShowPopUp();
 		}
 		//GAME-ARCADE
-		else if(Application.loadedLevel==5){
+		else if(Application.loadedLevelName=="06 Arcade Game Scene"){
 			settingsPopUp.HidePopUp();
 			quitArcadePopUp.ShowPopUp();
 		}
@@ -67,20 +67,20 @@ public class BackButtonMgr : MonoBehaviour
 				settingsPopUp.HidePopUp();
 			}else{
 				//MENU
-				if(Application.loadedLevel==2){
+				if(Application.loadedLevelName=="03 Menu"){
 					quitPopUp.ShowPopUp();
 				}
 				//WORLDS
-				else if(Application.loadedLevel==3){
+				else if(Application.loadedLevelName=="04 World Menu"){
 					if(PopUpMgr.currentPopUpObj!=null){
 						PopUpMgr.currentPopUpObj.GetComponent<PopUpMgr>().HidePopUp();
 					}
 					else{
-						Application.LoadLevel(2); //Go to Menu Scene
+						Application.LoadLevel("03 Menu"); //Go to Menu Scene
 					}
 				}
 				//GAME-WORLDS
-				else if(Application.loadedLevel==4){
+				else if(Application.loadedLevelName=="05 Game Scene"){
 					if(LevelManager.instance.totalNumberOfRowsLeft > 0 || !InGameScriptRefrences.strikerManager.bStartDone){
 						return;
 					}
@@ -94,7 +94,7 @@ public class BackButtonMgr : MonoBehaviour
 					}
 				}
 				//GAME-ARCADE
-				else if(Application.loadedLevel==5){
+				else if(Application.loadedLevelName=="06 Arcade Game Scene"){
 					quitArcadePopUp.ShowPopUp();
 				}
 			}

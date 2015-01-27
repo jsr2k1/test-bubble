@@ -14,6 +14,7 @@ public class Friend
 	public string id;
 	public string name;
 	public string highScore;
+	public string currentLevel;
 	public Sprite profilePicture;
 }
 
@@ -90,14 +91,19 @@ public class FacebookManager : MonoBehaviour
 	void OnLevelWasLoaded(int level)
 	{	
 		//Worlds
-		if(level == 3){
+		if(Application.loadedLevelName == "04 World Menu"){
 			GetObjectReferences();
 			InvokeRepeating("ReadAllRequests", 1.0f, timeReadRequest);
 			if(!friendsDict.ContainsKey(FB.UserId)){
 				StartCoroutine(GetProfileImage(FB.UserId));
 			}
 			GetFriendsPictures();
-		}else{
+		}/*
+		//TODO:Arcade -> De momento, lo comento hasta que este terminado del todo
+		else if(Application.loadedLevelName == "06 Arcade Game Scene"){
+			GetFriendsPictures();
+		}*/
+		else{
 			CancelInvoke("ReadAllRequests");
 		}
 	}
@@ -106,7 +112,7 @@ public class FacebookManager : MonoBehaviour
 	
 	void GetObjectReferences()
 	{
-		if(Application.loadedLevel>1){
+		if(Application.loadedLevel>3){
 			buttonInvite = GameObject.Find("ButtonFacebookInvite");
 			buttonMessages = GameObject.Find("ButtonFacebookMessages");
 			messagesPopUp = GameObject.Find("FacebookMessagesPopUp").GetComponent<PopUpMgr>();
@@ -123,7 +129,7 @@ public class FacebookManager : MonoBehaviour
 	
 	void Update()
 	{
-		if(Application.loadedLevel==3){ //Worlds
+		if(Application.loadedLevelName=="04 World Menu"){
 			if(FB.IsLoggedIn && !buttonInvite.activeSelf){
 				buttonInvite.SetActive(true);
 			}
@@ -221,6 +227,7 @@ public class FacebookManager : MonoBehaviour
 			if(bShowDebug) Debug.Log("GetProfileImage:"+facebookID);
 			Friend friend = new Friend();
 			friend.profilePicture = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0.5f, 0.5f));
+			friend.id = facebookID;
 			friendsDict.Add(facebookID, friend);
 		}else{
 			if(bShowDebug) Debug.Log("ERROR: textFb2 es null");
@@ -442,7 +449,10 @@ public class FacebookManager : MonoBehaviour
 						goEntry.transform.GetChild(0).GetComponent<Text>().text = user_name+" gave you a life!";
 						livesCounter++;
 					}
+					//TODO:Lo comento antes hasta que este terminado del todo
+					//goEntry.transform.GetChild(1).GetComponent<FriendPicture>().id = user_id;
 					goEntry.transform.GetChild(1).GetComponent<RequestPicture>().id = user_id;
+					
 					requestsList.Add(requestID);
 					if(bShowDebug) Debug.Log("Request: "+user_id+", "+user_name+", "+action_type);
 				}

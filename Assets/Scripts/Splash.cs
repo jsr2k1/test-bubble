@@ -62,7 +62,7 @@ public class Splash : MonoBehaviour
 	IEnumerator DisplayScene()
 	{
 		yield return new WaitForSeconds(timer);
-		Application.LoadLevel(2);
+		Application.LoadLevel("03 Menu");
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
