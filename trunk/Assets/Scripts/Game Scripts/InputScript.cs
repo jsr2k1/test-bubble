@@ -141,7 +141,9 @@ public class InputScript : MonoBehaviour
 				}
 			}
 			if(Input.GetButtonDown("Fire1")){
-				InGameScriptRefrences.playingObjectManager.SetBonus();
+				if(pos.y > thresoldLineTransform.position.y && pos.y < topThresoldLine.position.y){
+					InGameScriptRefrences.playingObjectManager.SetBonus();
+				}
 			}
 		}
 		
