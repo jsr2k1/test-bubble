@@ -96,10 +96,12 @@ public class PlayingObjectManager : MonoBehaviour
 	//Cambiar el bonus de todos los PlayingObjects
 	public void SetBonus()
 	{
+		if(allPlayingObjectScripts==null){
+			return;
+		}
 		for(int i = 0; i < allPlayingObjectScripts.Length; i++) {
 			allPlayingObjectScripts[i].SetNextBonus();
 		}
-
 		if(Striker.instance.currentStrikerObject!=null){
 			Striker.instance.currentStrikerObject.GetComponent<PlayingObject>().SetNextBonus();
 		}
