@@ -46,7 +46,7 @@ public class ScoreManagerGame : MonoBehaviour
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	//Nos saltamos un frame para que no haya lag al cambiar el valor del texto de la puntuacion
 	public void AddScore()
 	{
 		StartCoroutine(AddToScore());
