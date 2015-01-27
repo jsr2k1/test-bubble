@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class InitialLoad : MonoBehaviour
+public class SplashFirst : MonoBehaviour
 {
 	public Text loadingText;
 
@@ -18,7 +18,6 @@ public class InitialLoad : MonoBehaviour
 	IEnumerator LoadSplash()
 	{
 		yield return new WaitForSeconds(2.0f);
-		loadingText.enabled=true;
 		SystemLanguage currentLang = Application.systemLanguage;
 		if(currentLang == SystemLanguage.Spanish){
 			loadingText.text="Cargando...";
@@ -26,6 +25,6 @@ public class InitialLoad : MonoBehaviour
 			loadingText.text="Loading...";
 		}
 		yield return new WaitForEndOfFrame();
-		Application.LoadLevel(1);
+		Application.LoadLevel("01 Splash Preload");
 	}
 }

@@ -250,7 +250,10 @@ public class PlayingObjectManager : MonoBehaviour
 		currentObjectName = "";
 
 		UpdatePlayingObjectsList();
-
+		
+		if(allPlayingObjectScripts==null){
+			return;
+		}
 		for(int i = 0; i < allPlayingObjectScripts.Length; i++) {
 			if(allPlayingObjectScripts[i]!=null){
 				allPlayingObjectScripts[i].Reset();
