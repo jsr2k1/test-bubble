@@ -90,7 +90,7 @@ public class FacebookManager : MonoBehaviour
 	void OnLevelWasLoaded(int level)
 	{	
 		//Worlds
-		if(level == 2){
+		if(level == 3){
 			GetObjectReferences();
 			InvokeRepeating("ReadAllRequests", 1.0f, timeReadRequest);
 			if(!friendsDict.ContainsKey(FB.UserId)){
@@ -106,14 +106,16 @@ public class FacebookManager : MonoBehaviour
 	
 	void GetObjectReferences()
 	{
-		buttonInvite = GameObject.Find("ButtonFacebookInvite");
-		buttonMessages = GameObject.Find("ButtonFacebookMessages");
-		messagesPopUp = GameObject.Find("FacebookMessagesPopUp").GetComponent<PopUpMgr>();
-		contentMessages = GameObject.Find("Content");
-		ImageDummy = GameObject.Find("ImageDummy");
-		
-		if(buttonMessages!=null){
-			buttonMessages.SetActive(false);
+		if(Application.loadedLevel>1){
+			buttonInvite = GameObject.Find("ButtonFacebookInvite");
+			buttonMessages = GameObject.Find("ButtonFacebookMessages");
+			messagesPopUp = GameObject.Find("FacebookMessagesPopUp").GetComponent<PopUpMgr>();
+			contentMessages = GameObject.Find("Content");
+			ImageDummy = GameObject.Find("ImageDummy");
+			
+			if(buttonMessages!=null){
+				buttonMessages.SetActive(false);
+			}
 		}
 	}
 	
@@ -121,7 +123,7 @@ public class FacebookManager : MonoBehaviour
 	
 	void Update()
 	{
-		if(Application.loadedLevel==2){ //Worlds
+		if(Application.loadedLevel==3){ //Worlds
 			if(FB.IsLoggedIn && !buttonInvite.activeSelf){
 				buttonInvite.SetActive(true);
 			}

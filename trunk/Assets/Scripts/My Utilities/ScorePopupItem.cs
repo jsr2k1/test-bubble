@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class ScorePopupItem : MonoBehaviour 
-{
+{/*
     public Text text;
     static float delay = 0;
 
@@ -13,7 +13,7 @@ public class ScorePopupItem : MonoBehaviour
     {        
         delay = .1f;
 	}
-
+*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/*
     public static void ResetDelay()

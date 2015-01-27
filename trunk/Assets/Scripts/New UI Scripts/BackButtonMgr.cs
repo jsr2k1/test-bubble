@@ -37,21 +37,21 @@ public class BackButtonMgr : MonoBehaviour
 	public void BackButtonPressed()
 	{
 		//MENU
-		if(Application.loadedLevel==1){
+		if(Application.loadedLevel==2){
 			settingsPopUp.HidePopUp();
 			quitPopUp.ShowPopUp();
 		}
 		//WORLDS
-		else if(Application.loadedLevel==2){
-			Application.LoadLevel(1); //Go to Menu Scene
+		else if(Application.loadedLevel==3){
+			Application.LoadLevel(2); //Go to Menu Scene
 		}
 		//GAME-WORLDS
-		else if(Application.loadedLevel==3){
+		else if(Application.loadedLevel==4){
 			settingsPopUp.HidePopUp();
 			livesPopUp.ShowPopUp();
 		}
 		//GAME-ARCADE
-		else if(Application.loadedLevel==4){
+		else if(Application.loadedLevel==5){
 			settingsPopUp.HidePopUp();
 			quitArcadePopUp.ShowPopUp();
 		}
@@ -67,20 +67,20 @@ public class BackButtonMgr : MonoBehaviour
 				settingsPopUp.HidePopUp();
 			}else{
 				//MENU
-				if(Application.loadedLevel==1){
+				if(Application.loadedLevel==2){
 					quitPopUp.ShowPopUp();
 				}
 				//WORLDS
-				else if(Application.loadedLevel==2){
+				else if(Application.loadedLevel==3){
 					if(PopUpMgr.currentPopUpObj!=null){
 						PopUpMgr.currentPopUpObj.GetComponent<PopUpMgr>().HidePopUp();
 					}
 					else{
-						Application.LoadLevel(1); //Go to Menu Scene
+						Application.LoadLevel(2); //Go to Menu Scene
 					}
 				}
 				//GAME-WORLDS
-				else if(Application.loadedLevel==3){
+				else if(Application.loadedLevel==4){
 					if(LevelManager.instance.totalNumberOfRowsLeft > 0 || !InGameScriptRefrences.strikerManager.bStartDone){
 						return;
 					}
@@ -94,7 +94,7 @@ public class BackButtonMgr : MonoBehaviour
 					}
 				}
 				//GAME-ARCADE
-				else if(Application.loadedLevel==4){
+				else if(Application.loadedLevel==5){
 					quitArcadePopUp.ShowPopUp();
 				}
 			}

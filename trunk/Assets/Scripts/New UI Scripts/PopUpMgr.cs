@@ -218,21 +218,21 @@ public class PopUpMgr : MonoBehaviour
 	public void GoToWorlds()
 	{
 		PlayerPrefs.SetInt("bPlaying", 0);
-		Application.LoadLevel(2);
+		Application.LoadLevel(3);
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void GoToMainMenu()
 	{
-		Application.LoadLevel(1);
+		Application.LoadLevel(2);
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void RetryArcadeLevel()
 	{
-		Application.LoadLevel(4);
+		Application.LoadLevel(5);
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -241,9 +241,9 @@ public class PopUpMgr : MonoBehaviour
 	{
 		if(LivesManager.lives>0){
 			PlayerPrefs.SetInt("bPlaying", 1);
-			Application.LoadLevel(3);
+			Application.LoadLevel(4);
 		}else{
-			Application.LoadLevel(2);
+			Application.LoadLevel(3);
 		}
 	}
 }

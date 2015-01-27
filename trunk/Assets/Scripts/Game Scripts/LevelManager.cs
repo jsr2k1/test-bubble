@@ -146,9 +146,9 @@ public class LevelManager : MonoBehaviour
 	void LoadLevelAgain()
 	{
 		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
-			Application.LoadLevel(1);
-		} else{
 			Application.LoadLevel(2);
+		} else{
+			Application.LoadLevel(3);
 		}
 	}
 

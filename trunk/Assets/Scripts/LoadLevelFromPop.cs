@@ -8,6 +8,6 @@ public class LoadLevelFromPop : MonoBehaviour
 	public void loadlevel()
 	{
 		popUpMgr.HidePopUp();
-		Application.LoadLevel(3);
+		Application.LoadLevel(4);
 	}
 }
