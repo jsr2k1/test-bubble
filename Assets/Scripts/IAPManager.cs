@@ -54,8 +54,8 @@ public class IAPManager : MonoBehaviour
 		desc.Editor_InAppIDs = inAppIDs;
 		
 		// Win8
-		desc.Win8_InAppPurchaseAPI = InAppPurchaseAPIs.MicrosoftStore;
-		desc.Win8_MicrosoftStore_InAppIDs = inAppIDs;
+		desc.WinRT_InAppPurchaseAPI = InAppPurchaseAPIs.MicrosoftStore;
+		desc.WinRT_MicrosoftStore_InAppIDs = inAppIDs;
 		
 		// WP8
 		desc.WP8_InAppPurchaseAPI = InAppPurchaseAPIs.MicrosoftStore;
