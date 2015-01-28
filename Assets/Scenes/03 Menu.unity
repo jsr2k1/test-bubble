@@ -1244,7 +1244,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
       - m_Target: {fileID: 0}
         m_MethodName: PlayUIClick
         m_Mode: 1
@@ -1703,7 +1703,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
       - m_Target: {fileID: 0}
         m_MethodName: PlayUIClick
         m_Mode: 1
@@ -2120,11 +2120,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cd5877c14ace441a5d0bc3276e472b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ImgBlack: {fileID: 1232638877}
   bShow: 0
+  buttonNext: {fileID: 0}
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
   sound_stars_3: {fileID: 0}
+  scoreText: {fileID: 0}
 --- !u!114 &1147725671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2833,11 +2834,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cd5877c14ace441a5d0bc3276e472b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ImgBlack: {fileID: 1232638877}
   bShow: 0
+  buttonNext: {fileID: 0}
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
   sound_stars_3: {fileID: 0}
+  scoreText: {fileID: 0}
 --- !u!222 &1442842222
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4109,11 +4111,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cd5877c14ace441a5d0bc3276e472b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ImgBlack: {fileID: 1232638877}
   bShow: 0
+  buttonNext: {fileID: 0}
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
   sound_stars_3: {fileID: 0}
+  scoreText: {fileID: 0}
 --- !u!114 &2085255408
 MonoBehaviour:
   m_ObjectHideFlags: 0

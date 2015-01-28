@@ -2036,6 +2036,14 @@ Prefab:
       propertyPath: m_Colors.m_DisabledColor.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400022, guid: b355caa85febe0b49976078d576eda4f, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: b355caa85febe0b49976078d576eda4f, type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400012, guid: b355caa85febe0b49976078d576eda4f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b355caa85febe0b49976078d576eda4f, type: 2}
@@ -2329,7 +2337,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
@@ -2862,7 +2870,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
@@ -5047,7 +5055,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95bb24419cdcab340a06bb4b3fdb78b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finalscore: {fileID: 1611038196}
 --- !u!1 &1215083039
 GameObject:
   m_ObjectHideFlags: 0
