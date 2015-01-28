@@ -10,7 +10,6 @@ GameObject:
   - 224: {fileID: 22400000}
   - 222: {fileID: 22200000}
   - 114: {fileID: 11400002}
-  - 114: {fileID: 11400000}
   - 114: {fileID: 11457980}
   m_Layer: 0
   m_Name: Score Popup Item
@@ -31,18 +30,6 @@ EditorExtensionImpl:
 --- !u!1002 &10200001
 EditorExtensionImpl:
   serializedVersion: 6
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47e9496c096ee2f499d0de9fc1311f25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 11400002}
 --- !u!1002 &11400001
 EditorExtensionImpl:
   serializedVersion: 6
