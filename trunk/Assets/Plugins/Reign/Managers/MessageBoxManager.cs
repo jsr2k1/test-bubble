@@ -24,7 +24,9 @@ namespace Reign
 			ReignServices.CheckStatus();
 			
 			#if !DISABLE_REIGN
-			#if UNITY_WINRT && !UNITY_EDITOR
+			#if UNITY_EDITOR
+			plugin = new MessageBoxPlugin();
+			#elif UNITY_WINRT
 			plugin = new MessageBoxPlugin_WinRT();
 			#elif UNITY_ANDROID
 			plugin = new MessageBoxPlugin_Android();
@@ -32,6 +34,10 @@ namespace Reign
 			plugin = new MessageBoxPlugin_iOS();
 			#elif UNITY_BLACKBERRY
 			plugin = new MessageBoxPlugin_BB10();
+			#elif UNITY_STANDALONE_WIN
+			plugin = new MessageBoxPlugin_Win32();
+			#elif UNITY_STANDALONE_OSX
+			plugin = new MessageBoxPlugin_OSX();
 			#else
 			plugin = new MessageBoxPlugin();
 			#endif

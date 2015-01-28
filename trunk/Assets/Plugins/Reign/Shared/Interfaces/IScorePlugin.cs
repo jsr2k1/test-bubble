@@ -35,6 +35,22 @@ namespace Reign
 	}
 
 	/// <summary>
+	/// Use for Leaderboard sort orders
+	/// </summary>
+	public enum LeaderboardSortOrders
+	{
+		/// <summary>
+		/// Ascending
+		/// </summary>
+		Ascending,
+
+		/// <summary>
+		/// Descending
+		/// </summary>
+		Descending
+	}
+
+	/// <summary>
 	/// Leaderboard desc object
 	/// </summary>
 	public class LeaderboardDesc
@@ -55,6 +71,11 @@ namespace Reign
 		public string Desc;
 
 		/// <summary>
+		/// Tells what order to pull scores in (default is Assending)
+		/// </summary>
+		public LeaderboardSortOrders ReignScores_SortOrder = LeaderboardSortOrders.Ascending;
+
+		/// <summary>
 		/// ReignScores ID (Unique value)
 		/// </summary>
 		public Guid Editor_ReignScores_ID, Win32_ReignScores_ID, OSX_ReignScores_ID, Linux_ReignScores_ID, Web_ReignScores_ID;
@@ -62,7 +83,7 @@ namespace Reign
 		/// <summary>
 		/// ReignScores ID (Unique value)
 		/// </summary>
-		public Guid Win8_ReignScores_ID, WP8_ReignScores_ID, BB10_ReignScores_ID, iOS_ReignScores_ID, Android_ReignScores_ID;
+		public Guid WinRT_ReignScores_ID, WP8_ReignScores_ID, BB10_ReignScores_ID, iOS_ReignScores_ID, Android_ReignScores_ID;
 
 		/// <summary>
 		/// GooglePlay ID (NOTE: Not name)
@@ -119,7 +140,7 @@ namespace Reign
 		/// <summary>
 		/// ID value (Unique value)
 		/// </summary>
-		public Guid Win8_ReignScores_ID, WP8_ReignScores_ID, BB10_ReignScores_ID, iOS_ReignScores_ID, Android_ReignScores_ID;
+		public Guid WinRT_ReignScores_ID, WP8_ReignScores_ID, BB10_ReignScores_ID, iOS_ReignScores_ID, Android_ReignScores_ID;
 
 		/// <summary>
 		/// GooglePlay ID (NOTE: Not name)
@@ -138,6 +159,52 @@ namespace Reign
 	}
 
 	/// <summary>
+	/// Use to implement your own Score UI
+	/// </summary>
+	public interface IScores_UI
+	{
+		/// <summary>
+		/// Call to invoke user score formating
+		/// </summary>
+		event ScoreFormatCallbackMethod ScoreFormatCallback;
+
+		/// <summary>
+		/// Called after scores API is ready and need to be bound
+		/// </summary>
+		void Init(Plugin.IScorePlugin plugin);
+
+		/// <summary>
+		/// Called when user needs to enter login info or create an account
+		/// </summary>
+		void RequestLogin(AuthenticateCallbackMethod callback);
+
+		/// <summary>
+		/// May be called after Authentication is called and Username/Password was saved
+		/// </summary>
+		void AutoLogin(AuthenticateCallbackMethod callback);
+
+		/// <summary>
+		/// Called after login attempt finishes.
+		/// </summary>
+		/// <param name="succeeded">If succeeded, user is logged in</param>
+		/// <param name="errorMessage">If failed error</param>
+		void LoginCallback(bool succeeded, string errorMessage);
+
+		/// <summary>
+		/// Called when UI needs to show leaderboard screen
+		/// </summary>
+		/// <param name="leaderboardID">Leaderboad to show</param>
+		/// <param name="callback">Leaderboad callback</param>
+		void ShowNativeScoresPage(string leaderboardID, ShowNativeViewDoneCallbackMethod callback);
+
+		/// <summary>
+		/// Called when UI needs to show achievement screen
+		/// </summary>
+		/// <param name="callback">Achievement callback</param>
+		void ShowNativeAchievementsPage(ShowNativeViewDoneCallbackMethod callback);
+	}
+
+	/// <summary>
 	/// Score desc object
 	/// </summary>
 	public class ScoreDesc
@@ -147,124 +214,28 @@ namespace Reign
 		/// Score API type
 		/// </summary>
 		public ScoreAPIs Editor_ScoreAPI = ScoreAPIs.None, Win32_ScoreAPI = ScoreAPIs.None, OSX_ScoreAPI = ScoreAPIs.None, Linux_ScoreAPI = ScoreAPIs.None,
-			Web_ScoreAPI = ScoreAPIs.None, Win8_ScoreAPI = ScoreAPIs.None, WP8_ScoreAPI = ScoreAPIs.None, BB10_ScoreAPI = ScoreAPIs.None, iOS_ScoreAPI = ScoreAPIs.None,
+			Web_ScoreAPI = ScoreAPIs.None, WinRT_ScoreAPI = ScoreAPIs.None, WP8_ScoreAPI = ScoreAPIs.None, BB10_ScoreAPI = ScoreAPIs.None, iOS_ScoreAPI = ScoreAPIs.None,
 			Android_ScoreAPI = ScoreAPIs.None;
-	
-		// Reign Scores
-		/// <summary>
-		/// Set to true if you want the Reign UI to auto trigger on if the user is not authenticated. (NOTE: defaults to true)
-		/// </summary>
-		public bool ReignScores_AutoTriggerAuthenticateGUI = true;
 
 		/// <summary>
-		/// Login UI Title
+		/// Set to your UI implementation
 		/// </summary>
-		public string ReignScores_LoginTitle = "Login";
-		
-		/// <summary>
-		/// Create User UI Title
-		/// </summary>
-		public string ReignScores_CreateUserTitle = "Create Account";
+		public IScores_UI ReignScores_UI;
 
 		/// <summary>
-		/// Background UI texture. (Or you can set to NULL and use your own backgrounds)
+		/// Set to your servers url
 		/// </summary>
-		public Texture ReignScores_BackgroudTexture;
-		
-		/// <summary>
-		/// Leaderboard background texture.
-		/// </summary>
-		public Texture ReignScores_TopScoreBoardTexture;
-		
-		/// <summary>
-		/// Achievement background texture.
-		/// </summary>
-		public Texture ReignScores_AchievementBoardTexture;
+		public string ReignScores_ServicesURL;
 
 		/// <summary>
-		/// CloseBox texture
+		/// Set to your servers game_api_key
 		/// </summary>
-		public Texture ReignScores_TopScoreBoardButton_CloseNormal, ReignScores_TopScoreBoardButton_CloseHover;
+		public string ReignScores_GameKey;
 
 		/// <summary>
-		/// CloseBox button texture
+		/// Set to your servers user_api_key
 		/// </summary>
-		public Texture ReignScores_AchievementBoardButton_CloseNormal, ReignScores_AchievementBoardButton_CloseHover;
-
-		/// <summary>
-		/// Navigation button texture
-		/// </summary>
-		public Texture ReignScores_TopScoreBoardButton_PrevNormal, ReignScores_TopScoreBoardButton_PrevHover, ReignScores_TopScoreBoardButton_NextNormal, ReignScores_TopScoreBoardButton_NextHover;
-		
-		/// <summary>
-		/// Navigation button texture
-		/// </summary>
-		public Texture ReignScores_AchievementBoardButton_PrevNormal, ReignScores_AchievementBoardButton_PrevHover, ReignScores_AchievementBoardButton_NextNormal, ReignScores_AchievementBoardButton_NextHover;
-		
-		/// <summary>
-		/// All usernames will fit in this rect. (Auto scales to fit in ReignScores_TopScoreBoardTexture)
-		/// </summary>
-		public Rect ReignScores_TopScoreBoardFrame_Usernames;
-		
-		/// <summary>
-		/// All score values will fit in this rect. (Auto scales to fit in ReignScores_TopScoreBoardTexture)
-		/// </summary>
-		public Rect ReignScores_TopScoreBoardFrame_Scores;
-		
-		/// <summary>
-		/// Button rect. (Auto scales to fit in ReignScores_TopScoreBoardTexture)
-		/// </summary>
-		public Rect ReignScores_TopScoreBoardFrame_PrevButton, ReignScores_TopScoreBoardFrame_NextButton, ReignScores_TopScoreBoardFrame_CloseBox;
-
-		/// <summary>
-		/// All achievement names will fit in this rect. (Auto scales to fit in ReignScores_AchievementBoardTexture)
-		/// </summary>
-		public Rect ReignScores_AchievementBoardFrame_Names;
-		
-		/// <summary>
-		/// All achievement descs will fit in this rect. (Auto scales to fit in ReignScores_AchievementBoardTexture)
-		/// </summary>
-		public Rect ReignScores_AchievementBoardFrame_Descs;
-		
-		/// <summary>
-		/// Button rect. (Auto scales to fit in ReignScores_AchievementBoardTexture)
-		/// </summary>
-		public Rect ReignScores_AchievementBoardFrame_PrevButton, ReignScores_AchievementBoardFrame_NextButton, ReignScores_AchievementBoardFrame_CloseBox;
-
-		/// <summary>
-		/// Board font size (Defaults to 12)
-		/// </summary>
-		public int ReignScores_TopScoreBoardFont_Size = 12, ReignScores_AchievementBoardFont_Size = 12;
-
-		/// <summary>
-		/// Board font color (Defaults to white)
-		/// </summary>
-		public Color ReignScores_TopScoreBoardFont_Color = Color.white, ReignScores_AchievementBoardFont_Color = Color.white;
-
-		/// <summary>
-		/// Amount to show on board (Defaults to 10)
-		/// </summary>
-		public int ReignScores_TopScoresToListPerPage = 10, ReignScores_AchievementsToListPerPage = 10;
-
-		/// <summary>
-		/// Set to true to visual see where your board rects are placed.
-		/// </summary>
-		public bool ReignScores_EnableTestRects;
-
-		/// <summary>
-		/// Set to your UI audio source
-		/// </summary>
-		public AudioSource ReignScores_AudioSource;
-
-		/// <summary>
-		/// Button click sound
-		/// </summary>
-		public AudioClip ReignScores_ButtonClick;
-
-		/// <summary>
-		/// This callback fires when a score needs to be formated (Such as converting an int to TimeSpan)
-		/// </summary>
-		public ScoreFormatCallbackMethod ReignScores_ScoreFormatCallback;
+		public string ReignScores_UserKey;
 
 		/// <summary>
 		/// Leaderboard descs
@@ -304,7 +275,7 @@ namespace Reign
 		/// <summary>
 		/// ReignScores Game ID
 		/// </summary>
-		public string Win8_ReignScores_GameID;
+		public string WinRT_ReignScores_GameID;
 		
 		/// <summary>
 		/// ReignScores Game ID
@@ -452,6 +423,13 @@ namespace Reign
 	public delegate void ShowNativeViewDoneCallbackMethod(bool succeeded, string errorMessage);
 
 	/// <summary>
+	/// Called after reset completed
+	/// </summary>
+	/// <param name="succeeded">Tells if the API was successful or not.</param>
+	/// <param name="errorMessage">Error message or null.</param>
+	public delegate void ResetUserAchievementsCallbackMethod(bool succeeded, string errorMessage);
+
+	/// <summary>
 	/// Used for formating score values
 	/// </summary>
 	/// <param name="score">Score value to format</param>
@@ -466,11 +444,6 @@ namespace Reign.Plugin
 	/// </summary>
 	public interface IScorePlugin
 	{
-		/// <summary>
-		/// Use to check if a GUI system is in use
-		/// </summary>
-		bool PerformingGUIOperation {get;}
-
 		/// <summary>
 		/// Use to check if the user is authenticated
 		/// </summary>
@@ -558,12 +531,15 @@ namespace Reign.Plugin
 		/// Use to show native achievement page
 		/// </summary>
 		/// <param name="callback">Callback fired when done</param>
+		/// <param name="services">Takes in ReignServices object</param>
 		void ShowNativeAchievementsPage(ShowNativeViewDoneCallbackMethod callback, MonoBehaviour services);
 
 		/// <summary>
-		/// Used for UI events
+		/// Resets the users achievement progress.
 		/// </summary>
-		void OnGUI();
+		/// <param name="callback">Callback fired when done</param>
+		/// <param name="services">Takes in ReignServices object</param>
+		void ResetUserAchievementsProgress(ResetUserAchievementsCallbackMethod callback, MonoBehaviour services);
 
 		/// <summary>
 		/// Used for update events

@@ -75,7 +75,7 @@ namespace Reign.Plugin
 			if (percentComplete > found.PercentCompletedAtValue) percentComplete = found.PercentCompletedAtValue;
 
 			// if non-incremental achievement, then force percent complete to 100%
-			if (found.IsIncremental) percentComplete = found.PercentCompletedAtValue;
+			if (!found.IsIncremental) percentComplete = found.PercentCompletedAtValue;
 
 			// request
 			reportAchievementCallback = callback;
@@ -131,9 +131,9 @@ namespace Reign.Plugin
 			throw new Exception("Failed to find GameCircle LeaderboardID for: " + id);
 		}
 
-		public void OnGUI ()
+		public void ResetUserAchievementsProgress(ResetUserAchievementsCallbackMethod callback, MonoBehaviour services)
 		{
-			// do nothing...
+			if (callback != null) callback(false, "Unsupported on this platform!");
 		}
 
 		public void Update ()

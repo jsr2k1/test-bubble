@@ -41,15 +41,15 @@ namespace Reign
 		{
 			#if DISABLE_REIGN
 			pluginAPI = InAppPurchaseAPIs.None;
-			#elif UNITY_METRO
-			pluginAPI = desc.Win8_InAppPurchaseAPI;
 			#elif UNITY_WP8
 			pluginAPI = desc.WP8_InAppPurchaseAPI;
+			#elif UNITY_METRO
+			pluginAPI = desc.WinRT_InAppPurchaseAPI;
 			#elif UNITY_IOS
 			pluginAPI = desc.iOS_InAppPurchaseAPI;
 			#elif UNITY_ANDROID
 			pluginAPI = desc.Android_InAppPurchaseAPI;
-			#elif UNITY_BB10
+			#elif UNITY_BLACKBERRY
 			pluginAPI = desc.BB10_InAppPurchaseAPI;
 			#else
 			pluginAPI = InAppPurchaseAPIs.None;
@@ -531,15 +531,15 @@ namespace Reign.Plugin
 			return new Dumy_InAppPurchasePlugin(desc, callback);
 			#elif UNITY_EDITOR
 			return new InAppPurchasePlugin(desc, callback);
-			#elif UNITY_METRO
-			if (desc.Win8_InAppPurchaseAPI == InAppPurchaseAPIs.None) return new Dumy_InAppPurchasePlugin(desc, callback);
-			else if (desc.Win8_InAppPurchaseAPI == InAppPurchaseAPIs.MicrosoftStore) return new MicrosoftStore_InAppPurchasePlugin_WinRT(desc, callback);
-			else throw new Exception("Unsuported Win8_InAppPurchaseAPI: " + desc.Win8_InAppPurchaseAPI);
 			#elif UNITY_WP8
 			if (desc.WP8_InAppPurchaseAPI == InAppPurchaseAPIs.None) return new Dumy_InAppPurchasePlugin(desc, callback);
 			else if (desc.WP8_InAppPurchaseAPI == InAppPurchaseAPIs.MicrosoftStore) return new MicrosoftStore_InAppPurchasePlugin_WinRT(desc, callback);
 			else throw new Exception("Unsuported WP8_InAppPurchaseAPI " + desc.WP8_InAppPurchaseAPI);
-			#elif UNITY_BB10
+			#elif UNITY_METRO
+			if (desc.WinRT_InAppPurchaseAPI == InAppPurchaseAPIs.None) return new Dumy_InAppPurchasePlugin(desc, callback);
+			else if (desc.WinRT_InAppPurchaseAPI == InAppPurchaseAPIs.MicrosoftStore) return new MicrosoftStore_InAppPurchasePlugin_WinRT(desc, callback);
+			else throw new Exception("Unsuported WinRT_InAppPurchaseAPI: " + desc.WinRT_InAppPurchaseAPI);
+			#elif UNITY_BLACKBERRY
 			if (desc.BB10_InAppPurchaseAPI == InAppPurchaseAPIs.None) return new Dumy_InAppPurchasePlugin(desc, callback);
 			else if (desc.BB10_InAppPurchaseAPI == InAppPurchaseAPIs.BlackBerryWorld) return new InAppPurchasePlugin_BB10(desc, callback);
 			else throw new Exception("Unsuported BB10_InAppPurchaseAPI: " + desc.BB10_InAppPurchaseAPI);
