@@ -18,6 +18,7 @@ public class SplashFirst : MonoBehaviour
 	IEnumerator LoadSplash()
 	{
 		yield return new WaitForSeconds(2.0f);
+		loadingText.enabled=true;
 		SystemLanguage currentLang = Application.systemLanguage;
 		if(currentLang == SystemLanguage.Spanish){
 			loadingText.text="Cargando...";
