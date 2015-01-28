@@ -27,6 +27,7 @@ public class PurchaseLives : MonoBehaviour
 			CoinsManager.instance.SetCoins(PlayerPrefs.GetInt("Coins") - 100);
 			coinstext.text = PlayerPrefs.GetInt("Coins").ToString();
 			LivesPopUp.HidePopUp();
+			ParseManager.instance.SaveCurrentData();
 		}
 		else if(LivesManager.lives < 5 && PlayerPrefs.GetInt("Coins") < 100)
 		{

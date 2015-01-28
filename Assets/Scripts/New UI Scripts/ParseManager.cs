@@ -214,14 +214,14 @@ public class ParseManager : MonoBehaviour
 		//Si es la primera vez que el usuario se conecta a facebook en ese dispositivo -> Cogemos los valores maximos entre Parse y PlayerPrefs
 		//Si ya se ha conectado antes -> 
 		//------> Si se esta conectando con el mismo dispositivo -> Se mantienen los valores que habia en el PlayerPrefs
-		//------> Si es otro dispositivo -> Cogemos el valor maximo
+		//------> Si es otro dispositivo -> Cogemos los valores que nos dice el Parse
 		string deviceID = currentParseObject.Get<string>("deviceID");
-		if(PlayerPrefs.GetInt("FirstTimeFacebookLogin")==1 ||(PlayerPrefs.GetInt("FirstTimeFacebookLogin")==0 && deviceID!=SystemInfo.deviceUniqueIdentifier)){
+		if(PlayerPrefs.GetInt("FirstTimeFacebookLogin")==1 || (PlayerPrefs.GetInt("FirstTimeFacebookLogin")==0 && deviceID!=SystemInfo.deviceUniqueIdentifier)){
 			//PlayerPrefs.SetInt("Coins", Mathf.Max(PlayerPrefs.GetInt("Coins"), int.Parse(currentParseObject.Get<string>("Coins"))));
-			CoinsManager.instance.SetCoins(Mathf.Max(PlayerPrefs.GetInt("Coins"), int.Parse(currentParseObject.Get<string>("Coins"))));
-			PlayerPrefs.SetInt("Multicolor Ball", Mathf.Max(PlayerPrefs.GetInt("Multicolor Ball"), int.Parse(currentParseObject.Get<string>("MulticolorBall"))));
-			PlayerPrefs.SetInt("Fire Ball", Mathf.Max(PlayerPrefs.GetInt("Fire Ball"), int.Parse(currentParseObject.Get<string>("FireBall"))));
-			PlayerPrefs.SetInt("Bomb Ball", Mathf.Max(PlayerPrefs.GetInt("Bomb Ball"), int.Parse(currentParseObject.Get<string>("BombBall"))));
+			CoinsManager.instance.SetCoins(int.Parse(currentParseObject.Get<string>("Coins")));
+			PlayerPrefs.SetInt("Multicolor Ball", int.Parse(currentParseObject.Get<string>("MulticolorBall")));
+			PlayerPrefs.SetInt("Fire Ball", int.Parse(currentParseObject.Get<string>("FireBall")));
+			PlayerPrefs.SetInt("Bomb Ball", int.Parse(currentParseObject.Get<string>("BombBall")));
 			PlayerPrefs.SetInt("FirstTimeFacebookLogin",0);
 		}
 		//Dado que en algunos casos cogemos el valor maximo, hay que actualizar los datos en Parse tambien
