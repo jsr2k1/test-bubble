@@ -15,19 +15,6 @@ namespace Reign
 	public static class ScoreManager
 	{
 		/// <summary>
-		/// Use to check if the API is doing GUI operations.
-		/// NOTE: If ReignScores, you should disable your UI to let the Reign UI take over.
-		/// </summary>
-		public static bool PerformingGUIOperation
-		{
-			get
-			{
-				if (plugin == null) return false;
-				return plugin.PerformingGUIOperation;
-			}
-		}
-
-		/// <summary>
 		/// Use to check if the user is authenticated.
 		/// </summary>
 		public static bool IsAuthenticated
@@ -61,6 +48,7 @@ namespace Reign
 		private static RequestAchievementsCallbackMethod requestAchievementsCallback;
 		private static ShowNativeViewDoneCallbackMethod showNativeViewCallback;
 		private static CreatedScoreAPICallbackMethod createdCallback;
+		private static ResetUserAchievementsCallbackMethod resetUserAchievementsCallback;
 
 		private static void createdCallbackAsyncStatic(bool succeeded, string errorMessage)
 		{
@@ -82,12 +70,7 @@ namespace Reign
 			ScoreManager.createdCallback = callback;
 			ReignServices.CheckStatus();
 			plugin = ScorePluginAPI.New(desc, createdCallbackAsyncStatic);
-			ReignServices.AddService(update, onGUI, null);
-		}
-
-		private static void onGUI()
-		{
-			plugin.OnGUI();
+			ReignServices.AddService(update, null, null);
 		}
 
 		private static void update()
@@ -129,6 +112,12 @@ namespace Reign
 		{
 			waitingForOperation = false;
 			if (showNativeViewCallback != null) showNativeViewCallback(succeeded, errorMessage);
+		}
+
+		private static void async_resetUserAchievementsCallback(bool succeeded, string errorMessage)
+		{
+			waitingForOperation = false;
+			if (resetUserAchievementsCallback != null) resetUserAchievementsCallback(succeeded, errorMessage);
 		}
 
 		/// <summary>
@@ -309,6 +298,22 @@ namespace Reign
 			showNativeViewCallback = callback;
 			plugin.ShowNativeAchievementsPage(async_showNativeViewCallback, ReignServices.Singleton);
 		}
+
+		/// <summary>
+		/// Resets the users achievement progress. (Currently only for iOS)
+		/// </summary>
+		public static void ResetUserAchievementsProgress(ResetUserAchievementsCallbackMethod callback)
+		{
+			if (waitingForOperation)
+			{
+				Debug.LogError("Must wait for last Score operation to complete.");
+				return;
+			}
+
+			waitingForOperation = true;
+			resetUserAchievementsCallback = callback;
+			plugin.ResetUserAchievementsProgress(async_resetUserAchievementsCallback, ReignServices.Singleton);
+		}
 	}
 }
 
@@ -319,7 +324,6 @@ namespace Reign.Plugin
 	/// </summary>
 	public class Dumy_ScorePluginPlugin : IScorePlugin
 	{
-		public bool PerformingGUIOperation {get; private set;}
 		public bool IsAuthenticated {get; private set;}
 		public string Username {get; private set;}
 
@@ -329,7 +333,6 @@ namespace Reign.Plugin
 		/// <param name="desc">Score desc.</param>
 		public Dumy_ScorePluginPlugin(ScoreDesc desc, CreatedScoreAPICallbackMethod callback)
 		{
-			PerformingGUIOperation = false;
 			IsAuthenticated = false;
 			Username = "???";
 			if (callback != null) callback(false, "Dumy Score object");
@@ -446,9 +449,11 @@ namespace Reign.Plugin
 		/// <summary>
 		/// Dumy method.
 		/// </summary>
-		public void OnGUI()
+		/// <param name="callback"></param>
+		/// <param name="services"></param>
+		public void ResetUserAchievementsProgress(ResetUserAchievementsCallbackMethod callback, MonoBehaviour services)
 		{
-			// do nothing...
+			if (callback != null) callback(false, "Dumy Score Obj");
 		}
 
 		/// <summary>
@@ -483,9 +488,9 @@ namespace Reign.Plugin
 			else if (desc.WP8_ScoreAPI == ScoreAPIs.ReignScores) return new ReignScores_ScorePlugin(desc, callback);
 			else throw new Exception("Unsuported WP8_ScoreAPI: " + desc.WP8_ScoreAPI);
 			#elif UNITY_METRO
-			if (desc.Win8_ScoreAPI == ScoreAPIs.None) return new Dumy_ScorePluginPlugin(desc, callback);
-			else if (desc.Win8_ScoreAPI == ScoreAPIs.ReignScores) return new ReignScores_ScorePlugin(desc, callback);
-			else throw new Exception("Unsuported Win8_ScoreAPI: " + desc.Win8_ScoreAPI);
+			if (desc.WinRT_ScoreAPI == ScoreAPIs.None) return new Dumy_ScorePluginPlugin(desc, callback);
+			else if (desc.WinRT_ScoreAPI == ScoreAPIs.ReignScores) return new ReignScores_ScorePlugin(desc, callback);
+			else throw new Exception("Unsuported WinRT_ScoreAPI: " + desc.WinRT_ScoreAPI);
 			#elif UNITY_ANDROID
 			if (desc.Android_ScoreAPI == ScoreAPIs.None) return new Dumy_ScorePluginPlugin(desc, callback);
 			else if (desc.Android_ScoreAPI == ScoreAPIs.ReignScores) return new ReignScores_ScorePlugin(desc, callback);
@@ -497,10 +502,22 @@ namespace Reign.Plugin
 			else if (desc.iOS_ScoreAPI == ScoreAPIs.ReignScores) return new ReignScores_ScorePlugin(desc, callback);
 			else if (desc.iOS_ScoreAPI == ScoreAPIs.GameCenter) return new GameCenter_ScorePlugin_iOS(desc, callback);
 			else throw new Exception("Unsuported iOS_ScoreAPI: " + desc.iOS_ScoreAPI);
-			#elif UNITY_BB10
+			#elif UNITY_BLACKBERRY
 			if (desc.BB10_ScoreAPI == ScoreAPIs.None) return new Dumy_ScorePluginPlugin(desc, callback);
 			else if (desc.BB10_ScoreAPI == ScoreAPIs.ReignScores) return new ReignScores_ScorePlugin(desc, callback);
 			else throw new Exception("Unsuported BB10_ScoreAPI: " + desc.BB10_ScoreAPI);
+			#elif UNITY_STANDALONE_WIN
+			if (desc.Win32_ScoreAPI == ScoreAPIs.None) return new Dumy_ScorePluginPlugin(desc, callback);
+			else if (desc.Win32_ScoreAPI == ScoreAPIs.ReignScores) return new ReignScores_ScorePlugin(desc, callback);
+			else throw new Exception("Unsuported Win32_ScoreAPI: " + desc.Win32_ScoreAPI);
+			#elif UNITY_STANDALONE_OSX
+			if (desc.OSX_ScoreAPI == ScoreAPIs.None) return new Dumy_ScorePluginPlugin(desc, callback);
+			else if (desc.OSX_ScoreAPI == ScoreAPIs.ReignScores) return new ReignScores_ScorePlugin(desc, callback);
+			else throw new Exception("Unsuported OSX_ScoreAPI: " + desc.OSX_ScoreAPI);
+			#elif UNITY_STANDALONE_LINUX
+			if (desc.Linux_ScoreAPI == ScoreAPIs.None) return new Dumy_ScorePluginPlugin(desc, callback);
+			else if (desc.Linux_ScoreAPI == ScoreAPIs.ReignScores) return new ReignScores_ScorePlugin(desc, callback);
+			else throw new Exception("Unsuported Linux_ScoreAPI: " + desc.Linux_ScoreAPI);
 			#else
 			return new Dumy_ScorePluginPlugin(desc, callback);
 			#endif

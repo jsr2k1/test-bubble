@@ -1,6 +1,7 @@
 ﻿#if UNITY_EDITOR
 using System;
-using UnityEngine;
+using System.Diagnostics;
+using System.Text;
 
 namespace Reign.Plugin
 {
@@ -8,7 +9,14 @@ namespace Reign.Plugin
 	{
 		public void Send(string to, string subject, string body)
 		{
-			Debug.Log(string.Format("(NOTE: Editor does not realy send emails out): To={0} Subject={1} Body={2}", to, subject, body));
+			UnityEngine.Debug.Log(string.Format("Send mail: To={0} Subject={1} Body={2}", to, subject, body));
+
+			var theStringBuilder = new StringBuilder();
+			theStringBuilder.Append("mailto:" + to + "?");
+			theStringBuilder.Append("&subject=" + subject);
+			theStringBuilder.Append("&body=" + body);
+			//&attachment="/files/audio/attachment.mp3"
+			Process.Start(theStringBuilder.ToString());
 		}
 	}
 }

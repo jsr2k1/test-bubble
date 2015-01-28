@@ -20,7 +20,12 @@ namespace Reign
 		/// <summary>
 		/// DFP
 		/// </summary>
-		DFP
+		DFP,
+
+		/// <summary>
+		/// Amazon
+		/// </summary>
+		Amazon,
 	}
 
 	/// <summary>
@@ -71,7 +76,7 @@ namespace Reign
 		/// </summary>
 		public InterstitialAdEventCallbackMethod EventCallback;
 
-		// Win8
+		// WinRT
 		// TODO...
 
 		// WP8
@@ -124,6 +129,12 @@ namespace Reign
 		/// NOTE: Must set event for testing
 		/// </summary>
 		public string Android_DFP_UnitID;
+
+		/// <summary>
+		/// Amazon UnitID
+		/// NOTE: Must set event for testing
+		/// </summary>
+		public string Android_Amazon_ApplicationKey;
 	}
 
 	/// <summary>

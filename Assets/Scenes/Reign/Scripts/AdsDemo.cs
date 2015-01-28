@@ -52,14 +52,14 @@ public class AdsDemo : MonoBehaviour
 		desc.Editor_GuiAdScale = 1;
 		//desc.Editor_MillennialMediaAdvertising_RefreshRate = 120,
 
-		// Win8 settings
-		desc.Win8_AdAPI = AdAPIs.MicrosoftAdvertising;
-		desc.Win8_MicrosoftAdvertising_ApplicationID = "";
-		desc.Win8_MicrosoftAdvertising_UnitID = "";
-		desc.Win8_MicrosoftAdvertising_AdGravity = AdGravity.BottomCenter;
-		desc.Win8_MicrosoftAdvertising_AdSize = Win8_MicrosoftAdvertising_AdSize.Wide_728x90;
-		//desc.Win8_MicrosoftAdvertising_UseBuiltInRefresh = false;
-		//desc.Win8_MicrosoftAdvertising_RefreshRate = 120;
+		// WinRT settings
+		desc.WinRT_AdAPI = AdAPIs.MicrosoftAdvertising;
+		desc.WinRT_MicrosoftAdvertising_ApplicationID = "";
+		desc.WinRT_MicrosoftAdvertising_UnitID = "";
+		desc.WinRT_MicrosoftAdvertising_AdGravity = AdGravity.BottomCenter;
+		desc.WinRT_MicrosoftAdvertising_AdSize = WinRT_MicrosoftAdvertising_AdSize.Wide_728x90;
+		//desc.WinRT_MicrosoftAdvertising_UseBuiltInRefresh = false;
+		//desc.WinRT_MicrosoftAdvertising_RefreshRate = 120;
 			
 		// WP8 settings
 		desc.WP8_AdAPI = AdAPIs.MicrosoftAdvertising;
@@ -70,7 +70,7 @@ public class AdsDemo : MonoBehaviour
 		//desc.WP8_MicrosoftAdvertising_UseBuiltInRefresh = false;
 		//desc.WP8_MicrosoftAdvertising_RefreshRate = 120;
 			
-		desc.WP8_AdMob_UnitID = "";// NOTE: You can use legacy (PublisherID) too, You MUST have this even for Testing!
+		desc.WP8_AdMob_UnitID = "";// NOTE: You MUST have this even for Testing!
 		desc.WP8_AdMob_AdGravity = AdGravity.BottomCenter;
 		desc.WP8_AdMob_AdSize = Reign.WP8_AdMob_AdSize.Banner;
 			
@@ -96,9 +96,9 @@ public class AdsDemo : MonoBehaviour
 			
 		// Android settings
 		#if AMAZON
-		desc.Android_AdAPI = AdAPIs.AmazonAds;// Choose between AdMob or AmazonAds
+		desc.Android_AdAPI = AdAPIs.Amazon;// Choose between AdMob or Amazon
 		#else
-		desc.Android_AdAPI = AdAPIs.AdMob;// Choose between AdMob or AmazonAds
+		desc.Android_AdAPI = AdAPIs.AdMob;// Choose between AdMob or Amazon
 		#endif
 			
 		desc.Android_AdMob_UnitID = "";// NOTE: You MUST have this even for Testing!

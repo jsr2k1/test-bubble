@@ -252,58 +252,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BackgroundTexture: {fileID: 0}
-  ScoreBoardTexture: {fileID: 2800000, guid: 0b5994ed2d0e75c40ad81690efe7a8fd, type: 3}
-  AchievementBoardTexture: {fileID: 2800000, guid: e7c982beba95115479b3dc4ada3b0126,
-    type: 3}
-  CloseBoxNormal: {fileID: 2800000, guid: 1f9d052973d546a43949b58f24ab6c8d, type: 3}
-  CloseBoxHover: {fileID: 2800000, guid: f07be5cfa6a656d4ea41528cec21f708, type: 3}
-  PrevNormal: {fileID: 2800000, guid: ce7b8c104147ed34fa6ef2e9bce0a8ae, type: 3}
-  PrevHover: {fileID: 2800000, guid: 09e072185153525448307b0401815d68, type: 3}
-  NextNormal: {fileID: 2800000, guid: cf8220f1a62db854394f81619f75fd7d, type: 3}
-  NextHover: {fileID: 2800000, guid: 198ef6a3e5778904faf9e2bb4d8c36f6, type: 3}
+  ScoreBoardTexture: {fileID: 0}
+  AchievementBoardTexture: {fileID: 0}
+  CloseBoxNormal: {fileID: 0}
+  CloseBoxHover: {fileID: 0}
+  PrevNormal: {fileID: 0}
+  PrevHover: {fileID: 0}
+  NextNormal: {fileID: 0}
+  NextHover: {fileID: 0}
   CloseBoxFrame:
     serializedVersion: 2
-    x: 750
-    y: 50
-    width: 128
-    height: 128
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   PrefFrame:
     serializedVersion: 2
-    x: 150
-    y: 750
-    width: 256
-    height: 256
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   NextFrame:
     serializedVersion: 2
-    x: 650
-    y: 750
-    width: 256
-    height: 256
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   TopScoreUsernameFrame:
     serializedVersion: 2
-    x: 225
-    y: 250
-    width: 340
-    height: 560
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   TopScoreFrame:
     serializedVersion: 2
-    x: 585
-    y: 250
-    width: 240
-    height: 560
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   AchievementNameFrame:
     serializedVersion: 2
-    x: 225
-    y: 250
-    width: 270
-    height: 560
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   AchievementDescFrame:
     serializedVersion: 2
-    x: 520
-    y: 250
-    width: 300
-    height: 560
-  ButtonClick: {fileID: 8300000, guid: b38cf6f64fe74dd418ebeed09f85c80e, type: 3}
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  ButtonClick: {fileID: 0}
 --- !u!82 &778482657
 AudioSource:
   m_ObjectHideFlags: 0
@@ -362,3 +361,140 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!1 &2008320183
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2008320185}
+  - 114: {fileID: 2008320184}
+  m_Layer: 0
+  m_Name: ReignScores_ClassicUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2008320184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2008320183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efafc8b7cec3f5479f59b5451e64ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoginTitle: 4c6f67696e
+  CreateUserTitle: 437265617465204163636f756e74
+  BackgroudTexture: {fileID: 0}
+  TopScoreBoardTexture: {fileID: 2800000, guid: 0b5994ed2d0e75c40ad81690efe7a8fd,
+    type: 3}
+  AchievementBoardTexture: {fileID: 2800000, guid: e7c982beba95115479b3dc4ada3b0126,
+    type: 3}
+  TopScoreBoardButton_CloseNormal: {fileID: 2800000, guid: 1f9d052973d546a43949b58f24ab6c8d,
+    type: 3}
+  TopScoreBoardButton_CloseHover: {fileID: 2800000, guid: f07be5cfa6a656d4ea41528cec21f708,
+    type: 3}
+  AchievementBoardButton_CloseNormal: {fileID: 2800000, guid: 1f9d052973d546a43949b58f24ab6c8d,
+    type: 3}
+  AchievementBoardButton_CloseHover: {fileID: 2800000, guid: f07be5cfa6a656d4ea41528cec21f708,
+    type: 3}
+  TopScoreBoardButton_PrevNormal: {fileID: 2800000, guid: ce7b8c104147ed34fa6ef2e9bce0a8ae,
+    type: 3}
+  TopScoreBoardButton_PrevHover: {fileID: 2800000, guid: 09e072185153525448307b0401815d68,
+    type: 3}
+  TopScoreBoardButton_NextNormal: {fileID: 2800000, guid: cf8220f1a62db854394f81619f75fd7d,
+    type: 3}
+  TopScoreBoardButton_NextHover: {fileID: 2800000, guid: 198ef6a3e5778904faf9e2bb4d8c36f6,
+    type: 3}
+  AchievementBoardButton_PrevNormal: {fileID: 2800000, guid: ce7b8c104147ed34fa6ef2e9bce0a8ae,
+    type: 3}
+  AchievementBoardButton_PrevHover: {fileID: 2800000, guid: 09e072185153525448307b0401815d68,
+    type: 3}
+  AchievementBoardButton_NextNormal: {fileID: 2800000, guid: cf8220f1a62db854394f81619f75fd7d,
+    type: 3}
+  AchievementBoardButton_NextHover: {fileID: 2800000, guid: 198ef6a3e5778904faf9e2bb4d8c36f6,
+    type: 3}
+  TopScoreBoardFrame_Usernames:
+    x: 225
+    y: 250
+    width: 340
+    height: 560
+  TopScoreBoardFrame_Scores:
+    x: 585
+    y: 250
+    width: 240
+    height: 560
+  TopScoreBoardFrame_PrevButton:
+    x: 150
+    y: 750
+    width: 256
+    height: 256
+  TopScoreBoardFrame_NextButton:
+    x: 650
+    y: 750
+    width: 256
+    height: 256
+  TopScoreBoardFrame_CloseBox:
+    x: 750
+    y: 50
+    width: 128
+    height: 128
+  AchievementBoardFrame_Names:
+    x: 225
+    y: 250
+    width: 270
+    height: 560
+  AchievementBoardFrame_Descs:
+    x: 520
+    y: 250
+    width: 300
+    height: 560
+  AchievementBoardFrame_PrevButton:
+    x: 150
+    y: 750
+    width: 256
+    height: 256
+  AchievementBoardFrame_NextButton:
+    x: 650
+    y: 750
+    width: 256
+    height: 256
+  AchievementBoardFrame_CloseBox:
+    x: 750
+    y: 50
+    width: 128
+    height: 128
+  TopScoreBoardFont_Size: 12
+  AchievementBoardFont_Size: 12
+  TopScoreBoardFont_Color:
+    r: 1
+    g: 1
+    b: 1
+    a: 1
+  AchievementBoardFont_Color:
+    r: 1
+    g: 1
+    b: 1
+    a: 1
+  TopScoresToListPerPage: 10
+  AchievementsToListPerPage: 10
+  EnableTestRects: 0
+  AudioSource: {fileID: 778482657}
+  ButtonClick: {fileID: 8300000, guid: b38cf6f64fe74dd418ebeed09f85c80e, type: 3}
+--- !u!4 &2008320185
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2008320183}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2

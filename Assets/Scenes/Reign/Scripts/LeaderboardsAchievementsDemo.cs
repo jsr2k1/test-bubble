@@ -8,14 +8,9 @@ using Reign;
 public class LeaderboardsAchievementsDemo : MonoBehaviour
 {
 	public static LeaderboardsAchievementsDemo Singleton;
-	public Texture BackgroundTexture, ScoreBoardTexture, AchievementBoardTexture;
-	public Texture CloseBoxNormal, CloseBoxHover;
-	public Texture PrevNormal, PrevHover, NextNormal, NextHover;
-	public Rect CloseBoxFrame, PrefFrame, NextFrame;
-	public Rect TopScoreUsernameFrame, TopScoreFrame, AchievementNameFrame, AchievementDescFrame;
-	public AudioClip ButtonClick;
+	public GameObject ReignScores_Renderer;
 
-	private bool modeSelected, loginMode;
+	private bool disableUI;
 	GUIStyle uiStyle;
 
 	void Start()
@@ -40,37 +35,49 @@ public class LeaderboardsAchievementsDemo : MonoBehaviour
 		var leaderboards = new LeaderboardDesc[1];
 		var leaderboard = new LeaderboardDesc();
 		leaderboards[0] = leaderboard;
+		var leaderboardID = new System.Guid("f55e3800-eacd-4728-ae4f-31b00aaa63bf");
+		leaderboard.ReignScores_SortOrder = LeaderboardSortOrders.Ascending;
 		
 		// Global
 		leaderboard.ID = "Level1";// Any unique ID value you want
 		leaderboard.Desc = "Level1 Desc...";// Any desc you want
 
 		// Editor
-		leaderboard.Editor_ReignScores_ID = System.Guid.Empty;// Any unique value
+		leaderboard.Editor_ReignScores_ID = leaderboardID;// Any unique value
 
-		// Win8
-		leaderboard.Win8_ReignScores_ID = System.Guid.Empty;// Any unique value
+		// WinRT
+		leaderboard.WinRT_ReignScores_ID = leaderboardID;// Any unique value
 
 		// WP8
-		leaderboard.WP8_ReignScores_ID = System.Guid.Empty;// Any unique value
+		leaderboard.WP8_ReignScores_ID = leaderboardID;// Any unique value
 
 		// BB10
-		leaderboard.BB10_ReignScores_ID = System.Guid.Empty;// Any unique value
+		leaderboard.BB10_ReignScores_ID = leaderboardID;// Any unique value
 
 		// iOS
-		leaderboard.iOS_ReignScores_ID = System.Guid.Empty;// Any unique value
+		leaderboard.iOS_ReignScores_ID = leaderboardID;// Any unique value
 		leaderboard.iOS_GameCenter_ID = "";// Set to your GameCenter leaderboard ID
 
 		// Android
-		leaderboard.Android_ReignScores_ID = System.Guid.Empty;// Any unique value
+		leaderboard.Android_ReignScores_ID = leaderboardID;// Any unique value
 		leaderboard.Android_GooglePlay_ID = "";// Set to your GooglePlay leaderboard ID (Not Name)
 		leaderboard.Android_GameCircle_ID = "";// Set to your GameCircle leaderboard ID (Not Name)
+
+		// Win32
+		leaderboard.Win32_ReignScores_ID = leaderboardID;// Any unique value
+
+		// OSX
+		leaderboard.OSX_ReignScores_ID = leaderboardID;// Any unique value
+
+		// Linux
+		leaderboard.Linux_ReignScores_ID = leaderboardID;// Any unique value
 
 
 		// Achievements ---------------------------
 		var achievements = new AchievementDesc[5];
 		var achievement = new AchievementDesc();
 		achievements[0] = achievement;
+		var achievementID = new System.Guid("352ce53d-142f-4a10-a4fb-804ad38be879");
 
 		// Global
 		achievement.ID = "Achievement1";// Any unique ID value you want
@@ -86,92 +93,74 @@ public class LeaderboardsAchievementsDemo : MonoBehaviour
 		achievement.IsIncremental = true;
 
 		// Editor
-		achievement.Editor_ReignScores_ID = System.Guid.Empty;// Any unique value
+		achievement.Editor_ReignScores_ID = achievementID;// Any unique value
 
-		// Win8
-		achievement.Win8_ReignScores_ID = System.Guid.Empty;// Any unique value
+		// WinRT
+		achievement.WinRT_ReignScores_ID = achievementID;// Any unique value
 
 		// WP8
-		achievement.WP8_ReignScores_ID = System.Guid.Empty;// Any unique value
+		achievement.WP8_ReignScores_ID = achievementID;// Any unique value
 
 		// BB10
-		achievement.BB10_ReignScores_ID = System.Guid.Empty;// Any unique value
+		achievement.BB10_ReignScores_ID = achievementID;// Any unique value
 
 		// iOS
-		achievement.iOS_ReignScores_ID = System.Guid.Empty;// Any unique index value
+		achievement.iOS_ReignScores_ID = achievementID;// Any unique index value
 		achievement.iOS_GameCenter_ID = "";// Set to your GameCenter achievement ID
 
 		// Android
-		achievement.Android_ReignScores_ID = System.Guid.Empty;// Any unique value
+		achievement.Android_ReignScores_ID = achievementID;// Any unique value
 		achievement.Android_GooglePlay_ID = "";// Set to your GooglePlay achievement ID (Not Name)
 		achievement.Android_GameCircle_ID = "";// Set to your GameCircle achievement ID (Not Name)
+
+		// Win32
+		achievement.Win32_ReignScores_ID = achievementID;// Any unique value
+
+		// OSX
+		achievement.OSX_ReignScores_ID = achievementID;// Any unique value
+
+		// Linux
+		achievement.Linux_ReignScores_ID = achievementID;// Any unique value
 
 		// Add other achievements...
 		for (int i = 1; i != achievements.Length; ++i)
 		{
 			achievement = new AchievementDesc();
 			achievements[i] = achievement;
-			achievement.ID = "Achievement_TODO" + i;
-			achievement.Name = "Achievement_TODO" + i;
-			achievement.Desc = "Achievement_TODO Desc" + i;
+			achievement.ID = "Achievement" + (i+1);
+			achievement.Name = "Achievement_TODO" + (i+1);
+			achievement.Desc = "Achievement_TODO Desc" + (i+1);
+
+			achievementID = System.Guid.Empty;
+			achievement.Editor_ReignScores_ID = achievementID;
+			achievement.WinRT_ReignScores_ID = achievementID;
+			achievement.WP8_ReignScores_ID = achievementID;
+			achievement.BB10_ReignScores_ID = achievementID;
+			achievement.iOS_ReignScores_ID = achievementID;
+			achievement.Android_ReignScores_ID = achievementID;
+			achievement.Win32_ReignScores_ID = achievementID;
+			achievement.OSX_ReignScores_ID = achievementID;
+			achievement.Linux_ReignScores_ID = achievementID;
 		}
 
 		// Desc ---------------------------
-		string reignScores_gameID = "";
+		const string reignScores_gameID = "B2A24047-0487-41C4-B151-0F175BB54D0E";// Get this ID from the Reign-Scores Console.
 		var desc = new ScoreDesc();
+		desc.ReignScores_UI = ReignScores_Renderer.GetComponent<MonoBehaviour>() as IScores_UI;
+		desc.ReignScores_UI.ScoreFormatCallback += scoreFormatCallback;
+		desc.ReignScores_ServicesURL = "http://localhost:5537/Services/";// Set to your server!
+		desc.ReignScores_GameKey = "04E0676D-AAF8-4836-A584-DE0C1D618D84";// Set to your servers game_api_key!
+		desc.ReignScores_UserKey = "CE8E55E1-F383-4F05-9388-5C89F27B7FF2";// Set to your servers user_api_key!
 		desc.LeaderboardDescs = leaderboards;
 		desc.AchievementDescs = achievements;
-
-		// Global (Take note that you can adjust the built in ReignScores UI below)
-		desc.ReignScores_EnableTestRects = false;
-		desc.ReignScores_AutoTriggerAuthenticateGUI = true;
-		desc.ReignScores_BackgroudTexture = BackgroundTexture;
-
-		desc.ReignScores_TopScoresToListPerPage = 10;
-		desc.ReignScores_TopScoreBoardTexture = ScoreBoardTexture;
-		desc.ReignScores_TopScoreBoardFrame_Usernames = TopScoreUsernameFrame;
-		desc.ReignScores_TopScoreBoardFrame_Scores = TopScoreFrame;
-		desc.ReignScores_TopScoreBoardFrame_CloseBox = CloseBoxFrame;
-		desc.ReignScores_TopScoreBoardButton_CloseNormal = CloseBoxNormal;
-		desc.ReignScores_TopScoreBoardButton_CloseHover = CloseBoxHover;
-		desc.ReignScores_TopScoreBoardFrame_PrevButton = PrefFrame;
-		desc.ReignScores_TopScoreBoardButton_PrevNormal = PrevNormal;
-		desc.ReignScores_TopScoreBoardButton_PrevHover = PrevHover;
-		desc.ReignScores_TopScoreBoardFrame_NextButton = NextFrame;
-		desc.ReignScores_TopScoreBoardButton_NextNormal = NextNormal;
-		desc.ReignScores_TopScoreBoardButton_NextHover = NextHover;
-		desc.ReignScores_TopScoreBoardFont_Size = 18;
-		desc.ReignScores_TopScoreBoardFont_Color = Color.white;
-
-		desc.ReignScores_AchievementsToListPerPage = 10;
-		desc.ReignScores_AchievementBoardTexture = AchievementBoardTexture;
-		desc.ReignScores_AchievementBoardFrame_Names = AchievementNameFrame;
-		desc.ReignScores_AchievementBoardFrame_Descs = AchievementDescFrame;
-		desc.ReignScores_AchievementBoardFrame_CloseBox = CloseBoxFrame;
-		desc.ReignScores_AchievementBoardButton_CloseNormal = CloseBoxNormal;
-		desc.ReignScores_AchievementBoardButton_CloseHover = CloseBoxHover;
-		desc.ReignScores_AchievementBoardFrame_PrevButton = PrefFrame;
-		desc.ReignScores_AchievementBoardButton_PrevNormal = PrevNormal;
-		desc.ReignScores_AchievementBoardButton_PrevHover = PrevHover;
-		desc.ReignScores_AchievementBoardFrame_NextButton = NextFrame;
-		desc.ReignScores_AchievementBoardButton_NextNormal = NextNormal;
-		desc.ReignScores_AchievementBoardButton_NextHover = NextHover;
-		desc.ReignScores_AchievementBoardFont_Size = 18;
-		desc.ReignScores_AchievementBoardFont_Color = Color.white;
-
-		desc.ReignScores_LoginTitle = "Login";
-		desc.ReignScores_CreateUserTitle = "Create Account";
-		desc.ReignScores_AudioSource = audio;
-		desc.ReignScores_ButtonClick = ButtonClick;
-		desc.ReignScores_ScoreFormatCallback = scoreFormatCallback;
 
 		// Editor
 		desc.Editor_ScoreAPI = ScoreAPIs.ReignScores;
 		desc.Editor_ReignScores_GameID = reignScores_gameID;
 
-		// Win8
-		desc.Win8_ScoreAPI = ScoreAPIs.ReignScores;
-		desc.Win8_ReignScores_GameID = reignScores_gameID;
+		// WinRT
+		desc.WinRT_ScoreAPI = ScoreAPIs.ReignScores;
+		desc.WinRT_ReignScores_GameID = reignScores_gameID;
 
 		// WP8
 		desc.WP8_ScoreAPI = ScoreAPIs.ReignScores;
@@ -194,6 +183,18 @@ public class LeaderboardsAchievementsDemo : MonoBehaviour
 		desc.Android_ScoreAPI = ScoreAPIs.ReignScores;
 		#endif
 		desc.Android_ReignScores_GameID = reignScores_gameID;
+
+		// Win32
+		desc.Win32_ScoreAPI = ScoreAPIs.ReignScores;
+		desc.Win32_ReignScores_GameID = reignScores_gameID;
+
+		// OSX
+		desc.OSX_ScoreAPI = ScoreAPIs.ReignScores;
+		desc.OSX_ReignScores_GameID = reignScores_gameID;
+
+		// Linux
+		desc.Linux_ScoreAPI = ScoreAPIs.ReignScores;
+		desc.Linux_ReignScores_GameID = reignScores_gameID;
 
 		// init
 		ScoreManager.Init(desc, createdCallback);
@@ -241,32 +242,31 @@ public class LeaderboardsAchievementsDemo : MonoBehaviour
 
 	void OnGUI()
 	{
-		// disable any unwanted gui if this is enabled to make room for the built-in Reign ReignScores GUI.
-		if (ScoreManager.PerformingGUIOperation) return;
-
-		float offset = 0;
-		GUI.Label(new Rect((Screen.width/2)-(256*.5f), offset, 256, 32), "<< Leaderboards & Achievements Demo >>", uiStyle);
-		if (GUI.Button(new Rect(0, offset, 64, 32), "Back"))
+		if (ScoreManager.IsAuthenticated && !disableUI)
 		{
-			gameObject.SetActive(false);
-			Application.LoadLevel("MainDemo");
-			return;
-		}
-		offset += 34;
+			float offset = 0;
+			GUI.Label(new Rect((Screen.width/2)-(256*.5f), offset, 256, 32), "<< Leaderboards & Achievements Demo >>", uiStyle);
+			if (GUI.Button(new Rect(0, offset, 64, 32), "Back"))
+			{
+				gameObject.SetActive(false);
+				Application.LoadLevel("MainDemo");
+				return;
+			}
+			offset += 34;
 
-		if (ScoreManager.IsAuthenticated)
-		{
 			GUI.Label(new Rect(0, offset, Screen.width, Screen.height/8), "Authenticated Username: " + ScoreManager.Username);
 
 			// Show Leaderboards
 			if (GUI.Button(new Rect(0, Screen.height-64, 256, 64), "Show Leaderboard Scores") || Input.GetKeyUp(KeyCode.L))
 			{
+				disableUI = true;
 				ScoreManager.ShowNativeScoresPage("Level1", showNativePageCallback);
 			}
 
 			// Show Achievements
 			if (GUI.Button(new Rect(256, Screen.height-64, 256, 64), "Show Achievements") || Input.GetKeyUp(KeyCode.A))
 			{
+				disableUI = true;
 				ScoreManager.ShowNativeAchievementsPage(showNativePageCallback);
 			}
 
@@ -297,6 +297,7 @@ public class LeaderboardsAchievementsDemo : MonoBehaviour
 
 	void showNativePageCallback(bool succeeded, string errorMessage)
 	{
+		disableUI = false;
 		Debug.Log("Show Native Page: " + succeeded);
 		if (!succeeded) Debug.LogError(errorMessage);
 	}
