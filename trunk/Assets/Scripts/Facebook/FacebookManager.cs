@@ -16,6 +16,16 @@ public class Friend
 	public string highScore;
 	public string currentLevel;
 	public Sprite profilePicture;
+	public bool bPictureDone;
+	
+	public Friend(){
+		id="empty";
+		name="empty";
+		highScore="0";
+		currentLevel="empty";
+		profilePicture=null;
+		bPictureDone=false;
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -94,17 +104,20 @@ public class FacebookManager : MonoBehaviour
 		if(Application.loadedLevelName == "04 World Menu"){
 			GetObjectReferences();
 			InvokeRepeating("ReadAllRequests", 1.0f, timeReadRequest);
+		}else{
+			CancelInvoke("ReadAllRequests");
+		}
+		
+		if(Application.loadedLevelName == "04 World Menu" || Application.loadedLevelName == "06 Arcade Game Scene"){
 			if(!friendsDict.ContainsKey(FB.UserId)){
+				Friend newFriend = new Friend();
+				newFriend.id = FB.UserId;
+				newFriend.name = facebookUserName;
+				newFriend.highScore = PlayerPrefs.GetInt("Highscore").ToString();
+				friendsDict.Add(FB.UserId, newFriend);
 				StartCoroutine(GetProfileImage(FB.UserId));
 			}
 			GetFriendsPictures();
-		}/*
-		//TODO:Arcade -> De momento, lo comento hasta que este terminado del todo
-		else if(Application.loadedLevelName == "06 Arcade Game Scene"){
-			GetFriendsPictures();
-		}*/
-		else{
-			CancelInvoke("ReadAllRequests");
 		}
 	}
 	
@@ -138,8 +151,8 @@ public class FacebookManager : MonoBehaviour
 			}
 		}
 			
-		if(bShowDebug) Debug.Log("status: " + status);
-		if(bShowDebug) Debug.Log("lastResponse: " + lastResponse);
+		//if(bShowDebug) Debug.Log("status: " + status);
+		//if(bShowDebug) Debug.Log("lastResponse: " + lastResponse);
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -194,18 +207,28 @@ public class FacebookManager : MonoBehaviour
 					Dictionary<string, object> currentFriend = friend as Dictionary<string,object>;
 					string facebookID = currentFriend["id"] as String;
 					string name = currentFriend["name"] as String;
-					GameObject friendEntry = Instantiate(friendFramePrefab, new Vector3(10000F, 10000F, 0), Quaternion.identity) as GameObject;
-					friendEntry.GetComponent<ProfilePic>().Initialize(facebookID, name);
-					friendEntry.transform.SetParent(ImageDummy.transform);
-					friendEntry.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
-					
-					//Colgamos la entrada del imageDummy y dejamos el profile pic del usuario que siga siendo el ultimo para que se vea delante
-					int index = friendEntry.transform.GetSiblingIndex();
-					friendEntry.transform.SetSiblingIndex(index-1);
 					
 					if(!friendsDict.ContainsKey(facebookID)){
+						Friend newFriend = new Friend();
+						newFriend.id = facebookID;
+						newFriend.name = name;
+						friendsDict.Add(facebookID, newFriend);
+					
+						if(Application.loadedLevelName == "04 World Menu"){
+							GameObject friendEntry = Instantiate(friendFramePrefab, new Vector3(10000F, 10000F, 0), Quaternion.identity) as GameObject;
+							friendEntry.GetComponent<ProfilePic>().Initialize(facebookID, name);
+							friendEntry.transform.SetParent(ImageDummy.transform);
+							friendEntry.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
+							
+							//Colgamos la entrada del imageDummy y dejamos el profile pic del usuario que siga siendo el ultimo para que se vea delante
+							int index = friendEntry.transform.GetSiblingIndex();
+							friendEntry.transform.SetSiblingIndex(index-1);
+						}
 						StartCoroutine(GetProfileImage(facebookID));
 					}
+				}
+				if(Application.loadedLevelName == "06 Arcade Game Scene"){
+					HighScoreManager.instance.StartCreateHighScoreTable();
 				}
 			}
 		}
@@ -225,10 +248,8 @@ public class FacebookManager : MonoBehaviour
 		
 		if(textFb2!=null){
 			if(bShowDebug) Debug.Log("GetProfileImage:"+facebookID);
-			Friend friend = new Friend();
-			friend.profilePicture = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0.5f, 0.5f));
-			friend.id = facebookID;
-			friendsDict.Add(facebookID, friend);
+			friendsDict[facebookID].profilePicture = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0.5f, 0.5f));
+			friendsDict[facebookID].bPictureDone = true;
 		}else{
 			if(bShowDebug) Debug.Log("ERROR: textFb2 es null");
 			StartCoroutine(GetProfileImage(facebookID));
@@ -437,7 +458,6 @@ public class FacebookManager : MonoBehaviour
 					
 					GameObject goEntry = Instantiate(entryPrefab) as GameObject;
 					goEntry.transform.SetParent(contentMessages.transform);
-					goEntry.transform.localPosition = new Vector3(0.0f, 145.0f-count*100.0f, 0.0f);
 					goEntry.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 					entriesList.Add(goEntry);
 					count++;
@@ -449,9 +469,7 @@ public class FacebookManager : MonoBehaviour
 						goEntry.transform.GetChild(0).GetComponent<Text>().text = user_name+" gave you a life!";
 						livesCounter++;
 					}
-					//TODO:Lo comento antes hasta que este terminado del todo
-					//goEntry.transform.GetChild(1).GetComponent<FriendPicture>().id = user_id;
-					goEntry.transform.GetChild(1).GetComponent<RequestPicture>().id = user_id;
+					goEntry.transform.GetChild(1).GetComponent<FriendPicture>().id = user_id;
 					
 					requestsList.Add(requestID);
 					if(bShowDebug) Debug.Log("Request: "+user_id+", "+user_name+", "+action_type);

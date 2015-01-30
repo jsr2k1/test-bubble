@@ -20,16 +20,20 @@ public class ProfilePic : MonoBehaviour
 	void Awake()
 	{
 		spritefb=null;
-		string sLevel = (PlayerPrefs.GetInt("Level")+1).ToString();
-		if(PlayerPrefs.GetInt("Level")+1 > LevelParser.instance.maxLevels){
-			sLevel = LevelParser.instance.maxLevels.ToString();
-		}
-		currentLevel = GameObject.Find(sLevel).transform;
 		ratio = (float)Screen.width/ref_width;
+		
+		//Solo se usa para la imagen del user no de los amigos
+		if(!bFriend){
+			string sLevel = (PlayerPrefs.GetInt("Level")+1).ToString();
+			if(PlayerPrefs.GetInt("Level")+1 > LevelParser.instance.maxLevels){
+				sLevel = LevelParser.instance.maxLevels.ToString();
+			}
+			currentLevel = GameObject.Find(sLevel).transform;
+		}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+	//Solo se usa para la imagen del user no de los amigos
 	void Start()
 	{
 		if(FB.IsLoggedIn && spritefb == null && !bFriend){
@@ -50,45 +54,51 @@ public class ProfilePic : MonoBehaviour
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+	//Pedimos la info del amigo al ParseManager, al obtener la respuesta nos avisa con el evento: OnGetFacebookFriendInfoDone
 	IEnumerator GetLevel()
 	{
 		while(ParseManager.instance.isBusy){
 			yield return null;
 		}
-		ParseManager.instance.GetFacebookFriend(friendID, facebookName);
+		ParseManager.instance.GetFacebookFriendInfo(friendID, facebookName);
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void OnEnable()
 	{
-		ParseManager.OnGetFacebookFriendDone += SetCurrentLevel;
+		ParseManager.OnGetFacebookFriendInfoDone += SetCurrentLevel;
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void OnDisable()
 	{
-		ParseManager.OnGetFacebookFriendDone -= SetCurrentLevel;
+		ParseManager.OnGetFacebookFriendInfoDone -= SetCurrentLevel;
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Si no existe una entrada en el Parse con el amigo de Facebook -> Borramos el objeto
 	void SetCurrentLevel()
 	{
-		if(ParseManager.instance.currentFriendID==friendID){
-			if(ParseManager.instance.currentFriendLevel=="not_found"){
-				Destroy(gameObject);
-			}else{
-				currentLevel = GameObject.Find(ParseManager.instance.currentFriendLevel).transform;
-				bInit=true;
+		if(friendID!=null && ParseManager.instance.currentFriendID==friendID){
+			if(FacebookManager.instance.friendsDict.ContainsKey(friendID)){
+				string sLevel = FacebookManager.instance.friendsDict[friendID].currentLevel;
+				if(sLevel!=null && sLevel!=""){
+					//El amigo de facebook todavia no tiene una entrada en Parse
+					if(sLevel=="empty"){
+						Destroy(gameObject);
+					}else{
+						currentLevel = GameObject.Find(sLevel).transform;
+						bInit=true;
+					}
+				}
 			}
 		}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+	//Colocamos la foto del amigo en el nivel correspondiente
 	void LateUpdate()
 	{
 		if((bFriend && bInit) || !bFriend){
@@ -100,7 +110,7 @@ public class ProfilePic : MonoBehaviour
 	//Obtenemos la imagen de facebook y la ponemos en la request
 	IEnumerator GetProfileImage()
 	{
-		if(FacebookManager.instance.friendsDict.ContainsKey(bFriend ? friendID : FB.UserId)){
+		if(FacebookManager.instance.friendsDict.ContainsKey(bFriend ? friendID : FB.UserId) && FacebookManager.instance.friendsDict[bFriend ? friendID : FB.UserId].bPictureDone){
 			profilePic.sprite = FacebookManager.instance.friendsDict[bFriend ? friendID : FB.UserId].profilePicture;
 		}else{
 			yield return new WaitForSeconds(1);

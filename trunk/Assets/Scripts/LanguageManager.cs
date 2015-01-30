@@ -76,6 +76,9 @@ public class LanguageManager : MonoBehaviour
 		dict.Add("id_infooutofbubbles", new string[] {"¡Consigue 5 bolas extra y una bola multicolor!", "Get one multicolor ball and 5 extra bubbles!"});
 		dict.Add("id_quitarcade", new string[] {"¡Perder\u00E1s el progreso actual!", "You will lose the current progress!"});
 		dict.Add("id_loading", new string[] {"Cargando...", "Loading..."});
+		dict.Add("id_rank", new string[] {"Pos.", "Rank"});
+		dict.Add("id_rank_name", new string[] {"Nombre", "Name"});
+		dict.Add("id_rank_score", new string[] {"Puntos", "Score"});
 		
 		//Tutoriales
 		dict.Add("id_tutorial_pulsa_pantalla", new string[] {"Pulsa la pantalla para apuntar y disparar", "Touch the screen to aim and shoot"});
