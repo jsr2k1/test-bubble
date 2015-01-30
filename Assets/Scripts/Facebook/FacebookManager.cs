@@ -151,8 +151,8 @@ public class FacebookManager : MonoBehaviour
 			}
 		}
 			
-		//if(bShowDebug) Debug.Log("status: " + status);
-		//if(bShowDebug) Debug.Log("lastResponse: " + lastResponse);
+		if(bShowDebug) Debug.Log("status: " + status);
+		if(bShowDebug) Debug.Log("lastResponse: " + lastResponse);
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
