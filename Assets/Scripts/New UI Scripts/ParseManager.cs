@@ -19,11 +19,10 @@ public class ParseManager : MonoBehaviour
 	public bool isBusy=false;
 	
 	public string currentFriendID;
-	public string currentFriendLevel;
 	
 	//Creamos un evento para saber el momento en que se han obtenido los datos del amigo de facebook
 	public delegate void GetFacebookFriendDone();
-	public static event GetFacebookFriendDone OnGetFacebookFriendDone;
+	public static event GetFacebookFriendDone OnGetFacebookFriendInfoDone;
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -54,7 +53,6 @@ public class ParseManager : MonoBehaviour
 		while(!emptyEntry && !getObjTask.IsCompleted) yield return null;
 	
 		//No existe una entrada para ese usuario -> la creamos
-		//if(currentParseObject==null){
 		if(emptyEntry && currentParseObject==null){
 			ParseObject facebookUserObj = new ParseObject("FacebookUser");
 			facebookUserObj["facebookUserID"] = FB.UserId;
@@ -75,18 +73,18 @@ public class ParseManager : MonoBehaviour
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	public void GetFacebookFriend(string friendID, string facebookName)
+	public void GetFacebookFriendInfo(string friendID, string facebookName)
 	{
 		if(!FB.IsLoggedIn){
 			return;
 		}
 		isBusy=true;
-		StartCoroutine(GetFacebookFriendParse(friendID, facebookName));
+		StartCoroutine(GetFacebookFriendInfoParse(friendID, facebookName));
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	IEnumerator GetFacebookFriendParse(string friendID, string facebookName)
+	IEnumerator GetFacebookFriendInfoParse(string friendID, string facebookName)
 	{
 		GetObject(friendID);
 		while(!getObjIDTask.IsCompleted) yield return null;
@@ -94,19 +92,27 @@ public class ParseManager : MonoBehaviour
 		
 		currentFriendID = friendID;
 		if(currentParseObject!=null){
-			currentFriendLevel = GetCurrentLevel(currentParseObject.Get<string>("currentLevel"));
+			FacebookManager.instance.friendsDict[friendID].id = currentParseObject.Get<string>("facebookUserID");
+			FacebookManager.instance.friendsDict[friendID].name = currentParseObject.Get<string>("facebookUserName");
+			FacebookManager.instance.friendsDict[friendID].highScore = currentParseObject.Get<string>("HighScore");
+			
+			Debug.Log(FacebookManager.instance.friendsDict[friendID].name);
+			Debug.Log(FacebookManager.instance.friendsDict[friendID].highScore);
+			
+			if(Application.loadedLevelName == "04 World Menu"){
+				FacebookManager.instance.friendsDict[friendID].currentLevel = GetCurrentLevel(currentParseObject.Get<string>("currentLevel"));
+			}
 			string name = currentParseObject.Get<string>("facebookUserName");
 			CustomDebug("GetFacebookFriendParse - ID:"+friendID+", name:"+name);
 			currentParseObject=null;
 		}else{
-			currentFriendLevel="not_found";
 			CustomDebug("GetFacebookFriendParse - No se ha encontrado el amigo: "+friendID+", facebookName:"+facebookName);
 		}
 		emptyEntry=false;
 		isBusy=false;
 		
-		if(OnGetFacebookFriendDone!=null){
-			OnGetFacebookFriendDone();
+		if(OnGetFacebookFriendInfoDone!=null){
+			OnGetFacebookFriendInfoDone();
 		}
 	}
 	
