@@ -28,6 +28,9 @@ public class PopUpMgr : MonoBehaviour
 	public void ShowPopUp()
 	{
 		if(!bShow){
+			if(name=="ShopCoinsPopUp"){
+				Adjust.trackEvent("gtv2yu");
+			}
 			if(name== "SettingsPopUp" || name=="RankingPopUpArcade"){
 				if(InGameScriptRefrences.strikerManager!=null &&!InGameScriptRefrences.strikerManager.bStartDone){
 					return;

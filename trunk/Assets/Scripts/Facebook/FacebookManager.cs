@@ -298,7 +298,7 @@ public class FacebookManager : MonoBehaviour
 	{
 		try{
 			if(bShowDebug) Debug.Log("Facebook Invite pressed");
-			//Adjust.trackEvent("3xnjnv");
+			Adjust.trackEvent("3xnjnv");
 			FriendSelectorFilters = "[\"app_non_users\"]";
 			InviteFriends();
 			status = "Friend Selector called";
@@ -405,8 +405,23 @@ public class FacebookManager : MonoBehaviour
 			maxRecipients,
 			FriendSelectorData,
 			FriendSelectorTitle,
-			callback : Callback
+			callback : CallbackInviteFriends
 		);
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void CallbackInviteFriends(FBResult result)
+	{
+		if(!String.IsNullOrEmpty(result.Error)){
+			if(bShowDebug) Debug.Log("CallbackInviteFriends: Error Response:" + result.Error);
+		}
+		else if(!String.IsNullOrEmpty(result.Text)){
+			Adjust.trackEvent("n0lux5");
+		}
+		else{
+			if(bShowDebug) Debug.Log("CallbackInviteFriends: Empty Response");
+		}
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -424,8 +439,23 @@ public class FacebookManager : MonoBehaviour
 			maxRecipients,
 			FriendSelectorData,
 			FriendSelectorTitle,
-			callback : Callback
+			callback : CallbackAskForOneLife
 		);
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void CallbackAskForOneLife(FBResult result)
+	{
+		if(!String.IsNullOrEmpty(result.Error)){
+			if(bShowDebug) Debug.Log("CallbackAskForOneLife: Error Response:" + result.Error);
+		}
+		else if(!String.IsNullOrEmpty(result.Text)){
+			Adjust.trackEvent("1rvc9w");
+		}
+		else{
+			if(bShowDebug) Debug.Log("CallbackAskForOneLife: Empty Response");
+		}
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

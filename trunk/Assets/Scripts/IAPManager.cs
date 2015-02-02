@@ -190,35 +190,36 @@ public class IAPManager : MonoBehaviour
 			if(inAppID == "xsmall") {
 				int coins = PlayerPrefs.GetInt("Coins");
 				coins = coins + 100;
-				//PlayerPrefs.SetInt("Coins", coins);
 				CoinsManager.instance.SetCoins(coins);
+				Adjust.trackRevenue(0.89, "v00myc");
 			}
 			if(inAppID == "small") {
 				int coins = PlayerPrefs.GetInt("Coins");
 				coins = coins + 400;
-				//PlayerPrefs.SetInt("Coins", coins);
 				CoinsManager.instance.SetCoins(coins);
+				Adjust.trackRevenue(2.99, "x088of");
 			}
 			if(inAppID == "medium") {
 				int coins = PlayerPrefs.GetInt("Coins");
 				coins = coins + 800;
-				//PlayerPrefs.SetInt("Coins", coins);
 				CoinsManager.instance.SetCoins(coins);
+				Adjust.trackRevenue(4.99, "4hz7lk");
 			}
 			if(inAppID == "big") {
 				int coins = PlayerPrefs.GetInt("Coins");
 				coins = coins + 2000;
-				//PlayerPrefs.SetInt("Coins", coins);
 				CoinsManager.instance.SetCoins(coins);
+				Adjust.trackRevenue(9.99, "mh1aku");
 			}
 			if(inAppID == "extrabig") {
 				int coins = PlayerPrefs.GetInt("Coins");
 				coins = coins + 5000;
-				//PlayerPrefs.SetInt("Coins", coins);
 				CoinsManager.instance.SetCoins(coins);
+				Adjust.trackRevenue(19.99, "9ok2mj");
 			}
 			
 			ParseManager.instance.SaveCurrentData();
+			Adjust.trackEvent("80jv5o");
 		}
 	}
 	
