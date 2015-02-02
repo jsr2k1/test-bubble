@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class ProfilePic : MonoBehaviour
 {
@@ -50,7 +51,12 @@ public class ProfilePic : MonoBehaviour
 		friendID = sID;
 		facebookName = sName;
 		StartCoroutine(GetProfileImage());
-		StartCoroutine(GetLevel());
+		
+		if(FacebookManager.instance.friendsDict.ContainsKey(friendID) && FacebookManager.instance.friendsDict[friendID].bLevelDone){
+			SetLevel();
+		}else{
+			StartCoroutine(GetLevel());
+		}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -78,20 +84,28 @@ public class ProfilePic : MonoBehaviour
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Si no existe una entrada en el Parse con el amigo de Facebook -> Borramos el objeto
+	
 	void SetCurrentLevel()
 	{
 		if(friendID!=null && ParseManager.instance.currentFriendID==friendID){
-			if(FacebookManager.instance.friendsDict.ContainsKey(friendID)){
-				string sLevel = FacebookManager.instance.friendsDict[friendID].currentLevel;
-				if(sLevel!=null && sLevel!=""){
-					//El amigo de facebook todavia no tiene una entrada en Parse
-					if(sLevel=="empty"){
-						Destroy(gameObject);
-					}else{
-						currentLevel = GameObject.Find(sLevel).transform;
-						bInit=true;
-					}
+			SetLevel();
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Si no existe una entrada en el Parse con el amigo de Facebook -> Borramos el objeto
+	void SetLevel()
+	{
+		if(FacebookManager.instance.friendsDict.ContainsKey(friendID)){
+			string sLevel = FacebookManager.instance.friendsDict[friendID].currentLevel;
+			if(sLevel!=null && sLevel!=""){
+				//El amigo de facebook todavia no tiene una entrada en Parse
+				if(sLevel=="empty"){
+					Destroy(gameObject);
+				}else{
+					currentLevel = GameObject.Find(sLevel).transform;
+					FacebookManager.instance.friendsDict[friendID].bLevelDone=true;
+					bInit=true;
 				}
 			}
 		}

@@ -96,9 +96,6 @@ public class ParseManager : MonoBehaviour
 			FacebookManager.instance.friendsDict[friendID].name = currentParseObject.Get<string>("facebookUserName");
 			FacebookManager.instance.friendsDict[friendID].highScore = currentParseObject.Get<string>("HighScore");
 			
-			Debug.Log(FacebookManager.instance.friendsDict[friendID].name);
-			Debug.Log(FacebookManager.instance.friendsDict[friendID].highScore);
-			
 			if(Application.loadedLevelName == "04 World Menu"){
 				FacebookManager.instance.friendsDict[friendID].currentLevel = GetCurrentLevel(currentParseObject.Get<string>("currentLevel"));
 			}

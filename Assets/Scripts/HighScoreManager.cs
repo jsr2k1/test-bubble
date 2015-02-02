@@ -107,7 +107,7 @@ public class HighScoreManager : MonoBehaviour
 			goEntry.transform.SetParent(content.transform);
 			goEntry.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 			goEntry.transform.GetChild(0).GetComponent<Text>().text = (i+1)+".";
-			goEntry.transform.GetChild(1).GetComponent<Text>().text = GetName(friendsList[i].name);
+			goEntry.transform.GetChild(1).GetComponent<Text>().text = GetNameAndSurname(friendsList[i].name);
 			goEntry.transform.GetChild(2).GetComponent<Text>().text = friendsList[i].highScore;
 			goEntry.transform.GetChild(3).GetComponent<FriendPicture>().id = friendsList[i].id;
 		}
@@ -118,13 +118,13 @@ public class HighScoreManager : MonoBehaviour
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Mostramos solamente el nombre y primer apellido. El segundo apellido no lo mostramos para que no se corte.
-	string GetName(string name)
+	string GetNameAndSurname(string fullname)
 	{
-		string[] words = name.Split(' ');
+		string[] words = fullname.Split(' ');
 		if(words.Length>1){
 			return words[0]+" "+words[1];
 		}else{
-			return name;
+			return fullname;
 		}
 	}
 	
