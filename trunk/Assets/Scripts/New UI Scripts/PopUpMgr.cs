@@ -121,6 +121,8 @@ public class PopUpMgr : MonoBehaviour
 			}
 			buttonNext.SetActive(true);
 		}
+		//Siempre se ejecutara este evento -> guardamos los datos
+		LevelManager.instance.SaveGameData();
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -157,6 +159,7 @@ public class PopUpMgr : MonoBehaviour
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Esta funcion salta con un evento en la animacion para volver a reproducir el audio
+	//Solo se ejecuta cuando el usuario consigue 3 estrellas (animacion completa)
 	public void PlayGameMusic()
 	{
 		if(name!="WinPopUp" && name!="LosePopUp"){
@@ -168,7 +171,6 @@ public class PopUpMgr : MonoBehaviour
 		if(buttonNext!=null){
 			buttonNext.SetActive(true);
 		}
-		LevelManager.instance.SaveGameData();
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

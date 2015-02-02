@@ -17,6 +17,7 @@ public class Friend
 	public string currentLevel;
 	public Sprite profilePicture;
 	public bool bPictureDone;
+	public bool bLevelDone;
 	
 	public Friend(){
 		id="empty";
@@ -25,6 +26,7 @@ public class Friend
 		currentLevel="empty";
 		profilePicture=null;
 		bPictureDone=false;
+		bLevelDone=false;
 	}
 }
 
@@ -99,25 +101,30 @@ public class FacebookManager : MonoBehaviour
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Al cargar el nivel de los mundos vamos leyendo las requests cada cierto tiempo
 	void OnLevelWasLoaded(int level)
-	{	
-		//Worlds
+	{
 		if(Application.loadedLevelName == "04 World Menu"){
 			GetObjectReferences();
-			InvokeRepeating("ReadAllRequests", 1.0f, timeReadRequest);
-		}else{
-			CancelInvoke("ReadAllRequests");
 		}
-		
-		if(Application.loadedLevelName == "04 World Menu" || Application.loadedLevelName == "06 Arcade Game Scene"){
-			if(!friendsDict.ContainsKey(FB.UserId)){
-				Friend newFriend = new Friend();
-				newFriend.id = FB.UserId;
-				newFriend.name = facebookUserName;
-				newFriend.highScore = PlayerPrefs.GetInt("Highscore").ToString();
-				friendsDict.Add(FB.UserId, newFriend);
-				StartCoroutine(GetProfileImage(FB.UserId));
+		if(FB.IsLoggedIn){
+			//Worlds
+			if(Application.loadedLevelName == "04 World Menu"){
+				InvokeRepeating("ReadAllRequests", 1.0f, timeReadRequest);
+			}else{
+				CancelInvoke("ReadAllRequests");
 			}
-			GetFriendsPictures();
+			if(Application.loadedLevelName == "04 World Menu" || Application.loadedLevelName == "06 Arcade Game Scene"){
+				if(!friendsDict.ContainsKey(FB.UserId)){
+					Friend newFriend = new Friend();
+					newFriend.id = FB.UserId;
+					newFriend.name = facebookUserName;
+					newFriend.highScore = PlayerPrefs.GetInt("Highscore").ToString();
+					friendsDict.Add(FB.UserId, newFriend);
+				}
+				if(!friendsDict[FB.UserId].bPictureDone){
+					StartCoroutine(GetProfileImage(FB.UserId));
+				}
+				GetFriendsPictures();
+			}
 		}
 	}
 	
@@ -125,23 +132,21 @@ public class FacebookManager : MonoBehaviour
 	
 	void GetObjectReferences()
 	{
-		if(Application.loadedLevel>3){
-			buttonInvite = GameObject.Find("ButtonFacebookInvite");
-			buttonMessages = GameObject.Find("ButtonFacebookMessages");
-			messagesPopUp = GameObject.Find("FacebookMessagesPopUp").GetComponent<PopUpMgr>();
-			contentMessages = GameObject.Find("Content");
-			ImageDummy = GameObject.Find("ImageDummy");
+		buttonInvite = GameObject.Find("ButtonFacebookInvite");
+		buttonMessages = GameObject.Find("ButtonFacebookMessages");
+		messagesPopUp = GameObject.Find("FacebookMessagesPopUp").GetComponent<PopUpMgr>();
+		contentMessages = GameObject.Find("Content");
+		ImageDummy = GameObject.Find("ImageDummy");
 			
-			if(buttonMessages!=null){
-				buttonMessages.SetActive(false);
-			}
-		}
+		buttonMessages.SetActive(false);
+		buttonInvite.SetActive(FB.IsLoggedIn);
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Update()
 	{
+		/*
 		if(Application.loadedLevelName=="04 World Menu"){
 			if(FB.IsLoggedIn && !buttonInvite.activeSelf){
 				buttonInvite.SetActive(true);
@@ -150,7 +155,7 @@ public class FacebookManager : MonoBehaviour
 				buttonInvite.SetActive(false);
 			}
 		}
-			
+		*/
 		if(bShowDebug) Debug.Log("status: " + status);
 		if(bShowDebug) Debug.Log("lastResponse: " + lastResponse);
 	}
@@ -202,28 +207,35 @@ public class FacebookManager : MonoBehaviour
 			Dictionary<string, object> friends = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
 			List<object> data = friends["data"] as List<object>;
 			
-			if(data!=null && data.Count>0){
-				foreach(object friend in data){
+			if(data!=null && data.Count>0)
+			{
+				//Recorremos la lista de amigos
+				foreach(object friend in data)
+				{
 					Dictionary<string, object> currentFriend = friend as Dictionary<string,object>;
 					string facebookID = currentFriend["id"] as String;
 					string name = currentFriend["name"] as String;
 					
+					//Si no existe ese amigo en el diccionario -> lo añadimos
 					if(!friendsDict.ContainsKey(facebookID)){
 						Friend newFriend = new Friend();
 						newFriend.id = facebookID;
 						newFriend.name = name;
 						friendsDict.Add(facebookID, newFriend);
-					
-						if(Application.loadedLevelName == "04 World Menu"){
-							GameObject friendEntry = Instantiate(friendFramePrefab, new Vector3(10000F, 10000F, 0), Quaternion.identity) as GameObject;
-							friendEntry.GetComponent<ProfilePic>().Initialize(facebookID, name);
-							friendEntry.transform.SetParent(ImageDummy.transform);
-							friendEntry.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
-							
-							//Colgamos la entrada del imageDummy y dejamos el profile pic del usuario que siga siendo el ultimo para que se vea delante
-							int index = friendEntry.transform.GetSiblingIndex();
-							friendEntry.transform.SetSiblingIndex(index-1);
-						}
+					}
+					//Creamos una instancia de la foto de perfil del amigo en el mapa
+					if(Application.loadedLevelName == "04 World Menu"){
+						GameObject friendEntry = Instantiate(friendFramePrefab, new Vector3(10000F, 10000F, 0), Quaternion.identity) as GameObject;
+						friendEntry.GetComponent<ProfilePic>().Initialize(facebookID, name);
+						friendEntry.transform.SetParent(ImageDummy.transform);
+						friendEntry.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
+						
+						//Colgamos la entrada del imageDummy y dejamos el profile pic del usuario que siga siendo el ultimo para que se vea delante
+						int index = friendEntry.transform.GetSiblingIndex();
+						friendEntry.transform.SetSiblingIndex(index-1);
+					}
+					//Si la imagen aun no ha estado cargada -> la cargamos
+					if(!friendsDict[facebookID].bPictureDone){
 						StartCoroutine(GetProfileImage(facebookID));
 					}
 				}
@@ -241,10 +253,14 @@ public class FacebookManager : MonoBehaviour
 	//Obtenemos las imagenes de los amigos de Facebook para ponerlas en las requests
 	IEnumerator GetProfileImage(string facebookID)
 	{
-		WWW url = new WWW("https" + "://graph.facebook.com/" + facebookID + "/picture?type=large"); //+ "?access_token=" + FB.AccessToken);
+		WWW www = new WWW("https" + "://graph.facebook.com/" + facebookID + "/picture?type=large"); //+ "?access_token=" + FB.AccessToken);
 		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.ARGB32, false);
-		yield return url;
-		url.LoadImageIntoTexture(textFb2);
+		yield return www;
+		if(String.IsNullOrEmpty(www.error)){
+			www.LoadImageIntoTexture(textFb2);
+		}else{
+			Debug.LogError("Error al descargar la imagen: "+www.error);
+		}
 		
 		if(textFb2!=null){
 			if(bShowDebug) Debug.Log("GetProfileImage:"+facebookID);
