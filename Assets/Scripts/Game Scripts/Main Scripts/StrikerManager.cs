@@ -5,7 +5,7 @@ using System.Collections;
 public class StrikerManager : MonoBehaviour
 {
 	GameObject striker;
-	Striker strikerScript;
+	public Striker strikerScript;
 	LevelManager levelManager;
 	public GameObject[] specialStrikerPrefabs;
 	Transform currentStrikerPosition;
@@ -22,31 +22,12 @@ public class StrikerManager : MonoBehaviour
 	public InputScript inputScript;
 	public bool bStartDone=false;
 
-	//bool bMove;
-	//float speed=4;
-
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Start()
 	{
 		bStartDone=false;
 		StartCoroutine(StartLoader());
-	}
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Movemos el next striker a la posicion del striker
-	void Update()
-	{
-		/*if(bMove){
-			if(nextStrikerObject!=null){
-				if(Vector3.Distance(nextStrikerObject.gameObject.transform.position, currentStrikerPosition.position) > 0.01f){
-					float step = speed * Time.deltaTime;
-					nextStrikerObject.gameObject.transform.position = Vector3.MoveTowards(nextStrikerObject.gameObject.transform.position, currentStrikerPosition.position, step);
-				}else{
-					bMove=false;
-				}
-			}
-		}*/
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,9 +42,7 @@ public class StrikerManager : MonoBehaviour
 
 		currentStrikerPosition = GameObject.Find("Current Striker Position").transform;
 		nextStrikerPosition = GameObject.Find("Next Striker Position").transform;
-
-		//Invoke("UpdateThresoldPosition", .2f);
-		//Invoke("GenerateStriker", .2f);
+		
 		InGameScriptRefrences.playingObjectManager.ResetAllObjects();
 		InGameScriptRefrences.playingObjectManager.GetMissionCountTotal();
 		GenerateNextStriker();
@@ -113,7 +92,6 @@ public class StrikerManager : MonoBehaviour
 	{
 		if(currentStrikerObject != null) {
 			currentStrikerBallID = int.Parse(currentStrikerObject.name.Substring(0, 1)) - 1;
-			//nextStrikerBallID = int.Parse(nextStrikerObject.name.Substring(0, 1)) - 1;
 		}
 	}
 
@@ -135,7 +113,6 @@ public class StrikerManager : MonoBehaviour
 		}
 		strikerScript.currentStrikerObject = currentStrikerObject;
 		GenerateNextStriker();   
-		//SaveBallsID();
 		inputScript.CheckColor();
 	}
 
@@ -224,24 +201,20 @@ public class StrikerManager : MonoBehaviour
 	//Shoots current playing object in the direction of touch
 	internal void Shoot(Vector3 touchedPosition)
 	{
-		if(strikerScript==null ||strikerScript.isBusy)
+		if(strikerScript==null || strikerScript.isBusy || iTween.tweens.Count>1){
 			return;
-
-		if(touchedPosition.y < thresoldLineTransform.position.y)
+		}
+		if(touchedPosition.y < thresoldLineTransform.position.y){
 			return;
-			
-		if(LevelManager.instance.running())
-		{
+		}
+		if(LevelManager.instance.running()){
 			AudioManager.instance.PlayFxSound(AudioManager.instance.shootingSound);
-			//ScoreManagerGame.instance.ResetScore();
 
 			Vector3 dir = (touchedPosition - currentStrikerPosition.position).normalized;
 			strikerScript.Shoot(new Vector3(-dir.x, dir.y, 0.0f));
 
 			if(nextStrikerObject!=null){
 				iTween.MoveTo(nextStrikerObject.gameObject, currentStrikerPosition.position, .4f);
-				//nextStrikerObject.gameObject.transform.position = currentStrikerPosition.position;
-				//bMove=true;
 			}
 		}
 	}
