@@ -136,8 +136,10 @@ public class InputScript : MonoBehaviour
 				//Dont draw the line or do actions when the click its under the launcher point
 				if(pos.y > thresoldLineTransform.position.y && pos.y < topThresoldLine.position.y){
 					Vector2 FinalPos = new Vector2(pos.x, pos.y);
+					if(InGameScriptRefrences.strikerManager!=null && InGameScriptRefrences.strikerManager.strikerScript!=null && !InGameScriptRefrences.strikerManager.strikerScript.isBusy && iTween.tweens.Count<2){
+						characterAnimator.SetTrigger("Shoot");
+					}
 					InGameScriptRefrences.strikerManager.Shoot(FinalPos);
-					characterAnimator.SetTrigger("Shoot");
 				}
 			}
 			if(Input.GetButtonDown("Fire1")){
@@ -239,17 +241,14 @@ public class InputScript : MonoBehaviour
 		if(Striker.instance==null || Striker.instance.currentStrikerObject==null || Striker.instance.currentStrikerObject.transform.childCount == 0){
 			return;
 		}
-		string sCurrentColor = particles[0].GetComponent<SpriteRenderer>().sprite.texture.name;
 		SpriteRenderer sp = Striker.instance.currentStrikerObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
 		string sBallColor = sp.sprite.texture.name;
 
-		if(sCurrentColor!=sBallColor){
-			for(int i=0;i<nParticles;i++){
-				particles[i].GetComponent<SpriteRenderer>().sprite = targetSprites[int.Parse(sBallColor)-1];
-			}
-			for(int i=0;i<nBounceParticles;i++){
-				bounceParticles[i].GetComponent<SpriteRenderer>().sprite = targetSprites[int.Parse(sBallColor)-1];
-			}
+		for(int i=0;i<nParticles;i++){
+			particles[i].GetComponent<SpriteRenderer>().sprite = targetSprites[int.Parse(sBallColor)-1];
+		}
+		for(int i=0;i<nBounceParticles;i++){
+			bounceParticles[i].GetComponent<SpriteRenderer>().sprite = targetSprites[int.Parse(sBallColor)-1];
 		}
 	}
 
