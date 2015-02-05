@@ -66,7 +66,6 @@ public class PlayingObjectManager : MonoBehaviour
 
 		if(PlayingObjectManager.burstCounter < 3 && !Striker.instance.multiBall && !Striker.instance.bombBall && !Striker.instance.fireBall){
 			ResetAllObjects();
-			//InGameScriptRefrences.strikerManager.GenerateNextStriker();
 		}else{
 			BurstObjects();
 			FallDisconnectedObjects();

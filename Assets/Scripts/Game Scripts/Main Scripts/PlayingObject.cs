@@ -96,6 +96,24 @@ public class PlayingObject : MonoBehaviour
 			}
 		}
 	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	void Update()
+	{
+		//En Arcade, cuando una bola se escapa por arriba la destruimos
+		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
+			if(Striker.instance!=null && Striker.instance.currentStrikerObject!=null){
+				if(transform.position.y > 5.0f){
+					//Destroy(InGameScriptRefrences.strikerManager.currentStrikerObject);
+					Destroy(Striker.instance.currentStrikerObject);
+					Striker.instance.FreeStriker(null);
+					//InGameScriptRefrences.strikerManager.GenerateStriker();
+					
+				}
+			}
+		}
+	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
