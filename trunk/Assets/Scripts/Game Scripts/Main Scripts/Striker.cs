@@ -16,7 +16,7 @@ public class Striker : MonoBehaviour
 	public bool multiBall = false;
 	int deep = 0;
 	Transform sliderTransform;
-	internal bool isBusy = false;
+	public bool isBusy = false;
 	public GameObject currentStrikerObject = null;
 	Texture oldTexture;
 	Sprite oldSprite;
@@ -73,14 +73,15 @@ public class Striker : MonoBehaviour
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Called when the striker just hit the board playing object
-	private void FreeStriker(GameObject collidedObject)
+	public void FreeStriker(GameObject collidedObject)
 	{           
-		rigidbody.isKinematic = true;        
+		rigidbody.isKinematic = true;
 		currentStrikerObject.GetComponent<SphereCollider>().enabled = true;
 		currentStrikerObject.transform.parent = InGameScriptRefrences.playingObjectGeneration.gameObject.transform;
 		currentStrikerObject.tag = "Playing Object";
-		currentStrikerObject.GetComponent<PlayingObject>().ObjectCollidedWithOtherObject(collidedObject);
-		
+		if(collidedObject!=null){
+			currentStrikerObject.GetComponent<PlayingObject>().ObjectCollidedWithOtherObject(collidedObject);
+		}
 		isBusy = false;
 		InGameScriptRefrences.strikerManager.GenerateStriker();
 	}
