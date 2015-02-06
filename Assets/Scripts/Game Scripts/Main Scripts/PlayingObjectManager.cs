@@ -28,7 +28,9 @@ public class PlayingObjectManager : MonoBehaviour
 	public static int missionCount;
 	public static int missionCountTotal=-1;
 	
-	public static List<PlayingObject> objectsToBurst;
+	bool bRayBall=false;
+	
+	//public static List<PlayingObject> objectsToBurst;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -37,7 +39,7 @@ public class PlayingObjectManager : MonoBehaviour
 		BottomBoundaryObj = GameObject.Find("Thresold Line");
 		TopBoundaryObj = GameObject.Find("Top");
 		missionCountTotal=-1;
-		objectsToBurst = new List<PlayingObject>();
+		//objectsToBurst = new List<PlayingObject>();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -64,11 +66,12 @@ public class PlayingObjectManager : MonoBehaviour
 			ScoreManagerGame.instance.SetBonus(false);
 		}
 
-		if(PlayingObjectManager.burstCounter < 3 && !Striker.instance.multiBall && !Striker.instance.bombBall && !Striker.instance.fireBall){
+		if(PlayingObjectManager.burstCounter < 3 && !bRayBall && !Striker.instance.multiBall && !Striker.instance.bombBall && !Striker.instance.fireBall){
 			ResetAllObjects();
 		}else{
 			BurstObjects();
 			FallDisconnectedObjects();
+			bRayBall=false;
 		}
 		
 		if(CheckGameIsFinished()){
@@ -85,7 +88,7 @@ public class PlayingObjectManager : MonoBehaviour
 		UpdatePlayingObjectsList();
 
 		for(int i = 0; i < allPlayingObjectScripts.Length; i++) {
-			if(allPlayingObjectScripts[i].burst){
+			if(allPlayingObjectScripts[i].burst || allPlayingObjectScripts[i].burstRayBall){
 				allPlayingObjectScripts[i].BurstMe(false);
 			}
 		}
@@ -195,7 +198,7 @@ public class PlayingObjectManager : MonoBehaviour
 			}
 		}
 		for(int i = 0; i < allPlayingObjectScripts.Length; i++){
-			if(allPlayingObjectScripts[i]){
+			if(allPlayingObjectScripts[i]!=null){
 				if(allPlayingObjectScripts[i].isConnected == false){
 					allPlayingObjectScripts[i].BurstMe(true);
 				}
@@ -301,7 +304,7 @@ public class PlayingObjectManager : MonoBehaviour
 	{
 		int counter=0;
 		foreach(PlayingObject obj in allPlayingObjectScripts){
-			if(obj!=null && obj.name!="StoneBall(Clone)" && obj.name!="FireBall" &&obj.isConnected){
+			if(obj!=null && obj.name!="StoneBall(Clone)" && obj.name!="FireBall" && obj.isConnected){
 				counter++;
 			}	
 		}
@@ -401,7 +404,7 @@ public class PlayingObjectManager : MonoBehaviour
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Comprobar si hay que subir o bajar todas las bolas de golpe en funcion de la distancias con los limites
-	public void CheckMovePlayingObjects()
+	void CheckMovePlayingObjects()
 	{
 		if(bottomMostObject==null || topMostObject==null)
 			return;
@@ -430,6 +433,23 @@ public class PlayingObjectManager : MonoBehaviour
 			//El limite INFERIOR nos marca la distancia que podemos bajar todas las bolas
 			else if(distBottom > 0.05f){
 				iTween.MoveTo(InGameScriptRefrences.playingObjectGeneration.gameObject, new Vector3(0, currentY-distBottom, 0), InGameScriptRefrences.playingObjectGeneration.fallDownTime);
+			}
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Destruye todas las bolas que estan a la misma altura que la bola rayo
+	public void DestroyPlayingObjsRayBall(float y_pos)
+	{
+		bRayBall=true;
+		
+		for(int i=0;i<allPlayingObjectScripts.Length;i++){
+			if(allPlayingObjectScripts[i]!=null){
+				if(Mathf.Abs(allPlayingObjectScripts[i].transform.position.y - y_pos) < 0.1f){
+					allPlayingObjectScripts[i].burstRayBall = true;
+					allPlayingObjectScripts[i].isTraced = true;
+					PlayingObjectManager.burstCounter++;
+				} 
 			}
 		}
 	}

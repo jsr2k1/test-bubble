@@ -23,6 +23,7 @@ public class PlayingObject : MonoBehaviour
 
 	internal bool isTraced = false;
 	internal bool burst = false;
+	internal bool burstRayBall = false;
 	internal bool isConnected = true;
 	internal bool isTracedForConnection = false;
 	bool isDestroyed = false;
@@ -105,11 +106,8 @@ public class PlayingObject : MonoBehaviour
 		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
 			if(Striker.instance!=null && Striker.instance.currentStrikerObject!=null){
 				if(transform.position.y > 5.0f){
-					//Destroy(InGameScriptRefrences.strikerManager.currentStrikerObject);
 					Destroy(Striker.instance.currentStrikerObject);
 					Striker.instance.FreeStriker(null);
-					//InGameScriptRefrences.strikerManager.GenerateStriker();
-					
 				}
 			}
 		}
@@ -224,20 +222,19 @@ public class PlayingObject : MonoBehaviour
 
 	public void DestroyPlayingObject()
 	{
-		//ScoreManagerGame.instance.DisplayScorePopup(10, transform);
 		if(!isBooster){
 			scoreInstance.transform.position = transform.position;
-			//scoreText.text = ScoreManagerGame.instance.GetCurrentScore(10);
-			//textMesh.text = ScoreManagerGame.instance.GetCurrentScore(10);
 			ScoreManagerGame.instance.AddScore();
 			Destroy(scoreInstance, scoreLife);
 		}
-
 		burstParticleInstance.transform.position = transform.position;
 		burstParticleInstance.renderer.sortingLayerName = "MiddleLayer";
 		particleEmit.emit = true;
 		particleAnim.autodestruct = true;
-
+		/*
+		if(name=="RayBall(Clone)"){
+			InGameScriptRefrences.playingObjectManager.DestroyPlayingObjsRayBall(transform.position.y);
+		}*/
 		Destroy(gameObject);
 	}
 
@@ -249,17 +246,20 @@ public class PlayingObject : MonoBehaviour
 		{
 			isTraced = true;
 			burst = true;
-			PlayingObjectManager.objectsToBurst.Add(this);
+			//PlayingObjectManager.objectsToBurst.Add(this);
 			PlayingObjectManager.burstCounter++;
 			//iTween.PunchScale(gameObject, new Vector3(.2f, .2f, .2f), 1f);
 	
 			for(int i=0; i<numberOfAdjacentObjects; i++)
 			{
-				if(adjacentPlayingObjects[i]!=null && adjacentPlayingObjects[i].name!="DummyBall(Clone)" /*&& adjacentPlayingObjects[i].name!="StoneBall(Clone)"*/)
+				if(adjacentPlayingObjects[i]!=null && adjacentPlayingObjects[i].name!="DummyBall(Clone)")
 				{
 					//MULTIBALL
 					if(Striker.instance.multiBall && adjacentPlayingObjects[i].name!="StoneBall(Clone)"){
-						if(gameObject.name=="MultiBall" || adjacentPlayingObjects[i].name==gameObject.name){
+						if(adjacentPlayingObjects[i].name=="RayBall(Clone)" && iDeep==0){
+							InGameScriptRefrences.playingObjectManager.DestroyPlayingObjsRayBall(adjacentPlayingObjects[i].transform.position.y);
+						}
+						else if(gameObject.name=="MultiBall" || adjacentPlayingObjects[i].name==gameObject.name){
 							adjacentPlayingObjects[i].Trace(iDeep+1);
 						}else{
 							//iTween.PunchScale(adjacentPlayingObjects[i].gameObject, new Vector3(.2f, .2f, .2f), 1f);
@@ -267,15 +267,24 @@ public class PlayingObject : MonoBehaviour
 					}//BOMBBALL -> Tambien rompe las bolas piedra
 					else if(Striker.instance.bombBall){
 						if(iDeep<2){
-							adjacentPlayingObjects[i].Trace(iDeep+1);
+							if(adjacentPlayingObjects[i].name=="RayBall(Clone)"){
+								InGameScriptRefrences.playingObjectManager.DestroyPlayingObjsRayBall(adjacentPlayingObjects[i].transform.position.y);
+							}else{
+								adjacentPlayingObjects[i].Trace(iDeep+1);
+							}
 						}else{
 							//iTween.PunchScale(adjacentPlayingObjects[i].gameObject, new Vector3(.2f, .2f, .2f), 1f);
 						}
 					}//NORMAL
-					else if(adjacentPlayingObjects[i].name!="StoneBall(Clone)" && !Striker.instance.fireBall){
-						if(adjacentPlayingObjects[i].name==PlayingObjectManager.currentObjectName){
+					else if(adjacentPlayingObjects[i].name!="StoneBall(Clone)" && !Striker.instance.fireBall)
+					{
+						if(adjacentPlayingObjects[i].name=="RayBall(Clone)" && iDeep==0){
+							InGameScriptRefrences.playingObjectManager.DestroyPlayingObjsRayBall(adjacentPlayingObjects[i].transform.position.y);
+						}
+						else if(adjacentPlayingObjects[i].name==PlayingObjectManager.currentObjectName){
 							adjacentPlayingObjects[i].Trace(iDeep+1);
-						}else{
+						}
+						else{
 							adjacentPlayingObjects[i].isTraced = true;
 							//iTween.PunchScale(adjacentPlayingObjects[i].gameObject, new Vector3(.2f, .2f, .2f), 1f);
 						}
