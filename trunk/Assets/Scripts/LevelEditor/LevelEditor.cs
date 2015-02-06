@@ -87,6 +87,8 @@ public class LevelEditor : MonoBehaviour
 			return 7;
 		}else if(index==7){ //bola piedra
 			return 8;
+		}else if(index==8){ //bola rayo
+			return 9;
 		}else{
 			return index;
 		}
@@ -100,6 +102,8 @@ public class LevelEditor : MonoBehaviour
 			return 6;
 		}else if(index==8){ //bola piedra
 			return 7;
+		}else if(index==9){ //bola rayo
+			return 8;
 		}else{
 			return index;
 		}

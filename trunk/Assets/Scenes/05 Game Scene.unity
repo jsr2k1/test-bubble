@@ -1182,6 +1182,7 @@ MonoBehaviour:
   fireBall: 0
   bombBall: 0
   multiBall: 0
+  isBusy: 0
   currentStrikerObject: {fileID: 0}
   sCurrentSpecialBall: 
   spriteMultiBall: {fileID: 21300000, guid: a4b20f67cbbd41a40ba00b072d671109, type: 3}
@@ -1200,6 +1201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e243f245d88aa439a245e0dfd09ed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strikerScript: {fileID: 0}
   specialStrikerPrefabs: []
   currentStrikerObject: {fileID: 0}
   nextStrikerObject: {fileID: 0}
@@ -1230,6 +1232,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: a4a9b7a2a79740c4398c6a1b3fa2e9f5, type: 2}
   - {fileID: 100000, guid: 391dc767f1c0ab742ae3ca68883561b7, type: 2}
   - {fileID: 100000, guid: 2b6d0c9305cac134393b181181bb7638, type: 2}
+  - {fileID: 100000, guid: 36e1e4865909eaf48b117f5ba29884fa, type: 2}
   fallDownTime: 0
 --- !u!114 &598
 MonoBehaviour:

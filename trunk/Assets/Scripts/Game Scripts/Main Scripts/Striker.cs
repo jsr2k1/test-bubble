@@ -104,28 +104,30 @@ public class Striker : MonoBehaviour
 		if(other.gameObject.tag == "Playing Object" && isBusy){
 			if(fireBall){
 				if(deep < 8){
-					if(other.gameObject.name != "DummyBall(Clone)" && other.gameObject.name != "StoneBall(Clone)"){
+					if(other.gameObject.name!="DummyBall(Clone)" && other.gameObject.name!="StoneBall(Clone)"){
+						if(other.gameObject.name=="RayBall(Clone)"){
+							InGameScriptRefrences.playingObjectManager.DestroyPlayingObjsRayBall(other.gameObject.transform.position.y);
+						}
 						other.gameObject.GetComponent<PlayingObject>().DestroyPlayingObject();
-						//ScoreManagerGame.instance.DisplayScorePopup(10, transform);
-						deep = deep + 1;
+						deep++;
 						if(deep==1){
 							AudioManager.instance.PlayFxSound(AudioManager.instance.burstSound);
 						}
 					}else{
 						Destroy(currentStrikerObject);
-						deep = 0;
+						deep=0;
 						InGameScriptRefrences.playingObjectManager.ResetAllObjects();
 						InGameScriptRefrences.playingObjectManager.FallDisconnectedObjects();
 						FreeStriker(other.gameObject);
-						fireBall = false;
+						fireBall=false;
 					}
 				} else{
 					Destroy(currentStrikerObject);
-					deep = 0;
+					deep=0;
 					InGameScriptRefrences.playingObjectManager.ResetAllObjects();
 					InGameScriptRefrences.playingObjectManager.FallDisconnectedObjects();
 					FreeStriker(other.gameObject);
-					fireBall = false;
+					fireBall=false;
 				}
 			}else if((multiBall || bombBall) && other.gameObject.name == "DummyBall(Clone)"){
 				Destroy(currentStrikerObject);
