@@ -45,7 +45,7 @@ public class LevelParser : MonoBehaviour
 		int lineLevel = 0;
 
 		if(levelNumber > 1){
-			lineLevel =((levelNumber-1)*14+levelNumber)-1;
+			lineLevel =((levelNumber-1)*30+levelNumber)-1;
 		}
 		//if(worldToLoad == 1){
 			ReadFile(level1);
@@ -56,7 +56,7 @@ public class LevelParser : MonoBehaviour
 		//Temporary y to fill the level ListArray
 		int tempy = 0;
 		//Every row
-		for(int y=lineLevel; y <(lineLevel+14); y++)
+		for(int y=lineLevel; y <(lineLevel+30); y++)
 		{
 			bool isRowWithBall = false;
 			//Temporary string array to split the level line and clean it of empty spaces
@@ -93,7 +93,7 @@ public class LevelParser : MonoBehaviour
 
 		//Sending to levelmanager how many rows with balls there are on this level
 		//LevelManager.minimumNumberOfRows = numberRowsWithBalls;
-		LevelManager.minimumNumberOfRows = 14;
+		LevelManager.minimumNumberOfRows = 30;
 		LevelManager.totalNoOfRows = numberRowsWithBalls;
 		//Debug print of the final level parsed uncoment to see on the console **Tip remember to unlock the collapse option on the console unity
 		/*for(int row=0; row < level.Count; row++)

@@ -34,7 +34,10 @@ public class StrikerManager : MonoBehaviour
 
 	IEnumerator StartLoader()
 	{    
-		yield return new WaitForSeconds(2);
+		//yield return new WaitForSeconds(2);
+		while(LevelManager.instance.totalNumberOfRowsLeft > 0){
+			yield return null;
+		}
 		isSwap = false;
 		thresoldLineTransform = GameObject.Find("Thresold Line").transform;
 		striker = GameObject.Find("Striker");
@@ -51,6 +54,10 @@ public class StrikerManager : MonoBehaviour
 		bStartDone=true;
 		
 		if(TutorialManager.instance!=null){
+			yield return new WaitForSeconds(0.5f);
+			while(iTween.tweens.Count>0){
+				yield return null;
+			}
 			TutorialManager.instance.ShowTutorial();
 		}
 	}

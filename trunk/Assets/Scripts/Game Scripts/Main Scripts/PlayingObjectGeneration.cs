@@ -33,8 +33,11 @@ public class PlayingObjectGeneration : MonoBehaviour
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	void Start()
+	IEnumerator Start()
 	{   
+		while(!LevelManager.instance.bStartFinished){
+			yield return null;
+		}
 		numberOfObjectsInARow = 10;
 
 		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
@@ -47,8 +50,14 @@ public class PlayingObjectGeneration : MonoBehaviour
 		thresoldLineTransform = GameObject.Find("Thresold Line").transform;
 		rowGap = objectGapY;
 
-		Invoke("InitiateRowAdd", .1f);
+		//Invoke("InitiateRowAdd", .1f);
+		AddRow();
 		Invoke("FalsenIsStarting", 2f);
+		
+		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
+			//Invoke("AddRow", LevelManager.rowAddingInterval);
+			InvokeRepeating("AddRow", LevelManager.rowAddingInterval, LevelManager.rowAddingInterval);
+		}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,7 +65,7 @@ public class PlayingObjectGeneration : MonoBehaviour
 	int rowCounter = 0;
 	int numberOfRowsGenerated = 0;
 	public float fallDownTime;
-	float currentRowAddingInterval;
+	//float currentRowAddingInterval;
 
 	void FalsenIsStarting()
 	{
@@ -77,13 +86,14 @@ public class PlayingObjectGeneration : MonoBehaviour
 		rowCounter = numberOfRowsPresent;
 
 		if(rowCounter < Mathf.Min(6, LevelManager.minimumNumberOfRows) /*&& LevelManager.instance.totalNumberOfRowsLeft > 0*/){
-			CancelInvoke("InitiateRowAdd");
-			InitiateRowAdd();
+			//CancelInvoke("InitiateRowAdd");
+			//InitiateRowAdd();
+			AddRow();
 		}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+/*
 	void InitiateRowAdd()
 	{
 		if(LevelManager.gameState == GameState.GameFinish || LevelManager.gameState == GameState.GameOver){
@@ -94,21 +104,26 @@ public class PlayingObjectGeneration : MonoBehaviour
 				currentRowAddingInterval = LevelManager.rowAddingInterval;
 				//iTween.MoveBy(gameObject, new Vector3(0, -rowGap, 0), fallDownTime);
 				//Invoke("InitiateRowAdd", currentRowAddingInterval);
-				Invoke("CheckForGameOver", fallDownTime);
+				Invoke("CheckForGameOverArcade", fallDownTime);
 				return;
 			}
 		}
-		if(isBusy){
-			Invoke("InitiateRowAdd", .1f);
-		}else{
-			StartCoroutine(AddRow());
-		}
+		//if(isBusy){
+		//	Invoke("InitiateRowAdd", .1f);
+		//}else{
+			//StartCoroutine(AddRow());
+			AddRow();
+		//}
 	}
-	
+	*/
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Adds new row at top of the screen and move the objects down by rowgap
-	IEnumerator AddRow()
+	//IEnumerator AddRow()
+	void AddRow()
 	{
+		if(LevelManager.instance.totalNumberOfRowsLeft == 0 && LevelManager.GameType == LevelManager.GameTypes.NORMAL){
+			return;
+		}
 		if(LevelManager.gameState != GameState.Pause)
 		{
 			//Alternar 10 bolas en una fila y 9 bolas en la siguiente
@@ -150,34 +165,46 @@ public class PlayingObjectGeneration : MonoBehaviour
 					InGameScriptRefrences.playingObjectManager.topRowObjects [i] = tempObject.GetComponent<PlayingObject>();
 				}
 				x -= objectGap;
-	
+				/*
 				if(i % 4 == 0){
 					yield return new WaitForSeconds(.02f);
-				}
+				}*/
 			}
 			isBusy = false;
 			iTween.Defaults.easeType = iTween.EaseType.linear;
 			currentYPos = numberOfRowsGenerated * rowGap;
-			iTween.MoveTo(gameObject, new Vector3(0, objectGenerationHeight - currentYPos, 0), fallDownTime);
-			//transform.position = new Vector3(0, objectGenerationHeight - currentYPos, 0);
+			
+			if(LevelManager.GameType == LevelManager.GameTypes.ARCADE && LevelManager.instance.totalNumberOfRowsLeft == 0){
+				iTween.MoveTo(gameObject, new Vector3(0, objectGenerationHeight - currentYPos, 0), fallDownTime);
+			}else{
+				transform.position = new Vector3(0, objectGenerationHeight - currentYPos, 0);
+			}
 	
 			rowCounter++;
 			if(rowCounter >= LevelManager.minimumNumberOfRows){
-				currentRowAddingInterval = LevelManager.rowAddingInterval;
+				//currentRowAddingInterval = LevelManager.rowAddingInterval;
 				fallDownTime = .5f;
 			}else{
-				currentRowAddingInterval = 0f;
+				//currentRowAddingInterval = 0f;
 				if(isStarting){
 					fallDownTime = .2f;
 				}else{
 					fallDownTime = .5f;
 				}
 			}
-			LevelManager.instance.totalNumberOfRowsLeft--;
+			if(LevelManager.instance.totalNumberOfRowsLeft > 0){
+				LevelManager.instance.totalNumberOfRowsLeft--;
+			}
 		}
 		
-		Invoke("InitiateRowAdd", currentRowAddingInterval);
-		Invoke("CheckForGameOver", .5f);
+		//Invoke("InitiateRowAdd", currentRowAddingInterval);
+		//InitiateRowAdd();
+		if(LevelManager.instance.totalNumberOfRowsLeft > 0){// && LevelManager.GameType == LevelManager.GameTypes.ARCADE){
+			AddRow();
+		}
+		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
+			Invoke("CheckForGameOverArcade", .5f);
+		}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -190,7 +217,7 @@ public class PlayingObjectGeneration : MonoBehaviour
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Arcade Mode --> If any of the objects touches threshold line. The game is over.
-	private void CheckForGameOver()
+	private void CheckForGameOverArcade()
 	{
 		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
 			GameObject[] objects = GameObject.FindGameObjectsWithTag("Playing Object");

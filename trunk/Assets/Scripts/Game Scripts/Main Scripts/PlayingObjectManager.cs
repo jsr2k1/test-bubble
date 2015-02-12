@@ -415,10 +415,17 @@ public class PlayingObjectManager : MonoBehaviour
 		distTop = Mathf.Abs(topMostObject.transform.position.y - TopBoundaryObj.transform.position.y);
 
 		//Las bolas estan demasiado abajo -> las subimos
+		//Este codigo tambien se usa al cargar los niveles grandes. En ese caso, ajustamos el tiempo para que no vaya tan rapido.
 		if(bottomMostObject.transform.position.y < BottomBoundaryObj.transform.position.y + InGameScriptRefrences.playingObjectManager.thresholdOffsetWorldMode)
 		{
+			float tiempo;
+			if(distBottom>1.0f){
+				tiempo = InGameScriptRefrences.playingObjectGeneration.fallDownTime*(distBottom/4.0f);
+			}else{
+				tiempo=1.0f;
+			}
 			float currentY = InGameScriptRefrences.playingObjectGeneration.gameObject.transform.position.y;
-			iTween.MoveTo(InGameScriptRefrences.playingObjectGeneration.gameObject, new Vector3(0, currentY+distBottom, 0), InGameScriptRefrences.playingObjectGeneration.fallDownTime);
+			iTween.MoveTo(InGameScriptRefrences.playingObjectGeneration.gameObject, new Vector3(0, currentY+distBottom, 0), tiempo);
 		}
 		else if(topMostObject.transform.position.y > TopBoundaryObj.transform.position.y)
 		{

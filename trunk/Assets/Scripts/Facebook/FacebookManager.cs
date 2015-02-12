@@ -509,10 +509,10 @@ public class FacebookManager : MonoBehaviour
 					count++;
 					
 					if(action_type == OGActionType.AskFor.ToString()){
-						goEntry.transform.GetChild(0).GetComponent<Text>().text = user_name+" needs a life!";
+						goEntry.transform.GetChild(0).GetComponent<Text>().text = user_name + LanguageManager.GetText("id_needs_life");
 						sendLifeUserList.Add(user_id);
 					}else{
-						goEntry.transform.GetChild(0).GetComponent<Text>().text = user_name+" gave you a life!";
+						goEntry.transform.GetChild(0).GetComponent<Text>().text = user_name + LanguageManager.GetText("id_gave_life");
 						livesCounter++;
 					}
 					goEntry.transform.GetChild(1).GetComponent<FriendPicture>().id = user_id;
