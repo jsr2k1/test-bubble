@@ -46,6 +46,8 @@ public class LevelManager : MonoBehaviour
 	public Text highscoretext;
 	public GameObject BallCounter;
 	Animator anim;
+	
+	public bool bStartFinished=false;
 
 	public AudioSource fewballs;
 	
@@ -75,19 +77,23 @@ public class LevelManager : MonoBehaviour
 		gameState = GameState.Start;
 		rowAddingInterval = Mathf.Max(1, rowAddingInterval);
 		minimumNumberOfRows = Mathf.Max(1, minimumNumberOfRows);
-		totalNumberOfRowsLeft = Mathf.Max(minimumNumberOfRows, totalNumberOfRowsLeft);
+		//totalNumberOfRowsLeft = Mathf.Max(minimumNumberOfRows, totalNumberOfRowsLeft);
 
 		if(LevelManager.GameType == LevelManager.GameTypes.NORMAL){
 			totalNumberOfRowsLeft = minimumNumberOfRows;
 			currentBalls = NumberOfBalls;
 			//setting the balls of the level
 			ballsManager.setBallsLeft(NumberOfBalls);
+		}//ARCADE
+		else{
+			totalNumberOfRowsLeft = 6;
 		}
 		scoreTextLabel = GameObject.Find("ScoreTextLabel").GetComponent<Text>();
 		if(LevelManager.GameType == LevelManager.GameTypes.NORMAL){
 			levelText1.text = LanguageManager.GetText("id_level") + " " + levelNo.ToString();
 			levelText2.text = LanguageManager.GetText("id_level") + " " + levelNo.ToString();
 		}
+		bStartFinished=true;
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -79,6 +79,9 @@ public class LanguageManager : MonoBehaviour
 		dict.Add("id_rank", new string[] {"Pos.", "Rank"});
 		dict.Add("id_rank_name", new string[] {"Nombre", "Name"});
 		dict.Add("id_rank_score", new string[] {"Puntos", "Score"});
+		dict.Add("id_accept", new string[] {"Aceptar", "Accept"});
+		dict.Add("id_needs_life", new string[] {" necesita una vida!", " needs a life!"});
+		dict.Add("id_gave_life", new string[] {" te ha dado una vida", " gave you a life!"});
 		
 		//Tutoriales
 		dict.Add("id_tutorial_pulsa_pantalla", new string[] {"Pulsa la pantalla para apuntar y disparar", "Touch the screen to aim and shoot"});
