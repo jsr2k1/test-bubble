@@ -191,7 +191,7 @@ public class IAPManager : MonoBehaviour
 				int coins = PlayerPrefs.GetInt("Coins");
 				coins = coins + 100;
 				CoinsManager.instance.SetCoins(coins);
-				Adjust.trackRevenue(0.89, "v00myc");
+				Adjust.trackRevenue(0.99, "v00myc");
 			}
 			if(inAppID == "small") {
 				int coins = PlayerPrefs.GetInt("Coins");
