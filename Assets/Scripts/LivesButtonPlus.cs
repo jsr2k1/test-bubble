@@ -14,7 +14,7 @@ public class LivesButtonPlus : MonoBehaviour
 		if(LivesManager.lives < 5){
 			buttonlivesplus.interactable = true;
 			image.sprite = buttonON;
-		}else{
+		}else if (LivesManager.lives == 5){
 			buttonlivesplus.interactable = false;
 			image.sprite = buttonOFF;
 		}
