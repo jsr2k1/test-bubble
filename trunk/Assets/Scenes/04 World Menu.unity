@@ -17462,7 +17462,7 @@ MonoBehaviour:
   buttonlivesplus: {fileID: 2144430792}
   buttonON: {fileID: 21300000, guid: fa092aa438e012549aa08d42ec833e93, type: 3}
   buttonOFF: {fileID: 21300000, guid: 0eed4775e5180f743bf3e81b6af1dab1, type: 3}
-  image: {fileID: 2144430793}
+  image: {fileID: 1077723643}
 --- !u!114 &2144430796
 MonoBehaviour:
   m_ObjectHideFlags: 0
