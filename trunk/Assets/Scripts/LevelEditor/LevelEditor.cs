@@ -220,7 +220,7 @@ public class LevelEditor : MonoBehaviour
 		if(numLevel<1){
 			return;
 		}
-		int iFirstLine = 15*(numLevel-1);
+		int iFirstLine = (numRows+2)*(numLevel-1);
 		lines[iFirstLine] = "6   6   6   6   6   6   6   6   6   6";
 
 		for(int i=1;i<=numRows;i++){
@@ -254,7 +254,7 @@ public class LevelEditor : MonoBehaviour
 			return;
 		}
 		//Skip lines
-		for(int i=0;i<(15*(numLevel-1))+1;i++){
+		for(int i=0;i<((numRows+2)*(numLevel-1))+1;i++){
 			line = sr.ReadLine();
 		}
 		//Read level
