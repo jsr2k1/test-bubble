@@ -8544,6 +8544,7 @@ MonoBehaviour:
   imgWorlds:
   - {fileID: 21300000, guid: b4c874669ce614f4584b5d5c564179f7, type: 3}
   - {fileID: 21300000, guid: bb6a3612772ecb14297bc575b1db2acb, type: 3}
+  - {fileID: 21300000, guid: 42dd50f5531426744932050b4adb3ca8, type: 3}
 --- !u!1 &1253201980
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class LevelParser : MonoBehaviour
 {
 	public static LevelParser instance;
 	
-	public int maxLevels=40; 
+	public int maxLevels=70; 
 
 	//FilesContaining the levels
 	public string level1;
