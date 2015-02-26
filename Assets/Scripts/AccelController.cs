@@ -13,7 +13,7 @@ public class AccelController : MonoBehaviour
 	
 	void Awake()
 	{
-		originalPosition = transform.position;
+		originalPosition = transform.localPosition;
 		screen_ratio = Screen.width / 720.0f;
 	}
 	
@@ -25,6 +25,6 @@ public class AccelController : MonoBehaviour
 		smoothAccel.y = Input.acceleration.y * kFilteringFactor + smoothAccel.y * (1.0f - kFilteringFactor);
 		smoothAccel.z = Input.acceleration.z * kFilteringFactor + smoothAccel.z * (1.0f - kFilteringFactor);
 		
-		transform.position = originalPosition - new Vector3(smoothAccel.x*multiplier*screen_ratio, smoothAccel.y*multiplier*screen_ratio, 0.0f);
+		transform.localPosition = originalPosition - new Vector3(smoothAccel.x*multiplier*screen_ratio, smoothAccel.y*multiplier*screen_ratio, 0.0f);
 	}
 }
