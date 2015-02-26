@@ -67,13 +67,15 @@ public class PlayingObject : MonoBehaviour
 
 		scoresParent = GameObject.Find("ScoresParent");
 
-		scoreInstance = Instantiate(scorePrefab, new Vector3(10,10,1), Quaternion.identity) as GameObject;
-		scoreInstance.transform.SetParent(scoresParent.transform);
-		scoreInstance.transform.localScale = new Vector3(1,1,1);
-		scoreText = scoreInstance.GetComponent<Text>();
-		//textMesh = scoreInstance.GetComponent<TextMesh>();
-		//textMesh.renderer.sortingLayerName = "MiddleLayer";
-		scoreLife = Random.Range(0.3f, 0.8f);
+		if(name!="DummyBall(Clone)"){
+			scoreInstance = Instantiate(scorePrefab, new Vector3(10,10,1), Quaternion.identity) as GameObject;
+			scoreInstance.transform.SetParent(scoresParent.transform);
+			scoreInstance.transform.localScale = new Vector3(1,1,1);
+			scoreText = scoreInstance.GetComponent<Text>();
+			//textMesh = scoreInstance.GetComponent<TextMesh>();
+			//textMesh.renderer.sortingLayerName = "MiddleLayer";
+			scoreLife = Random.Range(0.3f, 0.8f);
+		}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -182,7 +184,9 @@ public class PlayingObject : MonoBehaviour
 	//Ponemos el nuevo valor al score
 	public void SetNextBonus()
 	{
-		scoreText.text = ScoreManagerGame.instance.GetCurrentScore(10);
+		if(scoreText!=null){
+			scoreText.text = ScoreManagerGame.instance.GetCurrentScore(10);
+		}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -209,7 +213,7 @@ public class PlayingObject : MonoBehaviour
 				rigidbody.isKinematic = false;
 				rigidbody.AddForce(new Vector3(0, Random.Range(1.5f, 2.5f), 0), ForceMode.VelocityChange);
 				rotationScript.enabled = true;
-				spriteRenderer.sortingLayerName = "FallingObjLayer";
+				//spriteRenderer.sortingLayerName = "FallingObjLayer";  //En la 4.6.3 no se pueden cambiar las layers pq no se ven los objetos
 			} else{                
 				Destroy(gameObject);
 			}
@@ -222,13 +226,13 @@ public class PlayingObject : MonoBehaviour
 
 	public void DestroyPlayingObject()
 	{
-		if(!isBooster){
+		if(!isBooster && scoreInstance!=null){
 			scoreInstance.transform.position = transform.position;
 			ScoreManagerGame.instance.AddScore();
 			Destroy(scoreInstance, scoreLife);
 		}
 		burstParticleInstance.transform.position = transform.position;
-		burstParticleInstance.renderer.sortingLayerName = "MiddleLayer";
+		burstParticleInstance.renderer.sortingLayerName = "FrontLayer";
 		particleEmit.emit = true;
 		particleAnim.autodestruct = true;
 		/*
