@@ -490,35 +490,41 @@ public class FacebookManager : MonoBehaviour
 			pendingRequestsData = pendingRequests["data"] as List<object>;
 			
 			if(pendingRequestsData!=null && pendingRequestsData.Count>0){
-				buttonMessages.SetActive(true);
 				int count=0;
 				foreach(object entry in pendingRequestsData)
 				{
 					requestItem = entry as Dictionary<string,object>;
 					string requestID = requestItem["id"] as String;
-					string action_type = requestItem["action_type"] as string;
 					
 					fromItem = requestItem["from"] as Dictionary<string,object>;
 					string user_id = fromItem["id"] as string;
 					string user_name = fromItem["name"] as string;
 					
-					GameObject goEntry = Instantiate(entryPrefab) as GameObject;
-					goEntry.transform.SetParent(contentMessages.transform);
-					goEntry.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-					entriesList.Add(goEntry);
-					count++;
-					
-					if(action_type == OGActionType.AskFor.ToString()){
-						goEntry.transform.GetChild(0).GetComponent<Text>().text = user_name + LanguageManager.GetText("id_needs_life");
-						sendLifeUserList.Add(user_id);
-					}else{
-						goEntry.transform.GetChild(0).GetComponent<Text>().text = user_name + LanguageManager.GetText("id_gave_life");
-						livesCounter++;
+					string action_type="empty";
+					if(requestItem.ContainsKey("action_type")){
+						action_type = requestItem["action_type"] as string;
+											
+						GameObject goEntry = Instantiate(entryPrefab) as GameObject;
+						goEntry.transform.SetParent(contentMessages.transform);
+						goEntry.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+						entriesList.Add(goEntry);
+						
+						if(action_type == OGActionType.AskFor.ToString()){
+							goEntry.transform.GetChild(0).GetComponent<Text>().text = user_name + LanguageManager.GetText("id_needs_life");
+							sendLifeUserList.Add(user_id);
+						}else{
+							goEntry.transform.GetChild(0).GetComponent<Text>().text = user_name + LanguageManager.GetText("id_gave_life");
+							livesCounter++;
+						}
+						goEntry.transform.GetChild(1).GetComponent<FriendPicture>().id = user_id;
+						count++;
 					}
-					goEntry.transform.GetChild(1).GetComponent<FriendPicture>().id = user_id;
-					
 					requestsList.Add(requestID);
 					if(bShowDebug) Debug.Log("Request: "+user_id+", "+user_name+", "+action_type);
+				}
+				//Puede que tengamos requests de invitacion a jugar. En ese caso, no queremos que se active el boton.
+				if(count>0){
+					buttonMessages.SetActive(true);
 				}
 			}
 		}
@@ -576,7 +582,7 @@ public class FacebookManager : MonoBehaviour
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Borramoa todas las listas y diccionarios que vamos usando para procesar las peticiones
+	//Borramos todas las listas y diccionarios que vamos usando para procesar las peticiones
 	void ClearData()
 	{
 		if(buttonMessages!=null){

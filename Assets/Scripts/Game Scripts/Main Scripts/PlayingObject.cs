@@ -34,7 +34,7 @@ public class PlayingObject : MonoBehaviour
 	Transform rightCollider;
 	
 	float destroy_threshold; //umbral para destruir las bolas que caen
-	SpriteRenderer spriteRenderer;
+	//SpriteRenderer spriteRenderer;
 	SphereCollider sphereCollider;
 	RotationScript rotationScript;
 
@@ -52,7 +52,7 @@ public class PlayingObject : MonoBehaviour
 		rightCollider = GameObject.Find("Right").transform;
 		
 		destroy_threshold = GameObject.Find("Down").transform.position.y;
-		spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+		//spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
 		sphereCollider = GetComponent<SphereCollider>();
 		rotationScript = GetComponent<RotationScript>();
 		
