@@ -10,6 +10,8 @@ public class FacebookBubble : MonoBehaviour
 	public Button arcadeButton;
 	Image facebookImage;
 	GameObject facebookText;
+	public PopUpMgr FacebookConnectedPopUp;
+	public PopUpMgr ConnectToFacebookPopUp;
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -26,6 +28,17 @@ public class FacebookBubble : MonoBehaviour
 			facebookImage.enabled=false;
 			facebookText.SetActive(false);
 		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Si el jugador ha entrado en el juego 2 veces y no se ha conectado a Facebook, la tercera vez que entre mostramos el popup
+	void Start()
+	{
+		int n = PlayerPrefs.GetInt("NumTimesPlayed");
+		if(n==2){
+			ConnectToFacebookPopUp.ShowPopUp();
+		}
+		PlayerPrefs.SetInt("NumTimesPlayed", n+1);
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,6 +83,7 @@ public class FacebookBubble : MonoBehaviour
 		if(FB.IsLoggedIn){
 			Debug.Log(FB.UserId);
 			FacebookManager.GetFacebookUserName(); //Obtenemos el nombre del usuario
+			FacebookConnectedPopUp.ShowPopUp();
 		} else {
 			Debug.Log("User cancelled login");
 			EnableButtons();

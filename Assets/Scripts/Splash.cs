@@ -48,6 +48,9 @@ public class Splash : MonoBehaviour
 		if(!PlayerPrefs.HasKey("FirstTimeFacebookLogin")){
 			PlayerPrefs.SetInt("FirstTimeFacebookLogin", 1);
 		}
+		if(!PlayerPrefs.HasKey("NumTimesPlayed")){
+			PlayerPrefs.SetInt("NumTimesPlayed", 0);
+		}
 		//Test Only
 		if(force_current_level>0){
 			PlayerPrefs.SetInt("Level", force_current_level);
