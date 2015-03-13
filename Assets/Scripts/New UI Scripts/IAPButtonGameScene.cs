@@ -1,23 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class IAPButtonGameScene : MonoBehaviour, IPointerClickHandler
 {
 	IAPManager iapManager;
 	public string item;
+	Text textPrice;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Start()
 	{
 		GameObject go = GameObject.Find("IAPManager");
+		textPrice = transform.GetChild(0).GetComponent<Text>();
 
 		if(go!=null){
 			iapManager = go.GetComponent<IAPManager>();
 		}else{
 			Debug.Log("ERROR: No se encuentra el objeto IAPManager");
 		}
+		textPrice.text = iapManager.dictPrices[item];
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

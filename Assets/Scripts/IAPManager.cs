@@ -2,12 +2,13 @@
 using System.Collections;
 using Reign;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class IAPManager : MonoBehaviour
 {
 	private bool waiting;
 	private string[] restoreInAppStatusText;
-	//private string formatedPriceText;
+	private string formatedPriceText;
 	//public Text coinstext;
 	
 	public bool bTesting;
@@ -26,6 +27,8 @@ public class IAPManager : MonoBehaviour
 	private string item5 = "extrabig";
 	#endif
 	
+	public Dictionary<string,string> dictPrices;
+	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Start()
@@ -38,11 +41,17 @@ public class IAPManager : MonoBehaviour
 		
 		// InApp-Purchases - NOTE: you can set different "In App IDs" for each platform.
 		var inAppIDs = new InAppPurchaseID[5];
-		inAppIDs[0] = new InAppPurchaseID(item1, 0.99m, "$", InAppPurchaseTypes.Consumable);
-		inAppIDs[1] = new InAppPurchaseID(item2, 0.99m, "$", InAppPurchaseTypes.Consumable);
-		inAppIDs[2] = new InAppPurchaseID(item3, 0.99m, "$", InAppPurchaseTypes.Consumable);
-		inAppIDs[3] = new InAppPurchaseID(item4, 0.99m, "$", InAppPurchaseTypes.Consumable);
-		inAppIDs[4] = new InAppPurchaseID(item5, 0.99m, "$", InAppPurchaseTypes.Consumable);
+		//inAppIDs[0] = new InAppPurchaseID(item1, 0.99m, "$", InAppPurchaseTypes.Consumable);
+		//inAppIDs[1] = new InAppPurchaseID(item2, 0.99m, "$", InAppPurchaseTypes.Consumable);
+		//inAppIDs[2] = new InAppPurchaseID(item3, 0.99m, "$", InAppPurchaseTypes.Consumable);
+		//inAppIDs[3] = new InAppPurchaseID(item4, 0.99m, "$", InAppPurchaseTypes.Consumable);
+		//inAppIDs[4] = new InAppPurchaseID(item5, 0.99m, "$", InAppPurchaseTypes.Consumable);
+		
+		inAppIDs[0] = new InAppPurchaseID(item1, InAppPurchaseTypes.Consumable);
+		inAppIDs[1] = new InAppPurchaseID(item2, InAppPurchaseTypes.Consumable);
+		inAppIDs[2] = new InAppPurchaseID(item3, InAppPurchaseTypes.Consumable);
+		inAppIDs[3] = new InAppPurchaseID(item4, InAppPurchaseTypes.Consumable);
+		inAppIDs[4] = new InAppPurchaseID(item5, InAppPurchaseTypes.Consumable);
 		
 		restoreInAppStatusText = new string[inAppIDs.Length];
 		var desc = new InAppPurchaseDesc();
@@ -91,6 +100,19 @@ public class IAPManager : MonoBehaviour
 		InAppPurchaseManager.Init(desc, createdCallback);
 
 		bStarted=true;
+		
+		StartCoroutine(GetPriceInfo());
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	IEnumerator GetPriceInfo()
+	{
+		while(waiting){
+			yield return null;
+		}
+		waiting = true;
+		InAppPurchaseManager.MainInAppAPI.GetProductInfo(GetPriceInfoCallback);
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -113,9 +135,9 @@ public class IAPManager : MonoBehaviour
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/*
+	
 	void OnGUI()
-	{
+	{/*
 			float scale = new Vector2(Screen.width, Screen.height).magnitude / new Vector2(1280, 720).magnitude;
 	
 			// Buy
@@ -147,9 +169,9 @@ public class IAPManager : MonoBehaviour
 					InAppPurchaseManager.MainInAppAPI.GetProductInfo(productInfoCallback);
 			} else if(formatedPriceText != null) {
 					GUI.Label(new Rect(148 * 2 + 16 + 8, 0, 128, 32), formatedPriceText);
-			}
+			}*/
 	}
-	*/
+	
 		
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -162,16 +184,29 @@ public class IAPManager : MonoBehaviour
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Esta funcion la llamamos desde el start para obtener la divisa y el precio de las IAPs
+	void GetPriceInfoCallback(InAppPurchaseInfo[] priceInfos, bool succeeded)
+	{
+		waiting = false;
+		if(succeeded){
+			dictPrices = new Dictionary<string, string>();
+			foreach(var info in priceInfos){
+				dictPrices.Add(info.ID, info.FormattedPrice);
+			}
+		}
+	}
 	
-	private void productInfoCallback(InAppPurchaseInfo[] priceInfos, bool succeeded)
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void productInfoCallback(InAppPurchaseInfo[] priceInfos, bool succeeded)
 	{
 		waiting = false;
 		if(succeeded) {
-			//foreach(var info in priceInfos) {
-			//if(info.ID == item1)
-			//	formatedPriceText = info.FormattedPrice;
-			//Debug.Log(string.Format("ID: {0} Price: {1}", info.ID, info.FormattedPrice));
-			//}
+			foreach(var info in priceInfos){
+			if(info.ID == item1)
+				//formatedPriceText = info.FormattedPrice;
+				Debug.Log(string.Format("ID: {0} Price: {1}", info.ID, info.FormattedPrice));
+			}
 		}
 	}
 	
