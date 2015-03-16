@@ -21,7 +21,7 @@ public class IAPButtonGameScene : MonoBehaviour, IPointerClickHandler
 		}else{
 			Debug.Log("ERROR: No se encuentra el objeto IAPManager");
 		}
-		textPrice.text = iapManager.dictPrices[item];
+		//TODO: textPrice.text = iapManager.dictPrices[item];
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,7 +33,7 @@ public class IAPButtonGameScene : MonoBehaviour, IPointerClickHandler
 			audio.Play();
 		}
 		if(iapManager!=null){
-			iapManager.PurchaseSomething(item);
+			//TODO: iapManager.PurchaseSomething(item);
 		}else{
 			Debug.Log("ERROR: No se encuentra el complemento IAPManager");
 		}

@@ -4,18 +4,18 @@
 
 using UnityEngine;
 using System.Collections;
-using Reign;
+//using Reign;
 
 public class AdBanner : MonoBehaviour
 {
-	private static Ad ad;
+	//private static Ad ad;
 	private string adStatus;
 	public bool bDebug=false;
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Start()
-	{
+	{/*
 		//DontDestroyOnLoad(gameObject);// Make sure the start method never gets called more then once.
 		adStatus = "none";
 		
@@ -29,13 +29,15 @@ public class AdBanner : MonoBehaviour
 		// Editor
 		desc.Editor_AdAPI = AdAPIs.EditorTestAd;
 		desc.Editor_AdGravity = AdGravity.BottomCenter;
-		desc.Editor_AdWidth = 256;
-		desc.Editor_AdHeight = 32;
+		desc.UnityUI_AdMaxWidth = 256;
+		desc.UnityUI_AdMaxHeight = 32;
+		//desc.Editor_AdWidth = 256; //ya no existe
+		//desc.Editor_AdHeight = 32; //ya no existe
 		//desc.Editor_AdGUIOverrideEnabled = true;
 		
 		desc.Editor_MillennialMediaAdvertising_APID = "";
 		desc.Editor_MillennialMediaAdvertising_AdGravity = AdGravity.BottomCenter;
-		desc.Editor_GuiAdScale = 1;
+		//desc.Editor_GuiAdScale = 1; //ya no existe
 		//desc.Editor_MillennialMediaAdvertising_RefreshRate = 120,
 
 		// iOS settings
@@ -69,21 +71,21 @@ public class AdBanner : MonoBehaviour
 		
 		// show ad
 		//ad.Visible = true;
-		//ad.Draw();
+		//ad.Draw();*/
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+	/*
 	private void adCreatedCallback(bool succeeded)
 	{
 		adStatus = succeeded ? "Ads Succeded" : "Ads Failed";
 		if(bDebug){
 			Debug.Log("adCreatedCallback: "+adStatus);
 		}
-	}
+	}*/
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+	/*
 	private void eventCallback(AdEvents adEvent, string eventMessage)
 	{
 		if(bDebug){
@@ -96,10 +98,10 @@ public class AdBanner : MonoBehaviour
 			case AdEvents.Clicked: adStatus = "Clicked"; break;
 			case AdEvents.Error: adStatus = "Error: " + eventMessage; break;
 		}
-	}
+	}*/
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+	/*
 	void OnGUI()
 	{
 		if(bDebug){
@@ -118,7 +120,7 @@ public class AdBanner : MonoBehaviour
 			//ad.Draw();
 		}
 	}
-	
+	*/
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Update()
@@ -132,11 +134,11 @@ public class AdBanner : MonoBehaviour
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+/*
 	void OnDestroy()
 	{
 		ad.Visible = false;
-	}
+	}*/
 }
 
 

@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Reign;
+//using Reign;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class IAPManager : MonoBehaviour
 {
+/*
 	private bool waiting;
 	private string[] restoreInAppStatusText;
 	private string formatedPriceText;
@@ -137,39 +138,39 @@ public class IAPManager : MonoBehaviour
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void OnGUI()
-	{/*
-			float scale = new Vector2(Screen.width, Screen.height).magnitude / new Vector2(1280, 720).magnitude;
-	
-			// Buy
-			if(!waiting && GUI.Button(new Rect(0, 0, 148, 64 * scale), "Buy NonConsumable")) {
-					waiting = true;
-					// NOTE: You can pass in a "InAppID string value" or an "index" value.
-					InAppPurchaseManager.MainInAppAPI.Buy(item1, buyAppCallback);
-			}
-	
-			if(!waiting && GUI.Button(new Rect(0, 64 * scale, 148, 64 * scale), "Buy Consumable")) {
-					waiting = true;
-					// NOTE: You can pass in a "InAppID string value" or an "index" value.
-					InAppPurchaseManager.MainInAppAPI.Buy(item3, buyAppCallback);
-			}
-	
-			// Restore
-			if(!waiting && GUI.Button(new Rect(0, 128 * scale, 148, 64 * scale), "Restore Apps")) {
-					waiting = true;
-					InAppPurchaseManager.MainInAppAPI.Restore(restoreAppsCallback);
-			} else {
-					for(int i = 0; i != restoreInAppStatusText.Length; ++i) {
-							GUI.Label(new Rect(Screen.width - 256, 64 * i, 256, 64), restoreInAppStatusText[i]);
-					}
-			}
-	
-			// Get price information
-			if(!waiting && GUI.Button(new Rect(148 + 16, 0, 148, 64 * scale), "Get Price Info")) {
-					waiting = true;
-					InAppPurchaseManager.MainInAppAPI.GetProductInfo(productInfoCallback);
-			} else if(formatedPriceText != null) {
-					GUI.Label(new Rect(148 * 2 + 16 + 8, 0, 128, 32), formatedPriceText);
-			}*/
+	{
+		float scale = new Vector2(Screen.width, Screen.height).magnitude / new Vector2(1280, 720).magnitude;
+
+		// Buy
+		if(!waiting && GUI.Button(new Rect(0, 0, 148, 64 * scale), "Buy NonConsumable")) {
+				waiting = true;
+				// NOTE: You can pass in a "InAppID string value" or an "index" value.
+				InAppPurchaseManager.MainInAppAPI.Buy(item1, buyAppCallback);
+		}
+
+		if(!waiting && GUI.Button(new Rect(0, 64 * scale, 148, 64 * scale), "Buy Consumable")) {
+				waiting = true;
+				// NOTE: You can pass in a "InAppID string value" or an "index" value.
+				InAppPurchaseManager.MainInAppAPI.Buy(item3, buyAppCallback);
+		}
+
+		// Restore
+		if(!waiting && GUI.Button(new Rect(0, 128 * scale, 148, 64 * scale), "Restore Apps")) {
+				waiting = true;
+				InAppPurchaseManager.MainInAppAPI.Restore(restoreAppsCallback);
+		} else {
+				for(int i = 0; i != restoreInAppStatusText.Length; ++i) {
+						GUI.Label(new Rect(Screen.width - 256, 64 * i, 256, 64), restoreInAppStatusText[i]);
+				}
+		}
+
+		// Get price information
+		if(!waiting && GUI.Button(new Rect(148 + 16, 0, 148, 64 * scale), "Get Price Info")) {
+				waiting = true;
+				InAppPurchaseManager.MainInAppAPI.GetProductInfo(productInfoCallback);
+		} else if(formatedPriceText != null) {
+				GUI.Label(new Rect(148 * 2 + 16 + 8, 0, 128, 32), formatedPriceText);
+		}
 	}
 	
 		
@@ -212,7 +213,7 @@ public class IAPManager : MonoBehaviour
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	void buyAppCallback(string inAppID, bool succeeded)
+	void buyAppCallback(string inAppID, string receipt, bool succeeded)
 	{
 		waiting = false;
 		int appIndex = InAppPurchaseManager.MainInAppAPI.GetAppIndexForAppID(inAppID);
@@ -281,6 +282,6 @@ public class IAPManager : MonoBehaviour
 		// If you have a better work-around, email support, Thanks.
 		//if(Input.GetKeyUp(KeyCode.Escape))
 		//	ApplicationEx.Quit();// NOTE: Unity 4.5 does not need this
-	}
+	}*/
 }
 
