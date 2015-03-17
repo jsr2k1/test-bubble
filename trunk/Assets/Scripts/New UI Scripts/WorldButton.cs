@@ -32,9 +32,11 @@ public class WorldButton : MonoBehaviour
 		//if(gameObject.name == "1" || PlayerPrefs.HasKey("STARS_" +(int.Parse(gameObject.name) - 1))){
 		if(name=="1" || int.Parse(name)<=PlayerPrefs.GetInt("Level")+1){
 			button.interactable = true;
-			transform.GetChild(0).GetComponent<Image>().sprite = bubbleFilled;
-		} else{
+		}else{
 			button.interactable = false;
+		}
+		if(int.Parse(name)<=PlayerPrefs.GetInt("Level")){
+			transform.GetChild(0).GetComponent<Image>().sprite = bubbleFilled;
 		}
 
 		Text currentText = Instantiate(numTextPrefab) as Text;
