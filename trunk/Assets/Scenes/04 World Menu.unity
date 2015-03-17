@@ -73,6 +73,7 @@ NavMeshSettings:
     minRegionArea: 2
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
+    tileSizeHint: 0
   m_NavMesh: {fileID: 0}
 --- !u!1 &66137063
 GameObject:
@@ -131,7 +132,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -203,7 +204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -275,7 +276,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -347,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1643,7 +1644,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -1715,7 +1716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1851,7 +1852,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -1923,7 +1924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -4923,7 +4924,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -4995,7 +4996,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -6075,7 +6076,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -6147,7 +6148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -7051,7 +7052,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -7123,7 +7124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -7195,7 +7196,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -7267,7 +7268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -8516,7 +8517,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -8588,7 +8589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -9932,8 +9933,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreReversedGraphics: 1
-  blockingObjects: 0
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -10095,7 +10096,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -10167,7 +10168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -11273,7 +11274,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -11345,7 +11346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -12580,7 +12581,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -12652,7 +12653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -13303,7 +13304,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -13375,7 +13376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -14002,7 +14003,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -14074,7 +14075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -15131,7 +15132,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -15203,7 +15204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -16503,7 +16504,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -16575,7 +16576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -16791,7 +16792,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -16863,7 +16864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -17768,8 +17769,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreReversedGraphics: 1
-  blockingObjects: 0
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -20016,7 +20017,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -20088,7 +20089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -20447,7 +20448,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -20519,7 +20520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -21927,7 +21928,7 @@ MonoBehaviour:
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
   star3: {fileID: 11400000, guid: db51363992f275d4b95a218b4fcf3f49, type: 2}
-  bubbleFilled: {fileID: 21300000, guid: 75c280f7d96138642a7f015d639cbdec, type: 3}
+  bubbleFilled: {fileID: 21300000, guid: 1fca09c6b926d5b4ebc660e1095caaff, type: 3}
   livesPop: {fileID: 1669811593}
   startPop: {fileID: 1502618727}
   levelTextPop: {fileID: 742490952}
@@ -21999,7 +22000,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: 70ecc9d581edd7847adb8be4b7961d1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60651238fac35b342b4747b384248fca, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
