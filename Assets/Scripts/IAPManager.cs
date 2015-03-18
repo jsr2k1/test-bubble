@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class IAPManager : MonoBehaviour
 {
-/*
+	/*
 	private bool waiting;
 	private string[] restoreInAppStatusText;
 	private string formatedPriceText;
