@@ -17,7 +17,7 @@ public class PlayingObjectManager : MonoBehaviour
 	GameObject bottomMostObject, topMostObject;
 	GameObject BottomBoundaryObj, TopBoundaryObj;
 
-	static List<int> listAnimalLevels = new List<int>(new int[]{5, 6, 8, 12, 15, 20, 25, 27, 32, 37, 40, 47});
+	static List<int> listAnimalLevels = new List<int>(new int[]{5, 6, 8, 12, 15, 20, 25, 27, 32, 37, 40, 47, 51, 56, 61, 64, 66, 68, 69});
 	
 	public enum MissionType{
 		Normal=0,
