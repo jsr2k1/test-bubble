@@ -17,7 +17,7 @@ public sealed class FB : ScriptableObject
     private static bool logging;
     private static bool status;
     private static bool xfbml;
-    private static bool frictionlessRequests=false;
+    private static bool frictionlessRequests;
 
     static IFacebook FacebookImpl
     {
@@ -96,7 +96,7 @@ public sealed class FB : ScriptableObject
             FBSettings.Logging,
             FBSettings.Status,
             FBSettings.Xfbml,
-            false/*FBSettings.FrictionlessRequests*/,
+            FBSettings.FrictionlessRequests,
             onHideUnity,
             authResponse);
     }
@@ -112,7 +112,7 @@ public sealed class FB : ScriptableObject
         bool logging = true,
         bool status = true,
         bool xfbml = false,
-        bool frictionlessRequests = false,
+        bool frictionlessRequests = true,
         HideUnityDelegate onHideUnity = null,
         string authResponse = null)
     {

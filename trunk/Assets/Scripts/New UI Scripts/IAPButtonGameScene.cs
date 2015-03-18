@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class IAPButtonGameScene : MonoBehaviour, IPointerClickHandler
 {
-	IAPManager iapManager;
+	IABManager iabManager;
 	public string item;
 	Text textPrice;
 
@@ -13,29 +13,29 @@ public class IAPButtonGameScene : MonoBehaviour, IPointerClickHandler
 
 	void Start()
 	{
-		GameObject go = GameObject.Find("IAPManager");
+		GameObject go = GameObject.Find("IABManager");
 		textPrice = transform.GetChild(0).GetComponent<Text>();
 
 		if(go!=null){
-			iapManager = go.GetComponent<IAPManager>();
+			iabManager = go.GetComponent<IABManager>();
 		}else{
-			Debug.Log("ERROR: No se encuentra el objeto IAPManager");
+			Debug.Log("ERROR: No se encuentra el objeto IABManager");
 		}
-		//TODO: textPrice.text = iapManager.dictPrices[item];
+		textPrice.text = iabManager.dictPrices[item];
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Estamos en la escena de juego y tenemos que acceder al objeto IAPManager que viene de la escena de mundos
+	//Estamos en la escena de juego y tenemos que acceder al objeto IABManager que viene de la escena de mundos
 	//No podemos asignar el objeto mediante la interfaz de Unity pq en esta escena no existe
 	public void OnPointerClick(PointerEventData data)
 	{
 		if(AudioManager.instance.bSoundsOn){
 			audio.Play();
 		}
-		if(iapManager!=null){
-			//TODO: iapManager.PurchaseSomething(item);
+		if(iabManager!=null){
+			iabManager.PurchaseSomething(item);
 		}else{
-			Debug.Log("ERROR: No se encuentra el complemento IAPManager");
+			Debug.Log("ERROR: No se encuentra el complemento IABManager");
 		}
 	}
 }
