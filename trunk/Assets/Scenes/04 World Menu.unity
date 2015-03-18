@@ -413,9 +413,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 40
+  numberBalls: 27
   ActualWorld: 3
-  refScore: 5000
+  refScore: 4300
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -1392,9 +1392,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 40
+  numberBalls: 24
   ActualWorld: 3
-  refScore: 5000
+  refScore: 3450
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -4362,9 +4362,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 40
+  numberBalls: 37
   ActualWorld: 3
-  refScore: 5000
+  refScore: 3700
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -4714,9 +4714,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 40
+  numberBalls: 21
   ActualWorld: 3
-  refScore: 5000
+  refScore: 17400
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -7541,9 +7541,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 40
+  numberBalls: 50
   ActualWorld: 3
-  refScore: 5000
+  refScore: 18000
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -8111,9 +8111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 40
+  numberBalls: 60
   ActualWorld: 3
-  refScore: 5000
+  refScore: 3750
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -8934,9 +8934,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 40
+  numberBalls: 28
   ActualWorld: 3
-  refScore: 5000
+  refScore: 4550
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -9080,7 +9080,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 40
   ActualWorld: 3
-  refScore: 5000
+  refScore: 3150
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -9222,9 +9222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 40
+  numberBalls: 38
   ActualWorld: 3
-  refScore: 5000
+  refScore: 5600
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -10422,7 +10422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 40
   ActualWorld: 3
-  refScore: 5000
+  refScore: 3800
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -11763,9 +11763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 40
+  numberBalls: 35
   ActualWorld: 3
-  refScore: 5000
+  refScore: 6500
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -12430,9 +12430,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 40
+  numberBalls: 20
   ActualWorld: 3
-  refScore: 5000
+  refScore: 3950
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -13089,7 +13089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 40
+  numberBalls: 38
   ActualWorld: 3
   refScore: 5000
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
@@ -16028,9 +16028,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 40
+  numberBalls: 54
   ActualWorld: 3
-  refScore: 5000
+  refScore: 5500
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -18366,9 +18366,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 40
+  numberBalls: 12
   ActualWorld: 3
-  refScore: 5000
+  refScore: 7500
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -18989,7 +18989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 40
   ActualWorld: 3
-  refScore: 5000
+  refScore: 4200
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -19866,9 +19866,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 40
+  numberBalls: 18
   ActualWorld: 3
-  refScore: 5000
+  refScore: 5500
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -21363,9 +21363,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c392b6d1e2204e8aa2398f7e6bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberBalls: 40
+  numberBalls: 18
   ActualWorld: 3
-  refScore: 5000
+  refScore: 5800
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
@@ -23060,7 +23060,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberBalls: 40
   ActualWorld: 3
-  refScore: 5000
+  refScore: 2950
   numTextPrefab: {fileID: 11400002, guid: 747e12eca46bea249b6352b8a4ed1679, type: 2}
   star1: {fileID: 11400000, guid: e7d2e775b2190e844a00e7474977aa4f, type: 2}
   star2: {fileID: 11400000, guid: 5a508c2eded59744da4ca6cd812b5546, type: 2}
