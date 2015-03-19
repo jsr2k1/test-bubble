@@ -32,7 +32,7 @@ public class Splash : MonoBehaviour
 			PlayerPrefs.SetInt("Bomb Ball", 2);
 		}
 		if(PlayerPrefs.HasKey("Coins")==false){
-			PlayerPrefs.SetInt("Coins", 300);
+			PlayerPrefs.SetInt("Coins", 200);
 		}
 		if(!PlayerPrefs.HasKey("Level")){
 			PlayerPrefs.SetInt("Level", 0);
