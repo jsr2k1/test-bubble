@@ -6225,7 +6225,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "2.99 \u20AC"
+  m_Text: 2.99 $
 --- !u!222 &626681790
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10640,7 +10640,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "19.99 \u20AC"
+  m_Text: 19.99 $
 --- !u!222 &1064116547
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12276,7 +12276,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "9.99 \u20AC"
+  m_Text: 9.99 $
 --- !u!222 &1174856460
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20745,7 +20745,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "4.99 \u20AC"
+  m_Text: 4.99 $
 --- !u!222 &1895127750
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21042,7 +21042,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "0.99 \u20AC"
+  m_Text: 0.99 $
 --- !u!222 &1932767144
 CanvasRenderer:
   m_ObjectHideFlags: 0

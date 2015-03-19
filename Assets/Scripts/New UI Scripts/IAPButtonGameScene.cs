@@ -21,7 +21,9 @@ public class IAPButtonGameScene : MonoBehaviour, IPointerClickHandler
 		}else{
 			Debug.Log("ERROR: No se encuentra el objeto IABManager");
 		}
-		textPrice.text = iabManager.dictPrices[item];
+		if(iabManager.dictPrices.ContainsKey(item)){
+			textPrice.text = iabManager.dictPrices[item];
+		}
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -16,4 +16,12 @@ class MyWindow : EditorWindow
 			i++;
 		}
 	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	[MenuItem ("Custom/DeleteAllKeysPlayerPrefs")]
+	public static void DeleteAllKeysPlayerPrefs()
+	{
+		PlayerPrefs.DeleteAll();
+	}
 }
