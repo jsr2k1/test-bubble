@@ -2248,6 +2248,7 @@ RectTransform:
   m_LocalScale: {x: .450000018, y: .449999988, z: 1}
   m_Children:
   - {fileID: 1915977970}
+  - {fileID: 1275033556}
   m_Father: {fileID: 459459912}
   m_RootOrder: 11
   m_AnchorMin: {x: .5, y: .5}
@@ -2295,7 +2296,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1073303868}
-        m_MethodName: loginfacebook
+        m_MethodName: ButtonPressedLogInFacebook
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2333,7 +2334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
-  m_Sprite: {fileID: 21300000, guid: d38c9bfe0e2fae94da747d48c6fd6166, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 20788888ae3d90b4a9d282684ed910aa, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2362,6 +2363,9 @@ MonoBehaviour:
   arcadeButton: {fileID: 1904409057}
   FacebookConnectedPopUp: {fileID: 1442842221}
   ConnectToFacebookPopUp: {fileID: 1040512026}
+  facebookSprite: {fileID: 21300000, guid: d38c9bfe0e2fae94da747d48c6fd6166, type: 3}
+  facebookGana: {fileID: 21300000, guid: 20788888ae3d90b4a9d282684ed910aa, type: 3}
+  earnText: {fileID: 1275033558}
 --- !u!114 &1073303870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2829,6 +2833,99 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1274532719}
+--- !u!1 &1275033555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1275033556}
+  - 222: {fileID: 1275033559}
+  - 114: {fileID: 1275033558}
+  - 114: {fileID: 1275033557}
+  - 114: {fileID: 1275033560}
+  m_Layer: 0
+  m_Name: Text-EARN
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1275033556
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1275033555}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1073303864}
+  m_RootOrder: 1
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 272.299988, y: 26.7999992}
+  m_SizeDelta: {x: 166.199997, y: 63.9000015}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &1275033557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1275033555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: .5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
+--- !u!114 &1275033558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1275033555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: .964705884, g: .894117653, b: .325490206, a: 1}
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 4a110488b11dd3946b032a0233f79306, type: 3}
+    m_FontSize: 35
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_RichText: 0
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: id_EARN
+--- !u!222 &1275033559
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1275033555}
+--- !u!114 &1275033560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1275033555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c5f59df9c621d44b275f9878c34b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1315778238
 GameObject:
   m_ObjectHideFlags: 0
@@ -4384,7 +4481,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 41, y: 4}
+  m_AnchoredPosition: {x: -4.90999985, y: 4}
   m_SizeDelta: {x: 229, y: 71}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1915977971
@@ -4575,10 +4672,9 @@ GameObject:
   - 222: {fileID: 2065175021}
   - 114: {fileID: 2065175020}
   - 114: {fileID: 2065175019}
-  - 114: {fileID: 2065175018}
   - 114: {fileID: 2065175023}
   m_Layer: 5
-  m_Name: ButtonFacebook
+  m_Name: ButtonDisconnectFacebook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4601,17 +4697,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -94}
   m_SizeDelta: {x: 192.399994, y: 51}
   m_Pivot: {x: .5, y: .5}
---- !u!114 &2065175018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2065175016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dffc566112c6dde4d91ccd410c2f9afe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2065175019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4651,8 +4736,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2065175018}
-        m_MethodName: ButtonPressed
+      - m_Target: {fileID: 1073303868}
+        m_MethodName: ButtonPressedLogOutFacebook
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -225,7 +225,6 @@ public class ParseManager : MonoBehaviour
 			PlayerPrefs.SetInt("Multicolor Ball", int.Parse(currentParseObject.Get<string>("MulticolorBall")));
 			PlayerPrefs.SetInt("Fire Ball", int.Parse(currentParseObject.Get<string>("FireBall")));
 			PlayerPrefs.SetInt("Bomb Ball", int.Parse(currentParseObject.Get<string>("BombBall")));
-			PlayerPrefs.SetInt("FirstTimeFacebookLogin",0);
 		}
 		//Dado que en algunos casos cogemos el valor maximo, hay que actualizar los datos en Parse tambien
 		SaveCurrentData();

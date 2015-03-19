@@ -5,16 +5,11 @@ public class Splash : MonoBehaviour
 {
 	public float timer;
 	public static Sprite spriteIMG;
-	public bool bDeleteAllKeys; //debug
 	public int force_current_level=-1; //debug
 	public int initial_lives;
 
 	void Awake()
 	{
-		//Test Only
-		if(bDeleteAllKeys){
-			PlayerPrefs.DeleteAll();
-		}
 		if(!PlayerPrefs.HasKey("Lives")){
 			PlayerPrefs.SetInt("Lives", initial_lives);
 			LivesManager.lives = 5;
@@ -50,6 +45,9 @@ public class Splash : MonoBehaviour
 		}
 		if(!PlayerPrefs.HasKey("NumTimesPlayed")){
 			PlayerPrefs.SetInt("NumTimesPlayed", 0);
+		}else{
+			int n = PlayerPrefs.GetInt("NumTimesPlayed");
+			PlayerPrefs.SetInt("NumTimesPlayed", n+1);
 		}
 		//Test Only
 		if(force_current_level>0){
