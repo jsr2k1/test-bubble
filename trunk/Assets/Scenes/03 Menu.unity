@@ -2359,6 +2359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 083ae62191385e9418450c7b5a2b4d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  facebookDisconnectButton: {fileID: 2065175019}
   playButton: {fileID: 402549657}
   arcadeButton: {fileID: 1904409057}
   FacebookConnectedPopUp: {fileID: 1442842221}
