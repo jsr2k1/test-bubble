@@ -203,16 +203,18 @@ public class ParseManager : MonoBehaviour
 		PlayerPrefs.SetInt("Highscore", Mathf.Max(PlayerPrefs.GetInt("Highscore"), int.Parse(currentParseObject.Get<string>("HighScore"))));
 
 		//Miramos cual es el nivel minimo guardado en PlayerPrefs o en Parse para no salirnos de rango en el otro diccionario
-		//STARS
 		int currentLevel = Mathf.Min(PlayerPrefs.GetInt("Level"), int.Parse(currentParseObject.Get<string>("currentLevel")));
-		IDictionary<string, string> dicStars = currentParseObject.Get<IDictionary<string, string>>("starsDic");
-		for(int i=1;i<=currentLevel;i++){
-			PlayerPrefs.SetInt("STARS_"+i, Mathf.Max(PlayerPrefs.GetInt("STARS_"+i), int.Parse(dicStars["STARS_"+i])));
-		}
-		//SCORE
-		IDictionary<string, string> dicScore = currentParseObject.Get<IDictionary<string, string>>("scoreDic");
-		for(int i=1;i<=currentLevel;i++){
-			PlayerPrefs.SetInt("SCORE_"+i, Mathf.Max(PlayerPrefs.GetInt("SCORE_"+i), int.Parse(dicScore["SCORE_"+i])));
+		if(currentLevel>0){
+			//STARS
+			IDictionary<string, string> dicStars = currentParseObject.Get<IDictionary<string, string>>("starsDic");
+			for(int i=1;i<=currentLevel;i++){
+				PlayerPrefs.SetInt("STARS_"+i, Mathf.Max(PlayerPrefs.GetInt("STARS_"+i), int.Parse(dicStars["STARS_"+i])));
+			}
+			//SCORE
+			IDictionary<string, string> dicScore = currentParseObject.Get<IDictionary<string, string>>("scoreDic");
+			for(int i=1;i<=currentLevel;i++){
+				PlayerPrefs.SetInt("SCORE_"+i, Mathf.Max(PlayerPrefs.GetInt("SCORE_"+i), int.Parse(dicScore["SCORE_"+i])));
+			}
 		}
 		//Si es la primera vez que el usuario se conecta a facebook en ese dispositivo -> Cogemos los valores maximos entre Parse y PlayerPrefs
 		//Si ya se ha conectado antes -> 
