@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class FacebookBubble : MonoBehaviour
 {
 	public static FacebookBubble instance;
-	Button facebookButton;
+	Button facebookConnectButton;
+	public Button facebookDisconnectButton;
 	public Button playButton;
 	public Button arcadeButton;
 	Image facebookImage;
@@ -23,7 +24,7 @@ public class FacebookBubble : MonoBehaviour
 	{
 		instance = this;
 	
-		facebookButton = GetComponent<Button>();
+		facebookConnectButton = GetComponent<Button>();
 		facebookImage = GetComponent<Image>();
 		facebookText = transform.GetChild(0).gameObject;
 		
@@ -36,9 +37,13 @@ public class FacebookBubble : MonoBehaviour
 		}
 		
 		if(FB.IsLoggedIn){
-			facebookButton.enabled=false;
+			facebookConnectButton.enabled=false;
 			facebookImage.enabled=false;
 			facebookText.SetActive(false);
+			facebookDisconnectButton.gameObject.SetActive(true);
+		}else{
+			facebookConnectButton.enabled=true;
+			facebookDisconnectButton.gameObject.SetActive(false);
 		}
 	}
 	
@@ -57,16 +62,18 @@ public class FacebookBubble : MonoBehaviour
 		
 	void Update()
 	{
-		if(FB.IsLoggedIn && facebookButton.enabled){
-			facebookButton.enabled=false;
+		if(FB.IsLoggedIn && facebookConnectButton.enabled){
+			facebookConnectButton.enabled=false;
 			facebookImage.enabled=false;
 			facebookText.SetActive(false);
+			facebookDisconnectButton.gameObject.SetActive(true);
 		}
 		
-		if(!FB.IsLoggedIn && !facebookButton.enabled){
-			facebookButton.enabled=true;
+		if(!FB.IsLoggedIn && !facebookConnectButton.enabled){
+			facebookConnectButton.enabled=true;
 			facebookImage.enabled=true;
 			facebookText.SetActive(true);
+			facebookDisconnectButton.gameObject.SetActive(false);
 		}
 	}
 	
