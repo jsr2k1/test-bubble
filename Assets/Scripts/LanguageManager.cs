@@ -97,6 +97,7 @@ public class LanguageManager : MonoBehaviour
 		dict.Add("id_tutorial_booster_bomba", new string[] {"Usa la bomba para petar varias bolas, incluso obst\u00E1culos", "Use the bomb to destroy several bubbles, including obstacles"});
 		dict.Add("id_tutorial_booster_fuego", new string[] {"Usa la bola fuego para destruir muchas bolas", "Use the fireball to destroy everything in its way"});
 		dict.Add("id_tutorial_booster_multicolor", new string[] {"Usa la bola multicolor para combinar con cualquier color", "Use the Multicolor bubble to combine the match with any color"});
+		dict.Add("id_tutorial_bola_rayo", new string[] {"Toca la Bola Rayo para petar todas las bolas de la l\u00EDnea", "Touch the Line Blast to remove all the bubbles on that line"});
 	}
 }
 
