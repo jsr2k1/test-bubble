@@ -140,7 +140,12 @@ public class StrikerManager : MonoBehaviour
 				if(LevelManager.currentBalls>1){
 					if(remainingObjects!=null){
 						index = Random.Range(0, remainingObjects.Count);
-						nextStrikerObject = (GameObject)Instantiate((GameObject)remainingObjects[index], nextStrikerPosition.position, Quaternion.identity);
+						//Caso especial para el nivel 4 (bola roja para el rebote)
+						if(LevelManager.levelNo==4 && LevelManager.currentBalls==25){
+							nextStrikerObject = (GameObject)Instantiate(InGameScriptRefrences.playingObjectGeneration.playingObjectsPrefabs[4], nextStrikerPosition.position, Quaternion.identity);
+						}else{
+							nextStrikerObject = (GameObject)Instantiate((GameObject)remainingObjects[index], nextStrikerPosition.position, Quaternion.identity);
+						}
 					}else{
 						nextStrikerObject = (GameObject)Instantiate(InGameScriptRefrences.playingObjectGeneration.playingObjectsPrefabs[0], nextStrikerPosition.position, Quaternion.identity);
 					}
