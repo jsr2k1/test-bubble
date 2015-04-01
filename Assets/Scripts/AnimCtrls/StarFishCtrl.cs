@@ -1,0 +1,26 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+
+public class StarFishCtrl : MonoBehaviour
+{
+	int waitTime=5;
+	Animator animator;
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void Start()
+	{
+		animator = GetComponent<Animator>();
+		StartCoroutine(DoMove());
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	IEnumerator DoMove()
+	{
+		yield return new WaitForSeconds(waitTime);
+		animator.SetTrigger("MoveStar");
+		StartCoroutine(DoMove());
+	}
+}
