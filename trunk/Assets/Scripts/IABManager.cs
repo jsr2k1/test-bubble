@@ -70,7 +70,6 @@ public class IABManager : MonoBehaviour
 	void billingSupportedEvent()
 	{
 		Debug.Log("billingSupportedEvent");
-		
 
 		var androidSkus = new string[] { item1, item2, item3, item4, item5 };
 		GoogleIAB.queryInventory(androidSkus);
@@ -88,8 +87,10 @@ public class IABManager : MonoBehaviour
 	void queryInventorySucceededEvent( List<GooglePurchase> purchases, List<GoogleSkuInfo> skus )
 	{
 		foreach(GoogleSkuInfo sku in skus){
-			dictPrices.Add(sku.productId, sku.price);
-			Debug.Log(sku.productId + ":" + sku.price);
+			if(!dictPrices.ContainsKey(sku.productId)){
+				dictPrices.Add(sku.productId, sku.price);
+			}
+			//Debug.Log(sku.productId + ":" + sku.price);
 		}
 	}
 	

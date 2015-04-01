@@ -45,7 +45,9 @@ public class LanguageManager : MonoBehaviour
 	void fillDict()
 	{
 		dict.Add("id_play", new string[] {"JUGAR", "PLAY"});
-		dict.Add("id_connect", new string[] {"CONECTAR", "CONNECT"});
+		dict.Add("id_connect", new string[] {"CONECTA", "CONNECT"});
+		dict.Add("id_disconnect", new string[] {"DESCONECTAR", "DISCONNECT"});
+		dict.Add("id_rate_me", new string[] {"PUNTUAR!", "RATE ME!"});
 		dict.Add("id_settings", new string[] {"AJUSTES", "SETTINGS"});
 		dict.Add("id_quit", new string[] {"¿SALIR DEL JUEGO?", "EXIT GAME?"});
 		dict.Add("id_yes", new string[] {"SI", "YES"});
@@ -71,7 +73,6 @@ public class LanguageManager : MonoBehaviour
 		dict.Add("id_soon", new string[] {"Pr\u00F3ximamente...", "Coming soon..."});
 		dict.Add("id_PLAY", new string[] {"MUNDOS", "WORLDS"});
 		dict.Add("id_ARCADE", new string[] {"ARCADE", "ARCADE"});
-		dict.Add("id_CONNECT", new string[] {"CONECTA", "CONNECT"});
 		dict.Add("id_EARN", new string[] {"GANA", "EARN"});
 		dict.Add("id_outofbubbles", new string[] {"¡No te quedan m\u00E1s bolas!", "You are out of bubbles!"});
 		dict.Add("id_infooutofbubbles", new string[] {"¡Consigue 5 bolas extra y una bola multicolor!", "Get one multicolor ball and 5 extra bubbles!"});
