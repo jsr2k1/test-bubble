@@ -137,6 +137,17 @@ public class LevelParser : MonoBehaviour
 			filedata.Add(list);
 		}
 		sr.Close();
+		
+		//WEB PLAYER version
+		/*filedata = new List<List<string>>();
+		string[] stringSeparators = new string[] { "\r\n" };
+		string[] texto = textAssetLevels.text.Split(stringSeparators, StringSplitOptions.None);
+		List<string> levels = texto.ToList();
+		foreach(string line in levels){
+			List<string> list = new List<string>();
+			list = line.Split('\t').ToList();
+			filedata.Add(list);
+		}*/
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

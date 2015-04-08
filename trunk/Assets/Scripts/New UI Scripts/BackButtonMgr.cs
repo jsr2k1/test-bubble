@@ -95,7 +95,12 @@ public class BackButtonMgr : MonoBehaviour
 				}
 				//GAME-ARCADE
 				else if(Application.loadedLevelName=="06 Arcade Game Scene"){
-					quitArcadePopUp.ShowPopUp();
+					if(PopUpMgr.currentPopUpObj!=null){
+						PopUpMgr.currentPopUpObj.GetComponent<PopUpMgr>().HidePopUp();
+					}
+					else{
+						quitArcadePopUp.ShowPopUp();
+					}
 				}
 			}
 		}

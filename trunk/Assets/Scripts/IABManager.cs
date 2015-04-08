@@ -105,50 +105,59 @@ public class IABManager : MonoBehaviour
 	
 	public void PurchaseSomething(string productId)
 	{
+#if UNITY_EDITOR
+		DoPurchase(productId);
+#else
 		IAP.purchaseConsumableProduct(productId, (didSucceed, error) =>
 		{
 			Debug.Log("purchasing product " + productId + " result: " + didSucceed);
 			
-			if(!didSucceed){
+			if(didSucceed){
+				DoPurchase(productId);
+			}else{
 				Debug.Log("purchase error: " + error);
 			}
-			//La compra se ha realizado correctamente
-			else{
-				if(productId == "xsmall") {
-					int coins = PlayerPrefs.GetInt("Coins");
-					coins = coins + 100;
-					CoinsManager.instance.SetCoins(coins);
-					Adjust.trackRevenue(0.99, "v00myc");
-				}
-				if(productId == "small") {
-					int coins = PlayerPrefs.GetInt("Coins");
-					coins = coins + 400;
-					CoinsManager.instance.SetCoins(coins);
-					Adjust.trackRevenue(2.99, "x088of");
-				}
-				if(productId == "medium") {
-					int coins = PlayerPrefs.GetInt("Coins");
-					coins = coins + 800;
-					CoinsManager.instance.SetCoins(coins);
-					Adjust.trackRevenue(4.99, "4hz7lk");
-				}
-				if(productId == "big") {
-					int coins = PlayerPrefs.GetInt("Coins");
-					coins = coins + 2000;
-					CoinsManager.instance.SetCoins(coins);
-					Adjust.trackRevenue(9.99, "mh1aku");
-				}
-				if(productId == "extrabig") {
-					int coins = PlayerPrefs.GetInt("Coins");
-					coins = coins + 5000;
-					CoinsManager.instance.SetCoins(coins);
-					Adjust.trackRevenue(19.99, "9ok2mj");
-				}
-				
-				ParseManager.instance.SaveCurrentData();
-				Adjust.trackEvent("80jv5o");
-			}
 		});
+#endif
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void DoPurchase(string productId)
+	{
+		if(productId == "xsmall") {
+			int coins = PlayerPrefs.GetInt("Coins");
+			coins = coins + 100;
+			CoinsManager.instance.SetCoins(coins);
+			Adjust.trackRevenue(0.99, "v00myc");
+		}
+		if(productId == "small") {
+			int coins = PlayerPrefs.GetInt("Coins");
+			coins = coins + 400;
+			CoinsManager.instance.SetCoins(coins);
+			Adjust.trackRevenue(2.99, "x088of");
+		}
+		if(productId == "medium") {
+			int coins = PlayerPrefs.GetInt("Coins");
+			coins = coins + 800;
+			CoinsManager.instance.SetCoins(coins);
+			Adjust.trackRevenue(4.99, "4hz7lk");
+		}
+		if(productId == "big") {
+			int coins = PlayerPrefs.GetInt("Coins");
+			coins = coins + 2000;
+			CoinsManager.instance.SetCoins(coins);
+			Adjust.trackRevenue(9.99, "mh1aku");
+		}
+		if(productId == "extrabig") {
+			int coins = PlayerPrefs.GetInt("Coins");
+			coins = coins + 5000;
+			CoinsManager.instance.SetCoins(coins);
+			Adjust.trackRevenue(19.99, "9ok2mj");
+		}
+		
+		ParseManager.instance.SaveCurrentData();
+		Adjust.trackEvent("80jv5o");
 	}
 }
 
