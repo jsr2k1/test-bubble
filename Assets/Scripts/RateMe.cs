@@ -52,7 +52,7 @@ public class RateMe : MonoBehaviour
 		#if UNITY_ANDROID
 		Application.OpenURL("market://details?id=com.aratinga.bubbleparadise2");
 		#elif UNITY_IPHONE
-		Application.OpenURL("itms-apps://itunes.apple.com/app/com.aratinga.bubbleparadise2");
+		Application.OpenURL("itms-apps://itunes.apple.com/app/926782760");
 		#endif
 		
 	}
