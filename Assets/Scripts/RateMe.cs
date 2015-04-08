@@ -2,6 +2,9 @@
 using UnityEngine.UI;
 using System.Collections;
 
+//En este foro se habla del tema
+//http://stackoverflow.com/questions/433907/how-to-link-to-apps-on-the-app-store
+
 public class RateMe : MonoBehaviour
 {
 	Button button;
@@ -52,7 +55,7 @@ public class RateMe : MonoBehaviour
 		#if UNITY_ANDROID
 		Application.OpenURL("market://details?id=com.aratinga.bubbleparadise2");
 		#elif UNITY_IPHONE
-		Application.OpenURL("itms-apps://itunes.apple.com/app/926782760");
+		Application.OpenURL("itms-apps://itunes.apple.com/app/id926782760");
 		#endif
 		
 	}
