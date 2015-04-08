@@ -627,7 +627,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 2
-  bDeleteAllKeys: 0
   force_current_level: -1
   initial_lives: 5
 --- !u!1001 &680489053
@@ -675,7 +674,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: ced352bb34d2c4f90900501a0af55b93, type: 2}
       propertyPath: environment
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: ced352bb34d2c4f90900501a0af55b93, type: 2}
       propertyPath: m_Name
@@ -1212,7 +1211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appToken: at8alrss2y7r
   logLevel: 3
-  environment: 1
+  environment: 0
   eventBuffering: 0
   startManually: 0
 --- !u!4 &1764625429

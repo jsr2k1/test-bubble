@@ -116,7 +116,7 @@ public class FacebookBubble : MonoBehaviour
 			if(PlayerPrefs.GetInt("FirstTimeFacebookLogin")==1){
 				int coins =  PlayerPrefs.GetInt("Coins");
 				PlayerPrefs.SetInt("Coins", coins+40);
-				PlayerPrefs.SetInt("FirstTimeFacebookLogin",0);
+				//PlayerPrefs.SetInt("FirstTimeFacebookLogin",0);
 				earnText.enabled=false;
 			}
 		} else {

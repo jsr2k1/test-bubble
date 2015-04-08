@@ -22,7 +22,7 @@ public class CoinsManager : MonoBehaviour
 	public void SetCoins(int newCoins)
 	{
 		coins = newCoins;
-		PlayerPrefs.SetInt("Coins", CoinsManager.instance.coins);
+		PlayerPrefs.SetInt("Coins", newCoins);
 
 		if(OnCoinsChanged!=null){
 			OnCoinsChanged();
