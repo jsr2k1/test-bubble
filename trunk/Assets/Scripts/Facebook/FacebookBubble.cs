@@ -36,14 +36,16 @@ public class FacebookBubble : MonoBehaviour
 			earnText.enabled=false;
 		}
 		
-		if(FB.IsLoggedIn){
-			facebookConnectButton.enabled=false;
-			facebookImage.enabled=false;
-			facebookText.SetActive(false);
-			facebookDisconnectButton.gameObject.SetActive(true);
+		Debug.Log(Application.internetReachability);
+		
+		if(Application.internetReachability!=NetworkReachability.NotReachable){
+			if(FB.IsLoggedIn){
+				SetFacebookButtons(false, true);
+			}else{
+				SetFacebookButtons(true, false);
+			}
 		}else{
-			facebookConnectButton.enabled=true;
-			facebookDisconnectButton.gameObject.SetActive(false);
+			SetFacebookButtons(false, false);
 		}
 	}
 	
@@ -62,19 +64,26 @@ public class FacebookBubble : MonoBehaviour
 		
 	void Update()
 	{
-		if(FB.IsLoggedIn && facebookConnectButton.enabled){
-			facebookConnectButton.enabled=false;
-			facebookImage.enabled=false;
-			facebookText.SetActive(false);
-			facebookDisconnectButton.gameObject.SetActive(true);
+		if(Application.internetReachability!=NetworkReachability.NotReachable){
+			if(FB.IsLoggedIn && facebookConnectButton.enabled){
+				SetFacebookButtons(false, true);
+			}
+			if(!FB.IsLoggedIn && !facebookConnectButton.enabled){
+				SetFacebookButtons(true, false);
+			}
+		}else{
+			SetFacebookButtons(false, false);
 		}
-		
-		if(!FB.IsLoggedIn && !facebookConnectButton.enabled){
-			facebookConnectButton.enabled=true;
-			facebookImage.enabled=true;
-			facebookText.SetActive(true);
-			facebookDisconnectButton.gameObject.SetActive(false);
-		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void SetFacebookButtons(bool bConnect, bool bDisconnect)
+	{
+		facebookConnectButton.enabled=bConnect;
+		facebookImage.enabled=bConnect;
+		facebookText.SetActive(bConnect);
+		facebookDisconnectButton.gameObject.SetActive(bDisconnect);
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
