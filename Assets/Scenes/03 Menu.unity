@@ -2468,7 +2468,6 @@ GameObject:
   - 222: {fileID: 1091748721}
   - 114: {fileID: 1091748720}
   - 114: {fileID: 1091748719}
-  - 114: {fileID: 1091748722}
   m_Layer: 5
   m_Name: ButtonRateMe
   m_TagString: Untagged
@@ -2533,8 +2532,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1091748722}
-        m_MethodName: OnButtonRateMePressed
+      - m_Target: {fileID: 1802644138}
+        m_MethodName: OnButtonRateMeSettingsPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2574,19 +2573,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1091748717}
---- !u!114 &1091748722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1091748717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ac162995d6915e47878120198cea3b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 33668682}
-  bHideAfterClick: 0
 --- !u!1 &1147725666
 GameObject:
   m_ObjectHideFlags: 0
@@ -4497,8 +4483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac162995d6915e47878120198cea3b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
-  bHideAfterClick: 1
+  buttonRateMeSettings: {fileID: 1091748717}
 --- !u!114 &1802644139
 MonoBehaviour:
   m_ObjectHideFlags: 0

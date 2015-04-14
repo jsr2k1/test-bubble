@@ -9,9 +9,8 @@ public class RateMe : MonoBehaviour
 {
 	Button button;
 	Image image;
-	public Text text;
-	public bool bHideAfterClick;
-	static bool bClickedOnce;
+	
+	public GameObject buttonRateMeSettings;
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -22,22 +21,22 @@ public class RateMe : MonoBehaviour
 		
 		button.enabled=false;
 		image.enabled=false;
-		if(text!=null){
-			text.enabled=false;
-		}
 		
-		bClickedOnce = (PlayerPrefs.GetInt("RateMeClicked") == 1);
+		buttonRateMeSettings.SetActive(false);
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void Start()
 	{
-		if(Application.internetReachability!=NetworkReachability.NotReachable){
+		if(Application.internetReachability!=NetworkReachability.NotReachable)
+		{
+			bool bClicked = (PlayerPrefs.GetInt("RateMeClicked") == 1);
 			int n = PlayerPrefs.GetInt("NumTimesPlayed");
-			if(n>3 && bHideAfterClick && !bClickedOnce){
-				button.enabled=true;
-				image.enabled=true;
+			if(n>0){
+				button.enabled=!bClicked;
+				image.enabled=!bClicked;
+				buttonRateMeSettings.SetActive(bClicked);
 			}
 		}
 	}
@@ -47,12 +46,10 @@ public class RateMe : MonoBehaviour
 	//Despues, mostramos solamente el boton dentro del PopUp de settings
 	public void OnButtonRateMePressed()
 	{
-		if(bHideAfterClick){
-			button.enabled=false;
-			image.enabled=false;
-			bClickedOnce=true;
-			PlayerPrefs.SetInt("RateMeClicked", 1);
-		}
+		button.enabled=false;
+		image.enabled=false;
+		buttonRateMeSettings.SetActive(true);
+		PlayerPrefs.SetInt("RateMeClicked", 1);
 		
 		#if UNITY_ANDROID
 		Application.OpenURL("market://details?id=com.aratinga.bubbleparadise2");
@@ -64,24 +61,14 @@ public class RateMe : MonoBehaviour
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	void Update()
+	public void OnButtonRateMeSettingsPressed()
 	{
-		if(Application.internetReachability!=NetworkReachability.NotReachable){
-			if(!button.enabled && bClickedOnce && !bHideAfterClick){
-				button.enabled=true;
-				image.enabled=true;
-				if(text!=null){
-					text.enabled=true;
-				}
-			}else{
-				button.enabled=false;
-				image.enabled=false;
-				if(text!=null){
-					text.enabled=false;
-				}
-			}
-		}
-	}	
+		#if UNITY_ANDROID
+		Application.OpenURL("market://details?id=com.aratinga.bubbleparadise2");
+		#elif UNITY_IPHONE
+		Application.OpenURL("itms-apps://itunes.apple.com/app/id926782760");
+		#endif
+	}
 }
 
 
