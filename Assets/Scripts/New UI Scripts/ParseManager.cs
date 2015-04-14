@@ -155,6 +155,8 @@ public class ParseManager : MonoBehaviour
 	//Rellenamos los campos del ParseObject con los datos del PlayerPrefs
 	void FillObj(ParseObject obj)
 	{
+		Debug.Log("FillObj: "+PlayerPrefs.GetInt("Coins").ToString());
+	
 		obj["currentLevel"] = PlayerPrefs.GetInt("Level").ToString();
 		obj["Coins"] = PlayerPrefs.GetInt("Coins").ToString();
 		obj["MulticolorBall"] = PlayerPrefs.GetInt("Multicolor Ball").ToString();
@@ -164,9 +166,6 @@ public class ParseManager : MonoBehaviour
 		obj["starsDic"] = FillStarsDictionary();
 		obj["scoreDic"] = FillScoreDictionary();
 		obj["deviceID"] = SystemInfo.deviceUniqueIdentifier;
-		obj["deviceModel"] = SystemInfo.deviceModel;
-		obj["deviceType"] = SystemInfo.deviceType.ToString();
-		obj["operatingSystem"] = SystemInfo.operatingSystem;
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

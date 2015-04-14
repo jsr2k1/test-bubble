@@ -33,10 +33,12 @@ public class RateMe : MonoBehaviour
 	
 	void Start()
 	{
-		int n = PlayerPrefs.GetInt("NumTimesPlayed");
-		if(n>3 && bHideAfterClick && !bClickedOnce){
-			button.enabled=true;
-			image.enabled=true;
+		if(Application.internetReachability!=NetworkReachability.NotReachable){
+			int n = PlayerPrefs.GetInt("NumTimesPlayed");
+			if(n>3 && bHideAfterClick && !bClickedOnce){
+				button.enabled=true;
+				image.enabled=true;
+			}
 		}
 	}
 	
@@ -64,11 +66,19 @@ public class RateMe : MonoBehaviour
 	
 	void Update()
 	{
-		if(!button.enabled && bClickedOnce && !bHideAfterClick){
-			button.enabled=true;
-			image.enabled=true;
-			if(text!=null){
-				text.enabled=true;
+		if(Application.internetReachability!=NetworkReachability.NotReachable){
+			if(!button.enabled && bClickedOnce && !bHideAfterClick){
+				button.enabled=true;
+				image.enabled=true;
+				if(text!=null){
+					text.enabled=true;
+				}
+			}else{
+				button.enabled=false;
+				image.enabled=false;
+				if(text!=null){
+					text.enabled=false;
+				}
 			}
 		}
 	}	
