@@ -166,6 +166,9 @@ public class ParseManager : MonoBehaviour
 		obj["starsDic"] = FillStarsDictionary();
 		obj["scoreDic"] = FillScoreDictionary();
 		obj["deviceID"] = SystemInfo.deviceUniqueIdentifier;
+		obj["deviceModel"] = SystemInfo.deviceModel;
+		obj["deviceType"] = SystemInfo.deviceType.ToString();
+		obj["operatingSystem"] = SystemInfo.operatingSystem;
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
