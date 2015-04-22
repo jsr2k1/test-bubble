@@ -6,6 +6,7 @@ public class LoadModeButton : MonoBehaviour
 	public void LoadWorldMode()
 	{
 		Adjust.trackEvent("1b5w81");
+		GA.API.Design.NewEvent("LoadWorldMode");
 		
 		Application.LoadLevel("04 World Menu");
 	}
@@ -15,6 +16,7 @@ public class LoadModeButton : MonoBehaviour
 	public void LoadArcadeMode()
 	{
 		Adjust.trackEvent("xr59vt");
+		GA.API.Design.NewEvent("LoadArcadeMode");
 		
 		LevelManager.GameType = LevelManager.GameTypes.ARCADE;
 
