@@ -23,7 +23,7 @@ public class GA_Settings : ScriptableObject
 	/// <summary>
 	/// Types of help given in the help box of the GA inspector
 	/// </summary>
-	public enum HelpTypes { None, FpsCriticalAndTrackTargetHelp, GuiAndTrackTargetHelp, IncludeSystemSpecsHelp, ProvideCustomUserID };
+	public enum HelpTypes { None, IncludeSystemSpecsHelp, ProvideCustomUserID };
 	public enum MessageTypes { None, Error, Info, Warning };
 	
 	/// <summary>
@@ -42,7 +42,7 @@ public class GA_Settings : ScriptableObject
 	/// The version of the GA Unity Wrapper plugin
 	/// </summary>
 	[HideInInspector]
-	public static string VERSION = "0.6.5";
+	public static string VERSION = "0.6.9";
 	
 	#endregion
 	
@@ -64,15 +64,10 @@ public class GA_Settings : ScriptableObject
 	
 	public string CustomArea = string.Empty;
 	
-	//Set the track target to use for predefined events, such as CriticalFPS (position of track target is sent with these events).
-	public Transform TrackTarget;
-	
 	[SerializeField]
 	public string GameKey = "";
 	[SerializeField]
 	public string SecretKey = "";
-	[SerializeField]
-	public string ApiKey = "";
 	[SerializeField]
 	public string Build = "0.1";
 
@@ -117,7 +112,6 @@ public class GA_Settings : ScriptableObject
 	public bool NewSessionOnResume = true;
 	public bool AutoSubmitUserInfo = true;
 	public bool DelayQuitToSendData = true;
-	public Vector3 HeatmapGridSize = Vector3.one;
 
 	//bytes
 	public long ArchiveMaxFileSize = 2000;
@@ -145,16 +139,19 @@ public class GA_Settings : ScriptableObject
 	public static bool CB_DEFAULT = false;
 	public bool IAD_enabled = IAD_DEFAULT;
 	public bool CB_enabled = CB_DEFAULT;
-	#if UNITY_IPHONE || UNITY_EDITOR
+	#if (UNITY_IPHONE || UNITY_EDITOR) && (UNITY_4_9 || UNITY_4_8 || UNITY_4_7 || UNITY_4_6 || UNITY_4_5 || UNITY_4_3 || UNITY_4_2 || UNITY_4_1 || UNITY_4_0_1 || UNITY_4_0 || UNITY_3_5 || UNITY_3_4 || UNITY_3_3 || UNITY_3_2 || UNITY_3_1 || UNITY_3_0_0 || UNITY_3_0 || UNITY_2_6_1 || UNITY_2_6)
 	public ADBannerView.Type IAD_type = ADBannerView.Type.Banner;
 	public ADBannerView.Layout IAD_layout = ADBannerView.Layout.Top;
+	#elif (UNITY_IPHONE || UNITY_EDITOR)
+	public UnityEngine.iOS.ADBannerView.Type IAD_type = UnityEngine.iOS.ADBannerView.Type.Banner;
+	public UnityEngine.iOS.ADBannerView.Layout IAD_layout = UnityEngine.iOS.ADBannerView.Layout.Top;
 	#endif
 	public Vector2 IAD_position = Vector2.zero;
 	public float IAD_Duration = 10;
 
 	public bool CB_foldout = true;
-	public string CB_appID;
-	public string CB_appSig;
+	//public string CB_appID;
+	//public string CB_appSig;
 	
 	//These values are used for the GA_Inspector only
 	public enum InspectorStates { Account, Basic, Debugging, Pref, Ads }
@@ -336,6 +333,10 @@ public class GA_Settings : ScriptableObject
 		#if !UNITY_EDITOR && UNITY_STANDALONE_WIN
 		
 		string device = "PC";
+
+		#elif !UNITY_EDITOR && UNITY_ANDROID
+
+		string device = "Android";
 		
 		#elif !UNITY_EDITOR
 		
@@ -470,7 +471,13 @@ public class GA_Settings : ScriptableObject
 			}
 		}
 		catch
-		{ }
+		{ 
+			AndroidJavaClass up = new AndroidJavaClass ("com.unity3d.player.UnityPlayer");
+			AndroidJavaObject currentActivity = up.GetStatic<AndroidJavaObject> ("currentActivity");
+			AndroidJavaObject contentResolver = currentActivity.Call<AndroidJavaObject> ("getContentResolver");
+			AndroidJavaClass secure = new AndroidJavaClass ("android.provider.Settings$Secure");
+			uid = secure.CallStatic<string> ("getString", contentResolver, "android_id");
+		}
 		#endif
 
 		return uid;

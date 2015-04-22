@@ -129,31 +129,36 @@ public class IABManager : MonoBehaviour
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 100;
 			CoinsManager.instance.SetCoins(coins);
-			Adjust.trackRevenue(0.99, "v00myc");
+			Adjust.trackRevenue(99, "v00myc");
+			GA.API.Business.NewEvent("PurchaseXSmall", dictPrices.ContainsKey(item1) ? dictPrices[item1] : "none", 99);
 		}
 		if(productId == "small") {
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 400;
 			CoinsManager.instance.SetCoins(coins);
-			Adjust.trackRevenue(2.99, "x088of");
+			Adjust.trackRevenue(299, "x088of");
+			GA.API.Business.NewEvent("PurchaseSmall", dictPrices.ContainsKey(item2) ? dictPrices[item2] : "none", 299);
 		}
 		if(productId == "medium") {
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 800;
 			CoinsManager.instance.SetCoins(coins);
-			Adjust.trackRevenue(4.99, "4hz7lk");
+			Adjust.trackRevenue(499, "4hz7lk");
+			GA.API.Business.NewEvent("PurchaseMedium", dictPrices.ContainsKey(item3) ? dictPrices[item3] : "none", 499);
 		}
 		if(productId == "big") {
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 2000;
 			CoinsManager.instance.SetCoins(coins);
-			Adjust.trackRevenue(9.99, "mh1aku");
+			Adjust.trackRevenue(999, "mh1aku");
+			GA.API.Business.NewEvent("PurchaseBig", dictPrices.ContainsKey(item4) ? dictPrices[item4] : "none", 999);
 		}
 		if(productId == "extrabig") {
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 5000;
 			CoinsManager.instance.SetCoins(coins);
-			Adjust.trackRevenue(19.99, "9ok2mj");
+			Adjust.trackRevenue(1999, "9ok2mj");
+			GA.API.Business.NewEvent("PurchaseExtraBig", dictPrices.ContainsKey(item5) ? dictPrices[item5] : "none", 1999);
 		}
 		
 		ParseManager.instance.SaveCurrentData();

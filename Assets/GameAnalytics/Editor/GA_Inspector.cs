@@ -31,8 +31,6 @@ public class GA_Inspector : Editor
 	private GUIContent _passwordLabel			= new GUIContent("Password", "Your GameAnalytics user account password. Must be at least 8 characters in length.");
 	private GUIContent _studiosLabel			= new GUIContent("Studio", "Studios tied to your GameAnalytics user account.");
 	private GUIContent _gamesLabel				= new GUIContent("Game", "Games tied to the selected GameAnalytics studio.");
-	private GUIContent _apiKeyLabel				= new GUIContent("API Key", "Your GameAnalytics API Key - copy/paste from the GA website. This key is used for retrieving data from the GA servers, f.x. when you want to generate heatmaps.");
-	private GUIContent _heatmapSizeLabel		= new GUIContent("Heatmap Grid Size", "The size in Unity units of each heatmap grid space. Data visualized as a heatmap must use the same grid size as was used when the data was collected, otherwise the visualization will be wrong.");
 	private GUIContent _build					= new GUIContent("Build", "The current version of the game. Updating the build name for each test version of the game will allow you to filter by build when viewing your data on the GA website.");
 	//private GUIContent _useBundleVersion		= new GUIContent("Use Bundle Version", "Uses the Bundle Version from Player Settings instead of the Build field above (only works for iOS, Android, and Blackberry).");
 	private GUIContent _debugMode				= new GUIContent("Debug Mode", "Show additional debug messages from GA in the unity editor console when submitting data.");
@@ -78,12 +76,12 @@ public class GA_Inspector : Editor
 	private GUIContent _iAdposition				= new GUIContent("iAd Position:", "Position of the iOS iAd banner ads using Unity GUI coords and conventions. Set layout to manual to customize position.");
 	//private GUIContent _CB						= new GUIContent("Chartboost:", "This fold out contains options for using Chartboost ads.");
 	private GUIContent _CBenabled				= new GUIContent("Chartboost", "Enable/diable Chartboost ads.");
-	#if !UNITY_ANDROID
-	private GUIContent _CBappID					= new GUIContent("App ID:", "Your App ID. You can find this in under your app in Chartboost.");
-	private GUIContent _CBappSig				= new GUIContent("App Signature:", "Your App Signature. You can find this in under your app in Chartboost.");
-	#endif
+	//#if !UNITY_ANDROID
+	//private GUIContent _CBappID					= new GUIContent("App ID:", "Your App ID. You can find this in under your app in Chartboost.");
+	//private GUIContent _CBappSig				= new GUIContent("App Signature:", "Your App Signature. You can find this in under your app in Chartboost.");
+	//#endif
 
-	private static Texture2D _triggerAdNotEnabledTexture = new Texture2D(1, 1);
+	//private static readonly Texture2D _triggerAdNotEnabledTexture = new Texture2D(1, 1);
 	private static bool _checkedProjectNames = false;
 	
 	private const string _unityToken = "KKy7MQNc2TEUOeK0EMtR";
@@ -928,32 +926,7 @@ public class GA_Inspector : Editor
 			if(ga.CurrentInspectorState == GA_Settings.InspectorStates.Pref)
 			{
 				EditorGUILayout.Space();
-				
-				GUILayout.BeginHorizontal();
-			    //GUILayout.Label("", GUILayout.Width(7));
-			    GUILayout.Label(_apiKeyLabel, GUILayout.Width(75));
-				ga.ApiKey = EditorGUILayout.TextField("", ga.ApiKey);
-				GUILayout.EndHorizontal();
-				
-				EditorGUILayout.Space();
-				
-				GUILayout.BeginHorizontal();
-			    //GUILayout.Label("", GUILayout.Width(7));
-			    GUILayout.Label(_heatmapSizeLabel, GUILayout.Width(150));
-				GUILayout.EndHorizontal();
-				
-				#if UNITY_4_2 || UNITY_4_1 || UNITY_4_0_1 || UNITY_4_0
-				GUILayout.Space(-15);
-				#endif
-				
-				ga.HeatmapGridSize = EditorGUILayout.Vector3Field("", ga.HeatmapGridSize);
-				if (ga.HeatmapGridSize != Vector3.one)
-				{
-					EditorGUILayout.HelpBox("Editing the heatmap grid size must be done BEFORE data is submitted, and you must use the same grid size when setting up your heatmaps. Otherwise the heatmap data will be incorrectly displayed.", MessageType.Warning);
-				}
-				
-				EditorGUILayout.Space();
-				
+
 				GUILayout.BeginHorizontal();
 			    //GUILayout.Label("", GUILayout.Width(7));
 			    GUILayout.Label(_interval, GUILayout.Width(150));
@@ -1070,16 +1043,28 @@ public class GA_Inspector : Editor
 					GUILayout.BeginHorizontal();
 					GUILayout.Label("", GUILayout.Width(7));
 					GUILayout.Label(_iAdtype, GUILayout.Width(150));
+					#if (UNITY_4_9 || UNITY_4_8 || UNITY_4_7 || UNITY_4_6 || UNITY_4_5 || UNITY_4_3 || UNITY_4_2 || UNITY_4_1 || UNITY_4_0_1 || UNITY_4_0 || UNITY_3_5 || UNITY_3_4 || UNITY_3_3 || UNITY_3_2 || UNITY_3_1 || UNITY_3_0_0 || UNITY_3_0 || UNITY_2_6_1 || UNITY_2_6)
 					ga.IAD_type = (ADBannerView.Type)EditorGUILayout.EnumPopup(ga.IAD_type, GUILayout.Width(125));
+					#else
+					ga.IAD_type = (UnityEngine.iOS.ADBannerView.Type)EditorGUILayout.EnumPopup(ga.IAD_type, GUILayout.Width(125));
+					#endif
 					GUILayout.EndHorizontal();
 					
 					GUILayout.BeginHorizontal();
 					GUILayout.Label("", GUILayout.Width(7));
 					GUILayout.Label(_iAdlayout, GUILayout.Width(150));
+					#if (UNITY_4_9 || UNITY_4_8 || UNITY_4_7 || UNITY_4_6 || UNITY_4_5 || UNITY_4_3 || UNITY_4_2 || UNITY_4_1 || UNITY_4_0_1 || UNITY_4_0 || UNITY_3_5 || UNITY_3_4 || UNITY_3_3 || UNITY_3_2 || UNITY_3_1 || UNITY_3_0_0 || UNITY_3_0 || UNITY_2_6_1 || UNITY_2_6)
 					ga.IAD_layout = (ADBannerView.Layout)EditorGUILayout.EnumPopup(ga.IAD_layout, GUILayout.Width(125));
+					#else
+					ga.IAD_layout = (UnityEngine.iOS.ADBannerView.Layout)EditorGUILayout.EnumPopup(ga.IAD_layout, GUILayout.Width(125));
+					#endif
 					GUILayout.EndHorizontal();
-					
+
+					#if (UNITY_4_9 || UNITY_4_8 || UNITY_4_7 || UNITY_4_6 || UNITY_4_5 || UNITY_4_3 || UNITY_4_2 || UNITY_4_1 || UNITY_4_0_1 || UNITY_4_0 || UNITY_3_5 || UNITY_3_4 || UNITY_3_3 || UNITY_3_2 || UNITY_3_1 || UNITY_3_0_0 || UNITY_3_0 || UNITY_2_6_1 || UNITY_2_6)
 					GUI.enabled = GA.SettingsGA.IAD_enabled && ga.IAD_layout == ADBannerView.Layout.Manual;
+					#else
+					GUI.enabled = GA.SettingsGA.IAD_enabled && ga.IAD_layout == UnityEngine.iOS.ADBannerView.Layout.Manual;
+					#endif
 					
 					GUILayout.BeginHorizontal();
 					GUILayout.Label("", GUILayout.Width(7));
@@ -1114,12 +1099,12 @@ public class GA_Inspector : Editor
 
 					GUILayout.BeginHorizontal();
 					GUILayout.Label("", GUILayout.Width(-5));
-					EditorGUILayout.HelpBox("To setup Chartboost for Android please go to the Chartboost menu and select Android Setup (Chartboost SDK must be imported). For more information on Chartboost visit their online documentation at https://help.chartboost.com/documentation/unity.", MessageType.Info);
+					EditorGUILayout.HelpBox("To setup Chartboost please see the Chartboost online documentation at https://help.chartboost.com/documentation/unity.", MessageType.Info);
 					GUILayout.EndHorizontal();
 
 					#else
 
-					GUILayout.BeginHorizontal();
+					/*GUILayout.BeginHorizontal();
 					GUILayout.Label("", GUILayout.Width(7));
 					GUILayout.Label(_CBappID, GUILayout.Width(150));
 					ga.CB_appID = EditorGUILayout.TextField(ga.CB_appID);
@@ -1129,6 +1114,11 @@ public class GA_Inspector : Editor
 					GUILayout.Label("", GUILayout.Width(7));
 					GUILayout.Label(_CBappSig, GUILayout.Width(150));
 					ga.CB_appSig = EditorGUILayout.TextField(ga.CB_appSig);
+					GUILayout.EndHorizontal();*/
+
+					GUILayout.BeginHorizontal();
+					GUILayout.Label("", GUILayout.Width(-5));
+					EditorGUILayout.HelpBox("To setup Chartboost please see the Chartboost online documentation at https://help.chartboost.com/documentation/unity.", MessageType.Info);
 					GUILayout.EndHorizontal();
 
 					#endif
@@ -1369,7 +1359,6 @@ public class GA_Inspector : Editor
 					Hashtable results = (Hashtable)resultList[0];
 					ga.GameKey = results["key"].ToString();
 					ga.SecretKey = results["secret_key"].ToString();
-					ga.ApiKey = results["data_api_key"].ToString();
 
 					SetLoginStatus ("Received Game Key and Secret Key. Ready to send events!", ga);
 
@@ -1727,8 +1716,8 @@ public class GA_Inspector : Editor
 			Rect lastrect = GUILayoutUtility.GetLastRect();
 			Color tmpColor = GUI.color;
 			int tmpSize = GUI.skin.label.fontSize;
-			GUI.color = Color.red;
-			GUI.DrawTexture(new Rect(lastrect.x - 2, lastrect.y - 1, 5, 17), _triggerAdNotEnabledTexture);
+			//GUI.color = Color.red;
+			//GUI.DrawTexture(new Rect(lastrect.x - 2, lastrect.y - 1, 5, 17), _triggerAdNotEnabledTexture);
 			GUI.color = Color.white;
 			GUI.skin.label.fontSize = 20;
 			GUI.Label(new Rect(lastrect.x - 5, lastrect.y - 7, 20, 30), _triggerAdNotEnabled);
