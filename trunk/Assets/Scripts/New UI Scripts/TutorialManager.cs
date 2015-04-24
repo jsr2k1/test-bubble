@@ -11,7 +11,7 @@ public class TutorialManager : MonoBehaviour
 	public Sprite[] tutorialSprites;
 	public Image tutorialImage;
 	public Text tutorialText;
-	PopUpMgr tutorialPopUp;
+	public PopUpMgr tutorialPopUp;
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -21,7 +21,6 @@ public class TutorialManager : MonoBehaviour
 		
 		int[] items = new int[]{1,2,3,4,5,6,7,8,9,10,41};//Lista de niveles en los que van a aparecer los tutoriales
 		tutorialsList = items.ToList();
-		tutorialPopUp = tutorialImage.GetComponent<PopUpMgr>();
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
