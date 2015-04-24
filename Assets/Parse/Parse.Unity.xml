@@ -234,41 +234,51 @@
             Encodes an object into a JSON string.
             </summary>
         </member>
-        <member name="M:Parse.Internal.Json.ParseObject(System.String,System.Int32,System.Int32@,System.Object@)">
+        <member name="M:Parse.Internal.Json.JsonStringParser.ParseObject(System.Object@)">
             <summary>
             Parses JSON object syntax (e.g. '{}')
             </summary>
         </member>
-        <member name="M:Parse.Internal.Json.ParseMember(System.String,System.Int32,System.Int32@,System.Object@)">
+        <member name="M:Parse.Internal.Json.JsonStringParser.ParseMember(System.Object@)">
             <summary>
             Parses JSON member syntax (e.g. '"keyname" : null')
             </summary>
         </member>
-        <member name="M:Parse.Internal.Json.ParseArray(System.String,System.Int32,System.Int32@,System.Object@)">
+        <member name="M:Parse.Internal.Json.JsonStringParser.ParseArray(System.Object@)">
             <summary>
             Parses JSON array syntax (e.g. '[]')
             </summary>
         </member>
-        <member name="M:Parse.Internal.Json.ParseValue(System.String,System.Int32,System.Int32@,System.Object@)">
+        <member name="M:Parse.Internal.Json.JsonStringParser.ParseValue(System.Object@)">
             <summary>
             Parses a value (i.e. the right-hand side of an object member assignment or
             an element in an array)
             </summary>
         </member>
-        <member name="M:Parse.Internal.Json.ParseString(System.String,System.Int32,System.Int32@,System.Object@)">
+        <member name="M:Parse.Internal.Json.JsonStringParser.ParseString(System.Object@)">
             <summary>
             Parses a JSON string (e.g. '"foo\u1234bar\n"')
             </summary>
         </member>
-        <member name="M:Parse.Internal.Json.ParseNumber(System.String,System.Int32,System.Int32@,System.Object@)">
+        <member name="M:Parse.Internal.Json.JsonStringParser.ParseNumber(System.Object@)">
             <summary>
             Parses a number. Returns a long if the number is an integer or has an exponent,
             otherwise returns a double.
             </summary>
         </member>
-        <member name="M:Parse.Internal.Json.Accept(System.String,System.Int32,System.Text.RegularExpressions.Regex,System.Int32@,System.Text.RegularExpressions.Match@)">
+        <member name="M:Parse.Internal.Json.JsonStringParser.Accept(System.Text.RegularExpressions.Regex,System.Text.RegularExpressions.Match@)">
             <summary>
             Matches the string to a regex, consuming part of the string and returning the match.
+            </summary>
+        </member>
+        <member name="M:Parse.Internal.Json.JsonStringParser.Accept(System.Char)">
+            <summary>
+            Find the first occurences of a character, consuming part of the string.
+            </summary>
+        </member>
+        <member name="M:Parse.Internal.Json.JsonStringParser.Accept(System.Char[])">
+            <summary>
+            Find the first occurences of a string, consuming part of the string.
             </summary>
         </member>
         <member name="T:Parse.Internal.ParseDeleteOperation">
@@ -608,7 +618,7 @@
         </member>
         <member name="M:Parse.ParseClient.RequestAsync(System.String,System.Uri,System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Threading.CancellationToken)">
             <summary>
-            The main mechanism for making requests to Parse.  Attaches headers related to
+            The main mechanism for making requests to Parse. Attaches headers related to
             the SDK, session token, etc., then JSON-parses the result of the request and throws
             a ParseException if necessary.
             </summary>
@@ -932,6 +942,21 @@
             Error code indicating that a Cloud Code script failed.
             </summary>
         </member>
+        <member name="F:Parse.ParseException.ErrorCode.ValidationFailed">
+            <summary>
+            Error code indicating that a Cloud Code validation failed.
+            </summary>
+        </member>
+        <member name="F:Parse.ParseException.ErrorCode.FileDeleteFailed">
+            <summary>
+            Error code indicating that deleting a file failed.
+            </summary>
+        </member>
+        <member name="F:Parse.ParseException.ErrorCode.RequestLimitExceeded">
+            <summary>
+            Error code indicating that the application has exceeded its request limit.
+            </summary>
+        </member>
         <member name="F:Parse.ParseException.ErrorCode.InvalidEventName">
             <summary>
             Error code indicating that the provided event name is invalid.
@@ -982,6 +1007,11 @@
             <summary>
             Error code indicating that an an account being linked is already linked
             to another user.
+            </summary>
+        </member>
+        <member name="F:Parse.ParseException.ErrorCode.InvalidSessionToken">
+            <summary>
+            Error code indicating that the current session token is invalid.
             </summary>
         </member>
         <member name="F:Parse.ParseException.ErrorCode.LinkedIdMissing">
@@ -1401,15 +1431,50 @@
         </member>
         <member name="M:Parse.ParseObject.#ctor(System.String)">
             <summary>
-            Constructs a new ParseObject with no data in it.  A ParseObject constructed in this way will
+            Constructs a new ParseObject with no data in it. A ParseObject constructed in this way will
             not have an ObjectId and will not persist to the database until <see cref="M:Parse.ParseObject.SaveAsync"/>
             is called.
             </summary>
             <remarks>
-            Class names must be alphanumerical plus underscore, and start with a letter.  It is recommended
+            Class names must be alphanumerical plus underscore, and start with a letter. It is recommended
             to name classes in CamelCaseLikeThis.
             </remarks>
             <param name="className">The className for this ParseObject.</param>
+        </member>
+        <member name="M:Parse.ParseObject.Create(System.String)">
+            <summary>
+            Creates a new ParseObject based upon a class name.  If the class name is a special type (e.g.
+            for <see cref="T:Parse.ParseUser"/>), then the appropriate type of ParseObject is returned.
+            </summary>
+            <param name="className">The class of object to create.</param>
+            <returns>A new ParseObject for the given class name.</returns>
+        </member>
+        <member name="M:Parse.ParseObject.CreateWithoutData(System.String,System.String)">
+            <summary>
+            Creates a reference to an existing ParseObject for use in creating associations between
+            ParseObjects.  Calling <see cref="P:Parse.ParseObject.IsDataAvailable"/> on this object will return
+            <c>false</c> until <see cref="M:Parse.ParseExtensions.FetchIfNeededAsync``1(``0)"/> has been called.
+            No network request will be made.
+            </summary>
+            <param name="className">The object's class.</param>
+            <param name="objectId">The object id for the referenced object.</param>
+            <returns>A ParseObject without data.</returns>
+        </member>
+        <member name="M:Parse.ParseObject.Create``1">
+            <summary>
+            Creates a new ParseObject based upon a given subclass type.
+            </summary>
+            <returns>A new ParseObject for the given class name.</returns>
+        </member>
+        <member name="M:Parse.ParseObject.CreateWithoutData``1(System.String)">
+            <summary>
+            Creates a reference to an existing ParseObject for use in creating associations between
+            ParseObjects.  Calling <see cref="P:Parse.ParseObject.IsDataAvailable"/> on this object will return
+            <c>false</c> until <see cref="M:Parse.ParseExtensions.FetchIfNeededAsync``1(``0)"/> has been called.
+            No network request will be made.
+            </summary>
+            <param name="objectId">The object id for the referenced object.</param>
+            <returns>A ParseObject without data.</returns>
         </member>
         <member name="M:Parse.ParseObject.SetProperty``1(``0,System.String)">
             <summary>
@@ -1457,41 +1522,6 @@
             <param name="className">The class name for the ParseObjects the factory will create.</param>
             <returns></returns>
         </member>
-        <member name="M:Parse.ParseObject.Create(System.String)">
-            <summary>
-            Creates a new ParseObject based upon a class name.  If the class name is a special type (e.g.
-            for <see cref="T:Parse.ParseUser"/>), then the appropriate type of ParseObject is returned.
-            </summary>
-            <param name="className">The class of object to create.</param>
-            <returns>A new ParseObject for the given class name.</returns>
-        </member>
-        <member name="M:Parse.ParseObject.CreateWithoutData(System.String,System.String)">
-            <summary>
-            Creates a reference to an existing ParseObject for use in creating associations between
-            ParseObjects.  Calling <see cref="P:Parse.ParseObject.IsDataAvailable"/> on this object will return
-            <c>false</c> until <see cref="M:Parse.ParseExtensions.FetchIfNeededAsync``1(``0)"/> has been called.
-            No network request will be made.
-            </summary>
-            <param name="className">The object's class.</param>
-            <param name="objectId">The object id for the referenced object.</param>
-            <returns>A ParseObject without data.</returns>
-        </member>
-        <member name="M:Parse.ParseObject.Create``1">
-            <summary>
-            Creates a new ParseObject based upon a given subclass type.
-            </summary>
-            <returns>A new ParseObject for the given class name.</returns>
-        </member>
-        <member name="M:Parse.ParseObject.CreateWithoutData``1(System.String)">
-            <summary>
-            Creates a reference to an existing ParseObject for use in creating associations between
-            ParseObjects.  Calling <see cref="P:Parse.ParseObject.IsDataAvailable"/> on this object will return
-            <c>false</c> until <see cref="M:Parse.ParseExtensions.FetchIfNeededAsync``1(``0)"/> has been called.
-            No network request will be made.
-            </summary>
-            <param name="objectId">The object id for the referenced object.</param>
-            <returns>A ParseObject without data.</returns>
-        </member>
         <member name="M:Parse.ParseObject.RegisterSubclass``1">
             <summary>
             Registers a custom subclass type with the Parse SDK, enabling strong-typing of those ParseObjects whenever
@@ -1522,6 +1552,14 @@
             treats any mutation as a new 'Set' operation.
             </summary>
         </member>
+        <member name="M:Parse.ParseObject.CollectFetchedObjects">
+            <summary>
+            Deep traversal of this object to grab a copy of any object referenced by this object.
+            These instances may have already been fetched, and we don't want to lose their data when
+            refreshing or saving.
+            </summary>
+            <returns>Map of objectId to ParseObject which have been fetched.</returns>
+        </member>
         <member name="M:Parse.ParseObject.StartSave">
             <summary>
             Pushes new operations onto the queue and returns the current set of operations.
@@ -1538,6 +1576,19 @@
             </summary>
             <param name="cancellationToken">The cancellation token.</param>
         </member>
+        <member name="M:Parse.ParseObject.SaveAllAsync``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Saves each object in the provided list.
+            </summary>
+            <param name="objects">The objects to save.</param>
+        </member>
+        <member name="M:Parse.ParseObject.SaveAllAsync``1(System.Collections.Generic.IEnumerable{``0},System.Threading.CancellationToken)">
+            <summary>
+            Saves each object in the provided list.
+            </summary>
+            <param name="objects">The objects to save.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
         <member name="M:Parse.ParseObject.FetchAsyncInternal(System.Threading.CancellationToken)">
             <summary>
             Fetches this object with the data from the server.
@@ -1550,34 +1601,6 @@
             false), fetches this object with the data from the server.
             </summary>
             <param name="cancellationToken">The cancellation token.</param>
-        </member>
-        <member name="M:Parse.ParseObject.DeleteAsync">
-            <summary>
-            Deletes this object on the server.
-            </summary>
-        </member>
-        <member name="M:Parse.ParseObject.DeleteAsync(System.Threading.CancellationToken)">
-            <summary>
-            Deletes this object on the server.
-            </summary>
-            <param name="cancellationToken">The cancellation token.</param>
-        </member>
-        <member name="M:Parse.ParseObject.CollectDirtyChildren(System.Object,System.Collections.Generic.IList{Parse.ParseObject})">
-            <summary>
-            Helper version of CollectDirtyChildren so that callers don't have to add the internally
-            used parameters.
-            </summary>
-        </member>
-        <member name="M:Parse.ParseObject.CanBeSerializedAsValue(System.Object)">
-            <summary>
-            Returns true if the given object can be serialized for saving as a value
-            that is pointed to by a ParseObject.
-            </summary>
-        </member>
-        <member name="M:Parse.ParseObject.EnqueueForAll``1(System.Collections.Generic.IEnumerable{Parse.ParseObject},System.Func{System.Threading.Tasks.Task,System.Threading.Tasks.Task{``0}},System.Threading.CancellationToken)">
-            <summary>
-            Adds a task to the queue for all of the given objects.
-            </summary>
         </member>
         <member name="M:Parse.ParseObject.FetchAllIfNeededAsync``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
@@ -1618,18 +1641,33 @@
             <param name="cancellationToken">The cancellation token.</param>
             <returns>The list passed in for convenience.</returns>
         </member>
-        <member name="M:Parse.ParseObject.SaveAllAsync``1(System.Collections.Generic.IEnumerable{``0})">
+        <member name="M:Parse.ParseObject.DeleteAsync">
             <summary>
-            Saves each object in the provided list.
+            Deletes this object on the server.
             </summary>
-            <param name="objects">The objects to save.</param>
         </member>
-        <member name="M:Parse.ParseObject.SaveAllAsync``1(System.Collections.Generic.IEnumerable{``0},System.Threading.CancellationToken)">
+        <member name="M:Parse.ParseObject.DeleteAsync(System.Threading.CancellationToken)">
             <summary>
-            Saves each object in the provided list.
+            Deletes this object on the server.
             </summary>
-            <param name="objects">The objects to save.</param>
             <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Parse.ParseObject.CollectDirtyChildren(System.Object,System.Collections.Generic.IList{Parse.ParseObject})">
+            <summary>
+            Helper version of CollectDirtyChildren so that callers don't have to add the internally
+            used parameters.
+            </summary>
+        </member>
+        <member name="M:Parse.ParseObject.CanBeSerializedAsValue(System.Object)">
+            <summary>
+            Returns true if the given object can be serialized for saving as a value
+            that is pointed to by a ParseObject.
+            </summary>
+        </member>
+        <member name="M:Parse.ParseObject.EnqueueForAll``1(System.Collections.Generic.IEnumerable{Parse.ParseObject},System.Func{System.Threading.Tasks.Task,System.Threading.Tasks.Task{``0}},System.Threading.CancellationToken)">
+            <summary>
+            Adds a task to the queue for all of the given objects.
+            </summary>
         </member>
         <member name="M:Parse.ParseObject.Remove(System.String)">
             <summary>
@@ -1658,6 +1696,13 @@
             Override to run validations on key/value pairs.  Make sure to still
             call the base version.
             </summary>
+        </member>
+        <member name="M:Parse.ParseObject.Set(System.String,System.Object)">
+            <summary>
+            Perform Set internally which is not gated by mutability check.
+            </summary>
+            <param name="key">key for the object.</param>
+            <param name="value">the value for the key.</param>
         </member>
         <member name="M:Parse.ParseObject.Increment(System.String)">
             <summary>
@@ -1929,7 +1974,7 @@
              </code>
              </example>
         </member>
-        <member name="M:Parse.ParseQuery`1.#ctor(Parse.ParseQuery{`0},System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Collections.Generic.IEnumerable{System.String})">
+        <member name="M:Parse.ParseQuery`1.#ctor(Parse.ParseQuery{`0},System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String})">
             <summary>
             Private constructor for composition of queries.  A source query is required,
             but the remaining values can be null if they won't be changed in this
@@ -1996,8 +2041,17 @@
         </member>
         <member name="M:Parse.ParseQuery`1.Include(System.String)">
             <summary>
-            Include nested ParseObjects for the provided key.  You can use dot notation
+            Include nested ParseObjects for the provided key. You can use dot notation
             to specify which fields in the included objects should also be fetched.
+            </summary>
+            <param name="key">The key that should be included.</param>
+            <returns>A new query with the additional constraint.</returns>
+        </member>
+        <member name="M:Parse.ParseQuery`1.Select(System.String)">
+            <summary>
+            Restrict the fields of returned ParseObjects to only include the provided key.
+            If this is called multiple times, then all of the keys specified in each of
+            the calls will be included.
             </summary>
             <param name="key">The key that should be included.</param>
             <returns>A new query with the additional constraint.</returns>
@@ -2176,8 +2230,18 @@
             to match a value for a key in the results of another ParseQuery.
             </summary>
             <param name="key">The key whose value is being checked.</param>
-            <param name="keyInQuery">The key in the objects from the subquery in which to look.</param>
-            <param name="query"></param>
+            <param name="keyInQuery">The key in the objects from the subquery to look in.</param>
+            <param name="query">The subquery to run</param>
+            <returns>A new query with the additional constraint.</returns>
+        </member>
+        <member name="M:Parse.ParseQuery`1.WhereDoesNotMatchesKeyInQuery``1(System.String,System.String,Parse.ParseQuery{``0})">
+            <summary>
+            Adds a constraint to the query that requires a particular key's value
+            does not match any value for a key in the results of another ParseQuery.
+            </summary>
+            <param name="key">The key whose value is being checked.</param>
+            <param name="keyInQuery">The key in the objects from the subquery to look in.</param>
+            <param name="query">The subquery to run</param>
             <returns>A new query with the additional constraint.</returns>
         </member>
         <member name="M:Parse.ParseQuery`1.WhereMatchesQuery``1(System.String,Parse.ParseQuery{``0})">
@@ -2305,7 +2369,7 @@
             Constructs a ParseObject whose id is already known by fetching data
             from the server.
             </summary>
-            <param name="objectId">ObjectId of the PArseObject to fetch.</param>
+            <param name="objectId">ObjectId of the ParseObject to fetch.</param>
             <returns>The ParseObject for the given objectId.</returns>
         </member>
         <member name="M:Parse.ParseQuery`1.GetAsync(System.String,System.Threading.CancellationToken)">
@@ -2313,7 +2377,7 @@
             Constructs a ParseObject whose id is already known by fetching data
             from the server.
             </summary>
-            <param name="objectId">ObjectId of the PArseObject to fetch.</param>
+            <param name="objectId">ObjectId of the ParseObject to fetch.</param>
             <param name="cancellationToken">The cancellation token.</param>
             <returns>The ParseObject for the given objectId.</returns>
         </member>
@@ -2406,6 +2470,32 @@
             Gets a <see cref="T:Parse.ParseQuery`1"/> over the Role collection.
             </summary>
         </member>
+        <member name="T:Parse.ParseSession">
+            <summary>
+            Represents a session of a user for a Parse application.
+            </summary>
+        </member>
+        <member name="M:Parse.ParseSession.GetCurrentSessionAsync">
+            <summary>
+            Gets the current <see cref="T:Parse.ParseSession"/> object related to the current user.
+            </summary>
+        </member>
+        <member name="M:Parse.ParseSession.GetCurrentSessionAsync(System.Threading.CancellationToken)">
+            <summary>
+            Gets the current <see cref="T:Parse.ParseSession"/> object related to the current user.
+            </summary>
+            <param name="cancellationToken">The cancellation token</param>
+        </member>
+        <member name="P:Parse.ParseSession.SessionToken">
+            <summary>
+            Gets the session token for a user, if they are logged in.
+            </summary>
+        </member>
+        <member name="P:Parse.ParseSession.Query">
+            <summary>
+            Constructs a <see cref="T:Parse.ParseQuery`1"/> for ParseSession.
+            </summary>
+        </member>
         <member name="T:Parse.ParseUploadProgressEventArgs">
             <summary>
             Represents upload progress.
@@ -2496,6 +2586,52 @@
             Logs out the currently logged in user session. This will remove the session from disk, log out of
             linked services, and future calls to <see cref="P:Parse.ParseUser.CurrentUser"/> will return <c>null</c>.
             </summary>
+        </member>
+        <member name="M:Parse.ParseUser.LogOutAsync">
+            <summary>
+            Logs out the currently logged in user session. This will remove the session from disk, log out of
+            linked services, and future calls to <see cref="P:Parse.ParseUser.CurrentUser"/> will return <c>null</c>.
+            
+            This is preferable to using <see cref="M:Parse.ParseUser.LogOut"/>, unless your code is already running from a
+            background thread.
+            </summary>
+        </member>
+        <member name="M:Parse.ParseUser.LogOutAsync(System.Threading.CancellationToken)">
+            <summary>
+            Logs out the currently logged in user session. This will remove the session from disk, log out of
+            linked services, and future calls to <see cref="P:Parse.ParseUser.CurrentUser"/> will return <c>null</c>.
+            
+            This is preferable to using <see cref="M:Parse.ParseUser.LogOut"/>, unless your code is already running from a
+            background thread.
+            </summary>
+        </member>
+        <member name="M:Parse.ParseUser.GetCurrentUserAsync">
+            <summary>
+            Gets the currently logged in ParseUser with a valid session, either from memory or disk
+            if necessary, asynchronously.
+            </summary>
+        </member>
+        <member name="M:Parse.ParseUser.GetCurrentUserAsync(System.Threading.CancellationToken)">
+            <summary>
+            Gets the currently logged in ParseUser with a valid session, either from memory or disk
+            if necessary, asynchronously.
+            </summary>
+        </member>
+        <member name="M:Parse.ParseUser.EnableRevocableSessionAsync">
+            <summary>
+            Tells server to use revocable session on LogIn and SignUp, even when App's Settings
+            has "Require Revocable Session" turned off. Issues network request in background to
+            migrate the sessionToken on disk to revocable session.
+            </summary>
+            <returns>The Task that upgrades the session.</returns>
+        </member>
+        <member name="M:Parse.ParseUser.EnableRevocableSessionAsync(System.Threading.CancellationToken)">
+            <summary>
+            Tells server to use revocable session on LogIn and SignUp, even when App's Settings
+            has "Require Revocable Session" turned off. Issues network request in background to
+            migrate the sessionToken on disk to revocable session.
+            </summary>
+            <returns>The Task that upgrades the session.</returns>
         </member>
         <member name="M:Parse.ParseUser.RequestPasswordResetAsync(System.String)">
             <summary>
