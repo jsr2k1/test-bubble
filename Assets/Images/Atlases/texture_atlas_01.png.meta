@@ -217,7 +217,7 @@ TextureImporter:
     - name: tutorial_junta_3_bolitas
       rect:
         serializedVersion: 2
-        x: 1534
+        x: 1536
         y: 384
         width: 512
         height: 384
@@ -227,7 +227,7 @@ TextureImporter:
     - name: tutorial_libera_lorito
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 768
         width: 512
         height: 384
