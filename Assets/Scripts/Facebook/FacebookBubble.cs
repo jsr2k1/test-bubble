@@ -36,7 +36,7 @@ public class FacebookBubble : MonoBehaviour
 			earnText.enabled=false;
 		}
 		
-		Debug.Log(Application.internetReachability);
+		//Debug.Log(Application.internetReachability);
 		
 		if(Application.internetReachability!=NetworkReachability.NotReachable){
 			if(FB.IsLoggedIn){
@@ -119,7 +119,7 @@ public class FacebookBubble : MonoBehaviour
 	void AuthCallback(FBResult result)
 	{
 		if(FB.IsLoggedIn){
-			Debug.Log(FB.UserId);
+			//Debug.Log(FB.UserId);
 			FacebookManager.GetFacebookUserName(); //Obtenemos el nombre del usuario
 			FacebookConnectedPopUp.ShowPopUp();
 			if(PlayerPrefs.GetInt("FirstTimeFacebookLogin")==1){
