@@ -6,11 +6,10 @@ using System;
 
 public class UnityAdsController : MonoBehaviour
 {
-	//public Text buttonText;
-	public bool bTestMode=true;
+	bool bTestMode=false;
 	public Button button;
 	public Image image;
-	float secondsToShow = 30;	//Tiempo en segundos hasta que vuelva a estar activo el boton
+	float secondsToShow = 180;	//Tiempo en segundos hasta que vuelva a estar activo el boton
 	bool bShow=false;
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -21,7 +20,7 @@ public class UnityAdsController : MonoBehaviour
 			Advertisement.allowPrecache = true;
 			#if UNITY_ANDROID
 				Advertisement.Initialize("35427", bTestMode); //Android
-			#elif
+			#else
 				Advertisement.Initialize("35428", bTestMode); //iOS
 			#endif
 		}else{
