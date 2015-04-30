@@ -11,6 +11,7 @@ public class UnityAdsController : MonoBehaviour
 	public Image image;
 	float secondsToShow = 180;	//Tiempo en segundos hasta que vuelva a estar activo el boton
 	bool bShow=false;
+	public Animator textCoinsAnimator;
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -85,6 +86,8 @@ public class UnityAdsController : MonoBehaviour
 			button.enabled = false;
 			image.enabled = false;
 			PlayerPrefs.SetString("savedTimeAds", DateTime.Now.ToString());
+			textCoinsAnimator.SetTrigger("StartAnim");
+			audio.Play();
 		}
 	}	
 }
