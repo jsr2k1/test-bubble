@@ -39,6 +39,7 @@ public class UnityAdsController : MonoBehaviour
 	{
 		DateTime actualTime = DateTime.Now;
 		int secondsElapsed=0;
+		
 		if(PlayerPrefs.HasKey("savedTimeAds")){
 			DateTime savedTime = DateTime.Parse(PlayerPrefs.GetString("savedTimeAds"));
 			secondsElapsed = (int)actualTime.Subtract(savedTime).TotalSeconds;
@@ -48,7 +49,6 @@ public class UnityAdsController : MonoBehaviour
 		}else{
 			bShow=true;
 		}
-		PlayerPrefs.SetString("savedTimeAds", DateTime.Now.ToString());
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -84,6 +84,7 @@ public class UnityAdsController : MonoBehaviour
 			bShow = false;
 			button.enabled = false;
 			image.enabled = false;
+			PlayerPrefs.SetString("savedTimeAds", DateTime.Now.ToString());
 		}
 	}	
 }
