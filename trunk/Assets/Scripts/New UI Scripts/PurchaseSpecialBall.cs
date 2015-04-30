@@ -5,15 +5,13 @@ using UnityEngine.UI;
 public class PurchaseSpecialBall : MonoBehaviour
 {
 	public Text NumberBallText;
-	//public Text CoinsText;
 	public string BallString;
-	public int price;
+	public Text textPrice;
+	public int numBalls;
 
-	private int quantity;
-	private int coins;
-
-	PopUpMgr ShopBoostersPopUp;
+	public PopUpMgr ShopBoostersPopUp;
 	PopUpMgr ShopCoinsPopUp;
+	
 	//bool bShowCoinsPopUp=false;
 	
 	//Creamos un evento para poder saber cuando se ha comprado un booster
@@ -24,7 +22,6 @@ public class PurchaseSpecialBall : MonoBehaviour
 
 	void Awake()
 	{
-		ShopBoostersPopUp = GameObject.Find("ShopBoostersPopUp").GetComponent<PopUpMgr>();
 		ShopCoinsPopUp = GameObject.Find("ShopCoinsPopUp").GetComponent<PopUpMgr>();
 	}
 
@@ -43,23 +40,23 @@ public class PurchaseSpecialBall : MonoBehaviour
 
 	public void PurchaseBall()
 	{
+		int price = int.Parse(textPrice.text);
+		
 		//Comprar un booster y restar dinero disponible
-		if(PlayerPrefs.GetInt("Coins") >= price){
-			quantity = PlayerPrefs.GetInt(BallString) + 1;
-			coins = PlayerPrefs.GetInt("Coins") - price;
+		if(PlayerPrefs.GetInt("Coins") >= price)
+		{
+			int quantity = PlayerPrefs.GetInt(BallString) + numBalls;
+			int coins = PlayerPrefs.GetInt("Coins") - price;
 
 			PlayerPrefs.SetInt(BallString, quantity);
-			//PlayerPrefs.SetInt("Coins", coins);
 			CoinsManager.instance.SetCoins(coins);
 
 			NumberBallText.text = PlayerPrefs.GetInt(BallString).ToString();
-			//CoinsText.text = PlayerPrefs.GetInt("Coins").ToString();
 			
 			if(OnSpecialBallBuyed!=null){
 				OnSpecialBallBuyed();
 			}
-		}
-		//Si no hay suficiente dinero, abrir el popup para comprar monedas
+		}//Si no hay suficiente dinero, abrir el popup para comprar monedas
 		else{
 			ShopBoostersPopUp.HidePopUp();
 			//bShowCoinsPopUp=true;
