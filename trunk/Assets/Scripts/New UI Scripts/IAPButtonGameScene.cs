@@ -23,6 +23,33 @@ public class IAPButtonGameScene : MonoBehaviour, IPointerClickHandler
 		}
 		if(iabManager.dictPrices.ContainsKey(item)){
 			textPrice.text = iabManager.dictPrices[item];
+		}else{
+			Debug.Log("No se encuentra el item: "+item+" en el diccionario.");
+		}
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void OnEnable()
+	{
+		StoreKitEventListenerBP2.OnProductListReceived += SetPrice;
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void OnDisable()
+	{
+		StoreKitEventListenerBP2.OnProductListReceived += SetPrice;
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Ya podemos añadir el precio correcto
+	void SetPrice()
+	{
+		if(iabManager.dictPrices.ContainsKey(item)){
+			textPrice.text = iabManager.dictPrices[item];
+		}else{
+			Debug.Log("No se encuentra el item: "+item+" en el diccionario.");
 		}
 	}
 

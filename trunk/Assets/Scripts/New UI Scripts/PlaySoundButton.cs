@@ -11,7 +11,7 @@ public class PlaySoundButton : MonoBehaviour
 	{
 		audioSource = gameObject.AddComponent<AudioSource>();
 		audioSource.loop = false;
-		if(name=="MulticolorBallButton" || name=="FireBallButton" || name=="BombBallButton"){
+		if(name=="RainbowBallButton" || name=="FireBallButton" || name=="BombBallButton"){
 			audioSource.clip = AudioManager.instance.UIClickBooster;
 		}else{
 			audioSource.clip = AudioManager.instance.UIClick;
