@@ -14,8 +14,16 @@ public class IABManager : MonoBehaviour
 	string androidPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6CkjzMnNCuwRhqpOelNnvdJkQ6xr3E2I++ubNNOk4GeBx99Fh0wZJZQ6mHB+2b4sD55+rHU2OUavNtM7b8Cu7En4Hkeac1bi4LWf9DiL7OTHz3o6atH9T0gZPewtZb+rkYuXP1GURs+Vt/aKOnAhgOjUsU++KW3rvevnvUMF5hDl3O1XsybepEldJ4aSPvful5NJiIVf3qkiP1jTGcdFTnjznOeGaI9bRmTOrnZIrSsfo5FKcX9hROrolGOy01Oa706yi6xHd6Et0TKtPPbiF8KNB4JUGku/4Uwc37o1osNDVjEp55tyLXP9W4QgXtNNE7tBswvRvGgcMTIcCKUemwIDAQAB";
 #endif
 
+	public static IABManager instance;
 	public Dictionary<string,string> dictPrices;
 	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	void Awake()
+	{
+		instance = this;
+	}
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void OnEnable()
@@ -56,12 +64,14 @@ public class IABManager : MonoBehaviour
 		var iosProductIds = new string[] { item1, item2, item3, item4, item5 };
 		IAP.requestProductData( iosProductIds, androidSkus, productList =>
 		{
-			Debug.Log("Product list received" );
-			//Utils.logObject(productList);
+			Debug.Log("IABManager: Product list received" );
+			Utils.logObject(productList);
+			/*
 			foreach(IAPProduct product in productList){
-				dictPrices.Add(product.productId, product.price);
-				Debug.Log(product.productId + " " + product.price);
-			}
+				string s = product.currencyCode;
+				dictPrices.Add(product.productId, product.currencyCode+" "+product.price);
+				Debug.Log(product.productId + ": " + product.currencyCode+" "+product.price);
+			}*/
 		});
 #endif		
 	}
@@ -109,16 +119,18 @@ public class IABManager : MonoBehaviour
 #if UNITY_EDITOR
 		DoPurchase(productId);
 #else
-		IAP.purchaseConsumableProduct(productId, (didSucceed, error) =>
-		{
-			Debug.Log("purchasing product " + productId + " result: " + didSucceed);
-			
-			if(didSucceed){
-				DoPurchase(productId);
-			}else{
-				Debug.Log("purchase error: " + error);
-			}
-		});
+		if(dictPrices.ContainsKey(productId)){
+			IAP.purchaseConsumableProduct(productId, (didSucceed, error) =>
+			{
+				Debug.Log("purchasing product " + productId + " result: " + didSucceed);
+				
+				if(didSucceed){
+					DoPurchase(productId);
+				}else{
+					Debug.Log("purchase error: " + error);
+				}
+			});
+		}
 #endif
 	}
 	
