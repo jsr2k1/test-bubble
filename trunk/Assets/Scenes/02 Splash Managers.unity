@@ -1406,6 +1406,7 @@ GameObject:
   - 4: {fileID: 1990199908}
   - 114: {fileID: 1990199907}
   - 114: {fileID: 1990199909}
+  - 114: {fileID: 1990199910}
   m_Layer: 0
   m_Name: IABManager
   m_TagString: Untagged
@@ -1445,6 +1446,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 413665f7e3d5c49cc9bc501f2158fbe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1990199910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1990199906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c54580dee7c092b4b8f8501f2c56dd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2009771206

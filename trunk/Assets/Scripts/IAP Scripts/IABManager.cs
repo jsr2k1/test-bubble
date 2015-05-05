@@ -23,30 +23,6 @@ public class IABManager : MonoBehaviour
 	{
 		instance = this;
 	}
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	void OnEnable()
-	{
-#if UNITY_ANDROID
-		GoogleIABManager.billingSupportedEvent += billingSupportedEvent;
-		GoogleIABManager.billingNotSupportedEvent += billingNotSupportedEvent;
-		GoogleIABManager.queryInventorySucceededEvent += queryInventorySucceededEvent;
-		GoogleIABManager.queryInventoryFailedEvent += queryInventoryFailedEvent;
-#endif		
-	}
-	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	void OnDisable()
-	{
-#if UNITY_ANDROID
-		GoogleIABManager.billingSupportedEvent -= billingSupportedEvent;
-		GoogleIABManager.billingNotSupportedEvent -= billingNotSupportedEvent;
-		GoogleIABManager.queryInventorySucceededEvent -= queryInventorySucceededEvent;
-		GoogleIABManager.queryInventoryFailedEvent -= queryInventoryFailedEvent;
-#endif
-	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//En Android hay que hacer el init(), esperar a que termine y entonces hacer el QueryInventory
@@ -78,38 +54,10 @@ public class IABManager : MonoBehaviour
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #if UNITY_ANDROID
-	void billingSupportedEvent()
+	public void CallAndroidQueryInventory()
 	{
-		Debug.Log("billingSupportedEvent");
-
 		var androidSkus = new string[] { item1, item2, item3, item4, item5 };
 		GoogleIAB.queryInventory(androidSkus);
-	}
-	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	void billingNotSupportedEvent(string error)
-	{
-		Debug.Log("billingNotSupportedEvent: " + error);
-	}
-	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	void queryInventorySucceededEvent( List<GooglePurchase> purchases, List<GoogleSkuInfo> skus )
-	{
-		foreach(GoogleSkuInfo sku in skus){
-			if(!dictPrices.ContainsKey(sku.productId)){
-				dictPrices.Add(sku.productId, sku.price);
-			}
-			//Debug.Log(sku.productId + ":" + sku.price);
-		}
-	}
-	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	void queryInventoryFailedEvent(string error)
-	{
-		Debug.Log( "queryInventoryFailedEvent: " + error );
 	}
 #endif	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

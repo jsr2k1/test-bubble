@@ -23,7 +23,7 @@ public class IAPButtonGameScene : MonoBehaviour, IPointerClickHandler
 		}
 		if(iabManager.dictPrices.ContainsKey(item)){
 			textPrice.text = iabManager.dictPrices[item];
-		}else{
+		}else if(Application.platform!=RuntimePlatform.WindowsEditor && Application.platform!=RuntimePlatform.OSXEditor){
 			Debug.Log("No se encuentra el item: "+item+" en el diccionario.");
 		}
 	}
