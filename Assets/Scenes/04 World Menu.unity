@@ -1523,7 +1523,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22400000, guid: ed54df8e7f0af43458b6d31140ca8442, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 22400000, guid: ed54df8e7f0af43458b6d31140ca8442, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -9978,8 +9978,8 @@ RectTransform:
   - {fileID: 2018373101}
   - {fileID: 1034665194}
   - {fileID: 1459950734}
-  - {fileID: 1715718671}
   - {fileID: 2038943003}
+  - {fileID: 1715718671}
   - {fileID: 2144430791}
   - {fileID: 1445893132}
   - {fileID: 1739849704}
@@ -18885,7 +18885,7 @@ RectTransform:
   m_Children:
   - {fileID: 1970755667}
   m_Father: {fileID: 1032201309}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_AnchorMin: {x: .5, y: 1}
   m_AnchorMax: {x: .5, y: 1}
   m_AnchoredPosition: {x: 231.100006, y: -34.2000008}
@@ -18969,7 +18969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: fa092aa438e012549aa08d42ec833e93, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -23024,7 +23024,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1032201309}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 126.059998, y: 415}
@@ -24353,7 +24353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Sprite: {fileID: 21300000, guid: fa092aa438e012549aa08d42ec833e93, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
