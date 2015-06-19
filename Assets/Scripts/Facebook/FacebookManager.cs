@@ -35,7 +35,7 @@ public class Friend
 public class FacebookManager : MonoBehaviour
 {
 	public static FacebookManager instance;
-	GameObject buttonInvite;
+	//GameObject buttonInvite;
 	GameObject buttonMessages;
 	PopUpMgr messagesPopUp;
 	
@@ -150,7 +150,7 @@ public class FacebookManager : MonoBehaviour
 	
 	void GetObjectReferences()
 	{
-		buttonInvite = GameObject.Find("ButtonFacebookInvite");
+		//buttonInvite = GameObject.Find("ButtonFacebookInvite");
 		buttonMessages = GameObject.Find("ButtonFacebookMessages");
 		messagesPopUp = GameObject.Find("FacebookMessagesPopUp").GetComponent<PopUpMgr>();
 		//inviteFriendsPopUp = GameObject.Find("FacebookInviteFriendsPopUp").GetComponent<PopUpMgr>();
@@ -159,7 +159,7 @@ public class FacebookManager : MonoBehaviour
 		ImageDummy = GameObject.Find("ImageDummy");
 			
 		buttonMessages.SetActive(false);
-		buttonInvite.SetActive(FB.IsLoggedIn);
+		//buttonInvite.SetActive(FB.IsLoggedIn);
 		
 		//SelectAllToggle = GameObject.Find("ToggleSelectAll").GetComponent<Toggle>();
 		
@@ -333,9 +333,10 @@ public class FacebookManager : MonoBehaviour
 		try{
 			FriendSelectorFilters = "[\"app_users\"]";
 			if(!FB.IsLoggedIn){
-				FB.Login("public_profile,email,user_friends,publish_actions", AuthCallback);
+				FB.Login("public_profile,email,user_friends,publish_actions", AskLifeLoginCallback);
+			}else{
+				AskForOneLife();
 			}
-			AskForOneLife();
 			//status = "Friend Selector called";
 		}
 		catch(Exception e){
@@ -347,6 +348,31 @@ public class FacebookManager : MonoBehaviour
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Invitar a amigos que no tienen el juego instalado
 	public void ButtonPressedInviteFriends()
+	{
+		if(!FB.IsLoggedIn){
+			FB.Login("public_profile,email,user_friends,publish_actions", InviteFriendsLoginCallback);
+		}
+		else{
+			DoInviteFriends();
+		}
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void InviteFriendsLoginCallback(FBResult result)
+	{
+		if(FB.IsLoggedIn){
+			if(bShowDebug) Debug.Log(FB.UserId);
+			DoInviteFriends();
+		}
+		else{
+			if(bShowDebug) Debug.Log("User cancelled login");
+		}
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void DoInviteFriends()
 	{
 		try{
 			if(bShowDebug) Debug.Log("Facebook Invite pressed");
@@ -515,12 +541,13 @@ public class FacebookManager : MonoBehaviour
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	void AuthCallback(FBResult result)
+	void AskLifeLoginCallback(FBResult result)
 	{
 		if(FB.IsLoggedIn){
 			if(bShowDebug) Debug.Log(FB.UserId);
-			//StartCoroutine("OnLoggedIn"); 
-		} else {
+			AskForOneLife();
+		}
+		else{
 			if(bShowDebug) Debug.Log("User cancelled login");
 		}
 	}
