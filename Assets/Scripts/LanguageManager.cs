@@ -86,6 +86,8 @@ public class LanguageManager : MonoBehaviour
 		dict.Add("id_gave_life", new string[] {" te ha dado una vida", " gave you a life!"});
 		dict.Add("id_facebook_connected", new string[] {"Te has conectado a Facebook.\nTodos tus progresos se guardar\u00E1n en tu cuenta.", "Successfully connected to Facebook. All progress is now saved to your account."});
 		dict.Add("id_connect_to_facebook", new string[] {"Con\u00E9ctate a Facebook para guardar tu progreso y jugar con tus amigos.", "Connect to Facebook to save your progress and play with your friends."});
+		dict.Add ("id_invite_friends", new string[] {"Invitar amigos","Invite friends"});
+		dict.Add ("id_select_all", new string[] {"Marcar todo","Select all"});
 		
 		//Tutoriales
 		dict.Add("id_tutorial_pulsa_pantalla", new string[] {"Pulsa la pantalla para apuntar y disparar", "Touch the screen to aim and shoot"});

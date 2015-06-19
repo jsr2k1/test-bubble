@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//https://developers.facebook.com/docs/games/requests/v2.2
+//https://developers.facebook.com/docs/games/requests/v2.3
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using UnityEngine;
@@ -38,11 +38,19 @@ public class FacebookManager : MonoBehaviour
 	GameObject buttonInvite;
 	GameObject buttonMessages;
 	PopUpMgr messagesPopUp;
-	public GameObject entryPrefab;
-	public GameObject friendFramePrefab;
-	GameObject contentMessages;
-	public float timeReadRequest;
+	
+	//PopUpMgr inviteFriendsPopUp;
+	//public GameObject friendPrefab;		//Prefab para la lista de amigos (invitar | pedir vidas)
+	//GameObject contentFriends;			//Contenedor para la lista de amigos
+	
+	public GameObject entryPrefab;			//Prefab para las entradas de los mensajes pendientes del usuario
+	public GameObject friendFramePrefab; 	//Foto de perfil del amigo en el mapa
+	GameObject contentMessages;				//Contenedor de mensajes pendientes del usuario
+	public float timeReadRequest;			//Tiempo entre lecturas de las requests (30 seg.)
 	GameObject ImageDummy;
+	
+	//public List<Toggle> invitableFriendsToggles;	//Lista con los toggles de los amigos invitables para poder seleccionar y deseleccionar
+	//public Toggle SelectAllToggle;					//Toggle para seleccionar o deseleccionar a todos los amigos
 	
 	List<string> sendLifeUserList;
 	List<string> requestsList;
@@ -52,12 +60,16 @@ public class FacebookManager : MonoBehaviour
 	Dictionary<string, object> fromItem;
 	Dictionary<string, object> pendingRequests;
 	List<object> pendingRequestsData;
+	
+	//Dictionary<string, object> pictureItem;
+	//Dictionary<string, object> dataItem;
 
 	public Dictionary<string, Friend> friendsDict;
+	//public Dictionary<string, Friend> invitableFriendsDict;
 	
 	int livesCounter=0;
 		
-	string status = "Ready";
+	//string status = "Ready";
 	string FriendSelectorMax = "";
 	string FriendSelectorExcludeIds = "";
 	string FriendSelectorFilters = "";
@@ -70,7 +82,7 @@ public class FacebookManager : MonoBehaviour
 	int? maxRecipients;
 	
 	//Texture2D lastResponseTexture;
-	string lastResponse = "";
+	//string lastResponse = "";
 	
 	public bool bShowDebug=false;
 	
@@ -94,7 +106,13 @@ public class FacebookManager : MonoBehaviour
 		pendingRequests = new Dictionary<string, object>();
 		pendingRequestsData = new List<object>();
 		friendsDict = new Dictionary<string, Friend>();
+		//invitableFriendsDict = new Dictionary<string, Friend>();
 		
+		//pictureItem = new Dictionary<string, object>();
+		//dataItem = new Dictionary<string, object>();
+		
+		//invitableFriendsToggles = new List<Toggle>();
+				
 		//DeleteAllRequests(); //Only for testing
 	}
 	
@@ -121,7 +139,7 @@ public class FacebookManager : MonoBehaviour
 					friendsDict.Add(FB.UserId, newFriend);
 				}
 				if(!friendsDict[FB.UserId].bPictureDone){
-					StartCoroutine(GetProfileImage(FB.UserId));
+					StartCoroutine(GetProfileImage(FB.UserId, facebookUserName));
 				}
 				GetFriendsPictures();
 			}
@@ -135,11 +153,16 @@ public class FacebookManager : MonoBehaviour
 		buttonInvite = GameObject.Find("ButtonFacebookInvite");
 		buttonMessages = GameObject.Find("ButtonFacebookMessages");
 		messagesPopUp = GameObject.Find("FacebookMessagesPopUp").GetComponent<PopUpMgr>();
-		contentMessages = GameObject.Find("Content");
+		//inviteFriendsPopUp = GameObject.Find("FacebookInviteFriendsPopUp").GetComponent<PopUpMgr>();
+		contentMessages = GameObject.Find("ContentMessages");
+		//contentFriends = GameObject.Find("ContentFriends");
 		ImageDummy = GameObject.Find("ImageDummy");
 			
 		buttonMessages.SetActive(false);
 		buttonInvite.SetActive(FB.IsLoggedIn);
+		
+		//SelectAllToggle = GameObject.Find("ToggleSelectAll").GetComponent<Toggle>();
+		
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -156,8 +179,8 @@ public class FacebookManager : MonoBehaviour
 			}
 		}
 		*/
-		if(bShowDebug) Debug.Log("status: " + status);
-		if(bShowDebug) Debug.Log("lastResponse: " + lastResponse);
+		//if(bShowDebug) Debug.Log("status: " + status);
+		//if(bShowDebug) Debug.Log("lastResponse: " + lastResponse);
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -165,7 +188,7 @@ public class FacebookManager : MonoBehaviour
 	public static void GetFacebookUserName()
 	{
 		if(FB.IsLoggedIn){
-			FB.API("v2.2/me?fields=id,name", HttpMethod.GET, GetFacebookUserNameCallback);
+			FB.API("v2.3/me?fields=id,name", HttpMethod.GET, GetFacebookUserNameCallback);
 		}
 	}
 	
@@ -190,7 +213,7 @@ public class FacebookManager : MonoBehaviour
 		if(bShowDebug) Debug.Log("GetFriendsPictures");
 		
 		if(FB.IsLoggedIn){
-			FB.API("v2.2/me/friends", HttpMethod.GET, GetFriendsPicturesCallback);
+			FB.API("v2.3/me/friends", HttpMethod.GET, GetFriendsPicturesCallback);
 		}
 	}
 	
@@ -236,7 +259,7 @@ public class FacebookManager : MonoBehaviour
 					}
 					//Si la imagen aun no ha estado cargada -> la cargamos
 					if(!friendsDict[facebookID].bPictureDone){
-						StartCoroutine(GetProfileImage(facebookID));
+						StartCoroutine(GetProfileImage(facebookID, name));
 					}
 				}
 				if(Application.loadedLevelName == "06 Arcade Game Scene"){
@@ -251,7 +274,7 @@ public class FacebookManager : MonoBehaviour
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Obtenemos las imagenes de los amigos de Facebook para ponerlas en las requests
-	IEnumerator GetProfileImage(string facebookID)
+	IEnumerator GetProfileImage(string facebookID, string name)
 	{
 		WWW www = new WWW("https" + "://graph.facebook.com/" + facebookID + "/picture?type=large"); //+ "?access_token=" + FB.AccessToken);
 		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.ARGB32, false);
@@ -263,17 +286,45 @@ public class FacebookManager : MonoBehaviour
 		}
 		
 		if(textFb2!=null){
-			if(bShowDebug) Debug.Log("GetProfileImage:"+facebookID);
+			if(bShowDebug) Debug.Log("GetProfileImage done, name:"+name+" id:"+facebookID);
 			friendsDict[facebookID].profilePicture = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0.5f, 0.5f));
 			friendsDict[facebookID].bPictureDone = true;
 		}else{
 			if(bShowDebug) Debug.Log("ERROR: textFb2 es null");
-			StartCoroutine(GetProfileImage(facebookID));
+			StartCoroutine(GetProfileImage(facebookID, name));
 		}
 		
 		//DestroyImmediate(textFb2);
 		//textFb2=null;
 	}
+	
+	/*
+	//No se puede usar hasta que salga la v.7 del SDK de Facebook
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Obtenemos las imagenes de los amigos de Facebook para ponerlas en las requests
+	IEnumerator GetProfileImageFromURL(string url, string app_scoped_id, string name)
+	{
+		WWW www = new WWW(url);
+		Texture2D textFb2 = new Texture2D(128, 128, TextureFormat.ARGB32, false);
+		yield return www;
+		if(String.IsNullOrEmpty(www.error)){
+			www.LoadImageIntoTexture(textFb2);
+		}else{
+			Debug.LogError("Error al descargar la imagen: "+www.error);
+		}
+		
+		if(textFb2!=null){
+			if(bShowDebug) Debug.Log("GetProfileImage done, name:"+name+" id:"+app_scoped_id);
+			invitableFriendsDict[app_scoped_id].profilePicture = Sprite.Create(textFb2, new Rect(0, 0, textFb2.width, textFb2.height), new Vector2(0.5f, 0.5f));
+			invitableFriendsDict[app_scoped_id].bPictureDone = true;
+		}else{
+			if(bShowDebug) Debug.Log("ERROR: textFb2 es null");
+			StartCoroutine(GetProfileImageFromURL(url, app_scoped_id, name));
+		}
+		
+		//DestroyImmediate(textFb2);
+		//textFb2=null;
+	}*/
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Pedir una vida a tus amigos
@@ -285,10 +336,11 @@ public class FacebookManager : MonoBehaviour
 				FB.Login("public_profile,email,user_friends,publish_actions", AuthCallback);
 			}
 			AskForOneLife();
-			status = "Friend Selector called";
+			//status = "Friend Selector called";
 		}
 		catch(Exception e){
-			status = e.Message;
+			if(bShowDebug) Debug.Log("ButtonPressedAskLive error: " + e.Message);
+			//status = e.Message;
 		}
 	}
 	
@@ -301,11 +353,15 @@ public class FacebookManager : MonoBehaviour
 			Adjust.trackEvent("3xnjnv");
 			FriendSelectorFilters = "[\"app_non_users\"]";
 			InviteFriends();
-			status = "Friend Selector called";
+			//status = "Friend Selector called";
 		}
 		catch(Exception e){
-			status = e.Message;
+			//status = e.Message;
+			if(bShowDebug) Debug.Log("ButtonPressedInviteFriends error: " + e.Message);
 		}
+		
+		//No se puede usar hasta que salga la v.7 del SDK de Facebook
+		//GetInvitableFriendsList(); 
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -354,6 +410,110 @@ public class FacebookManager : MonoBehaviour
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//No se puede usar hasta que salga la v.7 del SDK de Facebook
+	/*
+	public void ButtonPressedSendInvitations()
+	{
+		foreach(var friend in invitableFriendsDict)
+		{
+			FB.AppRequest(
+				"Play this game!",
+				//new string[]{friend.Value.id},
+				new string[]{"10205103361372534"},
+				null,
+				null,
+				null,
+				"",
+				"Invita a tus amigos",
+				callback : CallbackInviteFriends);
+			}
+	}
+	*/
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//No se puede usar hasta que salga la v.7 del SDK de Facebook
+	/*
+	void GetInvitableFriendsList()
+	{
+		if(messagesPopUp.bShow){
+			return;
+		}
+		if(bShowDebug) Debug.Log("GetInvitableFriendsList");
+		
+		if(FB.IsLoggedIn){
+			//FB.API("v2.3/me/invitable_friends", HttpMethod.GET, GetInvitableFriendsListCallback);
+			FB.API("v2.3/me/invitable_friends?limit=30,fields=name,id", HttpMethod.GET, GetInvitableFriendsListCallback);
+		}
+	}*/
+	/*
+	//No se puede usar hasta que salga la v.7 del SDK de Facebook
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Creamos entradas para el popup de amigos
+	void GetInvitableFriendsListCallback(FBResult result)
+	{
+		if(!String.IsNullOrEmpty(result.Error)){
+			if(bShowDebug) Debug.Log("GetInvitableFriendsListCallback: Error Response:" + result.Error);
+		}
+		else if(!String.IsNullOrEmpty(result.Text)){
+			if(bShowDebug) Debug.Log("GetInvitableFriendsListCallback: Success Response:" + result.Text);
+			Dictionary<string, object> friendsList = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
+			List<object> friendsListsData = friendsList["data"] as List<object>;
+			
+			invitableFriendsToggles.Clear();
+			invitableFriendsDict.Clear();
+			
+			if(friendsListsData!=null && friendsListsData.Count>0){
+				foreach(object entry in friendsListsData)
+				{
+					Dictionary<string, object> requestItem = entry as Dictionary<string,object>;
+					string name = requestItem["name"] as String;
+					string app_scoped_id = requestItem["id"] as String;
+					pictureItem = requestItem["picture"] as Dictionary<string,object>;
+					dataItem = pictureItem["data"] as Dictionary<string,object>;
+					string image_url = dataItem["url"] as string;
+					
+					GameObject goEntry = Instantiate(friendPrefab) as GameObject;
+					goEntry.transform.SetParent(contentFriends.transform);
+					goEntry.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+					goEntry.transform.GetChild(2).GetComponent<Text>().text = GetNameAndSurname(name);
+					goEntry.transform.GetChild(1).GetComponent<FriendPicture>().id = app_scoped_id;
+					
+					invitableFriendsToggles.Add(goEntry.transform.GetChild(0).GetComponent<Toggle>());
+					
+					//Si no existe ese amigo en el diccionario -> lo añadimos
+					if(!invitableFriendsDict.ContainsKey(app_scoped_id)){
+						Friend newFriend = new Friend();
+						newFriend.id = app_scoped_id;
+						newFriend.name = name;
+						invitableFriendsDict.Add(app_scoped_id, newFriend);
+					}					
+					
+					//Si la imagen aun no ha estado cargada -> la cargamos
+					if(!invitableFriendsDict[app_scoped_id].bPictureDone){
+						StartCoroutine(GetProfileImageFromURL(image_url, app_scoped_id, name));
+					}
+				}
+			}
+		}
+		else{
+			if(bShowDebug) Debug.Log("GetInvitableFriendsListCallback: Empty Response");
+		}
+		
+		inviteFriendsPopUp.ShowPopUp();
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Mostramos solamente el nombre y primer apellido. El segundo apellido no lo mostramos para que no se corte.
+	string GetNameAndSurname(string fullname)
+	{
+		string[] words = fullname.Split(' ');
+		if(words.Length>1){
+			return words[0]+" "+words[1];
+		}else{
+			return fullname;
+		}
+	}*/
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	void AuthCallback(FBResult result)
 	{
@@ -366,7 +526,7 @@ public class FacebookManager : MonoBehaviour
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+	//Selecciona los amigos de facebook a los que vamos a enviar la request
 	void FriendsSelector()
 	{
 		// If there's a Max Recipients specified, include it
@@ -375,7 +535,8 @@ public class FacebookManager : MonoBehaviour
 			try{
 				maxRecipients = Int32.Parse(FriendSelectorMax);
 			}catch(Exception e){
-				status = e.Message;
+				//status = e.Message;
+				if(bShowDebug) Debug.Log("FriendsSelector error: " + e.Message);
 			}
 		}
 		// include the exclude ids
@@ -417,7 +578,13 @@ public class FacebookManager : MonoBehaviour
 			if(bShowDebug) Debug.Log("CallbackInviteFriends: Error Response:" + result.Error);
 		}
 		else if(!String.IsNullOrEmpty(result.Text)){
-			Adjust.trackEvent("n0lux5");
+			var parameters = (Dictionary<string, object>)Facebook.MiniJSON.Json.Deserialize(result.Text);
+			if(!parameters.ContainsKey("cancelled")){
+				Adjust.trackEvent("n0lux5");
+				if(bShowDebug) Debug.Log("CallbackInviteFriends: OK");
+			}else{
+				if(bShowDebug) Debug.Log("CallbackInviteFriends: Cancelled");
+			}
 		}
 		else{
 			if(bShowDebug) Debug.Log("CallbackInviteFriends: Empty Response");
@@ -468,7 +635,7 @@ public class FacebookManager : MonoBehaviour
 		if(bShowDebug) Debug.Log("ReadAllRequests");
 		
 		if(FB.IsLoggedIn){
-			FB.API("v2.2/me/apprequests?fields=id,from,object,action_type", HttpMethod.GET, ReadAllRequestsCallback);
+			FB.API("v2.3/me/apprequests?fields=id,from,object,action_type", HttpMethod.GET, ReadAllRequestsCallback);
 		}
 	}
 	
@@ -499,7 +666,7 @@ public class FacebookManager : MonoBehaviour
 					fromItem = requestItem["from"] as Dictionary<string,object>;
 					string user_id = fromItem["id"] as string;
 					string user_name = fromItem["name"] as string;
-					
+										
 					string action_type="empty";
 					if(requestItem.ContainsKey("action_type")){
 						action_type = requestItem["action_type"] as string;
@@ -541,7 +708,7 @@ public class FacebookManager : MonoBehaviour
 		if(bShowDebug) Debug.Log("DeleteAllRequests");
 		
 		if(FB.IsLoggedIn){
-			FB.API("v2.2/me/apprequests?fields=id", HttpMethod.GET, DeleteAllRequestsCallback);
+			FB.API("v2.3/me/apprequests?fields=id", HttpMethod.GET, DeleteAllRequestsCallback);
 		}
 	}
 	
@@ -577,7 +744,7 @@ public class FacebookManager : MonoBehaviour
 		if(bShowDebug) Debug.Log("DeleteRequest");
 		
 		if(FB.IsLoggedIn){
-			FB.API("v2.2/"+requestID, HttpMethod.DELETE, Callback);
+			FB.API("v2.3/"+requestID, HttpMethod.DELETE, Callback);
 		}
 	}
 	
@@ -597,6 +764,9 @@ public class FacebookManager : MonoBehaviour
 		fromItem.Clear();
 		pendingRequests.Clear();
 		pendingRequestsData.Clear();
+		
+		//pictureItem.Clear();
+		//dataItem.Clear();
 		
 		livesCounter=0;
 
@@ -619,7 +789,7 @@ public class FacebookManager : MonoBehaviour
 		
 		Dictionary<string, string> formDic = new Dictionary<string, string>();
 		formDic["object"] = Facebook.MiniJSON.Json.Serialize(formData);
-		FB.API("v2.2/me/objects/bubbleparadisetwo:life", HttpMethod.POST, AskForOneLifeCallback, formDic);
+		FB.API("v2.3/me/objects/bubbleparadisetwo:life", HttpMethod.POST, AskForOneLifeCallback, formDic);
 	}*/
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -629,17 +799,16 @@ public class FacebookManager : MonoBehaviour
 		//lastResponseTexture = null;
 		// Some platforms return the empty string instead of null.
 		if(!String.IsNullOrEmpty(result.Error)){
-			lastResponse = "Error Response:\n" + result.Error;
+			//lastResponse = "Error Response:\n" + result.Error;
 		}
 		else if(!String.IsNullOrEmpty(result.Text)){
-			lastResponse = "Success Response:\n" + result.Text;
+			//lastResponse = "Success Response:\n" + result.Text;
 		}
 		else if(result.Texture != null){
 			//lastResponseTexture = result.Texture;
-			lastResponse = "Success Response: texture\n";
 		}
 		else{
-			lastResponse = "Empty Response\n";
+			//lastResponse = "Empty Response\n";
 		}
 	}
 }

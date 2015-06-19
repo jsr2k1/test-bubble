@@ -9,6 +9,7 @@ public class FriendPicture : MonoBehaviour
 {
 	Image image;
 	public string id="empty";
+	//bool is_invitable_friend=false;
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -28,11 +29,23 @@ public class FriendPicture : MonoBehaviour
 	//Obtenemos la imagen de facebook y la ponemos en la request
 	IEnumerator GetPicture()
 	{
-		if(id!="empty" && FacebookManager.instance.friendsDict.ContainsKey(id)){
-			image.sprite = FacebookManager.instance.friendsDict[id].profilePicture;
-		}else{
-			yield return new WaitForSeconds(1);
-			StartCoroutine(GetPicture());
+		//No se puede usar hasta que salga la v.7 del SDK de Facebook
+		/*
+		if(is_invitable_friend){
+			if(id!="empty" && FacebookManager.instance.invitableFriendsDict.ContainsKey(id) && FacebookManager.instance.invitableFriendsDict[id].profilePicture!=null){
+				image.sprite = FacebookManager.instance.invitableFriendsDict[id].profilePicture;
+			}else{
+				yield return new WaitForSeconds(1);
+				StartCoroutine(GetPicture());
+			}
 		}
+		else{*/
+			if(id!="empty" && FacebookManager.instance.friendsDict.ContainsKey(id) && FacebookManager.instance.friendsDict[id].profilePicture!=null){
+				image.sprite = FacebookManager.instance.friendsDict[id].profilePicture;
+			}else{
+				yield return new WaitForSeconds(1);
+				StartCoroutine(GetPicture());
+			}
+		//}
 	}
 }

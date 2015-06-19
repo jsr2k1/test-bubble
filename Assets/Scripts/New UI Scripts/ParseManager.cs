@@ -1,4 +1,4 @@
-﻿//https://www.parse.com/docs/unity_guide#objects
+//https://www.parse.com/docs/unity_guide#objects
 //https://parse.com/apps/bubble-paradise-2/collections
 using UnityEngine;
 using System.Collections;
@@ -61,6 +61,7 @@ public class ParseManager : MonoBehaviour
 			facebookUserObj.SaveAsync();
 			FacebookBubble.instance.EnableButtons();
 			CustomDebug("PARSE_MANAGER: New entry created - ID:"+FB.UserId+", Name:"+FacebookManager.facebookUserName);
+			PlayerPrefs.SetInt("FirstTimeFacebookLogin", 0);
 		}
 		//Ya existe una entrada para el usuario -> recuperamos los valores
 		else if(!emptyEntry && currentParseObject!=null){
@@ -141,10 +142,10 @@ public class ParseManager : MonoBehaviour
 		while(!emptyEntry && !getObjTask.IsCompleted) yield return null;
 		
 		if(currentParseObject!=null){
-			currentParseObject.SaveAsync().ContinueWith(t => {
+			//currentParseObject.SaveAsync().ContinueWith(t => {
 				FillObj(currentParseObject);
 				currentParseObject.SaveAsync();
-			});
+			//});
 		}
 		emptyEntry=false;
 		FacebookBubble.instance.EnableButtons();

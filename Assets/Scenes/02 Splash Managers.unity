@@ -348,10 +348,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281ed8281c093744398d9f157e784beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  friendPrefab: {fileID: 100000, guid: 8ab3f0f8cb48a4f458952d52b3c07116, type: 2}
   entryPrefab: {fileID: 100000, guid: ece7330dfd7caed4b9382d573a33137e, type: 2}
   friendFramePrefab: {fileID: 100002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
   timeReadRequest: 30
-  bShowDebug: 0
+  invitableFriendsToggles: []
+  SelectAllToggle: {fileID: 0}
+  bShowDebug: 1
 --- !u!4 &445606291
 Transform:
   m_ObjectHideFlags: 0
