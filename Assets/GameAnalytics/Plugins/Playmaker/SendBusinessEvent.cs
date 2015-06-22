@@ -1,6 +1,7 @@
 #if false
 
 using System;
+using GameAnalyticsSDK;
 
 namespace HutongGames.PlayMaker.Actions
 {
@@ -10,28 +11,46 @@ namespace HutongGames.PlayMaker.Actions
 	public class SendBusinessEvent : FsmStateAction
 	{
 		[RequiredField]
-		[Tooltip("The event ID")]
-		public FsmString EventID;
-		
-		[RequiredField]
 		[Tooltip("Abbreviation of the currency used for the transaction. F.x. USD (U.S. Dollars)")]
 		public FsmString Currency;
 		
 		[RequiredField]
-		[Tooltip("The value of the transaction in the lowest currency unit. F.x. if currency is USD then amount should be in cent. Use action 'ConvertFloatToLowestCurrencyUnit' to convert if required")]
+		[Tooltip("Amount of real currency, in cents")]
 		public FsmInt Amount;
 
+		[RequiredField]
+		[Tooltip("Type of IAP item purchased (e.g. Coins)")]
+		public FsmString ItemType;
+		
+		[RequiredField]
+		[Tooltip("Specific item purchased (e.g. CoinPack001)")]
+		public FsmString ItemID;
+
+		[RequiredField]
+		[Tooltip("Cart Type")]
+		public FsmString CartType;
+
+		[Tooltip("App Store Receipt, used for purchase validation")]
+		public FsmString Receipt;
+		
+		[RequiredField]
+		[Tooltip("If true the SDK will ignore the receipt parameter and attempt to automatically get the receipt.")]
+		public FsmBool AutoFetchReceipt;
 		
 		public override void Reset()
 		{
-			EventID = new FsmString() { UseVariable = false };
 			Currency = new FsmString() { UseVariable = false };
 			Amount = new FsmInt() { UseVariable = false };
+			ItemType = new FsmString() { UseVariable = false };
+			ItemID = new FsmString() { UseVariable = false };
+			CartType = new FsmString() { UseVariable = false };
+			Receipt = new FsmString() { UseVariable = false };
+			AutoFetchReceipt = new FsmBool() { UseVariable = false };
 		}
 		
 		public override void OnEnter()
 		{
-			GA.API.Business.NewEvent(EventID.Value, Currency.Value, Amount.Value);
+			GA_Business.NewEvent(Currency.Value, Amount.Value, ItemType.Value, ItemID.Value, CartType.Value, Receipt.Value, AutoFetchReceipt.Value);
 			
 			Finish();
 		}

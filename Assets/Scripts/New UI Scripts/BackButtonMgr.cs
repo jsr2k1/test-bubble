@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using GameAnalyticsSDK;
 
 public class BackButtonMgr : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class BackButtonMgr : MonoBehaviour
 		}
 		//WORLDS
 		else if(Application.loadedLevelName=="04 World Menu"){
+			GameAnalytics.NewProgressionEvent (GA_Progression.GAProgressionStatus.GAProgressionStatusFail, LevelManager.levelNo.ToString());
 			Application.LoadLevel("03 Menu"); //Go to Menu Scene
 		}
 		//GAME-WORLDS

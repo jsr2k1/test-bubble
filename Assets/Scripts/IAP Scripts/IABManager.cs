@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Prime31;
+using GameAnalyticsSDK;
 
 public class IABManager : MonoBehaviour
 {
@@ -91,37 +92,42 @@ public class IABManager : MonoBehaviour
 			coins = coins + 100;
 			CoinsManager.instance.SetCoins(coins);
 			Adjust.trackRevenue(99, "v00myc");
-			GA.API.Business.NewEvent("PurchaseXSmall", dictPrices.ContainsKey(item1) ? dictPrices[item1] : "none", 99);
+
+			GameAnalytics.NewBusinessEvent("USD", 99, "PurchaseXSmall", "itemId", "cartType", null, true);
 		}
 		if(productId == "small") {
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 400;
 			CoinsManager.instance.SetCoins(coins);
 			Adjust.trackRevenue(299, "x088of");
-			GA.API.Business.NewEvent("PurchaseSmall", dictPrices.ContainsKey(item2) ? dictPrices[item2] : "none", 299);
+
+			GameAnalytics.NewBusinessEvent("USD", 299, "PurchaseSmall", "itemId", "cartType", null, true);
 		}
 		if(productId == "medium") {
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 800;
 			CoinsManager.instance.SetCoins(coins);
 			Adjust.trackRevenue(499, "4hz7lk");
-			GA.API.Business.NewEvent("PurchaseMedium", dictPrices.ContainsKey(item3) ? dictPrices[item3] : "none", 499);
+
+			GameAnalytics.NewBusinessEvent("USD", 499, "PurchaseMedium", "itemId", "cartType", null, true);
 		}
 		if(productId == "big") {
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 2000;
 			CoinsManager.instance.SetCoins(coins);
 			Adjust.trackRevenue(999, "mh1aku");
-			GA.API.Business.NewEvent("PurchaseBig", dictPrices.ContainsKey(item4) ? dictPrices[item4] : "none", 999);
+
+			GameAnalytics.NewBusinessEvent("USD", 999, "PurchaseBig", "itemId", "cartType", null, true);
 		}
 		if(productId == "extrabig") {
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 5000;
 			CoinsManager.instance.SetCoins(coins);
 			Adjust.trackRevenue(1999, "9ok2mj");
-			GA.API.Business.NewEvent("PurchaseExtraBig", dictPrices.ContainsKey(item5) ? dictPrices[item5] : "none", 1999);
+
+			GameAnalytics.NewBusinessEvent("USD", 1999, "PurchaseExtraBig", "itemId", "cartType", null, true);
 		}
-		
+			
 		ParseManager.instance.SaveCurrentData();
 		Adjust.trackEvent("80jv5o");
 	}

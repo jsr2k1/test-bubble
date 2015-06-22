@@ -1,6 +1,7 @@
 #if false
 
 using System;
+using GameAnalyticsSDK;
 
 namespace HutongGames.PlayMaker.Actions
 {
@@ -25,9 +26,9 @@ namespace HutongGames.PlayMaker.Actions
 		public override void OnEnter()
 		{
 			if (!EventValue.IsNone)
-				GA.API.Design.NewEvent(EventID.Value, EventValue.Value);
+				GA_Design.NewEvent(EventID.Value, EventValue.Value);
 			else
-				GA.API.Design.NewEvent(EventID.Value);
+				GA_Design.NewEvent(EventID.Value);
 			
 			Finish();
 		}

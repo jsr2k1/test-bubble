@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using GameAnalyticsSDK;
 
 public class FacebookButtons : MonoBehaviour, IPointerClickHandler
 {
@@ -10,6 +11,7 @@ public class FacebookButtons : MonoBehaviour, IPointerClickHandler
 	{
 		if(name=="ButtonFacebookInvite"){
 			FacebookManager.instance.ButtonPressedInviteFriends();
+			GameAnalytics.NewDesignEvent ("InviteFriendsButton");
 		}
 		else if(name=="ButtonFacebookMessages"){
 			FacebookManager.instance.ButtonPressedMessages();

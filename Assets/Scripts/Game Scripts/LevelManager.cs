@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using GameAnalyticsSDK;
 
 public enum GameState
 {
@@ -75,17 +76,20 @@ public class LevelManager : MonoBehaviour
 	{
 		//Camera.main.aspect = .666f;
 		gameState = GameState.Start;
+
 		rowAddingInterval = Mathf.Max(1, rowAddingInterval);
 		minimumNumberOfRows = Mathf.Max(1, minimumNumberOfRows);
 		//totalNumberOfRowsLeft = Mathf.Max(minimumNumberOfRows, totalNumberOfRowsLeft);
 
 		if(LevelManager.GameType == LevelManager.GameTypes.NORMAL){
+			GameAnalytics.NewProgressionEvent (GA_Progression.GAProgressionStatus.GAProgressionStatusStart, levelNo.ToString());
 			totalNumberOfRowsLeft = minimumNumberOfRows;
 			currentBalls = NumberOfBalls;
 			//setting the balls of the level
 			ballsManager.setBallsLeft(NumberOfBalls);
 		}//ARCADE
 		else{
+			GameAnalytics.NewProgressionEvent (GA_Progression.GAProgressionStatus.GAProgressionStatusStart, "Arcade");
 			totalNumberOfRowsLeft = 6;
 		}
 		scoreTextLabel = GameObject.Find("ScoreTextLabel").GetComponent<Text>();
@@ -100,6 +104,7 @@ public class LevelManager : MonoBehaviour
 	//Hemos SUPERADO el nivel
 	public void GameIsFinished()
 	{
+		GameAnalytics.NewProgressionEvent (GA_Progression.GAProgressionStatus.GAProgressionStatusComplete, levelNo.ToString ());
 		gameState = GameState.GameFinish;
 		AudioManager.instance.StopAudio();
 		winPop.ShowPopUp();
@@ -128,6 +133,13 @@ public class LevelManager : MonoBehaviour
 		if(gameState != GameState.Start){
 			return;
 		}
+
+		if (LevelManager.GameType == LevelManager.GameTypes.NORMAL) {
+			GameAnalytics.NewProgressionEvent (GA_Progression.GAProgressionStatus.GAProgressionStatusFail, levelNo.ToString ());
+		} else {
+			GameAnalytics.NewProgressionEvent (GA_Progression.GAProgressionStatus.GAProgressionStatusComplete, "Arcade", score);
+		}
+
 		gameState = GameState.GameOver;
 		AudioManager.instance.StopAudio();
 		losePop.ShowPopUp();
@@ -154,6 +166,7 @@ public class LevelManager : MonoBehaviour
 		if(LevelManager.GameType == LevelManager.GameTypes.ARCADE){
 			Application.LoadLevel(2);
 		} else{
+			GameAnalytics.NewProgressionEvent (GA_Progression.GAProgressionStatus.GAProgressionStatusStart, levelNo.ToString());
 			Application.LoadLevel(3);
 		}
 	}

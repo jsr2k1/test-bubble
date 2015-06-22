@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using GameAnalyticsSDK;
 
 public class FacebookBubble : MonoBehaviour
 {
@@ -120,6 +121,7 @@ public class FacebookBubble : MonoBehaviour
 	{
 		if(FB.IsLoggedIn){
 			//Debug.Log(FB.UserId);
+			GameAnalytics.SetFacebookId (FB.UserId);
 			FacebookManager.GetFacebookUserName(); //Obtenemos el nombre del usuario
 			FacebookConnectedPopUp.ShowPopUp();
 			if(PlayerPrefs.GetInt("FirstTimeFacebookLogin")==1){
