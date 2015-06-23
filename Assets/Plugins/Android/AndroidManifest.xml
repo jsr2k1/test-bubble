@@ -1,53 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.unity3d.player"
-	android:installLocation="preferExternal"
-	android:theme="@android:style/Theme.NoTitleBar"
-    android:versionCode="1110"
-    android:versionName="1.1.1">
-    <supports-screens
-        android:smallScreens="true"
-        android:normalScreens="true"
-        android:largeScreens="true"
-        android:xlargeScreens="true"
-        android:anyDensity="true"/>
+<?xml version="1.0" ?><manifest android:installLocation="preferExternal" android:theme="@android:style/Theme.NoTitleBar" android:versionCode="1110" android:versionName="1.1.1" package="com.unity3d.player" xmlns:android="http://schemas.android.com/apk/res/android">
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true" android:xlargeScreens="true"/>
 
-    <application
-		android:icon="@drawable/app_icon"
-        android:label="@string/app_name"
-        android:debuggable="true">
-        <receiver
-            android:name="com.adjust.sdk.ReferrerReceiver"
-            android:exported="true" >
+    <application android:debuggable="true" android:icon="@drawable/app_icon" android:label="@string/app_name">
+        <receiver android:exported="true" android:name="com.adjust.sdk.ReferrerReceiver">
             <intent-filter>
-                <action android:name="com.android.vending.INSTALL_REFERRER" />
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
             </intent-filter>
         </receiver>
-        <activity android:name="com.unity3d.player.UnityPlayerNativeActivity"
-                  android:label="@string/app_name">
+        <activity android:label="@string/app_name" android:name="com.unity3d.player.UnityPlayerNativeActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-            <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
-            <meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="false" />
+            <meta-data android:name="unityplayer.UnityActivity" android:value="true"/>
+            <meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="false"/>
         </activity>
-        <activity android:name="com.prime31.GoogleIABProxyActivity" android:configChanges="orientation|layoutDirection|keyboard|keyboardHidden|screenLayout|uiMode|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+        <activity android:configChanges="orientation|layoutDirection|keyboard|keyboardHidden|screenLayout|uiMode|screenSize" android:name="com.prime31.GoogleIABProxyActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
         </activity>
         <activity android:name="com.prime31.IAB">
         </activity>
-        <activity android:name="com.facebook.unity.FBUnityLoginActivity" android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+        <activity android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen" android:name="com.facebook.unity.FBUnityLoginActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
 	    </activity>
-	    <activity android:name="com.facebook.unity.FBUnityDialogsActivity" android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+	    <activity android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen" android:name="com.facebook.unity.FBUnityDialogsActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
 	    </activity>
-	    <activity android:name="com.facebook.LoginActivity" android:configChanges="keyboardHidden|orientation" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+	    <activity android:configChanges="keyboardHidden|orientation" android:name="com.facebook.LoginActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
 	    </activity>
-	    <activity android:name="com.facebook.unity.FBUnityDeepLinkingActivity" android:exported="true">
+	    <activity android:exported="true" android:name="com.facebook.unity.FBUnityDeepLinkingActivity">
 	    </activity>
-	    <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="\ 730922200278965" />
-    </application>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="com.android.vending.BILLING" />
+	    <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="\ 730922200278965"/>
+    <receiver android:exported="true" android:name="com.adjust.sdk.AdjustReferrerReceiver">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver></application>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.android.vending.BILLING"/>
 </manifest>

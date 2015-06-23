@@ -2,7 +2,6 @@
 
 @interface AdjustUnity : NSObject<AdjustDelegate>
 
-- (void)adjustFinishedTrackingWithResponse:(AIResponseData *)responseData;
+- (void)adjustAttributionChanged:(ADJAttribution *)attribution;
 
 @end
-

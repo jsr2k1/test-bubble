@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using GameAnalyticsSDK;
+using com.adjust.sdk;
 
 public class LoadModeButton : MonoBehaviour
 {
 	public void LoadWorldMode()
 	{
-		Adjust.trackEvent("1b5w81");
+		Adjust.trackEvent(new AdjustEvent("1b5w81"));
 
-		GameAnalytics.NewDesignEvent ("LoadWorldMode");
+		GameAnalytics.NewDesignEvent("LoadWorldMode");
 		
 		Application.LoadLevel("04 World Menu");
 	}
@@ -17,9 +18,9 @@ public class LoadModeButton : MonoBehaviour
 
 	public void LoadArcadeMode()
 	{
-		Adjust.trackEvent("xr59vt");
+		Adjust.trackEvent(new AdjustEvent("xr59vt"));
 
-		GameAnalytics.NewDesignEvent ("LoadArcadeMode");
+		GameAnalytics.NewDesignEvent("LoadArcadeMode");
 		
 		LevelManager.GameType = LevelManager.GameTypes.ARCADE;
 

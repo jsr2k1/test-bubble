@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Prime31;
 using GameAnalyticsSDK;
+using com.adjust.sdk;
 
 public class IABManager : MonoBehaviour
 {
@@ -69,7 +70,7 @@ public class IABManager : MonoBehaviour
 		DoPurchase(productId);
 #else
 		if(dictPrices.ContainsKey(productId)){
-			IAP.purchaseConsumableProduct(productId, (didSucceed, error) =>
+			IAP.purchaseConsumableProduct(productId,(didSucceed, error) =>
 			{
 				Debug.Log("purchasing product " + productId + " result: " + didSucceed);
 				
@@ -91,7 +92,10 @@ public class IABManager : MonoBehaviour
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 100;
 			CoinsManager.instance.SetCoins(coins);
-			Adjust.trackRevenue(99, "v00myc");
+			
+			AdjustEvent adjustEvent = new AdjustEvent("v00myc");
+			adjustEvent.setRevenue(0.99, "EUR");
+			Adjust.trackEvent(adjustEvent);
 
 			GameAnalytics.NewBusinessEvent("USD", 99, "PurchaseXSmall", "itemId", "cartType", null, true);
 		}
@@ -99,7 +103,10 @@ public class IABManager : MonoBehaviour
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 400;
 			CoinsManager.instance.SetCoins(coins);
-			Adjust.trackRevenue(299, "x088of");
+			
+			AdjustEvent adjustEvent = new AdjustEvent("x088of");
+			adjustEvent.setRevenue(2.99, "EUR");
+			Adjust.trackEvent(adjustEvent);
 
 			GameAnalytics.NewBusinessEvent("USD", 299, "PurchaseSmall", "itemId", "cartType", null, true);
 		}
@@ -107,7 +114,10 @@ public class IABManager : MonoBehaviour
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 800;
 			CoinsManager.instance.SetCoins(coins);
-			Adjust.trackRevenue(499, "4hz7lk");
+			
+			AdjustEvent adjustEvent = new AdjustEvent("4hz7lk");
+			adjustEvent.setRevenue(4.99, "EUR");
+			Adjust.trackEvent(adjustEvent);
 
 			GameAnalytics.NewBusinessEvent("USD", 499, "PurchaseMedium", "itemId", "cartType", null, true);
 		}
@@ -115,7 +125,10 @@ public class IABManager : MonoBehaviour
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 2000;
 			CoinsManager.instance.SetCoins(coins);
-			Adjust.trackRevenue(999, "mh1aku");
+			
+			AdjustEvent adjustEvent = new AdjustEvent("mh1aku");
+			adjustEvent.setRevenue(9.99, "EUR");
+			Adjust.trackEvent(adjustEvent);
 
 			GameAnalytics.NewBusinessEvent("USD", 999, "PurchaseBig", "itemId", "cartType", null, true);
 		}
@@ -123,13 +136,16 @@ public class IABManager : MonoBehaviour
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 5000;
 			CoinsManager.instance.SetCoins(coins);
-			Adjust.trackRevenue(1999, "9ok2mj");
+			
+			AdjustEvent adjustEvent = new AdjustEvent("9ok2mj");
+			adjustEvent.setRevenue(19.99, "EUR");
+			Adjust.trackEvent(adjustEvent);
 
 			GameAnalytics.NewBusinessEvent("USD", 1999, "PurchaseExtraBig", "itemId", "cartType", null, true);
 		}
 			
 		ParseManager.instance.SaveCurrentData();
-		Adjust.trackEvent("80jv5o");
+		Adjust.trackEvent(new AdjustEvent ("80jv5o"));
 	}
 }
 

@@ -402,9 +402,9 @@ namespace GameAnalyticsSDK
 			GameObject go = (GameObject)EditorUtility.InstanceIDToObject(instanceID);
 			if (go != null && go.GetComponent<GameAnalytics>() != null)
 			{
-				float addX = 0;
+				//float addX = 0;
 				if (go.GetComponent("PlayMakerFSM") != null)
-					addX = selectionRect.height + 2;
+				//	addX = selectionRect.height + 2;
 				
 				if (GameAnalytics.SettingsGA.Logo == null)
 				{

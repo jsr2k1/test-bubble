@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using GameAnalyticsSDK;
+using com.adjust.sdk;
 
 public class PopUpMgr : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class PopUpMgr : MonoBehaviour
 	{
 		if(!bShow){
 			if(name=="ShopCoinsPopUp"){
-				Adjust.trackEvent("gtv2yu");
+				Adjust.trackEvent(new AdjustEvent("gtv2yu"));
 			}
 			if(name== "SettingsPopUp" || name=="RankingPopUpArcade"){
 				if(InGameScriptRefrences.strikerManager!=null &&!InGameScriptRefrences.strikerManager.bStartDone){

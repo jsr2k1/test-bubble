@@ -1,6 +1,7 @@
-#import "NSString+AIAdditions.h"
-#import "AIAdjustFactory.h"
 #import "AdjustUnity.h"
+
+#import "ADJEvent.h"
+#import "ADJConfig.h"
 
 @implementation AdjustUnity
 
@@ -12,107 +13,142 @@ static id<AdjustDelegate> adjustUnityInstance = nil;
     return self;
 }
 
-- (void)adjustFinishedTrackingWithResponse:(AIResponseData *)responseData {
-    NSDictionary *dicResponseData = [responseData dictionary];
-    NSData *dResponseData = [NSJSONSerialization dataWithJSONObject:dicResponseData options:0 error:nil];
-    NSString *sResponseData = [[NSString alloc] initWithBytes:[dResponseData bytes]
-                                                       length:[dResponseData length]
-                                                     encoding:NSUTF8StringEncoding];
-    const char * cResponseData= [sResponseData UTF8String];
+- (void)adjustAttributionChanged:(ADJAttribution *)attribution {
+    NSDictionary *dicAttribution = [attribution dictionary];
+    NSData *dataAttribution = [NSJSONSerialization dataWithJSONObject:dicAttribution options:0 error:nil];
+    NSString *stringAttribution = [[NSString alloc] initWithBytes:[dataAttribution bytes]
+                                                           length:[dataAttribution length]
+                                                         encoding:NSUTF8StringEncoding];
 
-    UnitySendMessage(adjustSceneName, "getNativeMessage", cResponseData);
+    const char* charArrayAttribution = [stringAttribution UTF8String];
+
+    UnitySendMessage(adjustSceneName, "getNativeMessage", charArrayAttribution);
 }
 
 @end
 
-NSDictionary* ConvertParameters (const char* cJsonParameters)
-{
-    if (cJsonParameters == nil) {
+// Method for converting JSON stirng parameters into NSArray object.
+NSArray* ConvertArrayParameters (const char* cStringJsonArrayParameters) {
+    if (cStringJsonArrayParameters == NULL) {
         return nil;
     }
-    NSString *sJsonParameters = [NSString stringWithUTF8String: cJsonParameters];
 
-    NSDictionary * parameters = nil;
+    NSString *stringJsonArrayParameters = [NSString stringWithUTF8String:cStringJsonArrayParameters];
+
     NSError *error = nil;
+    NSArray *arrayParameters = nil;
 
-    if (sJsonParameters != nil) {
-        NSData *jsonData = [sJsonParameters dataUsingEncoding:NSUTF8StringEncoding];
-        parameters = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
+
+    if (stringJsonArrayParameters != nil) {
+        NSData *dataJson = [stringJsonArrayParameters dataUsingEncoding:NSUTF8StringEncoding];
+        arrayParameters = [NSJSONSerialization JSONObjectWithData:dataJson options:0 error:&error];
     }
+
     if (error != nil) {
-        NSString *errorMessage = [NSString stringWithFormat:@"Failed to parse json parameters: %@, (%@)", sJsonParameters.aiTrim, [error localizedDescription]];
-        [AIAdjustFactory.logger error:errorMessage];
+        NSString *errorMessage = @"Failed to parse json parameters!";
+        NSLog(@"%@", errorMessage);
     }
 
-    return parameters;
+    return arrayParameters;
 }
 
 extern "C"
 {
-    void _AdjustLaunchApp(const char* appToken, const char* environment, const char* sdkPrefix, int logLevel, int eventBuffering) {
-        NSString* sAppToken = [NSString stringWithUTF8String: appToken];
-        NSString* sEnvironment = [NSString stringWithUTF8String: environment];
-        NSString* sSdkPrefix = [NSString stringWithUTF8String: sdkPrefix];
-        AILogLevel eLogLevel = (AILogLevel)logLevel;
-        BOOL bEventBuffering = (BOOL) eventBuffering;
+    void _AdjustLaunchApp(const char* appToken, const char* environment, const char* sdkPrefix, int logLevel, int eventBuffering, const char* sceneName) {
+        // Mandatory fields.
+        NSString *stringSdkPrefix = [NSString stringWithUTF8String:sdkPrefix];
+        NSString *stringAppToken = [NSString stringWithUTF8String:appToken];
+        NSString *stringEnvironment = [NSString stringWithUTF8String:environment];
+        NSString *stringSceneName = [NSString stringWithUTF8String:sceneName];
 
-        NSLog(@"%@, %@, %d, %d", sAppToken, sEnvironment, eLogLevel, bEventBuffering);
-        [Adjust appDidLaunch:sAppToken];
-        [Adjust setEnvironment:sEnvironment];
-        [Adjust setLogLevel:eLogLevel];
-        [Adjust setSdkPrefix:sSdkPrefix];
-    }
+        ADJConfig *adjustConfig = [ADJConfig configWithAppToken:stringAppToken
+                                                    environment:stringEnvironment];
 
-    void _AdjustTrackEvent(const char* eventToken, const char* cJsonParameters) {
-        NSString *sEventToken = [NSString stringWithUTF8String: eventToken];
-        NSDictionary * parameters = ConvertParameters(cJsonParameters);
+        [adjustConfig setSdkPrefix:stringSdkPrefix];
 
-        if (parameters == nil) {
-            [Adjust trackEvent:sEventToken];
-        } else {
-            [Adjust trackEvent:sEventToken withParameters:parameters];
-        }
-    }
-
-    void _AdjustTrackRevenue(double cents, const char* eventToken, const char* cJsonParameters) {
-        NSString *sEventToken = nil;
-        if (eventToken != nil) {
-            sEventToken = [NSString stringWithUTF8String: eventToken];
+        // Optional fields.
+        if (logLevel != -1) {
+            [adjustConfig setLogLevel:(ADJLogLevel)logLevel];
         }
 
-        NSDictionary * parameters = ConvertParameters(cJsonParameters);
-
-        if (sEventToken == nil) {
-            [Adjust trackRevenue:cents];
-        } else if (parameters == nil) {
-            [Adjust trackRevenue:cents forEvent:sEventToken];
-        } else {
-            [Adjust trackRevenue:cents forEvent:sEventToken withParameters:parameters];
+        if (eventBuffering != -1) {
+            [adjustConfig setEventBufferingEnabled:(BOOL)eventBuffering];
         }
+
+        if (sceneName != NULL && [stringSceneName length] > 0) {
+            adjustSceneName = strdup(sceneName);
+            adjustUnityInstance = [[AdjustUnity alloc] init];
+            [adjustConfig setDelegate:adjustUnityInstance];
+        }
+
+        NSLog(@"%@, %@, %@, %d, %d, %@", stringAppToken, stringEnvironment, stringSdkPrefix, logLevel, eventBuffering, stringSceneName);
+
+        // Launch adjust instance.
+        [Adjust appDidLaunch:adjustConfig];
     }
 
-    void _AdjustOnPause() {
-        [Adjust trackSubsessionEnd];
-    }
+    void _AdjustTrackEvent(const char* eventToken, double revenue, const char* currency, const char* jsonCallbackParameters, const char* jsonPartnerParameters) {
+        // Mandatory fields.
+        NSString *stringEventToken = [NSString stringWithUTF8String:eventToken];
+        ADJEvent *event = [ADJEvent eventWithEventToken:stringEventToken];
 
-    void _AdjustOnResume() {
-        [Adjust trackSubsessionStart];
-    }
+        // Optional fields.
+        if (revenue != -1 || currency != NULL) {
+            NSString *stringCurrency = [NSString stringWithUTF8String:currency];
+            [event setRevenue:revenue currency:stringCurrency];
+        }
 
-    void _AdjustSetResponseDelegate(const char* sceneName) {
-        adjustSceneName = strdup(sceneName);
-        adjustUnityInstance = [[AdjustUnity alloc] init];
-        [Adjust setDelegate:adjustUnityInstance];
+        NSArray *arrayCallbackParameters = ConvertArrayParameters(jsonCallbackParameters);
+
+        if (arrayCallbackParameters != nil) {
+            int count = [arrayCallbackParameters count];
+
+            for (int i = 0; i < count;) {
+                NSString *key = arrayCallbackParameters[i];
+                i++;
+
+                NSString *value = arrayCallbackParameters[i];
+                i++;
+
+                [event addCallbackParameter:key value:value];
+            }
+        }
+
+        NSArray *arrayPartnerParameters = ConvertArrayParameters(jsonPartnerParameters);
+
+        if (arrayPartnerParameters != nil) {
+            int count = [arrayPartnerParameters count];
+
+            for (int i = 0; i < count;) {
+                NSString *key = arrayPartnerParameters[i];
+                i++;
+
+                NSString *value = arrayPartnerParameters[i];
+                i++;
+
+                [event addPartnerParameter:key value:value];
+            }
+        }
+
+        [Adjust trackEvent:event];
     }
 
     void _AdjustSetEnabled(int enabled) {
-        BOOL bEnabled = (BOOL) enabled;
+        BOOL bEnabled = (BOOL)enabled;
+
         [Adjust setEnabled:bEnabled];
     }
 
     int _AdjustIsEnabled() {
         BOOL isEnabled = [Adjust isEnabled];
-        int iIsEnabled = (int) isEnabled;
+        int iIsEnabled = (int)isEnabled;
+
         return iIsEnabled;
+    }
+
+    void _AdjustSetOfflineMode(int enabled) {
+        BOOL bEnabled = (BOOL)enabled;
+
+        [Adjust setOfflineMode:bEnabled];
     }
 }
