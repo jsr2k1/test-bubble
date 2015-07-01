@@ -90,6 +90,9 @@ public class LanguageManager : MonoBehaviour
 		dict.Add("id_select_all", new string[] {"Marcar todo","Select all"});
 		dict.Add("id_popular", new string[] {"POPULAR","POPULAR"});
 		dict.Add("id_best_offer", new string[] {"MEJOR OFERTA","BEST VALUE"});
+		dict.Add("id_share", new string[] {"COMPARTIR","SHARE"});
+		dict.Add("id_connecting", new string[] {"CONECTANDO...","CONNECTING..."});
+		dict.Add("id_done", new string[] {"¡HECHO!","DONE!"});
 		
 		//Tutoriales
 		dict.Add("id_tutorial_pulsa_pantalla", new string[] {"Pulsa la pantalla para apuntar y disparar", "Touch the screen to aim and shoot"});

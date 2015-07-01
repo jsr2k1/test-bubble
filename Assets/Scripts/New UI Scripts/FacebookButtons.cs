@@ -22,6 +22,10 @@ public class FacebookButtons : MonoBehaviour, IPointerClickHandler
 		else if(name=="ButtonAccept"){
 			FacebookManager.instance.ButtonPressedAccept();
 		}
+		else if(name=="ButtonFacebookFeed"){
+			FacebookManager.instance.ButtonPressedFeed();
+		}
+		
 		//No se puede usar hasta que salga la v.7 del SDK de Facebook
 		//else if(name=="ButtonSendInvitations"){
 		//	FacebookManager.instance.ButtonPressedSendInvitations();

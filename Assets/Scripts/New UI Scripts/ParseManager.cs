@@ -5,6 +5,7 @@ using System.Collections;
 using Parse;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System;
 
 public class ParseManager : MonoBehaviour
 {
@@ -24,12 +25,33 @@ public class ParseManager : MonoBehaviour
 	public delegate void GetFacebookFriendDone();
 	public static event GetFacebookFriendDone OnGetFacebookFriendInfoDone;
 	
+	string country_code;
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Awake()
 	{
 		instance = this;
 		currentParseObject = null;
+		StartCoroutine(GetCountryCode());
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	IEnumerator GetCountryCode()
+	{
+		WWW www = new WWW("http://api.hostip.info/country.php");
+		yield return www;
+		
+		if(String.IsNullOrEmpty(www.error)){
+			if(String.IsNullOrEmpty(www.text)){
+				StartCoroutine(GetCountryCode());
+			}else{
+				country_code = www.text;
+			}
+		}else{
+			Debug.Log("Error geting country code: "+ www.error);
+		}
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,6 +79,8 @@ public class ParseManager : MonoBehaviour
 			ParseObject facebookUserObj = new ParseObject("FacebookUser");
 			facebookUserObj["facebookUserID"] = FB.UserId;
 			facebookUserObj["facebookUserName"] = FacebookManager.facebookUserName;
+			facebookUserObj["email"] = FacebookManager.facebookEmail;
+			facebookUserObj["gender"] = FacebookManager.facebookGender;
 			FillObj(facebookUserObj);
 			facebookUserObj.SaveAsync();
 			FacebookBubble.instance.EnableButtons();
@@ -170,6 +194,10 @@ public class ParseManager : MonoBehaviour
 		obj["deviceModel"] = SystemInfo.deviceModel;
 		obj["deviceType"] = SystemInfo.deviceType.ToString();
 		obj["operatingSystem"] = SystemInfo.operatingSystem;
+		obj["country"] = country_code;
+		obj["email"] = FacebookManager.facebookEmail;
+		obj["gender"] = FacebookManager.facebookGender;
+		obj["NumVideosPlayed"] = PlayerPrefs.GetInt("NumVideosPlayed");
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

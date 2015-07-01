@@ -46,9 +46,16 @@ public class Splash : MonoBehaviour
 		if(!PlayerPrefs.HasKey("RateMeClicked")){
 			PlayerPrefs.SetInt("RateMeClicked", 0);
 		}
+		if(!PlayerPrefs.HasKey("NumVideosPlayed")){
+			PlayerPrefs.SetInt("NumVideosPlayed", 0);
+		}
+		
+		//
+		
 		if(!PlayerPrefs.HasKey("NumTimesPlayed")){
 			PlayerPrefs.SetInt("NumTimesPlayed", 0);
-		}else{
+		}
+		else{
 			int n = PlayerPrefs.GetInt("NumTimesPlayed");
 			PlayerPrefs.SetInt("NumTimesPlayed", n+1);
 		}

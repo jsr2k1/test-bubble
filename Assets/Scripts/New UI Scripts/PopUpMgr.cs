@@ -9,6 +9,7 @@ public class PopUpMgr : MonoBehaviour
 	Animator anim;
 	public bool bShow=false;
 	public GameObject buttonNext;
+	public GameObject buttonFacebookFeed;
 	
 	public AudioSource sound_stars_1;
 	public AudioSource sound_stars_2;
@@ -23,6 +24,10 @@ public class PopUpMgr : MonoBehaviour
 	void Awake()
 	{
 		anim = GetComponent<Animator>();
+		
+		if(name=="WinPopUp"){
+			FacebookManager.instance.buttonFacebookFeed = buttonFacebookFeed;
+		}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -125,6 +130,7 @@ public class PopUpMgr : MonoBehaviour
 				AudioManager.instance.PlayAudio();
 			}
 			buttonNext.SetActive(true);
+			buttonFacebookFeed.SetActive(true);
 		}
 		//Siempre se ejecutara este evento -> guardamos los datos
 		LevelManager.instance.SaveGameData();
@@ -143,6 +149,7 @@ public class PopUpMgr : MonoBehaviour
 				AudioManager.instance.PlayAudio();
 			}
 			buttonNext.SetActive(true);
+			buttonFacebookFeed.SetActive(true);
 		}
 	}
 	
@@ -159,6 +166,7 @@ public class PopUpMgr : MonoBehaviour
 				AudioManager.instance.PlayAudio();
 			}
 			buttonNext.SetActive(true);
+			buttonFacebookFeed.SetActive(true);
 		}
 	}
 	
@@ -175,6 +183,9 @@ public class PopUpMgr : MonoBehaviour
 		}
 		if(buttonNext!=null){
 			buttonNext.SetActive(true);
+		}
+		if(buttonFacebookFeed!=null){
+			buttonFacebookFeed.SetActive(true);
 		}
 	}
 	

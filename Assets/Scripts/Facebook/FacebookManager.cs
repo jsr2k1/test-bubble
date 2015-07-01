@@ -90,6 +90,12 @@ public class FacebookManager : MonoBehaviour
 	string objectId = "1494978434114506"; //id de la instancia de la vida que hemos creado en la consola de Facebook
 	
 	public static string facebookUserName; //Tiene que ser static pq se llama desde FacebookBubble en el menu y FacebookManager no existe todavia
+	public static string facebookEmail;
+	public static string facebookGender;
+	
+	public GameObject buttonFacebookFeed;
+	Button buttonFeed;
+	Text textFeed;
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -189,7 +195,8 @@ public class FacebookManager : MonoBehaviour
 	public static void GetFacebookUserName()
 	{
 		if(FB.IsLoggedIn){
-			FB.API("v2.3/me?fields=id,name", HttpMethod.GET, GetFacebookUserNameCallback);
+			//FB.API("v2.3/me?fields=id,name", HttpMethod.GET, GetFacebookUserNameCallback);
+			FB.API("v2.3/me", HttpMethod.GET, GetFacebookUserNameCallback);
 		}
 	}
 	
@@ -203,6 +210,8 @@ public class FacebookManager : MonoBehaviour
 		else if(!String.IsNullOrEmpty(result.Text)){
 			Dictionary<string, object> dict = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
 			facebookUserName = dict["name"].ToString();
+			facebookEmail = dict["email"].ToString();
+			facebookGender = dict["gender"].ToString();
 		}
 		ParseManager.instance.CheckParseEntry();
 	}
@@ -435,6 +444,64 @@ public class FacebookManager : MonoBehaviour
 		messagesPopUp.HidePopUp();
 		
 		buttonMessages.SetActive(false);
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Publicar en el muro
+	public void ButtonPressedFeed()
+	{
+		buttonFeed = buttonFacebookFeed.GetComponent<Button>();
+		if(!buttonFeed.interactable){	//Es necesario ya que este boton usa el IPointerClickHandler en FacebookButtons
+			return;
+		}		
+		buttonFeed.interactable=false;
+		textFeed = buttonFacebookFeed.transform.GetChild(0).GetComponent<Text>();
+		textFeed.text = LanguageManager.GetText("id_connecting");
+		
+		/*Con un dialogo
+		FB.Feed(
+			"", //string toId = "",
+			"", //string link = "",
+			"Level " + LevelManager.levelNo, //string linkName = "",
+			"BUBBLE PARADISE 2", //string linkCaption = "",
+			"I have completed the level " + LevelManager.levelNo + " of Bubble Paradise 2! Play for free and see how far you can get!", //string linkDescription = "",
+			"http://aratingastudios.com/images/icon_192.png", //string picture = "",
+			"", //string mediaSource = "",
+			"", //string actionName = "",
+			"", //string actionLink = "",
+			"", //string reference = "",
+			null, //Dictionary<string, string[]> properties = null,
+			callback : FeedCallback); //FacebookDelegate callback = null)
+		*/
+		//Sin dialogo
+		FB.API(
+			"/me/feed",
+			HttpMethod.POST,
+			FeedCallback,
+			new Dictionary<string, string>(){
+				{"access_token",FB.AccessToken},
+				{"caption","BUBBLE PARADISE 2"},
+				{"description","I have completed the level "+LevelManager.levelNo+" of Bubble Paradise 2! You can play for free and see how far you can get!"},
+				{"picture","http://aratingastudios.com/images/icon_192.png"},
+				{"link", "https://apps.facebook.com/bubbleparadisetwo"}
+			});
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void FeedCallback(FBResult result)
+	{
+		if(!String.IsNullOrEmpty(result.Error)){
+			Debug.Log("FeedCallback error: " + result.Error);
+		}
+		else if(!String.IsNullOrEmpty(result.Text)){
+			Debug.Log("FeedCallback ok: " + result.Text);
+			textFeed = buttonFacebookFeed.transform.GetChild(0).GetComponent<Text>();
+			textFeed.text = LanguageManager.GetText("id_done");
+		}
+		else{
+			Debug.Log("FeedCallback empty response");
+		}
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
