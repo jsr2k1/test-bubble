@@ -8624,6 +8624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bShow: 0
   buttonNext: {fileID: 0}
+  buttonFacebookFeed: {fileID: 0}
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
   sound_stars_3: {fileID: 0}
@@ -9150,7 +9151,7 @@ RectTransform:
   m_RootOrder: 13
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -579.999329}
+  m_AnchoredPosition: {x: 0, y: -700}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: .5, y: .5}
 --- !u!222 &941603410
@@ -12787,7 +12788,7 @@ GameObject:
   - 114: {fileID: 1177575670}
   - 95: {fileID: 1177575669}
   m_Layer: 5
-  m_Name: wave_lake_1
+  m_Name: wave_lake_anim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16232,6 +16233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bShow: 0
   buttonNext: {fileID: 0}
+  buttonFacebookFeed: {fileID: 0}
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
   sound_stars_3: {fileID: 0}
@@ -16728,6 +16730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bShow: 0
   buttonNext: {fileID: 0}
+  buttonFacebookFeed: {fileID: 0}
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
   sound_stars_3: {fileID: 0}
@@ -16947,6 +16950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bShow: 0
   buttonNext: {fileID: 0}
+  buttonFacebookFeed: {fileID: 0}
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
   sound_stars_3: {fileID: 0}
@@ -19600,6 +19604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bShow: 0
   buttonNext: {fileID: 0}
+  buttonFacebookFeed: {fileID: 0}
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
   sound_stars_3: {fileID: 0}
@@ -25752,6 +25757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bShow: 0
   buttonNext: {fileID: 0}
+  buttonFacebookFeed: {fileID: 0}
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
   sound_stars_3: {fileID: 0}

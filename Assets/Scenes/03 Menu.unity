@@ -458,6 +458,7 @@ GameObject:
   - 114: {fileID: 402549657}
   - 114: {fileID: 402549656}
   - 114: {fileID: 402549661}
+  - 95: {fileID: 402549660}
   m_Layer: 5
   m_Name: WorldModeButton
   m_TagString: Untagged
@@ -591,6 +592,21 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 402549654}
+--- !u!95 &402549660
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 402549654}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ace79e26f8a594d4e9ff4895a3f915a7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &402549661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4712,6 +4728,7 @@ GameObject:
   - 114: {fileID: 1904409057}
   - 114: {fileID: 1904409056}
   - 114: {fileID: 1904409061}
+  - 95: {fileID: 1904409060}
   m_Layer: 5
   m_Name: ArcadeModeButton
   m_TagString: Untagged
@@ -4845,6 +4862,21 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1904409054}
+--- !u!95 &1904409060
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1904409054}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7d7cb6f7206e5df42bc76a027870c562, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1904409061
 MonoBehaviour:
   m_ObjectHideFlags: 0
