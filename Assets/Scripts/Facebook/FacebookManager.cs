@@ -361,8 +361,7 @@ public class FacebookManager : MonoBehaviour
 	{
 		if(!FB.IsLoggedIn){
 			FB.Login("public_profile,email,user_friends,publish_actions", InviteFriendsLoginCallback);
-		}
-		else{
+		}else{
 			DoInviteFriends();
 		}
 	}
@@ -374,8 +373,7 @@ public class FacebookManager : MonoBehaviour
 		if(FB.IsLoggedIn){
 			if(bShowDebug) Debug.Log(FB.UserId);
 			DoInviteFriends();
-		}
-		else{
+		}else{
 			if(bShowDebug) Debug.Log("User cancelled login");
 		}
 	}
@@ -450,6 +448,30 @@ public class FacebookManager : MonoBehaviour
 	//Publicar en el muro
 	public void ButtonPressedFeed()
 	{
+		if(!FB.IsLoggedIn){
+			FB.Login("public_profile,email,user_friends,publish_actions", LoginFeedCallback);
+		}else{
+			FeedToTheWall();
+		}
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void LoginFeedCallback(FBResult result)
+	{
+		if(FB.IsLoggedIn){
+			if(bShowDebug) Debug.Log(FB.UserId);
+			FeedToTheWall();
+		}
+		else{
+			if(bShowDebug) Debug.Log("User cancelled login");
+		}
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void FeedToTheWall()
+	{
 		buttonFeed = buttonFacebookFeed.GetComponent<Button>();
 		if(!buttonFeed.interactable){	//Es necesario ya que este boton usa el IPointerClickHandler en FacebookButtons
 			return;
@@ -459,32 +481,32 @@ public class FacebookManager : MonoBehaviour
 		textFeed.text = LanguageManager.GetText("id_connecting");
 		
 		/*Con un dialogo
-		FB.Feed(
-			"", //string toId = "",
-			"", //string link = "",
-			"Level " + LevelManager.levelNo, //string linkName = "",
-			"BUBBLE PARADISE 2", //string linkCaption = "",
-			"I have completed the level " + LevelManager.levelNo + " of Bubble Paradise 2! Play for free and see how far you can get!", //string linkDescription = "",
-			"http://aratingastudios.com/images/icon_192.png", //string picture = "",
-			"", //string mediaSource = "",
-			"", //string actionName = "",
-			"", //string actionLink = "",
-			"", //string reference = "",
-			null, //Dictionary<string, string[]> properties = null,
-			callback : FeedCallback); //FacebookDelegate callback = null)
-		*/
+			FB.Feed(
+				"", //string toId = "",
+				"", //string link = "",
+				"Level " + LevelManager.levelNo, //string linkName = "",
+				"BUBBLE PARADISE 2", //string linkCaption = "",
+				"I have completed the level " + LevelManager.levelNo + " of Bubble Paradise 2! Play for free and see how far you can get!", //string linkDescription = "",
+				"http://aratingastudios.com/images/icon_192.png", //string picture = "",
+				"", //string mediaSource = "",
+				"", //string actionName = "",
+				"", //string actionLink = "",
+				"", //string reference = "",
+				null, //Dictionary<string, string[]> properties = null,
+				callback : FeedCallback); //FacebookDelegate callback = null)
+			*/
 		//Sin dialogo
 		FB.API(
 			"/me/feed",
 			HttpMethod.POST,
 			FeedCallback,
 			new Dictionary<string, string>(){
-				{"access_token",FB.AccessToken},
-				{"caption","BUBBLE PARADISE 2"},
-				{"description","I have completed the level "+LevelManager.levelNo+" of Bubble Paradise 2! You can play for free and see how far you can get!"},
-				{"picture","http://aratingastudios.com/images/icon_192.png"},
-				{"link", "https://apps.facebook.com/bubbleparadisetwo"}
-			});
+			{"access_token",FB.AccessToken},
+			{"caption","BUBBLE PARADISE 2"},
+			{"description","I have completed the level "+LevelManager.levelNo+" of Bubble Paradise 2! You can play for free and see how far you can get!"},
+			{"picture","http://aratingastudios.com/images/icon_192.png"},
+			{"link", "https://apps.facebook.com/bubbleparadisetwo"}
+		});
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
