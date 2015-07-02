@@ -96,6 +96,9 @@ public class FacebookBubble : MonoBehaviour
 	{
 		playButton.interactable = true;
 		arcadeButton.interactable = true;
+		
+		connectingText.text = LanguageManager.GetText("id_facebook_connected");
+		buttonAccept.SetActive(true);
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -131,8 +134,6 @@ public class FacebookBubble : MonoBehaviour
 			GameAnalytics.SetFacebookId (FB.UserId);
 			FacebookManager.GetFacebookUserName(); //Obtenemos el nombre del usuario
 			//FacebookConnectedPopUp.ShowPopUp();
-			connectingText.text = LanguageManager.GetText("id_facebook_connected");
-			buttonAccept.SetActive(true);
 			
 			if(PlayerPrefs.GetInt("FirstTimeFacebookLogin")==1){
 				int coins =  PlayerPrefs.GetInt("Coins");
