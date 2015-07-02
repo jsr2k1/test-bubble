@@ -1284,12 +1284,6 @@
             <param name="progress">The progress callback.</param>
             <param name="cancellationToken">The cancellation token.</param>
         </member>
-        <member name="F:Parse.ParseFile.MIMETypesDictionary">
-            <summary>
-            A list of file extensions to mime types as found here:
-            http://stackoverflow.com/questions/58510/using-net-how-can-you-find-the-mime-type-of-a-file-based-on-the-file-signature
-            </summary>
-        </member>
         <member name="P:Parse.ParseFile.IsDirty">
             <summary>
             Gets whether the file still needs to be saved.
@@ -1403,9 +1397,40 @@
             in the editor.
             </summary>
         </member>
+        <member name="F:Parse.ParseInitializeBehaviour.applicationID">
+            <summary>
+            The Parse applicationId used in this app. You can get this value from the Parse website.
+            </summary>
+        </member>
+        <member name="F:Parse.ParseInitializeBehaviour.dotnetKey">
+            <summary>
+            The Parse dotnetKey used in this app. You can get this value from the Parse website.
+            </summary>
+        </member>
         <member name="M:Parse.ParseInitializeBehaviour.Awake">
             <summary>
             Initializes the Parse SDK and begins running network requests created by Parse.
+            </summary>
+        </member>
+        <member name="M:Parse.ParseInitializeBehaviour.OnPushNotificationReceived(System.String)">
+            <summary>
+            The callback that will be called from the Android Java land via <c>UnityPlayer.UnitySendMessage(string)</c>
+            when the device receive a push notificaiton.
+            </summary>
+            <param name="pushPayloadString">the push payload as string</param>
+        </member>
+        <member name="M:Parse.ParseInitializeBehaviour.OnGcmRegistrationReceived(System.String)">
+            <summary>
+            The callback that will be called from the Android Java land via <c>UnityPlayer.UnitySendMessage(string)</c>
+            when the device receive a GCM registration id.
+            </summary>
+            <param name="registrationId">the GCM registration id</param>
+        </member>
+        <member name="T:Parse.ParseInstallation">
+            <summary>
+             Represents this app installed on this device. Use this class to track infomation you want
+             to sample from (i.e. if you update a field on app launch, you can issue a query to see
+             the number of devices which were active in the last N hours).
             </summary>
         </member>
         <member name="T:Parse.ParseObject">
@@ -1938,6 +1963,456 @@
         <member name="E:Parse.ParseObject.PropertyChanged">
             <summary>
             Occurs when a property value changes.
+            </summary>
+        </member>
+        <member name="F:Parse.ParseInstallation.currentInstallationMatchesDisk">
+            <summary>
+            Whether the currentInstallation is known to match the serialized version on disk.
+            This is useful for saving a filesystem check if you try to load currentInstallation
+            frequently while there is none on disk.
+            </summary>
+        </member>
+        <member name="M:Parse.ParseInstallation.#ctor">
+            <summary>
+            Constructs a new ParseInstallation. Generally, you should not need to construct
+            ParseInstallations yourself. Instead use <see cref="P:Parse.ParseInstallation.CurrentInstallation"/>.
+            </summary>
+        </member>
+        <member name="F:Parse.ParseInstallation.tzNameMap">
+            <summary>
+            This mapping of Windows names to a standard everyone else uses is maintained 
+            by the Unicode consortium, which makes this officially the first helpful
+            interaction between Unicode and Microsoft.
+            Unfortunately this is a little lossy in that we only store the first mapping in each zone because
+            Microsoft does not give us more granular location information.
+            Built from http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/zone_tzid.html
+            </summary>
+        </member>
+        <member name="M:Parse.ParseInstallation.getDeviceType">
+            <summary>
+            The runtime target of this application.
+            </summary>
+        </member>
+        <member name="M:Parse.ParseInstallation.getAppName">
+            <summary>
+            Gets the application name from <c>AndroidManifest.xml</c>.
+            </summary>
+            <returns>Application name.</returns>
+        </member>
+        <member name="M:Parse.ParseInstallation.getAppIdentifier">
+            <summary>
+            Gets the application unique identifier from <c>AndroidManifest.xml</c>.
+            </summary>
+            <returns>Application identifier.</returns>
+        </member>
+        <member name="M:Parse.ParseInstallation.getAppVersion">
+            <summary>
+            Gets the application version from <c>AndroidManifest.xml</c>.
+            </summary>
+            <returns>Application version.</returns>
+        </member>
+        <member name="M:Parse.ParseInstallation.getTimeZone">
+            <summary>
+            Gets current Timezone of the device.
+            </summary>
+            <returns>Current Timezone of the device.</returns>
+        </member>
+        <member name="M:Parse.ParseInstallation.SetDeviceTokenFromData(System.Byte[])">
+            <summary>
+            Sets <see cref="P:Parse.ParseInstallation.DeviceToken"/> with byte array provided by APNS.
+            </summary>
+            <remarks>
+            This method is only useful for iOS/MacOSX platform.
+            </remarks>
+            <param name="deviceToken"></param>
+        </member>
+        <member name="P:Parse.ParseInstallation.CurrentInstallation">
+            <summary>
+            Gets the ParseInstallation representing this app on this device.
+            </summary>
+        </member>
+        <member name="P:Parse.ParseInstallation.Query">
+            <summary>
+            Constructs a <see cref="T:Parse.ParseQuery`1"/> for ParseInstallations.
+            </summary>
+            <remarks>
+            Only the following types of queries are allowed for installations:
+            
+            <code>
+            query.GetAsync(objectId)
+            query.WhereEqualTo(key, value)
+            query.WhereMatchesKeyInQuery&lt;TOther&gt;(key, keyInQuery, otherQuery)
+            </code>
+            
+            You can add additional query conditions, but one of the above must appear as a top-level <c>AND</c>
+            clause in the query.
+            </remarks>
+        </member>
+        <member name="P:Parse.ParseInstallation.InstallationId">
+            <summary>
+            A GUID that uniquely names this app installed on this device.
+            </summary>
+        </member>
+        <member name="P:Parse.ParseInstallation.DeviceType">
+            <summary>
+            The runtime target of this installation object.
+            </summary>
+        </member>
+        <member name="P:Parse.ParseInstallation.AppName">
+            <summary>
+            The user-friendly display name of this application.
+            </summary>
+        </member>
+        <member name="P:Parse.ParseInstallation.AppVersion">
+            <summary>
+            A version string consisting of Major.Minor.Build.Revision.
+            </summary>
+        </member>
+        <member name="P:Parse.ParseInstallation.AppIdentifier">
+            <summary>
+            The system-dependent unique identifier of this installation. This identifier should be
+            sufficient to distinctly name an app on stores which may allow multiple apps with the
+            same display name.
+            </summary>
+        </member>
+        <member name="P:Parse.ParseInstallation.TimeZone">
+            <summary>
+            The time zone in which this device resides. This string is in the tz database format
+            Parse uses for local-time pushes. Due to platform restrictions, the mapping is less
+            granular on Windows than it may be on other systems. E.g. The zones
+            America/Vancouver America/Dawson America/Whitehorse, America/Tijuana, PST8PDT, and
+            America/Los_Angeles are all reported as America/Los_Angeles.
+            </summary>
+        </member>
+        <member name="P:Parse.ParseInstallation.ParseVersion">
+            <summary>
+            The version of the Parse SDK used to build this application.
+            </summary>
+        </member>
+        <member name="P:Parse.ParseInstallation.Channels">
+            <summary>
+            A sequence of arbitrary strings which are used to identify this installation for push notifications.
+            By convention, the empty string is known as the "Broadcast" channel.
+            </summary>
+        </member>
+        <member name="P:Parse.ParseInstallation.DeviceToken">
+            <summary>
+            The device token of the installation. Typically generated by APNS or GCM.
+            </summary>
+        </member>
+        <member name="P:Parse.ParseInstallation.Badge">
+            <summary>
+            iOS Badge.
+            </summary>
+        </member>
+        <member name="T:Parse.ParsePush">
+            <summary>
+             A utility class for sending and receiving push notifications.
+            </summary>
+        </member>
+        <member name="M:Parse.ParsePush.#ctor">
+            <summary>
+            Creates a push which will target every device. The Data field must be set before calling SendAsync.
+            </summary>
+        </member>
+        <member name="M:Parse.ParsePush.SendAsync">
+            <summary>
+             Request a push to be sent. When this task completes, Parse has successfully acknowledged a request
+             to send push notifications but has not necessarily finished sending all notifications
+             requested. The current status of recent push notifications can be seen in your Push Notifications
+             console on http://parse.com
+            </summary>
+            <returns>A Task for continuation.</returns>
+        </member>
+        <member name="M:Parse.ParsePush.SendAsync(System.Threading.CancellationToken)">
+            <summary>
+             Request a push to be sent. When this task completes, Parse has successfully acknowledged a request
+             to send push notifications but has not necessarily finished sending all notifications
+             requested. The current status of recent push notifications can be seen in your Push Notifications
+             console on http://parse.com
+            </summary>
+            <param name="cancellationToken">CancellationToken to cancel the current operation.</param>
+        </member>
+        <member name="M:Parse.ParsePush.SendAlertAsync(System.String)">
+            <summary>
+            Pushes a simple message to every device. This is shorthand for:
+            
+            <code>
+            var push = new ParsePush();
+            push.Data = new Dictionary&lt;string, object&gt;{{"alert", alert}};
+            return push.SendAsync();
+            </code>
+            </summary>
+            <param name="alert">The alert message to send.</param>
+        </member>
+        <member name="M:Parse.ParsePush.SendAlertAsync(System.String,System.String)">
+            <summary>
+            Pushes a simple message to every device subscribed to channel. This is shorthand for:
+            
+            <code>
+            var push = new ParsePush();
+            push.Channels = new List&lt;string&gt; { channel };
+            push.Data = new Dictionary&lt;string, object&gt;{{"alert", alert}};
+            return push.SendAsync();
+            </code>
+            </summary>
+            <param name="alert">The alert message to send.</param>
+            <param name="channel">An Installation must be subscribed to channel to receive this Push Notification.</param>
+        </member>
+        <member name="M:Parse.ParsePush.SendAlertAsync(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Pushes a simple message to every device subscribed to any of channels. This is shorthand for:
+            
+            <code>
+            var push = new ParsePush();
+            push.Channels = channels;
+            push.Data = new Dictionary&lt;string, object&gt;{{"alert", alert}};
+            return push.SendAsync();
+            </code>
+            </summary>
+            <param name="alert">The alert message to send.</param>
+            <param name="channels">An Installation must be subscribed to any of channels to receive this Push Notification.</param>
+        </member>
+        <member name="M:Parse.ParsePush.SendAlertAsync(System.String,Parse.ParseQuery{Parse.ParseInstallation})">
+            <summary>
+            Pushes a simple message to every device matching the target query. This is shorthand for:
+            
+            <code>
+            var push = new ParsePush();
+            push.Query = query;
+            push.Data = new Dictionary&lt;string, object&gt;{{"alert", alert}};
+            return push.SendAsync();
+            </code>
+            </summary>
+            <param name="alert">The alert message to send.</param>
+            <param name="query">A query filtering the devices which should receive this Push Notification.</param>
+        </member>
+        <member name="M:Parse.ParsePush.SendDataAsync(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Pushes an arbitrary payload to every device. This is shorthand for:
+            
+            <code>
+            var push = new ParsePush();
+            push.Data = data;
+            return push.SendAsync();
+            </code>
+            </summary>
+            <param name="data">A push payload. See the ParsePush.Data property for more information.</param>
+        </member>
+        <member name="M:Parse.ParsePush.SendDataAsync(System.Collections.Generic.IDictionary{System.String,System.Object},System.String)">
+            <summary>
+            Pushes an arbitrary payload to every device subscribed to channel. This is shorthand for:
+            
+            <code>
+            var push = new ParsePush();
+            push.Channels = new List&lt;string&gt; { channel };
+            push.Data = data;
+            return push.SendAsync();
+            </code>
+            </summary>
+            <param name="data">A push payload. See the ParsePush.Data property for more information.</param>
+            <param name="channel">An Installation must be subscribed to channel to receive this Push Notification.</param>
+        </member>
+        <member name="M:Parse.ParsePush.SendDataAsync(System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Pushes an arbitrary payload to every device subscribed to any of channels. This is shorthand for:
+            
+            <code>
+            var push = new ParsePush();
+            push.Channels = channels;
+            push.Data = data;
+            return push.SendAsync();
+            </code>
+            </summary>
+            <param name="data">A push payload. See the ParsePush.Data property for more information.</param>
+            <param name="channels">An Installation must be subscribed to any of channels to receive this Push Notification.</param>
+        </member>
+        <member name="M:Parse.ParsePush.SendDataAsync(System.Collections.Generic.IDictionary{System.String,System.Object},Parse.ParseQuery{Parse.ParseInstallation})">
+            <summary>
+            Pushes an arbitrary payload to every device matching target. This is shorthand for:
+            
+            <code>
+            var push = new ParsePush();
+            push.Query = query
+            push.Data = data;
+            return push.SendAsync();
+            </code>
+            </summary>
+            <param name="data">A push payload. See the ParsePush.Data property for more information.</param>
+            <param name="query">A query filtering the devices which should receive this Push Notification.</param>
+        </member>
+        <member name="M:Parse.ParsePush.SubscribeAsync(System.String)">
+            <summary>
+            Subscribe the current installation to this channel. This is shorthand for:
+            
+            <code>
+            var installation = ParseInstallation.CurrentInstallation;
+            installation.AddUniqueToList("channels", channel);
+            installation.SaveAsync();
+            </code>
+            </summary>
+            <param name="channel">The channel to which this installation should subscribe.</param>
+        </member>
+        <member name="M:Parse.ParsePush.SubscribeAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Subscribe the current installation to this channel. This is shorthand for:
+            
+            <code>
+            var installation = ParseInstallation.CurrentInstallation;
+            installation.AddUniqueToList("channels", channel);
+            installation.SaveAsync(cancellationToken);
+            </code>
+            </summary>
+            <param name="channel">The channel to which this installation should subscribe.</param>
+            <param name="cancellationToken">CancellationToken to cancel the current operation.</param>
+        </member>
+        <member name="M:Parse.ParsePush.SubscribeAsync(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Subscribe the current installation to these channels. This is shorthand for:
+            
+            <code>
+            var installation = ParseInstallation.CurrentInstallation;
+            installation.AddRangeUniqueToList("channels", channels);
+            installation.SaveAsync();
+            </code>
+            </summary>
+            <param name="channels">The channels to which this installation should subscribe.</param>
+        </member>
+        <member name="M:Parse.ParsePush.SubscribeAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <summary>
+            Subscribe the current installation to these channels. This is shorthand for:
+            
+            <code>
+            var installation = ParseInstallation.CurrentInstallation;
+            installation.AddRangeUniqueToList("channels", channels);
+            installation.SaveAsync(cancellationToken);
+            </code>
+            </summary>
+            <param name="channels">The channels to which this installation should subscribe.</param>
+            <param name="cancellationToken">CancellationToken to cancel the current operation.</param>
+        </member>
+        <member name="M:Parse.ParsePush.UnsubscribeAsync(System.String)">
+            <summary>
+            Unsubscribe the current installation from this channel. This is shorthand for:
+            
+            <code>
+            var installation = ParseInstallation.CurrentInstallation;
+            installation.Remove("channels", channel);
+            installation.SaveAsync();
+            </code>
+            </summary>
+            <param name="channel">The channel from which this installation should unsubscribe.</param>
+        </member>
+        <member name="M:Parse.ParsePush.UnsubscribeAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Unsubscribe the current installation from this channel. This is shorthand for:
+            
+            <code>
+            var installation = ParseInstallation.CurrentInstallation;
+            installation.Remove("channels", channel);
+            installation.SaveAsync(cancellationToken);
+            </code>
+            </summary>
+            <param name="channel">The channel from which this installation should unsubscribe.</param>
+            <param name="cancellationToken">CancellationToken to cancel the current operation.</param>
+        </member>
+        <member name="M:Parse.ParsePush.UnsubscribeAsync(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Unsubscribe the current installation from these channels. This is shorthand for:
+            
+            <code>
+            var installation = ParseInstallation.CurrentInstallation;
+            installation.RemoveAllFromList("channels", channels);
+            installation.SaveAsync();
+            </code>
+            </summary>
+            <param name="channels">The channels from which this installation should unsubscribe.</param>
+        </member>
+        <member name="M:Parse.ParsePush.UnsubscribeAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <summary>
+            Unsubscribe the current installation from these channels. This is shorthand for:
+            
+            <code>
+            var installation = ParseInstallation.CurrentInstallation;
+            installation.RemoveAllFromList("channels", channels);
+            installation.SaveAsync(cancellationToken);
+            </code>
+            </summary>
+            <param name="channels">The channels from which this installation should unsubscribe.</param>
+            <param name="cancellationToken">CancellationToken to cancel the current operation.</param>
+        </member>
+        <member name="P:Parse.ParsePush.Query">
+            <summary>
+            An installation query that specifies which installations shoudl receive
+            this push.
+            This should not be used in tandem with Channels.
+            </summary>
+        </member>
+        <member name="P:Parse.ParsePush.Channels">
+            <summary>
+            A short-hand to set a query which only discriminates on the channels to which a device is subscribed.
+            This is shorthand for:
+            
+            <code>
+            var push = new Push();
+            push.Query = ParseInstallation.Query.WhereKeyContainedIn("channels", channels);
+            </code>
+            
+            This cannot be used in tandem with Query.
+            </summary>
+        </member>
+        <member name="P:Parse.ParsePush.Expiration">
+            <summary>
+            The time at which this push will expire. This should not be used in tandem with ExpirationInterval.
+            </summary>
+        </member>
+        <member name="P:Parse.ParsePush.ExpirationInterval">
+            <summary>
+            The time from initial schedul when this push will expire. This should not be used in tandem with Expiration.
+            </summary>
+        </member>
+        <member name="P:Parse.ParsePush.Data">
+            <summary>
+            The contents of this push. Some keys have special meaning. A full list of pre-defined
+            keys can be found in the Parse Push Guide. The following keys affect WinRT devices.
+            Keys which do not start with x-winrt- can be prefixed with x-winrt- to specify an
+            override only sent to winrt devices.
+            alert: the body of the alert text.
+            title: The title of the text.
+            x-winrt-payload: A full XML payload to be sent to WinRT installations instead of
+                 the auto-layout.
+            This should not be used in tandem with Alert.
+            </summary>
+        </member>
+        <member name="P:Parse.ParsePush.Alert">
+            <summary>
+            A conveninence method which sets Data to a dictionary with alert as its only field. Equivalent to
+            
+            <code>
+            Data = new Dictionary&lt;string, object&gt; {{"alert", alert}};
+            </code>
+            
+            This should not be used in tandem with Data.
+            </summary>
+        </member>
+        <member name="E:Parse.ParsePush.ParsePushNotificationReceived">
+            <summary>
+            An event fired when a push notification is received.
+            </summary>
+        </member>
+        <member name="T:Parse.ParsePushNotificationEventArgs">
+            <summary>
+            A wrapper around Parse push notification payload.
+            </summary>
+        </member>
+        <member name="P:Parse.ParsePushNotificationEventArgs.Payload">
+            <summary>
+            The payload of the push notification as <c>IDictionary</c>.
+            </summary>
+        </member>
+        <member name="P:Parse.ParsePushNotificationEventArgs.StringPayload">
+            <summary>
+            The payload of the push notification as <c>string</c>.
             </summary>
         </member>
         <member name="T:Parse.ParseQuery`1">
@@ -2713,12 +3188,31 @@
             on the PlatformHooks class, these types will be AOT-compiled.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Parse.PlatformHooks.GenerateWWWInstance(System.String,System.Byte[],System.Collections.Hashtable)" -->
+        <member name="M:Parse.PlatformHooks.GenerateWWWInstance(System.String,System.Byte[],System.Collections.Hashtable)">
+            <summary>
+            Unity changes its WWW constructor at 4.5.x from using <see cref="T:System.Collections.Hashtable"/> to using
+            <see cref="T:System.Collections.Generic.Dictionary`2"/>. We need to explicitly handle that. This method
+            generates a valid WWW instance depending on the newest WWW constructor
+            provided by used UnityEngine assembly
+            </summary>
+        </member>
         <member name="M:Parse.PlatformHooks.RegisterNetworkRequest(UnityEngine.WWW,System.Action{UnityEngine.WWW})">
             <summary>
             Registers a callback for network requests, running the callback on the main thread until
             the network request is complete.
             </summary>
+        </member>
+        <member name="M:Parse.PlatformHooks.RegisterDeviceTokenRequest(System.Action{System.Byte[]})">
+            <summary>
+            Warning: iOS only. Registers a callback for device token request.
+            </summary>
+            <param name="action">Action to be completed when device token is received.</param>
+        </member>
+        <member name="M:Parse.PlatformHooks.RegisteriOSPushNotificationListener(System.Action{System.Collections.Generic.IDictionary{System.String,System.Object}})">
+            <summary>
+            Warning: iOS only. Registers a callback for push notification.
+            </summary>
+            <param name="action">Action to be completed when push notification is received.</param>
         </member>
         <member name="M:Parse.PlatformHooks.RunOnMainThread(System.Action)">
             <summary>
@@ -2729,6 +3223,31 @@
         <member name="M:Parse.PlatformHooks.RunDispatcher">
             <summary>
             Returns an enumerator (for use in a coroutine) that runs actions that have been dispatched.
+            </summary>
+        </member>
+        <member name="P:Parse.PlatformHooks.IsCompiledByIL2CPP">
+            <summary>
+            Returns true if current running platform is run from a project generated by IL2CPP compiler.
+            </summary>
+        </member>
+        <member name="P:Parse.PlatformHooks.IsWebPlayer">
+            <summary>
+            Returns true if current running platform is a web player.
+            </summary>
+        </member>
+        <member name="P:Parse.PlatformHooks.IsAndroid">
+            <summary>
+            Returns true if current running platform is Android.
+            </summary>
+        </member>
+        <member name="P:Parse.PlatformHooks.IsIOS">
+            <summary>
+            Returns true if current running platform is iPhone or iPad. 
+            </summary>
+        </member>
+        <member name="P:Parse.PlatformHooks.IsWindowsPhone8">
+            <summary>
+            Returns true if current running platform is Windows Phone 8.
             </summary>
         </member>
         <member name="P:Parse.PlatformHooks.ApplicationSettings">
@@ -2823,7 +3342,7 @@
         <member name="M:System.Threading.CancellationTokenSource.Cancel(System.Boolean)">
             <summary>
             Notifies consumers of the token that cancellation was requested.
-            If <paramref name="throwsOnFirstException"/> is true, any exception thrown by a
+            If <paramref name="throwOnFirstException"/> is true, any exception thrown by a
             handler of the cancellation request will cause processing of the cancellation
             to halt and the exception will propagate immediately to the caller.
             </summary>
@@ -3001,7 +3520,7 @@
         <member name="T:System.Threading.Tasks.TaskCompletionSource`1">
             <summary>
             Allows safe orchestration of a task's completion, preventing the consumer from prematurely
-            completing the task. Essentially, it represents the producer side of a <see cref="!:Task&lt;T&gt;"/>,
+            completing the task. Essentially, it represents the producer side of a <see cref="T:System.Threading.Tasks.Task`1"/>,
             providing access to the consumer side through the <see cref="P:System.Threading.Tasks.TaskCompletionSource`1.Task"/>
             while isolating the Task's completion mechanisms from the consumer.
             </summary>

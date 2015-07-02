@@ -166,10 +166,8 @@ public class ParseManager : MonoBehaviour
 		while(!emptyEntry && !getObjTask.IsCompleted) yield return null;
 		
 		if(currentParseObject!=null){
-			//currentParseObject.SaveAsync().ContinueWith(t => {
-				FillObj(currentParseObject);
-				currentParseObject.SaveAsync();
-			//});
+			FillObj(currentParseObject);
+			currentParseObject.SaveAsync();
 		}
 		emptyEntry=false;
 		FacebookBubble.instance.EnableButtons();
