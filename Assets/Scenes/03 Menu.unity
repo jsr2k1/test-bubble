@@ -2285,6 +2285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bShow: 0
   buttonNext: {fileID: 0}
+  buttonFacebookFeed: {fileID: 0}
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
   sound_stars_3: {fileID: 0}
@@ -2446,6 +2447,8 @@ MonoBehaviour:
   facebookSprite: {fileID: 21300000, guid: d38c9bfe0e2fae94da747d48c6fd6166, type: 3}
   facebookGana: {fileID: 21300000, guid: 20788888ae3d90b4a9d282684ed910aa, type: 3}
   earnText: {fileID: 1275033558}
+  connectingText: {fileID: 1007083790}
+  buttonAccept: {fileID: 597280223}
 --- !u!114 &1073303870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2641,6 +2644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bShow: 0
   buttonNext: {fileID: 0}
+  buttonFacebookFeed: {fileID: 0}
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
   sound_stars_3: {fileID: 0}
@@ -3522,6 +3526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bShow: 0
   buttonNext: {fileID: 0}
+  buttonFacebookFeed: {fileID: 0}
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
   sound_stars_3: {fileID: 0}
@@ -5275,6 +5280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bShow: 0
   buttonNext: {fileID: 0}
+  buttonFacebookFeed: {fileID: 0}
   sound_stars_1: {fileID: 0}
   sound_stars_2: {fileID: 0}
   sound_stars_3: {fileID: 0}

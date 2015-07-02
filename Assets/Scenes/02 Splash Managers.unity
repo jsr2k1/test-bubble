@@ -352,6 +352,7 @@ MonoBehaviour:
   friendFramePrefab: {fileID: 100002, guid: 015fa8c8f93a67a44964e564020fdec9, type: 2}
   timeReadRequest: 30
   bShowDebug: 0
+  buttonFacebookFeed: {fileID: 0}
 --- !u!4 &445606291
 Transform:
   m_ObjectHideFlags: 0
