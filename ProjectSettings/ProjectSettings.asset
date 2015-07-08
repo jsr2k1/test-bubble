@@ -74,8 +74,8 @@ PlayerSettings:
   productGUID: 587e7f29ea01bea40b54400b88060aec
   iPhoneBundleVersion: 1.1.9
   iPhoneShortBundleVersion: 1.1.9
-  AndroidBundleVersionCode: 119
-  AndroidMinSdkVersion: 9
+  AndroidBundleVersionCode: 1190
+  AndroidMinSdkVersion: 14
   AndroidPreferredInstallLocation: 0
   aotOptions: 
   apiCompatibilityLevel: 1
@@ -87,7 +87,7 @@ PlayerSettings:
   APKExpansionFiles: 0
   StripUnusedMeshComponents: 0
   iPhoneSdkVersion: 988
-  iPhoneTargetOSVersion: 16
+  iPhoneTargetOSVersion: 20
   uIPrerenderedIcon: 1
   uIRequiresPersistentWiFi: 0
   uIStatusBarHidden: 1
