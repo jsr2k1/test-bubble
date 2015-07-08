@@ -24,22 +24,37 @@ MonoBehaviour:
   UserMessagesSubmitted: 0
   UserMessagesFailed: 0
   CustomArea: 
-  GameKey: 02fb57ac8008da87f0c5c9494904fe2f
-  SecretKey: 679c49fe2d1beea7c175acc363ea0f62cafd230d
-  Build: 0.1
+  gameKey:
+  - 02fb57ac8008da87f0c5c9494904fe2f
+  - ccee745e2a26fec35305adf17a5d9717
+  secretKey:
+  - 679c49fe2d1beea7c175acc363ea0f62cafd230d
+  - 566a43cfaea6332fb58a1f3e888def3551fd09f9
+  Build:
+  - 1.0
+  - 1.0
+  SelectedPlatformStudio:
+  - Aratinga
+  - Aratinga
+  SelectedPlatformGame:
+  - Bubble Paradise 2 (iOS App Store)
+  - Bubble Paradise 2 (Google Play)
+  SelectedPlatformGameID: 61310000524c0000
+  SelectedStudio: 0100000001000000
+  SelectedGame: 0200000001000000
   NewVersion: 
   Changes: 
   SignUpOpen: 0
   FirstName: 
   LastName: 
-  StudioName: Aratinga Studios
-  GameName: Bubble Paradise 2
+  StudioName: 
+  GameName: 
   PasswordConfirm: 
   EmailOptIn: 1
   EmailGA: aratingadevelopers@gmail.com
   IntroScreen: 0
-  InfoLogEditor: 0
-  InfoLogBuild: 0
+  InfoLogEditor: 1
+  InfoLogBuild: 1
   VerboseLogBuild: 0
   SendExampleGameDataToMyGame: 0
   InternetConnectivity: 0
@@ -48,11 +63,12 @@ MonoBehaviour:
   CustomDimensions03: []
   ResourceItemTypes: []
   ResourceCurrencies: []
-  CurrentInspectorState: 3
+  LastCreatedGamePlatform: 0
+  CurrentInspectorState: 1
   ClosedHints: 
   DisplayHints: 0
   DisplayHintsScrollState: {x: 0, y: 0}
-  Logo: {fileID: 0}
+  Logo: {fileID: 2800000, guid: 98df8f9c5678a4e5d964caa1244e8958, type: 3}
   UpdateIcon: {fileID: 0}
   InfoIcon: {fileID: 2800000, guid: 1b4dd779aadd54ac88856975af0d3c0a, type: 3}
   DeleteIcon: {fileID: 2800000, guid: 85a626f1668244d30a4e9f616991a793, type: 3}
@@ -72,6 +88,7 @@ MonoBehaviour:
   SubmitFpsCritical: 1
   FpsCriticalThreshold: 20
   FpsCirticalSubmitInterval: 1
+  PlatformFoldOut: 0101
   CustomDimensions01FoldOut: 0
   CustomDimensions02FoldOut: 0
   CustomDimensions03FoldOut: 0

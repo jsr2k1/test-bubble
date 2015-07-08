@@ -88,6 +88,8 @@ public class IABManager : MonoBehaviour
 	
 	void DoPurchase(string productId)
 	{
+		string currentlvl = (PlayerPrefs.GetInt ("Level") + 1).ToString ();
+
 		if(productId == "xsmall") {
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 100;
@@ -97,7 +99,11 @@ public class IABManager : MonoBehaviour
 			adjustEvent.setRevenue(0.99, "EUR");
 			Adjust.trackEvent(adjustEvent);
 
-			GameAnalytics.NewBusinessEvent("USD", 99, "PurchaseXSmall", "itemId", "cartType", null, true);
+			#if UNITY_ANDROID
+				GameAnalytics.NewBusinessEventGooglePlay("USD", 99, "PurchaseXSmall", "itemId", currentlvl, null, null);
+			#elif UNITY_IPHONE
+				GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 99, "PurchaseXSmall", "itemId", currentlvl);
+			#endif
 		}
 		if(productId == "small") {
 			int coins = PlayerPrefs.GetInt("Coins");
@@ -108,7 +114,11 @@ public class IABManager : MonoBehaviour
 			adjustEvent.setRevenue(2.99, "EUR");
 			Adjust.trackEvent(adjustEvent);
 
-			GameAnalytics.NewBusinessEvent("USD", 299, "PurchaseSmall", "itemId", "cartType", null, true);
+			#if UNITY_ANDROID
+				GameAnalytics.NewBusinessEventGooglePlay("USD", 299, "PurchaseSmall", "itemId", currentlvl, null, null);
+			#elif UNITY_IPHONE
+				GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 299, "PurchaseBig", "itemId", currentlvl);
+			#endif
 		}
 		if(productId == "medium") {
 			int coins = PlayerPrefs.GetInt("Coins");
@@ -119,7 +129,11 @@ public class IABManager : MonoBehaviour
 			adjustEvent.setRevenue(4.99, "EUR");
 			Adjust.trackEvent(adjustEvent);
 
-			GameAnalytics.NewBusinessEvent("USD", 499, "PurchaseMedium", "itemId", "cartType", null, true);
+			#if UNITY_ANDROID
+				GameAnalytics.NewBusinessEventGooglePlay("USD", 499, "PurchaseMedium", "itemId", currentlvl, null, null);
+			#elif UNITY_IPHONE
+				GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 499, "PurchaseBig", "itemId", currentlvl);
+			#endif
 		}
 		if(productId == "big") {
 			int coins = PlayerPrefs.GetInt("Coins");
@@ -130,7 +144,11 @@ public class IABManager : MonoBehaviour
 			adjustEvent.setRevenue(9.99, "EUR");
 			Adjust.trackEvent(adjustEvent);
 
-			GameAnalytics.NewBusinessEvent("USD", 999, "PurchaseBig", "itemId", "cartType", null, true);
+			#if UNITY_ANDROID
+				GameAnalytics.NewBusinessEventGooglePlay("USD", 999, "PurchaseBig", "itemId", currentlvl, null, null);
+			#elif UNITY_IPHONE
+				GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 999, "PurchaseBig", "itemId", currentlvl);
+			#endif
 		}
 		if(productId == "extrabig") {
 			int coins = PlayerPrefs.GetInt("Coins");
@@ -141,7 +159,11 @@ public class IABManager : MonoBehaviour
 			adjustEvent.setRevenue(19.99, "EUR");
 			Adjust.trackEvent(adjustEvent);
 
-			GameAnalytics.NewBusinessEvent("USD", 1999, "PurchaseExtraBig", "itemId", "cartType", null, true);
+			#if UNITY_ANDROID
+				GameAnalytics.NewBusinessEventGooglePlay("USD", 1999, "PurchaseExtraBig", "itemId", currentlvl, null, null);
+			#elif UNITY_IPHONE
+				GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 1999, "PurchaseExtraBig", "itemId", currentlvl);
+			#endif
 		}
 			
 		ParseManager.instance.SaveCurrentData();
