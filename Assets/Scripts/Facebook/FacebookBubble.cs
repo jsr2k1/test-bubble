@@ -94,11 +94,13 @@ public class FacebookBubble : MonoBehaviour
 	
 	public void EnableButtons()
 	{
-		playButton.interactable = true;
-		arcadeButton.interactable = true;
-		
-		connectingText.text = LanguageManager.GetText("id_facebook_connected");
-		buttonAccept.SetActive(true);
+		if(Application.loadedLevelName=="03 Menu"){
+			playButton.interactable = true;
+			arcadeButton.interactable = true;
+			
+			connectingText.text = LanguageManager.GetText("id_facebook_connected");
+			buttonAccept.SetActive(true);
+		}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
