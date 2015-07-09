@@ -7,11 +7,13 @@ using com.adjust.sdk;
 
 public class IABManager : MonoBehaviour
 {
+#if UNITY_ANDROID || UNITY_IPHONE
 	string item1 = "xsmall";
 	string item2 = "small";
 	string item3 = "medium";
 	string item4 = "big";
 	string item5 = "extrabig";
+#endif
 #if UNITY_ANDROID
 	string androidPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6CkjzMnNCuwRhqpOelNnvdJkQ6xr3E2I++ubNNOk4GeBx99Fh0wZJZQ6mHB+2b4sD55+rHU2OUavNtM7b8Cu7En4Hkeac1bi4LWf9DiL7OTHz3o6atH9T0gZPewtZb+rkYuXP1GURs+Vt/aKOnAhgOjUsU++KW3rvevnvUMF5hDl3O1XsybepEldJ4aSPvful5NJiIVf3qkiP1jTGcdFTnjznOeGaI9bRmTOrnZIrSsfo5FKcX9hROrolGOy01Oa706yi6xHd6Et0TKtPPbiF8KNB4JUGku/4Uwc37o1osNDVjEp55tyLXP9W4QgXtNNE7tBswvRvGgcMTIcCKUemwIDAQAB";
 #endif
@@ -88,7 +90,9 @@ public class IABManager : MonoBehaviour
 	
 	void DoPurchase(string productId)
 	{
+		#if UNITY_ANDROID || UNITY_IPHONE
 		string currentlvl = (PlayerPrefs.GetInt ("Level") + 1).ToString ();
+		#endif
 
 		if(productId == "xsmall") {
 			int coins = PlayerPrefs.GetInt("Coins");

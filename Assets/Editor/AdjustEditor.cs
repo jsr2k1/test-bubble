@@ -90,8 +90,10 @@ public class AdjustEditor : MonoBehaviour
 
 	static int RunPostBuildScript(bool preBuild, string pathToBuiltProject = "")
 	{
+		#if UNITY_ANDROID || UNITY_IOS
 		string pathToScript = null;
 		string arguments = null;
+		#endif
 
 		#if UNITY_ANDROID
 		pathToScript = "/Editor/PostprocessBuildPlayer_AdjustPostBuildAndroid.py";
@@ -112,6 +114,7 @@ public class AdjustEditor : MonoBehaviour
 		return -1;
 		#endif
 
+		#if UNITY_ANDROID || UNITY_IOS
 		Process proc = new Process();
 		proc.EnableRaisingEvents = false; 
 		proc.StartInfo.FileName = Application.dataPath + pathToScript;
@@ -120,6 +123,7 @@ public class AdjustEditor : MonoBehaviour
 		proc.WaitForExit();
 		
 		return proc.ExitCode;
+		#endif
 	}
 
 	static string GenerateErrorScriptMessage(int exitCode)
@@ -131,20 +135,24 @@ public class AdjustEditor : MonoBehaviour
 		}  
 		#endif
 
-		if(exitCode != 0) {
+		if(exitCode != 0)
+		{
+			#if UNITY_ANDROID || UNITY_IOS
 			var message = "Build script exited with error." +
 				" Please check the Adjust log file for more information at {0}";
 			string projectPath = Application.dataPath.Substring(0, Application.dataPath.Length - 7);
 			string logFile = null;
-			
+			#endif
+
 			#if UNITY_ANDROID
 			logFile = projectPath + "/AdjustPostBuildAndroidLog.txt";
+			return string.Format(message, logFile);
 			#elif UNITY_IOS
 			logFile = projectPath + "/AdjustPostBuildiOSLog.txt";
+			return string.Format(message, logFile);
 			#else
 			return null;
 			#endif
-			return string.Format(message, logFile);
 		} 
 
 		return null;
