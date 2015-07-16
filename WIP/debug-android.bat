@@ -1,2 +1,2 @@
-cd c:\android-sdk-windows\platform-tools\
+cd c:\android-sdk\platform-tools\
 adb logcat -s Unity
