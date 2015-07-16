@@ -38,7 +38,9 @@ namespace UnityEditor.FacebookEditor
                         setupError = ERROR_NO_KEYSTORE;
                         return null;
                     }
-                    if (!DoesCommandExist("echo \"xxx\" | openssl base64"))
+					//Joel->Si no comento estas lineas Unity se queda colgado
+
+                    /*if (!DoesCommandExist("echo \"xxx\" | openssl base64"))
                     {
                         setupError = ERROR_NO_OPENSSL;
                         return null;
@@ -47,7 +49,7 @@ namespace UnityEditor.FacebookEditor
                     {
                         setupError = ERROR_NO_KEYTOOL;
                         return null;
-                    }
+                    }*/
                     debugKeyHash = GetKeyHash("androiddebugkey", DebugKeyStorePath, "android");
                 }
                 return debugKeyHash;

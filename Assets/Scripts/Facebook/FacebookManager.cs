@@ -1,5 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //https://developers.facebook.com/docs/games/requests/v2.3
+//OpenSSL->http://answers.unity3d.com/questions/675546/windows-81-facebook-sdk-openssl-keytool.html
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using UnityEngine;
@@ -96,6 +97,9 @@ public class FacebookManager : MonoBehaviour
 	public GameObject buttonFacebookFeed;
 	Button buttonFeed;
 	Text textFeed;
+
+	static int getNameAttempts;
+	static int getNameAttemptsTotal=5;
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -121,6 +125,8 @@ public class FacebookManager : MonoBehaviour
 		//invitableFriendsToggles = new List<Toggle>();
 				
 		//DeleteAllRequests(); //Only for testing
+
+		getNameAttempts = 0;
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -196,7 +202,8 @@ public class FacebookManager : MonoBehaviour
 	{
 		if(FB.IsLoggedIn){
 			//FB.API("v2.3/me?fields=id,name", HttpMethod.GET, GetFacebookUserNameCallback);
-			FB.API("v2.3/me", HttpMethod.GET, GetFacebookUserNameCallback);
+			//FB.API("v2.3/me", HttpMethod.GET, GetFacebookUserNameCallback);
+			FB.API("v2.3/me?fields=id,name,gender,email", HttpMethod.GET, GetFacebookUserNameCallback);
 		}
 	}
 	
@@ -204,16 +211,26 @@ public class FacebookManager : MonoBehaviour
 	
 	static void GetFacebookUserNameCallback(FBResult result)
 	{
+		bool bResultDone=false;
+
 		if(!String.IsNullOrEmpty(result.Error)){
 			Debug.Log("GetFacebookUserNameCallback: Error Response:" + result.Error);
+			if(getNameAttempts < getNameAttemptsTotal){
+				GetFacebookUserName();
+				getNameAttempts++;
+			}
 		}
 		else if(!String.IsNullOrEmpty(result.Text)){
 			Dictionary<string, object> dict = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string,object>;
-			facebookUserName = dict["name"].ToString();
-			facebookEmail = dict["email"].ToString();
-			facebookGender = dict["gender"].ToString();
+			facebookUserName = dict ["name"].ToString();
+			facebookEmail = dict ["email"].ToString();
+			facebookGender = dict ["gender"].ToString();
+			bResultDone=true;
 		}
-		ParseManager.instance.CheckParseEntry();
+
+		if(bResultDone || (getNameAttempts >= getNameAttemptsTotal)){
+			ParseManager.instance.CheckParseEntry();	
+		}
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -696,7 +713,7 @@ public class FacebookManager : MonoBehaviour
 			if(bShowDebug) Debug.Log("CallbackInviteFriends: Error Response:" + result.Error);
 		}
 		else if(!String.IsNullOrEmpty(result.Text)){
-			var parameters = (Dictionary<string, object>)Facebook.MiniJSON.Json.Deserialize(result.Text);
+			var parameters =(Dictionary<string, object>)Facebook.MiniJSON.Json.Deserialize(result.Text);
 			if(!parameters.ContainsKey("cancelled")){
 				Adjust.trackEvent(new AdjustEvent("n0lux5"));
 				if(bShowDebug) Debug.Log("CallbackInviteFriends: OK");
