@@ -72,9 +72,9 @@ PlayerSettings:
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   productGUID: 587e7f29ea01bea40b54400b88060aec
-  iPhoneBundleVersion: 1.1.9
-  iPhoneShortBundleVersion: 1.1.9
-  AndroidBundleVersionCode: 1190
+  iPhoneBundleVersion: 1.2
+  iPhoneShortBundleVersion: 1.2
+  AndroidBundleVersionCode: 1200
   AndroidMinSdkVersion: 14
   AndroidPreferredInstallLocation: 0
   aotOptions: 
@@ -115,9 +115,9 @@ PlayerSettings:
   iOSLaunchScreenFillPct: 100
   iOSLaunchScreenSize: 100
   iOSLaunchScreenCustomXibPath: 
-  AndroidTargetDevice: 0
+  AndroidTargetDevice: 3
   AndroidSplashScreenScale: 0
-  AndroidKeystoreName: C:/Users/Developer 1/UnityProjects/BubbleParadise2/WIP/aratingastudios.keystore
+  AndroidKeystoreName: C:/Users/Developer/Unity Projects/BubbleParadise2/WIP/aratingastudios.keystore
   AndroidKeyaliasName: aratingastudios
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons:
@@ -127,17 +127,17 @@ PlayerSettings:
       m_Size: 128
   - m_BuildTarget: Android
     m_Icons:
-    - m_Icon: {fileID: 2800000, guid: 028914499ccfbfd4689bc8685ba95c32, type: 3}
+    - m_Icon: {fileID: 2800000, guid: a8a1323264b878643b34cb1decc74079, type: 3}
       m_Size: 192
-    - m_Icon: {fileID: 2800000, guid: 89e100c83b7c05d4296cd88499994dc3, type: 3}
+    - m_Icon: {fileID: 2800000, guid: abddf8c42bb0c4e4bb2e39d0e2c8096c, type: 3}
       m_Size: 144
-    - m_Icon: {fileID: 2800000, guid: f165adda781cbbc45a4a31636e0c2f70, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 87d0828e5467b45458ac4c561e38eb65, type: 3}
       m_Size: 96
-    - m_Icon: {fileID: 2800000, guid: 3b1b84c3cd487104eaaf486cd937edce, type: 3}
+    - m_Icon: {fileID: 2800000, guid: a7f14717c771db74eb340fdfd1695aa7, type: 3}
       m_Size: 72
-    - m_Icon: {fileID: 2800000, guid: 6c89e8e70f441624c8b34ff011057521, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 38c185696e43eaf46825d5343a889fe6, type: 3}
       m_Size: 48
-    - m_Icon: {fileID: 2800000, guid: 2c975c3804b9c3e468a152fa4544f7c7, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 8eb874ff12561d94dbbf85bfc44a139c, type: 3}
       m_Size: 36
   - m_BuildTarget: iPhone
     m_Icons:
