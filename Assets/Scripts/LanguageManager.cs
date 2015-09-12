@@ -49,7 +49,7 @@ public class LanguageManager : MonoBehaviour
 		dict.Add("id_disconnect", new string[] {"DESCONECTAR", "DISCONNECT"});
 		dict.Add("id_rate_me", new string[] {"PUNTUAR!", "RATE ME!"});
 		dict.Add("id_settings", new string[] {"AJUSTES", "SETTINGS"});
-		dict.Add("id_quit", new string[] {"¿SALIR DEL JUEGO?", "EXIT GAME?"});
+		dict.Add("id_quit", new string[] {"¿SALIR DEL JUEGO?", "EXIT?"});
 		dict.Add("id_yes", new string[] {"SI", "YES"});
 		dict.Add("id_no", new string[] {"NO", "NO"});
 		dict.Add("id_cash", new string[] {"ORO:", "CASH:"});
@@ -93,6 +93,11 @@ public class LanguageManager : MonoBehaviour
 		dict.Add("id_share", new string[] {"COMPARTIR","SHARE"});
 		dict.Add("id_connecting", new string[] {"CONECTANDO...","CONNECTING..."});
 		dict.Add("id_done", new string[] {"¡HECHO!","DONE!"});
+		
+		//GOOD DINO
+		dict.Add("id_PLAY2", new string[] {"JUGAR", "PLAY"});
+		dict.Add("id_quit2", new string[] {"¿Seguro que quieres salir?", "Do you really want to quit?"});
+		dict.Add("id_store", new string[] {"TIENDA", "STORE"});
 		
 		//Tutoriales
 		dict.Add("id_tutorial_pulsa_pantalla", new string[] {"Pulsa la pantalla para apuntar y disparar", "Touch the screen to aim and shoot"});

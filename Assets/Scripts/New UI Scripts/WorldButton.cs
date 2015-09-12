@@ -40,7 +40,7 @@ public class WorldButton : MonoBehaviour
 
 		Text currentText = Instantiate(numTextPrefab) as Text;
 		currentText.text = gameObject.name;
-		currentText.transform.position = transform.position;
+		currentText.transform.position = new Vector3(transform.position.x, transform.position.y+5F, transform.position.z);
 		currentText.transform.SetParent(transform);
 		currentText.name = "label_" + gameObject.name;
 		currentText.transform.localScale = new Vector3(0.2f, 0.2f, 1.0f);
@@ -62,8 +62,8 @@ public class WorldButton : MonoBehaviour
 
 		if(stars != null){
 			stars.transform.SetParent(transform);
-			stars.transform.localPosition = new Vector3(0, 40, 0);
-			stars.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
+			stars.transform.localPosition = new Vector3(0, 0, 0);
+			stars.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 		}
 		
 		audioSource = gameObject.AddComponent<AudioSource>();
@@ -79,8 +79,8 @@ public class WorldButton : MonoBehaviour
 			audioSource.Play();
 		}
 		
-		int nLives=PlayerPrefs.GetInt("Lives");
-		if(nLives > 0) {
+		//int nLives=PlayerPrefs.GetInt("Lives");
+		//if(nLives > 0) {
 			LevelManager.GameType = LevelManager.GameTypes.NORMAL;
 			LevelManager.patternType = PatternType.TextLevel;
 			LevelParser.instance.LoadTextLevel(int.Parse(name), ActualWorld);
@@ -92,13 +92,15 @@ public class WorldButton : MonoBehaviour
 			LevelManager.worldNo = ActualWorld;
 
 			PlayerPrefs.SetInt("bPlaying", 1);
+			
+			Application.LoadLevel("05 Game Scene");
 
-			levelTextPop.text = LanguageManager.GetText("id_level")+" "+LevelManager.levelNo.ToString();
-			startPop.GetComponent<PopUpMgr>().ShowPopUp();
-		}
-		else{
-			livesPop.GetComponent<PopUpMgr>().ShowPopUp();
-		}
+			//levelTextPop.text = LanguageManager.GetText("id_level")+" "+LevelManager.levelNo.ToString();
+			//startPop.GetComponent<PopUpMgr>().ShowPopUp();
+		//}
+		//else{
+		//	livesPop.GetComponent<PopUpMgr>().ShowPopUp();
+		//}
 		
 		if(OnWorldButtonPressed!=null){
 			OnWorldButtonPressed();
