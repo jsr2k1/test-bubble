@@ -80,7 +80,7 @@ public class UnityAdsController : MonoBehaviour
 		//Debug.Log("-_-_ ResultCallback: " + result.ToString());
 		
 		if(result == ShowResult.Finished){
-			int coins = PlayerPrefs.GetInt("Coins") + 5;
+			int coins = PlayerPrefs.GetInt("Coins") + 20;
 			CoinsManager.instance.SetCoins(coins);
 			int numVideosPlayed = PlayerPrefs.GetInt("NumVideosPlayed");
 			PlayerPrefs.SetInt("NumVideosPlayed", numVideosPlayed+1);
