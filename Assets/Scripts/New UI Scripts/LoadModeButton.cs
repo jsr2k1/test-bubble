@@ -7,7 +7,7 @@ public class LoadModeButton : MonoBehaviour
 {
 	public void LoadWorldMode()
 	{
-		Adjust.trackEvent(new AdjustEvent("1b5w81"));
+		//Adjust.trackEvent(new AdjustEvent("1b5w81"));
 
 		GameAnalytics.NewDesignEvent("LoadWorldMode");
 		
@@ -18,7 +18,7 @@ public class LoadModeButton : MonoBehaviour
 
 	public void LoadArcadeMode()
 	{
-		Adjust.trackEvent(new AdjustEvent("xr59vt"));
+		//Adjust.trackEvent(new AdjustEvent("xr59vt"));
 
 		GameAnalytics.NewDesignEvent("LoadArcadeMode");
 		

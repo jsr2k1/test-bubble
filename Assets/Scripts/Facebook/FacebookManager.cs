@@ -401,7 +401,7 @@ public class FacebookManager : MonoBehaviour
 	{
 		try{
 			if(bShowDebug) Debug.Log("Facebook Invite pressed");
-			Adjust.trackEvent(new AdjustEvent("3xnjnv"));
+			//Adjust.trackEvent(new AdjustEvent("3xnjnv"));
 			
 			FriendSelectorFilters = "[\"app_non_users\"]";
 			InviteFriends();
@@ -715,7 +715,7 @@ public class FacebookManager : MonoBehaviour
 		else if(!String.IsNullOrEmpty(result.Text)){
 			var parameters =(Dictionary<string, object>)Facebook.MiniJSON.Json.Deserialize(result.Text);
 			if(!parameters.ContainsKey("cancelled")){
-				Adjust.trackEvent(new AdjustEvent("n0lux5"));
+				//Adjust.trackEvent(new AdjustEvent("n0lux5"));
 				if(bShowDebug) Debug.Log("CallbackInviteFriends: OK");
 			}else{
 				if(bShowDebug) Debug.Log("CallbackInviteFriends: Cancelled");
@@ -753,7 +753,7 @@ public class FacebookManager : MonoBehaviour
 			if(bShowDebug) Debug.Log("CallbackAskForOneLife: Error Response:" + result.Error);
 		}
 		else if(!String.IsNullOrEmpty(result.Text)){
-			Adjust.trackEvent(new AdjustEvent("1rvc9w"));
+			//Adjust.trackEvent(new AdjustEvent("1rvc9w"));
 		}
 		else{
 			if(bShowDebug) Debug.Log("CallbackAskForOneLife: Empty Response");

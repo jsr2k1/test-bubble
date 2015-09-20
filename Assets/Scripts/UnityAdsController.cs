@@ -84,7 +84,7 @@ public class UnityAdsController : MonoBehaviour
 			CoinsManager.instance.SetCoins(coins);
 			int numVideosPlayed = PlayerPrefs.GetInt("NumVideosPlayed");
 			PlayerPrefs.SetInt("NumVideosPlayed", numVideosPlayed+1);
-			ParseManager.instance.SaveCurrentData();
+			//ParseManager.instance.SaveCurrentData();
 			bShow = false;
 			button.enabled = false;
 			image.enabled = false;

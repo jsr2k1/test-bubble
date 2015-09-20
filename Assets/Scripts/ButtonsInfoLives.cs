@@ -11,11 +11,11 @@ public class ButtonsInfoLives : MonoBehaviour
 
 	public void exitlvl()
 	{
-		infoLivesPop.GetComponent<PopUpMgr>().HidePopUp();
+		//infoLivesPop.GetComponent<PopUpMgr>().HidePopUp();
 		GameAnalytics.NewProgressionEvent (GA_Progression.GAProgressionStatus.GAProgressionStatusFail, LevelManager.levelNo.ToString());
-		PlayerPrefs.SetInt("bPlaying", 0);
-		LivesManager.lives--;
-		ParseManager.instance.SaveCurrentData();
+		//PlayerPrefs.SetInt("bPlaying", 0);
+		//LivesManager.lives--;
+		//ParseManager.instance.SaveCurrentData();
 		Application.LoadLevel("04 World Menu");
 	}
 	

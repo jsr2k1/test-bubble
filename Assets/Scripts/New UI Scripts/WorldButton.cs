@@ -93,14 +93,14 @@ public class WorldButton : MonoBehaviour
 
 			PlayerPrefs.SetInt("bPlaying", 1);
 			
-			Application.LoadLevel("05 Game Scene");
+			//Application.LoadLevel("05 Game Scene");
 
-			//levelTextPop.text = LanguageManager.GetText("id_level")+" "+LevelManager.levelNo.ToString();
-			//startPop.GetComponent<PopUpMgr>().ShowPopUp();
-		//}
-		//else{
-		//	livesPop.GetComponent<PopUpMgr>().ShowPopUp();
-		//}
+			levelTextPop.text = LanguageManager.GetText("id_level")+" "+LevelManager.levelNo.ToString();
+			startPop.GetComponent<PopUpMgr>().ShowPopUp();
+//		}
+//		else{
+//			livesPop.GetComponent<PopUpMgr>().ShowPopUp();
+//		}
 		
 		if(OnWorldButtonPressed!=null){
 			OnWorldButtonPressed();

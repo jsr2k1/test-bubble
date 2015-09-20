@@ -9,7 +9,7 @@ public class PopUpMgr : MonoBehaviour
 	Animator anim;
 	public bool bShow=false;
 	public GameObject buttonNext;
-	public GameObject buttonFacebookFeed;
+	//public GameObject buttonFacebookFeed;
 	
 	public AudioSource sound_stars_1;
 	public AudioSource sound_stars_2;
@@ -25,9 +25,9 @@ public class PopUpMgr : MonoBehaviour
 	{
 		anim = GetComponent<Animator>();
 		
-		if(name=="WinPopUp"){
-			FacebookManager.instance.buttonFacebookFeed = buttonFacebookFeed;
-		}
+		//if(name=="WinPopUp"){
+		//	FacebookManager.instance.buttonFacebookFeed = buttonFacebookFeed;
+		//}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -36,7 +36,7 @@ public class PopUpMgr : MonoBehaviour
 	{
 		if(!bShow){
 			if(name=="ShopCoinsPopUp"){
-				Adjust.trackEvent(new AdjustEvent("gtv2yu"));
+				//Adjust.trackEvent(new AdjustEvent("gtv2yu"));
 			}
 			if(name== "SettingsPopUp" || name=="RankingPopUpArcade"){
 				if(InGameScriptRefrences.strikerManager!=null &&!InGameScriptRefrences.strikerManager.bStartDone){
@@ -130,7 +130,7 @@ public class PopUpMgr : MonoBehaviour
 				AudioManager.instance.PlayAudio();
 			}
 			buttonNext.SetActive(true);
-			buttonFacebookFeed.SetActive(true);
+			//buttonFacebookFeed.SetActive(true);
 		}
 		//Siempre se ejecutara este evento -> guardamos los datos
 		LevelManager.instance.SaveGameData();
@@ -149,7 +149,7 @@ public class PopUpMgr : MonoBehaviour
 				AudioManager.instance.PlayAudio();
 			}
 			buttonNext.SetActive(true);
-			buttonFacebookFeed.SetActive(true);
+			//buttonFacebookFeed.SetActive(true);
 		}
 	}
 	
@@ -166,7 +166,7 @@ public class PopUpMgr : MonoBehaviour
 				AudioManager.instance.PlayAudio();
 			}
 			buttonNext.SetActive(true);
-			buttonFacebookFeed.SetActive(true);
+			//buttonFacebookFeed.SetActive(true);
 		}
 	}
 	
@@ -184,9 +184,9 @@ public class PopUpMgr : MonoBehaviour
 		if(buttonNext!=null){
 			buttonNext.SetActive(true);
 		}
-		if(buttonFacebookFeed!=null){
-			buttonFacebookFeed.SetActive(true);
-		}
+		//if(buttonFacebookFeed!=null){
+		//	buttonFacebookFeed.SetActive(true);
+		//}
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -257,13 +257,13 @@ public class PopUpMgr : MonoBehaviour
 
 	public void RetryLevel()
 	{
-		if(LivesManager.lives>0){
+		//if(LivesManager.lives>0){
 			PlayerPrefs.SetInt("bPlaying", 1);
 			Application.LoadLevel("05 Game Scene");
-		}else{
-			GameAnalytics.NewProgressionEvent (GA_Progression.GAProgressionStatus.GAProgressionStatusFail, LevelManager.levelNo.ToString());
-			Application.LoadLevel("04 World Menu");
-		}
+		//}else{
+		//	GameAnalytics.NewProgressionEvent (GA_Progression.GAProgressionStatus.GAProgressionStatusFail, LevelManager.levelNo.ToString());
+		//	Application.LoadLevel("04 World Menu");
+		//}
 	}
 }
 

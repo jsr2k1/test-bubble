@@ -23,14 +23,14 @@ public class ExampleGUI : MonoBehaviour
 		if (GUI.Button (new Rect (0, Screen.height * 1 / nr_buttons, Screen.width, Screen.height / nr_buttons), "Track Simple Event")) {
 			AdjustEvent adjustEvent = new AdjustEvent ("{EventToken}");
 			
-			Adjust.trackEvent (adjustEvent);
+			//Adjust.trackEvent (adjustEvent);
 		}
 		
 		if (GUI.Button (new Rect (0, Screen.height * 2 / nr_buttons, Screen.width, Screen.height / nr_buttons), "Track Revenue Event")) {
 			AdjustEvent adjustEvent = new AdjustEvent ("{EventToken}");
 			adjustEvent.setRevenue (0.25, "EUR");
 			
-			Adjust.trackEvent (adjustEvent);
+			//Adjust.trackEvent (adjustEvent);
 		}
 		
 		if (GUI.Button (new Rect (0, Screen.height * 3 / nr_buttons, Screen.width, Screen.height / nr_buttons), "Track Callback Event")) {
@@ -39,7 +39,7 @@ public class ExampleGUI : MonoBehaviour
 			adjustEvent.addCallbackParameter ("key", "value");
 			adjustEvent.addCallbackParameter ("foo", "bar");
 			
-			Adjust.trackEvent (adjustEvent);
+			//Adjust.trackEvent (adjustEvent);
 		}
 		
 		if (GUI.Button (new Rect (0, Screen.height * 4 / nr_buttons, Screen.width, Screen.height / nr_buttons), "Track Partner Event")) {
@@ -48,7 +48,7 @@ public class ExampleGUI : MonoBehaviour
 			adjustEvent.addPartnerParameter ("key", "value");
 			adjustEvent.addPartnerParameter ("foo", "bar");
 			
-			Adjust.trackEvent (adjustEvent);
+			//Adjust.trackEvent (adjustEvent);
 		}
 	}
 	

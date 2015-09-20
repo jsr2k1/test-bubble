@@ -64,7 +64,7 @@ public class Splash : MonoBehaviour
 			PlayerPrefs.SetInt("Level", force_current_level);
 		}
 		
-		FB.Init(OnInitComplete);
+		//FB.Init(OnInitComplete);
 		StartCoroutine("DisplayScene");
 	}
 	
@@ -81,9 +81,9 @@ public class Splash : MonoBehaviour
 	private void OnInitComplete()
 	{
 		//Debug.Log("FB.Init completed: Is user logged in? " + FB.IsLoggedIn);
-		if(FB.IsLoggedIn){
-			ParseManager.instance.CheckParseEntry();
-		}
+		//if(FB.IsLoggedIn){
+			//ParseManager.instance.CheckParseEntry();
+		//}
 	}
 }
 

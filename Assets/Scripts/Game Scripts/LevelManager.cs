@@ -123,7 +123,7 @@ public class LevelManager : MonoBehaviour
 		}
 		PlayerPrefs.SetInt("bPlaying", 0);
 		
-		ParseManager.instance.SaveCurrentData();
+		//ParseManager.instance.SaveCurrentData();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -150,10 +150,10 @@ public class LevelManager : MonoBehaviour
 				highscoretext.text = score.ToString();
 			}
 		}else{
-			LivesManager.lives--;
+			//LivesManager.lives--;
 		}
 		
-		ParseManager.instance.SaveCurrentData();
+		//ParseManager.instance.SaveCurrentData();
 
 		//PlayerPrefs.SetInt("Lives", PlayerPrefs.GetInt("Lives") - 1 );
 		//Invoke("LoadLevelAgain", 3f);
