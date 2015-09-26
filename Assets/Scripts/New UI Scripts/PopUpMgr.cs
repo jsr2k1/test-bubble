@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using GameAnalyticsSDK;
+//using GameAnalyticsSDK;
 //using com.adjust.sdk;
 
 public class PopUpMgr : MonoBehaviour
@@ -261,7 +261,7 @@ public class PopUpMgr : MonoBehaviour
 			PlayerPrefs.SetInt("bPlaying", 1);
 			Application.LoadLevel("05 Game Scene");
 		//}else{
-		//	GameAnalytics.NewProgressionEvent (GA_Progression.GAProgressionStatus.GAProgressionStatusFail, LevelManager.levelNo.ToString());
+		//	//GameAnalytics.NewProgressionEvent (GA_Progression.GAProgressionStatus.GAProgressionStatusFail, LevelManager.levelNo.ToString());
 		//	Application.LoadLevel("04 World Menu");
 		//}
 	}

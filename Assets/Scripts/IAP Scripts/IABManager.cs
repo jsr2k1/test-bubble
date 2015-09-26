@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Prime31;
-using GameAnalyticsSDK;
+//using GameAnalyticsSDK;
 //using com.adjust.sdk;
 
 public class IABManager : MonoBehaviour
@@ -93,9 +93,9 @@ public class IABManager : MonoBehaviour
 	
 	void DoPurchase(string productId)
 	{
-		#if UNITY_ANDROID || UNITY_IPHONE
-		string currentlvl = (PlayerPrefs.GetInt ("Level") + 1).ToString ();
-		#endif
+		//#if UNITY_ANDROID || UNITY_IPHONE
+		//string currentlvl = (PlayerPrefs.GetInt ("Level") + 1).ToString ();
+		//#endif
 
 		if(productId == "xsmall") {
 			int coins = PlayerPrefs.GetInt("Coins");
@@ -107,9 +107,9 @@ public class IABManager : MonoBehaviour
 			//Adjust.trackEvent(adjustEvent);
 
 			#if UNITY_ANDROID
-				GameAnalytics.NewBusinessEventGooglePlay("USD", 199, "PurchaseXSmall", "itemId", currentlvl, null, null);
+				//GameAnalytics.NewBusinessEventGooglePlay("USD", 199, "PurchaseXSmall", "itemId", currentlvl, null, null);
 			#elif UNITY_IPHONE
-				GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 199, "PurchaseXSmall", "itemId", currentlvl);
+				//GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 199, "PurchaseXSmall", "itemId", currentlvl);
 			#endif
 		}
 		if(productId == "small") {
@@ -122,9 +122,9 @@ public class IABManager : MonoBehaviour
 			//Adjust.trackEvent(adjustEvent);
 
 			#if UNITY_ANDROID
-				GameAnalytics.NewBusinessEventGooglePlay("USD", 399, "PurchaseSmall", "itemId", currentlvl, null, null);
+				//GameAnalytics.NewBusinessEventGooglePlay("USD", 399, "PurchaseSmall", "itemId", currentlvl, null, null);
 			#elif UNITY_IPHONE
-				GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 399, "PurchaseBig", "itemId", currentlvl);
+				//GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 399, "PurchaseBig", "itemId", currentlvl);
 			#endif
 		}
 		if(productId == "medium") {
@@ -137,9 +137,9 @@ public class IABManager : MonoBehaviour
 			//Adjust.trackEvent(adjustEvent);
 
 			#if UNITY_ANDROID
-				GameAnalytics.NewBusinessEventGooglePlay("USD", 899, "PurchaseMedium", "itemId", currentlvl, null, null);
+				//GameAnalytics.NewBusinessEventGooglePlay("USD", 899, "PurchaseMedium", "itemId", currentlvl, null, null);
 			#elif UNITY_IPHONE
-				GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 899, "PurchaseBig", "itemId", currentlvl);
+				//GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 899, "PurchaseBig", "itemId", currentlvl);
 			#endif
 		}
 		if(productId == "big") {
@@ -152,9 +152,9 @@ public class IABManager : MonoBehaviour
 			//Adjust.trackEvent(adjustEvent);
 
 			#if UNITY_ANDROID
-				GameAnalytics.NewBusinessEventGooglePlay("USD", 1999, "PurchaseBig", "itemId", currentlvl, null, null);
+				//GameAnalytics.NewBusinessEventGooglePlay("USD", 1999, "PurchaseBig", "itemId", currentlvl, null, null);
 			#elif UNITY_IPHONE
-				GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 1999, "PurchaseBig", "itemId", currentlvl);
+				//GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 1999, "PurchaseBig", "itemId", currentlvl);
 			#endif
 		}/*
 		if(productId == "extrabig") {
@@ -167,9 +167,9 @@ public class IABManager : MonoBehaviour
 			//Adjust.trackEvent(adjustEvent);
 
 			#if UNITY_ANDROID
-				GameAnalytics.NewBusinessEventGooglePlay("USD", 1999, "PurchaseExtraBig", "itemId", currentlvl, null, null);
+				//GameAnalytics.NewBusinessEventGooglePlay("USD", 1999, "PurchaseExtraBig", "itemId", currentlvl, null, null);
 			#elif UNITY_IPHONE
-				GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 1999, "PurchaseExtraBig", "itemId", currentlvl);
+				//GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 1999, "PurchaseExtraBig", "itemId", currentlvl);
 			#endif
 		}*/
 			

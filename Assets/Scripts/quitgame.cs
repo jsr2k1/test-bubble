@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using GameAnalyticsSDK;
+//using GameAnalyticsSDK;
 
 public class quitgame : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class quitgame : MonoBehaviour
 		if(Application.loadedLevelName == "03 Menu"){
 			Application.Quit();
 		}else{
-			GameAnalytics.NewProgressionEvent (GA_Progression.GAProgressionStatus.GAProgressionStatusFail, "Arcade");
+			//GameAnalytics.NewProgressionEvent (GA_Progression.GAProgressionStatus.GAProgressionStatusFail, "Arcade");
 			Application.LoadLevel("03 Menu");
 		}
 	}

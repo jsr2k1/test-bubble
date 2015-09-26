@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using GameAnalyticsSDK;
+//using GameAnalyticsSDK;
 
 public class ButtonsInfoLives : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class ButtonsInfoLives : MonoBehaviour
 	public void exitlvl()
 	{
 		//infoLivesPop.GetComponent<PopUpMgr>().HidePopUp();
-		GameAnalytics.NewProgressionEvent (GA_Progression.GAProgressionStatus.GAProgressionStatusFail, LevelManager.levelNo.ToString());
+		//GameAnalytics.NewProgressionEvent (GA_Progression.GAProgressionStatus.GAProgressionStatusFail, LevelManager.levelNo.ToString());
 		//PlayerPrefs.SetInt("bPlaying", 0);
 		//LivesManager.lives--;
 		//ParseManager.instance.SaveCurrentData();
