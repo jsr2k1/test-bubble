@@ -9,8 +9,8 @@ PlayerSettings:
   targetDevice: 2
   targetResolution: 0
   accelerometerFrequency: 60
-  companyName: Aratinga Studios
-  productName: Bubble Paradise 2
+  companyName: 2K1Games
+  productName: Good Dino Bubble Shooter
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_ShowUnitySplashScreen: 1
@@ -83,15 +83,15 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.aratinga.bubbleparadise2
-  bundleVersion: 1.2
+  bundleIdentifier: com.jsr2k1.gooddino
+  bundleVersion: 1.0
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
   virtualRealitySupported: 0
   productGUID: 587e7f29ea01bea40b54400b88060aec
-  AndroidBundleVersionCode: 1200
+  AndroidBundleVersionCode: 1000
   AndroidMinSdkVersion: 14
   AndroidPreferredInstallLocation: 0
   aotOptions: 
@@ -141,8 +141,8 @@ PlayerSettings:
   AndroidTargetDevice: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/Developer/Unity Projects/BubbleParadise2/WIP/aratingastudios.keystore
-  AndroidKeyaliasName: aratingastudios
+  AndroidKeystoreName: 
+  AndroidKeyaliasName: 
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   androidEnableBanner: 1
@@ -155,21 +155,21 @@ PlayerSettings:
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
-    - m_Icon: {fileID: 2800000, guid: 4ded7938f36662f4195f28d690c70b7f, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 9c88753634f286a4a89ae0e2b1e77486, type: 3}
       m_Size: 128
   - m_BuildTarget: Android
     m_Icons:
-    - m_Icon: {fileID: 2800000, guid: a8a1323264b878643b34cb1decc74079, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 9c88753634f286a4a89ae0e2b1e77486, type: 3}
       m_Size: 192
-    - m_Icon: {fileID: 2800000, guid: abddf8c42bb0c4e4bb2e39d0e2c8096c, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 9c88753634f286a4a89ae0e2b1e77486, type: 3}
       m_Size: 144
-    - m_Icon: {fileID: 2800000, guid: 87d0828e5467b45458ac4c561e38eb65, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 9c88753634f286a4a89ae0e2b1e77486, type: 3}
       m_Size: 96
-    - m_Icon: {fileID: 2800000, guid: a7f14717c771db74eb340fdfd1695aa7, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 9c88753634f286a4a89ae0e2b1e77486, type: 3}
       m_Size: 72
-    - m_Icon: {fileID: 2800000, guid: 38c185696e43eaf46825d5343a889fe6, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 9c88753634f286a4a89ae0e2b1e77486, type: 3}
       m_Size: 48
-    - m_Icon: {fileID: 2800000, guid: 8eb874ff12561d94dbbf85bfc44a139c, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 9c88753634f286a4a89ae0e2b1e77486, type: 3}
       m_Size: 36
   - m_BuildTarget: iPhone
     m_Icons:
