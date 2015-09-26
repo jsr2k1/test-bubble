@@ -13,7 +13,7 @@ public class ToggleController : MonoBehaviour, IPointerClickHandler
 	public void OnPointerClick(PointerEventData data)
 	{
 		if(AudioManager.instance.bSoundsOn){
-			audio.Play();
+			GetComponent<AudioSource>().Play();
 		}
 	}
 	

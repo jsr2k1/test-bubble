@@ -7,6 +7,9 @@ using GameAnalyticsSDK;
 
 public class IABManager : MonoBehaviour
 {
+
+	//TODO: Joel: Set android public key
+
 #if UNITY_ANDROID || UNITY_IPHONE
 	string item1 = "xsmall";
 	string item2 = "small";
@@ -15,7 +18,7 @@ public class IABManager : MonoBehaviour
 	//string item5 = "extrabig";
 #endif
 #if UNITY_ANDROID
-	string androidPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6CkjzMnNCuwRhqpOelNnvdJkQ6xr3E2I++ubNNOk4GeBx99Fh0wZJZQ6mHB+2b4sD55+rHU2OUavNtM7b8Cu7En4Hkeac1bi4LWf9DiL7OTHz3o6atH9T0gZPewtZb+rkYuXP1GURs+Vt/aKOnAhgOjUsU++KW3rvevnvUMF5hDl3O1XsybepEldJ4aSPvful5NJiIVf3qkiP1jTGcdFTnjznOeGaI9bRmTOrnZIrSsfo5FKcX9hROrolGOy01Oa706yi6xHd6Et0TKtPPbiF8KNB4JUGku/4Uwc37o1osNDVjEp55tyLXP9W4QgXtNNE7tBswvRvGgcMTIcCKUemwIDAQAB";
+	string androidPublicKey = "";
 #endif
 
 	public static IABManager instance;
@@ -106,7 +109,7 @@ public class IABManager : MonoBehaviour
 			#if UNITY_ANDROID
 				GameAnalytics.NewBusinessEventGooglePlay("USD", 199, "PurchaseXSmall", "itemId", currentlvl, null, null);
 			#elif UNITY_IPHONE
-				GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 99, "PurchaseXSmall", "itemId", currentlvl);
+				GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 199, "PurchaseXSmall", "itemId", currentlvl);
 			#endif
 		}
 		if(productId == "small") {
@@ -121,7 +124,7 @@ public class IABManager : MonoBehaviour
 			#if UNITY_ANDROID
 				GameAnalytics.NewBusinessEventGooglePlay("USD", 399, "PurchaseSmall", "itemId", currentlvl, null, null);
 			#elif UNITY_IPHONE
-				GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 299, "PurchaseBig", "itemId", currentlvl);
+				GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 399, "PurchaseBig", "itemId", currentlvl);
 			#endif
 		}
 		if(productId == "medium") {
@@ -136,7 +139,7 @@ public class IABManager : MonoBehaviour
 			#if UNITY_ANDROID
 				GameAnalytics.NewBusinessEventGooglePlay("USD", 899, "PurchaseMedium", "itemId", currentlvl, null, null);
 			#elif UNITY_IPHONE
-				GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 499, "PurchaseBig", "itemId", currentlvl);
+				GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 899, "PurchaseBig", "itemId", currentlvl);
 			#endif
 		}
 		if(productId == "big") {
@@ -151,7 +154,7 @@ public class IABManager : MonoBehaviour
 			#if UNITY_ANDROID
 				GameAnalytics.NewBusinessEventGooglePlay("USD", 1999, "PurchaseBig", "itemId", currentlvl, null, null);
 			#elif UNITY_IPHONE
-				GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 999, "PurchaseBig", "itemId", currentlvl);
+				GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 1999, "PurchaseBig", "itemId", currentlvl);
 			#endif
 		}/*
 		if(productId == "extrabig") {

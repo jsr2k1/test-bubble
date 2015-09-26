@@ -18,11 +18,11 @@ public class UnityAdsController : MonoBehaviour
 	void Awake()
 	{
 		if(Advertisement.isSupported) {
-			Advertisement.allowPrecache = true;
+			//Advertisement.allowPrecache = true;
 			#if UNITY_ANDROID
-				Advertisement.Initialize("35427", bTestMode); //Android
+				Advertisement.Initialize("77544", bTestMode); //Android
 			#else
-				Advertisement.Initialize("35428", bTestMode); //iOS
+				Advertisement.Initialize("....", bTestMode); //iOS
 			#endif
 		}else{
 			Debug.Log("Platform not supported");
@@ -56,7 +56,7 @@ public class UnityAdsController : MonoBehaviour
 	
 	void Update()
 	{
-		if(Advertisement.isReady() && bShow){
+		if(Advertisement.IsReady() && bShow){
 			button.enabled = true;
 			image.enabled = true;
 		}
@@ -68,8 +68,8 @@ public class UnityAdsController : MonoBehaviour
 	{
 		//Debug.Log("OnShowAdButtonPressed: " + Advertisement.isReady());
 		
-		if(Advertisement.isReady()){
-			Advertisement.Show(null, new ShowOptions { pause = false, resultCallback = ResultCallback } );
+		if(Advertisement.IsReady()){
+			Advertisement.Show(null, new ShowOptions { /*pause = false,*/ resultCallback = ResultCallback } );
 		}
 	}
 	
@@ -90,7 +90,7 @@ public class UnityAdsController : MonoBehaviour
 			image.enabled = false;
 			PlayerPrefs.SetString("savedTimeAds", DateTime.Now.ToString());
 			textCoinsAnimator.SetTrigger("StartAnim");
-			audio.Play();
+			GetComponent<AudioSource>().Play();
 		}
 	}	
 }

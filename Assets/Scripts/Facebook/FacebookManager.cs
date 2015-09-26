@@ -9,7 +9,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using Facebook;
-using com.adjust.sdk;
+//using com.adjust.sdk;
 
 public class Friend
 {

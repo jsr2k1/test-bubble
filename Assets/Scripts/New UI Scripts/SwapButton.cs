@@ -19,7 +19,7 @@ public class SwapButton : MonoBehaviour
 			swapImageAnim.SetTrigger("SwapPressed");
 			
 			if(AudioManager.instance.bSoundsOn){
-				audio.Play();
+				GetComponent<AudioSource>().Play();
 			}
 		}
 	}

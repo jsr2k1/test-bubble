@@ -25,23 +25,23 @@ MonoBehaviour:
   UserMessagesFailed: 0
   CustomArea: 
   gameKey:
-  - 02fb57ac8008da87f0c5c9494904fe2f
-  - ccee745e2a26fec35305adf17a5d9717
+  - 
+  - 1109d3946de1d2bd03a668ec362c8b00
   secretKey:
-  - 679c49fe2d1beea7c175acc363ea0f62cafd230d
-  - 566a43cfaea6332fb58a1f3e888def3551fd09f9
+  - 
+  - 7183e217e3aefb34893ce033bfbfeba74cd258f5
   Build:
   - 1.0
   - 1.0
   SelectedPlatformStudio:
-  - Aratinga
-  - Aratinga
+  - 
+  - 2K1APPS
   SelectedPlatformGame:
-  - Bubble Paradise 2 (iOS App Store)
-  - Bubble Paradise 2 (Google Play)
-  SelectedPlatformGameID: 61310000524c0000
+  - 
+  - Good Dino Bubble Shooter
+  SelectedPlatformGameID: 61310000d4560000
   SelectedStudio: 0100000001000000
-  SelectedGame: 0200000001000000
+  SelectedGame: 0200000002000000
   NewVersion: 
   Changes: 
   SignUpOpen: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   GameName: 
   PasswordConfirm: 
   EmailOptIn: 1
-  EmailGA: aratingadevelopers@gmail.com
+  EmailGA: jsr2k1@hotmail.com
   IntroScreen: 0
   InfoLogEditor: 1
   InfoLogBuild: 1

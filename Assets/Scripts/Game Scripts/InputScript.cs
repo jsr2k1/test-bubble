@@ -48,7 +48,7 @@ public class InputScript : MonoBehaviour
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Inicializamos el array con las particulas del primer rayo y el array del segundo rayo
-	//Para conseguir el efecto de que las bolas aumenten y disminuyan el tamaño de manera alternada,
+	//Para conseguir el efecto de que las bolas aumenten y disminuyan el tamaÃ±o de manera alternada,
 	//tenemos 2 prefabs con la animacion con desfase
 	void CreateParticles()
 	{
@@ -64,7 +64,7 @@ public class InputScript : MonoBehaviour
 			}else{
 				particle = Instantiate(particlePrefab2) as GameObject;
 			}
-			particle.renderer.enabled=false;
+			particle.GetComponent<Renderer>().enabled=false;
 			particles[i] = particle;
 			particle.transform.SetParent(particleParent.transform);
 		}
@@ -78,7 +78,7 @@ public class InputScript : MonoBehaviour
 			}else{
 				particle = Instantiate(particlePrefab2) as GameObject;
 			}
-			particle.renderer.enabled=false;
+			particle.GetComponent<Renderer>().enabled=false;
 			bounceParticles[i] = particle;
 			particle.transform.SetParent(particleParent.transform);
 		}
@@ -112,8 +112,8 @@ public class InputScript : MonoBehaviour
 				CheckCollisionBounce();
 
 				//Launcher aim to the mouse/touch point
-				x = Input.mousePosition.x - camera.WorldToScreenPoint(launcher.position).x;
-				y = Input.mousePosition.y - camera.WorldToScreenPoint(launcher.position).y;
+				x = Input.mousePosition.x - GetComponent<Camera>().WorldToScreenPoint(launcher.position).x;
+				y = Input.mousePosition.y - GetComponent<Camera>().WorldToScreenPoint(launcher.position).y;
 
 				//Dont draw the line or do actions when the click its under the launcher point
 				if(pos.y > thresoldLineTransform.position.y && pos.y < topThresoldLine.position.y)
@@ -166,10 +166,10 @@ public class InputScript : MonoBehaviour
 
 			if(maxDist>0){
 				if(dist<maxDist){
-					particles[i].renderer.enabled = true;
+					particles[i].GetComponent<Renderer>().enabled = true;
 					particles[i].transform.position = targetPos;
 				}else{
-					particles[i].renderer.enabled = false;
+					particles[i].GetComponent<Renderer>().enabled = false;
 				}
 			}
 		}
@@ -181,7 +181,7 @@ public class InputScript : MonoBehaviour
 	{
 		if(!bBounceOn){
 			for(int i=0;i<nBounceParticles;i++){
-				bounceParticles[i].renderer.enabled = false;
+				bounceParticles[i].GetComponent<Renderer>().enabled = false;
 			}
 		}else{
 			Vector3 reflection = Vector3.Reflect(rayDirection, hitNormal).normalized;
@@ -193,11 +193,11 @@ public class InputScript : MonoBehaviour
 
 				if(maxDistBounce>0){
 					if(dist<maxDistBounce){
-						bounceParticles[i].renderer.enabled = true;
+						bounceParticles[i].GetComponent<Renderer>().enabled = true;
 						bounceParticles[i].transform.position = targetPos;
 					}
 					else{
-						bounceParticles[i].renderer.enabled = false;
+						bounceParticles[i].GetComponent<Renderer>().enabled = false;
 					}
 				}
 			}
@@ -209,10 +209,10 @@ public class InputScript : MonoBehaviour
 	void SetParticles(bool bEnable)
 	{
 		for(int i=0;i<nParticles;i++){
-			particles[i].renderer.enabled = bEnable;
+			particles[i].GetComponent<Renderer>().enabled = bEnable;
 		}
 		for(int i=0;i<nBounceParticles;i++){
-			bounceParticles[i].renderer.enabled = bEnable;
+			bounceParticles[i].GetComponent<Renderer>().enabled = bEnable;
 		}
 	}
 	

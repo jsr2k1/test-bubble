@@ -92,7 +92,7 @@ public class PlayingObject : MonoBehaviour
 	void FixedUpdate()
 	{
 		//Cuando una bola que esta cayendo supera el umbral, la destruimos
-		if(rigidbody.useGravity){
+		if(GetComponent<Rigidbody>().useGravity){
 			float dist = Random.Range(0.0f,1.5f);
 			if(transform.position.y < destroy_threshold-dist){
 				DestroyPlayingObject();
@@ -209,9 +209,9 @@ public class PlayingObject : MonoBehaviour
 
 		if(fall){
 			if(burst == false){
-				rigidbody.useGravity = true;
-				rigidbody.isKinematic = false;
-				rigidbody.AddForce(new Vector3(0, Random.Range(1.5f, 2.5f), 0), ForceMode.VelocityChange);
+				GetComponent<Rigidbody>().useGravity = true;
+				GetComponent<Rigidbody>().isKinematic = false;
+				GetComponent<Rigidbody>().AddForce(new Vector3(0, Random.Range(1.5f, 2.5f), 0), ForceMode.VelocityChange);
 				rotationScript.enabled = true;
 				//spriteRenderer.sortingLayerName = "FallingObjLayer";  //En la 4.6.3 no se pueden cambiar las layers pq no se ven los objetos
 			} else{                
@@ -232,7 +232,7 @@ public class PlayingObject : MonoBehaviour
 			Destroy(scoreInstance, scoreLife);
 		}
 		burstParticleInstance.transform.position = transform.position;
-		burstParticleInstance.renderer.sortingLayerName = "FrontLayer";
+		burstParticleInstance.GetComponent<Renderer>().sortingLayerName = "FrontLayer";
 		particleEmit.emit = true;
 		particleAnim.autodestruct = true;
 		/*

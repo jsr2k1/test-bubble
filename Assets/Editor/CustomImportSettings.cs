@@ -22,9 +22,7 @@ public class CustomImportSettings : AssetPostprocessor
 	//AUDIOS
 	void OnPreprocessAudio()
 	{
-		AudioImporter audioImporter = assetImporter as AudioImporter;
-		
-		audioImporter.threeD = false;
+		//AudioImporter audioImporter = assetImporter as AudioImporter;
 	}
 	
 	/*	

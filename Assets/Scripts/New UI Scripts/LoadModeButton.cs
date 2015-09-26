@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using GameAnalyticsSDK;
-using com.adjust.sdk;
+//using com.adjust.sdk;
 
 public class LoadModeButton : MonoBehaviour
 {

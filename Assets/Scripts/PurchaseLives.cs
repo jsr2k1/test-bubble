@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using com.adjust.sdk;
+//using com.adjust.sdk;
 
 public class PurchaseLives : MonoBehaviour
 {

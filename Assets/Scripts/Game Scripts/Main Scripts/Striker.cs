@@ -51,7 +51,7 @@ public class Striker : MonoBehaviour
 	internal void Shoot(Vector3 dir)
 	{   
 		speed = 10f;  
-		rigidbody.isKinematic = false;
+		GetComponent<Rigidbody>().isKinematic = false;
 		currentMovingDirection = dir;
 		isBusy = true;
 
@@ -75,7 +75,7 @@ public class Striker : MonoBehaviour
 	//Called when the striker just hit the board playing object
 	public void FreeStriker(GameObject collidedObject)
 	{           
-		rigidbody.isKinematic = true;
+		GetComponent<Rigidbody>().isKinematic = true;
 		currentStrikerObject.GetComponent<SphereCollider>().enabled = true;
 		currentStrikerObject.transform.parent = InGameScriptRefrences.playingObjectGeneration.gameObject.transform;
 		currentStrikerObject.tag = "Playing Object";
@@ -154,7 +154,7 @@ public class Striker : MonoBehaviour
 		if(fireBall || bombBall || multiBall){
 			return;
 		}
-		rigidbody.isKinematic = true;
+		GetComponent<Rigidbody>().isKinematic = true;
 		
 		InGameScriptRefrences.strikerManager.SaveBallsID();
 		Destroy(currentStrikerObject);

@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using GameAnalyticsSDK;
-using com.adjust.sdk;
+//using com.adjust.sdk;
 
 public class PopUpMgr : MonoBehaviour
 {
@@ -54,8 +54,8 @@ public class PopUpMgr : MonoBehaviour
 			anim.SetTrigger("ShowPopUp");
 			bShow=true;
 			
-			if(audio && AudioManager.instance.bSoundsOn){
-				audio.Play();
+			if(GetComponent<AudioSource>() && AudioManager.instance.bSoundsOn){
+				GetComponent<AudioSource>().Play();
 			}
 		}
 	}

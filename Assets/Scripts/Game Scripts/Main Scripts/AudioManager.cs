@@ -79,25 +79,25 @@ public class AudioManager : MonoBehaviour
 	{
 		//En la pantalla principal reproducimos el clip 0
 		if(level=="03 Menu" && (oldLevel=="02 Splash Managers" || oldLevel=="06 Arcade Game Scene")){
-			audio.clip = audioClips[0];
+			GetComponent<AudioSource>().clip = audioClips[0];
 		}
 		//En la pantalla de los mundos continuamos reproduciendo el clip 0
 		else if(level=="04 World Menu" && oldLevel=="05 Game Scene"){
-			audio.clip = audioClips[0];
+			GetComponent<AudioSource>().clip = audioClips[0];
 		}
 		//En el modo MUNDOS reproducimos el clip 1 en los mundos pares y el clip 2 en los impares
 		else if(level=="05 Game Scene"){
 			if(LevelManager.levelNo%2==0){
-				audio.clip = audioClips[1];
+				GetComponent<AudioSource>().clip = audioClips[1];
 			}else{
-				audio.clip = audioClips[2];
+				GetComponent<AudioSource>().clip = audioClips[2];
 			}
 		}//En el modo ARCADE reproducimos el clip 1	y el clip 2 alternados
 		else if(level=="06 Arcade Game Scene"){
 			if(lastArcadeClip==0){
-				audio.clip = audioClips[1];
+				GetComponent<AudioSource>().clip = audioClips[1];
 			}else{
-				audio.clip = audioClips[2];
+				GetComponent<AudioSource>().clip = audioClips[2];
 			}
 			lastArcadeClip = (lastArcadeClip+1)%2;
 		}
@@ -118,7 +118,7 @@ public class AudioManager : MonoBehaviour
 			if((level=="03 Menu" && oldLevel=="04 World Menu") || (level=="04 World Menu" && oldLevel=="03 Menu")){
 				//No hacemos nada
 			}else{
-				audio.Play();
+				GetComponent<AudioSource>().Play();
 			}
 		}
 	}
@@ -136,7 +136,7 @@ public class AudioManager : MonoBehaviour
 	
 	public void StopAudio()
 	{
-		audio.Stop();
+		GetComponent<AudioSource>().Stop();
 	}
 }
 
