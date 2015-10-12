@@ -11,14 +11,14 @@ public class IABManager : MonoBehaviour
 	//TODO: Joel: Set android public key
 
 #if UNITY_ANDROID || UNITY_IPHONE
-	string item1 = "xsmall";
-	string item2 = "small";
-	string item3 = "medium";
-	string item4 = "big";
+	string item1 = "xsmall_pack";
+	string item2 = "small_pack";
+	string item3 = "medium_pack";
+	string item4 = "big_pack";
 	//string item5 = "extrabig";
 #endif
 #if UNITY_ANDROID
-	string androidPublicKey = "";
+	string androidPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkqA1gBtiBv4yiprnHFO4xXMAq1Hz7wRRem0SKDDCxJXcgNkObo4U3t85iQBSlp67pQGiXxPLFc0owvZ3B91LRhT6w7JMj2XvIHqTVNnf97rz49cMzkwlr2rE8M6UbifmYAUahXK71KD3Ay4J7TVA4jvwvs17GwYybfowtQT/j7/fX3IB9JMeAmAftbmg7JgQSj9gwXrUBDR9RpIh766GwPl2IK6g6x/84jOMvcQmyTBRqiWdh+AW9EIZlqs5Ot35GaICZf4qkIOly/y9tvk+I0cF8G2w39nm3E3amfzrD40z57IWEKkaeWjWpj6QQmYC+TYsfhSkQxaoTmCh7OzG9QIDAQAB";
 #endif
 
 	public static IABManager instance;
@@ -97,7 +97,7 @@ public class IABManager : MonoBehaviour
 		//string currentlvl = (PlayerPrefs.GetInt ("Level") + 1).ToString ();
 		//#endif
 
-		if(productId == "xsmall") {
+		if(productId == "xsmall_pack") {
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 200;
 			CoinsManager.instance.SetCoins(coins);
@@ -112,7 +112,7 @@ public class IABManager : MonoBehaviour
 				//GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 199, "PurchaseXSmall", "itemId", currentlvl);
 			#endif
 		}
-		if(productId == "small") {
+		if(productId == "small_pack") {
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 500;
 			CoinsManager.instance.SetCoins(coins);
@@ -127,7 +127,7 @@ public class IABManager : MonoBehaviour
 				//GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 399, "PurchaseBig", "itemId", currentlvl);
 			#endif
 		}
-		if(productId == "medium") {
+		if(productId == "medium_pack") {
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 1500;
 			CoinsManager.instance.SetCoins(coins);
@@ -142,7 +142,7 @@ public class IABManager : MonoBehaviour
 				//GameAnalytics.NewBusinessEventIOSAutoFetchReceipt ("USD", 899, "PurchaseBig", "itemId", currentlvl);
 			#endif
 		}
-		if(productId == "big") {
+		if(productId == "big_pack") {
 			int coins = PlayerPrefs.GetInt("Coins");
 			coins = coins + 5000;
 			CoinsManager.instance.SetCoins(coins);
