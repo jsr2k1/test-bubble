@@ -83,15 +83,15 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.jsr2k1.gooddino
-  bundleVersion: 1.0
+  bundleIdentifier: com.jsr.gooddino
+  bundleVersion: 1.0.0.1
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
   virtualRealitySupported: 0
   productGUID: 587e7f29ea01bea40b54400b88060aec
-  AndroidBundleVersionCode: 1000
+  AndroidBundleVersionCode: 1001
   AndroidMinSdkVersion: 14
   AndroidPreferredInstallLocation: 0
   aotOptions: 
@@ -141,8 +141,8 @@ PlayerSettings:
   AndroidTargetDevice: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: D:/12 Unity/06 AratingaStudios/Bubble Paradise 2/user.keystore
+  AndroidKeyaliasName: gooddino
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   androidEnableBanner: 1
@@ -155,21 +155,21 @@ PlayerSettings:
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
-    - m_Icon: {fileID: 2800000, guid: 9c88753634f286a4a89ae0e2b1e77486, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 72542808c02e1b74dba4ccbdde48136b, type: 3}
       m_Size: 128
   - m_BuildTarget: Android
     m_Icons:
-    - m_Icon: {fileID: 2800000, guid: 9c88753634f286a4a89ae0e2b1e77486, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 72542808c02e1b74dba4ccbdde48136b, type: 3}
       m_Size: 192
-    - m_Icon: {fileID: 2800000, guid: 9c88753634f286a4a89ae0e2b1e77486, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 72542808c02e1b74dba4ccbdde48136b, type: 3}
       m_Size: 144
-    - m_Icon: {fileID: 2800000, guid: 9c88753634f286a4a89ae0e2b1e77486, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 72542808c02e1b74dba4ccbdde48136b, type: 3}
       m_Size: 96
-    - m_Icon: {fileID: 2800000, guid: 9c88753634f286a4a89ae0e2b1e77486, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 72542808c02e1b74dba4ccbdde48136b, type: 3}
       m_Size: 72
-    - m_Icon: {fileID: 2800000, guid: 9c88753634f286a4a89ae0e2b1e77486, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 72542808c02e1b74dba4ccbdde48136b, type: 3}
       m_Size: 48
-    - m_Icon: {fileID: 2800000, guid: 9c88753634f286a4a89ae0e2b1e77486, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 72542808c02e1b74dba4ccbdde48136b, type: 3}
       m_Size: 36
   - m_BuildTarget: iPhone
     m_Icons:
