@@ -29,13 +29,12 @@ public class WorldButton : MonoBehaviour
 	{
 		button = GetComponent<Button>();
 
-		if(name=="1" || int.Parse(name)<=PlayerPrefs.GetInt("Level")+1){
+		int level = PlayerPrefs.GetInt("Level");
+		if(name=="1" || int.Parse(name)<=level+1){
 			button.interactable = true;
+			transform.GetChild(0).GetComponent<Image>().sprite = bubbleFilled;
 		}else{
 			button.interactable = false;
-		}
-		if(int.Parse(name)<=PlayerPrefs.GetInt("Level")){
-			transform.GetChild(0).GetComponent<Image>().sprite = bubbleFilled;
 		}
 
 		Text currentText = Instantiate(numTextPrefab) as Text;

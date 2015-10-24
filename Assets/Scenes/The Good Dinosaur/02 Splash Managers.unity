@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 2
-  force_current_level: 15
+  force_current_level: -1
   initial_lives: 5
 --- !u!1 &733087559
 GameObject:

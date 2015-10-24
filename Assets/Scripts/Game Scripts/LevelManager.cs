@@ -118,7 +118,8 @@ public class LevelManager : MonoBehaviour
 			PlayerPrefs.SetInt("STARS_" + levelNo, stars);
 			PlayerPrefs.SetInt("SCORE_" + levelNo, score);
 		}
-		if(PlayerPrefs.GetInt("Level") < levelNo){
+		int level = PlayerPrefs.GetInt("Level"); 
+		if(level < levelNo){
 			PlayerPrefs.SetInt("Level", levelNo);
 		}
 		PlayerPrefs.SetInt("bPlaying", 0);
